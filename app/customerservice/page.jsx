@@ -2,13 +2,10 @@
 import FAQ from "../../components/FAQ/FAQ";
 import FAQSwiper from "../../components/FAQSwiper/FAQSwiper";
 // import React from "react";
-// import Header from "../components/Header";
-// import Footer from "../components/Footer/Footer";
 // import { useNavigate } from "react-router-dom";
 
 import "../../components/styles/CustomerServicePage.css";
 import { useRouter } from "next/navigation";
-import FAQ from "@/components/FAQ/FAQ";
 const servicesData = [
   {
     id: 1,

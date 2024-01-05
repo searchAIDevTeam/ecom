@@ -30,17 +30,22 @@ export default function Form() {
     });
   }
 
-  function handleData(event) {
-    event.preventDefault();
-    console.log(form);
-    updateFormData(form);
-    // navigate("/shipping");
+  function handleData() {
+    // event.preventDefault();
+    // console.log(form);
+    // updateFormData(form);
+    router.push("/shipping");
+  }
+
+  const handleClick = () => {
     router.push("/shipping");
   }
 
   return (
     <>
-      <form onSubmit={handleData} className="w-1/2">
+      <form 
+        // onSubmit={handleData}
+        className="w-1/2">
         <h3 className="mt-12">Enter your name and address:</h3>
         <div className="mb-4">
           <label htmlFor="first" className="form-label relative"></label>
@@ -235,7 +240,7 @@ export default function Form() {
           </span>
         </div>
         <br />
-        <button className="mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ">
+        <button onClick={handleClick} className="mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ">
           Continue
         </button>
       </form>

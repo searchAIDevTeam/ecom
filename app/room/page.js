@@ -4,14 +4,7 @@ import Reviews from "@/components/Room/Other/Reviews";
 import RoomImageList from "@/components/Room/RoomImageList";
 import RoomInfo from "@/components/Room/RoomInfo";
 import React, { useEffect, useState } from "react";
-// import RoomPageHeader from "../components/Room/RoomPageHeader";
-// import "../components/Room/styles.css";
-// import RoomImageList from "../components/Room/RoomImageList";
-// import RoomInfo from "../components/Room/RoomInfo";
-// import Reviews from "../components/Room/Other/Reviews";
-// import Header from "../components/Header";
 import ImageCaresoul from "@/components/Room/imagecaresoul";
-// import Footer from "../components/Footer/Footer";
 // import Card from "../components/Room/Other/Card";
 const RoomPage = () => {
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);

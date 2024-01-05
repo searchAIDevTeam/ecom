@@ -9,7 +9,7 @@ const Arrive = () => {
   const router = useRouter();
   const handleClick = () => {
     // navigate("/payment");
-    router('/payment');
+    router.push('/payment');
   };
   return (
     <div>

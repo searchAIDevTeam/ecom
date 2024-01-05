@@ -1,3 +1,4 @@
+'use client'
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -24,11 +25,11 @@ const Aboutcollections = () => {
             {aboutcollections.map((item) => (
               <li>
                 {item === "This is Ayatrio" ? (
-                  <Link href={"/this-is-ayatrio"}>{item}</Link>
+                  <Link href={"/thisisayatrio"}>{item}</Link>
                 ) : item === "Sustainability" ? (
-                  <Link href={"/sustainable-everyday"}>{item}</Link>
+                  <Link href={"/sustainability"}>{item}</Link>
                 ) : item === "Ayatrio Stores" ? (
-                  <Link href={"/ayatrio-map"}>{item}</Link>
+                  <Link href={"/ayatriomap"}>{item}</Link>
                 ) : (
                   <a href="#">{item}</a>
                 )}
