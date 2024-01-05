@@ -1,0 +1,112 @@
+.bloc-tabs2::-webkit-scrollbar {
+  display: none;
+}
+
+/* .opensort::-webkit-scrollbar{
+  display: none;
+} */
+/* .Tabbtn{
+  width: 150px;
+} */
+
+
+.bloc-tabs2{
+  position: sticky;
+  top: 0;
+  background-color: white;
+  overflow-x: auto;
+}
+.price-box {
+  /* box-shadow: 0.08em 0.08em 0 rgb(red, 204, 0, 8); */
+  box-shadow: 5px 5px rgb(173, 53, 53);
+}
+
+.Tabbtn {
+  outline: none;
+  width: 150px;
+  /* Add any common styles for the button here */
+}
+
+.active-tabs.Tabbtn {
+  width: 150px;
+  /* Add styles for the active state (when the dropdown is open) */
+}
+
+.tabS.Tabbtn {
+  width: 150px;
+  /* Add styles for the inactive state (when the dropdown is closed) */
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox-div {
+  /* display: none; */
+  visibility: hidden;
+}
+
+.hover-divnine:hover .checkbox-div {
+  /* display: flex; */
+  visibility: visible;
+}
+
+@media screen and (max-width: 450px) {
+  .product-image {
+    width: 120px;
+    height: 70px;
+  }
+
+  .hover-divnine:nth-child(2n) {
+    padding-left: 0.75rem;
+    border-right: none;
+  }
+
+  .hover-divnine:nth-child(n) {
+    padding-right: 0.75rem;
+  }
+  .hover-divnine:nth-child(2) {
+    padding-right: 0;
+  }
+  .hover-divnine:nth-child(3) {
+    border-bottom: none;
+  }
+  .hover-divnine:nth-child(4) {
+    border-bottom: none;
+    padding-right: 0;
+  }
+
+  .Tabbtn {
+    outline: none;
+    width: 100px;
+    /* Add any common styles for the button here */
+  }
+
+  .active-tabs.Tabbtn {
+    width: 100px;
+    /* Add styles for the active state (when the dropdown is open) */
+  }
+
+  .tabS.Tabbtn {
+    width: 100px;
+    /* Add styles for the inactive state (when the dropdown is closed) */
+  }
+}
+/* 
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+} */
+
+
+/* .bloc-tabs2{
+  position: sticky;
+  top:0;
+
+} */
