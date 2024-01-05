@@ -12,7 +12,6 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
-import Footer from "../Footer/Footer";
 // import {
 //   Pagination,
 //   Scrollbar,
@@ -119,7 +118,6 @@ function Cards() {
       {MemoizedProfileContent}
       <Tabs />
       <Phone />
-      <Footer />
     </div>
   );
 }

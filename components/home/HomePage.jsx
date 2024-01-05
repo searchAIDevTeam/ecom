@@ -85,7 +85,7 @@ const HomePage = () => {
         {popUp === "true" ? null : <PopUp />}
         {isFilterVisible && (
           <>
-            <Header onSearchIconClick={handleSearchIconClick} />
+            {/* <Header onSearchIconClick={handleSearchIconClick} /> */}
             {isSearchBarVisible && (
               <Expandedbar
                 // searchText={searchText}

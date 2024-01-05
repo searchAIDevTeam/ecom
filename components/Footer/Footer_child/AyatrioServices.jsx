@@ -1,3 +1,4 @@
+'use client'
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -29,13 +30,13 @@ const AyatrioServices = () => {
             {ServicesCollections.map((item) => (
               <li>
                 {item === "Customer Service" ? (
-                  <Link href="/customer-service">{item}</Link>
+                  <Link href="/customerservice">{item}</Link>
                 ) : item === "Delivery Service" ? (
-                  <Link href="/delivery-service">{item}</Link>
+                  <Link href="/deliveryservice">{item}</Link>
                 ) : item === "Design Service" ? (
-                  <Link href="/design-service">{item}</Link>
+                  <Link href="/designservice">{item}</Link>
                 ) : item === "Installation Service" ? (
-                  <Link href="/installation-service">{item}</Link>
+                  <Link href="/installationservice">{item}</Link>
                 ) : (
                   <a href="#">{item}</a>
                 )}

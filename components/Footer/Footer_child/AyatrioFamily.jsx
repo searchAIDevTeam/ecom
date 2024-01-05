@@ -1,3 +1,4 @@
+'use client'
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
