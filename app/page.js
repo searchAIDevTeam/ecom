@@ -10,6 +10,10 @@ export default function Home() {
         <Link href={"/deliveryservice"}>Delivery Service</Link>
         <Link href={"/designservice"}>Design Service</Link>
         <Link href={"/installationservice"}>Installation Service</Link>
+        <Link href={"/room"}>Room</Link>
+        <Link href={"/payment"}>Payment</Link>
+        <Link href={"/shipping"}>Shipping</Link>
+        <Link href={"/checkout"}>Checkout</Link>
       </div>
     </div>
   );
