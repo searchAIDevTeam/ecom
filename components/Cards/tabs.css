@@ -1,0 +1,10 @@
+.bloc-tabsnone::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .bloc-tabsnone{
+    /* position: sticky; */
+    top: 0;
+    background-color: white;
+    overflow-x: auto;
+  }

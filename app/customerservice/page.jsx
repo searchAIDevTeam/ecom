@@ -1,5 +1,5 @@
 'use client'
-
+import FAQ from "../../components/FAQ/FAQ";
 import FAQSwiper from "../../components/FAQSwiper/FAQSwiper";
 // import React from "react";
 // import Header from "../components/Header";
