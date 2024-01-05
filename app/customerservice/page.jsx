@@ -1,6 +1,6 @@
 'use client'
-import FAQ from "@/components/FAQ/FAQ";
-// import FAQSwiper from "@/components/FAQSwiper/FAQSwiper";
+import FAQ from "../../components/FAQ/FAQ";
+import FAQSwiper from "../../components/FAQSwiper/FAQSwiper";
 // import React from "react";
 // import Header from "../components/Header";
 // import FAQ from "../components/FAQ/FAQ";
@@ -200,10 +200,10 @@ const CustomerServicePage = () => {
             </div>
           </div>
         </section>
-        {/* FAQs search bar section ends */}
-        {/* <FAQSwiper />
-        <FAQ /> */}
-        {/* Plan and Shop from home starts */}
+        
+        <FAQSwiper />
+        <FAQ />
+   
         <section>
           <div className="plan-section">
             <div className="">
