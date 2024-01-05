@@ -1,7 +1,7 @@
 import React from "react";
 // import Header from "../components/Header";
 // import Footer from "../components/Footer/Footer";
-// import FAQSwiper from "../FaqPage/page";
+import FAQSwiper from "../../../components/FAQSwiper/FAQSwiper";
 
 const mainGridData = [
   {
@@ -201,7 +201,7 @@ const FaqPage = () => {
           </div>
         </section>
         {/* FAQs search bar section ends */}
-        {/* <FAQSwiper/> */}
+        <FAQSwiper/>
         {/* main grid section starts */}
         <section>
           <div className="flex flex-col space-y-6">

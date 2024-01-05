@@ -1,16 +1,15 @@
-import { IoCheckmark } from "react-icons/io5";
+// import { IoCheckmark } from "react-icons/io5";
+import Image from "next/image";
 import React, { useEffect, useRef } from "react";
-
-// import rev from "../../assets/rev.webp";
-import { IoIosArrowDropright } from "react-icons/io";
+// import { IoIosArrowDropright } from "react-icons/io";
 // import StarIcon from "@mui/icons-material/Star";
-import { IoClose } from "react-icons/io5";
-import { HiOutlineAcademicCap } from "react-icons/hi";
-import { MdShoppingBag } from "react-icons/md";
-import { RiLightbulbFlashLine } from "react-icons/ri";
-import { BsStars } from "react-icons/bs";
-import { MdOutlineFastfood } from "react-icons/md";
-import { BsBalloon } from "react-icons/bs";
+// import { IoClose } from "react-icons/io5";
+// import { HiOutlineAcademicCap } from "react-icons/hi";
+// import { MdShoppingBag } from "react-icons/md";
+// import { RiLightbulbFlashLine } from "react-icons/ri";
+// import { BsStars } from "react-icons/bs";
+// import { MdOutlineFastfood } from "react-icons/md";
+// import { BsBalloon } from "react-icons/bs";
 import "./styles.css";
 function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
   const popupRef = useRef(null);
@@ -27,13 +26,15 @@ function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
           <div className="popup h-[100vh]" ref={popupRef}>
             <div className="bg-white px-4 w-[50%] h-full border rounded-3xl shadow-2xl overflow-y-scroll">
               <div className="flex justify-start mt-2 mr-2 cursor-pointer">
-                <IoClose onClick={closePopup} className="text-2xl" />
+                <Image width={10} height={10} alt="close" onClick={closePopup} className="text-2xl" />
               </div>
               <div className="grid grid-cols-2 ml-2 h-88 w-88 border rounded-xl shadow-xl mt-10">
                 <div className="flex flex-col items-center justify-center">
                   <div>
-                    <img
-                      src="/images/rev.webp"
+                    <Image
+                      src="/rooms/rev.webp"
+                      width={10}
+                      height={10}
                       className="h-20 w-20 rounded-full cursor-pointer"
                       alt="Review Icon"
                     />
@@ -51,7 +52,7 @@ function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
                   <div className="flex flex-col">
                     <span className="font-bold text-2xl">
                       4.87
-                      <StarIcon />
+                      <Image src="/rooms/star-icon.svg" width={10} height={10} alt="star" />
                     </span>
                     <span className="font-medium text-xs ">Reviews</span>
                     <hr className="mt-4 mr-6"></hr>
@@ -66,39 +67,39 @@ function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
               </div>
               <div className=" mt-8 flex flex-col gap-4 ml-4">
                 <div className="flex">
-                  <HiOutlineAcademicCap className="text-4xl mr-2 " />
+                  <Image src="/rooms/academic-cap-icon.svg" width={10} height={10} alt="academic cap icon" className="text-4xl mr-2 " />
                   <p>
                     Where I went to school: Universidad de Psicología en
                     Valencia
                   </p>
                 </div>
                 <div className="flex">
-                  <MdShoppingBag className="text-xl mr-2 " />
+                  <Image src="/rooms/shopping-bag-icon.svg" width={10} height={10} alt="shopping bag" className="text-xl mr-2 " />
                   <p>My work: coach</p>
                 </div>
                 <div className="flex">
-                  <RiLightbulbFlashLine className="text-xl mr-2 " />
+                  <Image src="/rooms/light-bulb-icon.svg" width={10} height={10} alt="light bulb" className="text-xl mr-2 " />
                   <p>Fun fact: No one believes my age</p>
                 </div>
                 <div className="flex">
-                  <BsStars className="text-4xl mr-2 " />
+                  <Image src="/rooms/twinkling-stars-icon.svg" width={10} height={10} alt="twinkling stars" className="text-4xl mr-2 " />
                   <p>
                     What makes my home unique: Good energy and feeling at home
                   </p>
                 </div>
                 <div className="flex">
-                  <MdOutlineFastfood className="text-xl mr-2 " />
+                  <Image src="/rooms/fast-food-icon.svg" width={10} height={10} alt="fast food" className="text-xl mr-2 " />
                   <p>For guests, I always: Help them enjoy Valencia</p>
                 </div>
                 <div className="flex">
-                  <BsBalloon className="text-xl mr-2 " />
+                  <Image src="/rooms/balloons-icon.svg" width={10} height={10} alt="balloons" className="text-xl mr-2 " />
                   <p>Born in the 60s</p>
                 </div>
               </div>
               <hr className="my-4" />
               <div className="flex justify-between text-2xl">
                 <h2 className="font-medium">Golwen&apos;s reviews</h2>
-                <IoIosArrowDropright className="mt-1 text-gray-200" />
+                <Image src="/rooms/right-arrow-in-circle-icon.svg" className="mt-1 text-gray-200" />
               </div>
               <div className="border border-gray-200 rounded-lg my-10">
                 <p className="mx-5 mb-20 mt-5">
@@ -125,15 +126,18 @@ function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
                   </h2>
                 </div>
                 <div className="flex">
-                  <IoCheckmark className="mt-1 text-2xl mr-1" />
+                  {/* <IoCheckmark className="mt-1 text-2xl mr-1" /> */}
+                  <Image src="/rooms/checkmark-icon.svg" width={10} height={10} alt="checkmark icon"/>
                   <span className="text-xl font-thin">Identity</span>
                 </div>
                 <div className="flex">
-                  <IoCheckmark className="mt-1 text-2xl mr-1" />
+                  {/* <IoCheckmark className="mt-1 text-2xl mr-1" /> */}
+                  <Image src="/rooms/checkmark-icon.svg" width={10} height={10} alt="checkmark icon"/>
                   <span className="text-xl font-thin">Email Address</span>
                 </div>
                 <div className="flex">
-                  <IoCheckmark className="mt-1 text-2xl mr-1" />
+                  {/* <IoCheckmark className="mt-1 text-2xl mr-1" /> */}
+                  <Image src="/rooms/checkmark-icon.svg" width={10} height={10} alt="checkmark icon"/>
                   <span className="text-xl font-thin">Phone</span>
                 </div>
               </div>
