@@ -2,9 +2,6 @@
 import FAQ from "../../components/FAQ/FAQ";
 import FAQSwiper from "../../components/FAQSwiper/FAQSwiper";
 // import React from "react";
-// import Header from "../components/Header";
-// import FAQ from "../components/FAQ/FAQ";
-// import Footer from "../components/Footer/Footer";
 // import { useNavigate } from "react-router-dom";
 
 import "../../components/styles/CustomerServicePage.css";
@@ -200,10 +197,10 @@ const CustomerServicePage = () => {
             </div>
           </div>
         </section>
-        
+        {/* FAQs search bar section ends */}
         <FAQSwiper />
         <FAQ />
-   
+        {/* Plan and Shop from home starts */}
         <section>
           <div className="plan-section">
             <div className="">

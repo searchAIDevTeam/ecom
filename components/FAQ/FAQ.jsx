@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { FAQs } from "./FAQData";
 import "./FAQ.css";
