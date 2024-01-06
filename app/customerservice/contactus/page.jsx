@@ -1,4 +1,7 @@
+'use client'
+
 import React from "react";
+import { useRouter } from "next/navigation";
 const storesInformation = [
   {
     storeName: "AYATRIO Store - HITEC City",
@@ -26,6 +29,7 @@ const storesInformation = [
 ];
 
 const ContactUsPage = () => {
+  const router = useRouter();
   return (
     <div>
       <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
@@ -47,7 +51,7 @@ const ContactUsPage = () => {
               <p>Take a look at our FAQs for answers to your questions.</p>
             </div>
             <div>
-              <button className="bg-black text-white rounded-3xl p-3 px-4 text-sm font-semibold">
+              <button onClick={()=>router.push('/customerservice/faq')} className="bg-black text-white rounded-3xl p-3 px-4 text-sm font-semibold">
                 See all FAQs
               </button>
             </div>

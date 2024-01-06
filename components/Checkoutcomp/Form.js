@@ -1,11 +1,13 @@
 'use client'
-import { useRouter } from "next/navigation";
+
 import React from "react";
 // import { useFormContext } from "./FormContext";
+import { useRouter } from "next/navigation";
 export default function Form() {
+  const router = useRouter();
   // const { updateFormData } = useFormContext();
   // const navigate = useNavigate();
-  const router = useRouter();
+
   const [form, setForm] = React.useState({
     first: "",
     last: "",
@@ -20,7 +22,7 @@ export default function Form() {
     number: "",
     pan: "",
   });
-  console.log(form);
+  // console.log(form);
   function handlefunc(event) {
     setForm((prev) => {
       return {
@@ -30,21 +32,17 @@ export default function Form() {
     });
   }
 
-  function handleData() {
-    // event.preventDefault();
-    // console.log(form);
+  function handleData(event) {
+    event.preventDefault();
+    console.log(form);
     // updateFormData(form);
-    router.push("/shipping");
-  }
-
-  const handleClick = () => {
-    router.push("/shipping");
+    router.push('/shipping');
   }
 
   return (
     <>
       <form 
-        // onSubmit={handleData}
+        onSubmit={handleData}
         className="w-1/2">
         <h3 className="mt-12">Enter your name and address:</h3>
         <div className="mb-4">
@@ -240,7 +238,7 @@ export default function Form() {
           </span>
         </div>
         <br />
-        <button onClick={handleClick} className="mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ">
+        <button className="mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ">
           Continue
         </button>
       </form>

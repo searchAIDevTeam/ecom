@@ -282,7 +282,7 @@ const CustomerServicePage = () => {
               </p>
             </div>
             <div>
-              <button className="bg-black text-white rounded-3xl p-3 px-4 text-sm font-semibold">
+              <button onClick={()=>router.push('/customerservice/contactus')} className="bg-black text-white rounded-3xl p-3 px-4 text-sm font-semibold">
                 Contact us
               </button>
             </div>

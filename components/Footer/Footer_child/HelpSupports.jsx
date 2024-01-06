@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -12,7 +13,7 @@ const Helpcollections = () => {
     "Design & Planners",
     "Return policy",
     "Prices and price tags",
-    "Gift Card",
+    "Gift Cards",
     "Contact us",
     "FAQ",
     "Terms and conditions",
@@ -25,7 +26,17 @@ const Helpcollections = () => {
           <ul className="filter_content_list ">
             {helpcollections.map((item) => (
               <li>
-                <a href="#">{item}</a>
+                {item === "Return policy" ? (
+                  <Link href="/customerservice/returnpolicy">{item}</Link>
+                ) : item === "Gift Cards" ? (
+                  <Link href="/customerservice/giftcards">{item}</Link>
+                ) : item === "Contact us" ? (
+                  <Link href="/customerservice/contactus">{item}</Link>
+                ) : item === "FAQ" ? (
+                  <Link href="/customerservice/faq">{item}</Link>
+                ) : (
+                  <a href="#">{item}</a>
+                )}
               </li>
             ))}
           </ul>

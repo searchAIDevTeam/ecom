@@ -124,7 +124,7 @@ function Header({ howMuchScrolled }) {
           </div>
 
           <div className="mainlogo">
-            <Link href="/home">
+            <Link href="/">
               <img
                 src="/images/ayatriologo.png"
                 alt="logo"
