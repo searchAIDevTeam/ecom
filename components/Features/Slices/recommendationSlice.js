@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   status: "idle",
-  recommendedProductData: JSON.parse(localStorage.getItem("recommendedProducts")) || null,
+  recommendedProductData:null,
   loader:false
 };
 

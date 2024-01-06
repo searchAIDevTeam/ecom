@@ -36,9 +36,7 @@ const Flooring = () => {
     allowSlidePrev: true,
     allowSlideNext: true,
   };
-  // const closePopup = () => {
-  //   setPopupVisible(false);
-  // };
+
   const swiper2Ref = useRef(null);
   const [isLoading, setLoading] = useState(true);
 
@@ -47,28 +45,7 @@ const Flooring = () => {
       setLoading(false);
     }, 2500);
   }, []);
-  const recommendedProducts = useSelector(selectRecommendedProduct);
-  const recommendedProductsDataFromLocalStorage = JSON.parse(
-    localStorage.getItem("recommendedProducts")
-  );
-
-  useEffect(() => {
-    if (recommendedProductsDataFromLocalStorage !== recommendedProducts) {
-      localStorage.setItem(
-        "recommendedProducts",
-        JSON.stringify(recommendedProducts)
-      );
-    }
-  }, [recommendedProducts]);
-
-  function filterProductsByCategory(products, category) {
-    return products.filter((product) => product.category === category);
-  }
-  const flooringProducts = filterProductsByCategory(
-    recommendedProductsDataFromLocalStorage?.products || [],
-    "Flooring"
-  );
-
+  
   return (
     <div>
       <div className="  my-10  bg-white sm:px-[50px] px-[20px]">

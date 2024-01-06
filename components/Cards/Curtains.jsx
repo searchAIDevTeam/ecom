@@ -39,23 +39,7 @@ const Curtains = () => {
     allowSlidePrev: true,
     allowSlideNext: true,
   };
-  // const swiperOptions2 = {
-  //   slidesPerView: 4.08,
-  //   centeredSlides: false,
-  //   spaceBetween: 1,
-  //   modules: [Pagination, Scrollbar, Mousewheel, FreeMode],
-  //   navigation: {
-  //     nextEl: ".custom-next-button",
-  //     prevEl: ".custom-prev-button",
-  //   },
-  //   noSwiping: true,
-  //   allowSlidePrev: true,
-  //   allowSlideNext: true,
-  // };
-  // const closePopup = () => {
-  //   setPopupVisible(false);
-  // };
-  // const swiper1Ref = useRef(null);
+  
   const swiper2Ref = useRef(null);
   const [isLoading, setLoading] = useState(true);
 
@@ -65,32 +49,7 @@ const Curtains = () => {
     }, 2500);
   }, []);
   const [trendingData, setTrendingData] = useState([]);
-  const trendingSelect = useSelector(CardData);
-  useEffect(() => {
-    setTrendingData(trendingSelect);
-  }, [trendingSelect]);
-  const recommendedProducts = useSelector(selectRecommendedProduct);
-  const recommendedProductsDataFromLocalStorage = JSON.parse(
-    localStorage.getItem("recommendedProducts")
-  );
-
-  useEffect(() => {
-    if (recommendedProductsDataFromLocalStorage !== recommendedProducts) {
-      localStorage.setItem(
-        "recommendedProducts",
-        JSON.stringify(recommendedProducts)
-      );
-    }
-  }, [recommendedProducts]);
-  function filterProductsByCategory(products, category) {
-    return products.filter((product) => product.category === category);
-  }
-
-  const curtainsProducts = filterProductsByCategory(
-    recommendedProductsDataFromLocalStorage?.products || [],
-    "Curtains"
-  );
-
+ 
   return (
     <div>
       {curtainsProducts && (

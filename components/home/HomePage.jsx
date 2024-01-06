@@ -54,7 +54,8 @@ const HomePage = () => {
     };
   }, []);
 
-  const popUp = localStorage.getItem("popUp");
+  const popUp = typeof window !== 'undefined' ? localStorage.getItem("popUp") : null;
+
 
   if (loader) {
     return (

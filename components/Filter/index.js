@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import { links } from "./images-links";
@@ -50,20 +51,22 @@ function Filter(isFilterHovered) {
 
     setScrollX(targetScroll);
   };
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 450);
 
   useEffect(() => {
     // Update isMobile state on window resize
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 450);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if(window){
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 450);
+      };
+  
+      window.addEventListener("resize", handleResize);
+  
+      // Cleanup event listener on component unmount
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   return (
