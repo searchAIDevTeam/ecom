@@ -20,7 +20,7 @@ const Tabs = () => {
   // };
   const router = useRouter();
   const handleTab = () => {
-    router.push("/rooms");
+    router.push("/room");
   };
   // const products = list3.filter(
   //   (prod) => prod.id === 1 || prod.id === 2 || prod.id === 3

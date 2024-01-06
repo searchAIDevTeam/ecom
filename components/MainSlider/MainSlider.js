@@ -29,7 +29,12 @@ function MainSlider() {
     });
   };
   console.log(SliderViewData);
-
+  const [sliderApiData,setSliderApiData] = useState([])
+  useEffect(() => {
+    if (SliderViewData && SliderViewData.result) {
+      setSliderApiData(SliderViewData.result);
+    }
+  }, [SliderViewData]);
   const products = list3.filter(
     (prod) => prod.id === 1 || prod.id === 2 || prod.id === 3
   );
@@ -43,59 +48,8 @@ function MainSlider() {
     }
   }, []);
   const slideswipe = window.innerWidth / 2;
-  console.log(slideswipe);
 
-  // const slide = (shift) => {
-  //   if (scrl.current) {
-  //     let targetScroll = scrl.current.scrollLeft + shift;
 
-  //     const totalWidth = scrl.current.scrollWidth;
-  //     const containerWidth = scrl.current.clientWidth;
-
-  //     // if (targetScroll < 0) {
-  //     //   targetScroll = totalWidth - containerWidth;
-  //     // } else if (targetScroll + containerWidth > totalWidth) {
-  //     //   targetScroll = shift;
-  //     // }
-  //     if (targetScroll < 0) {
-  //       // If scrolling left past the start, wrap around to the end
-  //       targetScroll = totalWidth - containerWidth;
-  //     } else if (targetScroll + containerWidth > totalWidth) {
-  //       // If scrolling right past the end, wrap around to the start
-  //       targetScroll = 0;
-  //     }
-
-  //     scrl.current.scrollTo({
-  //       left: targetScroll,
-  //       behavior: "smooth",
-  //     });
-
-  //     setScrollX(targetScroll);
-  //   }
-  // };
-
-  // const slide = (shift) => {
-  //   if (scrl.current) {
-  //     const totalWidth = scrl.current.scrollWidth;
-  //     const containerWidth = scrl.current.clientWidth;
-  //     let targetScroll = scrl.current.scrollLeft + shift;
-
-  //     if (targetScroll < 0) {
-  //       // If scrolling left past the start, wrap around to the end
-  //       targetScroll = totalWidth - containerWidth + (targetScroll % totalWidth);
-  //     } else if (targetScroll + containerWidth > totalWidth) {
-  //       // If scrolling right past the end, wrap around to the start
-  //       targetScroll = targetScroll % totalWidth;
-  //     }
-
-  //     scrl.current.scrollTo({
-  //       left: targetScroll,
-  //       behavior: "smooth",
-  //     });
-
-  //     setScrollX(targetScroll);
-  //   }
-  // };
 
   const slide = (shift) => {
     if (scrl.current) {
@@ -122,6 +76,7 @@ function MainSlider() {
         left: targetScroll,
         behavior: "smooth",
       });
+      
 
       setScrollX(targetScroll);
     }
@@ -133,25 +88,6 @@ function MainSlider() {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  // const handleTouchStart = (e) => {
-  //   setTouchStart(e.targetTouches[0].clientX);
-  // };
-
-  // const handleTouchMove = (e) => {
-  //   setTouchEnd(e.targetTouches[0].clientX);
-  // };
-
-  // const handleTouchEnd = () => {
-  //   if (touchStart - touchEnd > 100) {
-  //     // the user swiped left
-  //     slide(120);
-  //   }
-
-  //   if (touchStart - touchEnd < -100) {
-  //     // the user swiped right
-  //     slide(-190);
-  //   }
-  // };
 
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
@@ -160,28 +96,7 @@ function MainSlider() {
   const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
-
-  // const handleTouchEnd = () => {
-  //   if (touchStart - touchEnd > 60) {
-  //     // the user swiped left
-  //     const firstChild = scrl.current.firstChild;
-  //     scrl.current.appendChild(firstChild);
-  //     scrl.current.scrollTo({
-  //       left: 0,
-  //       behavior: "smooth",
-  //     });
-  //   }
-
-  //   if (touchStart - touchEnd < -60) {
-  //     // the user swiped right
-  //     const lastChild = scrl.current.lastChild;
-  //     scrl.current.insertBefore(lastChild, scrl.current.firstChild);
-  //     scrl.current.scrollTo({
-  //       left: scrl.current.scrollWidth - scrl.current.clientWidth,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
+ 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > slideswipe) {
       // the user swiped left
@@ -208,45 +123,7 @@ function MainSlider() {
     }
   };
 
-  // const [startX, setStartX] = useState(0);
-  // const [scrollLefts, setScrollLefts] = useState(0);
 
-  // const startTouch = (e) => {
-  //   setStartX(e.touches[0].pageX);
-  //   setScrollLefts(scrl.current.scrollLefts);
-  // };
-
-  // const moveTouch = (e) => {
-  //   e.preventDefault();
-  //   const x = e.touches[0].pageX;
-  //   const walk = (startX - x) * 3; // scroll-fast
-  //   scrl.current.scrollLefts = scrollLefts + walk;
-  // };
-
-  // const startTouch = (e) => {
-  //   setStartX(e.touches[0].pageX);
-  //   setScrollLefts(scrl.current.scrollLeft);
-  // };
-
-  // const moveTouch = (e) => {
-  //   if (!startX) return;
-  //   // e.preventDefault();
-  //   const x = e.touches[0].pageX;
-  //   const deltaX = startX - x;
-  //   // scrl.current.scrollLeft = scrollLefts + deltaX;
-  //   scrl.current.scrollTo({
-  //     left: scrollLefts+deltaX,
-  //     behavior:"auto"
-  //   });
-  // };
-  // const endTouch=()=>{
-  //   setStartX(0)
-  //   setScrollLefts(0)
-  // }
-
-  //**************************
-
-  // ! slider interval
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
@@ -269,7 +146,6 @@ function MainSlider() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  console.log(window.innerWidth);
 
   return (
     <div className="slider-container">
@@ -283,12 +159,9 @@ function MainSlider() {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        // onTouchStart={startTouch}
-        // onTouchMove={moveTouch}
-        // onTouchEnd={endTouch}
+  
       >
-        {/* <div className="slider-cont" ref={scrl}> */}
-        {products.map((prod, i) => (
+        {sliderApiData.length > 0 && sliderApiData.map((prod, i) => (
           <div key={i}>
             <div className="circle-container relative items-center justify-center flex sd">
               <img className="sd rounded-sm" src={prod.imgSrc} alt="Product" />
@@ -297,14 +170,14 @@ function MainSlider() {
                   key={index}
                   className={`circle absolute effect`}
                   style={{
-                    top: `${circle.top}%`,
-                    left: `${circle.left}%`,
+                    top: `${circle.topPosition}%`,
+                    left: `${circle.leftPosition}%`,
                   }}
                 >
                   <div
                     className={`hover-box flex-row z-10 w-44 h-44 flex items-center bg-white
-                     ${circle.top > 75 ? "top-condition" : ""} ${
-                      circle.left > 65 ? "left-condition" : ""
+                     ${circle.topPosition > 75 ? "top-condition" : ""} ${
+                      circle.leftPosition > 65 ? "left-condition" : ""
                     }
                     `}
                   >
@@ -337,5 +210,4 @@ function MainSlider() {
     </div>
   );
 }
-
 export default MainSlider;

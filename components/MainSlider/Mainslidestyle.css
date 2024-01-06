@@ -16,12 +16,17 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  /* transition: all 2s ease; */
+}
+.hello{
+  transition:all 2s ease;
 }
 
 .sd {
   height: 67vh;
   width: 40rem;
   flex-shrink: 0;
+  /* transition:all 2s ease; */
 }
 
 .arrow-left {
@@ -33,17 +38,19 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 2s ease;
 }
 
 .arrow-rightS {
   position: absolute;
   top: 50%;
   right: 10px;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+   /* transition:ease 2s; */
 }
 
 .arrow-nav {
@@ -73,7 +80,8 @@
 
 .slider-cont {
   /* existing styles */
-  transition: scrollLeft 4s ease; /* Adjust the transition duration as needed */
+  /* transition: scrollLeft 2s ease; */
+   /* Adjust the transition duration as needed */
 }
 .circle {
   position: absolute;
@@ -121,12 +129,12 @@
   border: 5px solid rgba(207, 207, 207, 0.5);
   border-radius: 50%;
   background: white;
-  transition: width 1s, height 1s, border 1s;
+  transition: width 3ms, height 3ms;
 }
 
 .effect:hover {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border: 6px solid rgba(200, 198, 198, 0.7);
 }
 
