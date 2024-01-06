@@ -39,7 +39,7 @@ function MainSlider() {
   useEffect(() => {
     if (scrl.current) {
       scrl.current.scrollLeft = 0;
-      scrl.current.style.transition = "transition 4s";
+      scrl.current.style.transition = "transition 2s ease";
     }
   }, []);
   const slideswipe = window.innerWidth / 2;
@@ -99,33 +99,38 @@ function MainSlider() {
 
   const slide = (shift) => {
     if (scrl.current) {
+      // Clear the transition
+      scrl.current.style.transition = "ease 2s";
+  
       let targetScroll = scrl.current.scrollLeft + shift;
-
-      // scrl.current.scrollIntoView({ behavior: 'smooth' });
+  
       const totalWidth = scrl.current.scrollWidth;
       const containerWidth = scrl.current.clientWidth;
       const children = scrl.current.children;
       const firstChild = children[0];
       const lastChild = children[children.length - 1];
-
+  
       if (targetScroll < 0) {
-        // If scrolling left past the start, move the last child to the beginning
         scrl.current.insertBefore(lastChild, firstChild);
         targetScroll += lastChild.offsetWidth;
       } else if (targetScroll + containerWidth > totalWidth) {
-        // If scrolling right past the end, move the first child to the end
         scrl.current.appendChild(firstChild);
         targetScroll -= firstChild.offsetWidth;
       }
-      scrl.current.style.transition = "all 3s";
+  
+      // Apply the transition after the operation
+      scrl.current.style.transition = "ease 2s"; // Adjust the values as needed
+
+      // Perform scrolling
       scrl.current.scrollTo({
         left: targetScroll,
         behavior: "smooth",
       });
-
+  
       setScrollX(targetScroll);
     }
   };
+  
 
   // **********************************
   // for mobile
@@ -161,27 +166,6 @@ function MainSlider() {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
-  // const handleTouchEnd = () => {
-  //   if (touchStart - touchEnd > 60) {
-  //     // the user swiped left
-  //     const firstChild = scrl.current.firstChild;
-  //     scrl.current.appendChild(firstChild);
-  //     scrl.current.scrollTo({
-  //       left: 0,
-  //       behavior: "smooth",
-  //     });
-  //   }
-
-  //   if (touchStart - touchEnd < -60) {
-  //     // the user swiped right
-  //     const lastChild = scrl.current.lastChild;
-  //     scrl.current.insertBefore(lastChild, scrl.current.firstChild);
-  //     scrl.current.scrollTo({
-  //       left: scrl.current.scrollWidth - scrl.current.clientWidth,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > slideswipe) {
       // the user swiped left
@@ -208,46 +192,6 @@ function MainSlider() {
     }
   };
 
-  // const [startX, setStartX] = useState(0);
-  // const [scrollLefts, setScrollLefts] = useState(0);
-
-  // const startTouch = (e) => {
-  //   setStartX(e.touches[0].pageX);
-  //   setScrollLefts(scrl.current.scrollLefts);
-  // };
-
-  // const moveTouch = (e) => {
-  //   e.preventDefault();
-  //   const x = e.touches[0].pageX;
-  //   const walk = (startX - x) * 3; // scroll-fast
-  //   scrl.current.scrollLefts = scrollLefts + walk;
-  // };
-
-  // const startTouch = (e) => {
-  //   setStartX(e.touches[0].pageX);
-  //   setScrollLefts(scrl.current.scrollLeft);
-  // };
-
-  // const moveTouch = (e) => {
-  //   if (!startX) return;
-  //   // e.preventDefault();
-  //   const x = e.touches[0].pageX;
-  //   const deltaX = startX - x;
-  //   // scrl.current.scrollLeft = scrollLefts + deltaX;
-  //   scrl.current.scrollTo({
-  //     left: scrollLefts+deltaX,
-  //     behavior:"auto"
-  //   });
-  // };
-  // const endTouch=()=>{
-  //   setStartX(0)
-  //   setScrollLefts(0)
-  // }
-
-  //**************************
-
-  // ! slider interval
-
   useEffect(() => {
     const slideInterval = setInterval(() => {
       slide(slideswipe);
@@ -273,23 +217,26 @@ function MainSlider() {
 
   return (
     <div className="slider-container">
-      <div className="arrow-left z-20" onClick={() => slide(-slideswipe)}>
+      <div className="arrow-left z-20" 
+      
+      onClick={() => slide(-slideswipe)}
+      >
         {!isMobile && <BsArrowLeftCircleFill className="arrow-nav" />}
       </div>
       <div
         className="slider-cont"
         id="my-slider-container"
         ref={scrl}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        // onTouchStart={handleTouchStart}
+        // onTouchMove={handleTouchMove}
+        // onTouchEnd={handleTouchEnd}
         // onTouchStart={startTouch}
         // onTouchMove={moveTouch}
         // onTouchEnd={endTouch}
       >
         {/* <div className="slider-cont" ref={scrl}> */}
         {products.map((prod, i) => (
-          <div key={i}>
+          <div key={i} className="hello">
             <div className="circle-container relative items-center justify-center flex sd">
               <img className="sd rounded-sm" src={prod.imgSrc} alt="Product" />
               {prod.circles.map((circle, index) => (
