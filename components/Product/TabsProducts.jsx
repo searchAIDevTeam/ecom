@@ -680,8 +680,10 @@ const Tabs = () => {
                     <label for="age11" className=" underline">
                       width
                     </label>
-                    <img
-                      src={arrow}
+                    <Image
+                      src="/backarrow.svg"
+                      width={40}
+                      height={40}
                       className={`w-6 h-6  mt-1
                   ${openWidth ? " rotate-90" : "-rotate-90"}
                   `}
@@ -708,8 +710,10 @@ const Tabs = () => {
                     <label for="age11" className=" underline">
                       Height
                     </label>
-                    <img
-                      src={arrow}
+                    <Image
+                                        src="/backarrow.svg"
+                  width={40}
+                  height={40}
                       className={`w-6 h-6  mt-1
                   ${openHeight ? " rotate-90" : "-rotate-90"}
                   `}
@@ -922,7 +926,7 @@ const Tabs = () => {
               >
                 All Filters &nbsp;
                 <Image
-                src="/choserightfloor.svg"
+                  src="/choserightfloor.svg"
                   width={40}
                   height={40}
                   className={`w-6 h-6  sm:block hidden
@@ -975,7 +979,7 @@ const Tabs = () => {
                         >
                           Size &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1005,7 +1009,7 @@ const Tabs = () => {
                         >
                           Color &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1031,7 +1035,7 @@ const Tabs = () => {
                         >
                           Category &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1056,7 +1060,7 @@ const Tabs = () => {
                         >
                           Type &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1135,7 +1139,13 @@ const Tabs = () => {
                     ({text.count})
                   </p>
                   <div className="flex gap-3 items-center">
-                    <Image src="/adtocart.svg" width={40} height={40} className="w-10 h-10" alt="" />
+                    <Image
+                      src="/adtocart.svg"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10"
+                      alt=""
+                    />
                     {/* <img src={liketocart} className="w-5 h-5" alt="" /> */}
                   </div>
                 </div>
