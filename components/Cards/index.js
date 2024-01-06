@@ -19,17 +19,17 @@ import "swiper/css/scrollbar";
 //   FreeMode,
 // } from "swiper/modules";
 // import "react-loading-skeleton/dist/skeleton.css";
-// import Imagechanger from "../Imagechanger/Imagechanger";
+import Imagechanger from "../Imagechanger/Imagechanger";
 // import Skeleton from "react-loading-skeleton";
 // import Skeletoncard from "../Skeleton/Skeletoncard";
 // import { useDispatch, useSelector } from "react-redux";
 // import { selectRecommendedProduct } from "../../Features/Slices/recommendationSlice";
 // import Doublecard from "../Doublecard/Doublecard";
-// import Multicard from "../Imagechanger/Multicard";
+import Multicard from "../Imagechanger/Multicard";
 // import Footer from "../Footer";
 import Tabs from "./Tabs";
 import Profile from "./Profile";
-// import Image from "../Imagechanger/Image";
+import Image from "../Imagechanger/Image";
 import Phone from "./Phone";
 import DoubleComp from "./DoubleComp";
 // import { CardData } from "../../Features/Slices/FIrstCardSlice";
@@ -102,17 +102,17 @@ function Cards() {
         />
       </div>
       {/* 1st */}
-      {/* <Image /> */}
+      <Image />
 
       <Flooring />
       <Blinds />
       <Curtains />
       <Sports />
 
-      {/* <Multicard /> */}
+      <Multicard />
       {/* removed for overlape sm:h-[80vh] */}
       <div className="w-full bg-zinc-100 sm:px-[50px] px-[20px] py-20  h-auto">
-        {/* <Imagechanger /> */}
+        <Imagechanger />
       </div>
       <DoubleComp />
       {MemoizedProfileContent}
