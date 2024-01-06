@@ -42,14 +42,7 @@ function Cards() {
   }, []);
   const [trendingData, setTrendingData] = useState([]);
 
-  // function filterProductsByCategory(products, category) {
-  //   return products.filter((product) => product.category === category);
-  // }
-  // useEffect(() => {
-  //   const datax = localStorage.getItem("recommendedProducts");
-  //   const x = JSON.stringify(datax);
-  //   console.log(datax);
-  // }, []);
+ 
 
   //memo hook
   const MemoizedMainSlider = useMemo(() => <MainSlider />, []);
@@ -69,10 +62,7 @@ function Cards() {
       {/* 1st */}
       <Image />
 
-      <Flooring />
-      <Blinds />
-      <Curtains />
-      <Sports />
+ 
 
       <Multicard />
       {/* removed for overlape sm:h-[80vh] */}

@@ -2,8 +2,7 @@ import Card from "./card";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./styles.css";
-// import back from '../../assets/back.png'
-// import right from '../../assets/right.png';
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -11,10 +10,8 @@ import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
-// import "react-loading-skeleton/dist/skeleton.css";
-import { useSelector } from "react-redux";
-import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
-import { CardData } from "../Features/Slices/FIrstCardSlice";
+
+
 
 const Sports = () => {
   const [swiperRef, setSwiperRef] = useState(null);
@@ -49,28 +46,7 @@ const Sports = () => {
       setLoading(false);
     }, 2500);
   }, []);
-  const recommendedProducts = useSelector(selectRecommendedProduct);
-  const recommendedProductsDataFromLocalStorage = JSON.parse(
-    localStorage.getItem("recommendedProducts")
-  );
-
-  useEffect(() => {
-    if (recommendedProductsDataFromLocalStorage !== recommendedProducts) {
-      localStorage.setItem(
-        "recommendedProducts",
-        JSON.stringify(recommendedProducts)
-      );
-    }
-  }, [recommendedProducts]);
-
-  function filterProductsByCategory(products, category) {
-    return products.filter((product) => product.category === category);
-  }
-
-  const sportsAndGymProducts = filterProductsByCategory(
-    recommendedProductsDataFromLocalStorage?.products || [],
-    "Sport & Gym Flooring"
-  );
+  const [sportsAndGymProducts, setSportsAndGymProducts] = useState([]);
 
   return (
     <div>

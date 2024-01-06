@@ -64,7 +64,8 @@ function Header({ howMuchScrolled }) {
     setSearchQuery("");
     SetSeacrhEngine("");
   };
-  const loginStatus = localStorage.getItem("Login");
+  const loginStatus = typeof window !== 'undefined' ? localStorage.getItem("Login") : null;
+
   const [isLoading, setIsLoading] = useState(false);
   const handleLinkClick = (path) => {
     setIsLoading(true);
