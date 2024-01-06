@@ -1,7 +1,7 @@
-import * as React from 'react';
-import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import * as React from "react";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 export default function MarkerPopover() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -15,7 +15,7 @@ export default function MarkerPopover() {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <div>
@@ -28,8 +28,8 @@ export default function MarkerPopover() {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
       >
         <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
