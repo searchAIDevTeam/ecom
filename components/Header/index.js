@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import "./styles.css";
 // import mainlogo from "../../assets/ayatriologo.png";
@@ -6,7 +6,6 @@ import "./styles.css";
 // import liketocart from "../../assets/icon/like.svg";
 // import userprofile from "../../assets/icon/profile.svg";
 // import search from "../../assets/icon/search.svg";
-
 import SearchModal from "./MobileSearch";
 // import ayatrio_store from "../../assets/icon/ayatrio_store.svg";
 // import SimpleBottomNavigation from "./bottombar";
@@ -18,7 +17,7 @@ import Expandedbar from "./Expandedbar";
 //import axios from "axios";
 // import { useDispatch } from "react-redux";
 // import { searchProductsRequest } from "../../Features/search/searchSlice";
-// import TopLoader from "../AddOn/TopLoader";
+import TopLoader from "../AddOn/TopLoader";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -68,7 +67,9 @@ function Header({ howMuchScrolled }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const handleLinkClick = (path) => {
+    console.log(isLoading);
     setIsLoading(true);
+    console.log(isLoading);
     setTimeout(() => {
       router.push(path);
       setIsLoading(false);
@@ -86,11 +87,34 @@ function Header({ howMuchScrolled }) {
     onClose();
   };
 
+  const [isFilterVisible, setIsFilterVisible] = useState(true);
+
+  useEffect(() => {
+    let prevScrollPos = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      setIsFilterVisible(
+        currentScrollPos <= prevScrollPos || currentScrollPos < 100
+      );
+      prevScrollPos = currentScrollPos;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <header
       className={`fixed w-full sm:bg-none  top-0 transition-all ease-in-out duration-300  z-[99999]
        ${isScrolled ? "bg-white" : "bg-white"} 
-      ${howMuchScrolled > 20 ? "hidden" : ""}`}
+      
+      
+      ${isFilterVisible ? "block" : "hidden"}
+      `}
     >
       {isLoading && <TopLoader />}
       {!searchQuery ? (
@@ -104,13 +128,19 @@ function Header({ howMuchScrolled }) {
               <Menu />
             </div>
             <Link href="/virtualexperience/vrooms">
-              <div className=" text-costom-co p-[7px] hover:bg-slate-200 hover:rounded-3xl whitespace-nowrap">
+              <div
+                onClick={() => handleLinkClick("/virtualexperience/vrooms")}
+                className=" text-costom-co p-[7px] hover:bg-slate-200 hover:rounded-3xl whitespace-nowrap"
+              >
                 Virtual Exprience{" "}
               </div>
             </Link>
 
-            <div className=" text-costom-co p-[7px] hover:bg-slate-200 hover:rounded-3xl whitespace-nowrap">
-              <Link href="/magazine">
+            <div
+              onClick={() => handleLinkClick("/magazine")}
+              className=" text-costom-co p-[7px] hover:bg-slate-200 hover:rounded-3xl whitespace-nowrap"
+            >
+              <Link href="/">
                 <div className="">Find the Right Floor</div>
               </Link>{" "}
             </div>
@@ -127,6 +157,7 @@ function Header({ howMuchScrolled }) {
           <div className="mainlogo">
             <Link href="/">
               <img
+                onClick={() => handleLinkClick("/")}
                 src="/images/ayatriologo.png"
                 alt="logo"
                 className="sm:w-48 w-52 m-2"

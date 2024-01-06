@@ -150,7 +150,7 @@ function MainSlider() {
   return (
     <div className="slider-container">
       <div className="arrow-left z-20" onClick={() => slide(-slideswipe)}>
-        {!isMobile && <BsArrowLeftCircleFill className="arrow-nav" />}
+        {!isMobile && (scrollX>0) && <BsArrowLeftCircleFill className="arrow-nav" />}
       </div>
       <div
         className="slider-cont"

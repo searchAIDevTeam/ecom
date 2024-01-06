@@ -9,9 +9,10 @@ import Rooms from "../Dropitems/Rooms";
 import Featured from "../Dropitems/Featured";
 import { useRouter } from "next/navigation";
 
-function Filter() {
+function Filter(isFilterHovered) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isBlur, setIsBlur] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const scrl = useRef(null);
 
@@ -71,6 +72,7 @@ function Filter() {
   return (
     <header
       className={`absolute top-16 w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white
+      ${isFilterHovered ? "backdrop-blur-lg" : ""}  
       `}
     >
       <div className="filter sm:mr-0 pr-20 media" style={{ marginLeft: "0px" }}>
@@ -97,7 +99,11 @@ function Filter() {
               {...(!isMobile
                 ? { onClick: (event) => handleDropdownClick(event, idx) }
                 : { onClick: () => navigate(`/${value.label}`) })}
-              onMouseEnter={() => setActiveDropdown(idx)}
+              onMouseEnter={() => {
+                setActiveDropdown(idx);
+                setIsBlur(true);
+                console.log(isBlur);
+              }}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               {value && (
@@ -105,7 +111,7 @@ function Filter() {
                   className={` sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap ${
                     value.label === "Find Floor" ? "sm:hidden hidden" : "block"
                   }
-  ${value.label === "Sport & Gyn Flooring" ? " w-40 h-8" : "w-20 h-6"}
+
   `}
                 >
                   {value.label}
@@ -117,9 +123,11 @@ function Filter() {
 
               {activeDropdown === idx && (
                 <div
-                  className="absolute dropdown-content top-7 left-0 mt-10 w-full bg-white shadow-md flex flex-col
-                 transition-all ease-linear duration-2000 
-                  "
+                  className={`absolute dropdown-content  left-0 mt-10 w-full bg-white shadow-md flex flex-col transition-all ease-linear duration-2000 
+                  ${
+                    isBlur ? " backdrop-blur-lg" : ""
+                  }  
+                  `}
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
                 >
                   <div className="px-[50px] my-5">

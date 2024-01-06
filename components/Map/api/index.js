@@ -1,8 +1,5 @@
 import axios from "axios";
-import {
-  REACT_APP_X_RapidAPI_Key,
-  REACT_APP_X_RapidAPI_Host,
-} from "../../../config";
+import { REACT_APP_X_RapidAPI_Key, REACT_APP_X_RapidAPI_Host } from "../config";
 
 const URL =
   "https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary";
