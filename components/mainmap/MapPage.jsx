@@ -43,7 +43,6 @@ const MapPage = () => {
       const response = await axios.get(
         "http://43.204.166.53:8080/api/mapPlaces"
       );
-      console.log("api response", response.data);
       setPlacesData(response.data);
     };
     fetchMapData();

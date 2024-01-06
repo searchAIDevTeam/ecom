@@ -5,7 +5,7 @@ import "./styles.css";
 import Carousel from "./swip";
 // import rev from "/images/rev.webp";
 import PopUp from "../Reviews/PopUp";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 function Card(props) {
   const router = useRouter();
