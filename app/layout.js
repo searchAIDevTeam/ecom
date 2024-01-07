@@ -4,6 +4,7 @@ import { Providers } from "@/provider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
 import { useRouter } from "next/navigation";
+import NewHeader from "@/components/NewHeader/NewHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
 
         <Providers>
-          <Header />
+          <NewHeader />
           {children}
           <Footer />
         </Providers>

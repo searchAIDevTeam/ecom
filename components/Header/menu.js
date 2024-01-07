@@ -6,6 +6,7 @@ import Styles from "../Dropitems/Styles";
 import Colours from "../Dropitems/Colours";
 import Rooms from "../Dropitems/Rooms";
 import Collections from "../Dropitems/Collections";
+import Link from "next/link";
 // import arrow from "../../assets/icon/backarrow.svg";
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -118,14 +119,14 @@ export default function BasicMenu() {
       {anchorEl ? (
         <>
           <div
-            className={`absolute dropdown-content z-50 h-[90vh] overflow-auto top-16 left-0 w-full bg-white shadow-md flex flex-col
+            className={`absolute dropdown-content z-50 h-[100vh] overflow-auto top-16 left-0 w-full bg-white shadow-md flex flex-col
 transition-all ease-linear duration-2000 
 ${mainContent ? "block" : "hidden"}
 `}
             onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
           >
             {/* for desktop */}
-            <div className="px-[30px] my-5 sm:flex hidden">
+            <div className="px-[30px] mt-20 sm:flex hidden">
               <div className="filter_container flex gap-32">
                 <div className="menuLog flex flex-col gap-4">
                   <Link href="/virtualexperience/vrooms">
@@ -158,7 +159,7 @@ ${mainContent ? "block" : "hidden"}
 
             <div className="sm:hidden flex">
               {isMenuOpen && (
-                <div className="menu-overlay overflow-y-auto  border-2 fixed  w-[80vw] top-0 right-0    h-full">
+                <div className="menu-overlay overflow-y-auto  border-2 fixed  w-[85vw] top-0 right-0 h-full">
                   <div
                     className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600"
                     onClick={handleMenuClick}
