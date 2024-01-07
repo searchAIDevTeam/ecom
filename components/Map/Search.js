@@ -177,11 +177,11 @@ const Search = ({ places, onResultClick }) => {
           </div>
         </div>
       ) : (
-        <div className="main-search absolute shadow-lg z-20 top-[14%] left-3">
+        <div className="main-search absolute shadow-lg z-20 top-[14%] left-3 rounded-[999px]">
           <div
-            className="search flex items-center border-none bg-white"
+            className="search flex items-center border-none bg-white "
             style={{
-              borderRadius: "10px 10px  10px 10px",
+              borderRadius: "300px 300px  300px 300px",
             }}
           >
             <input
@@ -189,21 +189,21 @@ const Search = ({ places, onResultClick }) => {
               placeholder="Search Ayatrio Maps"
               value={searchQuery}
               onChange={handleSearchChange}
-              className="searchTerm w-[17rem] h-10 border-white p-4 active:border-none focus:outline-none"
+              className="searchTerm w-[17rem] h-10 border-white p-4 active:border-none focus:outline-none rounded-full "
               style={{
-                borderRadius: "10px 10px 10px 10px",
+                borderRadius: "300px 300px 300px 300px",
               }}
             />
-            <div className="searchIcon bg-white flex justify-center items-center w-[2rem]">
+            <div className="searchIcon bg-white flex justify-center items-center w-[1rem]">
               <MdSearch className="text-gray-400 text-xl" />
             </div>
           </div>
 
-          {true && (
+          {searchQuery && (
             <div
-              className="dropdown-container bg-white w-[19rem] h-44 border border-gray-200 shadow-md overflow-auto"
+              className="dropdown-container bg-white w-[19rem] h-44 border border-gray-200 shadow-md overflow-hidden "
               style={{
-                borderRadius: "0px 0px 15px 15px",
+                borderRadius: "0px 0px 20px 20px",
               }}
             >
               {places.map((item, index) => (

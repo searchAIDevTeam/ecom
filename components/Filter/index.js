@@ -71,11 +71,11 @@ function Filter(isFilterHovered) {
 
   return (
     <header
-      className={`absolute top-16 w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white
+      className={`absolute top-20 w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white
       ${isFilterHovered ? "backdrop-blur-lg" : ""}  
       `}
     >
-      <div className="filter sm:mr-0 pr-20 media" style={{ marginLeft: "0px" }}>
+      <div className="filter sm:mr-0 media" style={{ marginLeft: "0px" }}>
         <div className="Filter-array" ref={scrl}>
           <div
             className={` slider_lr_container arrow-left  ${
@@ -123,7 +123,7 @@ function Filter(isFilterHovered) {
 
               {activeDropdown === idx && (
                 <div
-                  className={`absolute dropdown-content  left-0 mt-10 w-full bg-white shadow-md flex flex-col transition-all ease-linear duration-2000 
+                  className={`absolute left-0 mt-10 w-full bg-white shadow-md flex flex-col transition-all ease-linear duration-2000
                   ${
                     isBlur ? " backdrop-blur-lg" : ""
                   }  
@@ -131,12 +131,12 @@ function Filter(isFilterHovered) {
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
                 >
                   <div className="px-[50px] my-5">
-                    <div className="filter_container flex gap-32">
-                      <div className="grid grid-cols-6">
+                    <div className="filter_container flex">
+                      <div className=" grid grid-cols-6 gap-10">
                         <div className="col-span-2">
                           <Featured />
                         </div>
-                        <div className="col-span-1 ml-[-40px]">
+                        <div className="col-span-1">
                           <Collections />
                         </div>
                         <div className="col-span-1">
