@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import Curtain from "../../assets/product/the-bottom-of-a-beige-curtain-and-a-sheer-white-silverloenn--78a01828702a4e6707ed5b193abb8aa1.avif";
 const meausrement = () => {
   const circled = [
     {
@@ -88,15 +87,15 @@ const meausrement = () => {
           </div>
         </div>
       </div>
-      <div className="sm:w-1/3  sm:h-auto mb-20 sm:flex-grow bg-slate-300 sm:text-[30px] text-[20px] font-bold px-10 sm:py-10 py-5">
-        <div className="flex flex-col sm:gap-48 gap-20 justify-between">
+      <div className="sm:w-1/3  sm:h-auto sm:flex-grow bg-slate-300 sm:text-[30px] text-[20px] font-bold px-10 sm:py-10 py-5">
+        <div className="flex flex-col sm:gap-72 gap-20 justify-between">
           <div>
             <p> Tips for choosing the right curtain length</p>
           </div>
 
           <div>
             <Image src="/arrow.svg" width={50} height={50} alt="arrow" className=" rotate-180" />
-            {/* <IoArrowForwardCircle size={55} className="absolute bottom-7" /> */}
+           
           </div>
         </div>
       </div>
