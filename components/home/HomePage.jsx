@@ -82,9 +82,9 @@ const HomePage = () => {
   return (
     <>
       <div
-        className={`fade-in ${
-          isFilterVisible ? "show-filter" : "hide-filter"
-        } overflow-x-hidden`}
+        className={`fade-in
+          
+         overflow-x-hidden`}
       >
         {popUp === "true" ? null : <PopUp />}
         {isFilterVisible && (

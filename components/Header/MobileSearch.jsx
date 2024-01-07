@@ -16,18 +16,18 @@ const MobileSearch = ({ isOpen, onClose, onSearch }) => {
 
   return (
     <div
-      className={`modal-overlay  z-[9999]  bg-white h-full w-full ${isOpen ? "" : "hidden"
+      className={`modal-overlay  z-[9999]  bg-white h-[40vh] w-full ${isOpen ? "" : "hidden"
         }`}
     >
-      <div className="modal sm:hidden block" onClick={handleModalClick}>
+      <div className="modal" onClick={handleModalClick}>
         <div className="flex flex-row gap-2 justify-evenly pt-10">
           <div className="searchDiv  flex flex-col">
-            <div className="searchCon relative sm:w-[600px] w-[60vw] bg-zinc-100 p-2 rounded-none">
+            <div className="searchCon relative sm:w-[600px] w-[70vw] bg-zinc-100 p-2 rounded-full">
               <input
                 ref={inpRef}
                 type="text"
                 placeholder="Search"
-                className="search-input bg-transparent h-full sm:w-full w-[60vw] pl-10 border-0 focus:outline-none"
+                className="search-input bg-transparent h-full sm:w-full w-[60vw] pl-10 border-0 focus:outline-none "
                 value={searchEngine}
                 onChange={(e) => {
                   SetSeacrhEngine(e.target.value);
@@ -37,7 +37,7 @@ const MobileSearch = ({ isOpen, onClose, onSearch }) => {
               <img
                 src="/search.svg"
                 alt=""
-                className="w-5 mx-1 my-1.5 top-[18%] left-[1%]  absolute z-10"
+                className="w-5 mx-1 my-1.5 top-[10%] right-[1%]  absolute z-10"
               />
             </div>
             <div className=" flex flex-col gap-4 font-bold font-sans ">
@@ -53,7 +53,7 @@ const MobileSearch = ({ isOpen, onClose, onSearch }) => {
             </div>
           </div>
           <div>
-            <button onClick={onClose} className="border rounded-3xl p-1">
+            <button onClick={onClose} className="border border-black rounded-3xl p-1">
               Close
             </button>
           </div>
