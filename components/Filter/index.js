@@ -123,7 +123,7 @@ function Filter(isFilterHovered) {
 
               {activeDropdown === idx && (
                 <div
-                  className={`absolute dropdown-content  left-0 mt-10 w-full bg-white shadow-md flex flex-col transition-all ease-linear duration-2000 
+                  className={`absolute dropdown-content  left-0 mt-10 w-full bg-white shadow-md flex flex-col transition-all ease-linear duration-2000
                   ${
                     isBlur ? " backdrop-blur-lg" : ""
                   }  
@@ -132,7 +132,7 @@ function Filter(isFilterHovered) {
                 >
                   <div className="px-[50px] my-5">
                     <div className="filter_container flex gap-32">
-                      <div className="grid grid-cols-6">
+                      <div className=" grid grid-cols-6">
                         <div className="col-span-2">
                           <Featured />
                         </div>

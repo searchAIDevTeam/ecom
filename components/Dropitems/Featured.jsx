@@ -3,7 +3,7 @@ import Image from './Option_2-min_1.webp';
 
 const Featured = () => {
   return (
-    <div className='filter_item'>
+    <div className='filter_item mr-20'>
       <h4 className='filter_heading gray-text'>FEATURED</h4>
       <div>
         <img className='w-[20%]' src={Image} alt='' />
