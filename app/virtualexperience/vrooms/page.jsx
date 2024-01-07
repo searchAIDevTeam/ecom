@@ -1,18 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { dataRooms } from "../../../Model/data";
-// import Button from "./Button";
-// import { useNavigate } from "react-router-dom";
 import { useRouter } from 'next/navigation'
-// import Header from "../../Header";
-// import { TiTick } from "react-icons/ti";
 import Image from "next/image";
-import Sidebar from "../../../components/sidebar";
-// import { FaCircle } from "react-icons/fa";
-// import { FaCartPlus } from "react-icons/fa";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setSelectedActivity } from '../../../Features/store';
 import "../../../components/styles/virtualexperience.css";
+import Sidebar from "@/components/sidebar";
+import { dataRooms } from "@/Model/data";
 const Rooms = () => {
     const router = useRouter();
   // const dispatch = useDispatch();
