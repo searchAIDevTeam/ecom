@@ -3,6 +3,7 @@ import "./globals.css";
 import { Providers } from "@/provider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
+import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +16,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
+        {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
 
         <Providers>
-          <Header/>
+          <Header />
           {children}
-          <Footer/>
+          <Footer />
         </Providers>
       </body>
     </html>

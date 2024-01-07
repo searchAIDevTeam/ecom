@@ -17,9 +17,7 @@ import {
   Mousewheel,
   FreeMode,
 } from "swiper/modules";
-// import "react-loading-skeleton/dist/skeleton.css";
-// import { useDispatch, useSelector } from "react-redux";
-// import { CardData, CardLoader } from "../../Features/Slices/FIrstCardSlice";
+
 const Trending = () => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -46,16 +44,8 @@ const Trending = () => {
   const swiper1Ref = useRef(null);
   const swiper2Ref = useRef(null);
   const [isLoading, setLoading] = useState(true);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch({ type: "FETCH_FIRST_CARD_REQUEST" });
-  // }, []);
-  // const trendingSelect = useSelector(CardData);
-  // console.log(trendingSelect);
+
   const [trendingData, setTrendingData] = useState([]);
-  // useEffect(() => {
-  //   setTrendingData(trendingSelect);
-  // }, [trendingSelect]);
 
   return (
     <div>

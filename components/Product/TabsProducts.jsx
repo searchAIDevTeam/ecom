@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 // import bengta from "../../assets/product/bengta-block-out-curtain-1-length-light-grey__0977118_pe813406_s5.avif";
 // import lenda from "../../assets/product/lenda-curtains-with-tie-backs-1-pair-off-white__1136111_pe879297_s5.avif";
@@ -680,8 +681,10 @@ const Tabs = () => {
                     <label for="age11" className=" underline">
                       width
                     </label>
-                    <img
-                      src={arrow}
+                    <Image
+                      src="/backarrow.svg"
+                      width={40}
+                      height={40}
                       className={`w-6 h-6  mt-1
                   ${openWidth ? " rotate-90" : "-rotate-90"}
                   `}
@@ -708,8 +711,10 @@ const Tabs = () => {
                     <label for="age11" className=" underline">
                       Height
                     </label>
-                    <img
-                      src={arrow}
+                    <Image
+                      src="/backarrow.svg"
+                      width={40}
+                      height={40}
                       className={`w-6 h-6  mt-1
                   ${openHeight ? " rotate-90" : "-rotate-90"}
                   `}
@@ -922,7 +927,7 @@ const Tabs = () => {
               >
                 All Filters &nbsp;
                 <Image
-                src="/choserightfloor.svg"
+                  src="/choserightfloor.svg"
                   width={40}
                   height={40}
                   className={`w-6 h-6  sm:block hidden
@@ -933,12 +938,20 @@ const Tabs = () => {
                 />
               </button>
               {openAll ? (
-                <div className="menu-overlay overflow-y-auto bg-white  border-2 fixed  sm:w-[30vw] w-[100vw] sm:h-auto h-[80vh]  right-0 sm:top-0 bottom-0 z-[5000] rounded-2xl">
+                <div className="menu-overlay overflow-y-auto bg-white  border-2 fixed  sm:w-[30vw] w-[100vw] sm:h-auto h-[80vh]  right-0 sm:top-16 bottom-0 z-[5000] rounded-2xl">
                   <div className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600 z-[5001]">
                     <div className="flex flex-col px-4 gap-6">
                       <div className="flex justify-between gap-32">
                         <p>Filter and sort</p>
                         {/* <IoMdClose size={20} onClick={closeAll} color="black" /> */}
+
+                        <Image
+                          src="/close.svg"
+                          width={24}
+                          height={24}
+                          onClick={closeAll}
+                          color="black"
+                        />
                       </div>
                       <hr />
                       {/* 1stt div */}
@@ -975,7 +988,7 @@ const Tabs = () => {
                         >
                           Size &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1005,7 +1018,7 @@ const Tabs = () => {
                         >
                           Color &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1031,7 +1044,7 @@ const Tabs = () => {
                         >
                           Category &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1056,7 +1069,7 @@ const Tabs = () => {
                         >
                           Type &nbsp;
                           <Image
-                                                        src="/backarrow.svg"
+                            src="/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -1131,11 +1144,52 @@ const Tabs = () => {
                   </p>
                   <p className="text-sm flex flex-row gap-1 items-center text-black">
                     {/* <FaStar /> <FaStar /> <FaStar /> <FaStar />{" "}
+
                     <FaStarHalfAlt /> &nbsp;  */}
+
+                    <Image
+                    src="/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                    />
+                    
+                    <Image
+                    src="/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                    />
+                    
+                    <Image
+                    src="/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                    />
+                    
+                    <Image
+                    src="/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                    />
+                    <Image
+                    src="/half-star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                    />
                     ({text.count})
                   </p>
                   <div className="flex gap-3 items-center">
-                    <Image src="/adtocart.svg" width={40} height={40} className="w-10 h-10" alt="" />
+                    <Image
+                      src="/adtocart.svg"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10"
+                      alt=""
+                    />
                     {/* <img src={liketocart} className="w-5 h-5" alt="" /> */}
                   </div>
                 </div>

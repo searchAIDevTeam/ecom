@@ -54,7 +54,8 @@ const HomePage = () => {
     };
   }, []);
 
-  const popUp = localStorage.getItem("popUp");
+  const popUp = typeof window !== 'undefined' ? localStorage.getItem("popUp") : null;
+
 
   if (loader) {
     return (
@@ -74,6 +75,9 @@ const HomePage = () => {
       </div>
     );
   }
+
+  const [isOpen,setIsOpen]=useState(false);
+  const [isFilterHovered, setIsFilterHovered] = useState(false);
 
   return (
     <>
@@ -95,7 +99,7 @@ const HomePage = () => {
             <MobileSearchBar />
           </>
         )}
-        <Filter />
+        <Filter  isFilterHovered={isFilterHovered}/>
         <Cards />
         {isFilterVisible && (
           <div className="fixed-ayatrio-map">
