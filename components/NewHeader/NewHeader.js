@@ -58,7 +58,7 @@ const NewHeader = () => {
         <div className="sm:px-10 sm:pt-3 flex w-1/3 justify-start px-1 pt-2">
           <button className="flex gap-3">
             <span>
-            <BasicMenu />
+              <BasicMenu />
             </span>
           </button>
         </div>
@@ -88,14 +88,12 @@ const NewHeader = () => {
             />
           </div>
           {isModalOPen && (
-                <SearchModal
-                  isOpen={isModalOPen}
-                  onClose={handleModalClose}
-                  onSearch={(e) =>
-                    dispatch(searchProductsRequest(e.target.value))
-                  }
-                />
-              )}
+            <SearchModal
+              isOpen={isModalOPen}
+              onClose={handleModalClose}
+              onSearch={(e) => dispatch(searchProductsRequest(e.target.value))}
+            />
+          )}
         </div>
       </div>
       <div className="flex justify-center items-center">

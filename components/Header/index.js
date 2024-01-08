@@ -150,13 +150,14 @@ function Header({ howMuchScrolled }) {
           </div>
           <div className="right flex items-center sm:gap-4 gap-2">
             <div
-            onClick={handleModalOpen} 
-            className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden">
-            <img
-              src="/search.svg"
-              alt=""
-              className="seachbar-div2-icon absolute z-10"
-            />
+              onClick={handleModalOpen}
+              className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden"
+            >
+              <img
+                src="/search.svg"
+                alt=""
+                className="seachbar-div2-icon absolute z-10"
+              />
             </div>
             <div
               className="w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer"

@@ -191,19 +191,21 @@ const Search = ({ places, onResultClick }) => {
               onChange={handleSearchChange}
               className="searchTerm w-[17rem] h-10 border-white p-4 active:border-none focus:outline-none rounded-full "
               style={{
-                borderRadius: "300px 300px 300px 300px",
+                borderRadius: `300px 300px ${
+                  searchQuery.length > 0 ? "0px 0px" : "300px 300px"
+                }`,
               }}
             />
-            <div className="searchIcon bg-white flex justify-center items-center w-[1rem]">
+            <div className="searchIcon bg-white flex justify-center items-center w-[1rem] mr-3">
               <MdSearch className="text-gray-400 text-xl" />
             </div>
           </div>
 
           {searchQuery && (
             <div
-              className="dropdown-container bg-white w-[19rem] h-44 border border-gray-200 shadow-md overflow-hidden "
+              className="dropdown-container custom-scrollbar bg-white w-[19rem] h-44 border border-gray-200 shadow-md  overflow-y-scroll "
               style={{
-                borderRadius: "0px 0px 20px 20px",
+                borderRadius: "0px 0px 10px 10px",
               }}
             >
               {places.map((item, index) => (
