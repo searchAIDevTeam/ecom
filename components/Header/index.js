@@ -21,6 +21,7 @@ import TopLoader from "../AddOn/TopLoader";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+
 function Header({ howMuchScrolled }) {
   const [isScrolled, setIsScrolled] = useState(false);
 

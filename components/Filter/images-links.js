@@ -1,8 +1,8 @@
 export const links = [
-  // {
-  //   label:"Find Floor",
-  //   imgSrc: "https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg",
-  // },
+  {
+    label:"Virtual Experience",
+    imgSrc: "https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg",
+  },
   {
     label: "Wallpaper",
     imgSrc:
@@ -43,10 +43,9 @@ export const links = [
     imgSrc:
       "https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg",
   },
- 
-  // {
-  //   label: "Lakefront",
-  //   imgSrc:
-  //     "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",
-  // },
+  {
+    label: "Magazine",
+    imgSrc:
+      "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",
+  },
 ];

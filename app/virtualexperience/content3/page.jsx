@@ -1,15 +1,8 @@
 "use client";
 import React, { useState } from "react";
-
-// import { FaLongArrowAltLeft } from "react-icons/fa";
-// import { FaLongArrowAltRight } from "react-icons/fa";
-// import { useNavigate } from "react-router-dom";
-// import Header from "../../Header";
-import Sidebar from "../../../components/sidebar";
-// import { TiTick } from "react-icons/ti";
-// import { FaCircle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Sidebar from "@/components/sidebar";
 const Content3 = () => {
   const router = useRouter();
   const prevHandler = () => {

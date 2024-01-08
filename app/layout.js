@@ -1,10 +1,11 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/provider";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer/Footer";
-import { useRouter } from "next/navigation";
+// import Header from "@/components/Header";
+// import Footer from "@/components/Footer/Footer";
 import NewHeader from "@/components/NewHeader/NewHeader";
+import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
+import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,9 @@ export default function RootLayout({ children }) {
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
 
         <Providers>
-          <NewHeader />
+          <HeaderWrapper />
           {children}
-          <Footer />
+          <FooterWrapper />
         </Providers>
       </body>
     </html>

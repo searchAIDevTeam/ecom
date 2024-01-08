@@ -1,13 +1,10 @@
 'use client'
 import React, { useState } from "react";
-import { colorTiles } from "../../../Model/data";
-// import { useNavigate } from "react-router-dom";
 import { useRouter } from "next/navigation";
-// import Header from "../../Header";
-import Sidebar from "../../../components/sidebar";
 import Image from "next/image";
-// import { TiTick } from "react-icons/ti";
-// import { FaCircle } from "react-icons/fa";
+import { colorTiles } from "@/Model/data";
+import Sidebar from "@/components/sidebar";
+
 const Content2 = () => {
     const router = useRouter();
   const prevHandler = () => {

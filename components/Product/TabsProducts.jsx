@@ -1129,14 +1129,14 @@ const Tabs = () => {
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
               {curtainImage.map((text, idx) => (
                 <div
-                  className="flex p-3 flex-col gap-3 hover-divnine hover:shadow-2xl sm:border-none border-b border-r"
+                  className="flex p-3 flex-col gap-3 hover-divnine sm:border-none border-b border-r"
                   key={idx}
                 >
-                  <div className="flex justify-between text-gray-600 checkbox-div">
+                  <div className="flex justify-between text-black checkbox-div">
                     <input type="checkbox" />
                     <label htmlFor="">Compare</label>
                   </div>
-                  <img className="border" src={text.image} alt="" />
+                  <img src={text.image} alt="" />
                   <p className="text-sm font-semibold">{text.title}</p>
                   <p className="text-sm">{text.detail}</p>
                   <p className="text-sm price-box font-semibold  w-28 h-10 bg-yellow-400 flex items-center justify-center">
