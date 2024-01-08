@@ -4,12 +4,12 @@ import Image from "next/image";
 const Splashscreen = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-white  ">
-      <div className="text-center">
+      <div className="text-center ">
         <Image
           src="/ayatriologo.png"
           alt="logo"
-          width={40}
-          height={20}
+          width={200}
+          height={200}
           className="w-80 h-auto transition-all ease-linear duration-500"
         ></Image>
       </div>

@@ -110,7 +110,7 @@ function Header({ howMuchScrolled }) {
 
   return (
     <header
-      className={`fixed w-full sm:bg-none  top-0 transition-all ease-in-out duration-300  z-[99999]
+      className={`fixed w-full sm:bg-none  top-0 transition-all ease-in-out duration-300  
        ${isScrolled ? "bg-white" : "bg-white"} 
       
       
@@ -150,13 +150,14 @@ function Header({ howMuchScrolled }) {
           </div>
           <div className="right flex items-center sm:gap-4 gap-2">
             <div
-            onClick={handleModalOpen} 
-            className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden">
-            <img
-              src="/search.svg"
-              alt=""
-              className="seachbar-div2-icon absolute z-10"
-            />
+              onClick={handleModalOpen}
+              className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden"
+            >
+              <img
+                src="/search.svg"
+                alt=""
+                className="seachbar-div2-icon absolute z-10"
+              />
             </div>
             <div
               className="w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer"
