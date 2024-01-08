@@ -68,6 +68,7 @@ function MainSlider() {
       } else if (targetScroll + containerWidth > totalWidth) {
         // If scrolling right past the end, move the first child to the end
         scrl.current.appendChild(firstChild);
+        targetScroll -= firstChild.offsetWidth;
       }
       scrl.current.style.transition = "all 3s";
       scrl.current.scrollTo({
