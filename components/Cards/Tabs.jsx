@@ -86,13 +86,16 @@ const Tabs = () => {
 
 
   useEffect(() => {
+    window.scrollTo({
+      top:100,}
+    )
     const handleScroll = () => {
       const thirdDiv = document.querySelector(".classic-tabs");
 
       if (thirdDiv) {
         const thirdDivTop = thirdDiv.getBoundingClientRect().top;
-
-        setIsSticky(thirdDivTop <= 0);
+        const elementVisible=thirdDivTop<=0 && thirdDivTop+thirdDiv.clientHeight>0;
+        setIsSticky(elementVisible);
       }
     };
 
@@ -104,7 +107,7 @@ const Tabs = () => {
   }, []);
   return (
     <>
-      <div className="mb-20 sm:px-[50px] px-[20px] py-20 w-full h-full">
+      <div className="mb-20 sm:px-[50px] px-[20px] py-20 w-[80rem] h-full">
         <div>
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
