@@ -1,14 +1,10 @@
 "use client";
 import React, { useState } from "react";
-
-import { dataActivity } from "../../../Model/data";
 import { useRouter } from "next/navigation";
-// import Header from "../../Header";
+
 import Image from "next/image";
-// import { TiTick } from "react-icons/ti";
-// import { FaCircle } from "react-icons/fa";
-import Sidebar from "../../../components/sidebar";
-// import { FaCartPlus } from "react-icons/fa";
+import Sidebar from "@/components/sidebar";
+import { dataActivity } from "@/Model/data";
 // import { useDispatch, useSelector } from "react-redux";
 // import { setSelectedActivity } from "../../../Features/store";
 const Activities = () => {

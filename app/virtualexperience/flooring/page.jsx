@@ -1,14 +1,8 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
-// import { useNavigate } from "react-router-dom";
-// import Header from "../../Header";
-import Sidebar from "../../../components/sidebar";
-// import { TiTick } from "react-icons/ti";
-// import { FaCircle } from "react-icons/fa";
-import { TilesData, dataTiles } from "../../../Model/data";
 import { useRouter } from "next/navigation";
+import { dataTiles } from "@/Model/data";
 const Content1 = () => {
   const router = useRouter();
   const prevHandler = () => {

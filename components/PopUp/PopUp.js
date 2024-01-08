@@ -9,6 +9,7 @@ import axios from "axios";
 //   recomendationLoader,
 // } from "../../Features/Slices/recommendationSlice";
 
+
 function App() {
   const [fetchedCategories, setFetchedCategories] = useState(null);
   const [fetchCities, setFetchedCities] = useState(null);
@@ -18,18 +19,19 @@ function App() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://34.201.163.233:8080/api/categories"
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
       );
       setFetchedCategories(response.data[0].categories);
     } catch (error) {
       console.error("Error fetching categories:", error.message);
     }
   };
+  console.log(process.env.NEXT_PUBLIC_API_BASE_URL)
   console.log(fetchedCategories);
   const fetchCitiesAndHobbies = async () => {
     try {
       const response = await axios.get(
-        "http://34.201.163.233:8080/api/citiesAndHobbies"
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/citiesAndHobbies`
       );
       setFetchedCities(response.data[0].cities);
       setFetchedHobbies(response.data[0].hobbies);
@@ -173,15 +175,9 @@ function App() {
     setOpenPopUp1(false);
     localStorage.setItem("popUp", "true");
 
-    console.log("Selected Items PopUp1:", selectedItems1);
-    console.log("Selected Items PopUp2:", selectedItems2);
-    console.log("Selected Items PopUp3:", selectedItems3);
-
-    dispatch(recomendationLoader(true));
-
     try {
       const response = await axios.post(
-        "http://34.201.163.233:8080/api/preferences",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/preferences`,
         {
           deviceId: localStorage.getItem("deviceid"),
           userPreferredCities: preferencesDataToSendToBackend.preferredCities,
@@ -196,8 +192,8 @@ function App() {
       console.log(data);
 
       // set the recommended product in the global state
-      dispatch(recomendProduct(data));
-      dispatch(recomendationLoader(false));
+      // dispatch(recomendProduct(data));
+      // dispatch(recomendationLoader(false));
     } catch (error) {
       console.error(error);
 

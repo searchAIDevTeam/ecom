@@ -1,12 +1,8 @@
 'use client'
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import Header from "../../Header";
-// import { TiTick } from "react-icons/ti";
-import Sidebar from "../../../components/sidebar";
 import { useRouter } from 'next/navigation'
 import Image from "next/image";
-// import { FaCircle } from "react-icons/fa";
+import Sidebar from "@/components/sidebar";
 
 const Budget = () => {
     const router = useRouter();
