@@ -14,3 +14,21 @@
     z-index: 1000;
     background-color: white; 
   }
+  @media screen and (max-width:450px) {
+    
+  .tabcategory {
+    position: relative;
+
+  }
+  .tabcategory::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .sticky-tabcategory {
+    position: fixed;
+    top: 0;
+    width: 23.3rem;
+    z-index: 1000;
+    background-color: white; 
+  }
+  }
