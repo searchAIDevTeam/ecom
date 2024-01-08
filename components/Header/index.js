@@ -21,7 +21,6 @@ import TopLoader from "../AddOn/TopLoader";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-
 function Header({ howMuchScrolled }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -64,7 +63,8 @@ function Header({ howMuchScrolled }) {
     setSearchQuery("");
     SetSeacrhEngine("");
   };
-  const loginStatus = typeof window !== 'undefined' ? localStorage.getItem("Login") : null;
+  const loginStatus =
+    typeof window !== "undefined" ? localStorage.getItem("Login") : null;
 
   const [isLoading, setIsLoading] = useState(false);
   const handleLinkClick = (path) => {
@@ -110,7 +110,7 @@ function Header({ howMuchScrolled }) {
 
   return (
     <header
-      className={`fixed w-full sm:bg-none  top-0 transition-all ease-in-out duration-300  z-[99999]
+      className={`fixed w-full sm:bg-none  top-0 transition-all ease-in-out duration-300  
        ${isScrolled ? "bg-white" : "bg-white"} 
       
       
@@ -128,30 +128,13 @@ function Header({ howMuchScrolled }) {
             <div className="profile-menu font-bold p-[7px] hover:bg-slate-200 hover:rounded-full">
               <Menu />
             </div>
-            <Link href="/virtualexperience/vrooms">
-              <div
-                onClick={() => handleLinkClick("/virtualexperience/vrooms")}
-                className=" text-costom-co p-[7px] hover:bg-slate-200 hover:rounded-3xl whitespace-nowrap"
-              >
-                Virtual Exprience{" "}
-              </div>
-            </Link>
-
-            <div
-              onClick={() => handleLinkClick("/magazine")}
-              className=" text-costom-co p-[7px] hover:bg-slate-200 hover:rounded-3xl whitespace-nowrap"
-            >
-              <Link href="/">
-                <div className="">Find the Right Floor</div>
-              </Link>{" "}
-            </div>
             {/* for only mobile search */}
 
             <div
               className="sm:hidden block  w-10 h-10 p-[7px]"
               onClick={handleModalOpen}
             >
-              <img src="/profile.svg" alt="" className="header-div-icon" />
+              <img src="/search.svg" alt="" className="header-div-icon" />
             </div>
           </div>
 
@@ -166,27 +149,16 @@ function Header({ howMuchScrolled }) {
             </Link>
           </div>
           <div className="right flex items-center sm:gap-4 gap-2">
-            {/* map-icon */}
-
-            <div className=" searchbar sm:block hidden pt-4 w-40 h-10 items-right justify-end ">
-              <input
-                type="text"
-                onChange={handleSearchChange}
-                value={searchQuery}
-                placeholder="Search"
-                className="searchTerm sm:block hidden relative font-semibold placeholder-gray-400 w-[12rem] h-10 bg-zinc-100 p-4 rounded-full active:border-none focus:outline-none hover:bg-slate-200 hover:rounded-3xl"
-              />
+            <div
+              onClick={handleModalOpen}
+              className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden"
+            >
               <img
                 src="/search.svg"
                 alt=""
                 className="seachbar-div2-icon absolute z-10"
               />
             </div>
-            <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer">
-              <img src="/like.svg" alt="" className="header-div-icon" />
-              <div className="cart-notification">12</div>
-            </div>
-
             <div
               className="w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer"
               onClick={() => handleLinkClick("/cart")}

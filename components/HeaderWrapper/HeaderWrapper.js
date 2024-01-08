@@ -1,12 +1,12 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React from "react";
-import NewHeader from "../NewHeader/NewHeader";
+import Header from "../Header";
 
 const HeaderWrapper = () => {
   const pathname = usePathname();
   console.log(pathname);
-  return <NewHeader />;
+  return <Header />;
 };
 
 export default HeaderWrapper;
