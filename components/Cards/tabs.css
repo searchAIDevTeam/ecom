@@ -10,7 +10,7 @@
   .sticky-tabcategory {
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 72.7rem;
     z-index: 1000;
     background-color: white; 
   }

@@ -1,32 +1,21 @@
 "use client";
 import React, { useState, useEffect } from "react";
-// import { BsArrowLeftCircleFill } from "react-icons/bs";
 import "../MainSlider/Mainslidestyle.css";
-import { list3 } from "../MainSlider/mainslide-list";
 import room from "@/public/images/room.jpg";
 import work from "@/public/images/work.jpg";
 import living from "@/public/images/living.jpg";
 import kitchen from "@/public/images/kitchen.webp";
 import "./tabs.css";
-import { BsArrowRightCircleFill } from "react-icons/bs";
 import TabImage from "./TabImage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 const Tabs = () => {
-  // const [activeTab, setActiveTab] = useState("all");
-
-  // const handleTabClick = (tab) => {
-  //   setActiveTab(tab);
-  // };
+  
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");
   };
-  // const products = list3.filter(
-  //   (prod) => prod.id === 1 || prod.id === 2 || prod.id === 3
-  // );
-  // const [circle1Hovered, setCircle1Hovered] = useState(false);
-  // const [circle2Hovered, setCircle2Hovered] = useState(false);
+
   const circled = [
     {
       top: 50,
@@ -43,7 +32,6 @@ const Tabs = () => {
       setIsMobile(window.innerWidth <= 450);
     };
     window.addEventListener("resize", handleResize);
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -86,9 +74,6 @@ const Tabs = () => {
 
 
   useEffect(() => {
-    window.scrollTo({
-      top:100,}
-    )
     const handleScroll = () => {
       const thirdDiv = document.querySelector(".classic-tabs");
 
@@ -107,7 +92,7 @@ const Tabs = () => {
   }, []);
   return (
     <>
-      <div className="mb-20 sm:px-[50px] px-[20px] py-20 w-[80rem] h-full">
+      <div className="mb-20 sm:px-[50px] px-[20px] py-20 h-full">
         <div>
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
