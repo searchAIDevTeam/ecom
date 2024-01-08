@@ -49,7 +49,7 @@ const Tabs = () => {
     };
   }, []);
   const [activeTab, setActiveTab] = useState("all");
-  // const [isSticky, setIsSticky] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
   const tabImages = {
     all: [room, work, living, kitchen],
     bedroom: [room, room, room],
@@ -84,46 +84,36 @@ const Tabs = () => {
 
   // logic for sticky
 
+
   useEffect(() => {
     const handleScroll = () => {
-      const firstDiv = document.querySelector(".bloc-tabsnone");
       const thirdDiv = document.querySelector(".classic-tabs");
 
-      if (firstDiv && thirdDiv) {
-        const firstDivHeight = firstDiv.offsetHeight;
-        const thirdDivBottom =
-          thirdDiv.getBoundingClientRect().bottom + window.scrollY;
-        const windowBottom = window.scrollY;
+      if (thirdDiv) {
+        const thirdDivTop = thirdDiv.getBoundingClientRect().top;
 
-        if (thirdDivBottom <= windowBottom + firstDivHeight) {
-          firstDiv.style.position = "relative"; // Stop being sticky
-        } else {
-          firstDiv.style.position = "sticky"; // Be sticky
-        }
+        setIsSticky(thirdDivTop <= 0);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   return (
     <>
       <div className="mb-20 sm:px-[50px] px-[20px] py-20 w-full h-full">
         <div>
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
-        {/* <div
-          className={` common-parent
-             cursor-pointer sm:mb-0 main-div `}
-        > */}
         <div
-          className={` py-5 bloc-tabsnone flex flex-row`}
+          className={` py-5 bloc-tabsnone flex flex-row tabcategory ${
+            isSticky ? 'sticky-tabcategory' : ''
+          }`}
           style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}
         >
-          {/* sm:mb-[-64px] */}
           {tabsData.map((tab, i) => (
             <div
               key={i}
@@ -133,7 +123,7 @@ const Tabs = () => {
                 ? "active-tabs  border border-black mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
                 : "tabs  border border-white mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
             }`}
-              onClick={() => handleTabClick(tab.key)}
+              onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}
             </div>

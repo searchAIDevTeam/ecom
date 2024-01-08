@@ -1,10 +1,16 @@
-.bloc-tabsnone::-webkit-scrollbar {
+
+  .tabcategory {
+    position: relative;
+
+  }
+  .tabcategory::-webkit-scrollbar {
     display: none;
   }
   
-  .bloc-tabsnone{
-    /* position: sticky; */
+  .sticky-tabcategory {
+    position: fixed;
     top: 0;
-    background-color: white;
-    overflow-x: auto;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; 
   }
