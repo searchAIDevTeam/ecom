@@ -46,7 +46,6 @@ function Cards() {
   const id = localStorage.getItem("deviceId");
 useEffect(() => {
   setDeviceId(id);
-  console.log("device id is ",id)
   const getRecommendedData = async () => {
     const response = await axios.get(`http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`);
     console.log("recommended data is ",response.data) 

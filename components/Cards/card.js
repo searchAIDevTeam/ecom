@@ -12,7 +12,10 @@ function Card(props) {
   const handleImageClick = () => {
     props.setPopupVisible(true);
   };
-
+  // let url = "http://43.204.166.53:8080/api/getSingleProduct?id="
+const handleclick = (id) => {
+  router.push('/room/'+id)
+}
   return (
     <>
       <div
@@ -21,6 +24,7 @@ function Card(props) {
           width: "100%",
           height: "100%",
         }}
+        onClick={()=>handleclick(props.id)}
       >
         <div className={`card-flex ${props.cssClass} `}>
           <Carousel data={props.imgSrc} className="card-img" />

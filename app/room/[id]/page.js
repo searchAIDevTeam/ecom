@@ -5,10 +5,19 @@ import RoomImageList from "@/components/Room/RoomImageList";
 import RoomInfo from "@/components/Room/RoomInfo";
 import React, { useEffect, useState } from "react";
 import ImageCaresoul from "@/components/Room/imagecaresoul";
-// import Card from "../components/Room/Other/Card";
-const RoomPage = () => {
+import axios from "axios";
+const RoomPage = ({params}) => {
+  let url = "http://43.204.166.53:8080/api/getSingleProduct?id="
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);
-
+  const [data, setData] = useState([]);
+  useEffect(() => {
+   const getRoomData = async () => {
+    const response = await axios.get(`${url}${params.id}`);
+    setData(response.data);
+    console.log("room response ",response.data)
+    }
+    getRoomData();
+  }, [])
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -57,16 +66,16 @@ const RoomPage = () => {
         <div className="sm:px-[50px] px-[20px] mt-[65px]">
           <div className="flex sm:flex-row flex-col">
             <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
-              <RoomImageList />
+              <RoomImageList images={data.images} />
               <ImageCaresoul />
               {/* <div className="sm:hidden flex">
                 <Card/>
               </div> */}
-              <RoomInfo />
+              <RoomInfo data={data} />
             </div>
             <div className="sm:basis-1/3 flex flex-col  ">
               <div className="sm:sticky flex top-12 mb-16 ml-0">
-                <Card />
+                <Card data={data} />
               </div>
             </div>
           </div>
