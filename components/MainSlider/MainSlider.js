@@ -44,43 +44,53 @@ function MainSlider() {
   useEffect(() => {
     if (scrl.current) {
       scrl.current.scrollLeft = 0;
-      scrl.current.style.transition = "transition 4s";
+      scrl.current.style.transition = "transition 2s";
     }
   }, []);
   const slideswipe = window.innerWidth / 2;
 
 
-
   const slide = (shift) => {
     if (scrl.current) {
       let targetScroll = scrl.current.scrollLeft + shift;
-
-      // scrl.current.scrollIntoView({ behavior: 'smooth' });
+  
       const totalWidth = scrl.current.scrollWidth;
       const containerWidth = scrl.current.clientWidth;
       const children = scrl.current.children;
       const firstChild = children[0];
       const lastChild = children[children.length - 1];
-
+  
       if (targetScroll < 0) {
         // If scrolling left past the start, move the last child to the beginning
         scrl.current.insertBefore(lastChild, firstChild);
         targetScroll += lastChild.offsetWidth;
+  
+        // Add transition for smooth sliding effect only to the last child
+        lastChild.style.transition = "transform 2s ease";
+        lastChild.style.transform = `translateX(-${lastChild.offsetWidth}px)`;
       } else if (targetScroll + containerWidth > totalWidth) {
         // If scrolling right past the end, move the first child to the end
         scrl.current.appendChild(firstChild);
         targetScroll -= firstChild.offsetWidth;
       }
-      scrl.current.style.transition = "all 3s";
-      scrl.current.scrollTo({
-        left: targetScroll,
-        behavior: "smooth",
-      });
-      
-
-      setScrollX(targetScroll);
+  
+      // Reset transform and transition after the animation completes
+      setTimeout(() => {
+        // Reset transform and transition for the last child
+        lastChild.style.transition = "none";
+        lastChild.style.transform = "translateX(0)";
+  
+        scrl.current.style.transition = "none";
+        scrl.current.scrollTo({
+          left: targetScroll,
+          behavior: "auto", // Change to "smooth" if needed
+        });
+        setScrollX(targetScroll);
+      }, 2000); // Adjust the timeout value based on your transition duration
     }
   };
+  
+  
 
   // **********************************
   // for mobile
