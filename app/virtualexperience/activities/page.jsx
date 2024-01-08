@@ -1,16 +1,19 @@
 "use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
+import { dataActivity } from "../../../Model/data";
+import { useRouter } from "next/navigation";
+// import Header from "../../Header";
 import Image from "next/image";
-import Sidebar from "@/components/sidebar";
-import { dataActivity } from "@/Model/data";
+// import { TiTick } from "react-icons/ti";
+// import { FaCircle } from "react-icons/fa";
+import Sidebar from "../../../components/sidebar";
+// import { FaCartPlus } from "react-icons/fa";
 // import { useDispatch, useSelector } from "react-redux";
 // import { setSelectedActivity } from "../../../Features/store";
 const Activities = () => {
   const router = useRouter();
-  //   const dispatch = useDispatch();
-  //   const selectedActivity = useSelector((state) => state.rooms.selectedActivity);
+
 
   const prevHandler = () => {
     router.push("/virtualexperience/vrooms");
@@ -18,14 +21,22 @@ const Activities = () => {
   const nextHandler = () => {
     router.push("/virtualexperience/budget");
   };
-
+  const [dataActivities, setDataActivities] = useState([]);
+  useEffect(() => {
+    const fetchActivities = async () => {
+      const response = await axios.get("http://43.204.166.53:8080/api/getVE");
+      console.log(response);
+      setDataActivities(response.data);
+    };
+    fetchActivities();
+  },[]);
+console.log(dataActivities);
   const [selectedPage, setSelectedPage] = useState("activities");
   const [selectedActivity, setSelectedActivity] = useState({});
   const handleSelectPage = (page) => {
     setSelectedPage(page);
   };
 
-  // const [selectedActivity, setSelectedActivity] = useState({});
   const [showCircle, setShowCircle] = useState(false);
   const [showbuttoncontent, setShowbuttoncontent] = useState(false);
 
@@ -33,33 +44,16 @@ const Activities = () => {
     setShowCircle(!showCircle);
   };
 
-  //   const handleClick = (roomId, roomPrice, roomTitle, roomImage) => {
-  //     dispatch(
-  //       setSelectedActivity({
-  //         ...selectedActivity,
-  //         [roomId]: {
-  //           id: roomId,
-  //           price: roomPrice,
-  //           title: roomTitle,
-  //           image: roomImage,
-  //         },
-  //       })
-  //     );
-
-  //     setShowCircle((prevShowCircle) => !prevShowCircle);
-  //     setShowbuttoncontent((prevShowButtonContent) => !prevShowButtonContent);
-  //   };
+  
 
   const handleClick = (roomId, roomPrice, roomTitle, roomImage) => {
     setSelectedActivity((prevSelectedRooms) => {
-      // Check if the room is already selected
+     
       if (prevSelectedRooms[roomId]) {
-        // Deselect the room if it was already selected
         const updatedSelectedRooms = { ...prevSelectedRooms };
         delete updatedSelectedRooms[roomId];
         return updatedSelectedRooms;
       } else {
-        // Select the room and add it to the selected rooms
         return {
           ...prevSelectedRooms,
           [roomId]: {
@@ -72,9 +66,7 @@ const Activities = () => {
       }
     });
 
-    // Toggle the showCircle state based on the current state of the selected room
     setShowCircle((prevShowCircle) => !prevShowCircle);
-    // Toggle the showbuttoncontent state based on the current state of the selected room
     setShowbuttoncontent((prevShowButtonContent) => !prevShowButtonContent);
   };
 
@@ -83,14 +75,9 @@ const Activities = () => {
     console.log("selectedrooms", selectedActivity);
   };
 
-  //   const addToCart = () => {
-  //     dispatch(setSelectedActivity(selectedActivity));
-  //     // console.log("selectedrooms", selectedActivity);
-  //   };
 
   return (
     <div className=" py-4 relative w-full h-full flex justify-center flex-col bg-[#f4e3dd]">
-      {/* <Header /> */}
       <Sidebar selectedPage={selectedPage} onSelectPage={handleSelectPage} />
       <Image
         src="/adtocart.svg"
@@ -139,17 +126,9 @@ const Activities = () => {
             {selectedActivity[item.id] && (
               <div
                 className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center"
-                // style={{ zIndex: 10 }}
               >
                 <div className="circle-container relative flex justify-center items-center">
-                  {/* <FaCircle size={30} color="black" className="opacity-100" />
-
-                  <TiTick
-                    className="opacity-100 absolute"
-                    color="white"
-                    size={30}
-                    style={{ opacity: 100 }}
-                  /> */}
+                  
 
                   <Image
                     src="/tick.svg"

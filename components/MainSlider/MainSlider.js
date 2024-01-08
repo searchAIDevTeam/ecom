@@ -188,7 +188,7 @@ function MainSlider() {
                         </h2>
                         <p className="font-normal">{circle.productCategory}</p>
                         <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                          ₹ {circle.price}
+                          ₹ {circle.productPrice}
                         </p>
                         <br />
                       </div>

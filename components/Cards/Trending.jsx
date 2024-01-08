@@ -17,6 +17,7 @@ import {
   Mousewheel,
   FreeMode,
 } from "swiper/modules";
+import axios from "axios";
 
 const Trending = () => {
   const [swiperRef, setSwiperRef] = useState(null);
@@ -24,6 +25,18 @@ const Trending = () => {
   const handleImageClick = () => {
     setPopupVisible(true);
   };
+  const [trendingData, setTrendingData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://43.204.166.53:8080/api/trending-products");
+      setTrendingData(response.data);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+console.log(trendingData)
   const swiperUseref = useRef(null);
   const swiperOptions2 = {
     slidesPerView: 4.08,
@@ -43,16 +56,14 @@ const Trending = () => {
   };
   const swiper1Ref = useRef(null);
   const swiper2Ref = useRef(null);
-  const [isLoading, setLoading] = useState(true);
 
-  const [trendingData, setTrendingData] = useState([]);
 
   return (
     <div>
       <div className="pt-12  mb-20  bg-white sm:px-[50px] px-[20px]">
         <div className="mb-2 w-full flex justify-between items-center">
           <h2 className="text-bold text-2xl font-serif">
-            {trendingData ? "Trending Products" : "Trending Product"}
+            {trendingData && trendingData.length===0 ? "Trending Products(Empty)" : "Trending Product"}
           </h2>
           <div className="Slidenav flex  bg-white text-2xl cursor-pointer  text-white rounded-full gap-2">
             <div
