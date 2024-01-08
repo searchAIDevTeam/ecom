@@ -40,7 +40,7 @@ const NewHeader = () => {
     <>
       {
         <div
-          className={`flex flex-col 
+          className={`flex flex-col  
     
     `}
         >
