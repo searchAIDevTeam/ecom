@@ -6,7 +6,8 @@ const TabImage = ({ src, alt, handleTab, circled }) => {
   return (
     <div className="row-span-2 overflow-hidden relative">
       <Image className="h-full w-full object-cover" src={src} alt={alt} />
-      <div className="text-md text-black absolute top-16 left-10  bg-white border-4 border-slate-400 rounded-full w-5 h-5">
+      <div className="text-md text-black absolute top-16 left-10  bg-gray-500 rounded-full w-5 h-5">
+      <div className="bg-white h-3 w-3 absolute rounded-full ml-1 mt-1">
         <div
           className={`flex-row z-10 mt-4 w-36 h-32 flex items-center pb-2 bg-white cursor-pointer`}
           onClick={handleTab}
@@ -28,6 +29,7 @@ const TabImage = ({ src, alt, handleTab, circled }) => {
               <BsArrowRightCircleFill className="flex ml-2 mr-2" />
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

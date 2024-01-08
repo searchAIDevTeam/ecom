@@ -18,15 +18,12 @@
   scroll-behavior: smooth;
   /* transition: all 2s ease; */
 }
-.hello{
-  transition:all 2s ease;
-}
-
 .sd {
   height: 67vh;
   width: 40rem;
   flex-shrink: 0;
-  /* transition:all 2s ease; */
+  /* transform: translateX(50%); */
+  transition:2s ease;
 }
 
 .arrow-left {
@@ -38,7 +35,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 2s ease;
+  transition: 2s ease;
 }
 
 .arrow-rightS {
