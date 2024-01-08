@@ -28,7 +28,7 @@ function MainSlider() {
     });
   };
   console.log(SliderViewData);
-  const [sliderApiData,setSliderApiData] = useState([])
+  const [sliderApiData, setSliderApiData] = useState([]);
   useEffect(() => {
     if (SliderViewData && SliderViewData.result) {
       setSliderApiData(SliderViewData.result);
@@ -46,9 +46,7 @@ function MainSlider() {
       scrl.current.style.transition = "transition 4s";
     }
   }, []);
-  const slideswipe = window.innerWidth / 2;
-
-
+  const slideswipe = window.innerWidth / 3;
 
   const slide = (shift) => {
     if (scrl.current) {
@@ -70,12 +68,12 @@ function MainSlider() {
         scrl.current.appendChild(firstChild);
         targetScroll -= firstChild.offsetWidth;
       }
-      scrl.current.style.transition = "all 3s";
+      // scrl.current.style.transform = "translateX(-50%)"
+      // scrl.current.style.transition = "all 3s";
       scrl.current.scrollTo({
         left: targetScroll,
         behavior: "smooth",
       });
-      
 
       setScrollX(targetScroll);
     }
@@ -87,7 +85,6 @@ function MainSlider() {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -95,7 +92,7 @@ function MainSlider() {
   const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
- 
+
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > slideswipe) {
       // the user swiped left
@@ -122,12 +119,10 @@ function MainSlider() {
     }
   };
 
-
-
   useEffect(() => {
     const slideInterval = setInterval(() => {
       slide(slideswipe);
-    }, 10000);
+    }, 4000);
     return () => {
       clearInterval(slideInterval);
     };
@@ -149,7 +144,9 @@ function MainSlider() {
   return (
     <div className="slider-container">
       <div className="arrow-left z-20" onClick={() => slide(-slideswipe)}>
-        {!isMobile && (scrollX>0) && <BsArrowLeftCircleFill className="arrow-nav" />}
+        {!isMobile && scrollX > 0 && (
+          <BsArrowLeftCircleFill className="arrow-nav" />
+        )}
       </div>
       <div
         className="slider-cont"
@@ -158,49 +155,55 @@ function MainSlider() {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-  
       >
-        {sliderApiData.length > 0 && sliderApiData.map((prod, i) => (
-          <div key={i}>
-            <div className="circle-container relative items-center justify-center flex sd">
-              <img className="sd rounded-sm" src={prod.imgSrc} alt="Product" />
-              {prod.circles.map((circle, index) => (
-                <div
-                  key={index}
-                  className={`circle absolute effect`}
-                  style={{
-                    top: `${circle.topPosition}%`,
-                    left: `${circle.leftPosition}%`,
-                  }}
-                >
+        {sliderApiData.length > 0 &&
+          sliderApiData.map((prod, i) => (
+            <div key={i}>
+              <div className="circle-container relative items-center justify-center flex sd">
+                  <img
+                    className="sd rounded-sm"
+                    src={prod.imgSrc}
+                    alt="Product"
+                  />
+                {prod.circles.map((circle, index) => (
                   <div
-                    className={`hover-box flex-row z-10 w-44 h-44 flex items-center bg-white
-                     ${circle.topPosition > 75 ? "top-condition" : ""} ${
-                      circle.leftPosition > 65 ? "left-condition" : ""
-                    }
-                    `}
+                    key={index}
+                    className={`circle absolute effect`}
+                    style={{
+                      top: `${circle.topPosition}%`,
+                      left: `${circle.leftPosition}%`,
+                    }}
                   >
-                    <div className="flex flex-col">
-                      <div className="flex flex-col basis-3/4 w-36 flex-grow relative -ml-1">
-                        <h2 className="font-bold pt-1 pr-2">
-                          {circle.productTitle}
-                        </h2>
-                        <p className="font-normal">{circle.productCategory}</p>
-                        <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                          ₹ {circle.productPrice}
-                        </p>
-                        <br />
-                      </div>
-                      <div className="absolute inset-y-0 right-0  border-l border-black flex items-center justify-center basis-1/4 flex-grow pl-2 pr-2 ml-2">
-                        <BsArrowRightCircleFill className="flex items-center justify-center" />
+                    <div
+                      className={`hover-box flex-row z-10 w-44 h-44 flex items-center bg-white
+                     ${circle.topPosition > 75 ? "top-condition" : ""} ${
+                        circle.leftPosition > 65 ? "left-condition" : ""
+                      }
+                    `}
+                    >
+                      <div className="flex flex-col">
+                        <div className="flex flex-col basis-3/4 w-36 flex-grow relative -ml-1">
+                          <h2 className="font-bold pt-1 pr-2">
+                            {circle.productTitle}
+                          </h2>
+                          <p className="font-normal">
+                            {circle.productCategory}
+                          </p>
+                          <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                            ₹ {circle.productPrice}
+                          </p>
+                          <br />
+                        </div>
+                        <div className="absolute inset-y-0 right-0  border-l border-black flex items-center justify-center basis-1/4 flex-grow pl-2 pr-2 ml-2">
+                          <BsArrowRightCircleFill className="flex items-center justify-center" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         {/* </div> */}
       </div>
       <div className="arrow-rightS z-20" onClick={() => slide(+slideswipe)}>

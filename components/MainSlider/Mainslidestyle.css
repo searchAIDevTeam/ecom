@@ -16,7 +16,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  /* transition: all 2s ease; */
+  /* transition: all 5s ease; */
 }
 .sd {
   height: 67vh;
@@ -75,11 +75,6 @@
   transition: scrollLeft 1.2s ease-in-out;
 } */
 
-.slider-cont {
-  /* existing styles */
-  /* transition: scrollLeft 2s ease; */
-   /* Adjust the transition duration as needed */
-}
 .circle {
   position: absolute;
 }
