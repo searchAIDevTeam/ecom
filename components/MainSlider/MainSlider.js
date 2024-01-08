@@ -7,7 +7,6 @@ import { list3 } from "./mainslide-list";
 // import _debounce from "lodash/debounce";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSliderData } from "../Features/Slices/sliderSlice";
-import { animateScroll as scroll } from "react-scroll";
 
 function MainSlider() {
   //data fetching

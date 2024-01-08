@@ -99,6 +99,7 @@ const Flooring = ({data}) => {
                     imgSrc={product.images}
                     rating={product.ratings}
                     key={idx}
+                    id={product._id}
                     setPopupVisible={setPopupVisible}
                     cssClass={'card1flex'}
                   />
