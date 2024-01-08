@@ -17,7 +17,7 @@ export default function Home() {
     <>
       {loading ? (
         createPortal(
-          <main className="absolute w-screen h-screen z-[9999999] bg-white top-0 left-0 right-0 bottom-0">
+          <main className="absolute w-screen h-screen z-[9999999] bg-white top-0 left-0 right-0 bottom-0 overflow-hidden">
             <Splashscreen />
           </main>,
           document.body
