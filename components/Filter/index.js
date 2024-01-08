@@ -8,6 +8,7 @@ import Colours from "../Dropitems/Colours";
 import Rooms from "../Dropitems/Rooms";
 import Featured from "../Dropitems/Featured";
 import { useRouter } from "next/navigation";
+import CategoryContent from "../molecules/CategoryContent";
 
 function Filter(isFilterHovered) {
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -40,6 +41,18 @@ function Filter(isFilterHovered) {
   //   };
   //   return marginMap[label] || "block";
   // }
+
+  const collections = [
+    'Fornasetti Senza Tempo II',
+    'The Gardens',
+    'Stella McCartney x Cole & Son',
+    'Ardmore - Jabula',
+    'Fornasetti',
+  ];
+
+  const styles = ['Animals', 'Borders', 'Conversational', 'Damask', 'Floral'];
+
+  const rooms = ['Lounge', 'Kitchen', 'Powder Room', 'Bedroom', 'Office'];
 
   const slide = (shift) => {
     const targetScroll = scrl.current.scrollLeft + shift;
@@ -134,19 +147,46 @@ function Filter(isFilterHovered) {
                     <div className="filter_container flex">
                       <div className=" grid grid-cols-6 gap-10">
                         <div className="col-span-2">
-                          <Featured />
+                          <Featured/>
                         </div>
                         <div className="col-span-1">
-                          <Collections />
+                        <CategoryContent 
+                          categoryHeading={"SHOP BY COLLECTIONS"} 
+                          categoryData={collections}
+                          categoryGap="space-x-5"
+                          headingColor="text-gray-500"
+                          headingStyle="font-bold"
+                          headingSize="text-md"
+                          gapHeadingItems="space-y-14"
+                          itemsGap="space-y-6"
+                          textColor="text-black"/>
                         </div>
                         <div className="col-span-1">
-                          <Styles />
+                        <CategoryContent 
+                          categoryHeading={"SHOP BY STYLES"} 
+                          categoryData={styles}
+                          categoryGap="space-x-5"
+                          headingColor="text-gray-500"
+                          headingStyle="font-bold"
+                          headingSize="text-md"
+                          gapHeadingItems="space-y-14"
+                          itemsGap="space-y-6"
+                          textColor="text-black"/>
                         </div>
                         <div className="col-span-1">
                           <Colours />
                         </div>
                         <div className="col-span-1">
-                          <Rooms />
+                        <CategoryContent 
+                          categoryHeading={"SHOP BY ROOMS"} 
+                          categoryData={rooms}
+                          categoryGap="space-x-5"
+                          headingColor="text-gray-500"
+                          headingStyle="font-bold"
+                          headingSize="text-md"
+                          gapHeadingItems="space-y-14"
+                          itemsGap="space-y-6"
+                          textColor="text-black"/>
                         </div>
                       </div>
                     </div>
