@@ -143,7 +143,7 @@ function Header({ howMuchScrolled }) {
             <Link href="/">
               <Image
                 onClick={() => handleLinkClick("/")}
-                src="/ayatriologo.png"
+                src="/images/ayatriologo.png"
                 alt="logo"
                 width={20}
                 height={20}
@@ -156,10 +156,11 @@ function Header({ howMuchScrolled }) {
               onClick={handleModalOpen}
               className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden"
             >
-              <img
+              <Image
                 src="/search.svg"
                 alt=""
                 className="seachbar-div2-icon absolute z-10"
+                width={30} height={30}
               />
             </div>
             <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer">
@@ -185,8 +186,8 @@ function Header({ howMuchScrolled }) {
                 src="/profile.svg"
                 onClick={handleLoginNav}
                 alt=""
-                width={20}
-                height={20}
+                width={30}
+                height={30}
                 className="header-div-icon"
               />
             )}

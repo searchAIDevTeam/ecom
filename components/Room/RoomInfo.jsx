@@ -4,7 +4,7 @@ import PlaceInfo from "./Other/PlaceInfo";
 // import { FaStar } from "react-icons/fa";
 import Amenities from "./Other/Amenities";
 import Image from "next/image";
-const RoomInfo = () => {
+const RoomInfo = ({data}) => {
   return (
     <div className="flex sm:my-6 my-0 sm:ml-1 ml-0" style={{ width: "100%" }}>
       <div className="sm:mr-4 mr-0 sm:w-[60%] w-[100%] sm:mt-0 mt-[-20rem]">
@@ -209,10 +209,10 @@ const RoomInfo = () => {
         <PlaceInfo />
 
         {/* ----------------- bedding cards ------------ */}
-        <Beding />
+        <Beding  />
 
         {/* ----------------- what this place offers ------------ */}
-        <Amenities />
+        <Amenities data={data} />
       </div>
     </div>
   );

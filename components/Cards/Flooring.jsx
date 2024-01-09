@@ -20,7 +20,7 @@ import {
 // import "react-loading-skeleton/dist/skeleton.css";
 import { useSelector } from "react-redux";
 import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
-const Flooring = () => {
+const Flooring = ({data}) => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const swiperOptions = {
@@ -36,22 +36,16 @@ const Flooring = () => {
     allowSlidePrev: true,
     allowSlideNext: true,
   };
-
+  const [flooringProducts, setFlooringProducts] = useState(data);
+  console.log(flooringProducts);
   const swiper2Ref = useRef(null);
-  const [isLoading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-  }, []);
   
   return (
     <div>
       <div className="  my-10  bg-white sm:px-[50px] px-[20px]">
         <div className="w-full flex justify-between items-center">
           <h2 className="text-bold text-2xl font-serif">
-            {flooringProducts ? "Flooring" : "Beach and Resort"}
+            {data && flooringProducts ? "Flooring" : "Beach and Resort"}
           </h2>
           <div className="Slidenav flex  text-2xl cursor-pointer  text-white rounded-full gap-2">
             <div
@@ -88,7 +82,7 @@ const Flooring = () => {
           {...swiperOptions}
           className="mySwiper  pl-5"
         >
-          {isLoading ? (
+          {false ? (
             <SwiperSlide>
               <div className="flex">""</div>
             </SwiperSlide>
@@ -96,20 +90,21 @@ const Flooring = () => {
             flooringProducts.map((product, idx) => {
               return (
                 <SwiperSlide key={idx} className="">
-                  <div className="grid grid-cols-1 mt-2 h-full fade-in">
-                    <Card
-                      title={product.productName}
-                      // date={product.date}
-                      price={product.price}
-                      desc={product.subcategory}
-                      imgSrc={product.images}
-                      rating={product.ratings}
-                      key={idx}
-                      setPopupVisible={setPopupVisible}
-                      cssClass={"card1flex"}
-                    />
-                  </div>
-                </SwiperSlide>
+                <div className="grid grid-cols-1 mt-2 h-full fade-in">
+                  <Card
+                    title={product.productTitle}
+                    // date={product.date}
+                    price={product.perUnitPrice}
+                    desc={product.subcategory}
+                    imgSrc={product.images}
+                    rating={product.ratings}
+                    key={idx}
+                    id={product._id}
+                    setPopupVisible={setPopupVisible}
+                    cssClass={'card1flex'}
+                  />
+                </div>
+              </SwiperSlide>
               );
             })
           )}

@@ -8,8 +8,8 @@ const Splashscreen = () => {
         <Image
           src="/ayatriologo.png"
           alt="logo"
-          width={40}
-          height={20}
+          width={200}
+          height={100}
           className="w-80 h-auto transition-all ease-linear duration-500"
         ></Image>
       </div>

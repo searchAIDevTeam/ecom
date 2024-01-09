@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 // import { IoIosArrowDown } from "react-icons/io";
 // import { CiCalculator1 } from "react-icons/ci";
 
-const Calculation = () => {
+const Calculation = ({priceData}) => {
   const [widthstate, setwidthstate] = useState(0);
   const [heightstate, setheightstate] = useState(0);
   const [pricestate, setpricestate] = useState(0);
-  const [coststate, setcoststate] = useState(7000);
+  const [coststate, setcoststate] = useState(0);
   const [rollstate, setrollstate] = useState(0);
 
   const priceCal = () => {
@@ -18,7 +18,9 @@ const Calculation = () => {
     setpricestate(calculatedPrice.toFixed(2));
     setrollstate(area.toFixed(2));
   };
-
+useEffect(() => {
+  setcoststate(priceData?.perUnitPrice)
+}, [priceData])
   useEffect(() => {
     priceCal();
   }, [widthstate, heightstate, coststate]);
