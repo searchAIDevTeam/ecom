@@ -135,7 +135,7 @@ function Header({ howMuchScrolled }) {
               className="sm:hidden block  w-10 h-10 p-[7px]"
               onClick={handleModalOpen}
             >
-              <img src="/search.svg" alt="" className="header-div-icon" />
+              <Image src="/search.svg" alt="" width={20} height={20} className="header-div-icon" />
             </div>
           </div>
 
@@ -145,9 +145,9 @@ function Header({ howMuchScrolled }) {
                 onClick={() => handleLinkClick("/")}
                 src="/images/ayatriologo.png"
                 alt="logo"
-                width={20}
-                height={20}
-                className="sm:w-48 w-52 m-2 ml-[170px]"
+                width={100}
+                height={40}
+                className="sm:w-48 w-52 m-2 sm:ml-[170px]"
               />
             </Link>
           </div>
