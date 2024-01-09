@@ -13,8 +13,8 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
     inputRef.current.focus();
   }, []);
   return (
-    <div className="expanded-search-box p-2 sm:block  bg-white sm:h-310px h-full z-30 sm:w-full w-[80vw] flex items-center justify-center">
-      <div className="flex flex-row  justify-between bg-white rounded-lg w-full h-auto">
+    <div className="expanded-search-box p-2 sm:block  bg-white sm:h-310px h-full z-30 sm:w-full w-[100vw] flex items-center justify-center absolute right-0">
+      <div className="flex flex-row  justify-between bg-white rounded-lg w-full h-auto absolute left-0">
         <div className="logo hidden sm:block">
           <img src="/images/ayatriologo.png" className="w-44 z-30" alt="" />
         </div>
@@ -34,7 +34,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
               className=" search_icon_mar w-5 mx-1 my-1.5 top-[18%] left-[1%]  absolute z-10"
             />
           </div>
-          <div className="dropdown flex pt-12 pb-6 flex-col pb-6 gap-4 ">
+          <div className="dropdown flex pt-12 pb-6 flex-col  gap-4 ">
             <div className="head text-slate-400">
               <h2>Popular Searches</h2>
             </div>

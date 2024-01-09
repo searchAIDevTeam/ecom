@@ -20,6 +20,7 @@ import Expandedbar from "./Expandedbar";
 import TopLoader from "../AddOn/TopLoader";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 function Header({ howMuchScrolled }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -140,29 +141,36 @@ function Header({ howMuchScrolled }) {
 
           <div className="mainlogo">
             <Link href="/">
-              <img
+              <Image
                 onClick={() => handleLinkClick("/")}
-                src="/images/ayatriologo.png"
+                src="/ayatriologo.png"
                 alt="logo"
-                className="sm:w-48 w-52 m-2"
+                width={20}
+                height={20}
+                className="sm:w-48 w-52 m-2 ml-[170px]"
               />
             </Link>
           </div>
           <div className="right flex items-center sm:gap-4 gap-2">
             <div
-            onClick={handleModalOpen} 
-            className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden">
-            <img
-              src="/search.svg"
-              alt=""
-              className="seachbar-div2-icon absolute z-10"
-            />
+              onClick={handleModalOpen}
+              className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden"
+            >
+              <img
+                src="/search.svg"
+                alt=""
+                className="seachbar-div2-icon absolute z-10"
+              />
+            </div>
+            <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer">
+              <Image src="/like.svg" alt="" className="header-div-icon" width={30} height={30} />
+              <div className="cart-notification">12</div>
             </div>
             <div
               className="w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer"
               onClick={() => handleLinkClick("/cart")}
             >
-              <img src="/adtocart.svg" alt="" className="header-div-icon" />
+              <Image src="/adtocart.svg" alt="" className="header-div-icon" width={30} height={30} />
               <div className="cart-notification">3</div>
             </div>
             {loginStatus === "true" ? (
@@ -170,24 +178,31 @@ function Header({ howMuchScrolled }) {
                 className="pro flex p-[7px] hover:bg-slate-200 hover:rounded-full whitespace-nowrap "
                 onClick={handleProfileNav}
               >
-                <img src="/profile.svg" alt="" className="header-div-icon" />
+                <Image src="/profile.svg" alt="" className="header-div-icon" width={30} height={30} />
               </div>
             ) : (
-              <img
+              <Image
                 src="/profile.svg"
                 onClick={handleLoginNav}
                 alt=""
+                width={20}
+                height={20}
                 className="header-div-icon"
               />
             )}
             {/* for only mobole search */}
             {isModalOPen && (
-              <SearchModal
+              /* <SearchModal
                 isOpen={isModalOPen}
                 onClose={handleModalClose}
                 onSearch={(e) =>
                   dispatch(searchProductsRequest(e.target.value))
                 }
+              /> */
+              <Expandedbar
+                searchQuery={searchQuery}
+                onClose={handleModalClose}
+                onSearch={handleSearchChange}
               />
             )}
           </div>
