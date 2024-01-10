@@ -126,7 +126,7 @@ function Header({ howMuchScrolled }) {
           }  sm:px-[30px] px-[10px] py-0 flex justify-between items-center w-full`}
         >
           <div className="left flex items-center sm:gap-5 gap-1 ">
-            <div className="profile-menu font-bold p-[7px] hover:bg-slate-200 hover:rounded-full">
+            <div className="profile-menu font-bold p-[7px] hover:bg-zinc-100 hover:rounded-full">
               <Menu />
             </div>
             {/* for only mobile search */}
@@ -151,10 +151,10 @@ function Header({ howMuchScrolled }) {
               />
             </Link>
           </div>
-          <div className="right flex items-center sm:gap-4 gap-2">
+          <div className="right flex items-center gap-2">
             <div
               onClick={handleModalOpen}
-              className="w-10 h-10 p-[7px] -mr-4 hover:bg-slate-200 hover:rounded-full cursor-pointer sm:block hidden"
+              className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer sm:block hidden"
             >
               <Image
                 src="/search.svg"
@@ -163,12 +163,11 @@ function Header({ howMuchScrolled }) {
                 width={30} height={30}
               />
             </div>
-            <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer">
-              <Image src="/like.svg" alt="" className="header-div-icon" width={30} height={30} />
-              <div className="cart-notification">12</div>
+            <div className="sm:block hidden w-10 h-10 p-[5px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+              <Image src="/like.svg" alt="" className="header-div-icon" width={25} height={25} />
             </div>
             <div
-              className="w-10 h-10 p-[7px] hover:bg-slate-200 hover:rounded-full cursor-pointer"
+              className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
               onClick={() => handleLinkClick("/cart")}
             >
               <Image src="/adtocart.svg" alt="" className="header-div-icon" width={30} height={30} />
@@ -176,18 +175,18 @@ function Header({ howMuchScrolled }) {
             </div>
             {loginStatus === "true" ? (
               <div
-                className="pro flex p-[7px] hover:bg-slate-200 hover:rounded-full whitespace-nowrap "
+                className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap "
                 onClick={handleProfileNav}
               >
-                <Image src="/profile.svg" alt="" className="header-div-icon" width={30} height={30} />
+                <Image src="/profile.svg" alt="" className="header-div-icon" width={25} height={25} />
               </div>
             ) : (
               <Image
                 src="/profile.svg"
                 onClick={handleLoginNav}
                 alt=""
-                width={30}
-                height={30}
+                width={25}
+                height={25}
                 className="header-div-icon"
               />
             )}
