@@ -9,6 +9,7 @@ const Shippingmain = () => {
       <div className="grid grid-col-2">
         <div className="col-span-1 sm:mx-32 mx-7 mt-32">
           <Arrive />
+         
         </div>
       </div>
     </div>
