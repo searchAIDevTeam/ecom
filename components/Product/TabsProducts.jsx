@@ -13,9 +13,17 @@ import "./styles.css";
 // import { FaStarHalfAlt } from "react-icons/fa";
 // import { FaStar } from "react-icons/fa";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // import choserightfloor from "../../assets/icon/choserightfloor.svg";
-const Tabs = () => {
+const Tabs = ({filteredProducts}) => {
+
+  console.log("Filtered products:", filteredProducts);
+  const router = useRouter();
+  const handlenav = (id)=>{
+    router.push(`/room/${id}`)
+  }
+
   const curtainImage = [
     {
       id: 1,
@@ -1127,20 +1135,21 @@ const Tabs = () => {
           {/* iimages */}
           <div className="image-product">
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
-              {curtainImage.map((text, idx) => (
+              {filteredProducts.map((text, idx) => (
                 <div
                   className="flex p-3 flex-col gap-3 hover-divnine sm:border-none border-b border-r"
                   key={idx}
+                  onClick={()=>handlenav(text._id)}
                 >
                   <div className="flex justify-between text-black checkbox-div">
                     <input type="checkbox" />
                     <label htmlFor="">Compare</label>
                   </div>
-                  <img src={text.image} alt="" />
-                  <p className="text-sm font-semibold">{text.title}</p>
-                  <p className="text-sm">{text.detail}</p>
+                  <img src={text.images[0]} alt="" />
+                  <p className="text-sm font-semibold">{text.productTitle}</p>
+                  <p className="text-sm">{text.productDescription}</p>
                   <p className="text-sm price-box font-semibold  w-28 h-10 bg-yellow-400 flex items-center justify-center">
-                    Rs. <span className="text-3xl"> {text.price}</span>
+                    Rs. <span className="text-3xl"> {text.totalPrice}</span>
                   </p>
                   <p className="text-sm flex flex-row gap-1 items-center text-black">
                     {/* <FaStar /> <FaStar /> <FaStar /> <FaStar />{" "}

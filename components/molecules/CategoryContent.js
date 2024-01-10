@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const CategoryContent = (props) => {
   const {
@@ -21,7 +22,11 @@ const CategoryContent = (props) => {
 
   const categoryHeading = props.categoryHeading;
   const categoryData = props.categoryData;
-
+  const router = useRouter();
+  const handleClick = (cat)=>{
+    // console.log("cat is ",cat)
+    router.push("/products/"+cat+"/"+heading+"/"+props.parentCategory)
+  }
   return (
     <div>
        {/* className={`flex flex-col ${categoryGap} ${containerPadding} ${gapHeadingItems} ${containerBgColor}`}> */}
@@ -31,7 +36,9 @@ const CategoryContent = (props) => {
       <div className={`flex flex-col ${itemsGap}`}>
         {categoryData.map((dataItem) => {
           return (
-            <div className={`flex`}>
+            <div className={`flex`} onClick={
+              ()=>handleClick(dataItem)
+            }>
                 {/* {itemImage?<Image src={itemImage} width={20} height={20} alt="image" />:<p>{itemImage}</p>} */}
               <p className={`${textStyle} ${textSize} ${textColor}`}>{dataItem.text}</p>
             </div>
