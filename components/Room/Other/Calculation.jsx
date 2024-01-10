@@ -1,11 +1,12 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { useState, useEffect } from "react";
-// import { MdOutlineArrowForwardIos } from "react-icons/md";
-// import { IoIosArrowDown } from "react-icons/io";
-// import { CiCalculator1 } from "react-icons/ci";
 
-const Calculation = ({priceData}) => {
+
+
+const Calculation = ({ priceData }) => {
+
   const [widthstate, setwidthstate] = useState(0);
   const [heightstate, setheightstate] = useState(0);
   const [pricestate, setpricestate] = useState(0);
@@ -18,12 +19,21 @@ const Calculation = ({priceData}) => {
     setpricestate(calculatedPrice.toFixed(2));
     setrollstate(area.toFixed(2));
   };
-useEffect(() => {
-  setcoststate(priceData?.perUnitPrice)
-}, [priceData])
+  useEffect(() => {
+    setcoststate(priceData?.perUnitPrice);
+  }, [priceData]);
   useEffect(() => {
     priceCal();
-  }, [widthstate, heightstate, coststate]);
+    // dispatch(
+    //   updateCalculationData({
+    //     height: heightstate,
+    //     width: widthstate,
+    //     yourPrice: pricestate,
+    //     PINcode: "", // Set PINcode as per your implementation
+    //     city: "", // Set city as per your implementation
+    //   })
+    // );
+  }, [widthstate, heightstate, coststate, pricestate]);
 
   const [hidden, setHidden] = useState(false);
   const handleCal = () => {
@@ -34,7 +44,13 @@ useEffect(() => {
       <div className="calculation-container sm">
         <div className="text-lg flex items-center justify-center">
           <div>
-            <Image src="/rooms/calculator-icon.svg" width={20} height={20} alt="calculate" className="flex-start -ml-3 mr-3 mb-3" />
+            <Image
+              src="/rooms/calculator-icon.svg"
+              width={20}
+              height={20}
+              alt="calculate"
+              className="flex-start -ml-3 mr-3 mb-3"
+            />
           </div>
           <span className=" self-start">Calculate</span>
           {!hidden ? (
@@ -117,6 +133,6 @@ useEffect(() => {
       </div>
     </div>
   );
-};
+};  
 
 export default Calculation;

@@ -1,28 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
-// import bengta from "../../assets/product/bengta-block-out-curtain-1-length-light-grey__0977118_pe813406_s5.avif";
-// import lenda from "../../assets/product/lenda-curtains-with-tie-backs-1-pair-off-white__1136111_pe879297_s5.avif";
-// import lill from "../../assets/product/lill-net-curtains-1-pair-white__0887768_pe569661_s5.avif";
-
 import "./styles.css";
-// import { IoMdClose } from "react-icons/io";
-// import adtocart from "../../assets/icon/adtocart.svg";
-// import liketocart from "../../assets/icon/like.svg";
-// import arrow from "../../assets/icon/backarrow.svg";
-
-// import { FaStarHalfAlt } from "react-icons/fa";
-// import { FaStar } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
-// import choserightfloor from "../../assets/icon/choserightfloor.svg";
-const Tabs = ({filteredProducts}) => {
-
+const Tabs = ({ filteredProducts }) => {
   console.log("Filtered products:", filteredProducts);
   const router = useRouter();
-  const handlenav = (id)=>{
-    router.push(`/room/${id}`)
-  }
+  const handlenav = (id) => {
+    router.push(`/room/${id}`);
+  };
 
   const curtainImage = [
     {
@@ -346,24 +332,6 @@ const Tabs = ({filteredProducts}) => {
       value: "0",
     },
   ];
-
-  // const circled = [
-  //   {
-  //     top: 50,
-  //     left: 68,
-  //     productTitle: "Nike Dri-FIT One Women's Tank Top",
-  //     productCategory: "Athletic Tank Top",
-  //     price: 1900,
-  //   },
-  //   {
-  //     top: 79,
-  //     left: 82,
-  //     productTitle: "Nike Sportswear Essential Repel Women",
-  //     productCategory: "Athletic Jacket",
-  //     price: 3995.0,
-  //   },
-  // ];
-
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
   useEffect(() => {
@@ -529,13 +497,7 @@ const Tabs = ({filteredProducts}) => {
   );
 
   const renderType = (text, idx) => (
-    <div
-      className={`flex justify-between
-                    
-                    
-                    `}
-      key={idx}
-    >
+    <div className={`flex justify-between`} key={idx}>
       <label for="age1" className="">
         {text.name}
       </label>
@@ -629,7 +591,7 @@ const Tabs = ({filteredProducts}) => {
                   />
                 </button>
                 {openSort ? (
-                  <div className=" border opensort flex flex-col gap-7 py-5 bg-white rounded-2xl w-52 h-40 overflow-y-auto px-5 absolute">
+                  <div className=" border opensort flex flex-col gap-7 py-5 bg-white rounded-2xl w-52 h-40 overflow-y-auto px-5">
                     {srtarr.map(renderSortItem)}
                   </div>
                 ) : null}
@@ -677,7 +639,7 @@ const Tabs = ({filteredProducts}) => {
               </button>
 
               {openSize ? (
-                <div className="border flex flex-col gap-7 py-5 bg-white rounded-2xl w-64 h-80 overflow-y-auto px-5 absolute">
+                <div className="border flex flex-col gap-7 py-5 bg-white rounded-2xl w-64 h-80 overflow-y-auto px-5 ">
                   <hr />
                   <div
                     className="flex justify-between"
@@ -770,7 +732,7 @@ const Tabs = ({filteredProducts}) => {
               >
                 Color &nbsp;
                 <Image
-                  src="backarrow.svg"
+                  src="/backarrow.svg"
                   width={40}
                   height={40}
                   className={`w-6 h-6  mt-1 sm:block hidden
@@ -781,7 +743,10 @@ const Tabs = ({filteredProducts}) => {
                 />
               </button>
               {opencolor ? (
-                <div className="absolute flex flex-col bg-white items-center  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5">
+                <div
+                  className=" flex flex-col bg-white items-center  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5"
+                  style={{ zIndex: "1000"}}
+                >
                   <div className="grid grid-cols-3 gap-6">
                     {colorarr.map((text, idx) => (
                       <div
@@ -833,7 +798,7 @@ const Tabs = ({filteredProducts}) => {
               >
                 Category &nbsp;
                 <Image
-                  src="backarrow.svg"
+                  src="/backarrow.svg"
                   width={40}
                   height={40}
                   className={`w-6 h-6  mt-1 sm:block hidden
@@ -844,7 +809,7 @@ const Tabs = ({filteredProducts}) => {
                 />
               </button>
               {openCaategory ? (
-                <div className="absolute bg-white flex flex-col  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5">
+                <div className=" bg-white flex flex-col  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5">
                   {categoryarr.map(rendercategory)}
                 </div>
               ) : null}
@@ -877,7 +842,7 @@ const Tabs = ({filteredProducts}) => {
               >
                 Type &nbsp;
                 <Image
-                  src="backarrow.svg"
+                  src="/backarrow.svg"
                   width={40}
                   height={40}
                   className={`w-6 h-6  mt-1 sm:block hidden
@@ -888,7 +853,7 @@ const Tabs = ({filteredProducts}) => {
                 />
               </button>
               {openType ? (
-                <div className="bg-white absolute flex flex-col  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5">
+                <div className="bg-white  flex flex-col  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5">
                   {typearr.map(renderType)}
 
                   <button
@@ -947,7 +912,7 @@ const Tabs = ({filteredProducts}) => {
               </button>
               {openAll ? (
                 <div className="menu-overlay overflow-y-auto bg-white  border-2 fixed  sm:w-[30vw] w-[100vw] sm:h-auto h-[80vh]  right-0 sm:top-16 bottom-0 z-[5000] rounded-2xl">
-                  <div className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600 z-[5001]">
+                  <div className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600 z-10">
                     <div className="flex flex-col px-4 gap-6">
                       <div className="flex justify-between gap-32">
                         <p>Filter and sort</p>
@@ -1139,7 +1104,7 @@ const Tabs = ({filteredProducts}) => {
                 <div
                   className="flex p-3 flex-col gap-3 hover-divnine sm:border-none border-b border-r"
                   key={idx}
-                  onClick={()=>handlenav(text._id)}
+                  onClick={() => handlenav(text._id)}
                 >
                   <div className="flex justify-between text-black checkbox-div">
                     <input type="checkbox" />
@@ -1155,39 +1120,15 @@ const Tabs = ({filteredProducts}) => {
                     {/* <FaStar /> <FaStar /> <FaStar /> <FaStar />{" "}
 
                     <FaStarHalfAlt /> &nbsp;  */}
-
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
                     <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    
-                    <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    
-                    <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    
-                    <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    <Image
-                    src="/half-star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
+                      src="/half-star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
                     />
                     ({text.count})
                   </p>

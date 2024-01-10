@@ -1,8 +1,13 @@
-'use client'
+"use client";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useState, useEffect } from "react";
 import Calculation from "./Calculation";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateQuantity,
+  selectQuantity,
+} from "@/components/Features/Slices/calculationSlice";
 // import { TbTruckDelivery } from "react-icons/tb";
 // import { MdOutlineArrowForwardIos } from "react-icons/md";
 // import { FaStoreAlt } from "react-icons/fa";
@@ -13,7 +18,9 @@ import Calculation from "./Calculation";
 import "../styles.css";
 import Image from "next/image";
 // import zIndex from "@mui/material/styles/zIndex";
-const Card = ({data}) => {
+const Card = ({ data }) => {
+  const dispatch = useDispatch();
+  const quantity = useSelector(selectQuantity);
   const router = useRouter();
   const [imgColor, setImgColor] = useState("red");
   const [widthstate, setwidthstate] = useState(0);
@@ -41,8 +48,7 @@ const Card = ({data}) => {
     priceCal();
   }, [widthstate, heightstate, coststate]);
 
-  const colorSep = data?.colors?.[0]?.split(",")
-
+  const colorSep = data?.colors?.[0]?.split(",");
 
   return (
     <>
@@ -50,7 +56,6 @@ const Card = ({data}) => {
 
       <div className="flex justify-start gap-4 sm:w-[28vw]  w-[80vw] sm:ml-10 ml-0">
         <div className=" mt-5  prefence-text">
-
           <div className="share-btn flex gap-x-4 text-sm justify-end">
             <div className="share flex items-center">
               <Image
@@ -61,7 +66,9 @@ const Card = ({data}) => {
                 className="text-xs"
                 style={{ fontSize: "18px" }}
               />
-              <span className="ml-1 underline sm:text-sm text-sm   tracking-[.012rem]  sm:font-normal">Share</span>
+              <span className="ml-1 underline sm:text-sm text-sm   tracking-[.012rem]  sm:font-normal">
+                Share
+              </span>
             </div>
             <div className="save flex items-center">
               <Image
@@ -72,13 +79,16 @@ const Card = ({data}) => {
                 className="text-xs"
                 style={{ fontSize: "18px" }}
               />
-              <span className="ml-1 underline sm:text-sm text-sm   tracking-[.012rem]  sm:font-normal">Save</span>
+              <span className="ml-1 underline sm:text-sm text-sm   tracking-[.012rem]  sm:font-normal">
+                Save
+              </span>
             </div>
           </div>
 
-
           <div className="textHolders flex flex-col ml-0">
-            <h1 className="text-2xl mt-5 font-bold mb-2">{data?.productTitle}</h1>
+            <h1 className="text-2xl mt-5 font-bold mb-2">
+              {data?.productTitle}
+            </h1>
             <h3 className="mb-2 font-semibold">
               Collection:{data?.collectionName}
             </h3>
@@ -86,7 +96,23 @@ const Card = ({data}) => {
               Pattern Number: {data?.patternNumber}
             </h3>
             <div className="price">
-              <h2 className="font-bold mb-1">MRP: ₹{data?.perUnitPrice}/roll</h2>
+              <h2 className="font-bold mb-1">
+                MRP: ₹{data?.perUnitPrice}/roll
+              </h2>
+              {/* taking quantity as input */}
+              <div>
+                <label htmlFor="Quantity">Quantity: &nbsp;</label>
+                <input
+                  type="number"
+                  name="quantity"
+                  value={quantity}
+                  onChange={(e) => {
+                    const newValue = parseInt(e.target.value, 10);
+                    dispatch(updateQuantity(isNaN(newValue) ? 0 : newValue));
+                  }}
+                  className=" outline"
+                />
+              </div>
               <h5 className="">incl. Of taxes</h5>
               <h4>Also Includes Taxes</h4>
             </div>
@@ -96,11 +122,10 @@ const Card = ({data}) => {
           <div className="colorContainer flex flex-col items-start mt-4 sm:w-auto w-[80vw]">
             <h1 className="mb-2 font-bold">Other Colorways</h1>
             <div className="colors flex gap-3">
-              {
-                colorSep?.map((color, index) => (
-                  <div
-                    key={index}
-                    className={`
+              {colorSep?.map((color, index) => (
+                <div
+                  key={index}
+                  className={`
                     w-[50px]
                     h-[50px]
                     rounded-full
@@ -113,14 +138,13 @@ const Card = ({data}) => {
                     justify-center
                     items-center
                     `}
-                    style={
-                      {
-                        backgroundColor: color,
-                      }
-                    }
-                  >{color}</div>
-                ))
-              }
+                  style={{
+                    backgroundColor: color,
+                  }}
+                >
+                  {color}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -135,18 +159,35 @@ const Card = ({data}) => {
             <hr />
             <div className="flex items-center pt-3">
               <div>
-                <Image src="/rooms/truck-delivery-icon.svg" width={25} height={25} alt="delivery" />
+                <Image
+                  src="/rooms/truck-delivery-icon.svg"
+                  width={25}
+                  height={25}
+                  alt="delivery"
+                />
               </div>
               <div className="pl-3">Delivery</div>
             </div>
             <div className="pl-60 -ml-3 -mt-1">
               {!visible ? (
                 <div className="mt-1 sm:mr-6 cursor-pointer">
-                  <Image src="/rooms/arrow-circle-right-icon.svg" width={25} height={25} alt="arrow right" onClick={handleClick} />
+                  <Image
+                    src="/rooms/arrow-circle-right-icon.svg"
+                    width={25}
+                    height={25}
+                    alt="arrow right"
+                    onClick={handleClick}
+                  />
                 </div>
               ) : (
                 <div className="mt-1 mr-6 cursor-pointer">
-                  <Image src="/rooms/arrow-circle-down.svg" width={25} height={25} alt="arrow down" onClick={handleClick} />
+                  <Image
+                    src="/rooms/arrow-circle-down.svg"
+                    width={25}
+                    height={25}
+                    alt="arrow down"
+                    onClick={handleClick}
+                  />
                 </div>
               )}
             </div>
@@ -167,18 +208,35 @@ const Card = ({data}) => {
             <hr />
             <div className="flex pt-3">
               <div className="sm:pr-3">
-                <Image src="/rooms/store-icon.svg" width={25} height={25} alt="store" />
+                <Image
+                  src="/rooms/store-icon.svg"
+                  width={25}
+                  height={25}
+                  alt="store"
+                />
               </div>
               <div className="pl-3">In-store</div>
             </div>
             <div className="pl-60 -ml-3 -mt-1">
               {!hidden ? (
                 <div className="mt-1 mr-6 cursor-pointer">
-                  <Image src="/rooms/arrow-circle-right-icon.svg" width={25} height={25} alt="arrow right" onClick={handlefunc} />
+                  <Image
+                    src="/rooms/arrow-circle-right-icon.svg"
+                    width={25}
+                    height={25}
+                    alt="arrow right"
+                    onClick={handlefunc}
+                  />
                 </div>
               ) : (
                 <div className="mt-1 mr-6 cursor-pointer">
-                  <Image src="/rooms/arrow-circle-down.svg" width={25} height={25} alt="arrow down" onClick={handlefunc} />
+                  <Image
+                    src="/rooms/arrow-circle-down.svg"
+                    width={25}
+                    height={25}
+                    alt="arrow down"
+                    onClick={handlefunc}
+                  />
                 </div>
               )}{" "}
             </div>
@@ -199,7 +257,10 @@ const Card = ({data}) => {
           {/* //buttons */}
           <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center  ">
             <div className="guestCheckout ">
-              <button onClick={()=>router.push("/checkout")} className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button
+                onClick={() => router.push("/checkout")}
+                className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
+              >
                 Add To Bag
               </button>
             </div>

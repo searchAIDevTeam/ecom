@@ -1,23 +1,33 @@
-'use client'
+"use client";
 import Card from "@/components/Room/Other/Card";
 import Reviews from "@/components/Room/Other/Reviews";
 import RoomImageList from "@/components/Room/RoomImageList";
 import RoomInfo from "@/components/Room/RoomInfo";
 import React, { useEffect, useState } from "react";
 import ImageCaresoul from "@/components/Room/imagecaresoul";
+import { useDispatch } from "react-redux";
+
+import { setRoomData } from "@/components/Features/Slices/roomSlice";
 import axios from "axios";
-const RoomPage = ({params}) => {
-  let url = "http://43.204.166.53:8080/api/getSingleProduct?id="
+const RoomPage = ({ params }) => {
+  const dispatch = useDispatch();
+  let url = "http://43.204.166.53:8080/api/getSingleProduct?id=";
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);
   const [data, setData] = useState([]);
   useEffect(() => {
-   const getRoomData = async () => {
-    const response = await axios.get(`${url}${params.id}`);
-    setData(response.data);
-    console.log("room response ",response.data)
-    }
+    const getRoomData = async () => {
+      try {
+        const response = await axios.get(`${url}${params.id}`);
+        setData(response.data);
+        dispatch(setRoomData({ roomData: response.data, status: "succeeded" }));
+        console.log("room response ", response.data);
+      } catch (error) {
+        console.error("Error fetching room data:", error);
+        dispatch(setRoomData({ roomData: [], status: "failed" }));
+      }
+    };
     getRoomData();
-  }, [])
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -57,7 +67,15 @@ const RoomPage = ({params}) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
- 
+
+  //sending data into slice
+  // useEffect(() => {
+  //   dispatch(setRoomData(params.id));
+  // }, [dispatch, params.id]);
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_ROOM_REQUEST', payload: params.id });
+  }, [dispatch, params.id]);
 
   return (
     <>
@@ -79,11 +97,11 @@ const RoomPage = ({params}) => {
               </div>
             </div>
           </div>
-         
-            <Reviews />
-{/*           
+
+          <Reviews />
+          {/*           
             <Mobileswiper/> */}
-           
+
           {/* <Footer /> */}
         </div>
       </div>
