@@ -20,12 +20,16 @@ const CategoryContent = (props) => {
     containerBgColor,
   } = props;
 
-  const categoryHeading = props.categoryHeading;
+  const heading = props.categoryHeading;
+  const categoryHeading = props.categoryHeading;  
+
   const categoryData = props.categoryData;
+  console.log(categoryData)
   const router = useRouter();
   const handleClick = (cat)=>{
-    // console.log("cat is ",cat)
-    router.push("/products/"+cat+"/"+heading+"/"+props.parentCategory)
+    // console.log(ca)
+    console.log("cat is ",cat)
+    router.push("/products/"+cat.text+"/"+heading+"/"+props.parentCategory)
   }
   return (
     <div>
