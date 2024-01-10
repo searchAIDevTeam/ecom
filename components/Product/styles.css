@@ -24,18 +24,17 @@
 .Tabbtn {
   outline: none;
   width: 150px;
-  /* Add any common styles for the button here */
 }
 
-.active-tabs.Tabbtn {
+/* .active-tabs.Tabbtn {
   width: 150px;
-  /* Add styles for the active state (when the dropdown is open) */
-}
+ 
+} */
 
-.tabS.Tabbtn {
+/* .tabS.Tabbtn {
   width: 150px;
-  /* Add styles for the inactive state (when the dropdown is closed) */
-}
+
+} */
 
 input[type="checkbox"] {
   width: 20px;
