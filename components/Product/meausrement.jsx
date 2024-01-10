@@ -6,7 +6,7 @@ const meausrement = () => {
     {
       top: 50,
       left: 68,
-      productTitle: "Bedroom 1bhk Room",
+      productTitle: "Bedroomhk...",
       productCategory: "Mountain view",
       price: 1900,
     },
@@ -25,16 +25,16 @@ const meausrement = () => {
           height={300}
           style={{ objectFit: "cover" }}
         />
-        <div className="text-md text-black absolute top-16 left-10  bg-gray-500 rounded-full w-5 h-5">
-          <div className="bg-white h-3 w-3 absolute rounded-full ml-1 mt-1">
+        <div className="text-md text-black carcular-conui  absolute top-16 left-10 rounded-full w-[30px] h-[30px]">
+          <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui">
             <div
-              className={`flex-row z-10 mt-4 w-36 h-32 flex items-center pb-2 bg-white cursor-pointer`}
+              className={`flex-row z-10 mt-6 box-container-product w-fit h-auto flex items-center  bg-white cursor-pointer`}
               onClick={handleTab}
             >
               <div className="flex flex-row relative">
                 {circled.map((data) => (
                   <div
-                    className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
+                    className="flex flex-col  basis-3/4 w-max flex-grow relative p-2.5"
                     key={data.productId}
                   >
                     <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2>
@@ -58,36 +58,36 @@ const meausrement = () => {
           </div>
         </div>
 
-        <div className="text-md text-black absolute top-8 left-[26rem]  bg-gray-500 rounded-full w-5 h-5">
-        <div className="bg-white h-3 w-3 absolute rounded-full ml-1 mt-1">
-          <div
-            className={`flex-row z-10 mt-4 w-36 h-32 flex items-center pb-2 bg-white cursor-pointer`}
-            onClick={handleTab}
-          >
-            <div className="flex flex-row relative">
-              {circled.map((data) => (
-                <div
-                  className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
-                  key={data.productId}
-                >
-                  <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2>
-                  <p className="font-normal pb-2">{data.productCategory}</p>
-                  <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                    ₹{data.price}
-                  </p>
+        <div className="text-md text-black carcular-conui absolute top-8 left-[26rem] rounded-full w-[30px] h-[30px]">
+          <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui">
+            <div
+              className={`flex-row z-10 mt-6 box-container-product w-fit h-auto flex items-center  bg-white cursor-pointer`}
+              onClick={handleTab}
+            >
+              <div className="flex flex-row relative">
+                {circled.map((data) => (
+                  <div
+                    className="flex flex-col basis-3/4 w-max flex-grow relative p-2.5"
+                    key={data.productId}
+                  >
+                    <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2>
+                    <p className="font-normal pb-2">{data.productCategory}</p>
+                    <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                      ₹{data.price}
+                    </p>
+                  </div>
+                ))}
+                <div className="absolute right-0 top-0 border-l border-black flex justify-end items-center h-full pr-1">
+                  <Image
+                    className="flex ml-2 mr-2"
+                    src="/backarrowRevarce.svg"
+                    height={20}
+                    width={20}
+                    alt="arrow"
+                  />
                 </div>
-              ))}
-              <div className="absolute right-0 top-0 border-l border-black flex justify-end items-center h-full pr-1">
-                <Image
-                  className="flex ml-2 mr-2"
-                  src="/backarrowRevarce.svg"
-                  height={20}
-                  width={20}
-                  alt="arrow"
-                />
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import "./styles.css";
 export default function RoomImageList({ images }) {
   return (
     <>
-      <div className="room-heading sm:flex hidden sm:flex-row flex-col gap-5 justify-between align-middle mt-[1.5rem] mb-12 sm:w-auto w-[100%]">
+      <div className="room-heading carcular-conui sm:flex hidden sm:flex-row flex-col gap-5 justify-between align-middle mt-[1.5rem] mb-12 sm:w-auto w-[100%]">
         <div className="sm:text-sm text-sm tracking-[.012rem] sm:font-normal flex">
           <div className="hover:underline">Beautiful 4 BHK villa</div>
           <div>&gt;</div> <div className="hover:underline">Mountain view</div>

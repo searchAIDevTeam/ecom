@@ -166,9 +166,9 @@
 }
 
 .cart-notification {
-  position: static;
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  min-width: 20px;
+  min-height: 20px;
   background-color: #000;
   text-align: center;
   border-radius: 50%;
@@ -176,9 +176,10 @@
   line-height: 15px;
   font-size: 10px;
   font-weight: 700;
-  border: 1.5px solid #fff;
-  margin-top: -30px;
-  margin-left: 20px;
+  border: 2px solid #fff;
+  margin-top: -28px;
+  margin-left: 17px;
+  z-index: 90000;
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.MuiMenu-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {

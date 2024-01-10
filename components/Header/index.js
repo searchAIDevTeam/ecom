@@ -163,14 +163,14 @@ function Header({ howMuchScrolled }) {
                 width={30} height={30}
               />
             </div>
-            <div className="sm:block hidden w-10 h-10 p-[5px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+            <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
               <Image src="/like.svg" alt="" className="header-div-icon" width={25} height={25} />
             </div>
             <div
               className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
               onClick={() => handleLinkClick("/cart")}
             >
-              <Image src="/adtocart.svg" alt="" className="header-div-icon" width={30} height={30} />
+              <Image src="/adtocart.svg" alt="" className="header-div-icon" width={25} height={25} />
               <div className="cart-notification">3</div>
             </div>
             {loginStatus === "true" ? (
@@ -178,15 +178,15 @@ function Header({ howMuchScrolled }) {
                 className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap "
                 onClick={handleProfileNav}
               >
-                <Image src="/profile.svg" alt="" className="header-div-icon" width={25} height={25} />
+                <Image src="/profile.svg" alt="" className="header-div-icon" width={27} height={27} />
               </div>
             ) : (
               <Image
                 src="/profile.svg"
                 onClick={handleLoginNav}
                 alt=""
-                width={25}
-                height={25}
+                width={27}
+                height={27}
                 className="header-div-icon"
               />
             )}
