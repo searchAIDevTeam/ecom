@@ -18,12 +18,12 @@ export default function NewMainSlider() {
   };
  
   const content=[
-    '/room1.jpg',    
-    '/room2.jpg',
-    '/room3.jpg',
-    '/room1.jpg',    
-    '/room2.jpg',
-    '/room3.jpg',
+    '/map1.avif',    
+    '/map2.avif',
+    '/map3.avif',
+    '/map1.avif',    
+    '/map2.avif',
+    '/map3.avif',
   ]
   return (
     <div>
@@ -67,7 +67,7 @@ export default function NewMainSlider() {
           },
           1024: {
             slidesPerView: 2,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
         }}
       >
