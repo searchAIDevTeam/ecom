@@ -86,8 +86,8 @@ export default function NewMainSlider() {
       <div className="absolute bottom-4 left-4 flex text-lg text-white">Your text</div>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
         <div className="text-md text-black absolute top-32 left-40 bg-gray-500 rounded-full w-5 h-5">
-          <div className="bg-white h-3 w-3 absolute rounded-full ml-1 mt-1 main">
-            <div className="hidden opacity-0 main-hover:opacity-100"></div>
+          <div className="bg-white h-3 w-3 absolute rounded-full ml-1 mt-1 container">
+            <div className="hidden opacity-0 container-hover:opacity-100"></div>
             <div
               className={`flex-row z-10 mt-4 w-40 h-44 flex items-center pb-2 bg-white cursor-pointer`}
               onClick={handleTab}
