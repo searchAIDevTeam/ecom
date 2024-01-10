@@ -11,6 +11,7 @@ import SwiperCore from "swiper/core";
 SwiperCore.use([Autoplay, Navigation]);
 
 export default function Demo() {
+
   return (
     <div className="mt-4">
       <Swiper
