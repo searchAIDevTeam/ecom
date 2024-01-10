@@ -22,11 +22,13 @@ import DoubleComp from "./DoubleComp";
 
 import { useMemo } from "react";
 import Trending from "./Trending";
-import Flooring from "./Flooring";
+// import Flooring from "./Dataslider";
 import Blinds from "./Blinds";
 import Curtains from "./Curtains";
 import Sports from "./Sports";
 import axios from "axios";
+import Dataslider from "./Dataslider";
+import NewMainSlider from "../MainSlider/NewMainSlider";
 
 function Cards() {
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -43,9 +45,11 @@ function Cards() {
   const [trendingData, setTrendingData] = useState([]);
   const [recommended, setRecommended] = useState([]);
   const [deviceId, setDeviceId] = useState(null);
-  const id = localStorage.getItem("deviceId");
-useEffect(() => {
-  setDeviceId(id);
+if (typeof window !== "undefined") {
+  var id = localStorage.getItem("deviceId");
+}
+  useEffect(() => {
+  // setDeviceId(id);
   const getRecommendedData = async () => {
     const response = await axios.get(`http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`);
     console.log("recommended data is ",response.data) 
@@ -63,7 +67,7 @@ const Partdata = (cat)=>{
   console.log("unique categories are ",uniqueCategories)
 
   //memo hook
-  const MemoizedMainSlider = useMemo(() => <MainSlider />, []);
+  const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
   const MemoizedProfileContent = useMemo(() => <Profile />, []);
   const MemoizedTrendingProducts = useMemo(() => <Trending />, []);
   return (
@@ -79,27 +83,11 @@ const Partdata = (cat)=>{
       </div>
       {/* 1st */}
       <Image />
-    {
-      uniqueCategories?.map((item) => {
-        if (item === "Flooring") {
-          return <Flooring data={
-            Partdata(item)
-          } />;
-        } else if (item === "Blinds") {
-          return <Blinds data={
-            Partdata(item)
-          } />;
-        } else if (item === "Curtains") {
-          return <Curtains data={
-            Partdata(item)
-          } />;
-        } else if (item === "Sports") {
-          return <Sports data={
-            Partdata(item)
-          } />;
-        }
-      })
-    }
+      {
+  uniqueCategories?.map((item, index) => {
+    return <Dataslider key={index} category={item} data={Partdata(item)} />;
+  })
+}
 
       <Multicard />
       {/* removed for overlape sm:h-[80vh] */}

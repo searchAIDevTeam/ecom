@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const CategoryContent = (props) => {
   const {
@@ -12,7 +13,7 @@ const CategoryContent = (props) => {
     headingColor,
     gapHeadingItems,
     itemsGap,
-    itemImage,
+    // itemImage,
     textStyle,
     textSize,
     textColor,
@@ -20,23 +21,34 @@ const CategoryContent = (props) => {
   } = props;
 
   const heading = props.categoryHeading;
-  const data = props.categoryData;
+  const categoryHeading = props.categoryHeading;  
 
+  const categoryData = props.categoryData;
+  console.log(categoryData)
+  const router = useRouter();
+  const handleClick = (cat)=>{
+    // console.log(ca)
+    console.log("cat is ",cat)
+    router.push("/products/"+cat.text+"/"+heading+"/"+props.parentCategory)
+  }
   return (
-    <div
-      className={`flex flex-col ${categoryGap} ${containerPadding} ${gapHeadingItems} ${containerBgColor}`}>
+    <div>
+       {/* className={`flex flex-col ${categoryGap} ${containerPadding} ${gapHeadingItems} ${containerBgColor}`}> */}
       <div className={`${headingStyle} ${headingSize} ${headingColor}`}>
-        <h2>{heading}</h2>
+        <h2>{categoryHeading}</h2>
       </div>
       <div className={`flex flex-col ${itemsGap}`}>
-        {data.map((dataItem) => {
+        {categoryData.map((dataItem) => {
           return (
-            <div className={`flex`}>
-                {itemImage?<Image src={itemImage} width={20} height={20} alt="image" />:<p>{itemImage}</p>}
-              <p className={`${textStyle} ${textSize} ${textColor}`}>{dataItem}</p>
+            <div className={`flex`} onClick={
+              ()=>handleClick(dataItem)
+            }>
+                {/* {itemImage?<Image src={itemImage} width={20} height={20} alt="image" />:<p>{itemImage}</p>} */}
+              <p className={`${textStyle} ${textSize} ${textColor}`}>{dataItem.text}</p>
             </div>
           );
         })}
+        <p className="gray-text cursor-pointer">8 More</p>
       </div>
     </div>
   );

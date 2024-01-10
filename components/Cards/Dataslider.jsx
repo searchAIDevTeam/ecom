@@ -2,8 +2,7 @@ import Card from "./card";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./styles.css";
-// import back from '../../assets/back.png'
-// import right from '../../assets/right.png';
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -17,10 +16,8 @@ import {
   Mousewheel,
   FreeMode,
 } from "swiper/modules";
-// import "react-loading-skeleton/dist/skeleton.css";
-import { useSelector } from "react-redux";
-import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
-const Flooring = ({data}) => {
+
+const Dataslider = ({ category, data }) => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const swiperOptions = {
@@ -36,17 +33,15 @@ const Flooring = ({data}) => {
     allowSlidePrev: true,
     allowSlideNext: true,
   };
-  const [flooringProducts, setFlooringProducts] = useState(data);
-  console.log(flooringProducts);
+  const [productData, setproductData] = useState(data);
+  console.log("category ", category);
   const swiper2Ref = useRef(null);
-  
+
   return (
     <div>
       <div className="  my-10  bg-white sm:px-[50px] px-[20px]">
         <div className="w-full flex justify-between items-center">
-          <h2 className="text-bold text-2xl font-serif">
-            {data && flooringProducts ? "Flooring" : "Beach and Resort"}
-          </h2>
+          <h2 className="text-bold text-2xl font-serif">{category}</h2>
           <div className="Slidenav flex  text-2xl cursor-pointer  text-white rounded-full gap-2">
             <div
               onClick={() => swiper2Ref.current.swiper.slidePrev()}
@@ -87,24 +82,24 @@ const Flooring = ({data}) => {
               <div className="flex">""</div>
             </SwiperSlide>
           ) : (
-            flooringProducts.map((product, idx) => {
+            productData.map((product, idx) => {
               return (
                 <SwiperSlide key={idx} className="">
-                <div className="grid grid-cols-1 mt-2 h-full fade-in">
-                  <Card
-                    title={product.productTitle}
-                    // date={product.date}
-                    price={product.perUnitPrice}
-                    desc={product.subcategory}
-                    imgSrc={product.images}
-                    rating={product.ratings}
-                    key={idx}
-                    id={product._id}
-                    setPopupVisible={setPopupVisible}
-                    cssClass={'card1flex'}
-                  />
-                </div>
-              </SwiperSlide>
+                  <div className="grid grid-cols-1 mt-2 h-full fade-in">
+                    <Card
+                      title={product.productTitle}
+                      // date={product.date}
+                      price={product.perUnitPrice}
+                      desc={product.subcategory}
+                      imgSrc={product.images}
+                      rating={product.ratings}
+                      key={idx}
+                      id={product._id}
+                      setPopupVisible={setPopupVisible}
+                      cssClass={"card1flex"}
+                    />
+                  </div>
+                </SwiperSlide>
               );
             })
           )}
@@ -114,4 +109,4 @@ const Flooring = ({data}) => {
   );
 };
 
-export default Flooring;
+export default Dataslider;
