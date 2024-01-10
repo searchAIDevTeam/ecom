@@ -40,7 +40,7 @@ export default function NewMainSlider() {
         }}
         // Enabled autoplay mode
         autoplay={{
-          delay: 30000,
+          delay: 10000,
           disableOnInteraction: false,
         }}
         // If we need pagination
