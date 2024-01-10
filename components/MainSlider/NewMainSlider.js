@@ -16,22 +16,14 @@ export default function NewMainSlider() {
   const handleTab = () => {
     router.push("/room");
   };
-  const circled = [
-    {
-      top: 50,
-      left: 68,
-      productTitle: "Bedroom 1bhk Room",
-      productCategory: "Mountain view",
-      price: 1900,
-    },
-  ];
+ 
   const content=[
-    '/map1.avif',    
-    '/map2.avif',
-    '/map3.avif',
-    '/map1.avif',    
-    '/map2.avif',
-    '/map3.avif',
+    '/room1.jpg',    
+    '/room2.jpg',
+    '/room3.jpg',
+    '/room1.jpg',    
+    '/room2.jpg',
+    '/room3.jpg',
   ]
   return (
     <div>
@@ -48,7 +40,7 @@ export default function NewMainSlider() {
         }}
         // Enabled autoplay mode
         autoplay={{
-          delay: 10000,
+          delay: 30000,
           disableOnInteraction: false,
         }}
         // If we need pagination
@@ -75,7 +67,7 @@ export default function NewMainSlider() {
           },
           1024: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 10,
           },
         }}
       >

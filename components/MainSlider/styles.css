@@ -16,7 +16,7 @@
 *::after {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   list-style: none;
   list-style-type: none;
   text-decoration: none;
@@ -27,9 +27,9 @@
 
 html {
   font-size: 100%;
-  box-sizing: inherit;
+  /* box-sizing: inherit; */
   scroll-behavior: smooth;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
 }
 
 body {
@@ -59,7 +59,10 @@ button {
 .swiper-slider{
   margin-top: 7rem;
 }
-img {
+.swiper-slide {
+ height: 26rem;
+}
+/* img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -68,7 +71,7 @@ img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-}
+} */
 
 .section {
   margin: 0 auto;
