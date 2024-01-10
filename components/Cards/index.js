@@ -28,6 +28,7 @@ import Curtains from "./Curtains";
 import Sports from "./Sports";
 import axios from "axios";
 import Dataslider from "./Dataslider";
+import NewMainSlider from "../MainSlider/NewMainSlider";
 
 function Cards() {
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -66,7 +67,7 @@ const Partdata = (cat)=>{
   console.log("unique categories are ",uniqueCategories)
 
   //memo hook
-  const MemoizedMainSlider = useMemo(() => <MainSlider />, []);
+  const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
   const MemoizedProfileContent = useMemo(() => <Profile />, []);
   const MemoizedTrendingProducts = useMemo(() => <Trending />, []);
   return (
