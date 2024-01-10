@@ -91,15 +91,19 @@ const meausrement = () => {
           </div>
         </div>
       </div>
-      <div className="sm:w-1/3  sm:h-auto sm:flex-grow bg-slate-300 sm:text-[30px] text-[20px] font-bold px-10 sm:py-10 py-5">
-        <div className="flex flex-col sm:gap-72 gap-20 justify-between">
+      <div className="sm:w-1/3  sm:h-auto sm:flex-grow bg-zinc-100  px-10 sm:py-10 py-5">
+        <div className="flex flex-col ">
+
+          <div>Where we found happyness</div>
           <div>
-            <p> Tips for choosing the right curtain length</p>
+
+            <p>"When you design your house, you tend to do everything that is right for you. Ayatrio has actually turned our dream into reality"</p>
           </div>
 
-          <div>
-            <Image src="/arrow.svg" width={50} height={50} alt="arrow" className=" rotate-180" />
+          <div className="flex flex-row feedcon">
 
+            <Image src="/sunita chayan.JPG" width={45} height={45} alt="arrow" className="usercon rounded-full" />
+            <p>Sunitha Roy</p>
           </div>
         </div>
       </div>

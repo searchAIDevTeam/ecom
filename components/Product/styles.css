@@ -28,6 +28,16 @@
   color: #000;
 }
 
+.usercon {
+  border: 1.5px solid #111;
+  padding: 2px;
+}
+
+.feedcon {
+  align-items: center;
+  gap: 10px;
+}
+
 .bloc-tabs2 {
   position: sticky;
   top: 0;
