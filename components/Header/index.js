@@ -145,7 +145,7 @@ function Header({ howMuchScrolled }) {
                 onClick={() => handleLinkClick("/")}
                 src="/images/ayatriologo.png"
                 alt="logo"
-                width={100}
+                width={300}
                 height={40}
                 className="sm:w-48 w-52 m-2 sm:ml-[170px]"
               />
