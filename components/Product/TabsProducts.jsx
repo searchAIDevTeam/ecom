@@ -1155,39 +1155,15 @@ const Tabs = ({filteredProducts}) => {
                     {/* <FaStar /> <FaStar /> <FaStar /> <FaStar />{" "}
 
                     <FaStarHalfAlt /> &nbsp;  */}
-
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/star.svg" alt="star" width={15} height={15} />
                     <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    
-                    <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    
-                    <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    
-                    <Image
-                    src="/star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
-                    />
-                    <Image
-                    src="/half-star.svg"
-                    alt="star"
-                    width={15}
-                    height={15}
+                      src="/half-star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
                     />
                     ({text.count})
                   </p>

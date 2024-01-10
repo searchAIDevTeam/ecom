@@ -5,6 +5,7 @@ import { watchFetchSliderView } from './sliderSaga';
 import { watchSearchProducts } from './searchSaga';
 import { watchFetchFirstCard } from './FirstCardSaga';
 import { watchFetchProfileData } from './profileSaga';
+import { watchFetchRoomData } from './roomSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     watchFetchSliderView(),
     watchSearchProducts(),
     watchFetchFirstCard(),
-    watchFetchProfileData()
+    watchFetchProfileData(),
+    watchFetchRoomData()
   ]);
 }

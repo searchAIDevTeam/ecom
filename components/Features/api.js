@@ -56,3 +56,13 @@ export const fetchProfileContent = async () => {
     throw error;
   }
 }
+
+export const fetchCartData=async()=>{
+  try {
+    const response=await axios.get(createApiEndpoint("cart"));
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching cart content: ${error.message} `);
+    throw error;
+  }
+}
