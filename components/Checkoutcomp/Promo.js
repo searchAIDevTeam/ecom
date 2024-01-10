@@ -1,7 +1,11 @@
-'use client'
+"use client";
 import React from "react";
 import OrderSum from "./OrderSum";
-
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { selectRoomData, selectRoomStatus } from "../Features/Slices/roomSlice";
+import { selectFormData } from "../Features/Slices/formSlice";
+import { selectQuantity } from "../Features/Slices/calculationSlice";
 const Promo = () => {
   const [form, setForm] = React.useState({
     promo: "",
@@ -11,14 +15,34 @@ const Promo = () => {
     cvv: "",
   });
   const handlefunc = (event) => {
-    event.preventDefault();
-    setForm((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value,
-      };
-    });
+    if (event && event.preventDefault) {
+      event.preventDefault();
+      setForm((prev) => {
+        return {
+          ...prev,
+          [event.target.name]: event.target.value,
+        };
+      });
+    }
   };
+  const quantity = useSelector(selectQuantity);
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/success");
+  };
+  const handleEdit = () => {
+    router.push("/checkout");
+  };
+  const handleEditshipping = () => {
+    router.push("/shipping");
+  };
+
+  const roomData = useSelector(selectRoomData);
+  // console.log("roomData in cart page", roomData);
+  const roomStatus = useSelector(selectRoomStatus);
+  // console.log("roomstatus", roomStatus);
+  const formadata = useSelector(selectFormData);
+
   return (
     <div>
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-0 gap-8">
@@ -31,6 +55,7 @@ const Promo = () => {
               onChange={handlefunc}
               name="promo"
               value={form.promo}
+              required
               className="form-input mb-6 mt-4 flex items-center deliver border border-gray-400 rounded-md h-12 w-80 border-solid p-1"
             />
           </div>
@@ -69,16 +94,19 @@ const Promo = () => {
               onChange={handlefunc}
               name="cname"
               value={form.cname}
+              required
               className="form-input mb-6 mt-4 flex items-center deliver border border-gray-400 rounded-md h-12 w-80 border-solid p-1"
             />
           </div>
           <div className="mb-4">
             <input
               type="number"
+              pattern="0-9*"
               placeholder="Card number"
               onChange={handlefunc}
               name="cno"
               value={form.cno}
+              required
               className="form-input mb-6 mt-2 flex items-center deliver border border-gray-400 rounded-md h-12 w-80 border-solid p-1"
             />
           </div>
@@ -90,6 +118,7 @@ const Promo = () => {
                 onChange={handlefunc}
                 name="mmyy"
                 value={form.mmyy}
+                required
                 className="form-input mb-10 mt-2 flex items-center deliver border border-gray-400 rounded-md h-12 w-40 border-solid p-1"
               />
             </div>
@@ -98,22 +127,84 @@ const Promo = () => {
                 type="number"
                 placeholder="CVV"
                 onChange={handlefunc}
+                pattern="0-9*"
                 name="cvv"
                 value={form.cvv}
+                maxLength="3"
+                minLength="3"
+                required
                 className="form-input border-gray-600 mb-6 mt-2 flex items-center deliver border rounded-md h-12 w-40 border-solid p-1"
               />
             </div>
           </div>
           <h6 className="text-xs">
-            By clicking place order, you agree to the eShopWorld
+            <input type="checkbox" required />
+            &nbsp; By clicking place order, you agree to the eShopWorld
             <a href="#">Terms & Conditions</a>
           </h6>
           <button
-            onClick={handlefunc}
-            className="mt-4 bg-gray-100 text-gray-500 py-2 px-4 rounded-full w-80"
+            onClick={() => {
+              handlefunc();
+              handleClick();
+            }}
+            className="mt-4 bg-gray-700 text-white py-2 px-4 rounded-full w-80"
           >
             Place Order
           </button>
+          {/* details */}
+          <div>
+            <div className="flex flex-row justify-between items-center">
+              <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
+                Delivery
+              </p>
+              <button
+                onClick={handleEdit}
+                className=" outline outline-slate-300 border-black h-10 w-20 rounded-full"
+              >
+                Edit
+              </button>
+            </div>
+            {roomStatus === "succeeded" && (
+              <div className="text-gray-400 mb-6">
+                <p>
+                  {formadata.first} {formadata.last}
+                </p>
+                <p>{formadata.add1} </p>
+                <p>{formadata.email} </p>
+                <p>{formadata.number} </p>
+                <p>{formadata.pan} </p>
+              </div>
+            )}
+
+            <hr />
+            <div className="flex flex-row justify-between items-center">
+              <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
+                Shipping
+              </p>
+              <button
+                onClick={handleEditshipping}
+                className=" outline outline-slate-300 border-black h-10 w-20 rounded-full"
+              >
+                Edit
+              </button>
+            </div>
+            {roomStatus === "succeeded" && (
+              <div className="mb-6">
+                <p>$ {roomData.totalPrice * quantity} Shipping</p>
+                <br />
+                <br />
+                <p>Shipment {quantity}</p>
+                <p>Arrives Thu, 14 Dec - Wed, 3 Jan</p>
+              </div>
+            )}
+            <hr />
+
+            <p className="mt-4 mb-8 text-xl font-semibold text-black">
+              Payment
+            </p>
+          </div>
+
+          {/* details */}
         </div>
         <div className="col-span-1 order-1 sm:order-2">
           <OrderSum />

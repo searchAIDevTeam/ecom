@@ -1,7 +1,15 @@
+"use client";
 import React from "react";
 import OrderSum from "./OrderSum";
-
+import { useRouter } from "next/navigation";
 const Learn = () => {
+  const router = useRouter();
+  const handlelogin = () => {
+    router.push("/login");
+  };
+  const handleProfile = () => {
+    router.push("/profile");
+  };
   return (
     <div>
       <div className="grid sm:grid-cols-2 grid-cols-1 items-center gap-4">
@@ -45,16 +53,22 @@ const Learn = () => {
           <br />
           <br />
 
-          <div className="flex items-center deliver border border-grey-300 w-40 h-10 rounded-full border-solid border-2 p-1">
-            <a className="pl-2" href="#">
+          <div className=" flex flex-col">
+            <div
+              onClick={handleProfile}
+              style={{ width: "fit-content" }}
+              className=" cursor-pointer flex items-center justify-center  border border-grey-300 rounded-full border-solid  px-8 py-3"
+            >
               Become a member
-            </a>
-          </div>
+            </div>
 
-          <div className="mt-2 flex items-center deliver border border-grey-300 w-20 h-10 rounded-full border-solid border-2 p-1">
-            <a className="pl-2" href="#">
+            <div
+              onClick={handlelogin}
+              style={{ width: "fit-content" }}
+              className=" cursor-pointer mt-2  flex justify-center items-center  border border-grey-300  rounded-full border-solid px-8 py-3"
+            >
               Login
-            </a>
+            </div>
           </div>
         </div>
         <div className="col-span-1 sm:mx-20 mx-2">
