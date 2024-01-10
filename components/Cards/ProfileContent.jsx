@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Navigation } from "swiper/modules";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 // import { CiDeliveryTruck } from "react-icons/ci";
 // import { IoIosAddCircle, IoMdContacts } from "react-icons/io";
@@ -69,9 +68,11 @@ const ProfileContent = () => {
               <div className="flex justify-center mr-6">
                 <div className="text-2xl font-bold ">{person.name}</div>
                 <a href="#">
-                  <img
-                    className="sm:h-10 h-6 sm:w-10 w-6 "
-                    src={person.image}
+                  <Image
+                    className="sm:h-10 sm:w-10 -mt-1"
+                    src='/linkedln.svg'
+                    height={6}
+                    width={6}
                     alt={`LinkedIn for ${person.name}`}
                   />
                 </a>
