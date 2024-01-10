@@ -13,37 +13,40 @@ const CategoryContent = (props) => {
     headingColor,
     gapHeadingItems,
     itemsGap,
-    // itemImage,
     textStyle,
     textSize,
     textColor,
     containerBgColor,
   } = props;
 
-  const categoryHeading = props.categoryHeading;
+  const heading = props.categoryHeading;
+
   const categoryData = props.categoryData;
+  console.log(categoryData)
   const router = useRouter();
   const handleClick = (cat)=>{
-    // console.log("cat is ",cat)
-    router.push("/products/"+cat+"/"+heading+"/"+props.parentCategory)
+    // console.log(ca)
+    console.log("cat is ",cat)
+    router.push("/products/"+cat.text+"/"+heading+"/"+props.parentCategory)
   }
   return (
-    <div>
-       {/* className={`flex flex-col ${categoryGap} ${containerPadding} ${gapHeadingItems} ${containerBgColor}`}> */}
+    <div
+       className={`flex flex-col ${categoryGap} ${containerPadding} ${gapHeadingItems} ${containerBgColor}`}>
       <div className={`${headingStyle} ${headingSize} ${headingColor}`}>
-        <h2>{categoryHeading}</h2>
+        <h2>{heading}</h2>
       </div>
       <div className={`flex flex-col ${itemsGap}`}>
         {categoryData.map((dataItem) => {
           return (
-            <div className={`flex`} onClick={
+            <div className={`flex gap-1`} onClick={
               ()=>handleClick(dataItem)
             }>
-                {/* {itemImage?<Image src={itemImage} width={20} height={20} alt="image" />:<p>{itemImage}</p>} */}
+                {dataItem.image?<Image src={dataItem.image} width={20} height={20} alt="image" className="rounded-full" />:<p>{""}</p>}
               <p className={`${textStyle} ${textSize} ${textColor}`}>{dataItem.text}</p>
             </div>
           );
         })}
+        
         <p className="gray-text cursor-pointer">8 More</p>
       </div>
     </div>
@@ -58,7 +61,6 @@ CategoryContent.propTypes = {
     headingColor: PropTypes.string,
     gapHeadingItems: PropTypes.string,
     itemsGap: PropTypes.string,
-    itemImage: PropTypes.string,
     textStyle: PropTypes.string,
     textSize: PropTypes.string,
     textColor: PropTypes.string,
@@ -74,7 +76,6 @@ CategoryContent.defaultProps = {
     headingColor: "text-black",
     gapHeadingItems: "space-y-5",
     itemsGap: "space-y-3",
-    itemImage: "",
     textStyle: "not-italic",
     textSize: "text-sm",
     textColor: "text-black",
