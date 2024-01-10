@@ -10,7 +10,7 @@ import Featured from "../Dropitems/Featured";
 import { useRouter } from "next/navigation";
 import CategoryContent from "../molecules/CategoryContent";
 
-function Filter(isFilterHovered) {
+function Filter({ isFilterHovered, onFilterHover }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isBlur, setIsBlur] = useState(false);
@@ -28,7 +28,13 @@ function Filter(isFilterHovered) {
       setActiveDropdown(idx);
     }
   };
-
+  
+  const handleFilterHover = (category) => {
+    // const filteredContent = fetchFilteredContent(category);
+    onFilterHover(category);
+    // console.log("category is ",category)
+    // console.log("isFilterHovered is ",isFilterHovered)
+  };
   // function getLabelMargin(label) {
   //   const marginMap = {
   //     "Wallpaper": "ml-[17rem] mr-[-4rem]",
@@ -95,13 +101,6 @@ function Filter(isFilterHovered) {
               scrollX === 0 ? "hidden" : ""
             }`}
           >
-            {/* <img
-              src={backarrow}
-              alt=""
-              className="riht-arrow-sty"
-              onClick={() => slide(-250)}
-              style={{ overflowX: "auto", scrollBehavior: "smooth" }}
-            /> */}
           </div>
           {links.map((value, idx) => (
             <div
@@ -115,6 +114,7 @@ function Filter(isFilterHovered) {
               onMouseEnter={() => {
                 setActiveDropdown(idx);
                 setIsBlur(true);
+                handleFilterHover(value.label);
                 console.log(isBlur);
               }}
               onMouseLeave={() => setActiveDropdown(null)}
@@ -147,12 +147,13 @@ function Filter(isFilterHovered) {
                     <div className="filter_container flex">
                       <div className=" grid grid-cols-6 gap-10">
                         <div className="col-span-2">
-                          <Featured/>
+                          <Featured parentCategory ={value.label}/>
                         </div>
                         <div className="col-span-1">
                         <CategoryContent 
                           categoryHeading={"SHOP BY COLLECTIONS"} 
                           categoryData={collections}
+                          parentCategory ={value.label}
                           categoryGap="space-x-5"
                           headingColor="text-gray-500"
                           headingStyle="font-bold"
@@ -165,6 +166,7 @@ function Filter(isFilterHovered) {
                         <CategoryContent 
                           categoryHeading={"SHOP BY STYLES"} 
                           categoryData={styles}
+                          parentCategory ={value.label}
                           categoryGap="space-x-5"
                           headingColor="text-gray-500"
                           headingStyle="font-bold"
@@ -174,12 +176,14 @@ function Filter(isFilterHovered) {
                           textColor="text-black"/>
                         </div>
                         <div className="col-span-1">
-                          <Colours />
+                          <Colours parentCategory ={value.label} categoryHeading={"SHOP BY ROOMS"} 
+                          categoryData={rooms} />
                         </div>
                         <div className="col-span-1">
                         <CategoryContent 
                           categoryHeading={"SHOP BY ROOMS"} 
                           categoryData={rooms}
+                          parentCategory ={value.label}
                           categoryGap="space-x-5"
                           headingColor="text-gray-500"
                           headingStyle="font-bold"

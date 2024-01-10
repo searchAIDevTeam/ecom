@@ -6,6 +6,7 @@ import gray from "@/public/Dropitemsimg/gray.png";
 import pink from "@/public/Dropitemsimg/pink.webp";
 import "./style.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const colours = [
   {
@@ -30,13 +31,19 @@ const colours = [
   },
 ];
 
-const Colours = () => {
+const Colours = ({props}) => {
+  // let heading=props.heading..;
+  const router=useRouter();
+// const handleClick=(color)=>{
+//     router.push("/products/"+color+"/"+heading+"/"+props.parentCategory)
+//   }
   return (
     <div className="filter_item space-y-10">
       <h4 className="filter_heading gray-text">SHOP BY COLOUR</h4>
       <div className="filter_content">
         <ul className="filter_content_list">
           {colours.map((color) => (
+            // <li className="color_item" onClick={()=>handleClick(color)}>
             <li className="color_item">
               <Image
                 className="color_photo"
