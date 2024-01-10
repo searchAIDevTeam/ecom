@@ -28,7 +28,6 @@ const Imagechanger = () => {
     "orem ipsudolor sit amet, consect eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim v dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisc dolor sit amet, consectetur adipisciieniam,",
     "lorem ipsum dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
   ];
-
   const Heading = [
     "Watch your heart",
     "Tune into your wellness",
@@ -102,7 +101,7 @@ const Imagechanger = () => {
         ))}
       </div>
       <div className="right  flex w-1/2 h-full">
-        <div className="flex w-full h-[36rem] items-center">
+        <div className="flex w-full h-[36rem] items-center relative">
           {apiData[0]?.sections?.map((image, i) => (
             <img
               key={i}
@@ -113,6 +112,7 @@ const Imagechanger = () => {
               } lazyloaded`}
             />
           ))}
+          <div className="absolute bottom-4 left-4 flex text-white text-lg">Your text</div>
         </div>
       </div>
     </div>
