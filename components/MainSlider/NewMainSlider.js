@@ -65,23 +65,23 @@ export default function NewMainSlider() {
         breakpoints={{
           412: {
             slidesPerView: 1.5,
-            spaceBetween: 3,
+            spaceBetween: 15,
           },
 
           640: {
             slidesPerView: 1.25,
-            spaceBetween: 5,
+            spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 2,
-            spaceBetween: 5,
+            slidesPerView: 1.72,
+            spaceBetween: 10,
           },
         }}
       >
     {content.map((data) => (
-  <SwiperSlide key={data}>
+  <SwiperSlide key={data} >
     <div className="relative group">
-      <Image src={data} width={500} height={500} alt="Swiper" className="swiper-slide" />
+      <Image src={data} width={500} height={500} alt="Swiper" className="swiper-slide"/>
       <div className="absolute bottom-4 left-4 flex text-lg text-white">Your text</div>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
        <div onMouseEnter={handleEnter}  className="cursor-pointer">
@@ -92,7 +92,7 @@ export default function NewMainSlider() {
           </div>
            {hov &&(
              <div
-              className={` flex-row z-10 mt-28 mr-36 w-40 h-44 flex items-center pb-2 bg-white cursor-pointer`}
+              className={` flex-row z-10 mt-16 mr-60 w-40 h-44 flex items-center pb-2 bg-white cursor-pointer`}
               onClick={handleTab} onMouseLeave={handleLeave}
             >
               <div className="flex flex-row relative">
