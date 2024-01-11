@@ -130,8 +130,8 @@ const Promo = () => {
                 pattern="0-9*"
                 name="cvv"
                 value={form.cvv}
-                maxLength="3"
-                minLength="3"
+                max="999"
+                min="100"
                 required
                 className="form-input border-gray-600 mb-6 mt-2 flex items-center deliver border rounded-md h-12 w-40 border-solid p-1"
               />

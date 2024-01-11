@@ -2,13 +2,14 @@
 
 // import { Delete, HeartBroken } from "@mui/icons-material";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRoomData } from "../Features/Slices/roomSlice";
 import { selectRoomStatus } from "../Features/Slices/roomSlice";
 import { selectQuantity } from "../Features/Slices/calculationSlice";
 import { Link } from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 // import Footer from "../Footer/Footer";
 const AddCart = () => {
   const router = useRouter();
@@ -19,11 +20,31 @@ const AddCart = () => {
   // console.log("Cart component re-rendered");
   // const roomsData = useSelector((state) => state.roomdetails.roomData);
   const roomData = useSelector(selectRoomData);
-  console.log("roomData in cart page", roomData);
+  // console.log("roomData in cart page", roomData);
   const roomStatus = useSelector(selectRoomStatus);
-  console.log("roomstatus", roomStatus);
+  // console.log("roomstatus", roomStatus);
   // console.log("selecteditems", selectedItems);
   const quantity = useSelector(selectQuantity);
+  const [cartdata, setcartdata] = useState(null);
+  const [cartStatus, setCartStaus] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setCartStaus("Loading");
+        const response = await axios.get("http://3.224.109.20:8080/api/cart");
+        setcartdata(response.data);
+        setCartStaus("db is successfull");
+      } catch (error) {
+        console.error("Error Fetching data from DB : ", error);
+        setCartStaus("db is failed");
+      }
+    };
+    fetchData();
+  }, []);
+
+
+
 
   return (
     <div>
@@ -166,6 +187,27 @@ const AddCart = () => {
               </div>
             ))}
           </div>
+
+          {/* this is from DB */}
+
+          <h1>This is comming from DB</h1>
+          {cartStatus === "loading" && <p>Loading...</p>}
+          {cartStatus === "failed" && <p>Error loading data from DB.</p>}
+          {cartStatus === "succeeded" && cartdata && (
+            <div>
+              <h1>Cart</h1>
+              <ul>
+                {cartdata.items.map((item) => (
+                  <li key={item._id}>
+                    <div>Name: {item.name}</div>
+                    <div>Price: {item.price}</div>
+                    <div>Quantity: {item.quantity}</div>
+                    <div></div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
 
