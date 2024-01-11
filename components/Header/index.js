@@ -153,7 +153,7 @@ function Header({ howMuchScrolled }) {
                   alt="logo"
                   width={300}
                   height={40}
-                  className="sm:w-48 w-52 m-2"
+                  className="sm:w-44 w-44 m-2"
                 />
               </Link>
             </div>

@@ -60,12 +60,12 @@ export default function NewMainSlider() {
         breakpoints={{
           412: {
             slidesPerView: 1.5,
-            spaceBetween: 15,
+            spaceBetween: 5,
           },
 
           640: {
             slidesPerView: 1.25,
-            spaceBetween: 20,
+            spaceBetween: 10,
           },
           1024: {
             slidesPerView: 1.72,

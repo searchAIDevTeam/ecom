@@ -49,22 +49,24 @@ a,
 button {
   cursor: pointer;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   border: none;
   outline: none;
   background: none;
 }
-.swiper-slider{
-  margin-top: 7rem;
+
+.swiper-slider {
+  margin-top: 8rem;
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
