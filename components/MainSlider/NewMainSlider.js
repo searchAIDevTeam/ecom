@@ -37,6 +37,9 @@ export default function NewMainSlider() {
         keyboard={{
           enabled: true,
         }}
+        style={{
+          marginLeft:-60,
+        }}
         // Enabled autoplay mode
         autoplay={{
           delay: 10000,
@@ -84,7 +87,7 @@ export default function NewMainSlider() {
           </div>
            {hov &&(
              <div
-              className={` flex-row z-10 mt-20 mr-60 w-40 h-48 flex items-center pb-2 bg-white cursor-pointer`}
+              className={` flex-row z-10 mt-16 mr-64 w-40 h-48 flex items-center pb-2 bg-white cursor-pointer`}
               onClick={handleTab} onMouseLeave={handleLeave}
             >
               <div className="flex flex-row relative">
