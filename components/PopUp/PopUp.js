@@ -31,7 +31,7 @@ function App() {
   const fetchCitiesAndHobbies = async () => {
     try {
       const response = await axios.get(
-        `http://43.204.166.53:8080/api/citiesAndHobbies`
+        `http://3.224.109.20:8080/api/citiesAndHobbies`
       );
       setFetchedCities(response.data[0].cities);
       setFetchedHobbies(response.data[0].hobbies);

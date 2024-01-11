@@ -13,7 +13,7 @@ function Card(props) {
   const handleImageClick = () => {
     props.setPopupVisible(true);
   };
-  // let url = "http://43.204.166.53:8080/api/getSingleProduct?id="
+  // let url = "http://3.224.109.20:8080/api/getSingleProduct?id="
 const handleclick = (id) => {
   router.push('/room/'+id)
 }

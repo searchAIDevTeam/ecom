@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const BASE_URL = "http://52.66.30.159:8080/api";
-const BASE_URL = "http://43.204.166.53:8080/api"
+const BASE_URL = "http://3.224.109.20:8080/api"
 const createApiEndpoint = (endpoint) => `${BASE_URL}/${endpoint}`;
 
 export const fetchRecommendedProduct = async () => {
