@@ -1,11 +1,11 @@
-.navbar {
+/* .navbar {
   display: flex;
   flex-flow: row;
   /* justify-content: space-evenly; */
-  height: 64px;
+  /* height: 64px;
   width: 100%;
   flex: 1 2 1;
-}
+} */ 
 
 .search_icon_mar {
   margin: 3px 10px;
