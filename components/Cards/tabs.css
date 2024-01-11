@@ -6,7 +6,12 @@
   .tabcategory::-webkit-scrollbar {
     display: none;
   }
-  
+  .carcular-conui {
+    border: 1.5px solid rgba(264, 264, 264, 0.5);
+    border-radius: 50%;
+    color: #000;
+    background-color: rgba(0, 0, 0, 0.1)
+  }
   .sticky-tabcategory {
     position: fixed;
     top: 0;
