@@ -121,11 +121,11 @@ function Header({ howMuchScrolled }) {
       {isLoading && <TopLoader />}
       {!searchQuery ? (
         <div
-          className={`navbar ${
-            isScrolled ? " border-b-[0.5px] border-slate-200" : ""
-          }  sm:px-[30px] px-[10px] py-0 flex justify-between items-center w-full`}
+          className={`${
+            isScrolled ? "border-b-[0.5px] border-slate-200" : ""
+          }  flex flex-row justify-between items-center sm:px-[30px] px-[10px] py-0`}
         >
-          <div className="left flex items-center sm:gap-5 gap-1 ">
+          <div className="sm:gap-5 gap-1 flex flex-row items-center justify-start w-1/3">
             <div className="profile-menu font-bold p-[7px] hover:bg-zinc-100 hover:rounded-full">
               <Menu />
             </div>
@@ -135,23 +135,30 @@ function Header({ howMuchScrolled }) {
               className="sm:hidden block  w-10 h-10 p-[7px]"
               onClick={handleModalOpen}
             >
-              <Image src="/search.svg" alt="" width={20} height={20} className="header-div-icon" />
+              <Image
+                src="/search.svg"
+                alt=""
+                width={20}
+                height={20}
+                className="header-div-icon"
+              />
             </div>
           </div>
-
-          <div className="mainlogo">
-            <Link href="/">
-              <Image
-                onClick={() => handleLinkClick("/")}
-                src="/images/ayatriologo.png"
-                alt="logo"
-                width={300}
-                height={40}
-                className="sm:w-48 w-52 m-2 sm:ml-[170px]"
-              />
-            </Link>
+          <div className="flex items-center justify-center w-1/3">
+            <div className="mainlogo">
+              <Link href="/">
+                <Image
+                  onClick={() => handleLinkClick("/")}
+                  src="/images/ayatriologo.png"
+                  alt="logo"
+                  width={300}
+                  height={40}
+                  className="sm:w-48 w-52 m-2"
+                />
+              </Link>
+            </div>
           </div>
-          <div className="right flex items-center gap-2">
+          <div className="flex flex-row gap-2 items-center justify-end w-1/3">
             <div
               onClick={handleModalOpen}
               className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer sm:block hidden"
@@ -160,17 +167,30 @@ function Header({ howMuchScrolled }) {
                 src="/search.svg"
                 alt=""
                 className="seachbar-div2-icon absolute z-10"
-                width={30} height={30}
+                width={30}
+                height={30}
               />
             </div>
             <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
-              <Image src="/like.svg" alt="" className="header-div-icon" width={25} height={25} />
+              <Image
+                src="/like.svg"
+                alt=""
+                className="header-div-icon"
+                width={25}
+                height={25}
+              />
             </div>
             <div
               className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
               onClick={() => handleLinkClick("/cart")}
             >
-              <Image src="/adtocart.svg" alt="" className="header-div-icon" width={25} height={25} />
+              <Image
+                src="/adtocart.svg"
+                alt=""
+                className="header-div-icon"
+                width={25}
+                height={25}
+              />
               <div className="cart-notification">3</div>
             </div>
             {loginStatus === "true" ? (
@@ -178,7 +198,13 @@ function Header({ howMuchScrolled }) {
                 className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap "
                 onClick={handleProfileNav}
               >
-                <Image src="/profile.svg" alt="" className="header-div-icon" width={27} height={27} />
+                <Image
+                  src="/profile.svg"
+                  alt=""
+                  className="header-div-icon"
+                  width={27}
+                  height={27}
+                />
               </div>
             ) : (
               <Image

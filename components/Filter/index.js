@@ -11,6 +11,10 @@ import { flooringFeaturedData } from "@/Model/Dropdown/FeaturedData/FlooringFeat
 import { flooringCategoryData } from "@/Model/Dropdown/CategoryData/FlooringCategoryData";
 import { blindsFeaturedData } from "@/Model/Dropdown/FeaturedData/BlindsFeaturedData";
 import { blindsCategoryData } from "@/Model/Dropdown/CategoryData/BlindsCategoryData";
+import { curtainsFeaturedData } from "@/Model/Dropdown/FeaturedData/CurtainsFeaturedData";
+import { curtainsCategoryData } from "@/Model/Dropdown/CategoryData/CurtainsCategoryData";
+import { inspirationFeaturedData } from "@/Model/Dropdown/FeaturedData/InspirationFeaturedData";
+import { inspirationCategoryData } from "@/Model/Dropdown/CategoryData/InspirationCategoryData";
 
 function Filter({ isFilterHovered, onFilterHover }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -142,15 +146,15 @@ function Filter({ isFilterHovered, onFilterHover }) {
 
               {activeDropdown === idx && (
                 <div
-                  className={`absolute left-0 mt-10 w-full bg-white shadow-md flex flex-col transition-all ease-linear duration-2000
+                  className={`absolute left-0 mt-10 w-full bg-white shadow-md transition-all ease-linear duration-2000
                   ${isBlur ? " backdrop-blur-lg" : ""}  
                   `}
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
                 >
                   <div className="px-[50px] my-5">
                     <div className="filter_container flex">
-                      <div className=" grid grid-cols-6 gap-10">
-                        <div className="col-span-2">
+                      <div className={`flex ${(idx===0)?(`gap-32`):(idx===1)?(`gap-32`):(idx===2)?(`gap-20`):(idx===3)?(`gap-20`):(idx===4)?(`gap-32`):(`gap-24`)}`}>
+                        <div>
                           <FeaturedContent 
                             featuredData={(() => {
                               switch (idx) {
@@ -159,9 +163,11 @@ function Filter({ isFilterHovered, onFilterHover }) {
                                 case 1:
                                   return flooringFeaturedData;
                                 case 2:
-                                  return wallpaperFeaturedData;
+                                  return curtainsFeaturedData;
                                 case 3:
                                   return blindsFeaturedData;
+                                case 4:
+                                  return inspirationFeaturedData;
                                 default:
                                   return wallpaperFeaturedData;
                               }
@@ -176,16 +182,17 @@ function Filter({ isFilterHovered, onFilterHover }) {
                         {
                           (idx === 0 ? wallpaperCategoryData 
                             : idx===1? flooringCategoryData
-                            : idx===2? wallpaperCategoryData
+                            : idx===2? curtainsCategoryData
                             : idx===3? blindsCategoryData
+                            : idx===4? inspirationCategoryData
                             : wallpaperCategoryData).map((category) => {
                           return (
-                            <div className="col-span-1">
+                            <div>
                               <CategoryContent
                                 categoryHeading={category.categoryHeading}
                                 categoryData={category.categoryData}
                                 parentCategory ={value.label}
-                                categoryGap="space-x-5"
+                                categoryGap=""
                                 headingColor="text-gray-500"
                                 headingStyle="font-bold"
                                 headingSize="text-md"
@@ -196,39 +203,6 @@ function Filter({ isFilterHovered, onFilterHover }) {
                             </div>
                           );
                         })}
-                        {/* <div className="col-span-1"></div>
-                        <div className="col-span-1">
-                          <CategoryContent
-                            categoryHeading={"SHOP BY STYLES"}
-                            categoryData={styles}
-                          parentCategory ={value.label}
-                            categoryGap="space-x-5"
-                            headingColor="text-gray-500"
-                            headingStyle="font-bold"
-                            headingSize="text-md"
-                            gapHeadingItems="space-y-14"
-                            itemsGap="space-y-6"
-                            textColor="text-black"
-                          />
-                        </div>
-                        <div className="col-span-1">
-                          <Colours parentCategory ={value.label} categoryHeading={"SHOP BY ROOMS"} 
-                          categoryData={rooms} />
-                        </div>
-                        <div className="col-span-1">
-                          <CategoryContent
-                            categoryHeading={"SHOP BY ROOMS"}
-                            categoryData={rooms}
-                          parentCategory ={value.label}
-                            categoryGap="space-x-5"
-                            headingColor="text-gray-500"
-                            headingStyle="font-bold"
-                            headingSize="text-md"
-                            gapHeadingItems="space-y-14"
-                            itemsGap="space-y-6"
-                            textColor="text-black"
-                          />
-                        </div> */}
                       </div>
                     </div>
                   </div>
