@@ -16,20 +16,12 @@ const ProductPage = ({params}) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   console.log(params)
   let parentCategoryVar = params.parentCategory;
-  // if(params.parentCategory==="SHOP%20BY%20COLLECTIONS"){
-  //   parentCategoryVar="collection"
-  // }
-  // else if(params.parentCategory==="SHOP%20BY%20ROOMS"){
-  //   parentCategoryVar="roomCategory"
-  // }
-  // else if(params.parentCategory==="SHOP%20BY%20STYLES"){
-  //   parentCategoryVar="style"
-  // }
+
 useEffect(() => {
   const fetchFilteredProducts = async () => {
     try {
       // Constructing the URL dynamically based on params
-      const apiUrl = `http://43.204.166.53:8080/api/products?category=${encodeURIComponent(params.heading)}&${parentCategoryVar}=${encodeURIComponent(params.cat)}`;
+      const apiUrl = `http://3.224.109.20:8080/api/products?category=${encodeURIComponent(params.heading)}&${parentCategoryVar}=${encodeURIComponent(params.cat)}`;
       
       // Fetch products using the dynamically constructed URL
       const response = await axios.get(apiUrl);
