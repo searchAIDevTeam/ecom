@@ -276,7 +276,7 @@ export default function Form() {
       </form>
       <br />
       <br />
-      <hr />
+      <hr className="w-1/2" />
     </>
   );
 }
