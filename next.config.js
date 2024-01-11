@@ -22,6 +22,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "ayatrio-images.s3.ap-south-1.amazonaws.com",
       },
+      {
+        protocol: "http",
+        hostname:"localhost:5173"
+      },
+      {
+        protocol: "https",
+        hostname: "wellgroomedgentleman.com"
+      }
     ],
   },
 };

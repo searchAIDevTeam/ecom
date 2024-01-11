@@ -7,6 +7,10 @@ import CategoryContent from "../molecules/CategoryContent";
 import FeaturedContent from "../molecules/FeaturedContent";
 import { wallpaperFeaturedData } from "@/Model/Dropdown/FeaturedData/WallpaperFeaturedData";
 import { wallpaperCategoryData } from "@/Model/Dropdown/CategoryData/WallpaperCategoryData";
+import { flooringFeaturedData } from "@/Model/Dropdown/FeaturedData/FlooringFeaturedData";
+import { flooringCategoryData } from "@/Model/Dropdown/CategoryData/FlooringCategoryData";
+import { blindsFeaturedData } from "@/Model/Dropdown/FeaturedData/BlindsFeaturedData";
+import { blindsCategoryData } from "@/Model/Dropdown/CategoryData/BlindsCategoryData";
 
 function Filter({ isFilterHovered, onFilterHover }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -111,7 +115,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
               }`}
               {...(!isMobile
                 ? { onClick: (event) => handleDropdownClick(event, idx) }
-                : { onClick: () => navigate(`/${value.label}`) })}
+                : { onClick: () => router.push(`/${value.label}`) })}
               onMouseEnter={() => {
                 setActiveDropdown(idx);
                 console.log(idx);
@@ -148,7 +152,20 @@ function Filter({ isFilterHovered, onFilterHover }) {
                       <div className=" grid grid-cols-6 gap-10">
                         <div className="col-span-2">
                           <FeaturedContent 
-                            featuredData={wallpaperFeaturedData} 
+                            featuredData={(() => {
+                              switch (idx) {
+                                case 0:
+                                  return wallpaperFeaturedData;
+                                case 1:
+                                  return flooringFeaturedData;
+                                case 2:
+                                  return wallpaperFeaturedData;
+                                case 3:
+                                  return blindsFeaturedData;
+                                default:
+                                  return wallpaperFeaturedData;
+                              }
+                            })()}                          
                             verticalSpacingBetween="space-y-8" 
                             imageWidth={200}
                             imageHeight={200}
@@ -156,7 +173,12 @@ function Filter({ isFilterHovered, onFilterHover }) {
                             textStyle="font-semibold"
                             parentCategory ={value.label}/>
                         </div>
-                        {wallpaperCategoryData.map((category) => {
+                        {
+                          (idx === 0 ? wallpaperCategoryData 
+                            : idx===1? flooringCategoryData
+                            : idx===2? wallpaperCategoryData
+                            : idx===3? blindsCategoryData
+                            : wallpaperCategoryData).map((category) => {
                           return (
                             <div className="col-span-1">
                               <CategoryContent
