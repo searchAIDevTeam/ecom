@@ -9,42 +9,10 @@ const Tabs = ({ filteredProducts }) => {
   const handlenav = (id) => {
     router.push(`/room/${id}`);
   };
-
-  const curtainImage = [
-    {
-      id: 1,
-      image: "product/bengta.avif",
-      title: "SY",
-      detail: "Iron-on hemming strip",
-      price: 139,
-      count: 59,
-    },
-    {
-      id: 2,
-      image: "product/lenda.avif",
-      title: "KRONILL",
-      detail: "Heading tape, 8.5x310 cm (3x122)",
-      price: 149,
-      count: 13,
-    },
-
-    {
-      id: 3,
-      image: "product/lill.avif",
-      title: "LILL",
-      detail: "Net curtains, 1 pair, 280x250 cm (110x98)",
-      price: 399,
-      count: 122,
-    },
-    {
-      id: 4,
-      image: "product/lill.avif",
-      title: "ALVINE SPETS",
-      detail: "Net curtains, 1 pair, 145x250 cm (57x98)",
-      price: 599,
-      count: 94,
-    },
-  ];
+  const [filterData,setFilterdata]= useState([])
+  useEffect(() => {
+    setFilterdata(filteredProducts)
+  }, [filteredProducts])
   const srtarr = [
     {
       id: 1,
@@ -335,14 +303,12 @@ const Tabs = ({ filteredProducts }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
   useEffect(() => {
-    // Update isMobile state on window resize
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 450);
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -363,12 +329,6 @@ const Tabs = ({ filteredProducts }) => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
-
-  // const handleOptionClick = (option) => {
-  //   // Handle the selected option as needed
-  //   console.log(`Selected option: ${option}`);
-  //   setDropdownVisible(false);
-  // };
 
   const [openSize, setOpenSize] = useState(false);
 
@@ -441,9 +401,36 @@ const Tabs = ({ filteredProducts }) => {
     setOpenAllSIze(false);
     setopenallsort(false);
   };
-
+  const handlefilterData = (text,type) => {
+    console.log("text", text.name);
+  
+    if (text.name === "Price: low to high") {
+      let data = filterData.slice().sort((a, b) => a.totalPrice - b.totalPrice);
+      setFilterdata(data);
+    } else if (text.name === "Price: high to low") {
+      let data = filterData.slice().sort((a, b) => b.totalPrice - a.totalPrice);
+      setFilterdata(data);
+    } else if (text.name === "Best match") {
+      let data = filteredProducts.slice(); 
+      setFilterdata(data);
+    }
+    else if (text.name === "Name") {
+      let data = filterData.slice().sort((a, b) => a.productTitle.localeCompare(b.productTitle));
+      setFilterdata(data);
+    }
+    // else if (text.name==="Customer rating") {
+    //   let data = filterData.slice().sort((a, b) => b.rating.length - a.rating.length);
+    //   setFilterdata(data);
+    // }
+  };
+  
+  useEffect(() => {
+    // This useEffect will be triggered after the state is updated
+    console.log("Updated filterData:", filterData);
+  }, [filterData]);
+  
   const renderSortItem = (text, idx) => (
-    <div className="flex justify-between" key={idx}>
+    <div className="flex justify-between" onClick={()=>handlefilterData(text,"sort")} key={idx}>
       <label htmlFor="age1" className="">
         {text.name}
       </label>
@@ -590,8 +577,8 @@ const Tabs = ({ filteredProducts }) => {
                     alt=""
                   />
                 </button>
-                {openSort ? (
-                  <div className=" border opensort flex flex-col gap-7 py-5 bg-white rounded-2xl w-52 h-40 overflow-y-auto px-5">
+                {openSort  ? (
+                  <div  className=" border opensort flex flex-col gap-7 py-5 bg-white rounded-2xl w-52 h-40 overflow-y-auto px-5">
                     {srtarr.map(renderSortItem)}
                   </div>
                 ) : null}
@@ -745,7 +732,7 @@ const Tabs = ({ filteredProducts }) => {
               {opencolor ? (
                 <div
                   className=" flex flex-col bg-white items-center  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5"
-                  style={{ zIndex: "1000"}}
+                  style={{ zIndex: "1000" }}
                 >
                   <div className="grid grid-cols-3 gap-6">
                     {colorarr.map((text, idx) => (
@@ -1100,7 +1087,7 @@ const Tabs = ({ filteredProducts }) => {
           {/* iimages */}
           <div className="image-product">
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
-              {filteredProducts.map((text, idx) => (
+              {filterData.map((text, idx) => (
                 <div
                   className="flex p-3 flex-col gap-3 hover-divnine sm:border-none border-b border-r"
                   key={idx}

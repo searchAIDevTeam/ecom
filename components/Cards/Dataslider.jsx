@@ -33,8 +33,12 @@ const Dataslider = ({ category, data }) => {
     allowSlidePrev: true,
     allowSlideNext: true,
   };
-  const [productData, setproductData] = useState(data);
-  console.log("category ", category);
+  const [productData, setproductData] = useState([]);
+  useEffect(() => {
+    setproductData(data);
+  }, [data]);
+  console.log(productData);
+
   const swiper2Ref = useRef(null);
 
   return (
@@ -77,31 +81,28 @@ const Dataslider = ({ category, data }) => {
           {...swiperOptions}
           className="mySwiper  pl-5"
         >
-          {false ? (
-            <SwiperSlide>
-              <div className="flex">""</div>
-            </SwiperSlide>
+          {!productData ? (
+           <div>
+              <h1>loading</h1>
+           </div>
           ) : (
-            productData.map((product, idx) => {
-              return (
-                <SwiperSlide key={idx} className="">
-                  <div className="grid grid-cols-1 mt-2 h-full fade-in">
-                    <Card
-                      title={product.productTitle}
-                      // date={product.date}
-                      price={product.perUnitPrice}
-                      desc={product.subcategory}
-                      imgSrc={product.images}
-                      rating={product.ratings}
-                      key={idx}
-                      id={product._id}
-                      setPopupVisible={setPopupVisible}
-                      cssClass={"card1flex"}
-                    />
-                  </div>
-                </SwiperSlide>
-              );
-            })
+            productData.map((product) => (
+              <SwiperSlide>
+                <div className="grid grid-cols-1 mt-2 h-full fade-in">
+                  <Card
+                    cardkey={product._id}
+                    title={product.productTitle}
+                    price={product.perUnitPrice}
+                    desc={product.subcategory}
+                    imgSrc={product.images}
+                    rating={product.ratings}
+                    id={product._id}
+                    setPopupVisible={setPopupVisible}
+                    cssClass={"card1flex"}
+                  />
+                </div>
+              </SwiperSlide>
+            ))
           )}
         </Swiper>
       </div>
