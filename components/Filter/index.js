@@ -9,6 +9,8 @@ import { wallpaperFeaturedData } from "@/Model/Dropdown/FeaturedData/WallpaperFe
 import { wallpaperCategoryData } from "@/Model/Dropdown/CategoryData/WallpaperCategoryData";
 import { flooringFeaturedData } from "@/Model/Dropdown/FeaturedData/FlooringFeaturedData";
 import { flooringCategoryData } from "@/Model/Dropdown/CategoryData/FlooringCategoryData";
+import { blindsFeaturedData } from "@/Model/Dropdown/FeaturedData/BlindsFeaturedData";
+import { blindsCategoryData } from "@/Model/Dropdown/CategoryData/BlindsCategoryData";
 
 function Filter({ isFilterHovered, onFilterHover }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -113,7 +115,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
               }`}
               {...(!isMobile
                 ? { onClick: (event) => handleDropdownClick(event, idx) }
-                : { onClick: () => navigate(`/${value.label}`) })}
+                : { onClick: () => router.push(`/${value.label}`) })}
               onMouseEnter={() => {
                 setActiveDropdown(idx);
                 console.log(idx);
@@ -156,6 +158,10 @@ function Filter({ isFilterHovered, onFilterHover }) {
                                   return wallpaperFeaturedData;
                                 case 1:
                                   return flooringFeaturedData;
+                                case 2:
+                                  return wallpaperFeaturedData;
+                                case 3:
+                                  return blindsFeaturedData;
                                 default:
                                   return wallpaperFeaturedData;
                               }
@@ -168,7 +174,11 @@ function Filter({ isFilterHovered, onFilterHover }) {
                             parentCategory ={value.label}/>
                         </div>
                         {
-                          (idx === 0 ? wallpaperCategoryData : idx===1? flooringCategoryData: wallpaperCategoryData).map((category) => {
+                          (idx === 0 ? wallpaperCategoryData 
+                            : idx===1? flooringCategoryData
+                            : idx===2? wallpaperCategoryData
+                            : idx===3? blindsCategoryData
+                            : wallpaperCategoryData).map((category) => {
                           return (
                             <div className="col-span-1">
                               <CategoryContent
