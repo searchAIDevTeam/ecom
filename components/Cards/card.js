@@ -9,22 +9,24 @@ import { useRouter } from "next/navigation";
 
 function Card(props) {
   const router = useRouter();
+  console.log("props is ", props);
   const handleImageClick = () => {
     props.setPopupVisible(true);
   };
-  // let url = "http://43.204.166.53:8080/api/getSingleProduct?id="
+  // let url = "http://3.224.109.20:8080/api/getSingleProduct?id="
 const handleclick = (id) => {
   router.push('/room/'+id)
 }
   return (
     <>
       <div
+      key={props.cardkey}
         className="card m-2"
         style={{
           width: "100%",
           height: "100%",
         }}
-        onClick={()=>handleclick(props.id)}
+       
       >
         <div className={`card-flex ${props.cssClass} `}>
           <Carousel data={props.imgSrc} className="card-img" />
@@ -37,7 +39,7 @@ const handleclick = (id) => {
             />
           </div>
         </div>
-        <div className="card-title" onClick={() => router.push("/rooms")}>
+        <div className="card-title"  onClick={()=>handleclick(props.id)}>
           <div className="card-title-desc">{props.title}</div>
           <div className="card-rating">
             <img src="/svg/star-full-icon.svg" className="w-6 h-6" alt="" />

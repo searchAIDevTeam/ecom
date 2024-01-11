@@ -51,7 +51,7 @@ if (typeof window !== "undefined") {
   useEffect(() => {
   // setDeviceId(id);
   const getRecommendedData = async () => {
-    const response = await axios.get(`http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`);
+    const response = await axios.get(`http://3.224.109.20:8080/api/getRecommendation?deviceId=${id}`);
     console.log("recommended data is ",response.data) 
     setRecommended(response.data);
   }

@@ -24,11 +24,27 @@ const CategoryContent = (props) => {
   const categoryData = props.categoryData;
   console.log(categoryData)
   const router = useRouter();
+  let parentCategoryVar;
   const handleClick = (cat)=>{
-    // console.log(ca)
-    console.log("cat is ",cat)
-    router.push("/products/"+cat.text+"/"+heading+"/"+props.parentCategory)
+    console.log(parentCategoryVar)
+    console.log(props.parentCategory)
+    console.log(cat.text)
+    console.log(heading.split(" ")[2].toLowerCase())
+    // console.log(cat)
+      if(heading.split(" ")[2].toLowerCase()==="collections"){
+    parentCategoryVar="collection"
   }
+  else if(heading.split(" ")[2].toLowerCase()==="rooms"){
+    parentCategoryVar="roomCategory"
+  }
+  else if(heading.split(" ")[2].toLowerCase()==="styles"){
+    parentCategoryVar="style"
+  }
+  else if(heading.split(" ")[2].toLowerCase()==="colour"){
+  parentCategoryVar="colors"
+  }
+router.push(props.parentCategory+"/"+parentCategoryVar+"/"+cat.text)
+}
   return (
     <div
        className={`flex flex-col ${categoryGap} ${containerPadding} ${gapHeadingItems} ${containerBgColor}`}>

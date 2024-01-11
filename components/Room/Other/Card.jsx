@@ -8,14 +8,12 @@ import {
   updateQuantity,
   selectQuantity,
 } from "@/components/Features/Slices/calculationSlice";
-// import { TbTruckDelivery } from "react-icons/tb";
-// import { MdOutlineArrowForwardIos } from "react-icons/md";
-// import { FaStoreAlt } from "react-icons/fa";
-// import { IoIosArrowDown } from "react-icons/io";
-// import IosShareSharpIcon from "@mui/icons-material/IosShareSharp";
-// import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
-
+import {
+  selectRoomData,
+  selectRoomStatus,
+} from "@/components/Features/Slices/roomSlice";
 import "../styles.css";
+import axios from "axios";
 import Image from "next/image";
 // import zIndex from "@mui/material/styles/zIndex";
 const Card = ({ data }) => {
@@ -49,6 +47,65 @@ const Card = ({ data }) => {
   }, [widthstate, heightstate, coststate]);
 
   const colorSep = data?.colors?.[0]?.split(",");
+
+  const roomData = useSelector(selectRoomData);
+  //posting data to database
+  if (typeof window !== "undefined") {
+    var id = localStorage.getItem("deviceId");
+    console.log("deviceId : ", id);
+  }
+  const postUrl = "http://3.224.109.20:8080/api/cart";
+  const postRoomData = async () => {
+    try {
+      console.log("Posting room data:", {
+        deviceId: id,
+        productId: roomData._id,
+        quantity: quantity,
+      });
+
+      const postData = {
+        deviceId: id,
+        productId: roomData._id,
+        quantity: quantity,
+      };
+
+      const response = await axios.post(postUrl, postData);
+
+      console.log("Server Response:", response);
+      console.log("Data posted successfully:", postData);
+    } catch (error) {
+      console.error("Error posting room data:", error);
+    }
+  };
+
+  const handleClickDB = async () => {
+    try {
+      // Validate quantity, productId, and deviceId
+      if (quantity <= 0) {
+        console.error("Invalid quantity");
+        return;
+      }
+
+      if (!roomData.productId) {
+        console.error("Invalid productId");
+        return;
+      }
+
+      if (!id) {
+        console.error("Invalid deviceId");
+        return;
+      }
+
+      // Post data to the database
+      await postRoomData();
+
+      // Redirect to the checkout page
+      router.push("/checkout");
+    } catch (error) {
+      console.error("Error handling click:", error);
+    }
+  };
+  //posting data to database
 
   return (
     <>
@@ -258,7 +315,7 @@ const Card = ({ data }) => {
           <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center  ">
             <div className="guestCheckout ">
               <button
-                onClick={() => router.push("/checkout")}
+                onClick={handleClickDB}
                 className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Add To Bag

@@ -5,13 +5,17 @@ import RoomImageList from "@/components/Room/RoomImageList";
 import RoomInfo from "@/components/Room/RoomInfo";
 import React, { useEffect, useState } from "react";
 import ImageCaresoul from "@/components/Room/imagecaresoul";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectQuantity,
+  updateQuantity,
+} from "@/components/Features/Slices/calculationSlice";
 import { setRoomData } from "@/components/Features/Slices/roomSlice";
 import axios from "axios";
 const RoomPage = ({ params }) => {
   const dispatch = useDispatch();
-  let url = "http://43.204.166.53:8080/api/getSingleProduct?id=";
+  const quantity = useSelector(selectQuantity);
+  let url = "http://3.224.109.20:8080/api/getSingleProduct?id=";
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -20,6 +24,7 @@ const RoomPage = ({ params }) => {
         const response = await axios.get(`${url}${params.id}`);
         setData(response.data);
         dispatch(setRoomData({ roomData: response.data, status: "succeeded" }));
+        
         console.log("room response ", response.data);
       } catch (error) {
         console.error("Error fetching room data:", error);
@@ -28,6 +33,29 @@ const RoomPage = ({ params }) => {
     };
     getRoomData();
   }, []);
+  //posting data to database
+  // if (typeof window !== "undefined") {
+  //   var id = localStorage.getItem("deviceId");
+  //   console.log("deviceId : ", id);
+  // }
+  // const postUrl = "http://3.224.109.20:8080/api/cart";
+  // const postRoomData = async () => {
+  //   try {
+  //     const postData = {
+  //       deviceId: id,
+  //       productId: data.productId,
+  //       quantity: quantity,
+  //     };
+
+  //     const response = await axios.post(postUrl, postData);
+  //     console.log("Data posted successfully:", response.data);
+  //   } catch (error) {
+  //     console.error("Error posting room data:", error);
+  //   }
+  // };
+
+  //posting data to database
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -74,7 +102,7 @@ const RoomPage = ({ params }) => {
   // }, [dispatch, params.id]);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_ROOM_REQUEST', payload: params.id });
+    dispatch({ type: "FETCH_ROOM_REQUEST", payload: params.id });
   }, [dispatch, params.id]);
 
   return (

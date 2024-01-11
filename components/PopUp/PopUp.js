@@ -31,7 +31,7 @@ function App() {
   const fetchCitiesAndHobbies = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/citiesAndHobbies`
+        `http://3.224.109.20:8080/api/citiesAndHobbies`
       );
       setFetchedCities(response.data[0].cities);
       setFetchedHobbies(response.data[0].hobbies);
@@ -191,9 +191,6 @@ function App() {
       const data = response.data;
       console.log(data);
 
-      // set the recommended product in the global state
-      // dispatch(recomendProduct(data));
-      // dispatch(recomendationLoader(false));
     } catch (error) {
       console.error(error);
 
