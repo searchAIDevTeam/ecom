@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from "react";
 // import Header from "../components/Header";
-import Products from "../../../../../components/Product/Products";
+import Products from "../../../../components/Product/Products";
 // import "../../components/Product/styles.css";
 // import "../../../../components/Product/styles.css"; 
 import "@/components/Product/styles.css";
@@ -15,16 +15,16 @@ const ProductPage = ({params}) => {
   const [isFilterVisible, setIsFilterVisible] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
   console.log(params)
-  let parentCategoryVar;
-  if(params.parentCategory==="SHOP%20BY%20COLLECTIONS"){
-    parentCategoryVar="collection"
-  }
-  else if(params.parentCategory==="SHOP%20BY%20ROOMS"){
-    parentCategoryVar="roomCategory"
-  }
-  else if(params.parentCategory==="SHOP%20BY%20STYLES"){
-    parentCategoryVar="style"
-  }
+  let parentCategoryVar = params.parentCategory;
+  // if(params.parentCategory==="SHOP%20BY%20COLLECTIONS"){
+  //   parentCategoryVar="collection"
+  // }
+  // else if(params.parentCategory==="SHOP%20BY%20ROOMS"){
+  //   parentCategoryVar="roomCategory"
+  // }
+  // else if(params.parentCategory==="SHOP%20BY%20STYLES"){
+  //   parentCategoryVar="style"
+  // }
 useEffect(() => {
   const fetchFilteredProducts = async () => {
     try {

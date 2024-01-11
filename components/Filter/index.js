@@ -7,6 +7,8 @@ import CategoryContent from "../molecules/CategoryContent";
 import FeaturedContent from "../molecules/FeaturedContent";
 import { wallpaperFeaturedData } from "@/Model/Dropdown/FeaturedData/WallpaperFeaturedData";
 import { wallpaperCategoryData } from "@/Model/Dropdown/CategoryData/WallpaperCategoryData";
+import { flooringFeaturedData } from "@/Model/Dropdown/FeaturedData/FlooringFeaturedData";
+import { flooringCategoryData } from "@/Model/Dropdown/CategoryData/FlooringCategoryData";
 
 function Filter({ isFilterHovered, onFilterHover }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -148,7 +150,16 @@ function Filter({ isFilterHovered, onFilterHover }) {
                       <div className=" grid grid-cols-6 gap-10">
                         <div className="col-span-2">
                           <FeaturedContent 
-                            featuredData={wallpaperFeaturedData} 
+                            featuredData={(() => {
+                              switch (idx) {
+                                case 0:
+                                  return wallpaperFeaturedData;
+                                case 1:
+                                  return flooringFeaturedData;
+                                default:
+                                  return wallpaperFeaturedData;
+                              }
+                            })()}                          
                             verticalSpacingBetween="space-y-8" 
                             imageWidth={200}
                             imageHeight={200}
@@ -156,7 +167,8 @@ function Filter({ isFilterHovered, onFilterHover }) {
                             textStyle="font-semibold"
                             parentCategory ={value.label}/>
                         </div>
-                        {wallpaperCategoryData.map((category) => {
+                        {
+                          (idx === 0 ? wallpaperCategoryData : idx===1? flooringCategoryData: wallpaperCategoryData).map((category) => {
                           return (
                             <div className="col-span-1">
                               <CategoryContent

@@ -75,6 +75,7 @@ img {
   padding-block: 5rem;
 }
 
+
 /* .container {
   position: relative;
   max-width: 75rem;
@@ -97,6 +98,7 @@ img {
   color: var(--white-100);
   background: var(--black-300);
 }
+
 
 .swiper-button-prev::after {
   display: flex;

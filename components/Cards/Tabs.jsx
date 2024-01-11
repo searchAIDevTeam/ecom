@@ -10,7 +10,7 @@ import TabImage from "./TabImage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 const Tabs = () => {
-  
+
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");
@@ -20,7 +20,7 @@ const Tabs = () => {
     {
       top: 50,
       left: 68,
-      productTitle: "Bedroom 1bhk Room",
+      productTitle: "Bedroom Room",
       productCategory: "Mountain view",
       price: 1900,
     },
@@ -79,7 +79,7 @@ const Tabs = () => {
 
       if (thirdDiv) {
         const thirdDivTop = thirdDiv.getBoundingClientRect().top;
-        const elementVisible=thirdDivTop<=0 && thirdDivTop+thirdDiv.clientHeight>0;
+        const elementVisible = thirdDivTop <= 0 && thirdDivTop + thirdDiv.clientHeight > 0;
         setIsSticky(elementVisible);
       }
     };
@@ -97,20 +97,18 @@ const Tabs = () => {
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
         <div
-          className={` py-5 bloc-tabsnone flex flex-row tabcategory ${
-            isSticky ? 'sticky-tabcategory' : ''
-          }`}
+          className={` py-2.5 bloc-tabsnone flex flex-row tabcategory ${isSticky ? 'sticky-tabcategory' : ''
+            }`}
           style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}
         >
           {tabsData.map((tab, i) => (
             <div
               key={i}
               className={` px-5 py-2 tabS cursor-pointer
-            ${
-              activeTab === tab.key
-                ? "active-tabs  border border-black mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
-                : "tabs  border border-white mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
-            }`}
+            ${activeTab === tab.key
+                  ? "active-tabs  border border-black mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
+                  : "tabs  border border-white mr-2.5 rounded-full flex items-center justify-center bg-gray-100 whitespace-nowrap"
+                }`}
               onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}

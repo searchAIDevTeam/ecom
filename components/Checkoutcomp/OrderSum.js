@@ -15,20 +15,20 @@ const OrderSum = () => {
     <div className="sm:w-auto w-[80vw]">
       {roomStatus === "succeeded" && (
         <div>
-          <h3>Order Summary</h3>
+          <h3 className=" font-lg text-xl">Order Summary</h3>
           <br />
           <div className="grid grid-cols-2">
-            <div className="col-span-1">
-              Subtotal <br />
+            <div className="col-span-1 text-gray-500 flex flex-col gap-2">
+              Subtotal <br /> <br /> 
               Delivery/Shipping
               <br />
               <hr />
-              <h3 className="mt-2 mb-2">Total</h3>
+              <h3 className="mt-2 mb-2 text-black">Total</h3>
               <hr />
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 ">
               <svg
-                className="h-4 w-4 text-black inline"
+                className="h-4 w-4 text-gray-500 inline"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -42,10 +42,11 @@ const OrderSum = () => {
                 <path d="M18 6h-11h3a4 4 0 0 1 0 8h-3l6 6" />
                 <line x1="7" y1="10" x2="18" y2="10" />
               </svg>
-              {roomData.totalPrice}
+              {roomData.totalPrice * quantity}
               <br />
+              <br/>
               <svg
-                className="h-4 w-4 text-black inline"
+                className="h-4 w-4 text-gray-500 inline"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -59,7 +60,9 @@ const OrderSum = () => {
                 <path d="M18 6h-11h3a4 4 0 0 1 0 8h-3l6 6" />
                 <line x1="7" y1="10" x2="18" y2="10" />
               </svg>
+              
               1250.00
+              <br />
               <br />
               <svg
                 className="h-4 w-4 text-black inline mt-2 mb-2"
@@ -76,7 +79,7 @@ const OrderSum = () => {
                 <path d="M18 6h-11h3a4 4 0 0 1 0 8h-3l6 6" />
                 <line x1="7" y1="10" x2="18" y2="10" />
               </svg>
-              {roomData.totalPrice + 1250.00}
+              {(roomData.totalPrice *quantity) + 1250.00}
               <br />
             </div>
           </div>

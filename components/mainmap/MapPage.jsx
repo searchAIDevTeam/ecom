@@ -1,8 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Header from "@/components/Header";
-import { getPlaceData } from "../Map/api/index";
-import Map from "../Map";
+// import { getPlaceData } from "../Map/api/index";
+import {getPlaceData} from '@/components/Map/api/index'
+import Map from "@/components/Map/index";
 import axios from "axios";
 
 const MapPage = () => {

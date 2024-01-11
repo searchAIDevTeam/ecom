@@ -3,6 +3,23 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import {
+  srtarr,
+  typeContent,
+  typearr,
+  categoryarr,
+  colorarr,
+  htarr,
+  wdharr,
+} from "./tabsArray";
+import {
+  renderType,
+  renderTypeContent,
+  rendersizeheight,
+  rendercategory,
+  rendersizewidth,
+  renderSortItem,
+} from "./tabsRender";
 const Tabs = ({ filteredProducts }) => {
   console.log("Filtered products:", filteredProducts);
   const router = useRouter();
@@ -401,36 +418,9 @@ const Tabs = ({ filteredProducts }) => {
     setOpenAllSIze(false);
     setopenallsort(false);
   };
-  const handlefilterData = (text,type) => {
-    console.log("text", text.name);
-  
-    if (text.name === "Price: low to high") {
-      let data = filterData.slice().sort((a, b) => a.totalPrice - b.totalPrice);
-      setFilterdata(data);
-    } else if (text.name === "Price: high to low") {
-      let data = filterData.slice().sort((a, b) => b.totalPrice - a.totalPrice);
-      setFilterdata(data);
-    } else if (text.name === "Best match") {
-      let data = filteredProducts.slice(); 
-      setFilterdata(data);
-    }
-    else if (text.name === "Name") {
-      let data = filterData.slice().sort((a, b) => a.productTitle.localeCompare(b.productTitle));
-      setFilterdata(data);
-    }
-    // else if (text.name==="Customer rating") {
-    //   let data = filterData.slice().sort((a, b) => b.rating.length - a.rating.length);
-    //   setFilterdata(data);
-    // }
-  };
-  
-  useEffect(() => {
-    // This useEffect will be triggered after the state is updated
-    console.log("Updated filterData:", filterData);
-  }, [filterData]);
-  
+
   const renderSortItem = (text, idx) => (
-    <div className="flex justify-between" onClick={()=>handlefilterData(text,"sort")} key={idx}>
+    <div className="flex justify-between" key={idx}>
       <label htmlFor="age1" className="">
         {text.name}
       </label>
