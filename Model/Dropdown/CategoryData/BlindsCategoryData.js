@@ -46,5 +46,17 @@ export const blindsCategoryData = [
         { id: 8, text: "Gym" },
       ],
     },
+    {
+      categoryId: 5,
+      categoryHeading: "SHOP BY TYPE",
+      categoryData: [
+        {id: 1, text: "Roller blinds"},
+        {id: 2, text: "Wooden blinds"},
+        {id: 3, text: "Roman blinds"},
+        {id: 4, text: "Vertical blinds"},
+        {id: 5, text: "Venetian blinds"},
+        {id: 6, text: "Day & Night blinds"}
+    ],    
+    },
   ];
   
