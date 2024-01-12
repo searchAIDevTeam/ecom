@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Jost } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/provider";
 // import Header from "@/components/Header";
@@ -7,7 +7,10 @@ import NewHeader from "@/components/NewHeader/NewHeader";
 import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
 import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+const jost = Jost({ 
+  subsets: ["latin"],
+  variable:'--font-jost',
+ });
 
 export const metadata = {
   title: "Ayatrio",
@@ -18,7 +21,7 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={jost.className}>
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
 
         <Providers>
