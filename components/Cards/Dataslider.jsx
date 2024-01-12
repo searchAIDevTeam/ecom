@@ -37,7 +37,7 @@ const Dataslider = ({ category, data }) => {
   useEffect(() => {
     setproductData(data);
   }, [data]);
-  console.log(productData);
+  console.log("this is data",productData);
 
   const swiper2Ref = useRef(null);
 

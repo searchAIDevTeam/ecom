@@ -51,7 +51,7 @@ if (typeof window !== "undefined") {
   useEffect(() => {
   // setDeviceId(id);
   const getRecommendedData = async () => {
-    const response = await axios.get(`http://3.224.109.20:8080/api/getRecommendation?deviceId=${id}`);
+    const response = await axios.get(`http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`);
     console.log("recommended data is ",response.data) 
     setRecommended(response.data);
   }
@@ -59,12 +59,12 @@ if (typeof window !== "undefined") {
 }, [])
 const Partdata = (cat)=>{
   return  recommended?.products?.filter((item) => item.category === `${cat}` )
-}
-
+} 
+console.log("recommended data is ",recommended)
   const categories = recommended?.products?.map((item) => item.category);
   let uniqueCategories = [...new Set(categories)];
-  console.log("categories are ",categories)
-  console.log("unique categories are ",uniqueCategories)
+  // console.log("categories are ",categories)
+  // console.log("unique categories are ",uniqueCategories)
 
   //memo hook
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);

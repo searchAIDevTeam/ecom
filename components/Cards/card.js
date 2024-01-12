@@ -8,6 +8,7 @@ import PopUp from "../Reviews/PopUp";
 import { useRouter } from "next/navigation";
 
 function Card(props) {
+  console.log("i am card prop",props)
   const router = useRouter();
   console.log("props is ", props);
   const handleImageClick = () => {
