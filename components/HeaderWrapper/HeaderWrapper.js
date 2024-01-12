@@ -6,7 +6,12 @@ import Header from "../Header";
 const HeaderWrapper = () => {
   const pathname = usePathname();
   console.log(pathname);
-  return <Header />;
+  const routes = ["/", "/login"];
+  if (routes.includes(pathname)) {
+    return null;
+  } else {
+    return <Header />;
+  }
 };
 
 export default HeaderWrapper;
