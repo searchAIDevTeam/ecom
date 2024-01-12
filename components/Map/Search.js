@@ -177,12 +177,12 @@ const Search = ({ places, onResultClick }) => {
           </div>
         </div>
       ) : (
-        <div className="main-search absolute shadow-lg z-20 top-[14%] left-3 rounded-[999px]">
+        <div className="main-search absolute shadow-lg z-20 top-[14%] left-3">
           <div
             className="search flex items-center border-none bg-white "
-            style={{
-              borderRadius: "300px 300px  300px 300px",
-            }}
+            // style={{
+            //   borderRadius: "300px 300px  300px 300px",
+            // }}
           >
             <input
               type="text"
@@ -191,8 +191,8 @@ const Search = ({ places, onResultClick }) => {
               onChange={handleSearchChange}
               className="searchTerm w-[17rem] h-10 border-white p-4 active:border-none focus:outline-none rounded-full "
               style={{
-                borderRadius: `300px 300px ${
-                  searchQuery.length > 0 ? "0px 0px" : "300px 300px"
+                borderRadius: ` ${
+                  searchQuery.length > 0 ? "0px 0px" : "0px 0px"
                 }`,
               }}
             />
@@ -204,9 +204,9 @@ const Search = ({ places, onResultClick }) => {
           {searchQuery && (
             <div
               className="dropdown-container custom-scrollbar bg-white w-[19rem] h-44 border border-gray-200 shadow-md  overflow-y-scroll "
-              style={{
-                borderRadius: "0px 0px 10px 10px",
-              }}
+              // style={{
+              //   borderRadius: "0px 0px 10px 10px",
+              // }}
             >
               {places.map((item, index) => (
                 <div

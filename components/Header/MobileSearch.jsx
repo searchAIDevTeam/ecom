@@ -40,7 +40,7 @@ const MobileSearch = ({ isOpen, onClose, onSearch }) => {
                 className="w-5 mx-1 my-1.5 top-[10%] right-[1%]  absolute z-10"
               />
             </div>
-            <div className=" flex flex-col gap-4 font-bold font-sans ">
+            <div className=" flex flex-col gap-4 font-bold ">
               <div className=" font-normal text-slate-600">
                 <h2>Popular Searches</h2>
               </div>

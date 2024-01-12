@@ -62,7 +62,7 @@ console.log(trendingData)
     <div>
       <div className="pt-12  mb-20  bg-white sm:px-[50px] px-[20px]">
         <div className="mb-2 w-full flex justify-between items-center">
-          <h2 className="text-bold text-2xl font-serif">
+          <h2 className="text-bold text-2xl">
             {trendingData && trendingData.length===0 ? "Trending Products(Empty)" : "Trending Product"}
           </h2>
           <div className="Slidenav flex  bg-white text-2xl cursor-pointer  text-white rounded-full gap-2">
