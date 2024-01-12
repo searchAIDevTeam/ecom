@@ -33,7 +33,7 @@ const TabsProductContent = (props) => {
             handleTabClick();
           }
         }}
-        className={`Tabbtn 
+        className={`
                   ${
                     isFilterOpen
                       ? `active-tabs  border border-black ${commonClasses}`

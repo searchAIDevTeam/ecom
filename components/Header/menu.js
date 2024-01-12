@@ -2,11 +2,9 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { GrMenu } from "react-icons/gr";
-import Styles from "../Dropitems/Styles";
-import Colours from "../Dropitems/Colours";
-import Rooms from "../Dropitems/Rooms";
-import Collections from "../Dropitems/Collections";
+import { menutext } from "@/Model/Menu/MenuCategoryData/MenuCategoryData";
 import Link from "next/link";
+import CategoryContent from "../molecules/CategoryContent";
 // import arrow from "../../assets/icon/backarrow.svg";
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -50,61 +48,6 @@ export default function BasicMenu() {
     SetMainContent(true);
   };
 
-  const menutext = [
-    {
-      index: 1,
-      lebel: "SHOP BY COLLECTION",
-      item: [
-        "Fornasetti",
-        "Senza Tempo II",
-        "The Gardens",
-        "Stella McCartney x Cole & Son",
-        "Ardmore - Jabula",
-        "Fornasetti",
-        "12 More",
-        "All Collections",
-      ],
-    },
-    {
-      index: 2,
-      lebel: "SHOP BY STYLE",
-      item: [
-        "Animals",
-        "Borders",
-        "Conversational",
-        "Damask",
-        "Floral",
-        "11 More",
-        "All Styles",
-      ],
-    },
-    {
-      index: 3,
-      lebel: "SHop by color",
-      item: [
-        "Animals",
-        "Borders",
-        "Conversational",
-        "Damask",
-        "Floral",
-        "11 More",
-        "All Styles",
-      ],
-    },
-    {
-      index: 4,
-      lebel: "SHop by animal",
-      item: [
-        "dodo",
-        "tiger",
-        "mamoth",
-        "hathi",
-        "Floral",
-        "11 More",
-        "All Styles",
-      ],
-    },
-  ];
   return (
     <div>
       <GrMenu
@@ -127,7 +70,7 @@ ${mainContent ? "block" : "hidden"}
           >
             {/* for desktop */}
             <div className="px-[30px] mt-20 sm:flex hidden">
-              <div className="filter_container flex gap-32">
+              <div className="filter_container flex gap-20">
                 <div className="menuLog flex flex-col gap-4">
                   <Link href="/virtualexperience/vrooms">
                     <button className="bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-blue-700">
@@ -148,10 +91,26 @@ ${mainContent ? "block" : "hidden"}
                   </button>
                 </div>
 
-                <Collections />
-                <Styles />
-                <Colours />
-                <Rooms />
+                {
+                  menutext.map((category)=>{
+                    return (
+                      <div>
+                        <CategoryContent 
+                          categoryHeading={category.lebel} 
+                          categoryData={category.text}
+                          headingSize="text-2xl"
+                          headingStyle="font-bold"
+                          headingColor="text-gray-700"
+                          gapHeadingItems="gap-8"
+                          itemsGap="gap-5"
+                          textSize="text-lg"
+                          textStyle="font-semibold"
+                          textColor="text-gray-600"
+                        />
+                      </div>
+                    )
+                  })
+                }
               </div>
             </div>
 
@@ -188,8 +147,8 @@ ${mainContent ? "block" : "hidden"}
                                   selectectedMenu === index ? "flex" : "hidden"
                                 }`}
                               >
-                                {text.item.map((txt, idx) => (
-                                  <p key={idx}>{txt}</p>
+                                {text.text.map((txt, idx) => (
+                                  <p key={idx}>{txt.text}</p>
                                 ))}
                               </div>
                               <div>

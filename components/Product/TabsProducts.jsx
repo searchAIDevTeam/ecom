@@ -10,12 +10,11 @@ import {
   categoryarr,
   colorarr,
   htarr,
-  wdharr,
+  heightWidthThickness,
 } from "./tabsArray";
 import {
   renderType,
   renderTypeContent,
-  rendersizeheight,
   rendercategory,
   rendersizewidth,
   renderSortItem,
@@ -192,111 +191,20 @@ const Tabs = ({ filteredProducts }) => {
               renderFilter={renderSortItem}
             />
 
-            {/* dropdown2 */}
-            <div className="dropdown2 ">
-              <button
-                onClick={() => {
-                  if (window.innerWidth <= 450) {
-                    handleAll();
-                    handleTabClick();
-                    handleAllSize();
-                  } else {
-                    handleSize();
-                    handleTabClick();
-                  }
-                }}
-                className={`Tabbtn 
-                  ${
-                    openSize
-                      ? `active-tabs  border border-black ${commonClasses}`
-                      : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    window.innerWidth <= 450
-                      ? " justify-center"
-                      : " justify-between"
-                  }
-                  `}
-              >
-                Size &nbsp;
-                <Image
-                  src="/backarrow.svg"
-                  width={40}
-                  height={40}
-                  className={`w-6 h-6  mt-1 sm:block hidden
-                ${openSize ? " rotate-90" : "-rotate-90"}
-                
-                `}
-                  alt=""
-                />
-              </button>
+            {/* Height * width * thickness - dropdown2 */}
+            <TabsProductContent
+              filterName={"Height*Width*Thickness"}
+              commonClasses={commonClasses}
+              isFilterOpen={openSize}
+              handleAll={handleAll}
+              handleTabClick={handleTabClick}
+              handleFilter={handleSize}
+              handleAllFilter={handleAllSize}
+              filterArr={heightWidthThickness}
+              renderFilter={rendersizewidth}
+            />
 
-              {openSize ? (
-                <div className="border flex flex-col gap-7 py-5 bg-white rounded-2xl w-64 h-80 overflow-y-auto px-5 ">
-                  <hr />
-                  <div
-                    className="flex justify-between"
-                    onClick={(event) => {
-                      handleWidth();
-                      event.stopPropagation();
-                    }}
-                  >
-                    <label for="age11" className=" underline">
-                      width
-                    </label>
-                    <Image
-                      src="/backarrow.svg"
-                      width={40}
-                      height={40}
-                      className={`w-6 h-6  mt-1
-                  ${openWidth ? " rotate-90" : "-rotate-90"}
-                  `}
-                      alt=""
-                    />
-                  </div>
-
-                  {/* ******************************************** */}
-                  {openWidth ? (
-                    <div className="flex flex-col gap-4">
-                      {wdharr.map(rendersizewidth)}
-                    </div>
-                  ) : null}
-
-                  {/* ********************************************** */}
-                  <hr />
-                  <div
-                    className="flex justify-between"
-                    onClick={(event) => {
-                      handleHeight();
-                      event.stopPropagation();
-                    }}
-                  >
-                    <label for="age11" className=" underline">
-                      Height
-                    </label>
-                    <Image
-                      src="/backarrow.svg"
-                      width={40}
-                      height={40}
-                      className={`w-6 h-6  mt-1
-                  ${openHeight ? " rotate-90" : "-rotate-90"}
-                  `}
-                      alt=""
-                    />
-                  </div>
-
-                  {/* ******************************************** */}
-                  {openHeight ? (
-                    <div className="flex flex-col gap-4">
-                      {htarr.map(rendersizeheight)}
-                    </div>
-                  ) : null}
-                  <hr />
-                </div>
-              ) : null}
-            </div>
-
-            {/* dropdown3 */}
+            {/* Color - dropdown3 */}
 
             <div>
               <button
@@ -355,7 +263,6 @@ const Tabs = ({ filteredProducts }) => {
                           } `}
                         ></div>
                         <p>{text.name}</p>
-                        <p>{text.value}</p>
                       </div>
                     ))}
                   </div>
@@ -472,7 +379,7 @@ const Tabs = ({ filteredProducts }) => {
                           onClick={handleAllSize}
                           className="text-left flex justify-between"
                         >
-                          Size &nbsp;
+                          Height*Width*Thickness &nbsp;
                           <Image
                             src="/backarrow.svg"
                             width={40}
@@ -486,11 +393,11 @@ const Tabs = ({ filteredProducts }) => {
                         </div>
                         {openAllSize ? (
                           <div className="flex flex-col gap-7">
-                            <p className="text-left font-semibold">Width</p>
-                            {wdharr.map(rendersizewidth)}
-
+                            {/* <p className="text-left font-semibold">Width</p> */}
+                            {heightWidthThickness.map(rendersizewidth)}
+                            {/* 
                             <p className="text-left font-semibold">Height</p>
-                            {htarr.map(rendersizewidth)}
+                            {htarr.map(rendersizewidth)} */}
                           </div>
                         ) : null}
                       </div>
@@ -516,7 +423,7 @@ const Tabs = ({ filteredProducts }) => {
                         </div>
                         {openAllcolor ? (
                           <div className="flex flex-col gap-7">
-                            {srtarr.map(renderSortItem)}
+                            {colorarr.map(renderSortItem)}
                           </div>
                         ) : null}
                       </div>
