@@ -99,7 +99,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
 
   return (
     <header
-      className={`absolute top-20 w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white
+      className={`absolute pt-7 pb-2 mt-[3.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white
       ${isFilterHovered ? "backdrop-blur-lg" : ""}  
       `}
     >
@@ -146,7 +146,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
 
               {activeDropdown === idx && (
                 <div
-                  className={`absolute left-0 mt-10 w-full bg-white shadow-md transition-all ease-linear duration-2000
+                  className={`absolute left-0 mt-7 w-full bg-white shadow-md transition-all ease-linear duration-2000
                   ${isBlur ? " backdrop-blur-lg" : ""}  
                   `}
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it

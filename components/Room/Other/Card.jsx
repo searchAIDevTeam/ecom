@@ -1,5 +1,8 @@
 "use client";
+
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import Calculation from "./Calculation";
@@ -49,6 +52,7 @@ const Card = ({ data }) => {
   const colorSep = data?.colors?.[0]?.split(",");
 
   const roomData = useSelector(selectRoomData);
+  const roomStatus = useSelector(selectRoomStatus);
   //posting data to database
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
@@ -72,6 +76,7 @@ const Card = ({ data }) => {
       const response = await axios.post(postUrl, postData);
 
       console.log("Server Response:", response);
+
       console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error posting room data:", error);
@@ -100,13 +105,15 @@ const Card = ({ data }) => {
       await postRoomData();
 
       // Redirect to the checkout page
-      router.push("/checkout");
     } catch (error) {
       console.error("Error handling click:", error);
     }
   };
   //posting data to database
 
+  const handleClicks = () => {
+    router.push("/checkout");
+  };
   return (
     <>
       {/* texts */}
@@ -315,10 +322,26 @@ const Card = ({ data }) => {
           <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center  ">
             <div className="guestCheckout ">
               <button
-                onClick={handleClickDB}
+                onClick={() => {
+                  handleClickDB();
+                  {
+                    roomStatus === "succeeded" &&
+                      toast.success("Succesfully added", {
+                        toastId: "success1",
+                      });
+                  }
+                }}
                 className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Add To Bag
+              </button>
+            </div>
+            <div className="guestCheckout ">
+              <button
+                onClick={handleClicks}
+                className="bg-black mt-4 text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
+              >
+                Buy Now
               </button>
             </div>
             <div className="memberCheckout mt-4">
@@ -328,6 +351,13 @@ const Card = ({ data }) => {
             </div>
           </div>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          newestOnTop={true}
+          theme="light"
+          style={{ zIndex: "9999999999999" }}
+        />
       </div>
     </>
   );

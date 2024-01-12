@@ -9,7 +9,12 @@ const HeaderWrapper = () => {
   //   return null;
   // }
   console.log(pathname);
-  return <Header />;
+  const routes = ["/", "/login"];
+  if (routes.includes(pathname)) {
+    return null;
+  } else {
+    return <Header />;
+  }
 };
 
 export default HeaderWrapper;

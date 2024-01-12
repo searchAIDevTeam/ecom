@@ -37,7 +37,6 @@
 .Filter-array-element {
   display: flex;
   gap: 0.55rem;
-  padding-bottom: 3px;
   padding-top: 0;
   cursor: pointer;
 }
@@ -88,11 +87,17 @@
 .Filter-array-element-lebel {
   white-space: nowrap;
   font-weight: 600;
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
+  text-transform: uppercase;
+  -webkit-letter-spacing: .08em;
+  -moz-letter-spacing: .08em;
+  -ms-letter-spacing: .08em;
+  letter-spacing: .08em;
+  font-size: 13px;
 }
 
 .Filter-array-element:hover {
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #000;
   transition: border-color 0.1s, color 0.1s;
 }
 

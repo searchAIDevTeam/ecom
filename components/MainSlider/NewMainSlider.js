@@ -60,12 +60,12 @@ export default function NewMainSlider() {
         breakpoints={{
           412: {
             slidesPerView: 1.5,
-            spaceBetween: 15,
+            spaceBetween: 5,
           },
 
           640: {
             slidesPerView: 1.25,
-            spaceBetween: 20,
+            spaceBetween: 10,
           },
           1024: {
             slidesPerView: 1.72,
@@ -79,19 +79,18 @@ export default function NewMainSlider() {
       <Image src={data.img} width={500} height={500} alt="Swiper" className="swiper-slide"/>
       <div className="absolute bottom-4 left-4 flex text-lg text-white">Your text</div>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-       <div onMouseEnter={handleEnter}  className="cursor-pointer">
-        <div className={`text-md text-black absolute top-32 left-40 bg-gray-300 rounded-full w-6 h-6 ${hov ? 'bg-transparent border border-gray-300' :'bg-gray-300'}`}>
-          <div className={`bg-white absolute rounded-full ml-1.5 mt-1.5 container ${hov ? 'h-2 w-2 transition-all mt-[7px] ml-[7px]' : 'h-3 w-3'}`}>
+       <div onMouseEnter={handleEnter}  className="cursor-pointer">        
+          <div className="carcular-conui top-28 left-40  absolute rounded-full w-[30px] h-[30px]">
+          <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui">
           </div>
           </div>
           </div>
            {hov &&(
              <div
-              className={` flex-row z-10 mt-16 mr-64 w-40 h-48 flex items-center pb-2 bg-white cursor-pointer`}
+              className={` flex-row z-10 mt-12 mr-64 w-40 h-48 flex items-center pb-2 bg-white cursor-pointer`}
               onClick={handleTab} onMouseLeave={handleLeave}
             >
-              <div className="flex flex-row relative">
-              
+              <div className="flex flex-row relative">        
                   <div
                     className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
                     key={data.productId}

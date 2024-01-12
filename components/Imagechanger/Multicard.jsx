@@ -17,7 +17,7 @@ const Multicard = () => {
   return (
     <div>
       <div className="bg-zinc-50 rounded-lg h-120 sm:px-[50px] px-[20px] overflow-x-auto">
-        <div className="sm:text-5xl text-2xl font-bold w-full font-sans pt-12 pb-8">
+        <div className="sm:text-5xl text-2xl font-bold w-full pt-12 pb-8">
           Why Ayatrio so innovative
           <br />
           for home furnishing.
