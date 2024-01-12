@@ -1,15 +1,53 @@
 // Expandedbar.js
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Expandbar.css";
+import axios from "axios";
 // import search from "../../assets/icon/search.svg";
 // import mainlogo from "../../assets/ayatriologo.png";
 
 const Expandedbar = ({ searchText, onClose, onSearch }) => {
   const [searchTexte, setSearchText] = useState(searchText);
-  const inputRef = useRef(null);
+  const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Focus on the input field when the component mounts
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const cachedData = sessionStorage.getItem("cachedData");
+        const cachedSearchText = sessionStorage.getItem("cachedSearchText");
+
+        if (searchTexte !== cachedSearchText) {
+          // Perform the search and update the cache
+          const response = await axios.get(`http://43.204.166.53:8080/api/products?search=${searchTexte}`);
+          sessionStorage.setItem("cachedData", JSON.stringify(response.data));
+          sessionStorage.setItem("cachedSearchText", searchTexte);
+
+          setData(response.data);
+          console.log(response.data)
+          onSearch(response.data);
+        } else {
+          setData(JSON.parse(cachedData));
+          onSearch(JSON.parse(cachedData));
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    const timeoutId = setTimeout(() => {
+      if (searchTexte) {
+        fetchData();
+      }
+    }, 700);
+    
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [searchTexte]);
+  const inputRef = useRef();
+  useEffect(() => {
     inputRef.current.focus();
   }, []);
   return (
