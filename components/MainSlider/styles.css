@@ -58,7 +58,7 @@ button {
 }
 
 .swiper-slider {
-  margin-top: 8rem;
+  margin-top: 7rem;
 }
 
 img {
@@ -76,6 +76,7 @@ img {
   margin: 0 auto;
   padding-block: 5rem;
 }
+
 .carcular-conui {
   border: 1.5px solid rgba(264, 264, 264, 0.5);
   border-radius: 50%;
