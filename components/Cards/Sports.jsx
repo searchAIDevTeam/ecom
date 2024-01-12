@@ -53,7 +53,7 @@ const Sports = () => {
       {sportsAndGymProducts && (
         <div className="my-10  bg-white sm:px-[50px] px-[20px]">
           <div className=" w-full flex justify-between items-center">
-            <h2 className="text-bold text-2xl font-serif ">
+            <h2 className="text-bold text-2xl ">
               {sportsAndGymProducts ? "Sports & Gym" : "Beach and Resort"}
             </h2>
             <div className="Slidenav flex text-2xl cursor-pointer  text-white rounded-full gap-2">
