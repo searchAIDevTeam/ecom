@@ -161,7 +161,37 @@ const Tabs = ({ filteredProducts }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  //sorting
+  const handleSorting = (selectedOption) => {
+    let filterer = [...filterData]; 
+  
+    if (selectedOption.name === "Best match") {
+      filterer=[...filterData]
+      setFilterdata(filterer)
+    } else if (selectedOption.name ==="Price: high to low" ) {
+      filterer = filterer.sort((a, b) => a.perUnitPrice - b.perUnitPrice);
+      setFilterdata(filterer)
 
+    } else if (selectedOption.name ==="Price: low to high" ) {
+      filterer = filterer.sort((a, b) => b.perUnitPrice - a.perUnitPrice);
+      setFilterdata(filterer)
+
+    } else if (selectedOption.name === "Newest") {
+      filterer = filterer.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setFilterdata(filterer)
+
+    } else if (selectedOption.name === "Name") {
+      filterer = filterer.sort((a, b) => a.productTitle.localeCompare(b.productTitle));
+      setFilterdata(filterer)
+
+    }
+    else{
+      setFilterdata(filteredProducts)
+    }
+    
+    console.log(filterer);
+  };
+  
   return (
     <>
       <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
@@ -178,7 +208,6 @@ const Tabs = ({ filteredProducts }) => {
           <div
             className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-20`}
           >
-            {/* Sort - dropdown1 */}
             <TabsProductContent
               filterName={"Sort"}
               commonClasses={commonClasses}
@@ -188,7 +217,9 @@ const Tabs = ({ filteredProducts }) => {
               handleFilter={handleOpen}
               handleAllFilter={handleAllsort}
               filterArr={srtarr}
-              renderFilter={renderSortItem}
+              renderFilter={(text, idx) =>
+                renderSortItem(text, idx, handleSorting)
+              }
             />
 
             {/* Height * width * thickness - dropdown2 */}
