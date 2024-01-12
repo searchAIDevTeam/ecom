@@ -2,10 +2,10 @@
   display: flex;
   flex-flow: row;
   /* justify-content: space-evenly; */
-  /* height: 64px;
+/* height: 64px;
   width: 100%;
   flex: 1 2 1;
-} */ 
+} */
 
 .search_icon_mar {
   margin: 3px 10px;
@@ -151,13 +151,14 @@
 }
 
 .seachbar-div2-icon {
-  height: 25px;
-  width: 25px;
+  height: 23px;
+  width: 23px;
   margin-right: 10px;
 }
 
 .header-div-icon {
   height: 23px;
+  width: 23px;
 }
 
 .header-div-sStore-icon {
