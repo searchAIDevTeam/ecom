@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 const FooterWrapper = () => {
   const pathname = usePathname();
   console.log(pathname);
-  const routes = ["/ayatrio-map"];
+  const routes = ["/ayatrio-map", "/", "/login"];
   if (routes.includes(pathname)) {
     return null;
   } else {
