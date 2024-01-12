@@ -25,86 +25,168 @@ const AddCart = () => {
   // console.log("roomstatus", roomStatus);
   // console.log("selecteditems", selectedItems);
   const quantity = useSelector(selectQuantity);
-  const [cartdata, setcartdata] = useState(null);
-  const [cartStatus, setCartStaus] = useState(null);
+  const [cartdata, setcartdata] = useState("");
+  const [cartStatus, setCartStaus] = useState("");
+  // if (typeof window !== "undefined") {
+  //   var id = localStorage.getItem("deviceId");
+  //   // console.log("deviceId : ", id);
+  // }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setCartStaus("Loading");
-        const response = await axios.get("http://3.224.109.20:8080/api/cart");
-        setcartdata(response.data);
-        setCartStaus("db is successfull");
+        setCartStaus("loading");
+
+        // const deviceId = localStorage.getItem("deviceId");
+
+        // if (!deviceId) {
+        //   console.error("Device ID not found");
+        //   setCartStaus("failed");
+        //   return;
+        // }
+        if (typeof window !== "undefined") {
+          var id = localStorage.getItem("deviceId");
+          // console.log("deviceId : ", id);
+        }
+
+        const response = await axios.get("http://3.224.109.20:8080/api/cart", {
+          // headers: {
+          //   "Content-Type": "application/json",
+          // },
+          params: {
+            deviceId: id,
+          },
+        });
+        console.log(response);
+        if (response.status !== 200) {
+          throw new Error("HTTP status " + response.status);
+        }
+        const data = response.data; // Extract JSON from the response
+        console.log("response from DB", data);
+
+        setcartdata(data);
+        console.log("response from DB", cartdata);
+        setCartStaus("succeeded");
+        console.log("cartStatus", cartStatus);
       } catch (error) {
         console.error("Error Fetching data from DB : ", error);
-        setCartStaus("db is failed");
+
+        setCartStaus("failed");
       }
     };
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Do something with the updated state (cartdata and cartStatus)
+    console.log("Updated cartdata", cartdata);
+    console.log("Updated cartStatus", cartStatus);
+  }, [cartdata, cartStatus]);
 
-
+  let totalPrice = 0;
+  if (cartStatus === "succeeded" && cartdata) {
+    totalPrice = cartdata.items.reduce(
+      (total, item) => total + item.productId.totalPrice * item.quantity,
+      0
+    );
+  }
+  let quantities = 0;
+  if (cartStatus === "succeeded" && cartdata) {
+    quantities = cartdata.items.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+  }
 
   return (
-    <div>
-      <div className="main-cart flex justify-center items-center min-h-screen">
-        <div className="cartContainer flex flex-col sm:flex-row w-4/5 h-4/5 bg-white sm:gap-0 gap-10 sm:my-0 my-20 ">
-          {/* getting data from redux store */}
-          {roomStatus === "succeeded" && (
-            <div className="left-cart flex-col flex sm:w-2/3 w-[90vw] pr-8">
-              <h1 className="sm:text-4xl text-2xl mb-6 font-semibold">Bag</h1>
-              <div className="bagContainer">
-                <div className="cartitem flex mb-6 border-b pb-4">
-                  <div className="img w-48 h-48 mr-8">
-                    <img
-                      src={roomData.images[0]}
-                      className="w-full h-full object-cover rounded-md"
-                      alt="Product"
-                    />
-                  </div>
-                  <div className="cartContent flex flex-col justify-between">
-                    <div className="mainright">
-                      <div className="leftContent flex flex-col">
-                        <h2 className="sm:text-xl text-lg sm:font-semibold font-medium  mb-2">
-                          {roomData.productTitle}
-                        </h2>
-                        <h3 className="text-gray-600">{roomData.category}</h3>
-                      </div>
-                      <div className="rightContent sm:text-xl text-lg sm:font-semibold font-medium">
-                        ${roomData.totalPrice}
-                      </div>
-                      <div className="icons flex items-center space-x-2 mt-4">
+    <div className="">
+      <div className="main-cart flex justify-center sm:flex-row gap-80  items-start min-h-screen relative top-32 pb-20">
+        {/* <div className="cartContainer flex flex-col sm:flex-row w-4/5 h-4/5 bg-white sm:gap-0 gap-10 sm:my-0 my-20 "> */}
+        {/* getting data from redux store */}
+        {/* {roomStatus === "succeeded" && ( */}
+        {cartStatus === "loading" && <p>Loading...</p>}
+        {cartStatus === "failed" && <p>Error loading data from DB.</p>}
+        {cartStatus === "succeeded" && cartdata && (
+          <div>
+            {cartdata.items.map((item) => (
+              <div key={item._id}>
+                <div className="left-cart flex-col flex sm:w-2/3 w-[90vw] pr-8">
+                  <h1 className="sm:text-4xl text-2xl mb-6 font-semibold">
+                    Bag
+                  </h1>
+                  <div className="bagContainer w-72">
+                    <div className="cartitem flex mb-6 border-b pb-4">
+                      <div className="img w-48 h-48 mr-8">
                         <Image
-                          src="/CartIcons/delete-icon.svg"
-                          width={25}
-                          height={25}
-                          alt="delete"
-                          className="hover:text-slate-500 cursor-pointer"
+                          src={item.productId.images[0]}
+                          className="w-full h-full object-cover rounded-md"
+                          alt="Product"
+                          width={150}
+                          height={150}
                         />
-                        <Image
-                          src="/CartIcons/broken-heart-icon.svg"
-                          width={25}
-                          height={25}
-                          alt=""
-                          className="text-red-700 hover:text-red-500 cursor-pointer"
-                        />
+                      </div>
+                      <div className="cartContent flex flex-col justify-between">
+                        <div className="mainright">
+                          <div className="leftContent flex flex-col">
+                            <h2 className="sm:text-xl text-lg sm:font-semibold font-medium  mb-2">
+                              {item.productId.productTitle}
+                            </h2>
+                            <h3 className="text-gray-600">
+                              {item.productId.category}
+                            </h3>
+                            <h3 className="text-gray-600">
+                              Quantity:{item.quantity}
+                            </h3>
+                          </div>
+                          <div className="rightContent sm:text-xl text-lg sm:font-semibold font-medium">
+                            ${item.productId.totalPrice * item.quantity}
+                          </div>
+                          <div className="icons flex items-center space-x-2 mt-4">
+                            <Image
+                              src="/CartIcons/delete-icon.svg"
+                              width={25}
+                              height={25}
+                              alt="delete"
+                              className="hover:text-slate-500 cursor-pointer"
+                            />
+                            <Image
+                              src="/CartIcons/broken-heart-icon.svg"
+                              width={25}
+                              height={25}
+                              alt=""
+                              className="text-red-700 hover:text-red-500 cursor-pointer"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            ))}
+          </div>
+        )}
 
-          <div className="right-cart flex flex-col sm:w-1/3 w-[80vw]">
+        {/* 
+this is order summary */}
+        {/* {cartStatus === "loading" && <p>Loading...</p>}
+        {cartStatus === "failed" && <p>Error loading data from DB.</p>}
+        {cartStatus === "succeeded" && cartdata && (
+          let totalPrice = cartdata.items.reduce((total, item) => total + item.productId.totalPrice * item.quantity, 0);
+        )}
+         */}
+
+        {cartStatus === "loading" && <p>Loading...</p>}
+        {cartStatus === "failed" && <p>Error loading data from DB.</p>}
+        {cartStatus === "succeeded" && cartdata && (
+          <div className="right-cart flex flex-col  sm:w-1/3 w-[80vw]">
             <h1 className="sm:text-4xl text-2xl font-semibold mb-6">
               Order Summary
             </h1>
             <div className="subtotal flex justify-between items-center mb-4">
               <div className="text-lg">Subtotal</div>
               <div className="text-lg sm:font-semibold font-medium">
-                {roomData.totalPrice * quantity}
+                ${totalPrice}
               </div>
             </div>
             <div className="deliveryCharges flex justify-between items-center mb-4">
@@ -117,10 +199,10 @@ const AddCart = () => {
                 Total
               </div>
               <div className="sm:text-xl text-lg sm:font-semibold font-medium">
-                ₹ {roomData.totalPrice * quantity + 7}
+                ₹ {totalPrice + 7}
               </div>
-              <div>Quantity: {quantity}</div>
             </div>
+            <div>Quantity: {quantities}</div>
 
             <div
               onClick={handleClick}
@@ -141,96 +223,48 @@ const AddCart = () => {
               </button>
             </div>
           </div>
-
-          <div className="middle-cart">
-            {Object.values(selectedItems).map((item) => (
-              <div key={item.id} className="cartitem flex mb-6 border-b pb-4">
-                <div className="img w-48 h-48 mr-8">
-                  <img
-                    src={item.image}
-                    className="w-full h-full object-cover rounded-md"
-                    alt={item.title}
-                  />
-                </div>
-                <div className="cartContent flex flex-col justify-between">
-                  <div className="mainright">
-                    <div className="leftContent flex flex-col">
-                      <h2 className="sm:text-xl text-lg sm:font-semibold font-medium  mb-2">
-                        {item.title}{" "}
-                        {/* Use the correct property from your data */}
-                      </h2>
-                      <h3 className="text-gray-600">
-                        {item.category}{" "}
-                        {/* Use the correct property from your data */}
-                      </h3>
-                    </div>
-                    <div className="rightContent sm:text-xl text-lg sm:font-semibold font-medium">
-                      ₹{item.price}{" "}
-                      {/* Use the correct property from your data */}
-                    </div>
-                    <div className="icons flex items-center space-x-2 mt-4">
-                      <img
-                        src={Delete}
-                        alt=""
-                        className="w-6 h-6 hover:text-slate-500 cursor-pointer "
-                      />
-                      <img
-                        src={HeartBroken}
-                        alt=""
-                        className="text-red-700 hover:text-red-500 cursor-pointer w-6 h-6"
-                      />
-                      {/* <Delete className="hover:text-slate-500 cursor-pointer " /> */}
-                      {/* <HeartBroken className="text-red-700 hover:text-red-500 cursor-pointer" /> */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* this is from DB */}
-
-          <h1>This is comming from DB</h1>
-          {cartStatus === "loading" && <p>Loading...</p>}
-          {cartStatus === "failed" && <p>Error loading data from DB.</p>}
-          {cartStatus === "succeeded" && cartdata && (
-            <div>
-              <h1>Cart</h1>
-              <ul>
-                {cartdata.items.map((item) => (
-                  <li key={item._id}>
-                    <div>Name: {item.name}</div>
-                    <div>Price: {item.price}</div>
-                    <div>Quantity: {item.quantity}</div>
-                    <div></div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
+        )}
       </div>
 
-      {/* important data */}
-      {/* <div>
-        {roomStatus === "succeeded" && (
-          <div>
-           
-            <div>Category: {roomData.category}</div>
-            <div>Pattern Number: {roomData.patternNumber}</div>
-            <div> Image: <img src={roomData.images[0]} alt="" style={{width:"100px", height:"100px"}} /> </div>
-            
-          </div>
-        )}
-        {roomStatus === "failed" && (
-          <div>Error loading room data.</div>
-        )}
-      </div> */}
-
-      {/* important data */}
-
-      {/* new */}
       {/* <Footer /> */}
+      <div className="middle-cart">
+        {Object.values(selectedItems).map((item) => (
+          <div key={item.id} className="cartitem flex mb-6 border-b pb-4">
+            <div className="img w-48 h-48 mr-8">
+              <img
+                src={item.image}
+                className="w-full h-full object-cover rounded-md"
+                alt={item.title}
+              />
+            </div>
+            <div className="cartContent flex flex-col justify-between">
+              <div className="mainright">
+                <div className="leftContent flex flex-col">
+                  <h2 className="sm:text-xl text-lg sm:font-semibold font-medium  mb-2">
+                    {item.title}{" "}
+                  </h2>
+                  <h3 className="text-gray-600">{item.category} </h3>
+                </div>
+                <div className="rightContent sm:text-xl text-lg sm:font-semibold font-medium">
+                  ₹{item.price}{" "}
+                </div>
+                <div className="icons flex items-center space-x-2 mt-4">
+                  <img
+                    src={Delete}
+                    alt=""
+                    className="w-6 h-6 hover:text-slate-500 cursor-pointer "
+                  />
+                  <img
+                    src={HeartBroken}
+                    alt=""
+                    className="text-red-700 hover:text-red-500 cursor-pointer w-6 h-6"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

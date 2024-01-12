@@ -26,11 +26,11 @@ const Tabs = ({ filteredProducts }) => {
   const handlenav = (id) => {
     router.push(`/room/${id}`);
   };
-  const [filterData,setFilterdata]= useState([])
+  const [filterData, setFilterdata] = useState([]);
   useEffect(() => {
-    setFilterdata(filteredProducts)
-  }, [filteredProducts])
-  
+    setFilterdata(filteredProducts);
+  }, [filteredProducts]);
+
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
   useEffect(() => {
@@ -133,8 +133,6 @@ const Tabs = ({ filteredProducts }) => {
     setopenallsort(false);
   };
 
-  
-
   const commonClasses =
     "px-3 py-2 mr-2.5 rounded-full flex items-center  bg-gray-100 whitespace-nowrap";
 
@@ -166,7 +164,7 @@ const Tabs = ({ filteredProducts }) => {
 
   return (
     <>
-      <div className="wrapper mb-20 sm:px-[50px] px-[20px] py-20 w-full h-full">
+      <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
         <div>
           <h2 className="text-xl font-bold mb-5">More ideas and inspiration</h2>
         </div>
@@ -177,10 +175,13 @@ const Tabs = ({ filteredProducts }) => {
       
        `}
         >
-          <div className={`bg-white py-5 bloc-tabs2 flex flex-row`}>
+          <div
+            className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-20`}
+            
+          >
             {/* dropdown1 */}
-            <div className="dropdown1">
-              <div>
+            <div className="dropdown1 " >
+              <div >
                 <button
                   onClick={() => {
                     if (window.innerWidth <= 450) {
@@ -217,8 +218,11 @@ const Tabs = ({ filteredProducts }) => {
                     alt=""
                   />
                 </button>
-                {openSort  ? (
-                  <div  className=" border opensort flex flex-col gap-7 py-5 bg-white rounded-2xl w-52 h-40 overflow-y-auto px-5">
+                {openSort ? (
+                  <div
+                    className="absolute border opensort flex flex-col gap-7 py-5 bg-white rounded-2xl w-52 h-40 overflow-y-auto px-5"
+                    
+                  >
                     {srtarr.map(renderSortItem)}
                   </div>
                 ) : null}
@@ -543,7 +547,6 @@ const Tabs = ({ filteredProducts }) => {
                     <div className="flex flex-col px-4 gap-6">
                       <div className="flex justify-between gap-32">
                         <p>Filter and sort</p>
-                        {/* <IoMdClose size={20} onClick={closeAll} color="black" /> */}
 
                         <Image
                           src="/close.svg"
@@ -717,7 +720,6 @@ const Tabs = ({ filteredProducts }) => {
                       </button>
                     </div>
                   </div>
-                  {/* sdm;lsmd */}
                 </div>
               ) : null}
             </div>
@@ -725,7 +727,7 @@ const Tabs = ({ filteredProducts }) => {
 
           <hr />
           {/* iimages */}
-          <div className="image-product">
+          <div className="image-product relative z-10">
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
               {filterData.map((text, idx) => (
                 <div
@@ -744,9 +746,6 @@ const Tabs = ({ filteredProducts }) => {
                     Rs. <span className="text-3xl"> {text.totalPrice}</span>
                   </p>
                   <p className="text-sm flex flex-row gap-1 items-center text-black">
-                    {/* <FaStar /> <FaStar /> <FaStar /> <FaStar />{" "}
-
-                    <FaStarHalfAlt /> &nbsp;  */}
                     <Image src="/star.svg" alt="star" width={15} height={15} />
                     <Image src="/star.svg" alt="star" width={15} height={15} />
                     <Image src="/star.svg" alt="star" width={15} height={15} />
