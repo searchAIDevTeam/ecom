@@ -95,10 +95,10 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
             </div>
           </div>
           <div className="grid grid-cols-5 gap-6 ml-32 mt-3">
-  {isLoading ? (
+  {!cacheddata && !data || isLoading ? (
     <p className="flex justify-center items-center">No results found</p>
   ) : (
-    (data.length > 0 ? data : cacheddata).map((item) => (
+    (data && data.length > 0 ? data : cacheddata && cacheddata.length > 0 ? cacheddata : []).map((item) => (
       <div key={item.id} className="col-span-1">
         <div className="">
           <Image
