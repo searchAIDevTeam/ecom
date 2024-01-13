@@ -19,7 +19,7 @@ function App() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
+        `http://3.224.109.20:8080/api/categories`
       );
       setFetchedCategories(response.data[0].categories);
     } catch (error) {
@@ -177,7 +177,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/preferences`,
+        `http://3.224.109.20:8080/api/preferences`,
         {
           deviceId: localStorage.getItem("deviceid"),
           userPreferredCities: preferencesDataToSendToBackend.preferredCities,

@@ -18,6 +18,7 @@ const TabsProductContent = (props) => {
     handleContent,
     typeContent,
     renderTypeContent
+    
   } = props;
 
   return (

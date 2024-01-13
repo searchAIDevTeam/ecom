@@ -31,7 +31,10 @@ const AddCart = () => {
   //   var id = localStorage.getItem("deviceId");
   //   // console.log("deviceId : ", id);
   // }
-
+  if (typeof window !== "undefined") {
+    var id = localStorage.getItem("deviceId");
+    // console.log("deviceId : ", id);
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,10 +47,6 @@ const AddCart = () => {
         //   setCartStaus("failed");
         //   return;
         // }
-        if (typeof window !== "undefined") {
-          var id = localStorage.getItem("deviceId");
-          // console.log("deviceId : ", id);
-        }
 
         const response = await axios.get("http://3.224.109.20:8080/api/cart", {
           // headers: {
@@ -97,7 +96,54 @@ const AddCart = () => {
       0
     );
   }
+  // if (typeof window !== "undefined") {
+  //       var id = localStorage.getItem("deviceId");
+  //     }
 
+  //delete items from DB
+  const postUrl = "http://3.224.109.20:8080/api/cart";
+  const postData = {
+    deviceId: id,
+    productId: roomData._id,
+    quantity: quantity,
+  };
+
+  const handleDelete = async (itemid) => {
+    try {
+      const response = await axios.get("http://3.224.109.20:8080/api/cart", {
+        params: {
+          deviceId: id,
+        },
+      });
+
+      if (response.status !== 200) {
+        throw new Error("HTTP status" + response.status);
+      }
+      const updatedItems = response.data.items.filter(
+        (item) => item._id !== itemid
+      );
+
+      setcartdata((prevstate) => ({
+        ...prevstate,
+        items: updatedItems,
+      }));
+
+      //update data in DB
+
+      const responsed = await axios.post(postUrl, {
+        deviceId: id,
+        items: updatedItems,
+      });
+
+      console.log("Server Response:", responsed);
+
+      console.log("Data posted successfully:", postData);
+    } catch (error) {
+      console.error("Error deleting item: ", error);
+    }
+  };
+
+  //delete handle function
   return (
     <div className="">
       <div className="main-cart flex justify-center sm:flex-row gap-80  items-start min-h-screen relative top-32 pb-20">
@@ -108,12 +154,10 @@ const AddCart = () => {
         {cartStatus === "failed" && <p>Error loading data from DB.</p>}
         {cartStatus === "succeeded" && cartdata && (
           <div>
+            <h1 className="sm:text-4xl text-2xl mb-6 font-semibold">Bag</h1>
             {cartdata.items.map((item) => (
               <div key={item._id}>
                 <div className="left-cart flex-col flex sm:w-2/3 w-[90vw] pr-8">
-                  <h1 className="sm:text-4xl text-2xl mb-6 font-semibold">
-                    Bag
-                  </h1>
                   <div className="bagContainer w-72">
                     <div className="cartitem flex mb-6 border-b pb-4">
                       <div className="img w-48 h-48 mr-8">
@@ -135,11 +179,11 @@ const AddCart = () => {
                               {item.productId.category}
                             </h3>
                             <h3 className="text-gray-600">
-                              Quantity:{item.quantity}
+                              Quantity: &nbsp;{item.quantity}
                             </h3>
                           </div>
                           <div className="rightContent sm:text-xl text-lg sm:font-semibold font-medium">
-                            ${item.productId.totalPrice * item.quantity}
+                            ₹ &nbsp;{item.productId.totalPrice * item.quantity}
                           </div>
                           <div className="icons flex items-center space-x-2 mt-4">
                             <Image
@@ -148,6 +192,7 @@ const AddCart = () => {
                               height={25}
                               alt="delete"
                               className="hover:text-slate-500 cursor-pointer"
+                              onClick={() => handleDelete(item._id)}
                             />
                             <Image
                               src="/CartIcons/broken-heart-icon.svg"
@@ -186,7 +231,7 @@ this is order summary */}
             <div className="subtotal flex justify-between items-center mb-4">
               <div className="text-lg">Subtotal</div>
               <div className="text-lg sm:font-semibold font-medium">
-                ${totalPrice}
+                ₹ &nbsp;{totalPrice}
               </div>
             </div>
             <div className="deliveryCharges flex justify-between items-center mb-4">
@@ -199,7 +244,7 @@ this is order summary */}
                 Total
               </div>
               <div className="sm:text-xl text-lg sm:font-semibold font-medium">
-                ₹ {totalPrice + 7}
+                ₹ &nbsp; {totalPrice + 7}
               </div>
             </div>
             <div>Quantity: {quantities}</div>
