@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Expandbar.css";
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 // import search from "../../assets/icon/search.svg";
 // import mainlogo from "../../assets/ayatriologo.png";
 
@@ -55,6 +56,10 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+  const router = useRouter();
+  const handleRoute = (item) => {
+    router.push('/room/'+item.id)
+  }
   return (
     <>
       <div className="expanded-search-box sm:block pt-2 bg-white sm:h-310px h-full z-30 sm:w-full w-[100vw] flex flex-col items-center justify-center absolute right-0">
@@ -99,7 +104,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
     <p className="flex justify-center items-center">No results found</p>
   ) : (
     (data && data.length > 0 ? data : cacheddata && cacheddata.length > 0 ? cacheddata : []).map((item) => (
-      <div key={item.id} className="col-span-1">
+      <div key={item.id} className="col-span-1" onClick={()=>handleRoute(item)}>
         <div className="">
           <Image
             src={item.images[0]}

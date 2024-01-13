@@ -65,7 +65,7 @@ const ratingsData = [
   },
 ];
 
-const Reviews = () => {
+const Reviews = ({data}) => {
   return (
     <>
       <div className="py-12 border-t sm:w-auto w-[90vw] border-b overflow-x-hidden">
@@ -275,7 +275,7 @@ const Reviews = () => {
             </div>
           </div>
         </div>
-        <Carous />
+        <Carous data={data} />
       </div>
     </>
   );

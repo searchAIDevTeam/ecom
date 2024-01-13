@@ -126,7 +126,7 @@ const RoomPage = ({ params }) => {
             </div>
           </div>
 
-          <Reviews />
+          <Reviews data={data} />
           {/*           
             <Mobileswiper/> */}
 
