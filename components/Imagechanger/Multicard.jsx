@@ -5,6 +5,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { IoIosAddCircle, IoMdContacts } from "react-icons/io";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { MdMenuBook } from "react-icons/md";
+import Image from "next/image";
 import "./styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -27,8 +28,10 @@ const Multicard = () => {
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
 
-          navigation={{ clickable: true }}
-
+          navigation={{
+          nextEl: ".right",
+          prevEl: ".back",
+        }}
 
           draggable={true}
           style={{ "--swiper-navigation-size": "24px" }}
@@ -135,7 +138,10 @@ const Multicard = () => {
               </div>
             </div>
           </SwiperSlide>
-
+          <div className="flex flex-row items-end justify-end gap-4">
+          <Image src='/leftvector.svg' width={20} height={20} alt="Arrow" className="back bg-gray-300 rounded-full h-7 w-7"/>
+<Image src='/rightvector.svg' width={20} height={20} alt="Arrow" className='right mr-16  bg-gray-300 rounded-full h-7 w-7'/>
+</div>
         </Swiper>
       </div>
     </div>

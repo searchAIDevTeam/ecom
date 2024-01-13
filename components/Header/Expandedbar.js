@@ -82,7 +82,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
             onClick={onClose}>Close
           </div>
         </div>
-        <div className={`dropdown flex pt-20 pb-6 flex-row justify-center gap-4 max-w-[80rem] bg-white ${searchTexte ? 'pl-6' : 'items-center pr-[12rem] pl-32'}`}>
+        <div className={`dropdown flex pt-20 pb-6 flex-row justify-center gap-4 max-w-full bg-white ${searchTexte ? 'pl-6' : 'items-center pr-[12rem] pl-32'}`}>
           <div className="flex">
             <div className="items cursor-pointer w-70 flex flex-col">
               <div className="dropdown-item font-medium py-2 text-2xl text-slate-400">Popular Searches</div>

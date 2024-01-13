@@ -43,10 +43,14 @@ const ProfileContent = () => {
       <Swiper
         spaceBetween={20}
         // slidesPerView={3}
+        // navigation={{
+        //   nextEl: ".swiper-button-next",
+        //   prevEl: ".swiper-button-prev",
+        // }}
         navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
+            nextEl: ".vector-one",
+            prevEl: ".vector-two",
+          }}
         modules={[Navigation]}
         style={{ "--swiper-navigation-size": "24px" }}
         breakpoints={{
@@ -84,8 +88,10 @@ const ProfileContent = () => {
             <br />
           </SwiperSlide>
         ))}
-        <div className="swiper-button-next "></div>
-        <div className="swiper-button-prev"></div>
+        <div className="flex flex-row items-end justify-end gap-6">
+            <Image src='/leftvector.svg' width={20} height={20} alt="Arrow" className="vector-two bg-gray-300 rounded-full h-7 w-7" />
+            <Image src='/rightvector.svg' width={20} height={20} alt="Arrow" className='vector-one mr-10  bg-gray-300 rounded-full h-7 w-7' />
+          </div>
       </Swiper>
     </div>
   );
