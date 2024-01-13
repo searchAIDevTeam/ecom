@@ -65,11 +65,11 @@ export default function NewMainSlider() {
 
           640: {
             slidesPerView: 1.25,
-            spaceBetween: 10,
+            spaceBetween: 5,
           },
           1024: {
             slidesPerView: 1.72,
-            spaceBetween: 10,
+            spaceBetween: 5,
           },
         }}
       >

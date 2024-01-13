@@ -202,8 +202,8 @@ function Header({ howMuchScrolled }) {
                   src="/profile.svg"
                   alt=""
                   className="header-div-icon"
-                  width={27}
-                  height={27}
+                  width={25}
+                  height={25}
                 />
               </div>
             ) : (
@@ -211,8 +211,8 @@ function Header({ howMuchScrolled }) {
                 src="/profile.svg"
                 onClick={handleLoginNav}
                 alt=""
-                width={27}
-                height={27}
+                width={25}
+                height={25}
                 className="header-div-icon"
               />
             )}

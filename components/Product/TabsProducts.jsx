@@ -10,16 +10,16 @@ import {
   categoryarr,
   colorarr,
   htarr,
-  wdharr,
+  heightWidthThickness,
 } from "./tabsArray";
 import {
   renderType,
   renderTypeContent,
-  rendersizeheight,
   rendercategory,
   rendersizewidth,
   renderSortItem,
 } from "./tabsRender";
+import TabsProductContent from "../compounds/TabsProductContent";
 const Tabs = ({ filteredProducts }) => {
   console.log("Filtered products:", filteredProducts);
   const router = useRouter();
@@ -161,7 +161,37 @@ const Tabs = ({ filteredProducts }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  //sorting
+  const handleSorting = (selectedOption) => {
+    let filterer = [...filterData]; 
+  
+    if (selectedOption.name === "Best match") {
+      filterer=[...filterData]
+      setFilterdata(filterer)
+    } else if (selectedOption.name ==="Price: high to low" ) {
+      filterer = filterer.sort((a, b) => a.perUnitPrice - b.perUnitPrice);
+      setFilterdata(filterer)
 
+    } else if (selectedOption.name ==="Price: low to high" ) {
+      filterer = filterer.sort((a, b) => b.perUnitPrice - a.perUnitPrice);
+      setFilterdata(filterer)
+
+    } else if (selectedOption.name === "Newest") {
+      filterer = filterer.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setFilterdata(filterer)
+
+    } else if (selectedOption.name === "Name") {
+      filterer = filterer.sort((a, b) => a.productTitle.localeCompare(b.productTitle));
+      setFilterdata(filterer)
+
+    }
+    else{
+      setFilterdata(filteredProducts)
+    }
+    
+    console.log(filterer);
+  };
+  
   return (
     <>
       <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
@@ -177,164 +207,35 @@ const Tabs = ({ filteredProducts }) => {
         >
           <div
             className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-20`}
-            
           >
-            {/* dropdown1 */}
-            <div className="dropdown1 " >
-              <div >
-                <button
-                  onClick={() => {
-                    if (window.innerWidth <= 450) {
-                      handleAll();
-                      handleTabClick();
-                      handleAllsort();
-                    } else {
-                      handleOpen();
-                      handleTabClick();
-                    }
-                  }}
-                  className={` Tabbtn 
-                  ${
-                    openSort
-                      ? `active-tabs  border border-black ${commonClasses} `
-                      : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    window.innerWidth <= 450
-                      ? " justify-center"
-                      : " justify-between"
-                  }
-                  `}
-                >
-                  Sort
-                  <Image
-                    src="/backarrow.svg"
-                    width={40}
-                    height={40}
-                    className={`w-6 h-6  mt-1 sm:block hidden
-                ${openSort ? " rotate-90" : "-rotate-90"}
-                
-                `}
-                    alt=""
-                  />
-                </button>
-                {openSort ? (
-                  <div
-                    className="absolute border opensort flex flex-col gap-7 py-5 bg-white rounded-2xl w-52 h-40 overflow-y-auto px-5"
-                    
-                  >
-                    {srtarr.map(renderSortItem)}
-                  </div>
-                ) : null}
-              </div>
-            </div>
+            <TabsProductContent
+              filterName={"Sort"}
+              commonClasses={commonClasses}
+              isFilterOpen={openSort}
+              handleAll={handleAll}
+              handleTabClick={handleTabClick}
+              handleFilter={handleOpen}
+              handleAllFilter={handleAllsort}
+              filterArr={srtarr}
+              renderFilter={(text, idx) =>
+                renderSortItem(text, idx, handleSorting)
+              }
+            />
 
-            {/* dropdown2 */}
+            {/* Height * width * thickness - dropdown2 */}
+            <TabsProductContent
+              filterName={"Height*Width*Thickness"}
+              commonClasses={commonClasses}
+              isFilterOpen={openSize}
+              handleAll={handleAll}
+              handleTabClick={handleTabClick}
+              handleFilter={handleSize}
+              handleAllFilter={handleAllSize}
+              filterArr={heightWidthThickness}
+              renderFilter={rendersizewidth}
+            />
 
-            <div className="dropdown2 ">
-              <button
-                onClick={() => {
-                  if (window.innerWidth <= 450) {
-                    handleAll();
-                    handleTabClick();
-                    handleAllSize();
-                  } else {
-                    handleSize();
-                    handleTabClick();
-                  }
-                }}
-                className={`Tabbtn 
-                  ${
-                    openSize
-                      ? `active-tabs  border border-black ${commonClasses}`
-                      : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    window.innerWidth <= 450
-                      ? " justify-center"
-                      : " justify-between"
-                  }
-                  `}
-              >
-                Size &nbsp;
-                <Image
-                  src="/backarrow.svg"
-                  width={40}
-                  height={40}
-                  className={`w-6 h-6  mt-1 sm:block hidden
-                ${openSize ? " rotate-90" : "-rotate-90"}
-                
-                `}
-                  alt=""
-                />
-              </button>
-
-              {openSize ? (
-                <div className="border flex flex-col gap-7 py-5 bg-white rounded-2xl w-64 h-80 overflow-y-auto px-5 ">
-                  <hr />
-                  <div
-                    className="flex justify-between"
-                    onClick={(event) => {
-                      handleWidth();
-                      event.stopPropagation();
-                    }}
-                  >
-                    <label for="age11" className=" underline">
-                      width
-                    </label>
-                    <Image
-                      src="/backarrow.svg"
-                      width={40}
-                      height={40}
-                      className={`w-6 h-6  mt-1
-                  ${openWidth ? " rotate-90" : "-rotate-90"}
-                  `}
-                      alt=""
-                    />
-                  </div>
-
-                  {/* ******************************************** */}
-                  {openWidth ? (
-                    <div className="flex flex-col gap-4">
-                      {wdharr.map(rendersizewidth)}
-                    </div>
-                  ) : null}
-
-                  {/* ********************************************** */}
-                  <hr />
-                  <div
-                    className="flex justify-between"
-                    onClick={(event) => {
-                      handleHeight();
-                      event.stopPropagation();
-                    }}
-                  >
-                    <label for="age11" className=" underline">
-                      Height
-                    </label>
-                    <Image
-                      src="/backarrow.svg"
-                      width={40}
-                      height={40}
-                      className={`w-6 h-6  mt-1
-                  ${openHeight ? " rotate-90" : "-rotate-90"}
-                  `}
-                      alt=""
-                    />
-                  </div>
-
-                  {/* ******************************************** */}
-                  {openHeight ? (
-                    <div className="flex flex-col gap-4">
-                      {htarr.map(rendersizeheight)}
-                    </div>
-                  ) : null}
-                  <hr />
-                </div>
-              ) : null}
-            </div>
-
-            {/* dropdown3 */}
+            {/* Color - dropdown3 */}
 
             <div>
               <button
@@ -393,7 +294,6 @@ const Tabs = ({ filteredProducts }) => {
                           } `}
                         ></div>
                         <p>{text.name}</p>
-                        <p>{text.value}</p>
                       </div>
                     ))}
                   </div>
@@ -401,113 +301,34 @@ const Tabs = ({ filteredProducts }) => {
               ) : null}
             </div>
 
-            {/* dropdown4 */}
-            <div>
-              <button
-                onClick={() => {
-                  if (window.innerWidth <= 450) {
-                    handleAll();
-                    handleTabClick();
-                    handleAllCategory();
-                  } else {
-                    handleCategory();
-                    handleTabClick();
-                  }
-                }}
-                className={`Tabbtn 
-                  ${
-                    openCaategory
-                      ? `active-tabs  border border-black ${commonClasses}`
-                      : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    window.innerWidth <= 450
-                      ? " justify-center"
-                      : " justify-between"
-                  }
-                  `}
-              >
-                Category &nbsp;
-                <Image
-                  src="/backarrow.svg"
-                  width={40}
-                  height={40}
-                  className={`w-6 h-6  mt-1 sm:block hidden
-                ${openCaategory ? " rotate-90" : "-rotate-90"}
-                
-                `}
-                  alt=""
-                />
-              </button>
-              {openCaategory ? (
-                <div className=" bg-white flex flex-col  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5">
-                  {categoryarr.map(rendercategory)}
-                </div>
-              ) : null}
-            </div>
-            {/* dropdown5 */}
-            <div>
-              <button
-                onClick={() => {
-                  if (window.innerWidth <= 450) {
-                    handleAll();
-                    handleTabClick();
-                    handleAllType();
-                  } else {
-                    handleType();
-                    handleTabClick();
-                  }
-                }}
-                className={`Tabbtn 
-                  ${
-                    openType
-                      ? `active-tabs  border border-black ${commonClasses}`
-                      : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    window.innerWidth <= 450
-                      ? " justify-center"
-                      : " justify-between"
-                  }
-                  `}
-              >
-                Type &nbsp;
-                <Image
-                  src="/backarrow.svg"
-                  width={40}
-                  height={40}
-                  className={`w-6 h-6  mt-1 sm:block hidden
-                ${openType ? " rotate-90" : "-rotate-90"}
-                
-                `}
-                  alt=""
-                />
-              </button>
-              {openType ? (
-                <div className="bg-white  flex flex-col  gap-7 py-5 rounded-2xl w-72 border h-80 overflow-y-auto px-5">
-                  {typearr.map(renderType)}
-
-                  <button
-                    className={`text-left underline
-                  ${openContent ? "hidden" : "block"}
-                  `}
-                    onClick={handleContent}
-                  >
-                    +7 more
-                  </button>
-                  {openContent ? typeContent.map(renderTypeContent) : null}
-
-                  <button
-                    onClick={handleContent}
-                    className={`text-left underline ${
-                      openContent ? "block" : "hidden"
-                    }`}
-                  >
-                    Less
-                  </button>
-                </div>
-              ) : null}
-            </div>
+            {/* Category - dropdown4 */}
+            <TabsProductContent
+              filterName={"Category"}
+              commonClasses={commonClasses}
+              isFilterOpen={openCaategory}
+              handleAll={handleAll}
+              handleTabClick={handleTabClick}
+              handleFilter={handleCategory}
+              handleAllFilter={handleAllCategory}
+              filterArr={categoryarr}
+              renderFilter={rendercategory}
+            />
+            {/* Type - dropdown5 */}
+            <TabsProductContent
+              filterName={"Type"}
+              commonClasses={commonClasses}
+              isFilterOpen={openType}
+              handleAll={handleAll}
+              handleTabClick={handleTabClick}
+              handleFilter={handleType}
+              handleAllFilter={handleAllType}
+              filterArr={typearr}
+              renderFilter={renderType}
+              openContent={openContent}
+              handleContent={handleContent}
+              typeContent={typeContent}
+              renderTypeContent={renderTypeContent}
+            />
 
             {/* ddropdown6 */}
             <div>
@@ -589,7 +410,7 @@ const Tabs = ({ filteredProducts }) => {
                           onClick={handleAllSize}
                           className="text-left flex justify-between"
                         >
-                          Size &nbsp;
+                          Height*Width*Thickness &nbsp;
                           <Image
                             src="/backarrow.svg"
                             width={40}
@@ -603,11 +424,11 @@ const Tabs = ({ filteredProducts }) => {
                         </div>
                         {openAllSize ? (
                           <div className="flex flex-col gap-7">
-                            <p className="text-left font-semibold">Width</p>
-                            {wdharr.map(rendersizewidth)}
-
+                            {/* <p className="text-left font-semibold">Width</p> */}
+                            {heightWidthThickness.map(rendersizewidth)}
+                            {/* 
                             <p className="text-left font-semibold">Height</p>
-                            {htarr.map(rendersizewidth)}
+                            {htarr.map(rendersizewidth)} */}
                           </div>
                         ) : null}
                       </div>
@@ -633,7 +454,7 @@ const Tabs = ({ filteredProducts }) => {
                         </div>
                         {openAllcolor ? (
                           <div className="flex flex-col gap-7">
-                            {srtarr.map(renderSortItem)}
+                            {colorarr.map(renderSortItem)}
                           </div>
                         ) : null}
                       </div>
