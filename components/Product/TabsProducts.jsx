@@ -8,19 +8,21 @@ import {
   typeContent,
   typearr,
   categoryarr,
+  wallpaperCollectionArr,
+  flooringCollectionArr,
   colorarr,
-  htarr,
-  heightWidthThickness,
+  Size,
 } from "./tabsArray";
 import {
   renderType,
   renderTypeContent,
   rendercategory,
+  renderCollection,
   rendersizewidth,
   renderSortItem,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
-const Tabs = ({ filteredProducts }) => {
+const Tabs = ({ filteredProducts, heading }) => {
   console.log("Filtered products:", filteredProducts);
   const router = useRouter();
   const handlenav = (id) => {
@@ -70,6 +72,20 @@ const Tabs = ({ filteredProducts }) => {
   const handleAllSize = () => {
     setOpenAllSIze(!openAllSize);
   };
+
+  // collection
+  const [openCollection, setOpenCollection] = useState(false);
+  const handleCollection = () => {
+    setOpenCollection(!openCollection);
+  };
+
+  const [openAllCollection, setOpenAllCollection] = useState(false);
+  const handleAllCollection = () => {
+    setOpenAllCollection(!openAllCollection);
+  };
+
+  // ^^^^^^^^^^^^^^^^^^^^^^^^collection^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
   const [openWidth, setOpenWidth] = useState(false);
   const handleWidth = () => {
     setOpenWidth(!openWidth);
@@ -162,6 +178,8 @@ const Tabs = ({ filteredProducts }) => {
     };
   }, []);
 
+  const collectionArr = heading==="Wallpaper"?wallpaperCollectionArr:flooringCollectionArr;
+
   return (
     <>
       <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
@@ -191,16 +209,16 @@ const Tabs = ({ filteredProducts }) => {
               renderFilter={renderSortItem}
             />
 
-            {/* Height * width * thickness - dropdown2 */}
+            {/* Size - dropdown2 */}
             <TabsProductContent
-              filterName={"Height*Width*Thickness"}
+              filterName={"Size"}
               commonClasses={commonClasses}
               isFilterOpen={openSize}
               handleAll={handleAll}
               handleTabClick={handleTabClick}
               handleFilter={handleSize}
               handleAllFilter={handleAllSize}
-              filterArr={heightWidthThickness}
+              filterArr={Size}
               renderFilter={rendersizewidth}
             />
 
@@ -270,18 +288,34 @@ const Tabs = ({ filteredProducts }) => {
               ) : null}
             </div>
 
-            {/* Category - dropdown4 */}
+            {/* Design style - dropdown4 */}
+            {heading === "Wallpaper" ? (
+              <TabsProductContent
+                filterName={"Design style"}
+                commonClasses={commonClasses}
+                isFilterOpen={openCaategory}
+                handleAll={handleAll}
+                handleTabClick={handleTabClick}
+                handleFilter={handleCategory}
+                handleAllFilter={handleAllCategory}
+                filterArr={categoryarr}
+                renderFilter={rendercategory}
+              />
+            ) : null}
+
+            {/* Collections - filter */}
             <TabsProductContent
-              filterName={"Category"}
+              filterName={"Collections"}
               commonClasses={commonClasses}
-              isFilterOpen={openCaategory}
+              isFilterOpen={openCollection}
               handleAll={handleAll}
               handleTabClick={handleTabClick}
-              handleFilter={handleCategory}
-              handleAllFilter={handleAllCategory}
-              filterArr={categoryarr}
-              renderFilter={rendercategory}
+              handleFilter={handleCollection}
+              handleAllFilter={handleAllCollection}
+              filterArr={collectionArr}
+              renderFilter={renderCollection}
             />
+
             {/* Type - dropdown5 */}
             <TabsProductContent
               filterName={"Type"}
@@ -379,7 +413,7 @@ const Tabs = ({ filteredProducts }) => {
                           onClick={handleAllSize}
                           className="text-left flex justify-between"
                         >
-                          Height*Width*Thickness &nbsp;
+                          Size &nbsp;
                           <Image
                             src="/backarrow.svg"
                             width={40}
@@ -430,12 +464,12 @@ const Tabs = ({ filteredProducts }) => {
                       <hr />
 
                       {/* 4th div */}
-                      <div className="flex flex-col gap-7">
+                      {heading==="Wallpaper"?<><div className="flex flex-col gap-7">
                         <div
                           onClick={handleAllCategory}
                           className="text-left flex justify-between"
                         >
-                          Category &nbsp;
+                          Design style &nbsp;
                           <Image
                             src="/backarrow.svg"
                             width={40}
@@ -450,6 +484,31 @@ const Tabs = ({ filteredProducts }) => {
                         {openAllCategory ? (
                           <div className="flex flex-col gap-7">
                             {categoryarr.map(rendercategory)}
+                          </div>
+                        ) : null}
+                      </div>
+                      <hr /></>:null}
+                      {/* Collections div */}
+                      <div className="flex flex-col gap-7">
+                        <div
+                          onClick={handleAllCollection}
+                          className="text-left flex justify-between"
+                        >
+                          Collections &nbsp;
+                          <Image
+                            src="/backarrow.svg"
+                            width={40}
+                            height={40}
+                            className={`w-6 h-6  mt-1
+                ${openAllCollection ? " rotate-90" : "-rotate-90"}
+                
+                `}
+                            alt=""
+                          />
+                        </div>
+                        {openAllCollection ? (
+                          <div className="flex flex-col gap-7">
+                            {collectionArr.map(rendercategory)}
                           </div>
                         ) : null}
                       </div>
