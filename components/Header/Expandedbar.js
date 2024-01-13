@@ -10,7 +10,9 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
   const [searchTexte, setSearchText] = useState(searchText);
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  let cacheddata = JSON.parse(sessionStorage.getItem("cachedData"));
 
+  // console.log("cached data is ", JSON.parse(cacheddata));
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,7 +46,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
         fetchData();
       }
     }, 700);
-
+    
     return () => {
       clearTimeout(timeoutId);
     };
@@ -93,26 +95,27 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
             </div>
           </div>
           <div className="grid grid-cols-5 gap-6 ml-32 mt-3">
-            {isLoading ? (
-              <p className="flex justify-center items-center">No results found</p>
-            ) : (
-              data.map((item) => (
-                <div key={item.id} className="col-span-1">
-                  <div className="">
-                    <Image
-                      src={item.images[0]}
-                      width={200}
-                      height={500}
-                      alt="Product"
-                    />
-                  </div>
-                  <div>{item.category}</div>
-                  <div>{item.collectionName}</div>
-                  <div>{item.totalPrice}</div>
-                </div>
-              ))
-            )}
-          </div>
+  {isLoading ? (
+    <p className="flex justify-center items-center">No results found</p>
+  ) : (
+    (data.length > 0 ? data : cacheddata).map((item) => (
+      <div key={item.id} className="col-span-1">
+        <div className="">
+          <Image
+            src={item.images[0]}
+            width={200}
+            height={500}
+            alt="Product"
+          />
+        </div>
+        <div>{item.category}</div>
+        <div>{item.collectionName}</div>
+        <div>{item.totalPrice}</div>
+      </div>
+    ))
+  )}
+</div>
+
         </div>
       </div>
     </>
