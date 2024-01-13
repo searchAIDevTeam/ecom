@@ -16,7 +16,7 @@ const Multicard = () => {
 
   return (
     <div>
-      <div className="bg-zinc-50 py-20 sm:pl-[50px] pl-[20px] overflow-x-auto">
+      <div className="bg-zinc-50 pt-[5rem] pb-[2rem] sm:pl-[50px] pl-[20px] overflow-x-auto">
         <div className="sm:text-3xl text-xl font-medium w-full pb-8">
           Why Ayatrio so innovative
           <br />
@@ -45,7 +45,7 @@ const Multicard = () => {
           }}
         >
           <SwiperSlide>
-            <div className=" relative bg-white  sm:w-[100%] w-[100%] sm:h-300px p-2 ">
+            <div className=" relative bg-white  sm:w-[100%] w-[100%] sm:h-300px p-2 mb-24">
               <div className="mt-8 ml-6">
                 <CiDeliveryTruck size={52} />
               </div>
