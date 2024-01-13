@@ -27,7 +27,6 @@ const Trending = () => {
   };
   const [trendingData, setTrendingData] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get("http://43.204.166.53:8080/api/trending-products");
@@ -36,7 +35,6 @@ const Trending = () => {
     };
     fetchData();
   }, []);
-console.log(trendingData)
   const swiperUseref = useRef(null);
   const swiperOptions2 = {
     slidesPerView: 4.08,
@@ -103,7 +101,7 @@ console.log(trendingData)
           onSwiper={setSwiperRef}
           className="px-10"
         >
-          {trendingData ? (
+          {!trendingData ? (
             <SwiperSlide>
               <div className="flex"></div>
             </SwiperSlide>
@@ -115,11 +113,13 @@ console.log(trendingData)
                     <Card
                       title={product.productName}
                       // date={product.date}
-                      price={product.price}
-                      desc={product.subcategory}
+                      price={product.perUnitPrice}
+                      desc={product.productTitle}
                       imgSrc={product.images}
                       rating={product.ratings}
                       key={idx}
+                      id={product._id}
+                      productId={product.productId}
                       setPopupVisible={setPopupVisible}
                       cssClass={"card1flex"}
                     />

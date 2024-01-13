@@ -82,6 +82,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
                     title={product.productTitle}
                     price={product.perUnitPrice}
                     desc={product.subcategory}
+                    productId={product.productId}
                     imgSrc={product.images}
                     rating={product.ratings}
                     id={product._id}
