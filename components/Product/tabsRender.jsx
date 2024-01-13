@@ -30,6 +30,17 @@ export const renderSortItem = (text, idx, handleSorting) => (
     </div>
   );
 
+  export const renderCollection = (text, idx) => (
+    <div className="flex justify-between" key={idx}>
+      <label for="age1" className="">
+        {text.name}
+      </label>
+      <div>
+        <input type="checkbox" id="age6" name="age" value="36" />
+      </div>
+    </div>
+  );
+
   export const rendersizeheight = (text, idx) => (
     <div className="flex justify-between" key={idx}>
       <label for="age1" className="">
