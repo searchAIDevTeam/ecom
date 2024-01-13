@@ -2,6 +2,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Expandbar.css";
 import axios from "axios";
+import Image from "next/image";
 // import search from "../../assets/icon/search.svg";
 // import mainlogo from "../../assets/ayatriologo.png";
 
@@ -54,8 +55,8 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
   }, []);
   return (
     <>
-    <div className="expanded-search-box sm:block pt-2 bg-white sm:h-310px h-full z-30 sm:w-full w-[100vw] flex items-center justify-center absolute right-0">
-      <div className="flex flex-row  justify-between bg-white rounded-lg w-full h-auto absolute left-0">
+    <div className="expanded-search-box sm:block pt-2 bg-white sm:h-310px h-full z-30 sm:w-full w-[100vw] flex flex-col items-center justify-center absolute right-0">
+      <div className="flex flex-row  justify-between bg-white rounded-lg w-full absolute left-0">
         <div className="logo hidden sm:block pl-2">
           <img src="/images/ayatriologo.png" className="w-44 z-30" alt="" />
         </div>
@@ -81,16 +82,40 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
           onClick={onClose}>Close
         </div>
       </div> 
-    <div className="dropdown flex pt-20 pb-6 flex-col justify-center items-center pr-[18rem] gap-4 bg-white w-full">
-            <div className="text-slate-400 -ml-16">
-              <h2>Popular Searches</h2>
-            </div>
-            <div className="items cursor-pointer">
-              <div className="dropdown-item font-medium py-2 text-xl ">Engneering Flooring</div>
-              <div className="dropdown-item font-medium py-2 text-xl">Grass flooring</div>
-              <div className="dropdown-item font-medium py-2 text-xl">Wallpaper for Home</div>
-              <div className="dropdown-item font-medium py-2 text-xl">Vinial</div>
-            </div>
+    <div className={`dropdown flex pt-20 pb-6 flex-row justify-center gap-4 max-w-[80rem] bg-white ${searchTexte?'pl-6':'items-center pr-[12rem] pl-32'}`}>
+    <div className="flex">
+  <div className="items cursor-pointer w-70 flex flex-col">
+    <div className="dropdown-item font-medium py-2 text-2xl text-slate-400">Popular Searches</div>
+    <div className="dropdown-item font-medium py-2 text-xl whitespace-nowrap">Engineering Flooring</div>
+    <div className="dropdown-item font-medium py-2 text-xl whitespace-nowrap">Grass Flooring</div>
+    <div className="dropdown-item font-medium py-2 text-xl whitespace-nowrap">Wallpaper for Home</div>
+    <div className="dropdown-item font-medium py-2 text-xl whitespace-nowrap">Vinyl</div>
+  </div>
+</div>
+
+  <div className="grid grid-cols-5 gap-6 ml-32 mt-3">
+  {isLoading ? (
+    <p className="flex justify-center items-center">No results found</p>
+  ) : (
+    data.map((item) => (
+      <div key={item.id} className="col-span-1">
+        <div className="">
+          <Image
+            src={item.images[0]}
+            width={200}
+            height={500}
+            alt="Product"
+          />
+        </div>
+        <div>{item.category}</div>
+        <div>{item.collectionName}</div>
+        <div>{item.totalPrice}</div>
+      </div>
+    ))
+  )}
+</div>
+
+
           </div>
           </div>
     </>
