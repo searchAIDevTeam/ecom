@@ -14,8 +14,9 @@ import axios from "axios";
 const ProductPage = ({params}) => {
   const [isFilterVisible, setIsFilterVisible] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  console.log(params)
+  console.log("URLparameters : ", params);
   let parentCategoryVar = params.parentCategory;
+  console.log("heading : ",params.heading);
 
 useEffect(() => {
   const fetchFilteredProducts = async () => {
@@ -58,7 +59,7 @@ useEffect(() => {
     <div>
       {/* {isFilterVisible && <Header />} */}
       <Products filteredProducts={filteredProducts} />
-      <Tabproduct filteredProducts={filteredProducts}/>
+      <Tabproduct filteredProducts={filteredProducts} heading={params.heading}/>
       <Measure filteredProducts={filteredProducts}/>
       {/* <Footer /> */}
     </div>

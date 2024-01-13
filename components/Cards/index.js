@@ -96,7 +96,7 @@ useEffect(() => {
 
       <Multicard />
       {/* removed for overlape sm:h-[80vh] */}
-      <div className="w-full bg-zinc-100 sm:px-[50px] px-[20px] py-20  h-auto">
+      <div className="w-full sm:px-[50px] px-[20px] py-20  h-auto">
         <Imagechanger />
       </div>
       <DoubleComp />
