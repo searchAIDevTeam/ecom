@@ -16,7 +16,7 @@ import { curtainsCategoryData } from "@/Model/Dropdown/CategoryData/CurtainsCate
 import { inspirationFeaturedData } from "@/Model/Dropdown/FeaturedData/InspirationFeaturedData";
 import { inspirationCategoryData } from "@/Model/Dropdown/CategoryData/InspirationCategoryData";
 
-function Filter({ isFilterHovered, onFilterHover }) {
+function Filter({ isFilterHovered, onFilterHover, isBackgroundBlur, setBackgroundBlur }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isBlur, setIsBlur] = useState(false);
@@ -99,9 +99,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
 
   return (
     <header
-      className={`absolute pt-7 pb-2 mt-[3.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white
-      ${isFilterHovered ? "backdrop-blur-lg" : ""}  
-      `}
+      className={`absolute pt-7 pb-2 mt-[3.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
     >
       <div className="filter sm:mr-0 media" style={{ marginLeft: "0px" }}>
         <div className="Filter-array" ref={scrl}>
@@ -125,9 +123,12 @@ function Filter({ isFilterHovered, onFilterHover }) {
                 console.log(idx);
                 setIsBlur(true);
                 handleFilterHover(value.label);
-                console.log(isBlur);
+                setBackgroundBlur(true);
               }}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseLeave={() => {
+                setActiveDropdown(null);
+                setBackgroundBlur(false);
+              }}
             >
               {value && (
                 <p
@@ -147,7 +148,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
               {activeDropdown === idx && (
                 <div
                   className={`absolute left-0 mt-[1.6rem] w-full bg-white shadow-md transition-all ease-linear duration-2000
-                  ${isBlur ? " backdrop-blur-lg" : ""}  
+                  ${isBackgroundBlur ? "blur-none" : "blur-none"}  
                   `}
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
                 >
