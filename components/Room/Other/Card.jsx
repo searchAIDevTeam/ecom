@@ -149,7 +149,7 @@ const Card = ({ data }) => {
             </div>
           </div>
 
-          <div className="textHolders flex flex-col ml-0">
+          <div className="textHolders flex flex-col ml-16">
             <h1 className="text-2xl mt-5 font-bold mb-2">
               {data?.productTitle}
             </h1>
@@ -183,7 +183,7 @@ const Card = ({ data }) => {
           </div>
 
           {/* color-container */}
-          <div className="colorContainer flex flex-col items-start mt-4 sm:w-auto w-[80vw]">
+          <div className="colorContainer flex flex-col mt-4 sm:w-auto w-[80vw] ml-16">
             <h1 className="mb-2 font-bold">Other Colorways</h1>
             <div className="colors flex gap-3">
               {colorSep?.map((color, index) => (
@@ -213,6 +213,7 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
+          <div className="ml-16">
           <div className="border border-gray-300 w-72 rounded-xl mt-2 pt-4 pb-4 sm:pl-3 pl-6">
             <div className="flex items-center">
               <div className="pl-3">
@@ -316,10 +317,10 @@ const Card = ({ data }) => {
                 />
               </div>
             )}
-          </div>
+          </div></div>
 
           {/* //buttons */}
-          <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center  ">
+          <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center ml-12">
             <div className="guestCheckout ">
               <button
                 onClick={() => {

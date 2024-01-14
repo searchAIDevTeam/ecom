@@ -22,10 +22,6 @@ import DoubleComp from "./DoubleComp";
 
 import { useMemo } from "react";
 import Trending from "./Trending";
-// import Flooring from "./Dataslider";
-import Blinds from "./Blinds";
-import Curtains from "./Curtains";
-import Sports from "./Sports";
 import axios from "axios";
 import Dataslider from "./Dataslider";
 import NewMainSlider from "../MainSlider/NewMainSlider";
@@ -52,7 +48,6 @@ if (typeof window !== "undefined") {
   // setDeviceId(id);
   const getRecommendedData = async () => {
     const response = await axios.get(`http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`);
-    // console.log("recommended data is ",response.data) 
     setRecommended(response.data);
   }
   
@@ -62,7 +57,6 @@ if (typeof window !== "undefined") {
 const Partdata = (cat)=>{
   return  recommended?.products?.filter((item) => item.category === `${cat}` )
 } 
-console.log("recommended data is ",recommended)
   const categories = recommended?.products?.map((item) => item.category);
   let uniqueCategories = [...new Set(categories)];
 

@@ -1,4 +1,5 @@
 import Card from "./card";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./styles.css";
@@ -46,15 +47,15 @@ const Dataslider = ({ category, data, sliderIndex }) => {
           <div className="Slidenav flex text-2xl cursor-pointer text-white rounded-full gap-2">
             <div
               onClick={() => swiperRef.current.swiper.slidePrev()}
-              className={`custom-prev-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100`}
+              className={`custom-prev-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100 pr-6`}
             >
-              <img className="w-8 h-8" src="/images/back.png" alt="Previous " />
+            <Image src='/leftvector.svg' width={20} height={20} alt="Arrow" className="bg-gray-300 rounded-full h-7 w-7" />
             </div>
             <div
               onClick={() => swiperRef.current.swiper.slideNext()}
               className={`custom-next-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100`}
             >
-              <img className="w-7 h-9" src="/images/right.png" alt="Next" />
+            <Image src='/rightvector.svg' width={20} height={20} alt="Arrow" className='bg-gray-300 rounded-full h-7 w-7' />
             </div>
           </div>
         </div>
@@ -89,6 +90,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
                     title={product.productTitle}
                     price={product.perUnitPrice}
                     desc={product.subcategory}
+                    productId={product.productId}
                     imgSrc={product.images}
                     rating={product.ratings}
                     id={product._id}

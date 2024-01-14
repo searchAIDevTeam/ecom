@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Pagination,
-  Scrollbar,
-  Mousewheel,
-  FreeMode,
-} from "swiper/modules";
+import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -15,15 +10,30 @@ import "swiper/swiper-bundle.css";
 // import { useScrollPosition } from "react-scroll-position";
 // import Cards from '../components/Cards';
 import ItemCard from "../Item/ItemCard";
+import axios from "axios";
 // import imageurl1.jpg from '..
 // import image from "../assets/roomswiper.jpg";
 
-const Carous = () => {
+const Carous = ({ data }) => {
   const [showFilter, setShowFilter] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [wallpaperProducts, setWallpaperProducts] = useState([]);
+  const [relatedData, setrelatedData] = useState([]);
   const [popupVisible, setPopupVisible] = useState(false);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await axios.get(
+          `http://43.204.166.53:8080/api/relatedproducts?category=${data.category}`
+        );
+        setrelatedData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, [data]);
   const swiperOptions2 = {
     slidesPerView: 4,
     centeredSlides: false,
@@ -51,85 +61,6 @@ const Carous = () => {
     allowSlideNext: true,
   };
   const swiperRef = useRef(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setWallpaperProducts([
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          {
-            productName: "Product 1",
-            price: "$100",
-            subcategory: "Category 1",
-            images: "image",
-            ratings: 4.5,
-          },
-          // Add more products as needed
-        ]);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   useEffect(() => {
     let prevScrollPos = window.scrollY;
@@ -178,8 +109,7 @@ const Carous = () => {
     };
   }, [prevScrollPos]); // Dependency on prevScrollPos to update the effect when it changes
   // const [showHeader, setShowHeader] = useState(true);
-
-  
+console.log(relatedData)
   return (
     <>
       <div className="sm:w-full w-[80vw] sm:block hidden">
@@ -194,15 +124,19 @@ const Carous = () => {
                 <div className="flex">Loading...</div>
               </SwiperSlide>
             ) : (
-              wallpaperProducts.map((product, idx) => (
+              relatedData.map((product, idx) => (
                 <SwiperSlide key={idx}>
                   <div className="grid grid-cols-1 mt-2 h-full fade-in">
                     <ItemCard
-                      title={product.productName}
-                      price={product.price}
+                      title={product.productTitle}
+                      price={product.perUnitPrice}
                       desc={product.subcategory}
-                      imgSrc={product.images}
-                      rating={product.ratings}
+                      imgSrc={product.images[0]}
+                      imagesArr={product.images}
+                      id={product._id}
+                      rating={
+                        product.ratings.length > 0 ? product.ratings[0] : 0
+                      }
                       key={idx}
                       setPopupVisible={setPopupVisible}
                       cssClass={"card1flex"}
@@ -224,17 +158,19 @@ const Carous = () => {
                 <div className="flex">Loading...</div>
               </SwiperSlide>
             ) : (
-              wallpaperProducts.map((product, idx) => (
+              relatedData.map((product, idx) => (
                 <SwiperSlide key={idx}>
                   <div className="grid grid-cols-1 mt-2 h-full fade-in">
                     <ItemCard
-                      title={product.productName}
-                      price={product.price}
+                      title={product.productTitle}
+                      price={product.perUnitPrice}
                       desc={product.subcategory}
-                      imgSrc={product.images}
-                      rating={product.ratings}
+                      imgSrc={product.images[0]}
+                      imagesArr={product.images}
+                      rating={
+                        product.ratings.length > 0 ? product.ratings[0] : 0
+                      }
                       key={idx}
-                    
                       setPopupVisible={setPopupVisible}
                       cssClass={"card1flex"}
                     />

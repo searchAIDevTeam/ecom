@@ -36,36 +36,36 @@ const ratingsData = [
   {
     label: "Cleanliness",
     value: "4.9",
-    icon: <Image src="/rooms/cleanliness-icon.svg" width={40} height={40} alt="cleanliness" className="mt-5" />,
+    icon: <Image src="/rooms/cleanliness-icon.svg" width={36} height={36} alt="cleanliness" className="mt-5" />,
   },
   {
     label: "Accuracy",
     value: "5.0",
-    icon: <Image src="/rooms/checkmark-icon.svg" width={40} height={40} alt="accuracy" className="mt-5" />,
+    icon: <Image src="/rooms/checkmark-icon.svg" width={36} height={36} alt="accuracy" className="mt-5" />,
   },
   {
     label: "Check-in",
     value: "4.9",
-    icon: <Image src="/rooms/keys-icon.svg" width={40} height={40} alt="check in" className="mt-5" />,
+    icon: <Image src="/rooms/keys-icon.svg" width={36} height={36} alt="check in" className="mt-5" />,
   },
   {
     label: "Communication",
     value: "4.9",
-    icon: <Image src="/rooms/message-icon.svg" width={40} height={40} alt="communication" className="mt-5" />,
+    icon: <Image src="/rooms/message-icon.svg" width={36} height={36} alt="communication" className="mt-5" />,
   },
   {
     label: "Location",
     value: "4.0",
-    icon: <Image src="/rooms/map-location-icon.svg" width={40} height={40} alt="map" className="mt-5" />,
+    icon: <Image src="/rooms/map-location-icon.svg" width={36} height={36} alt="map" className="mt-5" />,
   },
   {
     label: "Value",
     value: "5.0",
-    icon: <Image src="/rooms/price-tag-icon.svg" width={40} height={40} alt="value" className="mt-5" />,
+    icon: <Image src="/rooms/price-tag-icon.svg" width={36} height={36} alt="value" className="mt-5" />,
   },
 ];
 
-const Reviews = () => {
+const Reviews = ({data}) => {
   return (
     <>
       <div className="py-12 border-t sm:w-auto w-[90vw] border-b overflow-x-hidden">
@@ -97,7 +97,7 @@ const Reviews = () => {
               </div>
             </div>
           </div>
-          <div className="rating-map flex flex-row sm:ml-12 ml-0 sm:mr-12 mr-0 mt-12 sm:w-auto w-[90vw] overflow-x-auto">
+          <div className="rating-map flex flex-row justify-center items-center sm:ml-12 ml-0 sm:mr-12 mr-0 mt-12 sm:w-auto w-[90vw] overflow-x-auto">
             {ratingsData.map((item, index) => (
               <div
                 key={index}
@@ -107,7 +107,7 @@ const Reviews = () => {
                     : ""
                 }flex-col pl-6`}
               >
-                {item.label}
+                     {item.label}
                 <div>{item.value}</div>
                 <div>{item.icon}</div>
               </div>
@@ -275,7 +275,7 @@ const Reviews = () => {
             </div>
           </div>
         </div>
-        <Carous />
+        <Carous data={data} />
       </div>
     </>
   );

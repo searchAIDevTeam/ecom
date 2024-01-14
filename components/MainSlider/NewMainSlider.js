@@ -118,7 +118,7 @@ export default function NewMainSlider() {
 ))}
           <div className="swiper-pagination"></div>
         {/* <div className="swiper-button-prev"></div> */}
-        <div className="swiper-button-next sm:-translate-y-[150px]"></div>
+        <Image src='/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-next sm:-translate-y-[150px]"/>
       </Swiper>
     </div>
   );

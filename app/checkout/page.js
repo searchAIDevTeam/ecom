@@ -1,8 +1,12 @@
 import Checkoutmain from "@/components/Checkoutcomp/Checkoutmain"
+import Script from 'next/script';
 
 const CheckoutPage = () => {
   return (
-    <Checkoutmain />
+    <>
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+      <Checkoutmain />
+    </>
   )
 }
 

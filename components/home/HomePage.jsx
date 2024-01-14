@@ -54,8 +54,8 @@ const HomePage = () => {
     };
   }, []);
 
-  const popUp = typeof window !== 'undefined' ? localStorage.getItem("popUp") : null;
-
+  const popUp =
+    typeof window !== "undefined" ? localStorage.getItem("popUp") : null;
 
   if (loader) {
     return (
@@ -81,12 +81,15 @@ const HomePage = () => {
   const handleFilterHover = (content) => {
     setFilteredContent(content);
   };
+
+  const [isBackgroundBlur, setBackgroundBlur] = useState(false);
+
   return (
     <>
       <div
         className={`fade-in
           
-         overflow-x-hidden`}
+         overflow-x-hidden `}
       >
         {popUp === "true" ? null : <PopUp />}
         {isFilterVisible && (
@@ -101,7 +104,13 @@ const HomePage = () => {
             <MobileSearchBar />
           </>
         )}
-        <Filter isFilterHovered={isFilterHovered} onFilterHover={handleFilterHover} />
+        <Filter
+          isFilterHovered={isFilterHovered}
+          onFilterHover={handleFilterHover}
+          isBackgroundBlur={isBackgroundBlur}
+          setBackgroundBlur={setBackgroundBlur}
+        />
+        <div className={`${isBackgroundBlur?"blur-lg":""}`}>
         <Cards />
         {isFilterVisible && (
           <div className="fixed-ayatrio-map">
@@ -131,6 +140,7 @@ const HomePage = () => {
             </button>
           </div>
         )}
+        </div>
       </div>
     </>
   );

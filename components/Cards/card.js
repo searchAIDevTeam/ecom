@@ -6,6 +6,7 @@ import Carousel from "./swip";
 // import rev from "/images/rev.webp";
 import PopUp from "../Reviews/PopUp";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 function Card(props) {
   // console.log("i am card prop",props)
@@ -15,7 +16,12 @@ function Card(props) {
     props.setPopupVisible(true);
   };
   // let url = "http://3.224.109.20:8080/api/getSingleProduct?id="
-const handleclick = (id) => {
+const handleclick = (id,productId) => {
+  const postTrending = async () => {
+    const response = await axios.post(`http://43.204.166.53:8080/api/increment-popularity?productId=${productId}`);
+    console.log("response is ",response)
+  }
+  postTrending();
   router.push('/room/'+id)
 }
   return (
@@ -29,9 +35,9 @@ const handleclick = (id) => {
         }}
        
       >
-        <div className={`card-flex ${props.cssClass} `}>
+        <div className={`card-flex ${props.cssClass}  `} onClick={()=>handleclick(props.id,props.productId)}>
           <Carousel data={props.imgSrc} className="card-img" />
-          <div className="review-icon-container">
+          <div className="review-icon-container   ">
             <img
               src="/images/rev.webp"
               className="h-8 rounded-md cursor-pointer"
@@ -40,7 +46,7 @@ const handleclick = (id) => {
             />
           </div>
         </div>
-        <div className="card-title"  onClick={()=>handleclick(props.id)}>
+        <div className="card-title"  >
           <div className="card-title-desc">{props.title}</div>
           <div className="card-rating">
             <img src="/svg/star-full-icon.svg" className="w-6 h-6" alt="" />
