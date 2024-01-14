@@ -43,6 +43,10 @@ const Promo = () => {
   // console.log("roomstatus", roomStatus);
   const formadata = useSelector(selectFormData);
 
+  const isComplete = !form.cname || !form.cno || !form.mmyy || !form.cvv;
+  const buttonsClass = isComplete
+    ? "bg-gray-300 text-white"
+    : "bg-black text-white";
   return (
     <div>
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-0 gap-8">
@@ -147,7 +151,8 @@ const Promo = () => {
               handlefunc();
               handleClick();
             }}
-            className="mt-4 bg-gray-700 text-white py-2 px-4 rounded-full w-80"
+            disabled={isComplete}
+            className={`mt-4  text-white py-2 px-4 rounded-full w-80 ${buttonsClass}`}
           >
             Place Order
           </button>
@@ -159,7 +164,7 @@ const Promo = () => {
               </p>
               <button
                 onClick={handleEdit}
-                className=" outline outline-slate-300 border-black h-10 w-20 rounded-full"
+                className={` outline outline-slate-300 border-black h-10 w-20 rounded-full `}
               >
                 Edit
               </button>

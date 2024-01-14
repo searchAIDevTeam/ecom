@@ -29,13 +29,13 @@ export const links = [
     imgSrc:
       "https://a0.muscache.com/pictures/c0fa9598-4e37-40f3-b734-4bd0e2377add.jpg",
   },
-  {
-    label:"Virtual Experience",
-    imgSrc: "https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg",
-  },
-  {
-    label: "Magazine",
-    imgSrc:
-      "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",
-  },
+  // {
+  //   label:"Virtual Experience",
+  //   imgSrc: "https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg",
+  // },
+  // {
+  //   label: "Magazine",
+  //   imgSrc:
+  //     "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",
+  // },
 ];

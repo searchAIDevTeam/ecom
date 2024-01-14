@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { dataTiles } from "@/Model/data";
+import Sidebar from "@/components/sidebar";
 const Content1 = () => {
   const router = useRouter();
   const prevHandler = () => {

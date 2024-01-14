@@ -1,13 +1,13 @@
 "use client";
-
+import Link from "next/link";
 import React from "react";
 // import { useFormContext } from "./FormContext";
 import { useRouter } from "next/navigation";
-import { useDispatch,useSelector } from "react-redux";
-import { updateFormData,selectFormData } from "../Features/Slices/formSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFormData, selectFormData } from "../Features/Slices/formSlice";
 export default function Form() {
   const router = useRouter();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   // const { updateFormData } = useFormContext();
   // const navigate = useNavigate();
   const formData = useSelector(selectFormData);
@@ -42,11 +42,9 @@ export default function Form() {
   //   router.push("/shipping");
   // }
 
-
   function handlefunc(event) {
     // const { name, value } = event.target;
     setForm({ ...form, [event.target.name]: event.target.value });
-   
   }
 
   function handleData(event) {
@@ -56,7 +54,18 @@ export default function Form() {
     router.push("/shipping");
   }
 
-
+  const incompleteForm =
+    !form.first ||
+    !form.last ||
+    !form.add1 ||
+    !form.postal ||
+    !form.local ||
+    !form.state ||
+    !form.country ||
+    !form.number;
+  const buttonClass = incompleteForm
+    ? "bg-gray-300 text-white"
+    : "bg-black text-white";
   return (
     <>
       <form onSubmit={handleData} className="w-1/2">
@@ -70,8 +79,7 @@ export default function Form() {
             name="first"
             id="first"
             placeholder="first name"
-            // value={form.first}
-            required
+            value={form.first}
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md" //for controlled components
           />
         </div>
@@ -84,7 +92,6 @@ export default function Form() {
             name="last"
             placeholder="Last Name"
             value={form.last}
-            required
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md"
           />
         </div>
@@ -97,7 +104,6 @@ export default function Form() {
             name="add1"
             placeholder="Address Line 1"
             value={form.add1}
-            required
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md"
           />
 
@@ -113,7 +119,6 @@ export default function Form() {
             onChange={handlefunc}
             name="add2"
             placeholder="Address Line 2"
-            required
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md"
             value={form.add2}
           />
@@ -127,7 +132,6 @@ export default function Form() {
             name="add3"
             placeholder="Address Line 3"
             value={form.add3}
-            required
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md"
           />
         </div>
@@ -142,7 +146,6 @@ export default function Form() {
               onChange={handlefunc}
               name="postal"
               value={form.postal}
-              required
               className="px-5 form-input border border-gray-600 h-10 w-[37vw] rounded-md"
             />
           </div>
@@ -155,7 +158,6 @@ export default function Form() {
               onChange={handlefunc}
               name="local"
               value={form.local}
-              required
               className="px-5 form-input border border-gray-600 h-10 w-[37vw] rounded-md"
             />
           </div>
@@ -170,7 +172,6 @@ export default function Form() {
               placeholder="State/Territory"
               name="state"
               value={form.state}
-              required
               className="px-5 form-input border border-gray-600 h-10 w-[37vw] rounded-md"
             />
           </div>
@@ -183,7 +184,6 @@ export default function Form() {
               placeholder="Country"
               name="country"
               value={form.country}
-              required
               className="px-5 form-input border border-gray-600 h-10 w-[37vw] rounded-md relative"
             />
           </div>
@@ -199,7 +199,6 @@ export default function Form() {
             onChange={handlefunc}
             name="email"
             value={form.email}
-            required
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md "
           />
 
@@ -217,7 +216,6 @@ export default function Form() {
             name="number"
             placeholder="Mobile Number"
             value={form.number}
-            required
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md"
           />
 
@@ -235,7 +233,6 @@ export default function Form() {
             onChange={handlefunc}
             name="pan"
             value={form.pan}
-            required
             className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md"
           />
 
@@ -270,9 +267,22 @@ export default function Form() {
           </span>
         </div>
         <br />
-        <button className="mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ">
+
+        {/* <Link
+          href={{
+            pathname: "/shipping",
+            query: {
+              search: "cart",
+            },
+          }}
+        > */}
+        <button
+          disabled={incompleteForm}
+          className={`mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ${buttonClass} `}
+        >
           Continue
         </button>
+        {/* </Link> */}
       </form>
       <br />
       <br />

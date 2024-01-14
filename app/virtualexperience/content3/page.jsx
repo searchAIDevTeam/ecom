@@ -9,7 +9,7 @@ const Content3 = () => {
     router.push("/virtualexperience/content2");
   };
   const donehandler = () => {
-    router.push("/");
+    router.push("/cart");
   };
 
   const [selectedPage, setSelectedPage] = useState("content6");
@@ -122,14 +122,7 @@ selectedActivity(index) ? "" :""}
               // style={{ zIndex: 10 }}
             >
               <div className="circle-container relative flex justify-center items-center">
-                {/* <FaCircle size={30} color="black" className="opacity-100" />
-
-                <TiTick
-                  className="opacity-100 absolute"
-                  color="white"
-                  size={30}
-                  style={{ opacity: 100 }}
-                /> */}
+              
                 <Image
                   src="/tick.svg"
                   alt="tick"
@@ -177,14 +170,7 @@ selectedActivity(index) ? "" :""}
               // style={{ zIndex: 10 }}
             >
               <div className="circle-container relative flex justify-center items-center">
-                {/* <FaCircle size={30} color="black" className="opacity-100" />
-
-                <TiTick
-                  className="opacity-100 absolute"
-                  color="white"
-                  size={30}
-                  style={{ opacity: 100 }}
-                /> */}
+                
                 <Image
                   src="/tick.svg"
                   alt="tick"

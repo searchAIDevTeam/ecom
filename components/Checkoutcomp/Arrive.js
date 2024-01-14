@@ -76,24 +76,22 @@ const Arrive = () => {
                 Edit
               </button>
             </div>
-            {roomStatus === "succeeded" && (
-              <div className="text-gray-400 mb-6">
-                <p>
-                  {formadata.first} {formadata.last}
-                </p>
-                <p>{formadata.add1} </p>
-                <p>{formadata.email} </p>
-                <p>{formadata.number} </p>
-                <p>{formadata.pan} </p>
-              </div>
-            )}
+
+            <div className="text-gray-400 mb-6">
+              <p>
+                {formadata.first} {formadata.last}
+              </p>
+              <p>{formadata.add1} </p>
+              <p>{formadata.email} </p>
+              <p>{formadata.number} </p>
+              <p>{formadata.pan} </p>
+            </div>
 
             <hr />
             <p className="mt-4 mb-8 text-xl font-semibold text-black">
               Shipping
             </p>
             <hr />
-
             <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
               Payment
             </p>

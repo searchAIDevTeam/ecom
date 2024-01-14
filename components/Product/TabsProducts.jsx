@@ -163,35 +163,34 @@ const Tabs = ({ filteredProducts }) => {
   }, []);
   //sorting
   const handleSorting = (selectedOption) => {
-    let filterer = [...filterData]; 
-  
+    let filterer = [...filterData];
+
     if (selectedOption.name === "Best match") {
-      filterer=[...filterData]
-      setFilterdata(filterer)
-    } else if (selectedOption.name ==="Price: high to low" ) {
+      filterer = [...filterData];
+      setFilterdata(filterer);
+    } else if (selectedOption.name === "Price: high to low") {
       filterer = filterer.sort((a, b) => a.perUnitPrice - b.perUnitPrice);
-      setFilterdata(filterer)
-
-    } else if (selectedOption.name ==="Price: low to high" ) {
+      setFilterdata(filterer);
+    } else if (selectedOption.name === "Price: low to high") {
       filterer = filterer.sort((a, b) => b.perUnitPrice - a.perUnitPrice);
-      setFilterdata(filterer)
-
+      setFilterdata(filterer);
     } else if (selectedOption.name === "Newest") {
-      filterer = filterer.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      setFilterdata(filterer)
-
+      filterer = filterer.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      setFilterdata(filterer);
     } else if (selectedOption.name === "Name") {
-      filterer = filterer.sort((a, b) => a.productTitle.localeCompare(b.productTitle));
-      setFilterdata(filterer)
+      filterer = filterer.sort((a, b) =>
+        a.productTitle.localeCompare(b.productTitle)
+      );
+      setFilterdata(filterer);
+    } else {
+      setFilterdata(filteredProducts);
+    }
 
-    }
-    else{
-      setFilterdata(filteredProducts)
-    }
-    
     console.log(filterer);
   };
-  
+
   return (
     <>
       <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">

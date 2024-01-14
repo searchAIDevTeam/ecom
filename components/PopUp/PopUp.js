@@ -3,12 +3,20 @@ import "./popup.css";
 // import back from "../../assets/back.png";
 import { FaCheckCircle } from "react-icons/fa";
 import axios from "axios";
-// import { useDispatch } from "react-redux";
+
+import { useDispatch } from "react-redux";
+import {
+  setSelectedcomItems1,
+  setSelectedcomItems2,
+  setSelectedcomItems3,
+  Items1selected,
+  Items2selected,
+  Items3selected,
+} from "../Features/Slices/selectedItemsSlice";
 // import {
 //   recomendProduct,
 //   recomendationLoader,
 // } from "../../Features/Slices/recommendationSlice";
-
 
 function App() {
   const [fetchedCategories, setFetchedCategories] = useState(null);
@@ -17,6 +25,7 @@ function App() {
   // const dispatch = useDispatch();
 
   const fetchCategories = async () => {
+    const dispatch = useDispatch();
     try {
       const response = await axios.get(
         `http://3.224.109.20:8080/api/categories`
@@ -26,7 +35,7 @@ function App() {
       console.error("Error fetching categories:", error.message);
     }
   };
-  console.log(process.env.NEXT_PUBLIC_API_BASE_URL)
+  console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
   console.log(fetchedCategories);
   const fetchCitiesAndHobbies = async () => {
     try {
@@ -88,6 +97,11 @@ function App() {
           )
         : [...prevSelectedItems, { label, parentCategory }]
     );
+
+    dispatch({
+      type: "SET_SELECTED_ITEMS_1_ASYNC",
+      payload: setSelectedcomItems1,
+    });
   };
 
   const toggleItemSelection2 = (label) => {
@@ -97,6 +111,11 @@ function App() {
         ? prevSelectedItems.filter((item) => item !== label)
         : [...prevSelectedItems, label]
     );
+
+    dispatch({
+      type: "SET_SELECTED_ITEMS_2_ASYNC",
+      payload: setSelectedcomItems2,
+    });
   };
 
   const toggleItemSelection3 = (label) => {
@@ -106,6 +125,10 @@ function App() {
         ? prevSelectedItems.filter((item) => item !== label)
         : [...prevSelectedItems, label]
     );
+    dispatch({
+      type: "SET_SELECTED_ITEMS_3_ASYNC",
+      payload: setSelectedcomItems3,
+    });
   };
 
   useEffect(() => {
@@ -190,7 +213,6 @@ function App() {
 
       const data = response.data;
       console.log(data);
-
     } catch (error) {
       console.error(error);
 
@@ -206,6 +228,17 @@ function App() {
       }
     }
   };
+
+  const [isMinItemsSelected, setIsMinItemsSelected] = useState(false);
+
+  // Update isMinItemsSelected whenever selectedItems1 changes
+  useEffect(() => {
+    setIsMinItemsSelected(selectedItems1.length >= 5);
+  }, [selectedItems1]);
+
+  console.log("from selecteditems1", Items1selected);
+  console.log("from selecteditems2", Items2selected);
+  console.log("from selecteditems3", Items3selected);
 
   return (
     <div className="App">
@@ -334,7 +367,13 @@ function App() {
                     ))}
                 </div>
                 <div className="basis-1/5 flex-grow">
-                  <button className="next self-end mt-6" onClick={done}>
+                  <button
+                    className={`next self-end mt-6
+                    ${isMinItemsSelected ? "bg-red-700" : "bg-red-200"}
+                    `}
+                    onClick={done}
+                    // disabled={!isMinItemsSelected}
+                  >
                     Done
                   </button>
                 </div>

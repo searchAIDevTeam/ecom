@@ -33,9 +33,9 @@ const Checkoutmain = () => {
               Shipping
             </p>
             <hr className="w-1/2" />
-            <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
+            {/* <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
               Billing
-            </p>
+            </p> */}
             <hr className="w-1/2" />
             <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
               Payment

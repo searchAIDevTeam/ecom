@@ -34,7 +34,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
       setActiveDropdown(idx);
     }
   };
-  
+
   const handleFilterHover = (category) => {
     // const filteredContent = fetchFilteredContent(category);
     onFilterHover(category);
@@ -97,6 +97,13 @@ function Filter({ isFilterHovered, onFilterHover }) {
     }
   }, []);
 
+  const handletoVirtual = () => {
+    router.push("/virtualexperience/vrooms");
+  };
+  const handletomagazine = () => {
+    router.push("/magazine");
+  };
+
   return (
     <header
       className={`absolute pt-7 pb-2 mt-[3.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white
@@ -109,8 +116,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
             className={` slider_lr_container arrow-left  ${
               scrollX === 0 ? "hidden" : ""
             }`}
-          >
-          </div>
+          ></div>
           {links.map((value, idx) => (
             <div
               key={idx}
@@ -118,16 +124,31 @@ function Filter({ isFilterHovered, onFilterHover }) {
                 idx === selectedFilter ? "selected-array-element" : ""
               }`}
               {...(!isMobile
-                ? { onClick: (event) => handleDropdownClick(event, idx) }
-                : { onClick: () => router.push(`/${value.label}`) })}
-              onMouseEnter={() => {
-                setActiveDropdown(idx);
-                console.log(idx);
-                setIsBlur(true);
-                handleFilterHover(value.label);
-                console.log(isBlur);
-              }}
-              onMouseLeave={() => setActiveDropdown(null)}
+                ? {
+                    onClick: (event) => handleDropdownClick(event, idx),
+
+                    onMouseEnter: () => {
+                      setActiveDropdown(idx);
+                      setIsBlur(true);
+                      handleFilterHover(value.label);
+                    },
+                    onMouseLeave: () => setActiveDropdown(null),
+                  }
+                : {
+                    onClick: (e) => {
+                      router.push(`/${value.label}`);
+                      e.preventDefault();
+                      e.stopPropagation();
+                    },
+                  })}
+              // onMouseEnter={() => {
+              //   setActiveDropdown(idx);
+              //   console.log(idx);
+              //   setIsBlur(true);
+              //   handleFilterHover(value.label);
+              //   console.log(isBlur);
+              // }}
+              // onMouseLeave={() => setActiveDropdown(null)}
             >
               {value && (
                 <p
@@ -153,9 +174,23 @@ function Filter({ isFilterHovered, onFilterHover }) {
                 >
                   <div className="px-[50px] my-5">
                     <div className="filter_container flex">
-                      <div className={`flex ${(idx===0)?(`gap-32`):(idx===1)?(`gap-32`):(idx===2)?(`gap-20`):(idx===3)?(`gap-20`):(idx===4)?(`gap-32`):(`gap-24`)}`}>
+                      <div
+                        className={`flex ${
+                          idx === 0
+                            ? `gap-32`
+                            : idx === 1
+                            ? `gap-32`
+                            : idx === 2
+                            ? `gap-20`
+                            : idx === 3
+                            ? `gap-20`
+                            : idx === 4
+                            ? `gap-32`
+                            : `gap-24`
+                        }`}
+                      >
                         <div>
-                          <FeaturedContent 
+                          <FeaturedContent
                             featuredData={(() => {
                               switch (idx) {
                                 case 0:
@@ -171,27 +206,33 @@ function Filter({ isFilterHovered, onFilterHover }) {
                                 default:
                                   return wallpaperFeaturedData;
                               }
-                            })()}                          
-                            verticalSpacingBetween="space-y-8" 
+                            })()}
+                            verticalSpacingBetween="space-y-8"
                             imageWidth={200}
                             imageHeight={200}
                             textSize="text-xl"
                             textStyle="font-semibold"
-                            parentCategory ={value.label}/>
+                            parentCategory={value.label}
+                          />
                         </div>
-                        {
-                          (idx === 0 ? wallpaperCategoryData 
-                            : idx===1? flooringCategoryData
-                            : idx===2? curtainsCategoryData
-                            : idx===3? blindsCategoryData
-                            : idx===4? inspirationCategoryData
-                            : wallpaperCategoryData).map((category) => {
+                        {(idx === 0
+                          ? wallpaperCategoryData
+                          : idx === 1
+                          ? flooringCategoryData
+                          : idx === 2
+                          ? curtainsCategoryData
+                          : idx === 3
+                          ? blindsCategoryData
+                          : idx === 4
+                          ? inspirationCategoryData
+                          : wallpaperCategoryData
+                        ).map((category) => {
                           return (
                             <div>
                               <CategoryContent
                                 categoryHeading={category.categoryHeading}
                                 categoryData={category.categoryData}
-                                parentCategory ={value.label}
+                                parentCategory={value.label}
                                 categoryGap=""
                                 headingColor="text-gray-500"
                                 headingStyle="font-bold"
@@ -210,6 +251,19 @@ function Filter({ isFilterHovered, onFilterHover }) {
               )}
             </div>
           ))}
+          <div
+            onClick={handletoVirtual}
+            className=" cursor-pointer sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap"
+          >
+            virtual Experience
+          </div>
+          <div
+            onClick={handletomagazine}
+            className=" cursor-pointer sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap"
+          >
+            Magazine
+          </div>
+
           {/* <div className="slider_lr_container arrow-right-filter">
              <img
               src={rightarrow}

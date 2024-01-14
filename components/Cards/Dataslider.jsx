@@ -7,7 +7,9 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
+import { useSelector } from "react-redux";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
+import SelectedItemsRow from "./selectedItemsRow";
 
 const Dataslider = ({ category, data, sliderIndex }) => {
   const swiperRef = useRef(null);
@@ -30,6 +32,11 @@ const Dataslider = ({ category, data, sliderIndex }) => {
   useEffect(() => {
     setProductData(data);
   }, [data]);
+
+  // Assuming you have a Redux store slice named selectedItems
+  const selectedItems1 = useSelector((state) => state.selectedItems.items1);
+  const selectedItems2 = useSelector((state) => state.selectedItems.items2);
+  const selectedItems3 = useSelector((state) => state.selectedItems.items3);
 
   return (
     <div>
@@ -92,6 +99,16 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               </SwiperSlide>
             ))
           )}
+
+          {/* <SwiperSlide>
+            <SelectedItemsRow selectedItems={selectedItems1} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SelectedItemsRow selectedItems={selectedItems2} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SelectedItemsRow selectedItems={selectedItems3} />
+          </SwiperSlide> */}
         </Swiper>
       </div>
     </div>

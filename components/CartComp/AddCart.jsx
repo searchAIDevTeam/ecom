@@ -7,14 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectRoomData } from "../Features/Slices/roomSlice";
 import { selectRoomStatus } from "../Features/Slices/roomSlice";
 import { selectQuantity } from "../Features/Slices/calculationSlice";
-import { Link } from "next/link";
+import { setDbItems } from "../Features/Slices/cartSlice";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 // import Footer from "../Footer/Footer";
 const AddCart = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const handleClick = () => {
-    router.push("/checkout");
+    router.push(`/checkout`);
   };
   const selectedItems = useSelector((state) => state.rooms.selectedActivity);
   // console.log("Cart component re-rendered");
@@ -31,6 +33,9 @@ const AddCart = () => {
   //   var id = localStorage.getItem("deviceId");
   //   // console.log("deviceId : ", id);
   // }
+
+  const dbItems = useSelector((state) => state.cart.dbItems);
+
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
     // console.log("deviceId : ", id);
@@ -67,6 +72,8 @@ const AddCart = () => {
         console.log("response from DB", cartdata);
         setCartStaus("succeeded");
         console.log("cartStatus", cartStatus);
+        dispatch(setDbItems(data.items));
+        console.log("this is data from redux (db)", dbItems);
       } catch (error) {
         console.error("Error Fetching data from DB : ", error);
 
@@ -74,7 +81,7 @@ const AddCart = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     // Do something with the updated state (cartdata and cartStatus)
@@ -249,7 +256,7 @@ this is order summary */}
             </div>
             <div>Quantity: {quantities}</div>
 
-            <div
+            {/* <div
               onClick={handleClick}
               className="guestCheckout flex items-center justify-center my-4"
             >
@@ -257,16 +264,43 @@ this is order summary */}
               <button className="bg-black text-white sm:w-full w-[40vw] sm:h-14 h-9 rounded-full	 hover:bg-gray-900 transition duration-300">
                 Guest Checkout
               </button>
-            </div>
+            </div> */}
 
-            <div
+            <Link
+              href={{
+                pathname: "/checkout",
+                query: {
+                  search: "cart",
+                },
+              }}
+              className="memberCheckout my-4 flex items-center justify-center"
+            >
+              <button className="bg-black text-white sm:w-full w-[40vw] sm:h-14 h-9 rounded-full	 hover:bg-gray-900 transition duration-300">
+              Guest Checkout
+              </button>
+            </Link>
+
+            {/* <div
               onClick={handleClick}
               className="memberCheckout my-4 flex items-center justify-center"
             >
               <button className="bg-black text-white sm:w-full w-[40vw] sm:h-14 h-9 rounded-full	 hover:bg-gray-900 transition duration-300">
                 Member Checkout
               </button>
-            </div>
+            </div> */}
+            <Link
+              href={{
+                pathname: "/checkout",
+                query: {
+                  search: "cart",
+                },
+              }}
+              className="memberCheckout my-4 flex items-center justify-center"
+            >
+              <button className="bg-black text-white sm:w-full w-[40vw] sm:h-14 h-9 rounded-full	 hover:bg-gray-900 transition duration-300">
+                Member Checkout
+              </button>
+            </Link>
           </div>
         )}
       </div>

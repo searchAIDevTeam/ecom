@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -336,14 +336,29 @@ const Card = ({ data }) => {
                 Add To Bag
               </button>
             </div>
-            <div className="guestCheckout ">
+
+            <Link
+              href={{
+                pathname: "/checkout",
+                query: {
+                  search: "rooms",
+                },
+              }}
+              className="memberCheckout my-4 flex items-center justify-center"
+            >
+              <button className="bg-black mt-4 text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+                Buy Now
+              </button>
+            </Link>
+
+            {/* <div className="guestCheckout ">
               <button
                 onClick={handleClicks}
                 className="bg-black mt-4 text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Buy Now
               </button>
-            </div>
+            </div> */}
             <div className="memberCheckout mt-4">
               <button className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Contact
