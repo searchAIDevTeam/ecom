@@ -62,13 +62,12 @@ body {
   overflow-x: hidden;
   z-index: 9999;
   position: fixed;
-  top: 17vh;
-  padding-bottom: 50px;
+  top: 12vh;
 }
 
 .text {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   margin-top: 10px;
   font-weight: bold;
@@ -79,16 +78,16 @@ body {
   width: 34rem;
   margin-top: 0.5rem;
   color: white;
-  background-color: red;
-  border-radius: 5px;
+  background-color: black;
+  border-radius: 20px;
   border: none;
   transition: 0.4s ease-in-out;
 
-  &:hover {
+  /* &:hover {
     cursor: pointer;
     border: 1px solid red;
     color: white;
-  }
+  } */
 }
 
 .below {
@@ -162,5 +161,10 @@ body {
 
 .fixed-button{
   position: fixed;
-  bottom: 120px;
+  bottom: 85px;
+  z-index: 9999;
 }
+
+.cont1::-webkit-scrollbar{
+  display: none;
+} 
