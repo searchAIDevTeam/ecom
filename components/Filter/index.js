@@ -19,8 +19,6 @@ import { inspirationCategoryData } from "@/Model/Dropdown/CategoryData/Inspirati
 function Filter({
   isFilterHovered,
   onFilterHover,
-  isBackgroundBlur,
-  setBackgroundBlur,
 }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -132,12 +130,10 @@ function Filter({
 
                     onMouseEnter: () => {
                       setActiveDropdown(idx);
-                      setBackgroundBlur(true);
                       handleFilterHover(value.label);
                     },
                     onMouseLeave: () => {
                       setActiveDropdown(null);
-                      setBackgroundBlur(false);
                     },
                   }
                 : {
@@ -173,9 +169,7 @@ function Filter({
 
               {activeDropdown === idx && (
                 <div
-                  className={`absolute left-0 mt-[1.6rem] w-full bg-white shadow-md transition-all ease-linear duration-2000
-                  ${isBackgroundBlur ? "blur-none" : "blur-none"}  
-                  `}
+                  className={`absolute left-0 mt-[1.6rem] w-full bg-white transition-all ease-linear duration-2000 shadow-[0_350px_60px_100px_rgba(0,0,0,0.5)]`}
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
                 >
                   <div className="px-[50px] my-5">
