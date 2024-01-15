@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./popup.css";
 import Image from "next/image";
 import axios from "axios";
-
 import { useDispatch } from "react-redux";
 import {
   setSelectedcomItems1,
@@ -255,7 +254,11 @@ function App() {
                             }
                             style={{ background: `url('${subcategory.img}')` }}
                           >
-                            <Image src='/circletick.svg' height={20} width={20} alt='tick'
+                            <Image
+                              src="/circletick.svg"
+                              height={20}
+                              width={20}
+                              alt="tick"
                               className={`absolute tickicon ${
                                 selectedItems1.includes(subcategory)
                                   ? "block"
@@ -296,7 +299,11 @@ function App() {
                         backgroundSize: "center",
                       }}
                     >
-                  <Image src='/circletick.svg' height={20} width={20} alt='close'
+                      <Image
+                        src="/circletick.svg"
+                        height={20}
+                        width={20}
+                        alt="close"
                         className={`absolute tickicon ${
                           selectedItems2.includes(city) ? "block" : "hidden"
                         }`}
@@ -343,7 +350,11 @@ function App() {
                         }}
                         key={index}
                       >
-                  <Image src='/circletick.svg' height={20} width={20} alt='close'
+                        <Image
+                          src="/circletick.svg"
+                          height={20}
+                          width={20}
+                          alt="close"
                           className={`absolute tickicon ${
                             selectedItems3.includes(hobbie) ? "block" : "hidden"
                           }`}
