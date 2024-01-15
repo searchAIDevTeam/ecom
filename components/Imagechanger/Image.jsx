@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import Image from "next/image";
 
 const Imagechanger = () => {
  // const [index, setIndex] = useState(0);
@@ -118,9 +118,9 @@ const Imagechanger = () => {
                   {value}
                 </h1>
                 {openStates[idx] ? (
-                  <FaChevronUp className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
+                  <Image src='/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
                 ) : (
-                  <FaChevronDown className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
+                  <Image src='/down.svg' width={20} height={20} alt="down" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
                 )}
               </div>
               <div className={`sm:w-[23rem] w-[80vw] ${openStates[idx] ? "open" : ""}`}>

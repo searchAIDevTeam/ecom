@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Image from "next/image";
 
 import "./styles.css";
@@ -40,7 +39,7 @@ function Carousel({ data }) {
         );
       })}
       {isHovered && (
-        <BsArrowRightCircleFill
+        <Image src="/rightvector.svg" width={20} height={20} alt="back arrow"
           onClick={nextSlide}
           className="arrow arrow-right"
         />

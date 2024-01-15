@@ -1,8 +1,8 @@
 'use client'
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 const Aboutcollections = () => {
   const aboutcollections = [
@@ -45,9 +45,9 @@ const Aboutcollections = () => {
         >
           About Ayatrio
           {isAccordionOpen ? (
-            <FaChevronUp className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
+            <Image src='/leftvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
           ) : (
-            <FaChevronDown className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
+            <Image src='/rightvector.svg' height={10} width={10} alt="down" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
           )}
         </h4>
         {isAccordionOpen && (

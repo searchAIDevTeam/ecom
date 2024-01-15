@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./popup.css";
-// import back from "../../assets/back.png";
-import { FaCheckCircle } from "react-icons/fa";
+import Image from "next/image";
 import axios from "axios";
 
 import { useDispatch } from "react-redux";
@@ -9,9 +8,6 @@ import {
   setSelectedcomItems1,
   setSelectedcomItems2,
   setSelectedcomItems3,
-  Items1selected,
-  Items2selected,
-  Items3selected,
 } from "../Features/Slices/selectedItemsSlice";
 // import {
 //   recomendProduct,
@@ -23,9 +19,8 @@ function App() {
   const [fetchCities, setFetchedCities] = useState(null);
   const [fetchHobbies, setFetchedHobbies] = useState(null);
   // const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
   const fetchCategories = async () => {
-    const dispatch = useDispatch();
     try {
       const response = await axios.get(
         `http://3.224.109.20:8080/api/categories`
@@ -98,10 +93,7 @@ function App() {
         : [...prevSelectedItems, { label, parentCategory }]
     );
 
-    dispatch({
-      type: "SET_SELECTED_ITEMS_1_ASYNC",
-      payload: setSelectedcomItems1,
-    });
+    dispatch(setSelectedcomItems1({ items1: selectedItems1 }));
   };
 
   const toggleItemSelection2 = (label) => {
@@ -112,10 +104,7 @@ function App() {
         : [...prevSelectedItems, label]
     );
 
-    dispatch({
-      type: "SET_SELECTED_ITEMS_2_ASYNC",
-      payload: setSelectedcomItems2,
-    });
+    dispatch(setSelectedcomItems2({ items2: selectedItems2 }));
   };
 
   const toggleItemSelection3 = (label) => {
@@ -125,10 +114,7 @@ function App() {
         ? prevSelectedItems.filter((item) => item !== label)
         : [...prevSelectedItems, label]
     );
-    dispatch({
-      type: "SET_SELECTED_ITEMS_3_ASYNC",
-      payload: setSelectedcomItems3,
-    });
+    dispatch(setSelectedcomItems3({ items3: selectedItems3 }));
   };
 
   useEffect(() => {
@@ -232,13 +218,13 @@ function App() {
   const [isMinItemsSelected, setIsMinItemsSelected] = useState(false);
 
   // Update isMinItemsSelected whenever selectedItems1 changes
-  useEffect(() => {
-    setIsMinItemsSelected(selectedItems1.length >= 5);
-  }, [selectedItems1]);
+  // useEffect(() => {
+  //   setIsMinItemsSelected(selectedItems1.length >= 5);
+  // }, [selectedItems1]);
 
-  console.log("from selecteditems1", Items1selected);
-  console.log("from selecteditems2", Items2selected);
-  console.log("from selecteditems3", Items3selected);
+  // console.log("from selecteditems1", Items1selected);
+  // console.log("from selecteditems2", Items2selected);
+  // console.log("from selecteditems3", Items3selected);
 
   return (
     <div className="App">
@@ -269,7 +255,7 @@ function App() {
                             }
                             style={{ background: `url('${subcategory.img}')` }}
                           >
-                            <FaCheckCircle
+                            <Image src='/circletick.svg' height={20} width={20} alt='tick'
                               className={`absolute tickicon ${
                                 selectedItems1.includes(subcategory)
                                   ? "block"
@@ -284,7 +270,7 @@ function App() {
                   </React.Fragment>
                 ))}
             </div>
-            <div className="flex-grow basis-1/5">
+            <div className="flex-grow fixed-button basis-1/5">
               <button className="next" onClick={handleNext}>
                 Next
               </button>
@@ -310,7 +296,7 @@ function App() {
                         backgroundSize: "center",
                       }}
                     >
-                      <FaCheckCircle
+                  <Image src='/circletick.svg' height={20} width={20} alt='close'
                         className={`absolute tickicon ${
                           selectedItems2.includes(city) ? "block" : "hidden"
                         }`}
@@ -320,7 +306,7 @@ function App() {
                   </React.Fragment>
                 ))}
             </div>
-            <div className="flex-grow basis-1/5">
+            <div className="flex-grow fixed-button basis-1/5">
               <button className="next" onClick={goTo}>
                 Next
               </button>
@@ -357,7 +343,7 @@ function App() {
                         }}
                         key={index}
                       >
-                        <FaCheckCircle
+                  <Image src='/circletick.svg' height={20} width={20} alt='close'
                           className={`absolute tickicon ${
                             selectedItems3.includes(hobbie) ? "block" : "hidden"
                           }`}
@@ -366,9 +352,9 @@ function App() {
                       </div>
                     ))}
                 </div>
-                <div className="basis-1/5 flex-grow">
+                <div className="basis-1/5 flex-grow fixed-button">
                   <button
-                    className={`next self-end mt-6
+                    className={`next self-end mt-6 
                     ${isMinItemsSelected ? "bg-red-700" : "bg-red-200"}
                     `}
                     onClick={done}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import Image from "next/image";
 import axios from "axios";
 
 const Imagechanger = () => {
@@ -66,9 +66,9 @@ const Imagechanger = () => {
                     {value.heading}
                   </h1>
                   {index === idx ? (
-                    <FaChevronUp className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image src='/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
                   ) : (
-                    <FaChevronDown className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image src='/down.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
                   )}
                 </div>
               </>
@@ -82,9 +82,9 @@ const Imagechanger = () => {
                   {value.heading}
                 </h1>
                 {openStates[idx] ? (
-                  <FaChevronUp className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image src='/up.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
                 ) : (
-                  <FaChevronDown className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image src='/down.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
                 )}
               </div>
             )}

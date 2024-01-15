@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { MdSearch, MdAccessTime } from "react-icons/md";
-import { IoClose } from "react-icons/io5";
-import { GoHome } from "react-icons/go";
 import Menu from "../Header/menu";
-
+import Image from "next/image";
 import { searchProductsRequest } from "../Features/search/searchSlice";
 import { useDispatch } from "react-redux";
 // import Expandedbar from "../Header/Expandedbar";
@@ -138,7 +135,7 @@ const Search = ({ places, onResultClick }) => {
                 }}
               />
               <div className="searchIcon absolute right-1 bg-white flex justify-center items-center w-[2rem]">
-                <MdSearch className="text-gray-400 text-xl" />
+                <Image src='/searchicon.svg' width={20} height={20} alt="search" className="text-gray-400 text-xl" />
               </div>
             </div>
 
@@ -159,14 +156,14 @@ const Search = ({ places, onResultClick }) => {
                   onMouseLeave={() => handleItemHover(null)}
                 >
                   {index === 0 ? (
-                    <GoHome className="text-gray-700 text-xl" />
+                    <Image src='/homeicon.svg' height={20} width={20} alt="home" className="text-gray-700 text-xl" />
                   ) : (
-                    <MdAccessTime className="text-gray-700 text-xl" />
+                    <Image src='/time.svg' height={20} width={20} alt="time" className="text-gray-700 text-xl" />
                   )}
                   <div className="py-2 px-4 text-gray-700 cursor-pointer">
                     {index === 0 ? "India" : `${item.name}`}
                   </div>
-                  <IoClose
+                  <Image src='/closeicon.svg' height={20} width={20} alt='close'
                     className={`text-gray-800 text-xl 
       ${hoveredItem === item ? "opacity-100" : "opacity-0"}
       `}
@@ -197,7 +194,8 @@ const Search = ({ places, onResultClick }) => {
               }}
             />
             <div className="searchIcon bg-white flex justify-center items-center w-[1rem] mr-3">
-              <MdSearch className="text-gray-400 text-xl" />
+            <Image src='/searchicon.svg' height={20} width={20} alt='close'
+               className="text-gray-400 text-xl" />
             </div>
           </div>
 
@@ -219,16 +217,18 @@ const Search = ({ places, onResultClick }) => {
                   onMouseLeave={() => handleItemHover(null)}
                 >
                   {index === 0 ? (
-                    <GoHome className="text-gray-700 text-xl" />
+                    <Image src='/homeicon.svg' height={20} width={20} alt='close'
+                    className="text-gray-700 text-xl" />
                   ) : (
-                    <MdAccessTime className="text-gray-700 text-xl" />
+                    <Image src='/time.svg' height={20} width={20} alt='close'
+                    className="text-gray-700 text-xl" />
                   )}
                   <div className="py-2 px-4 text-gray-700 cursor-pointer">
                     {index === 0
                       ? "India"
                       : `${item.name} ${item.address.slice(0, 20)}`}
                   </div>
-                  <IoClose
+                  <Image src='/closeicon.svg' height={20} width={20} alt='close'
                     className={`text-gray-800 text-xl 
       ${hoveredItem === item ? "opacity-100" : "opacity-0"}
       `}
