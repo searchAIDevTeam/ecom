@@ -12,9 +12,7 @@ import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
 // import "react-loading-skeleton/dist/skeleton.css";
-import { useSelector } from "react-redux";
-import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
-import { CardData } from "../Features/Slices/FIrstCardSlice";
+
 
 const Curtains = () => {
   const [swiperRef, setSwiperRef] = useState(null);

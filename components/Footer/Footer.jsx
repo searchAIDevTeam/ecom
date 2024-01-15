@@ -40,11 +40,11 @@ const Footer = () => {
         </div>
       </div>
 
-      <div class="flex sm:px-[50px] px-[20px]  footer_bg sm:flex-row flex-col justify-between p-4">
-        <div class="flex  items-center space-x-4 text-lg font-semibold tracking-tight">
-          <ul class="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
+      <div className="flex sm:px-[50px] px-[20px]  footer_bg sm:flex-row flex-col justify-between p-4">
+        <div className="flex  items-center space-x-4 text-lg font-semibold tracking-tight">
+          <ul className="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
             <li>
-              <a href="#" class="me-4 hover:underline">
+              <a href="#" className="me-4 hover:underline">
                 <img
                   className="list-socialicon"
                   src="/social-icon/facebook-icon.svg"
@@ -53,7 +53,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" class="me-4 hover:underline">
+              <a href="#" className="me-4 hover:underline">
                 <img
                   className="list-socialicon"
                   src="/social-icon/instagram-icon.svg"
@@ -62,7 +62,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" class="me-4 hover:underline">
+              <a href="#" className="me-4 hover:underline">
                 <img
                   className="list-socialicon"
                   src="/social-icon/twitter-icon.svg"
@@ -71,7 +71,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" class="me-4 hover:underline">
+              <a href="#" className="me-4 hover:underline">
                 <img
                   className="list-socialicon"
                   src="/social-icon/youtube-icon.svg"
@@ -82,25 +82,25 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div class="flex gap-3">
-          <ul class="flex flex-wrap pt-2.5 justify-center text-gray-900 dark:text-white">
+        <div className="flex gap-3">
+          <ul className="flex flex-wrap pt-2.5 justify-center text-gray-900 dark:text-white">
             <li>
-              <a href="#" class="me-4 text-xs">
+              <a href="#" className="me-4 text-xs">
                 © Ayatrio furnishing · 2015-2023
               </a>
             </li>
           </ul>
         </div>
 
-        <div class="flex gap-3">
-          <ul class="flex flex-wrap pt-2.5 justify-center text-gray-900 dark:text-white">
+        <div className="flex gap-3">
+          <ul className="flex flex-wrap pt-2.5 justify-center text-gray-900 dark:text-white">
             <li>
-              <a href="#" class="me-4 text-xs hover:underline">
+              <a href="#" className="me-4 text-xs hover:underline">
                 Cookie policy
               </a>
             </li>
             <li>
-              <a href="#" class="me-4 text-xs hover:underline">
+              <a href="#" className="me-4 text-xs hover:underline">
                 Cookie settings
               </a>
             </li>

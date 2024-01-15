@@ -28,7 +28,7 @@ function Carousel({ data }) {
       )}
       {data.map((item, idx) => {
         return (
-          <img
+          <Image
             src={item}
             alt="NA"
             key={idx}

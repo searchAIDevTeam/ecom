@@ -7,6 +7,7 @@ import Carousel from "./swip";
 import PopUp from "../Reviews/PopUp";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Image from "next/image";
 
 function Card(props) {
   // console.log("i am card prop",props)
@@ -38,11 +39,12 @@ const handleclick = (id,productId) => {
         <div className={`card-flex ${props.cssClass}  `} onClick={()=>handleclick(props.id,props.productId)}>
           <Carousel data={props.imgSrc} className="card-img" />
           <div className="review-icon-container   ">
-            <img
+            <Image
               src="/images/rev.webp"
               className="h-8 rounded-md cursor-pointer"
               onClick={handleImageClick}
               alt="Review Icon"
+              
             />
           </div>
         </div>

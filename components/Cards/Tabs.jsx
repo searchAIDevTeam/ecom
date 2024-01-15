@@ -25,7 +25,7 @@ const Tabs = () => {
       price: 1900,
     },
   ];
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     // Update isMobile state on window resize
     const handleResize = () => {
