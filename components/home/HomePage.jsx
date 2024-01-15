@@ -82,8 +82,6 @@ const HomePage = () => {
     setFilteredContent(content);
   };
 
-  const [isBackgroundBlur, setBackgroundBlur] = useState(false);
-
   return (
     <>
       <div
@@ -107,16 +105,13 @@ const HomePage = () => {
         <Filter
           isFilterHovered={isFilterHovered}
           onFilterHover={handleFilterHover}
-          isBackgroundBlur={isBackgroundBlur}
-          setBackgroundBlur={setBackgroundBlur}
         />
-        <div className={`${isBackgroundBlur?"blur-lg":""}`}>
         <Cards />
         {isFilterVisible && (
           <div className="fixed-ayatrio-map">
             <button
               type="button"
-              className="fixed sm:hidden flex  left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999]  -bottom-3 text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-lg px-5 py-2.5 me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              className="fixed sm:hidden flex left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999]  -bottom-3 text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-lg px-5 py-2.5 me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
               onClick={() => router.push("/ayatrio-map")}
             >
               Map{" "}
@@ -141,7 +136,6 @@ const HomePage = () => {
           </div>
         )}
         </div>
-      </div>
     </>
   );
 };
