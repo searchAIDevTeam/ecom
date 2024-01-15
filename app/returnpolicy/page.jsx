@@ -21,7 +21,7 @@ export default function Home() {
         "A friendly and helpful co-worker to support you with the refund, whether you speak to one of our team at the customer support center or in-store. We may refuse the return, exchange or offer a Refund card if the returns criteria are not fully met. If proof of purchase is unavailable, we will refund the lowest selling price within the 6 months for that product.",
     },
   ];
-  
+
   const initiateRefund = [
     {
       id: 1,
@@ -36,11 +36,11 @@ export default function Home() {
         "Please contact our customer support center on 1800 419 4532 and have your invoice available. For this service there are charges applicable, see our delivery prices for information or ask one of our team in our customer support center.",
     },
   ];
-  
+
   return (
     <div>
-          <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
-       <div className="flex flex-col space-y-7 w-full">
+      <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
+        <div className="flex flex-col space-y-7 w-full">
           <div className="md:w-2/3">
             <h1 className="font-bold text-4xl">
               Returns Policy - It’s ok to change your mind, we support you in
@@ -278,7 +278,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        </div>
+      </div>
     </div>
   )
 }
