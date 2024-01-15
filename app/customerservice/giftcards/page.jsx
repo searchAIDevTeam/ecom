@@ -238,7 +238,7 @@ const GiftCards = () => {
                     <text
                       x="32.696"
                       y="42.12"
-                      classNameName="gcbalance-gift-card-header"
+                      className="gcbalance-gift-card-header"
                     ></text>
                     <text
                       x="32.696"
@@ -303,8 +303,8 @@ const GiftCards = () => {
           <hr />
           {/* gift card faq section starts */}
           <section>
-            <div classNameName="flex flex-col gap-5 w-full">
-              <h3 classNameName="font-bold text-xl">FAQs</h3>
+            <div className="flex flex-col gap-5 w-full">
+              <h3 className="font-bold text-xl">FAQs</h3>
               {giftCardFaqs.map((curElement) => {
                 return (
                   <div className="space-y-1 md:w-1/2">
