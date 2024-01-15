@@ -13,9 +13,8 @@ const ratingsData = [
         {[5, 4, 3, 2, 1].map((number, index) => (
           <div
             key={index}
-            className={`border mb-2 ${
-              index === 0 ? "border-black bg-black" : "bg-gray-300"
-            } rounded-full w-32 h-1.5 flex flex-row items-center ml-4justify-start`}
+            className={`border mb-2 ${index === 0 ? "border-black bg-black" : "bg-gray-300"
+              } rounded-full w-32 h-1.5 flex flex-row items-center ml-4 justify-start`}
           >
             <span className="-ml-3">{number}</span>
           </div>
@@ -56,7 +55,7 @@ const ratingsData = [
   },
 ];
 
-const Reviews = ({data}) => {
+const Reviews = ({ data }) => {
   return (
     <>
       <div className="py-12 border-t sm:w-auto w-[90vw] border-b overflow-x-hidden">
@@ -88,17 +87,16 @@ const Reviews = ({data}) => {
               </div>
             </div>
           </div>
-          <div className="rating-map flex flex-row justify-center items-center sm:ml-12 ml-0 sm:mr-12 mr-0 mt-12 sm:w-auto w-[90vw] overflow-x-auto">
+          <div className="rating-map flex flex-row justify-between mt-12 sm:w-auto w-[90vw] overflow-x-auto">
             {ratingsData.map((item, index) => (
               <div
                 key={index}
-                className={` basis-1/7 flex pr-6 ${
-                  index < ratingsData.length - 1
-                    ? "border-r border-gray-400 h-32 "
-                    : ""
-                }flex-col pl-6`}
+                className={` basis-1/7 flex pr-6 ${index < ratingsData.length - 1
+                  ? "border-r border-gray-400 h-32 "
+                  : ""
+                  }flex-col pl-6`}
               >
-                     {item.label}
+                {item.label}
                 <div>{item.value}</div>
                 <div>{item.icon}</div>
               </div>

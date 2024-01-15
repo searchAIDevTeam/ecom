@@ -1,12 +1,23 @@
+"use client"
 import React from "react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 const page = () => {
+
+  const orderId = useSelector((state) => state.cart.orderId);
+
   return (
     <div className="w-full h-full flex justify-center items-center relative top-[70px] ">
       <div className="flex items-center flex-col gap-10  w-[50vw] h-auto shadow-gray-400 shadow-xl border p-10">
         <h2 className="flex justify-center items-center w-full text-green-500 text-2xl  ">
           Payment Successfull !
         </h2>
+        {
+          orderId && <h2 className="flex justify-center items-center w-full text-purple-500 text-xl mt-4 ">
+            Order Id: {orderId}
+          </h2>
+        }
+
         <Image src="/circletick.svg" alt="tick" width={80} height={80} />
         <div className="w-full flex flex-row">
           <div className="text-left w-1/2">

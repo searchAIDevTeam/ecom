@@ -3,10 +3,10 @@ import Beding from "./Other/Beding";
 import PlaceInfo from "./Other/PlaceInfo";
 import Amenities from "./Other/Amenities";
 import Image from "next/image";
-const RoomInfo = ({data}) => {
+const RoomInfo = ({ data }) => {
   return (
     <div className="flex sm:my-6 my-0 sm:ml-1 ml-0" style={{ width: "100%" }}>
-      <div className="sm:mr-4 mr-0 sm:w-[60%] w-[100%] sm:mt-0 mt-[-20rem]">
+      <div className="sm:mr-4 mr-0 sm:w-[100%] w-[100%] sm:mt-0 mt-[-20rem]">
         <div className="room-details pb-4">
           <h2 className="sm:text-2xl text-lg sm:font-semibold font-medium mt-[24rem]">Room Details</h2>
           <div className=" text-base">
@@ -18,8 +18,8 @@ const RoomInfo = ({data}) => {
         </div>
         <div>
           <div>
-          {/* star */}
-            <div className="border border-gray-300  sm:h-20 h-auto sm:gap-0 gap-3 sm:w-[46vw] w-[100%] rounded-lg  flex flex-row justify-center items-center">
+            {/* star */}
+            <div className="border border-gray-300  sm:h-20 h-auto sm:gap-0 gap-3 sm:w-[100%] w-[100%] rounded-lg  flex flex-row justify-center items-center">
               <div id="box1" className="flex flex-row border-r pr-4 sm:order-1 order-2">
                 <svg
                   viewBox="0 0 20 32"
@@ -98,7 +98,7 @@ const RoomInfo = ({data}) => {
                   className="text-lg text-center pl-2 pr-2"
                   style={{ lineHeight: "1" }}
                 >
-                  Guest <br />
+                  Ayatrio member <br />
                   favourite
                 </div>
                 <svg
@@ -176,22 +176,22 @@ const RoomInfo = ({data}) => {
                 </svg>
               </div>
 
-{/* text */}
+              {/* text */}
               <div
-                className="pl-4 pr-5 sm:block hidden font-medium sm:order-2"
+                className="pl-4 pr-5 sm:block hidden  font-medium sm:order-2"
                 style={{ lineHeight: "1.2" }}
               >
-                One of the most loved homes on
+                One of the most loved homes furnishing on
                 <br />
-                Airbnb, according to guests
+                Ayatrio, according to members
               </div>
               {/* 5star */}
               <div id="box2" className="flex flex-col border-r pr-4 sm:order-3 order-1">
                 <div className="text-lg font-bold text-center">5.0</div>
                 <div className="flex flex-row text-xs">
                   {
-                    [1,1,1,1,1].map((item)=>{
-                      return <Image src="/rooms/star-black-filled-icon.svg" width={20} height={20} alt="star"/>
+                    [1, 1, 1, 1, 1].map((item) => {
+                      return <Image src="/rooms/star-black-filled-icon.svg" width={20} height={20} alt="star" />
                     })
                   }
                 </div>
@@ -208,7 +208,7 @@ const RoomInfo = ({data}) => {
         <PlaceInfo />
 
         {/* ----------------- bedding cards ------------ */}
-        <Beding  />
+        <Beding />
 
         {/* ----------------- what this place offers ------------ */}
         <Amenities data={data} />

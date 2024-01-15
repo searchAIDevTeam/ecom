@@ -2,11 +2,14 @@
 import React from "react";
 import OrderSum from "./OrderSum";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
+import { setOrderId } from "../Features/Slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRoomData, selectRoomStatus } from "../Features/Slices/roomSlice";
 import { selectFormData } from "../Features/Slices/formSlice";
 import { selectQuantity } from "../Features/Slices/calculationSlice";
+
 const Promo = () => {
+
   const [form, setForm] = React.useState({
     promo: "",
     cname: "",
@@ -14,6 +17,11 @@ const Promo = () => {
     mmyy: "",
     cvv: "",
   });
+
+  const dispatch = useDispatch()
+  const dbItemset = useSelector((state) => state.cart.dbItems);
+  const orderValue = dbItemset.bill;
+
   const handlefunc = (event) => {
     if (event && event.preventDefault) {
       event.preventDefault();
@@ -24,12 +32,12 @@ const Promo = () => {
         };
       });
     }
+
+    handlePayment(orderValue);
   };
+
   const quantity = useSelector(selectQuantity);
   const router = useRouter();
-  const handleClick = () => {
-    router.push("/success");
-  };
   const handleEdit = () => {
     router.push("/checkout");
   };
@@ -47,6 +55,114 @@ const Promo = () => {
   const buttonsClass = isComplete
     ? "bg-gray-300 text-white"
     : "bg-black text-white";
+
+  // --------------- 🧧🧧
+
+
+  // initiate razorpay payment 
+  const initPayment = (data) => {
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZOR_PAY_KEY_ID,
+      amount: data.amount,
+      currency: data.currency,
+      order_id: data.id,
+      description: "Ayatrio is Ayatrio",
+      theme: {
+        color: "#ffa347",
+      },
+      handler: async function (response, paymentSuccess) {
+        try {
+          const verifyUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/payment/verify`;
+          const verifyResponse = await fetch(verifyUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...response, paymentSuccess }),
+          });
+
+          const verifyData = await verifyResponse.json();
+
+          // if payment verification is successfull
+          if (verifyData.paymentSuccess) {
+
+            // save orderId on redux store to display to the user
+            const order_id = data.id
+            dispatch(setOrderId(order_id))
+
+
+            // create the order (PUT /api/order) 🧧🧧
+
+            // fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/orders`, {
+            //   method: 'PUT',
+            //   headers: {
+            //     'Content-Type': 'application/json',
+            //   },
+            //   body: JSON.stringify({ payment: verifyData.paymentSuccess }),
+            // })
+            //   .then(response => response.json())
+            //   .then(data => console.log(data))
+            //   .catch(error => console.error('Error:', error));
+
+            // when payment is successfull navigate to order-success page
+            router.push(`/success`)
+          }
+
+
+        } catch (error) {
+          console.log(error);
+
+        }
+      }, // handler function end
+
+    }; // options end
+
+    if (typeof window !== "undefined") {
+      const rzp1 = new window.Razorpay(options);
+
+      rzp1.on('payment.success', function (response) {
+        options.handler(response, true);  // On successful payment, call the handler function with the success flag
+      });
+
+      rzp1.on('payment.error', function (response) {
+        options.handler(response, false);  // On payment error, call the handler function with the success flag
+      });
+      rzp1.on('razorpay_payment_failed', function () {
+        // On payment failed (user closed the modal), call the handler function with the success flag set to false
+        options.handler({}, false);
+        onCloseHandler(); // Call the onCloseHandler to trigger the desired action when the modal is closed without successful payment
+      });
+
+      rzp1.open();
+    }
+  };
+
+  // main razorpay function 
+  const handlePayment = async (orderValue) => {
+    try {
+      const orderUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/payment/orders`;
+      const response = await fetch(orderUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          orderValue,
+        }),
+      });
+      const data = await response.json();
+
+      console.log("razorpay data: ", data.data);
+
+      // call the razorpay payment initiater function & pass the orderDetails also
+      initPayment(data.data);
+
+    } catch (error) {
+      console.log(error);
+      throw error; // Rethrow the error to be caught by the thunk
+    }
+  };
+
   return (
     <div>
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-0 gap-8">
@@ -149,7 +265,6 @@ const Promo = () => {
           <button
             onClick={() => {
               handlefunc();
-              handleClick();
             }}
             disabled={isComplete}
             className={`mt-4  text-white py-2 px-4 rounded-full w-80 ${buttonsClass}`}

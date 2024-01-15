@@ -1,5 +1,4 @@
 "use client";
-
 // import { Delete, HeartBroken } from "@mui/icons-material";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
@@ -72,7 +71,7 @@ const AddCart = () => {
         console.log("response from DB", cartdata);
         setCartStaus("succeeded");
         console.log("cartStatus", cartStatus);
-        dispatch(setDbItems(data.items));
+        dispatch(setDbItems(data));
         console.log("this is data from redux (db)", dbItems);
       } catch (error) {
         console.error("Error Fetching data from DB : ", error);

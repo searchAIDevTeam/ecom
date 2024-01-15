@@ -7,4 +7,11 @@
     height: 100%;
     z-index: 1000;
   }
+  .gapofsearchclose {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }

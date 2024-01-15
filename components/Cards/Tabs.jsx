@@ -10,7 +10,6 @@ import TabImage from "./TabImage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 const Tabs = () => {
-
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");

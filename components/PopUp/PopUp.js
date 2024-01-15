@@ -2,13 +2,19 @@ import React, { useState, useEffect } from "react";
 import "./popup.css";
 import Image from "next/image";
 import axios from "axios";
-
 import { useDispatch } from "react-redux";
 import {
   setSelectedcomItems1,
   setSelectedcomItems2,
   setSelectedcomItems3,
 } from "../Features/Slices/selectedItemsSlice";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Navigation } from "swiper/modules";
+import SwiperCore from "swiper/core";
+SwiperCore.use([Autoplay, Navigation]);
 // import {
 //   recomendProduct,
 //   recomendationLoader,
@@ -234,47 +240,117 @@ function App() {
             <div className="flex-grow basis-4/5">
               {fetchedCategories &&
                 fetchedCategories.map((category, index) => (
-                  <React.Fragment key={index}>
+                  <div key={index}>
                     <p className="text">{category.name}</p>
-                    {category.subcategories && (
-                      <div className="row">
-                        {category.subcategories.map((subcategory, subIndex) => (
-                          <div
-                            className={`box firstbox ${
-                              selectedItems1.some(
-                                (item) =>
-                                  item.label === subcategory &&
-                                  item.parentCategory === category.name
-                              )
-                                ? "selected"
-                                : ""
-                            }`}
-                            key={subIndex}
-                            onClick={() =>
-                              toggleItemSelection1(subcategory, category.name)
-                            }
-                            style={{ background: `url('${subcategory.img}')` }}
-                          >
-                            <Image src='/circletick.svg' height={20} width={20} alt='tick'
-                              className={`absolute tickicon ${
-                                selectedItems1.includes(subcategory)
-                                  ? "block"
-                                  : "hidden"
-                              }`}
-                            />
-                            <b className="bel">{subcategory.name}</b>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </React.Fragment>
+                    <Swiper
+                      className="my-swiper-slider"
+                      centeredSlides={false}
+                      // slidesPerView={4}
+                      grabCursor={true}
+                      mousewheel={false}
+                      keyboard={{
+                        enabled: true,
+                      }}
+                      // style={{
+                      //   marginLeft:-15,
+                      // }}
+                      // If we need pagination
+                      // pagination={{
+                      //   el: ".swiper-pagination",
+                      //   dynamicBullets: false,
+                      //   clickable: true,
+                      // }}
+                      // If we need navigation
+                      navigation={{
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                      }}
+                      // Responsive breakpoints
+                      breakpoints={{
+                        // 412: {
+                        //   slidesPerView: 1.5,
+                        //   spaceBetween: 5,
+                        // },
+
+                        // 640: {
+                        //   slidesPerView: 1.25,
+                        //   spaceBetween: 5,
+                        // },
+                        1024: {
+                          slidesPerView: 4,
+                          spaceBetween: 5,
+                        },
+                      }}
+                    >
+                      {category.subcategories && (
+                        <div className="row">
+                          {category.subcategories.map(
+                            (subcategory, subIndex) => (
+                              <SwiperSlide>
+                                <div
+                                  className={`box firstbox ${
+                                    selectedItems1.some(
+                                      (item) =>
+                                        item.label === subcategory &&
+                                        item.parentCategory === category.name
+                                    )
+                                      ? "selected"
+                                      : ""
+                                  }`}
+                                  key={subIndex}
+                                  onClick={() =>
+                                    toggleItemSelection1(
+                                      subcategory,
+                                      category.name
+                                    )
+                                  }
+                                  style={{
+                                    background: `url('${subcategory.img}')`,
+                                  }}
+                                >
+                                  <Image
+                                    src="/circletick.svg"
+                                    height={20}
+                                    width={20}
+                                    alt="tick"
+                                    className={`absolute tickicon ${
+                                      selectedItems1.includes(subcategory)
+                                        ? "block"
+                                        : "hidden"
+                                    }`}
+                                  />
+                                  <b className="bel">{subcategory.name}</b>
+                                </div>
+                              </SwiperSlide>
+                            )
+                          )}
+                        </div>
+                      )}
+                      {/* <div className="swiper-button-prev"></div> */}
+                      <div className="swiper-pagination"></div>
+                      <Image
+                        src="/leftvector.svg"
+                        width={30}
+                        height={30}
+                        alt="arrow"
+                        className="swiper-button-prev sm:-translate-y-[150px] sm:-translate-x-[460px]"
+                      />
+                      <Image
+                        src="/rightvector.svg"
+                        width={30}
+                        height={30}
+                        alt="arrow"
+                        className="swiper-button-next sm:-translate-y-[150px]"
+                      />
+                    </Swiper>
+                  </div>
                 ))}
             </div>
-            <div className="flex-grow fixed-button basis-1/5">
-              <button className="next" onClick={handleNext}>
-                Next
-              </button>
-            </div>
+          </div>
+          <div className="w-[600px] bg-white p-2 pl-6 fixed-button">
+            <button className="next" onClick={handleNext}>
+              Next
+            </button>
           </div>
         </div>
       )}
@@ -296,7 +372,11 @@ function App() {
                         backgroundSize: "center",
                       }}
                     >
-                  <Image src='/circletick.svg' height={20} width={20} alt='close'
+                      <Image
+                        src="/circletick.svg"
+                        height={20}
+                        width={20}
+                        alt="close"
                         className={`absolute tickicon ${
                           selectedItems2.includes(city) ? "block" : "hidden"
                         }`}
@@ -306,11 +386,11 @@ function App() {
                   </React.Fragment>
                 ))}
             </div>
-            <div className="flex-grow fixed-button basis-1/5">
-              <button className="next" onClick={goTo}>
-                Next
-              </button>
-            </div>
+          </div>
+          <div className="w-[600px] bg-white p-2 pl-6 fixed-button">
+            <button className="next" onClick={goTo}>
+              Next
+            </button>
           </div>
         </div>
       )}
@@ -343,7 +423,11 @@ function App() {
                         }}
                         key={index}
                       >
-                  <Image src='/circletick.svg' height={20} width={20} alt='close'
+                        <Image
+                          src="/circletick.svg"
+                          height={20}
+                          width={20}
+                          alt="close"
                           className={`absolute tickicon ${
                             selectedItems3.includes(hobbie) ? "block" : "hidden"
                           }`}
@@ -352,19 +436,19 @@ function App() {
                       </div>
                     ))}
                 </div>
-                <div className="basis-1/5 flex-grow fixed-button">
-                  <button
-                    className={`next self-end mt-6 
-                    ${isMinItemsSelected ? "bg-red-700" : "bg-red-200"}
-                    `}
-                    onClick={done}
-                    // disabled={!isMinItemsSelected}
-                  >
-                    Done
-                  </button>
-                </div>
               </>
             )}
+          </div>
+          <div className="w-[600px] bg-white p-2 pl-6 fixed-button">
+            <button
+              className={`next self-end mt-6 
+                    ${isMinItemsSelected ? "bg-red-700" : "bg-red-200"}
+                    `}
+              onClick={done}
+              // disabled={!isMinItemsSelected}
+            >
+              Done
+            </button>
           </div>
         </div>
       )}
