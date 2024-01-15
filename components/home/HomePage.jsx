@@ -89,7 +89,7 @@ const HomePage = () => {
           
          overflow-x-hidden `}
       >
-        {popUp === "true" ? null : <PopUp />}
+        {popUp === "false" ? null : <PopUp />}
         {isFilterVisible && (
           <>
             {/* <Header onSearchIconClick={handleSearchIconClick} /> */}
