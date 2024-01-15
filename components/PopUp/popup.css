@@ -156,3 +156,8 @@ body {
   top: 5%;
   right: 2%;
 }
+
+.fixed-button{
+  position: fixed;
+  bottom: 70px;
+}

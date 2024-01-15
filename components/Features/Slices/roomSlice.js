@@ -13,8 +13,8 @@ export const roomSlice = createSlice({
   initialState,
   reducers: {
     setRoomData: (state, action) => {
-      console.log('Action:', action); // Log the action
-      console.log('State before:', state); // Log the state before it's updated
+      // console.log('Action:', action); // Log the action
+      // console.log('State before:', state); // Log the state before it's updated
       state.roomData = action.payload.roomData;
       state.status = "succeeded";
     },

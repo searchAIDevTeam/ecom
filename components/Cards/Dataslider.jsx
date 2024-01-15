@@ -10,9 +10,21 @@ import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
 import { useSelector } from "react-redux";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
+import {
+  Items1selected,
+  Items2selected,
+  Items3selected,
+} from "../Features/Slices/selectedItemsSlice";
 import SelectedItemsRow from "./selectedItemsRow";
 
 const Dataslider = ({ category, data, sliderIndex }) => {
+  const itm1 = useSelector(Items1selected);
+  // console.log("from dataslider itm1", itm1);
+  const itm2 = useSelector(Items2selected);
+  // console.log("from dataslider itm2", itm2);
+  const itm3 = useSelector(Items2selected);
+  // console.log("from dataslider itm3", itm3);
+
   const swiperRef = useRef(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const swiperOptions = {
@@ -34,11 +46,6 @@ const Dataslider = ({ category, data, sliderIndex }) => {
     setProductData(data);
   }, [data]);
 
-  // Assuming you have a Redux store slice named selectedItems
-  const selectedItems1 = useSelector((state) => state.selectedItems.items1);
-  const selectedItems2 = useSelector((state) => state.selectedItems.items2);
-  const selectedItems3 = useSelector((state) => state.selectedItems.items3);
-
   return (
     <div>
       <div className="my-10 bg-white sm:px-[50px] px-[20px]">
@@ -49,13 +56,25 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               onClick={() => swiperRef.current.swiper.slidePrev()}
               className={`custom-prev-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100 pr-6`}
             >
-            <Image src='/leftvector.svg' width={20} height={20} alt="Arrow" className="bg-gray-300 rounded-full h-7 w-7" />
+              <Image
+                src="/leftvector.svg"
+                width={20}
+                height={20}
+                alt="Arrow"
+                className="bg-gray-300 rounded-full h-7 w-7"
+              />
             </div>
             <div
               onClick={() => swiperRef.current.swiper.slideNext()}
               className={`custom-next-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100`}
             >
-            <Image src='/rightvector.svg' width={20} height={20} alt="Arrow" className='bg-gray-300 rounded-full h-7 w-7' />
+              <Image
+                src="/rightvector.svg"
+                width={20}
+                height={20}
+                alt="Arrow"
+                className="bg-gray-300 rounded-full h-7 w-7"
+              />
             </div>
           </div>
         </div>
@@ -102,16 +121,18 @@ const Dataslider = ({ category, data, sliderIndex }) => {
             ))
           )}
 
-          {/* <SwiperSlide>
-            <SelectedItemsRow selectedItems={selectedItems1} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <SelectedItemsRow selectedItems={selectedItems2} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <SelectedItemsRow selectedItems={selectedItems3} />
-          </SwiperSlide> */}
+          
         </Swiper>
+
+        {/* <div className="">
+          {itm1.map((item) => (
+            <div key="item.label._id" className="flex flex-row gap-5">
+              <p>Category: {item.parentCategory}</p>
+              <p>Name: {item.label.name} </p>
+              <img src={item.label.img} alt="" width={150} height={150} />
+            </div>
+          ))}
+        </div> */}
       </div>
     </div>
   );
