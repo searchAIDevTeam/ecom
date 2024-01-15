@@ -16,7 +16,12 @@ import { curtainsCategoryData } from "@/Model/Dropdown/CategoryData/CurtainsCate
 import { inspirationFeaturedData } from "@/Model/Dropdown/FeaturedData/InspirationFeaturedData";
 import { inspirationCategoryData } from "@/Model/Dropdown/CategoryData/InspirationCategoryData";
 
-function Filter({ isFilterHovered, onFilterHover, isBackgroundBlur, setBackgroundBlur }) {
+function Filter({
+  isFilterHovered,
+  onFilterHover,
+  isBackgroundBlur,
+  setBackgroundBlur,
+}) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isBlur, setIsBlur] = useState(false);
@@ -127,10 +132,13 @@ function Filter({ isFilterHovered, onFilterHover, isBackgroundBlur, setBackgroun
 
                     onMouseEnter: () => {
                       setActiveDropdown(idx);
-                      setIsBlur(true);
+                      setBackgroundBlur(true);
                       handleFilterHover(value.label);
                     },
-                    onMouseLeave: () => setActiveDropdown(null),
+                    onMouseLeave: () => {
+                      setActiveDropdown(null);
+                      setBackgroundBlur(false);
+                    },
                   }
                 : {
                     onClick: (e) => {
