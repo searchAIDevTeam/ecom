@@ -1,6 +1,5 @@
 import React from "react";
-// import cover from '../../assets/cover.jpg'
-import { FaRegPlayCircle } from "react-icons/fa";
+import Image from "next/image";
 
 const Double = () => {
   return (
@@ -42,7 +41,7 @@ const Double = () => {
       {/* Third Section */}
       <div className="ml-2 mt-[-12px]">
         <div className="ml-28 mb-3">
-          <FaRegPlayCircle size={24} />
+          <Image src='/music.svg' height={20} width={20} alt="music"/>
         </div>
         <img
           src="/images/cover.jpg"

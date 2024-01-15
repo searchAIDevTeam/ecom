@@ -149,7 +149,7 @@ const Card = ({ data }) => {
             </div>
           </div>
 
-          <div className="textHolders flex flex-col ml-16">
+          <div className="textHolders flex flex-col ">
             <h1 className="text-2xl mt-5 font-bold mb-2">
               {data?.productTitle}
             </h1>
@@ -183,7 +183,7 @@ const Card = ({ data }) => {
           </div>
 
           {/* color-container */}
-          <div className="colorContainer flex flex-col mt-4 sm:w-auto w-[80vw] ml-16">
+          <div className="colorContainer flex flex-col mt-4 sm:w-auto w-[80vw]">
             <h1 className="mb-2 font-bold">Other Colorways</h1>
             <div className="colors flex gap-3">
               {colorSep?.map((color, index) => (
@@ -192,7 +192,6 @@ const Card = ({ data }) => {
                   className={`
                     w-[50px]
                     h-[50px]
-                    rounded-full
                     border-2
                     border-black
                     text-gray-900
@@ -213,8 +212,7 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
-          <div className="ml-16">
-          <div className="border border-gray-300 w-72 rounded-xl mt-2 pt-4 pb-4 sm:pl-3 pl-6">
+          <div className="border border-gray-300 w-[100%] rounded-xl mt-2 pt-4 pb-4 sm:pl-3">
             <div className="flex items-center">
               <div className="pl-3">
                 <Calculation priceData={data} />
@@ -317,10 +315,10 @@ const Card = ({ data }) => {
                 />
               </div>
             )}
-          </div></div>
+          </div>
 
           {/* //buttons */}
-          <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center ml-12">
+          <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center">
             <div className="guestCheckout ">
               <button
                 onClick={() => {
@@ -347,7 +345,7 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-4 flex items-center justify-center"
             >
-              <button className="bg-black mt-4 text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Buy Now
               </button>
             </Link>
@@ -361,7 +359,7 @@ const Card = ({ data }) => {
               </button>
             </div> */}
             <div className="memberCheckout mt-4">
-              <button className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button className="border-2 border-neutral-300 text-black sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Contact
               </button>
             </div>

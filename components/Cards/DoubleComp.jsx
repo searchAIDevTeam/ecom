@@ -1,6 +1,5 @@
 import React from "react";
-import { FaApple } from "react-icons/fa";
-import { GoArrowUpRight } from "react-icons/go";
+import Image from "next/image";
 // import right from '../../assets/right.png';
 // import game from "../../assets/game.jpg";
 import Double from "./Double";
@@ -12,7 +11,7 @@ const DoubleComp = () => {
         <div className="pl-4 pt-4">
           <div className="flex text-3xl  pl-0 pt-0">
             {" "}
-            <FaApple size={32} />
+            <Image src='/appleicon.svg' height={30} width={30} alt="apple"/>
             Music
           </div>
           <div className="text-md   pl-0"> Over 100 million songs.</div>
@@ -22,11 +21,13 @@ const DoubleComp = () => {
           <div className="flex">
             <a href="#" className="flex  pr-0 ">
               Try it free <sup className="mt-3 text-[0.6rem]">10</sup>
-              <GoArrowUpRight className="mt-2 ml-1" />
+              {/* <GoArrowUpRight className="mt-2 ml-1" /> */}
+              {/* <Image src='/diagonal.svg' height={5} width={5} alt="diagonal"/> */}
+
             </a>
             <a href="#" className="flex ">
               Learn more{" "}
-              <img src="/images/right.png" className=" ml-1 w-7 h-7" />
+              <img src="/images/right.png" className=" ml-2 w-7 h-7" />
             </a>
           </div>
         </div>
@@ -37,7 +38,7 @@ const DoubleComp = () => {
       <div className="col-span-1  mr-0 bg-zinc-100 text-black overflow-hidden">
         <div className="pl-4 pt-4">
           <div className="flex text-3xl pl-0 pt-0">
-            <FaApple size={32} />
+          <Image src='/appleicon.svg' height={30} width={30} alt="apple"/>
             Arcade
           </div>
           <div className="text-md  pl-0">Get 3 months of Apple Arcade free</div>
@@ -45,7 +46,7 @@ const DoubleComp = () => {
           <div className="flex pl-0 text-sky-600">
             <a href="#" className="flex pr-4">
               Try it free <sup className="mt-3 text-[0.6rem]">11</sup>
-              <GoArrowUpRight className="mt-2 ml-1" />
+              {/* <GoArrowUpRight className="mt-2 ml-1" /> */}
             </a>
             <a href="#" className="flex">
               Learn more{" "}

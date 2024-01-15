@@ -16,7 +16,10 @@ import { curtainsCategoryData } from "@/Model/Dropdown/CategoryData/CurtainsCate
 import { inspirationFeaturedData } from "@/Model/Dropdown/FeaturedData/InspirationFeaturedData";
 import { inspirationCategoryData } from "@/Model/Dropdown/CategoryData/InspirationCategoryData";
 
-function Filter({ isFilterHovered, onFilterHover, isBackgroundBlur, setBackgroundBlur }) {
+function Filter({
+  isFilterHovered,
+  onFilterHover,
+}) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isBlur, setIsBlur] = useState(false);
@@ -127,10 +130,11 @@ function Filter({ isFilterHovered, onFilterHover, isBackgroundBlur, setBackgroun
 
                     onMouseEnter: () => {
                       setActiveDropdown(idx);
-                      setIsBlur(true);
                       handleFilterHover(value.label);
                     },
-                    onMouseLeave: () => setActiveDropdown(null),
+                    onMouseLeave: () => {
+                      setActiveDropdown(null);
+                    },
                   }
                 : {
                     onClick: (e) => {
@@ -165,9 +169,7 @@ function Filter({ isFilterHovered, onFilterHover, isBackgroundBlur, setBackgroun
 
               {activeDropdown === idx && (
                 <div
-                  className={`absolute left-0 mt-[1.6rem] w-full bg-white shadow-md transition-all ease-linear duration-2000
-                  ${isBackgroundBlur ? "blur-none" : "blur-none"}  
-                  `}
+                  className={`absolute left-0 mt-[1.6rem] w-full bg-white transition-all ease-linear duration-2000 shadow-[0_350px_60px_100px_rgba(0,0,0,0.5)]`}
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
                 >
                   <div className="px-[50px] my-5">

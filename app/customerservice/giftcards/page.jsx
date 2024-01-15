@@ -238,22 +238,22 @@ const GiftCards = () => {
                     <text
                       x="32.696"
                       y="42.12"
-                      class="gcbalance-gift-card-header"
+                      className="gcbalance-gift-card-header"
                     ></text>
                     <text
                       x="32.696"
                       y="65"
-                      class="gcbalance-gift-card-amount"
+                      className="gcbalance-gift-card-amount"
                     ></text>
                     <text
                       x="32.696"
                       y="87"
-                      class="gcbalance-gift-card-expiry"
+                      className="gcbalance-gift-card-expiry"
                     ></text>
-                    <text x="32.696" y="105" class="gcbalance-gift-card-expiry">
+                    <text x="32.696" y="105" className="gcbalance-gift-card-expiry">
                       <tspan></tspan>
                     </text>
-                    <text x="32.696" y="215" class="gcbalance-gift-card-number">
+                    <text x="32.696" y="215" className="gcbalance-gift-card-number">
                       {" "}
                     </text>
                     <defs>

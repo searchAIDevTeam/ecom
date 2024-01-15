@@ -1,13 +1,4 @@
 import React from "react";
-// import Rating from "@mui/material/Rating";
-// import StarIcon from "@mui/icons-material/Star";
-// import { MdOutlineCleanHands } from "react-icons/md";
-// import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-// import { IoKeyOutline } from "react-icons/io5";
-// import { FaRegMessage } from "react-icons/fa6";
-// import { GrMapLocation } from "react-icons/gr";
-// import { IoPricetagOutline } from "react-icons/io5";
-
 import "../styles.css";
 import Carous from "@/components/Carousel/Carous";
 import Image from "next/image";

@@ -1,7 +1,7 @@
 'use client'
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import Image from "next/image"; 
 import Link from "next/link";
 
 const AyatrioServices = () => {
@@ -52,9 +52,9 @@ const AyatrioServices = () => {
         >
           Service
           {isAccordionOpen ? (
-            <FaChevronUp className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
+            <Image src='/leftvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
           ) : (
-            <FaChevronDown className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
+            <Image src='/rightvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
           )}
         </h4>
         {isAccordionOpen && (

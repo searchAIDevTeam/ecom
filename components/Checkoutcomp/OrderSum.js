@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectRoomData, selectRoomStatus } from "../Features/Slices/roomSlice";
 import { selectQuantity } from "../Features/Slices/calculationSlice";
-import { setDbItems } from "../Features/Slices/cartSlice";
+// import { setDbItems } from "../Features/Slices/cartSlice";
 import { useRouter, useSearchParams } from "next/navigation";
 const OrderSum = () => {
   const router = useRouter();
