@@ -3,7 +3,6 @@ import "./globals.css";
 import { Providers } from "@/provider";
 // import Header from "@/components/Header";
 // import Footer from "@/components/Footer/Footer";
-import NewHeader from "@/components/NewHeader/NewHeader";
 import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
 import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
 
