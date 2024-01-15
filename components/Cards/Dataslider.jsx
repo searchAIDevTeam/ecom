@@ -15,7 +15,7 @@ import {
   Items2selected,
   Items3selected,
 } from "../Features/Slices/selectedItemsSlice";
-import SelectedItemsRow from "./selectedItemsRow";
+// import SelectedItemsRow from "./selectedItemsRow";
 
 const Dataslider = ({ category, data, sliderIndex }) => {
   const itm1 = useSelector(Items1selected);
