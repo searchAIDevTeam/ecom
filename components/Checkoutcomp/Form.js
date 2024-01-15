@@ -4,11 +4,17 @@ import { useRouter } from "next/navigation";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, selectFormData } from "../Features/Slices/formSlice";
+import ProfileContent from "../Cards/ProfileContent";
 export default function Form() {
   const router = useRouter();
   const dispatch = useDispatch();
 
   const formData = useSelector(selectFormData);
+  const dbItemset = useSelector((state) => state.cart.dbItems);
+
+  const deviceId = dbItemset.owner;
+  const cartId = dbItemset._id;
+
   const [form, setForm] = React.useState({
     first: "",
     last: "",
@@ -79,18 +85,41 @@ export default function Form() {
     }));
   }
 
-  function handleData(event) {
+  async function handleData(event) {
     event.preventDefault();
+  
     // Check validation before submitting the form
     if (postalValidation !== "valid" || numberValidation !== "valid") {
-      // Handle validation error, e.g., show an alert
       return;
     }
+  
     dispatch(updateFormData(form));
     console.log(form);
-
-    router.push(`/shipping`)
+  
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ form, deviceId, cartId }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Dataaaa", data);
+        
+        // if the API response is 200
+        router.push(`/shipping`);
+      } else {
+        console.error("Error:", response.status);
+      }
+    } catch (error) {
+      // Handle fetch or JSON parsing errors
+      console.error("Error:", error);
+    }
   }
+  
 
 
   const incompleteForm =
@@ -189,13 +218,12 @@ export default function Form() {
               min={100000}
               value={form.postal}
               className={`px-5 form-input border border-gray-600 h-10 w-[37vw] rounded-md
-              ${
-                postalValidation === "invalid"
+              ${postalValidation === "invalid"
                   ? "border-red-500"
                   : postalValidation === "valid"
-                  ? "border-green-500"
-                  : "border-gray-600"
-              }
+                    ? "border-green-500"
+                    : "border-gray-600"
+                }
               `}
             />
           </div>
@@ -267,13 +295,12 @@ export default function Form() {
             placeholder="Mobile Number"
             value={form.number}
             className={`px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md
-            ${
-              numberValidation === "invalid"
+            ${numberValidation === "invalid"
                 ? "border-red-500"
                 : numberValidation === "valid"
-                ? "border-green-500"
-                : "border-gray-600"
-            }
+                  ? "border-green-500"
+                  : "border-gray-600"
+              }
             `}
           />
 
