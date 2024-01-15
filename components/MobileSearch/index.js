@@ -1,7 +1,5 @@
 import React from "react";
 import "./styles.css";
-// import SearchIcon from "@mui/icons-material/Search";
-// import TuneIcon from "@mui/icons-material/Tune";
 import { useEffect, useState } from "react";
 function MobileSeachBar() {
   const [isScrolled, setIsScrolled] = useState(false);

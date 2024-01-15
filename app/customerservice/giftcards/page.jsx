@@ -238,22 +238,22 @@ const GiftCards = () => {
                     <text
                       x="32.696"
                       y="42.12"
-                      class="gcbalance-gift-card-header"
+                      classNameName="gcbalance-gift-card-header"
                     ></text>
                     <text
                       x="32.696"
                       y="65"
-                      class="gcbalance-gift-card-amount"
+                      className="gcbalance-gift-card-amount"
                     ></text>
                     <text
                       x="32.696"
                       y="87"
-                      class="gcbalance-gift-card-expiry"
+                      className="gcbalance-gift-card-expiry"
                     ></text>
-                    <text x="32.696" y="105" class="gcbalance-gift-card-expiry">
+                    <text x="32.696" y="105" className="gcbalance-gift-card-expiry">
                       <tspan></tspan>
                     </text>
-                    <text x="32.696" y="215" class="gcbalance-gift-card-number">
+                    <text x="32.696" y="215" className="gcbalance-gift-card-number">
                       {" "}
                     </text>
                     <defs>
@@ -303,8 +303,8 @@ const GiftCards = () => {
           <hr />
           {/* gift card faq section starts */}
           <section>
-            <div className="flex flex-col gap-5 w-full">
-              <h3 className="font-bold text-xl">FAQs</h3>
+            <div classNameName="flex flex-col gap-5 w-full">
+              <h3 classNameName="font-bold text-xl">FAQs</h3>
               {giftCardFaqs.map((curElement) => {
                 return (
                   <div className="space-y-1 md:w-1/2">
