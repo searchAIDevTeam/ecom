@@ -1,17 +1,13 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-
 import "./styles.css";
-import MainSlider from "../MainSlider/MainSlider";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
-
 import Imagechanger from "../Imagechanger/Imagechanger";
-
 import Multicard from "../Imagechanger/Multicard";
 // import Footer from "../Footer";
 import Tabs from "./Tabs";
@@ -19,7 +15,6 @@ import Profile from "./Profile";
 import Image from "../Imagechanger/Image";
 import Phone from "./Phone";
 import DoubleComp from "./DoubleComp";
-
 import { useMemo } from "react";
 import Trending from "./Trending";
 import axios from "axios";

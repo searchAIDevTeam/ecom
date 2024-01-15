@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./popup.css";
 import Image from "next/image";
 import axios from "axios";
-
 import { useDispatch } from "react-redux";
 import {
   setSelectedcomItems1,
