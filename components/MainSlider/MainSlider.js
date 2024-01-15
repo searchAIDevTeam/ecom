@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import Image from "next/image";
 // import { Oval } from "react-loader-spinner";
 import "./Mainslidestyle.css";
 import { list3 } from "./mainslide-list";
@@ -145,7 +145,7 @@ function MainSlider() {
     <div className="slider-container">
       <div className="arrow-left z-20" onClick={() => slide(-slideswipe)}>
         {!isMobile && scrollX > 0 && (
-          <BsArrowLeftCircleFill className="arrow-nav" />
+          <Image src='/leftvector.svg' width={20} height={20} alt="up" className="arrow-nav" />
         )}
       </div>
       <div
@@ -195,7 +195,7 @@ function MainSlider() {
                           <br />
                         </div>
                         <div className="absolute inset-y-0 right-0  border-l border-black flex items-center justify-center basis-1/4 flex-grow pl-2 pr-2 ml-2">
-                          <BsArrowRightCircleFill className="flex items-center justify-center" />
+                          <Image src='/rightvector.svg' width={20} height={20} alt="up" className="flex items-center justify-center" />
                         </div>
                       </div>
                     </div>
@@ -207,7 +207,7 @@ function MainSlider() {
         {/* </div> */}
       </div>
       <div className="arrow-rightS z-20" onClick={() => slide(+slideswipe)}>
-        {!isMobile && <BsArrowRightCircleFill className="arrow-nav" />}
+        {!isMobile && <Image src='/rightvector.svg' width={20} height={20} alt="up" className="arrow-nav" />}
       </div>
     </div>
   );

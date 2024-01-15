@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import Image from "next/image";
 import "./styles.css";
 
 function Carousel({ data }) {
@@ -21,7 +21,7 @@ function Carousel({ data }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered && slide !== 0 && (
-        <BsArrowLeftCircleFill
+        <Image src='/leftvector.svg' height={20} width={20} alt="arrow"
           onClick={prevSlide}
           className="arrow arrow-left"
         />
@@ -37,8 +37,8 @@ function Carousel({ data }) {
         );
       })}
       {isHovered && (
-        <BsArrowRightCircleFill
-          onClick={nextSlide}
+        <Image src='/rightvector.svg' height={20} width={20} alt="arrow"
+              onClick={nextSlide}
           className="arrow arrow-right"
         />
       )}

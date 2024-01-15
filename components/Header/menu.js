@@ -1,10 +1,10 @@
 // import * as React from "react";
 import React, { useState } from "react";
 import "./styles.css";
-import { GrMenu } from "react-icons/gr";
 import { menutext } from "@/Model/Menu/MenuCategoryData/MenuCategoryData";
 import Link from "next/link";
 import CategoryContent from "../molecules/CategoryContent";
+import Image from "next/image";
 // import arrow from "../../assets/icon/backarrow.svg";
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -50,7 +50,7 @@ export default function BasicMenu() {
 
   return (
     <div>
-      <GrMenu
+      <Image src='/menu.svg' height={20} width={20} alt="menu"
         className="font-bold text-2xl"
         onClick={(event) => {
           setAnchorEl(!anchorEl);

@@ -1,10 +1,6 @@
 import React, { useRef } from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import { CiDeliveryTruck } from "react-icons/ci";
-// import { IoIosAddCircle, IoMdContacts } from "react-icons/io";
-// import { IoChatbubblesOutline } from "react-icons/io5";
-// import { MdMenuBook } from "react-icons/md";
 import Image from "next/image";
 import "./styles.css";
 import "swiper/css";

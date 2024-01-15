@@ -1,15 +1,5 @@
-// import { IoCheckmark } from "react-icons/io5";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
-// import { IoIosArrowDropright } from "react-icons/io";
-// import StarIcon from "@mui/icons-material/Star";
-// import { IoClose } from "react-icons/io5";
-// import { HiOutlineAcademicCap } from "react-icons/hi";
-// import { MdShoppingBag } from "react-icons/md";
-// import { RiLightbulbFlashLine } from "react-icons/ri";
-// import { BsStars } from "react-icons/bs";
-// import { MdOutlineFastfood } from "react-icons/md";
-// import { BsBalloon } from "react-icons/bs";
 import "./styles.css";
 function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
   const popupRef = useRef(null);

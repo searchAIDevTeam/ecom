@@ -1,7 +1,6 @@
 import React from "react";
 import Beding from "./Other/Beding";
 import PlaceInfo from "./Other/PlaceInfo";
-// import { FaStar } from "react-icons/fa";
 import Amenities from "./Other/Amenities";
 import Image from "next/image";
 const RoomInfo = ({data}) => {

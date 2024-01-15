@@ -1,9 +1,9 @@
 import Card from "./card";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import PopUp from "../Reviews/PopUp";
 import "./styles.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -68,13 +68,13 @@ const Trending = () => {
               onClick={() => swiper1Ref.current.swiper.slidePrev()}
               className="custom-prev-button bg-slate-500  rounded-full  hover:bg-400 hover:scale-110 hover:text-slate-100"
             >
-              <FaChevronLeft />
+              <Image src='/leftvector.svg' height={10} width={10} alt="arrow"/>
             </div>
             <div
               onClick={() => swiper1Ref.current.swiper.slideNext()}
               className="custom-next-button bg-slate-500  rounded-full hover:bg-400 hover:scale-110 hover:text-slate-100"
             >
-              <FaChevronRight />
+              <Image src='/rightvector.svg' height={10} width={10} alt="arrow"/>
             </div>
           </div>
         </div>
