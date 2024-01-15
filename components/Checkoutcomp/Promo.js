@@ -20,7 +20,7 @@ const Promo = () => {
 
   const dispatch = useDispatch()
   const dbItemset = useSelector((state) => state.cart.dbItems);
-  const orderValue = dbItemset.bill;
+  const orderValue = dbItemset?.bill;
 
   const handlefunc = (event) => {
     if (event && event.preventDefault) {

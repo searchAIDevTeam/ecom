@@ -11,7 +11,7 @@ export default function Home() {
     setTimeout(() => {
       setLoading(false);
       router.push("/home");
-    }, 3000);
+    }, 2400);
   }, []);
 
   return <>{loading && <Splashscreen />}</>;

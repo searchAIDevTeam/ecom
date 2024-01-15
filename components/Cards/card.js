@@ -43,6 +43,8 @@ const handleclick = (id,productId) => {
               src="/images/rev.webp"
               className="h-8 rounded-md cursor-pointer"
               onClick={handleImageClick}
+              width={40}
+              height={40}
               alt="Review Icon"
               
             />

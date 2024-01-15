@@ -54,8 +54,7 @@ const HomePage = () => {
     };
   }, []);
 
-  const popUp =
-    typeof window !== "undefined" ? localStorage.getItem("popUp") : null;
+  const popUp = typeof window !== "undefined" ? localStorage?.getItem("popUp") : null;
 
   if (loader) {
     return (
@@ -89,7 +88,7 @@ const HomePage = () => {
           
          overflow-x-hidden `}
       >
-        {popUp === "false" ? null : <PopUp />}
+        {popUp ? null : <PopUp />}
         {isFilterVisible && (
           <>
             {/* <Header onSearchIconClick={handleSearchIconClick} /> */}

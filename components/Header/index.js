@@ -1,22 +1,12 @@
 "use client";
 import React from "react";
 import "./styles.css";
-// import mainlogo from "../../assets/ayatriologo.png";
-// import adtocart from "../../assets/icon/adtocart.svg";
-// import liketocart from "../../assets/icon/like.svg";
-// import userprofile from "../../assets/icon/profile.svg";
-// import search from "../../assets/icon/search.svg";
 import SearchModal from "./MobileSearch";
-// import ayatrio_store from "../../assets/icon/ayatrio_store.svg";
-// import SimpleBottomNavigation from "./bottombar";
-// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Menu from "./menu";
 import { useEffect, useState } from "react";
 
 import Expandedbar from "./Expandedbar";
-//import axios from "axios";
-// import { useDispatch } from "react-redux";
-// import { searchProductsRequest } from "../../Features/search/searchSlice";
+
 import TopLoader from "../AddOn/TopLoader";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -32,11 +22,6 @@ function Header({ howMuchScrolled }) {
     setSearchQuery(event.target.value);
   };
 
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(searchProductsRequest(searchQuery));
-  // }, [dispatch, searchQuery]);
   const router = useRouter();
 
   useEffect(() => {
@@ -148,7 +133,7 @@ function Header({ howMuchScrolled }) {
             <div className="mainlogo">
               <Link href="/">
                 <Image
-                  onClick={() => handleLinkClick("/")}
+                  onClick={() => handleLinkClick("/home")}
                   src="/images/ayatriologo.png"
                   alt="logo"
                   width={300}
