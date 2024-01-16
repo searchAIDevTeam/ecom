@@ -24,12 +24,12 @@ const OrderSum = () => {
   const properties = searchParams.get("search");
 
   let totalPrices = 0;
-  if (properties === "cart") {
-    totalPrices = dbItemset.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  }
+  // if (properties === "cart") {
+  //   totalPrices = dbItemset.items.reduce(
+  //     (total, item) => total + item.price * item.quantity,
+  //     0
+  //   );
+  // }
 
   return (
     <div className="sm:w-auto w-[80vw]">
@@ -118,7 +118,7 @@ const OrderSum = () => {
           </h6>
           {/* from here show start */}
           <div>
-            {dbItemset.map((item) => (
+            {dbItemset && dbItemset.items && dbItemset.items.map((item) => (
               <div key={item._id}>
                 <h3 className="font-bold">Arrives Thu, 13 Dec-Wed, 3 Jan</h3>
                 <div className="grid grid-cols-2 gap-10">

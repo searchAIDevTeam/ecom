@@ -28,10 +28,12 @@ function Carousel({ data }) {
       )}
       {data.map((item, idx) => {
         return (
-          <img
+          <Image
             src={item}
             alt="NA"
             key={idx}
+            height={300}
+            width={300}
             className={slide === idx ? "slide" : "slide slide-hidden"}
           />
         );

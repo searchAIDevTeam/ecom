@@ -1,7 +1,5 @@
 import React from "react";
 import Promo from "./Promo";
-// import Header from "../Header";
-// import Footer from '../Footer/Footer'
 const Paymentmain = () => {
   return (
     <div>

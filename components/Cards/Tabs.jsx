@@ -10,7 +10,6 @@ import TabImage from "./TabImage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 const Tabs = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");
@@ -25,6 +24,7 @@ const Tabs = () => {
       price: 1900,
     },
   ];
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     // Update isMobile state on window resize
     const handleResize = () => {
