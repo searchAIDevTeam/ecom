@@ -44,11 +44,11 @@ const ProfileContent = () => {
         //   prevEl: ".swiper-button-prev",
         // }}
         navigation={{
-            nextEl: ".vector-one",
-            prevEl: ".vector-two",
-          }}
+          nextEl: ".vector-one",
+          prevEl: ".vector-two",
+        }}
         modules={[Navigation]}
-        style={{ "--swiper-navigation-size": "24px" }}
+        style={{ "--swiper-navigation-size": "24px", paddingRight: "30px" }}
         breakpoints={{
           100: {
             slidesPerView: 2,
@@ -69,8 +69,8 @@ const ProfileContent = () => {
                 <div className="text-2xl font-bold ">{person.name}</div>
                 <a href="#">
                   <Image
-                    className="sm:h-10 sm:w-10 -mt-1"
-                    src='/linkedln.svg'
+                    className="sm:h-10 h-10 sm:w-10 w-10 -mt-1"
+                    src="/linkedln.svg"
                     height={6}
                     width={6}
                     alt={`LinkedIn for ${person.name}`}
@@ -85,9 +85,21 @@ const ProfileContent = () => {
           </SwiperSlide>
         ))}
         <div className="flex flex-row items-end justify-end gap-6">
-            <Image src='/leftvector.svg' width={20} height={20} alt="Arrow" className="vector-two bg-gray-300 rounded-full h-7 w-7" />
-            <Image src='/rightvector.svg' width={20} height={20} alt="Arrow" className='vector-one mr-10  bg-gray-300 rounded-full h-7 w-7' />
-          </div>
+          <Image
+            src="/leftvector.svg"
+            width={20}
+            height={20}
+            alt="Arrow"
+            className="vector-two bg-gray-300 rounded-full h-7 w-7"
+          />
+          <Image
+            src="/rightvector.svg"
+            width={20}
+            height={20}
+            alt="Arrow"
+            className="vector-one mr-10  bg-gray-300 rounded-full h-7 w-7"
+          />
+        </div>
       </Swiper>
     </div>
   );

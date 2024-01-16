@@ -23,17 +23,15 @@ const Budget = () => {
   const [selectedActivity, setSelectedActivity] = useState(false);
 
   const handleClick = (index) => {
-    // Clear previous selection
-    // setSelectedActivity(!selectedActivity);
+ 
     if (selectedActivity === index) {
-        // If the clicked item is already selected, deselect it
+       
         setSelectedActivity(null);
       } else {
-        // Otherwise, select the clicked item
+     
         setSelectedActivity(index);
       }
-    // Set the new selection
-    // setSelectedActivity(index);
+
   };
 
   return (
@@ -64,13 +62,7 @@ const Budget = () => {
             {selectedActivity === index && (
               <div className="room-item absolute bottom-4  z-10  flex items-center opacity-50 justify-center">
                 <div className="circle-container relative flex justify-center items-center">
-                  {/* <FaCircle size={30} color="black" className="opacity-100" />
-                  <TiTick
-                    className="opacity-100 absolute"
-                    color="white"
-                    size={30}
-                    style={{ opacity: 100 }}
-                  /> */}
+                  
                   <Image src="/tick.svg" alt="tick" width={30} height={30} className=" opacity-100" />
                 </div>
               </div>

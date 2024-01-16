@@ -1,19 +1,19 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, selectFormData } from "../Features/Slices/formSlice";
 import ProfileContent from "../Cards/ProfileContent";
+import Link from "next/link";
 export default function Form() {
   const router = useRouter();
   const dispatch = useDispatch();
 
   const formData = useSelector(selectFormData);
   const dbItemset = useSelector((state) => state.cart.dbItems);
-
-  const deviceId = dbItemset.owner;
-  const cartId = dbItemset._id;
+  console.log(dbItemset);
+  // const deviceId = dbItemset.owner;
+  // const cartId = dbItemset._id;
 
   const [form, setForm] = React.useState({
     first: "",
@@ -55,7 +55,6 @@ export default function Form() {
   const [postalValidation, setPostalValidation] = React.useState("");
   const [numberValidation, setNumberValidation] = React.useState("");
 
-
   function handlefunc(event) {
     const { name, value } = event.target;
 
@@ -87,28 +86,31 @@ export default function Form() {
 
   async function handleData(event) {
     event.preventDefault();
-  
+
     // Check validation before submitting the form
     if (postalValidation !== "valid" || numberValidation !== "valid") {
       return;
     }
-  
+
     dispatch(updateFormData(form));
     console.log(form);
-  
+
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ form, deviceId, cartId }),
-      });
-  
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ form, deviceId, cartId }),
+        }
+      );
+
       if (response.ok) {
         const data = await response.json();
         console.log("Dataaaa", data);
-        
+
         // if the API response is 200
         router.push(`/shipping`);
       } else {
@@ -119,8 +121,6 @@ export default function Form() {
       console.error("Error:", error);
     }
   }
-  
-
 
   const incompleteForm =
     !form.first ||
@@ -218,12 +218,13 @@ export default function Form() {
               min={100000}
               value={form.postal}
               className={`px-5 form-input border border-gray-600 h-10 w-[37vw] rounded-md
-              ${postalValidation === "invalid"
+              ${
+                postalValidation === "invalid"
                   ? "border-red-500"
                   : postalValidation === "valid"
-                    ? "border-green-500"
-                    : "border-gray-600"
-                }
+                  ? "border-green-500"
+                  : "border-gray-600"
+              }
               `}
             />
           </div>
@@ -295,12 +296,13 @@ export default function Form() {
             placeholder="Mobile Number"
             value={form.number}
             className={`px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md
-            ${numberValidation === "invalid"
+            ${
+              numberValidation === "invalid"
                 ? "border-red-500"
                 : numberValidation === "valid"
-                  ? "border-green-500"
-                  : "border-gray-600"
-              }
+                ? "border-green-500"
+                : "border-gray-600"
+            }
             `}
           />
 
@@ -340,13 +342,19 @@ export default function Form() {
             <h6 className="text-xs w-[70vw]">
               I have read and consent to eShopWorld processing my info in
               accordance with the &nbsp;
-              <a href="#" className="text-blue-500">
+              <Link
+                href="/customerservice/privacypolicy"
+                className="text-blue-500"
+              >
                 Privacy Statement
-              </a>{" "}
+              </Link>{" "}
               and &nbsp;
-              <a href="#" className="text-blue-500">
+              <Link
+                href="/customerservice/returnpolicy"
+                className="text-blue-500"
+              >
                 Cookie Policy
-              </a>
+              </Link>
               . "eShopWorld is a trusted Nike partner".
             </h6>
           </span>

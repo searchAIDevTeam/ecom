@@ -97,10 +97,6 @@ const RoomPage = ({ params }) => {
   }, []);
 
   //sending data into slice
-  // useEffect(() => {
-  //   dispatch(setRoomData(params.id));
-  // }, [dispatch, params.id]);
-
   useEffect(() => {
     dispatch({ type: "FETCH_ROOM_REQUEST", payload: params.id });
   }, [dispatch, params.id]);
@@ -113,7 +109,7 @@ const RoomPage = ({ params }) => {
           <div className="flex sm:flex-row flex-col">
             <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
               <RoomImageList images={data.images} />
-              <ImageCaresoul />
+              <ImageCaresoul images={data.images}/>
               {/* <div className="sm:hidden flex">
                 <Card/>
               </div> */}

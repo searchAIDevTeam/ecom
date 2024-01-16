@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 const Phone = () => {
   return (
     <div>
@@ -20,10 +20,13 @@ const Phone = () => {
           </a>
         </div>
         <div>
-          <img
+          <Image
             src="/images/apple.jpg"
             alt=""
-            className="h-100  sm:w-100 w-full"
+            width={1350}
+            height={500}
+            style={{ width: "100vw", height: "auto" }}
+            className="h-100  sm:w-100vw  w-full"
           />
         </div>
       </div>

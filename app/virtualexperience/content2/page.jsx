@@ -37,10 +37,8 @@ const Content2 = () => {
   const handleSelectPage = (page) => {
     setSelectedPage(page);
   };
-  const [selected, setSelected] = useState(null);
-  // const handleImageClick = (image) => {
-  //   setSelected(image === selected ? null : image);
-  // };
+  
+  
   return (
     <div className="py-4 w-full h-full pb-4 bg-[#f4e3dd] text-sm">
       {/* <Header /> */}
@@ -76,17 +74,10 @@ const Content2 = () => {
             {selectedActivity[item.title] && (
               <div
                 className="room-item absolute top-2 right-12 z-10  flex items-center opacity-50 justify-center"
-                // style={{ zIndex: 10 }}
+               
               >
                 <div className="circle-container relative flex justify-center items-center">
-                  {/* <FaCircle size={20} color="black" className="opacity-100" />
-
-                  <TiTick
-                    className="opacity-100 absolute"
-                    color="white"
-                    size={20}
-                    style={{ opacity: 100 }}
-                  /> */}
+                  
                   <Image src="/tick.svg" alt="tick" width={30} height={30} className=" opacity-100" />
                 </div>
               </div>

@@ -88,13 +88,28 @@ const Dataslider = ({ category, data, sliderIndex }) => {
             forceToAxis: true,
             invert: false,
           }}
+          breakpoints={{
+            400: {
+              slidesPerView: 1,
+              spaceBetween: 5,
+            },
+
+            // 640: {
+            //   slidesPerView: 1.25,
+            //   spaceBetween: 5,
+            // },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 1,
+            },
+          }}
           allowSlidePrev={true}
           allowSlideNext={true}
           slideNextClass={`custom-next-button-${sliderIndex}`}
           slidePrevClass={`custom-prev-button-${sliderIndex}`}
           ref={swiperRef}
           {...swiperOptions}
-          className="mySwiper pl-5"
+          className="mySwiper pl-5 overflow-x-auto"
         >
           {!productData ? (
             <div>
@@ -103,7 +118,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
           ) : (
             productData.map((product) => (
               <SwiperSlide key={product._id}>
-                <div className="grid grid-cols-1 mt-2 h-full fade-in">
+                <div className="grid grid-cols-1 mt-2 h-full fade-in ">
                   <Card
                     cardkey={product._id}
                     title={product.productTitle}
@@ -120,8 +135,6 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               </SwiperSlide>
             ))
           )}
-
-          
         </Swiper>
 
         {/* <div className="">

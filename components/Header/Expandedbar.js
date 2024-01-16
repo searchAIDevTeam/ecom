@@ -94,14 +94,14 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
           </div>
         </div>
         <div
-          className={`dropdown  pt-20 pb-6 flex flex-row justify-center gap-4 max-w-full bg-white ${
+          className={`dropdown   sm:pt-20 pt-0 sm:pb-6 pb-0 flex sm:flex-row flex-col justify-center gap-4 max-w-full bg-white ${
             searchTexte
-              ? "sm:pl-6 pl-20 "
-              : "items-center sm:pr-[12rem] pr-0 sm:pl-32 pl-20 "
+              ? "sm:pl-20 pl-0 "
+              : "items-center sm:pr-[12rem] pr-0 sm:pl-32 pl-0 "
           }`}
         >
           <div
-            className={`items cursor-pointer sm:w-70 w-40vw  flex-col 
+            className={`items flex cursor-pointer sm:w-70 w-90vw  flex-col 
            
           `}
           >
@@ -122,9 +122,9 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-5 gap-6 ml-32 mt-3">
+          <div className="grid grid-cols-5 gap-6 sm:ml-32 ml-5 mt-3">
             {(!cacheddata && !data) || isLoading ? (
-              <p className="flex justify-center items-center">
+              <p className="flex flex-row justify-center items-center">
                 No results found
               </p>
             ) : (

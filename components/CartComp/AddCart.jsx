@@ -152,7 +152,7 @@ const AddCart = () => {
   //delete handle function
   return (
     <div className="">
-      <div className="main-cart flex justify-center sm:flex-row gap-80  items-start min-h-screen relative top-32 pb-20">
+      <div className="main-cart flex justify-center sm:flex-row flex-col sm:gap-80 gap-10  sm:items-start items-center min-h-screen relative top-32 pb-20">
         {/* <div className="cartContainer flex flex-col sm:flex-row w-4/5 h-4/5 bg-white sm:gap-0 gap-10 sm:my-0 my-20 "> */}
         {/* getting data from redux store */}
         {/* {roomStatus === "succeeded" && ( */}
@@ -275,7 +275,7 @@ this is order summary */}
               className="memberCheckout my-4 flex items-center justify-center"
             >
               <button className="bg-black text-white sm:w-full w-[40vw] sm:h-14 h-9 rounded-full	 hover:bg-gray-900 transition duration-300">
-              Guest Checkout
+                Guest Checkout
               </button>
             </Link>
 

@@ -54,7 +54,8 @@ const HomePage = () => {
     };
   }, []);
 
-  const popUp = typeof window !== "undefined" ? localStorage?.getItem("popUp") : null;
+  const popUp =
+    typeof window !== "undefined" ? localStorage?.getItem("popUp") : null;
 
   if (loader) {
     return (
@@ -134,7 +135,7 @@ const HomePage = () => {
             </button>
           </div>
         )}
-        </div>
+      </div>
     </>
   );
 };

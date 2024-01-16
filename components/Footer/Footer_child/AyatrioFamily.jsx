@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -39,9 +39,21 @@ const Familycollections = () => {
         >
           Ayatrio Family
           {isAccordionOpen ? (
-            <Image src='/leftvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
+            <Image
+              src="/leftvector.svg"
+              height={10}
+              width={10}
+              alt="up"
+              className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90"
+            />
           ) : (
-            <Image src='/rightvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer" />
+            <Image
+              src="/rightvector.svg"
+              height={10}
+              width={10}
+              alt="up"
+              className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90"
+            />
           )}
         </h4>
         {isAccordionOpen && (

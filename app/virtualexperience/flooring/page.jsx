@@ -37,13 +37,8 @@ const Content1 = () => {
     setShowbuttoncontent(!showbuttoncontent);
   };
 
-  // const [selected, setSelected] = useState(null);
-  // const handleImageClick = (image) => {
-  //   setSelected(image === selected ? null : image);
-  // };
   return (
     <div className=" py-4 w-full h-full bg-[#f4e3dd] text-sm ">
-      {/* <Header /> */}
       <Sidebar selectedPage={selectedPage} onSelectPage={handleSelectPage} />
 
       <div className="card-container flex flex-row justify-center  gap-20">
@@ -83,19 +78,8 @@ const Content1 = () => {
               </h3>
 
               {selectedActivity[item.id] && (
-                <div
-                  className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center"
-                  // style={{ zIndex: 10 }}
-                >
+                <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
                   <div className="circle-container relative flex justify-center items-center">
-                    {/* <FaCircle size={30} color="black" className="opacity-100" />
-
-                    <TiTick
-                      className="opacity-100 absolute"
-                      color="white"
-                      size={30}
-                      style={{ opacity: 100 }}
-                    /> */}
                     <Image
                       src="/tick.svg"
                       alt="tick"

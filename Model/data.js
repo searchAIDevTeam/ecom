@@ -1,25 +1,4 @@
-// // import x from '../../../assets/Virtualimg'--- this is correct
-// import Image1 from "next/image";
-// import Image2 from "next/image";
 
-// import image1 from "next/image";
-// import image2 from "next/image";
-// import image3 from "next/image";
-// import image4 from "next/image";
-// import image5 from "next/image";
-// import image6 from "next/image";
-// import image7 from "next/image";
-// import image8 from "next/image";
-// import image9 from "next/image";
-// import image10 from "next/image";
-// import image11 from "next/image";
-// import image12 from "next/image";
-// import image13 from "next/image";
-// import image14 from "next/image";
-// import image15 from "next/image";
-// import image16 from "next/image";
-// import image17 from "next/image";
-// import image18 from "next/image";
 import Image from "next/image";
 
 export const dataRooms = [
