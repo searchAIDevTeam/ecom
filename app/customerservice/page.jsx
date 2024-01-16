@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image";
 import FAQ from "../../components/FAQ/FAQ";
 import FAQSwiper from "../../components/FAQSwiper/FAQSwiper";
 // import React from "react";
@@ -10,49 +11,49 @@ const servicesData = [
   {
     id: 1,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/6b1de71d2067e4/webimage-PH188791-crop001.png?f=xxs",
+      "/customerservice/service1.avif",
     text: "Home",
   },
   {
     id: 2,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/5eff6dba17cd5e0a/webimage-PH189426-crop001.png?f=xxs",
+    "/customerservice/service2.avif",
     text: "Services",
   },
   {
     id: 3,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/359516937fc35a0b/webimage-PH188794-crop001.png?f=xxs",
+    "/customerservice/service3.avif",
     text: "How to shop",
   },
   {
     id: 4,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/7cb5eb6036568fe0/webimage-PH188796-crop001.png?f=xxs",
+    "/customerservice/service4.avif",
     text: "FAQs",
   },
   {
     id: 5,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/653823675e79d329/webimage-PH186303-crop001.png?f=xxs",
+    "/customerservice/service5.avif",
     text: "Return Policy",
   },
   {
     id: 6,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/7a75be96e1f166f4/webimage-PH188793-crop001.png?f=xxs",
+    "/customerservice/service6.avif",
     text: "Gift Cards",
   },
   {
     id: 7,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/5452a1af43063195/webimage-PH188795-crop001.png?f=xxs",
+    "/customerservice/service7.avif",
     text: "Price Guarantee",
   },
   {
     id: 8,
     image:
-      "https://www.ikea.com/ext/ingkadam/m/21dae79cdba26758/webimage-PH188797-crop001.png?f=xxs",
+    "/customerservice/service8.avif",
     text: "Contact us",
   },
 ];
@@ -136,7 +137,7 @@ const CustomerServicePage = () => {
                   key={option.id}
                   onClick={() => handleOptionClick(option.id)}
                 >
-                  <img src={option.image} alt="" />
+                  <Image width={400} height={225} src={option.image} alt="" />
                   <p className="text-sm">{option.text}</p>
                 </div>
               );
@@ -213,9 +214,11 @@ const CustomerServicePage = () => {
               </p>
             </div>
             <div className="">
-              <img
+              <Image
+                width={612}
+                height={408}
                 className="object-contain w-full h-auto "
-                src="https://media.istockphoto.com/id/1331493599/photo/shot-of-a-businessman-using-a-computer-while-working-in-a-call-center.jpg?s=612x612&w=0&k=20&c=ocaFzVRnDARFnANjyd6CMrwAI0Ua6I0Na_MKej8IysA="
+                src="/customerservice/headphones-man.jpg"
                 alt=""
               />
             </div>
@@ -241,8 +244,10 @@ const CustomerServicePage = () => {
         <section>
           <div className="find-section">
             <div>
-              <img
-                src="https://www.ikea.com/ext/ingkadam/m/314e597614cbeb4e/original/PE315126-crop003.jpg?f=xxl"
+              <Image
+                width={1100}
+                height={619}
+                src="/customerservice/ikea.avif"
                 alt=""
               />
             </div>
