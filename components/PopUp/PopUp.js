@@ -3,6 +3,7 @@ import "./popup.css";
 import Image from "next/image";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import Loading from "./Loading";
 import {
   setSelectedcomItems1,
   setSelectedcomItems2,
@@ -24,6 +25,7 @@ function App() {
   const [fetchedCategories, setFetchedCategories] = useState(null);
   const [fetchCities, setFetchedCities] = useState(null);
   const [fetchHobbies, setFetchedHobbies] = useState(null);
+  const [isLoading, setIsloading] = useState(true);
   // const dispatch = useDispatch();
   const dispatch = useDispatch();
   const fetchCategories = async () => {
@@ -32,6 +34,7 @@ function App() {
         `http://3.224.109.20:8080/api/categories`
       );
       setFetchedCategories(response.data[0].categories);
+      setIsloading(false);
     } catch (error) {
       console.error("Error fetching categories:", error.message);
     }
@@ -45,6 +48,7 @@ function App() {
       );
       setFetchedCities(response.data[0].cities);
       setFetchedHobbies(response.data[0].hobbies);
+      setIsloading(false);
     } catch (error) {
       console.error("Error fetching cities and hobbies:", error.message);
     }
@@ -204,6 +208,8 @@ function App() {
       console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
 
       const data = response.data;
+      setIsloading(false);
+
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -237,115 +243,99 @@ function App() {
       {openPopUp1 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
-            <div className="flex-grow basis-4/5">
-              {fetchedCategories &&
-                fetchedCategories.map((category, index) => (
-                  <div key={index}>
-                    <p className="text">{category.name}</p>
-                    <Swiper
-                      className="my-swiper-slider"
-                      centeredSlides={false}
-                      // slidesPerView={4}
-                      grabCursor={true}
-                      mousewheel={false}
-                      keyboard={{
-                        enabled: true,
-                      }}
-                      // style={{
-                      //   marginLeft:-15,
-                      // }}
-                      // If we need pagination
-                      // pagination={{
-                      //   el: ".swiper-pagination",
-                      //   dynamicBullets: false,
-                      //   clickable: true,
-                      // }}
-                      // If we need navigation
-                      navigation={{
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev",
-                      }}
-                      // Responsive breakpoints
-                      breakpoints={{
-                        // 412: {
-                        //   slidesPerView: 1.5,
-                        //   spaceBetween: 5,
-                        // },
-
-                        // 640: {
-                        //   slidesPerView: 1.25,
-                        //   spaceBetween: 5,
-                        // },
-                        1024: {
-                          slidesPerView: 4,
-                          spaceBetween: 5,
-                        },
-                      }}
-                    >
-                      {category.subcategories && (
-                        <div className="row">
-                          {category.subcategories.map(
-                            (subcategory, subIndex) => (
-                              <SwiperSlide>
-                                <div
-                                  className={`box firstbox ${
-                                    selectedItems1.some(
-                                      (item) =>
-                                        item.label === subcategory &&
-                                        item.parentCategory === category.name
-                                    )
-                                      ? "selected"
-                                      : ""
-                                  }`}
-                                  key={subIndex}
-                                  onClick={() =>
-                                    toggleItemSelection1(
-                                      subcategory,
-                                      category.name
-                                    )
-                                  }
-                                  style={{
-                                    background: `url('${subcategory.img}')`,
-                                  }}
-                                >
-                                  <Image
-                                    src="/circletick.svg"
-                                    height={20}
-                                    width={20}
-                                    alt="tick"
-                                    className={`absolute tickicon ${
-                                      selectedItems1.includes(subcategory)
-                                        ? "block"
-                                        : "hidden"
-                                    }`}
-                                  />
-                                  <b className="bel">{subcategory.name}</b>
-                                </div>
-                              </SwiperSlide>
-                            )
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <div className="flex-grow basis-4/5">
+                  {fetchedCategories &&
+                    fetchedCategories.map((category, index) => (
+                      <div key={index}>
+                        <p className="text">{category.name}</p>
+                        <Swiper
+                          className="my-swiper-slider"
+                          centeredSlides={false}
+                          grabCursor={true}
+                          mousewheel={false}
+                          keyboard={{
+                            enabled: true,
+                          }}
+                          navigation={{
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                          }}
+                          breakpoints={{
+                            1024: {
+                              slidesPerView: 4,
+                              spaceBetween: 5,
+                            },
+                          }}
+                        >
+                          {category.subcategories && (
+                            <div className="row">
+                              {category.subcategories.map(
+                                (subcategory, subIndex) => (
+                                  <SwiperSlide key={subIndex}>
+                                    <div
+                                      className={`box firstbox ${
+                                        selectedItems1.some(
+                                          (item) =>
+                                            item.label === subcategory &&
+                                            item.parentCategory ===
+                                              category.name
+                                        )
+                                          ? "selected"
+                                          : ""
+                                      }`}
+                                      onClick={() =>
+                                        toggleItemSelection1(
+                                          subcategory,
+                                          category.name
+                                        )
+                                      }
+                                      style={{
+                                        background: `url('${subcategory.img}')`,
+                                      }}
+                                    >
+                                      <Image
+                                        src="/circletick.svg"
+                                        height={20}
+                                        width={20}
+                                        alt="tick"
+                                        className={`absolute tickicon ${
+                                          selectedItems1.includes(subcategory)
+                                            ? "block"
+                                            : "hidden"
+                                        }`}
+                                      />
+                                      <b className="bel">{subcategory.name}</b>
+                                    </div>
+                                  </SwiperSlide>
+                                )
+                              )}
+                            </div>
                           )}
-                        </div>
-                      )}
-                      {/* <div className="swiper-button-prev"></div> */}
-                      <div className="swiper-pagination"></div>
-                      <Image
-                        src="/leftvector.svg"
-                        width={30}
-                        height={30}
-                        alt="arrow"
-                        className="swiper-button-prev sm:-translate-y-[150px] sm:-translate-x-[460px]"
-                      />
-                      <Image
-                        src="/rightvector.svg"
-                        width={30}
-                        height={30}
-                        alt="arrow"
-                        className="swiper-button-next sm:-translate-y-[150px]"
-                      />
-                    </Swiper>
-                  </div>
-                ))}
-            </div>
+                          <div className="swiper-pagination"></div>
+                          <Image
+                            src="/leftvector.svg"
+                            width={30}
+                            height={30}
+                            alt="arrow"
+                            className="swiper-button-prev sm:-translate-y-[150px] sm:-translate-x-[460px]"
+                          />
+                          <Image
+                            src="/rightvector.svg"
+                            width={30}
+                            height={30}
+                            alt="arrow"
+                            className="swiper-button-next sm:-translate-y-[150px]"
+                          />
+                        </Swiper>
+                      </div>
+                    ))}
+                </div>
+              </>
+            )}
           </div>
           <div className="w-[600px] bg-white p-2 pl-6 fixed-button">
             <button className="next" onClick={handleNext}>
