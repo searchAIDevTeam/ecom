@@ -2,46 +2,47 @@ import React from "react";
 // import Header from "../components/Header";
 // import Footer from "../components/Footer/Footer";
 import FAQSwiper from "../../../components/FAQSwiper/FAQSwiper";
+import Image from "next/image";
 
 const mainGridData = [
   {
     image:
-      "https://www.ikea.com/images/34/90/34905ba1cb5d99ed8e357c93b0a09af8.png?f=l",
+      "/customerservice/faq/topic1.avif",
     text: "Returns, Guarantees & Complaints",
   },
   {
     image:
-      "https://www.ikea.com/images/82/f5/82f527203d788f64e872bf40d2228f6e.png?f=l",
+    "/customerservice/faq/topic2.avif",
     text: "Deliveries, Orders, Assembly & Services",
   },
   {
     image:
-      "https://www.ikea.com/images/22/9b/229b71fcd4cf4a232cddadd557c5c4ff.png?f=l",
+    "/customerservice/faq/topic3.avif",
     text: "Spare parts",
   },
   {
     image:
-      "https://www.ikea.com/images/cd/88/cd8874e3b2fd6d34a22752617521eb24.png?f=l",
+    "/customerservice/faq/topic4.avif",
     text: "Questions & Help regarding Products",
   },
   {
     image:
-      "https://www.ikea.com/images/79/70/7970eabb14bf7ab32978a85b4df243ac.png?f=l",
+    "/customerservice/faq/topic5.avif",
     text: "AYATRIO profile, AYATRIO Family, AYATRIO for Business",
   },
   {
     image:
-      "https://www.ikea.com/images/0a/77/0a770f6ec4406789a12456e3bad2caff.png?f=l",
+    "/customerservice/faq/topic6.avif",
     text: "Click & Collect",
   },
   {
     image:
-      "https://www.ikea.com/images/63/0f/630f4a513f328e48b89ed67a7f1b2cc5.png?f=l",
+    "/customerservice/faq/topic7.avif",
     text: "General Information",
   },
   {
     image:
-      "https://www.ikea.com/images/7b/74/7b7456e157904dde81cb860afe0192bf.png?f=l",
+    "/customerservice/faq/topic8.avif",
     text: "Availability of Goods",
   },
 ];
@@ -210,7 +211,11 @@ const FaqPage = () => {
               {mainGridData.map((curElement) => {
                 return (
                   <div className="flex flex-col space-y-1 cursor-pointer hover:underline">
-                    <img src={curElement.image} alt=""/>
+                    <Image
+                    width={750}
+                    height={433}
+                    src={curElement.image}
+                    alt=""/>
                     <p>{curElement.text}</p>
                   </div>
                 );

@@ -10,6 +10,7 @@ import PopUp from "../PopUp/PopUp";
 // import { Oval } from "react-loader-spinner";
 import Expandedbar from "../Header/Expandedbar";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const HomePage = () => {
   const loader = false;
@@ -115,7 +116,9 @@ const HomePage = () => {
               onClick={() => router.push("/ayatrio-map")}
             >
               Map{" "}
-              <img
+              <Image
+                width={25}
+                height={25}
                 src="/ayatrio_store.svg"
                 alt=""
                 className="header-div-sStore-icon"
@@ -127,7 +130,9 @@ const HomePage = () => {
               onClick={() => router.push("/ayatrio-map")}
             >
               Near Ayatrio{" "}
-              <img
+              <Image
+                width={25}
+                height={25}
                 src="/ayatrio_store.svg"
                 alt=""
                 className="header-div-sStore-icon"
