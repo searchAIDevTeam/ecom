@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const giftCardFaqs = [
@@ -55,7 +56,7 @@ const GiftCards = () => {
               <div className="flex flex-col lg:flex-row gap-8">
                 <div className="flex flex-col">
                   <div>
-                    <img src="https://www.ikea.com/images/d8/c4/d8c400a6100c951e8ada8b9d0c3af79c.png?f=l" />
+                    <Image width={600} height={338} src="/customerservice/GiftCardsImg/gift1.avif" alt="gift1" />
                   </div>
                   <div className="flex flex-col gap-1">
                     <h2 className="font-bold text-xl">Digital Gift Card</h2>
@@ -79,8 +80,10 @@ const GiftCards = () => {
                 </div>
                 <div className="flex flex-col">
                   <div className="lg:mt-16">
-                    <img
-                      src="https://www.ikea.com/images/1d/13/1d13922950e815adedd027dab6cb000d.png?f=l"
+                    <Image
+                      width={600}
+                      height={338}
+                      src="/customerservice/GiftCardsImg/gift2.avif"
                       alt=""
                     />
                   </div>
@@ -95,8 +98,10 @@ const GiftCards = () => {
                 </div>
                 <div className="flex flex-col">
                   <div className="lg:mt-16">
-                    <img
-                      src="https://www.ikea.com/images/d0/da/d0da1e68d5a522b5c415ebec91a03eb0.png?f=l"
+                    <Image
+                      width={600}
+                      height={338}
+                      src="/customerservice/GiftCardsImg/gift3.avif"
                       alt=""
                     />
                   </div>
@@ -137,8 +142,10 @@ const GiftCards = () => {
           <section>
             <div className="flex flex-col md:flex-row gap-3 w-full">
               <div className="md:w-1/2">
-                <img
-                  src="https://www.ikea.com/images/AYATRIO-gift-card-c1e223317d716400b161481ec9313cb3.png?f=l"
+                <Image
+                  width={750}
+                  height={1001}
+                  src="/customerservice/GiftCardsImg/woman-holding-jar.avif"
                   alt=""
                 />
               </div>
