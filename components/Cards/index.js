@@ -36,41 +36,42 @@ function Cards() {
   const [trendingData, setTrendingData] = useState([]);
   const [recommended, setRecommended] = useState([]);
   const [deviceId, setDeviceId] = useState(null);
-if (typeof window !== "undefined") {
-  var id = localStorage.getItem("deviceId");
-}
-  useEffect(() => {
-  // setDeviceId(id);
-  const getRecommendedData = async () => {
-    const response = await axios.get(`http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`);
-    setRecommended(response.data);
+  if (typeof window !== "undefined") {
+    var id = localStorage.getItem("deviceId");
   }
-  
-  getRecommendedData();
-}, [])
+  useEffect(() => {
+    // setDeviceId(id);
+    const getRecommendedData = async () => {
+      const response = await axios.get(
+        `http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`
+      );
+      setRecommended(response.data);
+    };
 
-const Partdata = (cat)=>{
-  return  recommended?.products?.filter((item) => item.category === `${cat}` )
-} 
+    getRecommendedData();
+  }, []);
+
+  const Partdata = (cat) => {
+    return recommended?.products?.filter((item) => item.category === `${cat}`);
+  };
   const categories = recommended?.products?.map((item) => item.category);
   let uniqueCategories = [...new Set(categories)];
-
 
   //memo hook
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
   const MemoizedProfileContent = useMemo(() => <Profile />, []);
   const MemoizedTrendingProducts = useMemo(() => <Trending />, []);
   const datasliderRefs = useRef([]);
-useEffect(() => {
-  datasliderRefs.current = uniqueCategories.map(() => React.createRef());
-}, [uniqueCategories]);
+  useEffect(() => {
+    datasliderRefs.current = uniqueCategories.map(() => React.createRef());
+  }, [uniqueCategories]);
   return (
     <div className="">
       {MemoizedMainSlider}
       {MemoizedTrendingProducts}
       <div className="h-40 my-10 sm:px-[50px] px-[50px]">
         <img
-          src="/images/salesoffer.jpg"
+          src="/images/salesoffer.webp"
           alt=""
           className="w-full h-full object-fit"
         />

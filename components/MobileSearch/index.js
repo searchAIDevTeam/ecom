@@ -21,7 +21,7 @@ function MobileSeachBar() {
   }, [isScrolled]);
 
   return (
-    <header
+    <div
       className={`mobile-search-bar sm:invisible w-full fixed top-0 left-0  transition-all ease-in-out duration-300  z-[99]
                ${isScrolled ? "bg-white" : "bg-white"}
                `}
@@ -34,7 +34,7 @@ function MobileSeachBar() {
         />
       </div>
       <div className="filter">{/* <TuneIcon /> */}</div>
-    </header>
+    </div>
   );
 }
 export default MobileSeachBar;

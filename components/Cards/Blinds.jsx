@@ -42,9 +42,6 @@ const Blinds = () => {
     }, 2500);
   }, []);
 
-
-
-
   const [blindsProducts, setBlindsProducts] = useState([]);
   return (
     <div>
@@ -59,7 +56,7 @@ const Blinds = () => {
                 onClick={() => swiper2Ref.current.swiper.slidePrev()}
                 className="custom-prev-button hover:bg-400 hover:scale-110 hover:text-slate-100  "
               >
-                <img className="w-8 h-8" src="/images/back.png" />
+                <img className="w-8 h-8" src="/images/back.webp" />
               </div>
               <div
                 onClick={() => swiper2Ref.current.swiper.slideNext()}

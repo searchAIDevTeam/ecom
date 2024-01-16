@@ -13,7 +13,6 @@ import "swiper/css/scrollbar";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
 // import "react-loading-skeleton/dist/skeleton.css";
 
-
 const Curtains = () => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -37,7 +36,7 @@ const Curtains = () => {
     allowSlidePrev: true,
     allowSlideNext: true,
   };
-  
+
   const swiper2Ref = useRef(null);
   const [isLoading, setLoading] = useState(true);
 
@@ -47,7 +46,7 @@ const Curtains = () => {
     }, 2500);
   }, []);
   const [trendingData, setTrendingData] = useState([]);
- 
+
   return (
     <div>
       {curtainsProducts && (
@@ -61,13 +60,13 @@ const Curtains = () => {
                 onClick={() => swiper2Ref.current.swiper.slidePrev()}
                 className="custom-prev-button hover:bg-400 hover:scale-110 hover:text-slate-100  "
               >
-                <img className="w-8 h-8" src="/images/back.png" />
+                <img className="w-8 h-8" src="/images/back.webp" />
               </div>
               <div
                 onClick={() => swiper2Ref.current.swiper.slideNext()}
                 className="custom-next-button hover:bg-400 hover:scale-110 hover:text-slate-100"
               >
-                <img className="w-7 h-9" src="/images/right.png" />
+                <img className="w-7 h-9" src="/images/right.webp" />
               </div>
             </div>
           </div>
