@@ -94,10 +94,10 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
           </div>
         </div>
         <div
-          className={`dropdown  pt-20 pb-6 flex-row justify-center gap-4 max-w-full bg-white ${
+          className={`dropdown  pt-20 pb-6 flex flex-row justify-center gap-4 max-w-full bg-white ${
             searchTexte
-              ? "sm:pl-6 pl-20 hidden"
-              : "items-center sm:pr-[12rem] pr-0 sm:pl-32 pl-20 flex"
+              ? "sm:pl-6 pl-20 "
+              : "items-center sm:pr-[12rem] pr-0 sm:pl-32 pl-20 "
           }`}
         >
           <div
@@ -143,7 +143,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
                     <Image
                       src={item.images[0]}
                       width={200}
-                      height={500}
+                      height={200}
                       alt="Product"
                     />
                   </div>
