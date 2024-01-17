@@ -21,13 +21,10 @@ const HomePage = () => {
   // const loader = false;
   const router = useRouter();
 
-  // const handleLoginNav = () => {
-  //   navigate("/login");
-  // };
-  // const handleProfileNav = () => {
-  //   console.log("Profile");
-  //   router.push("/profile");
-  // };
+  const handleProfileNav = () => {
+    console.log("Profile");
+    router.push("/profile");
+  };
 
   const onClose = () => {
     setIsSearchBarVisible(!isSearchBarVisible);
@@ -80,13 +77,7 @@ const HomePage = () => {
         {popUp ? null : <PopUp />}
         {isFilterVisible && (
           <>
-            {/* <Header onSearchIconClick={handleSearchIconClick} /> */}
-            {isSearchBarVisible && (
-              <Expandedbar
-                // searchText={searchText}
-                onClose={onClose}
-              />
-            )}
+            {isSearchBarVisible && <Expandedbar onClose={onClose} />}
             <MobileSearchBar />
           </>
         )}

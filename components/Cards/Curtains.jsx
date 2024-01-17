@@ -2,8 +2,6 @@ import Card from "./card";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./styles.css";
-// import back from '../../assets/back.png'
-// import right from '../../assets/right.png';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -11,17 +9,10 @@ import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
-// import "react-loading-skeleton/dist/skeleton.css";
 
 const Curtains = () => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
-  // const handleImageClick = () => {
-  //   setPopupVisible(true);
-  // };
-
-  // const [indexClicked, setClicked] = useState(-1);
-  // const swiperUseref = useRef(null);
 
   const swiperOptions = {
     slidesPerView: 3.2,
@@ -45,7 +36,6 @@ const Curtains = () => {
       setLoading(false);
     }, 2500);
   }, []);
-  const [trendingData, setTrendingData] = useState([]);
 
   return (
     <div>

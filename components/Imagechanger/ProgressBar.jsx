@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from "react";
 
-const ProgressBar = ({progress}) => {
+const ProgressBar = ({ progress }) => {
   const [progress1, setProgress1] = useState(0);
   const [progress2, setProgress2] = useState(0);
   const [progress3, setProgress3] = useState(0);
@@ -26,7 +27,7 @@ const ProgressBar = ({progress}) => {
         progress1,
         progress2,
         progress3,
-      }
+      };
     }, 30);
 
     return () => clearInterval(interval);
