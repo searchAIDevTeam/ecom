@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import Image from "next/image";
@@ -109,7 +110,7 @@ const Imagechanger = () => {
               alt=""
               className={` w-full h-full ${
                 index === i ? "visible" : "hidden"
-              } lazyloaded`}
+              } `}
             />
           ))}
           <div className="absolute bottom-4 left-4 flex text-white text-lg">Your text</div>

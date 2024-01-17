@@ -4,16 +4,16 @@ import React, { useEffect, useState } from "react";
 // import Cards from "../Cards";
 const Cards = dynamic(() => import('../Cards'))
 // import MobileSearchBar from "../MobileSearch";
-const MobileSearchBar = dynamic(()=>import('../MobileSearch'))
+const MobileSearchBar = dynamic(() => import('../MobileSearch'))
 // import Filter from "../Filter";
-const Filter = dynamic(()=>import('../Filter'))
+const Filter = dynamic(() => import('../Filter'))
 // import ayatrio_store from "../assets/icon/ayatrio_store.svg";
 // import "./HomePage.css";
 // import PopUp from "../PopUp/PopUp";
-const PopUp = dynamic(()=>import('../PopUp/PopUp'))
+const PopUp = dynamic(() => import('../PopUp/PopUp'))
 // import { Oval } from "react-loader-spinner";
 // import Expandedbar from "../Header/Expandedbar";
-const Expandedbar = dynamic(()=>import('../Header/Expandedbar'))
+const Expandedbar = dynamic(() => import('../Header/Expandedbar'))
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -21,13 +21,10 @@ const HomePage = () => {
   // const loader = false;
   const router = useRouter();
 
-  // const handleLoginNav = () => {
-  //   navigate("/login");
-  // };
-  // const handleProfileNav = () => {
-  //   console.log("Profile");
-  //   router.push("/profile");
-  // };
+  const handleProfileNav = () => {
+    console.log("Profile");
+    router.push("/profile");
+  };
 
   const onClose = () => {
     setIsSearchBarVisible(!isSearchBarVisible);
@@ -63,24 +60,6 @@ const HomePage = () => {
   const popUp =
     typeof window !== "undefined" ? localStorage?.getItem("popUp") : null;
 
-  // if (loader) {
-  //   return (
-  //     <div className="loader slider-container">
-  //       <Oval
-  //         height={100}
-  //         width={100}
-  //         color="#FF0000"
-  //         wrapperStyle={{}}
-  //         wrapperClass=""
-  //         visible={true}
-  //         ariaLabel="Creating your Ayatrio Experience"
-  //         secondaryColor="#4fa94d"
-  //         strokeWidth={2}
-  //         strokeWidthSecondary={2}
-  //       />
-  //     </div>
-  //   );
-  // }
 
   // const [isOpen, setIsOpen] = useState(false);
   const [isFilterHovered, setFilteredContent] = useState(null);
@@ -98,13 +77,7 @@ const HomePage = () => {
         {popUp ? null : <PopUp />}
         {isFilterVisible && (
           <>
-            {/* <Header onSearchIconClick={handleSearchIconClick} /> */}
-            {isSearchBarVisible && (
-              <Expandedbar
-                // searchText={searchText}
-                onClose={onClose}
-              />
-            )}
+            {isSearchBarVisible && <Expandedbar onClose={onClose} />}
             <MobileSearchBar />
           </>
         )}

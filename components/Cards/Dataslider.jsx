@@ -15,15 +15,13 @@ import {
   Items2selected,
   Items3selected,
 } from "../Features/Slices/selectedItemsSlice";
-// import SelectedItemsRow from "./selectedItemsRow";
 
 const Dataslider = ({ category, data, sliderIndex }) => {
   const itm1 = useSelector(Items1selected);
-  // console.log("from dataslider itm1", itm1);
+
   const itm2 = useSelector(Items2selected);
-  // console.log("from dataslider itm2", itm2);
+
   const itm3 = useSelector(Items2selected);
-  // console.log("from dataslider itm3", itm3);
 
   const swiperRef = useRef(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -94,10 +92,6 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               spaceBetween: 5,
             },
 
-            // 640: {
-            //   slidesPerView: 1.25,
-            //   spaceBetween: 5,
-            // },
             1024: {
               slidesPerView: 4,
               spaceBetween: 1,

@@ -25,12 +25,10 @@ const Multicard = () => {
           ref={swiper1Ref}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
-
           navigation={{
-          nextEl: ".right",
-          prevEl: ".back",
-        }}
-
+            nextEl: ".right",
+            prevEl: ".back",
+          }}
           draggable={true}
           style={{ "--swiper-navigation-size": "24px" }}
           breakpoints={{
@@ -48,86 +46,16 @@ const Multicard = () => {
           {multiCardData.map((curElement) => {
             return (
               <SwiperSlide>
-                <MultiCardContent 
+                <MultiCardContent
                   iconPath={curElement.iconPath}
                   iconSize={curElement.iconSize}
                   title={curElement.title}
-                  text={curElement.text}/>
+                  text={curElement.text}
+                />
               </SwiperSlide>
             );
           })}
-          {/* <SwiperSlide>
-            <div className="relative bg-white  sm:w-[100%] w-[80vw] sm:h-300px p-2 ">
-              <div className="mt-8 ml-6 mr-12 mb-2">
-                <IoChatbubblesOutline size={46} />
-              </div>
-              <h2 className="text-xl font-medium ml-6 mr-12">
-                Shop with a specialist over video.
-              </h2>
-              <div className="mt-2 ml-6 mr-12 mb-12">
-                Choose your next Mac in a  guided, one-way video session. or
-                easy pickup options.
-              </div>
 
-              <div className="absolute bottom-1 right-4 mb-8">
-                <IoIosAddCircle size={34} />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative bg-white sm:w-[100%] w-[80vw] sm:h-300px p-2 ">
-              <div className="mt-8 ml-6 mr-12 mb-2">
-                <IoMdContacts size={48} />
-              </div>
-              <h2 className="text-xl font-medium ml-6 mr-12">
-                Get to know your new Mac. need to added
-              </h2>
-              <div className="mt-2 ml-6 mr-12 mb-12">
-                Learn how to get the most out of your new Mac with a free
-                one-on-one Personal Session.
-              </div>
-
-              <div className="absolute bottom-1 right-10 mb-8">
-                <IoIosAddCircle size={34} />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative bg-white  sm:w-[100%] w-[80vw] sm:h-300px p-2 ">
-              <div className="mt-8 ml-6 mr-12 mb-2">
-                <MdMenuBook size={44} />
-              </div>
-              <h2 className="text-xl font-medium ml-6 mr-12">
-                Get flexible delivery and easy pickup.
-              </h2>
-              <div className="mt-2 ml-6 mr-12 mb-12" style={{ overflow: 'hidden' }}>
-                Learn how to get the most out of your new Mac with a free
-                one-on-one Personal Session.
-              </div>
-
-              <div className="absolute bottom-1 right-12 mb-8">
-                <IoIosAddCircle size={34} />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative bg-white sm:w-[100%] w-[80vw] sm:h-300px p-2">
-              <div className="mt-8 ml-6 mr-12 mb-2">
-                <MdMenuBook size={44} />
-              </div>
-              <h2 className="text-xl font-medium ml-6 mr-12">
-                Get flexible delivery and easy pickup.
-              </h2>
-              <div className="mt-2 ml-6 mr-12 mb-12" style={{ overflow: 'hidden' }}>
-                Learn how to get the most out of your new Mac with a free
-                one-on-one Personal Session.
-              </div>
-
-              <div className="absolute bottom-1 right-12 mb-8">
-                <IoIosAddCircle size={34} />
-              </div>
-            </div>
-          </SwiperSlide> */}
           <div className="flex flex-row items-end justify-end gap-4">
             <Image
               src="/svg/dropdown/leftvector.svg"

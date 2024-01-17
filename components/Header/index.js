@@ -156,7 +156,9 @@ function Header({ howMuchScrolled }) {
                 height={30}
               />
             </div>
-            <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+            <div
+            onClick={handleLoginNav}
+             className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
               <Image
                 src="/svg/icon/like.svg"
                 alt=""

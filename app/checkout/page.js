@@ -4,7 +4,7 @@ import Script from 'next/script';
 const CheckoutPage = () => {
   return (
     <>
-      <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+      <Script defer src="https://checkout.razorpay.com/v1/checkout.js" />
       <Checkoutmain />
     </>
   )
