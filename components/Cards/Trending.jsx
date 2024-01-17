@@ -30,7 +30,7 @@ const Trending = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://43.204.166.53:8080/api/trending-products"
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/trending-products`
       );
       setTrendingData(response.data);
       setLoading(false);

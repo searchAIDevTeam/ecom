@@ -31,7 +31,7 @@ function App() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        `http://3.224.109.20:8080/api/categories`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
       );
       setFetchedCategories(response.data[0].categories);
       setIsloading(false);
@@ -44,7 +44,7 @@ function App() {
   const fetchCitiesAndHobbies = async () => {
     try {
       const response = await axios.get(
-        `http://3.224.109.20:8080/api/citiesAndHobbies`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/citiesAndHobbies`
       );
       setFetchedCities(response.data[0].cities);
       setFetchedHobbies(response.data[0].hobbies);
@@ -201,7 +201,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        `http://3.224.109.20:8080/api/preferences`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/preferences`,
         {
           deviceId: localStorage.getItem("deviceid"),
           userPreferredCities: preferencesDataToSendToBackend.preferredCities,

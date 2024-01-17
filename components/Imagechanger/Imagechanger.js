@@ -13,7 +13,7 @@ const Imagechanger = () => {
     const fetchApiData = async () => {
       try {
         const response = await axios.get(
-          "http://43.204.166.53:8080/api/getMidInfoSection"
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getMidInfoSection`
         );
         console.log(response.data);
         setApiData(response.data);

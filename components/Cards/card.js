@@ -18,7 +18,7 @@ function Card(props) {
   const handleclick = (id, productId) => {
     const postTrending = async () => {
       const response = await axios.post(
-        `http://43.204.166.53:8080/api/increment-popularity?productId=${productId}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/increment-popularity?productId=${productId}`
       );
       console.log("response is ", response);
     };

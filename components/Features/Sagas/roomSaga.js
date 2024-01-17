@@ -8,7 +8,7 @@ function* fetchRoomData(action) {
     try {
         const response = yield call(
             axios.get,
-            `http://43.204.166.53:8080/api/getSingleProduct?id=${action.payload}`
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${action.payload}`
         );
         yield put(setRoomData({ roomData: response.data, status: "succeeded" }));
         console.log("response from room", response.data);

@@ -24,7 +24,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
         if (searchTexte !== cachedSearchText) {
           // Perform the search and update the cache
           const response = await axios.get(
-            `http://43.204.166.53:8080/api/products?search=${searchTexte}`
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products?search=${searchTexte}`
           );
           sessionStorage.setItem("cachedData", JSON.stringify(response.data));
           sessionStorage.setItem("cachedSearchText", searchTexte);
