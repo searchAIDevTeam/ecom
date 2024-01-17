@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectSliderData } from "../Features/Slices/sliderSlice";
 
 function MainSlider() {
-  //data fetching
   const dispatch = useDispatch();
   const SliderViewData = useSelector(selectSliderData);
   const [page, setPage] = useState(1);
+
   useEffect(() => {
     if (!SliderViewData || SliderViewData.length === 0) {
       fetchData();
