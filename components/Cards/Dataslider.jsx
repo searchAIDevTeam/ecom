@@ -57,7 +57,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               className={`custom-prev-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100 pr-6`}
             >
               <Image
-                src="/leftvector.svg"
+                src="/svg/dropdown/leftvector.svg"
                 width={20}
                 height={20}
                 alt="Arrow"
@@ -69,7 +69,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               className={`custom-next-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100`}
             >
               <Image
-                src="/rightvector.svg"
+                src="/svg/dropdown/rightvector.svg"
                 width={20}
                 height={20}
                 alt="Arrow"

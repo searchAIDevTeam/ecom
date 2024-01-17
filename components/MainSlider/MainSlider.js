@@ -144,7 +144,7 @@ function MainSlider() {
     <div className="slider-container">
       <div className="arrow-left z-20" onClick={() => slide(-slideswipe)}>
         {!isMobile && scrollX > 0 && (
-          <Image src='/leftvector.svg' width={20} height={20} alt="up" className="arrow-nav" />
+          <Image src='/svg/dropdown/leftvector.svg' width={20} height={20} alt="up" className="arrow-nav" />
         )}
       </div>
       <div
@@ -194,7 +194,7 @@ function MainSlider() {
                           <br />
                         </div>
                         <div className="absolute inset-y-0 right-0  border-l border-black flex items-center justify-center basis-1/4 flex-grow pl-2 pr-2 ml-2">
-                          <Image src='/rightvector.svg' width={20} height={20} alt="up" className="flex items-center justify-center" />
+                          <Image src='/svg/dropdown/rightvector.svg' width={20} height={20} alt="up" className="flex items-center justify-center" />
                         </div>
                       </div>
                     </div>
@@ -206,7 +206,7 @@ function MainSlider() {
         {/* </div> */}
       </div>
       <div className="arrow-rightS z-20" onClick={() => slide(+slideswipe)}>
-        {!isMobile && <Image src='/rightvector.svg' width={20} height={20} alt="up" className="arrow-nav" />}
+        {!isMobile && <Image src='/svg/dropdown/rightvector.svg' width={20} height={20} alt="up" className="arrow-nav" />}
       </div>
     </div>
   );

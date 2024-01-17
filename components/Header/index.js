@@ -121,7 +121,7 @@ function Header({ howMuchScrolled }) {
               onClick={handleModalOpen}
             >
               <Image
-                src="/search.svg"
+                src="/svg/icon/search.svg"
                 alt=""
                 width={20}
                 height={20}
@@ -149,7 +149,7 @@ function Header({ howMuchScrolled }) {
               className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer sm:block hidden"
             >
               <Image
-                src="/search.svg"
+                src="/svg/icon/search.svg"
                 alt=""
                 className="seachbar-div2-icon absolute z-10"
                 width={30}
@@ -158,7 +158,7 @@ function Header({ howMuchScrolled }) {
             </div>
             <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
               <Image
-                src="/like.svg"
+                src="/svg/icon/like.svg"
                 alt=""
                 className="header-div-icon"
                 width={25}
@@ -170,7 +170,7 @@ function Header({ howMuchScrolled }) {
               onClick={() => handleLinkClick("/cart")}
             >
               <Image
-                src="/adtocart.svg"
+                src="/svg/icon/adtocart.svg"
                 alt=""
                 className="header-div-icon"
                 width={25}
@@ -184,7 +184,7 @@ function Header({ howMuchScrolled }) {
                 onClick={handleProfileNav}
               >
                 <Image
-                  src="/profile.svg"
+                  src="/svg/icon/profile.svg"
                   alt=""
                   className="header-div-icon"
                   width={25}
@@ -193,7 +193,7 @@ function Header({ howMuchScrolled }) {
               </div>
             ) : (
               <Image
-                src="/profile.svg"
+                src="/svg/icon/profile.svg"
                 onClick={handleLoginNav}
                 alt=""
                 width={25}

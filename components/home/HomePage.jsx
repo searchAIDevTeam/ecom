@@ -124,7 +124,7 @@ const HomePage = () => {
               <Image
                 width={25}
                 height={25}
-                src="/ayatrio_store.svg"
+                src="/svg/icon/ayatrio_store.svg"
                 alt=""
                 className="header-div-sStore-icon"
               />
@@ -138,7 +138,7 @@ const HomePage = () => {
               <Image
                 width={25}
                 height={25}
-                src="/ayatrio_store.svg"
+                src="/svg/icon/ayatrio_store.svg"
                 alt=""
                 className="header-div-sStore-icon"
               />

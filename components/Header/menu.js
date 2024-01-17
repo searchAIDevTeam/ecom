@@ -50,7 +50,7 @@ export default function BasicMenu() {
 
   return (
     <div>
-      <Image src='/menu.svg' height={20} width={20} alt="menu"
+      <Image src='/svg/icon/menu.svg' height={20} width={20} alt="menu"
         className="font-bold text-2xl"
         onClick={(event) => {
           setAnchorEl(!anchorEl);
@@ -131,7 +131,7 @@ ${mainContent ? "block" : "hidden"}
                         >
                           <p>{text.lebel}</p>
                           <img
-                            src="/backarrow.svg"
+                            src="/svg/dropdown/backarrow.svg"
                             className="w-5 h-5 rotate-180"
                             alt=""
                             onClick={() => {

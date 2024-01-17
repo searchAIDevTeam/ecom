@@ -40,7 +40,7 @@ const Label = () => {
                 <div className="flex basis-1/4 w-8 top-16 border-l border-zinc-200">
                   <Image
                     className="flex ml-2 mr-2 object-none"
-                    src="/nextarrow.png"
+                    src="/svg/dropdown/nextarrow.png"
                     height={20}
                     width={20}
                     alt="arrow"

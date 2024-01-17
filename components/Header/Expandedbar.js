@@ -80,7 +80,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
                 onChange={(e) => setSearchText(e.target.value)}
               />
               <img
-                src="/search.svg"
+                src="/svg/icon/search.svg"
                 alt=""
                 className=" search_icon_mar w-5 mx-1 my-1.5 top-[18%] left-[1%]  absolute z-10"
               />

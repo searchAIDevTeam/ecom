@@ -302,7 +302,7 @@ function App() {
                                       }}
                                     >
                                       <Image
-                                        src="/circletick.svg"
+                                        src="/svg/icon/circletick.svg"
                                         height={20}
                                         width={20}
                                         alt="tick"
@@ -321,14 +321,14 @@ function App() {
                           )}
                           <div className="swiper-pagination"></div>
                           <Image
-                            src="/leftvector.svg"
+                            src="/svg/dropdown/leftvector.svg"
                             width={30}
                             height={30}
                             alt="arrow"
                             className="swiper-button-prev sm:-translate-y-[150px] sm:-translate-x-[460px]"
                           />
                           <Image
-                            src="/rightvector.svg"
+                            src="/svg/dropdown/rightvector.svg"
                             width={30}
                             height={30}
                             alt="arrow"
@@ -367,7 +367,7 @@ function App() {
                       }}
                     >
                       <Image
-                        src="/circletick.svg"
+                        src="/svg/icon/circletick.svg"
                         height={20}
                         width={20}
                         alt="close"
@@ -418,7 +418,7 @@ function App() {
                         key={index}
                       >
                         <Image
-                          src="/circletick.svg"
+                          src="/svg/icon/circletick.svg"
                           height={20}
                           width={20}
                           alt="close"

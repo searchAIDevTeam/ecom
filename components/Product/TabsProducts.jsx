@@ -281,7 +281,7 @@ const Tabs = ({ filteredProducts, heading }) => {
               >
                 Color &nbsp;
                 <Image
-                  src="/backarrow.svg"
+                  src="/svg/dropdown/backarrow.svg"
                   width={40}
                   height={40}
                   className={`w-6 h-6  mt-1 sm:block hidden
@@ -385,7 +385,7 @@ const Tabs = ({ filteredProducts, heading }) => {
               >
                 All Filters &nbsp;
                 <Image
-                  src="/choserightfloor.svg"
+                  src="/svg/icon/choserightfloor.svg"
                   width={40}
                   height={40}
                   className={`w-6 h-6  sm:block hidden
@@ -403,7 +403,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         <p>Filter and sort</p>
 
                         <Image
-                          src="/close.svg"
+                          src="/svg/dropdown/close.svg"
                           width={24}
                           height={24}
                           onClick={closeAll}
@@ -419,7 +419,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         >
                           Sort &nbsp;
                           <Image
-                            src="/backarrow.svg"
+                            src="/svg/dropdown/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -445,7 +445,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         >
                           Size &nbsp;
                           <Image
-                            src="/backarrow.svg"
+                            src="/svg/dropdown/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -475,7 +475,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         >
                           Color &nbsp;
                           <Image
-                            src="/backarrow.svg"
+                            src="/svg/dropdown/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -501,7 +501,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         >
                           Design style &nbsp;
                           <Image
-                            src="/backarrow.svg"
+                            src="/svg/dropdown/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -526,7 +526,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         >
                           Collections &nbsp;
                           <Image
-                            src="/backarrow.svg"
+                            src="/svg/dropdown/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -551,7 +551,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         >
                           Type &nbsp;
                           <Image
-                            src="/backarrow.svg"
+                            src="/svg/dropdown/backarrow.svg"
                             width={40}
                             height={40}
                             className={`w-6 h-6  mt-1
@@ -625,12 +625,12 @@ const Tabs = ({ filteredProducts, heading }) => {
                     Rs. <span className="text-3xl"> {text.totalPrice}</span>
                   </p>
                   <p className="text-sm flex flex-row gap-1 items-center text-black">
-                    <Image src="/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
+                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
                     <Image
-                      src="/half-star.svg"
+                      src="/svg/icon/half-star.svg"
                       alt="star"
                       width={15}
                       height={15}
@@ -639,7 +639,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                   </p>
                   <div className="flex gap-3 items-center">
                     <Image
-                      src="/adtocart.svg"
+                      src="/svg/icon/adtocart.svg"
                       width={40}
                       height={40}
                       className="w-10 h-10"

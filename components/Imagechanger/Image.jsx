@@ -118,9 +118,9 @@ const Imagechanger = () => {
                   {value}
                 </h1>
                 {openStates[idx] ? (
-                  <Image src='/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
+                  <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
                 ) : (
-                  <Image src='/down.svg' width={20} height={20} alt="down" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
+                  <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="down" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
                 )}
               </div>
               <div className={`sm:w-[23rem] w-[80vw] ${openStates[idx] ? "open" : ""}`}>

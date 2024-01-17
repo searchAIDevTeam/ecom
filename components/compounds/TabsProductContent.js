@@ -49,7 +49,7 @@ const TabsProductContent = (props) => {
       >
         {filterName} &nbsp;
         <Image
-          src="/backarrow.svg"
+          src="/svg/dropdown/backarrow.svg"
           width={40}
           height={40}
           className={`w-6 h-6  mt-1 sm:block hidden
