@@ -69,28 +69,7 @@ ${mainContent ? "block" : "hidden"}
             onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
           >
             {/* for desktop */}
-            <div className="px-[30px] mt-20 sm:flex hidden">
-              <div className="filter_container flex gap-20">
-                <div className="menuLog flex flex-col gap-4">
-                  <Link href="/virtualexperience/vrooms">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-blue-700">
-                      Virtual Experience
-                    </button>
-                  </Link>
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-blue-700">
-                    Sign In
-                  </button>
-                  <button className="bg-red-500 text-white px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-red-600">
-                    Sign Up
-                  </button>
-                  <button className="border border-green-600 text-green-600 px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-green-600 hover:text-white">
-                    Airbnb your home
-                  </button>{" "}
-                  <button className="border border-yellow-600 text-yellow-600 px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-yellow-600 hover:text-white">
-                    Help Centre
-                  </button>
-                </div>
-
+            <div className="px-[60px] mt-20 sm:flex sm:gap-16 hidden">
                 {
                   menutext.map((category)=>{
                     return (
@@ -111,7 +90,6 @@ ${mainContent ? "block" : "hidden"}
                     )
                   })
                 }
-              </div>
             </div>
 
             {/* for mobile only */}
