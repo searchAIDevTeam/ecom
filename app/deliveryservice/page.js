@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 const DeliveryServicePage = () => {
   return (
     <div>
-      <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
+      <div className="mt-20 sm:px-[50px] px-[20px] p-10 space-y-10">
         {/* Delivery Service section starts */}
         <section>
           <div className="flex flex-col w-full gap-4">
@@ -9,7 +11,7 @@ const DeliveryServicePage = () => {
               <h1 className="font-bold text-4xl">Delivery Service</h1>
               <div className="flex flex-col md:flex-row w-full space-x-4">
                 <div className="md:w-1/2">
-                  <img src="https://www.ikea.com/images/a1/f3/a1f3a28f8295be2e6093c49327aa3ca3.jpg?f=l" />
+                  <Image width={600} height={338} src="/DeliveryServiceImg/truck.avif" alt="truck" />
                 </div>
                 <div className="flex-col space-y-7 md:w-1/2">
                   <p>

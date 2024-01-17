@@ -1,4 +1,5 @@
 import QuestionAnswer from "@/components/FAQ/QuestionAnswer";
+import Image from "next/image";
 
 const termsAndConditions = [
   {
@@ -27,7 +28,7 @@ const termsAndConditions = [
 const InstallationServicePage = () => {
   return (
     <div>
-      <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
+      <div className="mt-20 sm:px-[50px] px-[20px] p-10 space-y-10">
         {/* Kitchen installation section starts */}
         <section>
           <div className="flex flex-col w-full space-y-10">
@@ -35,7 +36,7 @@ const InstallationServicePage = () => {
               <h1 className="font-bold text-4xl">Kitchen Installation</h1>
               <div className="flex w-full gap-4 flex-col md:flex-row">
                 <div className="md:w-1/2">
-                  <img src="https://www.ikea.com/images/b3/b5/b3b5595da9f4e4d20a6a5e01ad210726.png?f=l" />
+                  <Image width={600} height={388} src="/InstallationServiceImg/installation.avif" alt="" />
                 </div>
                 <div className="flex-col gap-4 md:w-1/2">
                   <p>
