@@ -11,7 +11,7 @@ const DoubleComp = () => {
         <div className="pl-4 pt-4">
           <div className="flex text-3xl  pl-0 pt-0">
             {" "}
-            <Image src='/appleicon.svg' height={30} width={30} alt="apple"/>
+            <Image src="/appleicon.svg" height={30} width={30} alt="apple" />
             Music
           </div>
           <div className="text-md   pl-0"> Over 100 million songs.</div>
@@ -23,11 +23,10 @@ const DoubleComp = () => {
               Try it free <sup className="mt-3 text-[0.6rem]">10</sup>
               {/* <GoArrowUpRight className="mt-2 ml-1" /> */}
               {/* <Image src='/diagonal.svg' height={5} width={5} alt="diagonal"/> */}
-
             </a>
             <a href="#" className="flex ">
               Learn more{" "}
-              <img src="/images/right.png" className=" ml-2 w-7 h-7" />
+              <img src="/images/right.webp" className=" ml-2 w-7 h-7" />
             </a>
           </div>
         </div>
@@ -38,7 +37,7 @@ const DoubleComp = () => {
       <div className="col-span-1  mr-0 bg-zinc-100 text-black overflow-hidden">
         <div className="pl-4 pt-4">
           <div className="flex text-3xl pl-0 pt-0">
-          <Image src='/appleicon.svg' height={30} width={30} alt="apple"/>
+            <Image src="/appleicon.svg" height={30} width={30} alt="apple" />
             Arcade
           </div>
           <div className="text-md  pl-0">Get 3 months of Apple Arcade free</div>
@@ -50,13 +49,13 @@ const DoubleComp = () => {
             </a>
             <a href="#" className="flex">
               Learn more{" "}
-              <img src="/images/right.png" className="ml-1 w-7 h-7" />
+              <img src="/images/right.webp" className="ml-1 w-7 h-7" />
             </a>
           </div>
         </div>
         <div className="mt-20">
           <img
-            src="/images/game.jpg"
+            src="/images/game.webp"
             className="sm:w-[120%] w-[100%] h-[400px] object-cover"
             alt="Games"
           />

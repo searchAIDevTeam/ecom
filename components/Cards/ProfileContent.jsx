@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import linkdln from "@/public/images/linkdln.jpg";
+import linkdln from "@/public/images/linkdln.webp";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import {

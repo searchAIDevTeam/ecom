@@ -11,8 +11,6 @@ import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
 import { Pagination, Scrollbar, Mousewheel, FreeMode } from "swiper/modules";
 
-
-
 const Sports = () => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -61,13 +59,13 @@ const Sports = () => {
                 onClick={() => swiper2Ref.current.swiper.slidePrev()}
                 className="custom-prev-button hover:bg-400 hover:scale-110 hover:text-slate-100  "
               >
-                <img className="w-8 h-8" src="/images/back.png" />
+                <img className="w-8 h-8" src="/images/back.webp" />
               </div>
               <div
                 onClick={() => swiper2Ref.current.swiper.slideNext()}
                 className="custom-next-button hover:bg-400 hover:scale-110 hover:text-slate-100"
               >
-                <img className="w-7 h-9" src="/images/right.png" />
+                <img className="w-7 h-9" src="/images/right.webp" />
               </div>
             </div>
           </div>

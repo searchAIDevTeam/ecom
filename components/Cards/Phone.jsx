@@ -21,7 +21,7 @@ const Phone = () => {
         </div>
         <div>
           <Image
-            src="/images/apple.jpg"
+            src="/images/apple.webp"
             alt=""
             width={1350}
             height={500}

@@ -95,7 +95,7 @@ function Header({ howMuchScrolled }) {
   }, []);
 
   return (
-    <header
+    <div
       className={`fixed w-full sm:bg-none  top-0 transition-all ease-in-out duration-300  z-[99999]
        ${isScrolled ? "bg-white" : "bg-white"} 
       
@@ -134,7 +134,7 @@ function Header({ howMuchScrolled }) {
               <Link href="/">
                 <Image
                   onClick={() => handleLinkClick("/home")}
-                  src="/images/ayatriologo.png"
+                  src="/images/ayatriologo.webp"
                   alt="logo"
                   width={300}
                   height={40}
@@ -225,7 +225,7 @@ function Header({ howMuchScrolled }) {
           onSearch={handleSearchChange}
         />
       )}
-    </header>
+    </div>
   );
 }
 export default Header;
