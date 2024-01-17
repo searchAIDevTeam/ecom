@@ -24,19 +24,20 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "localhost:5173"
+        hostname: "localhost:5173",
       },
       {
         protocol: "http",
-        hostname: "localhost"
+        hostname: "localhost",
       },
       {
         protocol: "https",
-        hostname: "wellgroomedgentleman.com"
-      }
+        hostname: "wellgroomedgentleman.com",
+      },
     ],
+    domains: ["images.unsplash.com"],
   },
-  distDir: 'build'
+  distDir: "build",
 };
 
 module.exports = nextConfig;

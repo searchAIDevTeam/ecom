@@ -7,7 +7,7 @@ const DoubleComp = () => {
   return (
     // sm:h-[35rem]
     <div className="py-20 grid sm:grid-cols-2 grid-cols-1 sm:w-auto w-[100%] gap-4 sm:px-[50px] px-[20px]">
-      <div className="col-span-1 ml-0 sm:pr-8 pr-0 bg-zinc-100 text-black overflow-hidden">
+      <div className="col-span-1 ml-0 bg-zinc-100 text-black overflow-hidden">
         <div className="pl-4 pt-4">
           <div className="flex text-3xl  pl-0 pt-0">
             {" "}

@@ -38,11 +38,6 @@ const ProfileContent = () => {
     <div className="transparent rounded-lg h-100 pb-8">
       <Swiper
         spaceBetween={20}
-        // slidesPerView={3}
-        // navigation={{
-        //   nextEl: ".swiper-button-next",
-        //   prevEl: ".swiper-button-prev",
-        // }}
         navigation={{
           nextEl: ".vector-one",
           prevEl: ".vector-two",
@@ -106,8 +101,3 @@ const ProfileContent = () => {
 };
 
 export default ProfileContent;
-
-// mb-6 mt-32 ml-28
-//mb-6 mt-32 ml-16
-//mb-6 mt-32 ml-1
-//mb-6 mt-32 ml-[-48px]

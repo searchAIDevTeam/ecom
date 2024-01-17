@@ -4,11 +4,11 @@ import Image from "next/image";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import Loading from "./Loading";
-import {
-  setSelectedcomItems1,
-  setSelectedcomItems2,
-  setSelectedcomItems3,
-} from "../Features/Slices/selectedItemsSlice";
+// import {
+//   setSelectedcomItems1,
+//   setSelectedcomItems2,
+//   setSelectedcomItems3,
+// } from "../Features/Slices/selectedItemsSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -54,9 +54,14 @@ function App() {
     }
   };
 
+  const t0 = performance.now();
+
   useEffect(() => {
     fetchCategories();
   }, []);
+
+  const t1 = performance.now();
+  console.log(`fetchCategories took ${t1 - t0} milliseconds.`);
   console.log(fetchedCategories);
   const [openPopUp1, setOpenPopUp1] = useState(true);
   const [openPopUp2, setOpenPopUp2] = useState(false);
@@ -103,7 +108,7 @@ function App() {
         : [...prevSelectedItems, { label, parentCategory }]
     );
 
-    dispatch(setSelectedcomItems1({ items1: selectedItems1 }));
+    // dispatch(setSelectedcomItems1({ items1: selectedItems1 }));
   };
 
   const toggleItemSelection2 = (label) => {
@@ -114,7 +119,7 @@ function App() {
         : [...prevSelectedItems, label]
     );
 
-    dispatch(setSelectedcomItems2({ items2: selectedItems2 }));
+    // dispatch(setSelectedcomItems2({ items2: selectedItems2 }));
   };
 
   const toggleItemSelection3 = (label) => {
@@ -124,7 +129,7 @@ function App() {
         ? prevSelectedItems.filter((item) => item !== label)
         : [...prevSelectedItems, label]
     );
-    dispatch(setSelectedcomItems3({ items3: selectedItems3 }));
+    // dispatch(setSelectedcomItems3({ items3: selectedItems3 }));
   };
 
   useEffect(() => {
