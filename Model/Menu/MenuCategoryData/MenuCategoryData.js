@@ -25,8 +25,8 @@ export const menutext = [
     index: 3,
     lebel: "Featured",
     text: [
-        { id: 1, text: "Choose right Floor" },
-        { id: 2, text: "Design assistance" },
+        { id: 1, text: "Virtual Experience" },
+        { id: 2, text: "Magazine" },
         { id: 3, text: "Order a sample request" },
         { id: 4, text: "Customer Service" },
         { id: 5, text: "Installation Guideline" },

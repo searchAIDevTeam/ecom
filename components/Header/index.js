@@ -194,14 +194,19 @@ function Header({ howMuchScrolled }) {
                 />
               </div>
             ) : (
-              <Image
-                src="/svg/icon/profile.svg"
-                onClick={handleLoginNav}
-                alt=""
-                width={25}
-                height={25}
-                className="header-div-icon"
-              />
+              <div
+                className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
+                onClick={handleProfileNav}
+              >
+                <Image
+                  src="/profile.svg"
+                  onClick={handleLoginNav}
+                  alt=""
+                  width={25}
+                  height={25}
+                  className="header-div-icon"
+                />
+              </div>
             )}
             {/* for only mobole search */}
             {isModalOPen && (
