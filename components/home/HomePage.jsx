@@ -1,27 +1,33 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
-import Header from "../Header";
-import Cards from "../Cards";
-import MobileSearchBar from "../MobileSearch";
-import Filter from "../Filter";
+// import Cards from "../Cards";
+const Cards = dynamic(() => import('../Cards'))
+// import MobileSearchBar from "../MobileSearch";
+const MobileSearchBar = dynamic(()=>import('../MobileSearch'))
+// import Filter from "../Filter";
+const Filter = dynamic(()=>import('../Filter'))
 // import ayatrio_store from "../assets/icon/ayatrio_store.svg";
-import "./HomePage.css";
-import PopUp from "../PopUp/PopUp";
+// import "./HomePage.css";
+// import PopUp from "../PopUp/PopUp";
+const PopUp = dynamic(()=>import('../PopUp/PopUp'))
 // import { Oval } from "react-loader-spinner";
-import Expandedbar from "../Header/Expandedbar";
+// import Expandedbar from "../Header/Expandedbar";
+const Expandedbar = dynamic(()=>import('../Header/Expandedbar'))
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const HomePage = () => {
-  const loader = false;
+  // const loader = false;
   const router = useRouter();
 
   // const handleLoginNav = () => {
   //   navigate("/login");
   // };
-  const handleProfileNav = () => {
-    console.log("Profile");
-    router.push("/profile");
-  };
+  // const handleProfileNav = () => {
+  //   console.log("Profile");
+  //   router.push("/profile");
+  // };
 
   const onClose = () => {
     setIsSearchBarVisible(!isSearchBarVisible);
@@ -30,9 +36,9 @@ const HomePage = () => {
   //2nd
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
 
-  const handleSearchIconClick = () => {
-    setIsSearchBarVisible(!isSearchBarVisible);
-  };
+  // const handleSearchIconClick = () => {
+  //   setIsSearchBarVisible(!isSearchBarVisible);
+  // };
 
   const [isFilterVisible, setIsFilterVisible] = useState(true);
 
@@ -57,26 +63,26 @@ const HomePage = () => {
   const popUp =
     typeof window !== "undefined" ? localStorage?.getItem("popUp") : null;
 
-  if (loader) {
-    return (
-      <div className="loader slider-container">
-        <Oval
-          height={100}
-          width={100}
-          color="#FF0000"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="Creating your Ayatrio Experience"
-          secondaryColor="#4fa94d"
-          strokeWidth={2}
-          strokeWidthSecondary={2}
-        />
-      </div>
-    );
-  }
+  // if (loader) {
+  //   return (
+  //     <div className="loader slider-container">
+  //       <Oval
+  //         height={100}
+  //         width={100}
+  //         color="#FF0000"
+  //         wrapperStyle={{}}
+  //         wrapperClass=""
+  //         visible={true}
+  //         ariaLabel="Creating your Ayatrio Experience"
+  //         secondaryColor="#4fa94d"
+  //         strokeWidth={2}
+  //         strokeWidthSecondary={2}
+  //       />
+  //     </div>
+  //   );
+  // }
 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [isFilterHovered, setFilteredContent] = useState(null);
   const handleFilterHover = (content) => {
     setFilteredContent(content);
@@ -115,7 +121,9 @@ const HomePage = () => {
               onClick={() => router.push("/ayatrio-map")}
             >
               Map{" "}
-              <img
+              <Image
+                width={25}
+                height={25}
                 src="/ayatrio_store.svg"
                 alt=""
                 className="header-div-sStore-icon"
@@ -127,7 +135,9 @@ const HomePage = () => {
               onClick={() => router.push("/ayatrio-map")}
             >
               Near Ayatrio{" "}
-              <img
+              <Image
+                width={25}
+                height={25}
                 src="/ayatrio_store.svg"
                 alt=""
                 className="header-div-sStore-icon"

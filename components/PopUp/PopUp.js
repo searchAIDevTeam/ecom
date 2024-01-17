@@ -239,7 +239,7 @@ function App() {
   // console.log("from selecteditems3", Items3selected);
 
   return (
-    <div className="App">
+    <div className="App ">
       {openPopUp1 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
@@ -265,6 +265,10 @@ function App() {
                             prevEl: ".swiper-button-prev",
                           }}
                           breakpoints={{
+                            320: {
+                              slidesPerView: 3,
+                              spaceBetween: 5,
+                            },
                             1024: {
                               slidesPerView: 4,
                               spaceBetween: 5,
@@ -337,7 +341,7 @@ function App() {
               </>
             )}
           </div>
-          <div className="w-[600px] bg-white p-2 pl-6 fixed-button">
+          <div className="sm:w-[600px] [w-90vw] bg-white p-2 sm:pl-6 pl-0 fixed-button">
             <button className="next" onClick={handleNext}>
               Next
             </button>
@@ -389,7 +393,7 @@ function App() {
           <div className="cont1">
             <div className="head">
               <img
-                src="/images/back.png"
+                src="/images/back.webp"
                 className="back"
                 onClick={goTo2}
                 alt="Back"
