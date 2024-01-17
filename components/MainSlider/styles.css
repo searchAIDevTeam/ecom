@@ -112,7 +112,7 @@ img {
   background: var(--black-300);
 }
 
-
+/* 
 .swiper-button-prev::after {
   display: flex;
   align-items: center;
@@ -126,4 +126,4 @@ img {
   border-radius: 50%;
   color: var(--white-100);
   background: var(--black-300);
-}
+} */

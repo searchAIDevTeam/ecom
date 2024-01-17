@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
-import "./styles.css";
+// import "./styles.css";
 function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
   const popupRef = useRef(null);
   useEffect(() => {
@@ -13,7 +13,7 @@ function PopUp({ isPopupVisible, setPopupVisible, closePopup }) {
     <div>
       {isPopupVisible && (
         <>
-          <div className="popup h-[100vh]" ref={popupRef}>
+          <div className="h-[100vh]" ref={popupRef}>
             <div className="bg-white px-4 w-[50%] h-full border rounded-3xl shadow-2xl overflow-y-scroll">
               <div className="flex justify-start mt-2 mr-2 cursor-pointer">
                 <Image width={10} height={10} alt="close" onClick={closePopup} className="text-2xl" />

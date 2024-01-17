@@ -1,42 +1,44 @@
+import Image from "next/image";
+
 const gridData = [
   {
-    image:
-      "https://www.ikea.com/images/8f/43/8f43c1948aa13a642442266d4859d9af.jpg?f=s",
+    id: 1,
+    image: "/sustainabilityImg/sustain1.avif",
     text: "Energy and resources",
   },
   {
-    image:
-      "https://www.ikea.com/images/24/a5/24a5dca4e09d5a6b79c4f7cd7c876006.jpg?f=s",
+    id: 2,
+    image: "/sustainabilityImg/sustain2.avif",
     text: "Healthy living",
   },
   {
-    image:
-      "https://www.ikea.com/images/being-a-large-business-comes-with-large-responsibilities-our-449a3cba6e6180fa8c1a31149f4a9602.jpg?f=s",
+    id: 3,
+    image: "/sustainabilityImg/sustain3.avif",
     text: "Large business, large responsibilities",
   },
   {
-    image:
-      "https://www.ikea.com/images/tapping-into-more-ways-to-use-less-water-8e2cc4c6db46b2e4efc6fff8a981d13a.jpg?f=s",
+    id: 4,
+    image: "/sustainabilityImg/sustain4.avif",
     text: "More ways to save water",
   },
   {
-    image:
-      "https://www.ikea.com/images/led-lightbulb-hanging-from-a-black-cord-against-a-dark-blue--bb1e572e1de69c72e66e032369014070.jpg?f=s",
+    id: 5,
+    image: "/sustainabilityImg/sustain5.avif",
     text: "A brighter life at home with LED",
   },
   {
-    image:
-      "https://www.ikea.com/images/2e/9e/2e9e4b1b3d586e89c7f449938a17654e.jpg?f=s",
+    id: 6,
+    image: "/sustainabilityImg/sustain6.avif",
     text: "Less waste, more value",
   },
   {
-    image:
-      "https://www.ikea.com/images/00/2e/002e3a6ef6ca0d7c3d520193ca6e4d90.png?f=s",
+    id: 7,
+    image: "/sustainabilityImg/sustain7.avif",
     text: "Switch on some sustainable light",
   },
   {
-    image:
-      "https://www.ikea.com/images/community-engagement-3f55eb7cad9507842d35ecd80c1c210d.jpg?f=s",
+    id: 8,
+    image: "/sustainabilityImg/sustain8.avif",
     text: "Community Engagement",
   },
 ];
@@ -44,7 +46,7 @@ const gridData = [
 const SustainabilityPage = () => {
   return (
     <div>
-      <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
+      <div className="mt-20 sm:px-[50px] px-[20px] p-10 space-y-10">
         {/* Being sustainable section starts */}
         <section>
           <div className="flex flex-col md:w-2/3 space-y-10">
@@ -99,7 +101,7 @@ const SustainabilityPage = () => {
               {gridData.map((curElement) => {
                 return (
                   <div className="flex flex-col space-y-1 cursor-pointer hover:underline">
-                    <img src={curElement.image} />
+                    <Image width={600} height={338} src={curElement.image} alt="" />
                     <p className="font-bold text-xl">{curElement.text}</p>
                   </div>
                 );

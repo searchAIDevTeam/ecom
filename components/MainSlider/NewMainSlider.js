@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { content } from "./mainslide-list";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,6 +9,8 @@ import { Autoplay, Navigation } from "swiper/modules";
 import SwiperCore from "swiper/core";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSliderData } from "../Features/Slices/sliderSlice";
 SwiperCore.use([Autoplay, Navigation]);
 
 export default function NewMainSlider() {
@@ -16,13 +18,32 @@ export default function NewMainSlider() {
   const handleTab = () => {
     router.push("/room");
   };
-  const [hov, setHov] = React.useState(false);
-  const handleEnter = () => {
-    setHov(true);
-  };
-  const handleLeave = () => {
-    setHov(false);
-  };
+  const[hov,setHov]=React.useState(false)
+ const handleEnter=()=>{
+  setHov(true);
+ };
+ const handleLeave=()=>{
+  setHov(false);
+
+ }
+ const dispatch = useDispatch();
+ const SliderViewData = useSelector(selectSliderData);
+ const [page,setPage] = useState(1);
+ useEffect(() => {
+  if (!SliderViewData || SliderViewData.length === 0) {
+    fetchData();
+  }
+}, [page]);
+const fetchData = () => {
+  dispatch({
+    type: "FETCH_SLIDER_VIEW_REQUEST",
+    payload: {
+      page: page,
+      limit: 3,
+    },
+  });
+};
+console.log(SliderViewData);
   return (
     <div>
       <Swiper

@@ -1,4 +1,4 @@
-import { Jost } from "next/font/google";
+import localFont from "next/font/local"
 import "./globals.css";
 import { Providers } from "@/provider";
 // import Header from "@/components/Header";
@@ -6,9 +6,8 @@ import { Providers } from "@/provider";
 import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
 import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
 
-const jost = Jost({ 
-  subsets: ["latin"],
-  variable:'--font-jost',
+const myFont = localFont({ 
+  src:"../public/Font/Jost-Regular.ttf",
  });
 
 export const metadata = {
@@ -20,7 +19,7 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={jost.className}>
+      <body style={myFont.style}>
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
 
         <Providers>

@@ -1,16 +1,24 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
-import Cards from "../Cards";
-import MobileSearchBar from "../MobileSearch";
-import Filter from "../Filter";
-import "./HomePage.css";
-import PopUp from "../PopUp/PopUp";
-import Expandedbar from "../Header/Expandedbar";
+// import Cards from "../Cards";
+const Cards = dynamic(() => import('../Cards'))
+// import MobileSearchBar from "../MobileSearch";
+const MobileSearchBar = dynamic(()=>import('../MobileSearch'))
+// import Filter from "../Filter";
+const Filter = dynamic(()=>import('../Filter'))
+// import ayatrio_store from "../assets/icon/ayatrio_store.svg";
+// import "./HomePage.css";
+// import PopUp from "../PopUp/PopUp";
+const PopUp = dynamic(()=>import('../PopUp/PopUp'))
+// import { Oval } from "react-loader-spinner";
+// import Expandedbar from "../Header/Expandedbar";
+const Expandedbar = dynamic(()=>import('../Header/Expandedbar'))
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const HomePage = () => {
-  const loader = false;
+  // const loader = false;
   const router = useRouter();
 
   const handleProfileNav = () => {
@@ -25,9 +33,9 @@ const HomePage = () => {
   //2nd
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
 
-  const handleSearchIconClick = () => {
-    setIsSearchBarVisible(!isSearchBarVisible);
-  };
+  // const handleSearchIconClick = () => {
+  //   setIsSearchBarVisible(!isSearchBarVisible);
+  // };
 
   const [isFilterVisible, setIsFilterVisible] = useState(true);
 
@@ -71,7 +79,7 @@ const HomePage = () => {
   //   );
   // }
 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [isFilterHovered, setFilteredContent] = useState(null);
   const handleFilterHover = (content) => {
     setFilteredContent(content);
