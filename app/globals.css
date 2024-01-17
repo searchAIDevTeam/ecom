@@ -8,6 +8,13 @@
     box-shadow: 2px 2px 0 theme("colors.orange.600");
   }
 }
+/* @font-face {
+  font-family: "Jost";
+  src: url("/public/Jost/static/Jost-Regular.ttf");
+}
+.Jost{
+  font-family: "Jost";
+} */
 /* *{
   font-family: 'jost';
 } */

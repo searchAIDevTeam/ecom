@@ -41,7 +41,7 @@ const Double = () => {
       {/* Third Section */}
       <div className="ml-2 mt-[-12px]">
         <div className="ml-28 mb-3">
-          <Image src="/music.svg" height={20} width={20} alt="music" />
+          <Image src="/svg/icon/music.svg" height={20} width={20} alt="music" />
         </div>
         <img
           src="/images/cover.webp"

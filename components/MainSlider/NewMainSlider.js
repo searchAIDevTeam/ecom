@@ -104,7 +104,7 @@ export default function NewMainSlider() {
                 <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
                   <Image
                     className="flex ml-2"
-                    src="/backarrowRevarce.svg"
+                    src="/svg/dropdown/backarrowRevarce.svg"
                     height={20}
                     width={20}
                     alt="arrow"
@@ -118,7 +118,7 @@ export default function NewMainSlider() {
 ))}
           <div className="swiper-pagination"></div>
         {/* <div className="swiper-button-prev"></div> */}
-        <Image src='/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-next sm:-translate-y-[150px]"/>
+        <Image src='/svg/dropdown/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-next sm:-translate-y-[150px]"/>
       </Swiper>
     </div>
   );

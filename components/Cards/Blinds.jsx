@@ -2,8 +2,6 @@ import Card from "./card";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./styles.css";
-// import back from '../../assets/back.png'
-// import right from '../../assets/right.png';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";

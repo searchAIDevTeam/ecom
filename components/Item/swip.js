@@ -39,7 +39,7 @@ function Carousel({ data }) {
         );
       })}
       {isHovered && (
-        <Image src="/rightvector.svg" width={20} height={20} alt="back arrow"
+        <Image src="/svg/dropdown/rightvector.svg" width={20} height={20} alt="back arrow"
           onClick={nextSlide}
           className="arrow arrow-right"
         />

@@ -38,11 +38,6 @@ const ProfileContent = () => {
     <div className="transparent rounded-lg h-100 pb-8">
       <Swiper
         spaceBetween={20}
-        // slidesPerView={3}
-        // navigation={{
-        //   nextEl: ".swiper-button-next",
-        //   prevEl: ".swiper-button-prev",
-        // }}
         navigation={{
           nextEl: ".vector-one",
           prevEl: ".vector-two",
@@ -70,7 +65,7 @@ const ProfileContent = () => {
                 <a href="#">
                   <Image
                     className="sm:h-10 h-10 sm:w-10 w-10 -mt-1"
-                    src="/linkedln.svg"
+                    src="/social-icon/linkedln.svg"
                     height={6}
                     width={6}
                     alt={`LinkedIn for ${person.name}`}
@@ -86,14 +81,14 @@ const ProfileContent = () => {
         ))}
         <div className="flex flex-row items-end justify-end gap-6">
           <Image
-            src="/leftvector.svg"
+            src="/svg/dropdown/leftvector.svg"
             width={20}
             height={20}
             alt="Arrow"
             className="vector-two bg-gray-300 rounded-full h-7 w-7"
           />
           <Image
-            src="/rightvector.svg"
+            src="/svg/dropdown/rightvector.svg"
             width={20}
             height={20}
             alt="Arrow"
@@ -106,8 +101,3 @@ const ProfileContent = () => {
 };
 
 export default ProfileContent;
-
-// mb-6 mt-32 ml-28
-//mb-6 mt-32 ml-16
-//mb-6 mt-32 ml-1
-//mb-6 mt-32 ml-[-48px]

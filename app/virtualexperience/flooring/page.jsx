@@ -81,7 +81,7 @@ const Content1 = () => {
                 <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
                   <div className="circle-container relative flex justify-center items-center">
                     <Image
-                      src="/tick.svg"
+                      src="/svg/icon/tick.svg"
                       alt="tick"
                       width={30}
                       height={30}

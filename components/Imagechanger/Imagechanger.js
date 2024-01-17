@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import Image from "next/image";
@@ -66,9 +67,9 @@ const Imagechanger = () => {
                     {value.heading}
                   </h1>
                   {index === idx ? (
-                    <Image src='/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
                   ) : (
-                    <Image src='/down.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
                   )}
                 </div>
               </>
@@ -82,9 +83,9 @@ const Imagechanger = () => {
                   {value.heading}
                 </h1>
                 {openStates[idx] ? (
-                  <Image src='/up.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
                 ) : (
-                  <Image src='/down.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
                 )}
               </div>
             )}
@@ -109,7 +110,7 @@ const Imagechanger = () => {
               alt=""
               className={` w-full h-full ${
                 index === i ? "visible" : "hidden"
-              } lazyloaded`}
+              } `}
             />
           ))}
           <div className="absolute bottom-4 left-4 flex text-white text-lg">Your text</div>

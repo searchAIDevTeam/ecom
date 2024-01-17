@@ -137,30 +137,3 @@
 }
 
 
-/* @-webkit-keyframes slide_animation{
-  0% {left:0px}
-  10% {left:0px}
-  20% {left:1200px}
-  30% {left:1200px}
-  40% {left: 2400px}
-  50% {left:2400px}
-  60% {left:1200px}
-  70% {left:1200px}
-  80% {left:0px}
-  90% {left:0px}
-  100% {left:0px}
-} */
-
-/* .slider-cont{
-  -webkit-animation-name: slide_animation;
-  -webkit-animation-duration: 20s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-transition-timing-function: linear !important;
-  transition-timing-function: linear !important;
-  animation-timing-function: linear;
-  position: relative;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-
-} */

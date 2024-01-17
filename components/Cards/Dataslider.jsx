@@ -15,15 +15,13 @@ import {
   Items2selected,
   Items3selected,
 } from "../Features/Slices/selectedItemsSlice";
-// import SelectedItemsRow from "./selectedItemsRow";
 
 const Dataslider = ({ category, data, sliderIndex }) => {
   const itm1 = useSelector(Items1selected);
-  // console.log("from dataslider itm1", itm1);
+
   const itm2 = useSelector(Items2selected);
-  // console.log("from dataslider itm2", itm2);
+
   const itm3 = useSelector(Items2selected);
-  // console.log("from dataslider itm3", itm3);
 
   const swiperRef = useRef(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -57,7 +55,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               className={`custom-prev-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100 pr-6`}
             >
               <Image
-                src="/leftvector.svg"
+                src="/svg/dropdown/leftvector.svg"
                 width={20}
                 height={20}
                 alt="Arrow"
@@ -69,7 +67,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               className={`custom-next-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100`}
             >
               <Image
-                src="/rightvector.svg"
+                src="/svg/dropdown/rightvector.svg"
                 width={20}
                 height={20}
                 alt="Arrow"
@@ -94,10 +92,6 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               spaceBetween: 5,
             },
 
-            // 640: {
-            //   slidesPerView: 1.25,
-            //   spaceBetween: 5,
-            // },
             1024: {
               slidesPerView: 4,
               spaceBetween: 1,
