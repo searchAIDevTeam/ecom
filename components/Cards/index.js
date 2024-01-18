@@ -27,44 +27,56 @@ const Phone = dynamic(() => import("./Phone"));
 const DoubleComp = dynamic(() => import("./DoubleComp"));
 // import Trending from "./Trending";
 const Trending = dynamic(() => import("./Trending"));
-// import Dataslider from "./Dataslider";
-const Dataslider = dynamic(() => import("./Dataslider"));
+import Dataslider from "./Dataslider";
+// const Dataslider = dynamic(() => import("./Dataslider"));
 // import NewMainSlider from "../MainSlider/NewMainSlider";
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
 
 function Cards() {
-
   const [recommended, setRecommended] = useState([]);
-
-  if (typeof window !== "undefined") {
-    var id = localStorage.getItem("deviceId");
-  }
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // setDeviceId(id);
-    const getRecommendedData = async () => {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getRecommendation?deviceId=${id}`
-      );
-      setRecommended(response.data);
+    const fetchRecommendedData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getRecommendation?deviceId=${id}`
+        );
+        setRecommended(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    getRecommendedData();
+    if (typeof window !== "undefined") {
+      var id = localStorage.getItem("deviceId");
+    }
+
+    fetchRecommendedData();
   }, []);
 
   const Partdata = (cat) => {
-    return recommended?.products?.filter((item) => item.category === `${cat}`);
+    return  recommended?.recommendations?.[0]?.recommendedProducts?.filter((item) => item.category === `${cat}`) || [];
   };
-  const categories = recommended?.products?.map((item) => item.category);
-  let uniqueCategories = [...new Set(categories)];
 
-  //memo hook
+  const categories = recommended?.recommendations?.[0]?.recommendedProducts?.map((item) => item.category) || [];
+  let uniqueCategories = [...new Set(categories)];
+  console.log(uniqueCategories)
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
   const MemoizedProfileContent = useMemo(() => <Profile />, []);
   const MemoizedTrendingProducts = useMemo(() => <Trending />, []);
+
   const datasliderRefs = useRef([]);
+
   useEffect(() => {
     datasliderRefs.current = uniqueCategories.map(() => React.createRef());
   }, [uniqueCategories]);
+
+  if (loading) {
+    return <div>Loading...</div>; // or another loading indicator
+  }
+
   return (
     <div className="">
       {MemoizedMainSlider}
@@ -78,20 +90,17 @@ function Cards() {
       </div>
       {/* 1st */}
       <Image />
-      {uniqueCategories?.map((item, index) => {
-        return (
-          <Dataslider
-            key={index}
-            category={item}
-            sliderIndex={index}
-            data={Partdata(item)}
-            ref={datasliderRefs.current[index]} // Pass the ref to Dataslider
-          />
-        );
-      })}
+      {uniqueCategories?.map((item, index) => (
+        <Dataslider
+          key={item} 
+          category={item}
+          sliderIndex={index}
+          data={Partdata(item)}
+          ref={datasliderRefs.current[index]}
+        />
+      ))}
 
       <Multicard />
-      {/* removed for overlape sm:h-[80vh] */}
       <div className="w-full sm:px-[50px] px-[20px] py-20  h-auto">
         <Imagechanger />
       </div>
@@ -102,4 +111,5 @@ function Cards() {
     </div>
   );
 }
+
 export default Cards;
