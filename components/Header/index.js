@@ -199,7 +199,7 @@ function Header({ howMuchScrolled }) {
                 onClick={handleProfileNav}
               >
                 <Image
-                  src="/profile.svg"
+                  src="/svg/icon/profile.svg"
                   onClick={handleLoginNav}
                   alt=""
                   width={25}
