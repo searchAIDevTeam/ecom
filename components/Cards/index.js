@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useMemo } from "react";
 import "./styles.css";
@@ -33,8 +33,6 @@ const Dataslider = dynamic(() => import("./Dataslider"));
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
 
 function Cards() {
-  const keyid = useId();
-  console.log(keyid);
   // const [isPopupVisible, setPopupVisible] = useState(false);
 
   // const closePopup = () => {
@@ -94,7 +92,7 @@ function Cards() {
       {uniqueCategories?.map((item, index) => {
         return (
           <Dataslider
-            key={keyid}
+            key={index}
             category={item}
             sliderIndex={index}
             data={Partdata(item)}
