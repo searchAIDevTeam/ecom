@@ -58,8 +58,8 @@ body {
   display: flex;
   flex-direction: column;
   padding: 25px;
-  overflow: auto;
-  overflow-x: hidden;
+  /* overflow: auto;
+  overflow-x: hidden; */
   z-index: 9999;
   position: fixed;
   top: 12vh;
@@ -76,7 +76,7 @@ body {
 .next {
   padding: 8px;
   width: 34rem;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
   color: white;
   background-color: black;
   border-radius: 20px;
@@ -89,7 +89,21 @@ body {
     color: white;
   } */
 }
+.images{
+  margin-top: -3rem;
+}
+.images::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+.images2{
+  margin-top: -1.5rem;
+}
 
+
+.images3{
+  margin-top: -1.5rem;
+}
 .below {
   display: flex;
   flex-direction: column;
