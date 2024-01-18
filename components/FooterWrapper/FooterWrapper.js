@@ -6,7 +6,7 @@ const Footer = dynamic(()=>import('../Footer/Footer'));
 
 const FooterWrapper = () => {
   const pathname = usePathname();
-  console.log(pathname);
+
   const routes = ["/ayatrio-map", "/", "/login"];
   if (routes.includes(pathname)) {
     return null;

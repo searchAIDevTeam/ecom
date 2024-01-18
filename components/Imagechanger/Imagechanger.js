@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import Image from "next/image";
@@ -15,7 +14,7 @@ const Imagechanger = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getMidInfoSection`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setApiData(response.data);
       } catch (error) {
         console.error("Error fetching API data:", error);
@@ -28,11 +27,6 @@ const Imagechanger = () => {
     "dsadasdorem ipsum dolor sit amet, consectetur adipissit amet, consect eiusmod tempor incididunt ut labore et dolore magnasit amet, consect eiusmod tempor incididunt ut labore et dolore magnacing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
     "orem ipsudolor sit amet, consect eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim v dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisc dolor sit amet, consectetur adipisciieniam,",
     "lorem ipsum dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipisci dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
-  ];
-  const Heading = [
-    "Watch your heart",
-    "Tune into your wellness",
-    "Improve your sleep habits",
   ];
 
   const handleToggle = (clickedIndex) => {
@@ -67,9 +61,21 @@ const Imagechanger = () => {
                     {value.heading}
                   </h1>
                   {index === idx ? (
-                    <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image
+                      src="/svg/dropdown/up.svg"
+                      width={20}
+                      height={20}
+                      alt="up"
+                      className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer "
+                    />
                   ) : (
-                    <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image
+                      src="/svg/dropdown/down.svg"
+                      width={20}
+                      height={20}
+                      alt="up"
+                      className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer "
+                    />
                   )}
                 </div>
               </>
@@ -83,9 +89,21 @@ const Imagechanger = () => {
                   {value.heading}
                 </h1>
                 {openStates[idx] ? (
-                  <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image
+                    src="/svg/dropdown/up.svg"
+                    width={20}
+                    height={20}
+                    alt="up"
+                    className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer"
+                  />
                 ) : (
-                  <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image
+                    src="/svg/dropdown/down.svg"
+                    width={20}
+                    height={20}
+                    alt="up"
+                    className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer"
+                  />
                 )}
               </div>
             )}
@@ -113,7 +131,9 @@ const Imagechanger = () => {
               } `}
             />
           ))}
-          <div className="absolute bottom-4 left-4 flex text-white text-lg">Your text</div>
+          <div className="absolute bottom-4 left-4 flex text-white text-lg">
+            Your text
+          </div>
         </div>
       </div>
     </div>

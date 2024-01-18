@@ -43,9 +43,9 @@ const Multicard = () => {
             },
           }}
         >
-          {multiCardData.map((curElement) => {
+          {multiCardData.map((curElement, idx) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={idx}>
                 <MultiCardContent
                   iconPath={curElement.iconPath}
                   iconSize={curElement.iconSize}

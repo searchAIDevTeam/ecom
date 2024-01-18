@@ -16,10 +16,7 @@ import { curtainsCategoryData } from "@/Model/Dropdown/CategoryData/CurtainsCate
 import { inspirationFeaturedData } from "@/Model/Dropdown/FeaturedData/InspirationFeaturedData";
 import { inspirationCategoryData } from "@/Model/Dropdown/CategoryData/InspirationCategoryData";
 
-function Filter({
-  isFilterHovered,
-  onFilterHover,
-}) {
+function Filter({ isFilterHovered, onFilterHover }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isBlur, setIsBlur] = useState(false);
@@ -226,9 +223,9 @@ function Filter({
                           : idx === 4
                           ? inspirationCategoryData
                           : wallpaperCategoryData
-                        ).map((category) => {
+                        ).map((category, idx) => {
                           return (
-                            <div>
+                            <div key={idx}>
                               <CategoryContent
                                 categoryHeading={category.categoryHeading}
                                 categoryData={category.categoryData}

@@ -28,9 +28,9 @@ const Double = () => {
           slideShadows: false,
         }}
       >
-        {musicSwiperData.map((curElement) => {
+        {musicSwiperData.map((curElement, idx) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={idx}>
               <div className="mr-2 mt-6 ">
                 <Image
                   width={208}
@@ -49,8 +49,20 @@ const Double = () => {
             </SwiperSlide>
           );
         })}
-        <Image src='/svg/dropdown/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-prev sm:-translate-y-[150px] rotate-180 sm:-translate-x-[585px] sm:block hidden"/>
-        <Image src='/svg/dropdown/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-next sm:-translate-y-[150px] sm:block hidden"/>
+        <Image
+          src="/svg/dropdown/rightvector.svg"
+          width={30}
+          height={30}
+          alt="arrow"
+          className="swiper-button-prev sm:-translate-y-[150px] rotate-180 sm:-translate-x-[585px] sm:block hidden"
+        />
+        <Image
+          src="/svg/dropdown/rightvector.svg"
+          width={30}
+          height={30}
+          alt="arrow"
+          className="swiper-button-next sm:-translate-y-[150px] sm:block hidden"
+        />
       </Swiper>
     </div>
   );

@@ -10,7 +10,6 @@ import linkdln from "@/public/images/linkdln.webp";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  loadProfileFetch,
   selectProfileData,
 } from "../Features/Slices/profileSlice";
 
@@ -27,8 +26,6 @@ const ProfileContent = () => {
   ];
   const [peopleState, setPeopleState] = useState(peopleData);
   const profileData = useSelector(selectProfileData);
-  const profileLoad = useSelector(loadProfileFetch);
-  console.log(profileData);
   useEffect(() => {
     if (profileData) {
       setPeopleState(profileData);
