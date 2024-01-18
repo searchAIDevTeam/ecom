@@ -8,6 +8,7 @@ import { watchSelectedItemsSaga } from "./selectedItemsSaga";
 import { watchFetchProfileData } from "./profileSaga";
 import { watchFetchRoomData } from "./roomSaga";
 import { cartSaga } from "./cartSaga";
+import { watchSelectedProductsSaga } from "./compareSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     watchFetchRoomData(),
     watchSelectedItemsSaga(),
     cartSaga(),
+    watchSelectedProductsSaga(),
   ]);
 }

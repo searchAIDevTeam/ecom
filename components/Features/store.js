@@ -12,6 +12,7 @@ import authReducer from "./auth/authSlice";
 import profileReducer from "./Slices/profileSlice";
 import selectedItemsReducer from './Slices/selectedItemsSlice'
 import cartReducer from './Slices/cartSlice'
+import selectedProductReducer from './Slices/compareSlice'
 const sagaMiddleware = createSagaMiddleware();
 
 const roomsReducer = (state = { selectedActivity: {} }, action) => {
@@ -45,7 +46,8 @@ export const store = configureStore({
     form:formReducer,
     profile: profileReducer,
     selectedItems:selectedItemsReducer,
-    cart:cartReducer
+    cart:cartReducer,
+    selectedproduct:selectedProductReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

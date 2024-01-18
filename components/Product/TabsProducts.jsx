@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { useRouter, usePathname } from "next/navigation";
+import { setselectedproduct } from "../Features/Slices/compareSlice";
 import {
   srtarr,
   typeContent,
@@ -25,6 +27,7 @@ import TabsProductContent from "../compounds/TabsProductContent";
 const Tabs = ({ filteredProducts, heading }) => {
   console.log("Filtered products:", filteredProducts);
   const router = useRouter();
+  const dispatch = useDispatch();
   const handlenav = (id) => {
     router.push(`/room/${id}`);
   };
@@ -206,8 +209,30 @@ const Tabs = ({ filteredProducts, heading }) => {
 
     console.log(filterer);
   };
-  
-  const collectionArr = heading==="Wallpaper"?wallpaperCollectionArr:flooringCollectionArr;
+
+  const collectionArr =
+    heading === "Wallpaper" ? wallpaperCollectionArr : flooringCollectionArr;
+
+  const [selectedpdt, selectedsetpdt] = useState([]);
+  const handleCheckbox = (item, isChecked) => {
+    if (isChecked) {
+      selectedsetpdt([...selectedpdt, item]);
+    } else {
+      selectedsetpdt(selectedpdt.filter((i) => i._id !== item._id));
+    }
+  };
+  const pathname = usePathname();
+
+  const handleCompareClick = () => {
+    console.log("Selected Products:", selectedpdt);
+    dispatch(setselectedproduct(selectedpdt));
+    console.log("length of array", selectedpdt.length);
+    if (selectedpdt.length === 3) {
+      router.push(pathname + "/compare");
+    } else if (selectedpdt.length === 2) {
+      router.push(pathname + "/compare2");
+    }
+  };
 
   return (
     <>
@@ -494,30 +519,34 @@ const Tabs = ({ filteredProducts, heading }) => {
                       <hr />
 
                       {/* 4th div */}
-                      {heading==="Wallpaper"?<><div className="flex flex-col gap-7">
-                        <div
-                          onClick={handleAllCategory}
-                          className="text-left flex justify-between"
-                        >
-                          Design style &nbsp;
-                          <Image
-                            src="/svg/dropdown/backarrow.svg"
-                            width={40}
-                            height={40}
-                            className={`w-6 h-6  mt-1
+                      {heading === "Wallpaper" ? (
+                        <>
+                          <div className="flex flex-col gap-7">
+                            <div
+                              onClick={handleAllCategory}
+                              className="text-left flex justify-between"
+                            >
+                              Design style &nbsp;
+                              <Image
+                                src="/svg/dropdown/backarrow.svg"
+                                width={40}
+                                height={40}
+                                className={`w-6 h-6  mt-1
                 ${openAllCategory ? " rotate-90" : "-rotate-90"}
                 
                 `}
-                            alt=""
-                          />
-                        </div>
-                        {openAllCategory ? (
-                          <div className="flex flex-col gap-7">
-                            {categoryarr.map(rendercategory)}
+                                alt=""
+                              />
+                            </div>
+                            {openAllCategory ? (
+                              <div className="flex flex-col gap-7">
+                                {categoryarr.map(rendercategory)}
+                              </div>
+                            ) : null}
                           </div>
-                        ) : null}
-                      </div>
-                      <hr /></>:null}
+                          <hr />
+                        </>
+                      ) : null}
                       {/* Collections div */}
                       <div className="flex flex-col gap-7">
                         <div
@@ -606,7 +635,7 @@ const Tabs = ({ filteredProducts, heading }) => {
 
           <hr />
           {/* iimages */}
-          <div className="image-product relative z-10">
+          <div className="image-product relative z-10 flex flex-row">
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
               {filterData.map((text, idx) => (
                 <div
@@ -614,9 +643,14 @@ const Tabs = ({ filteredProducts, heading }) => {
                   key={idx}
                   onClick={() => handlenav(text._id)}
                 >
-                  <div className="flex justify-between text-black checkbox-div">
-                    <input type="checkbox" />
-                    <label htmlFor="">Compare</label>
+                  <div
+                    onClick={(event) => event.stopPropagation()}
+                    className="flex justify-between text-black checkbox-div"
+                  >
+                    <input
+                      type="checkbox"
+                      onChange={(e) => handleCheckbox(text, e.target.checked)}
+                    />
                   </div>
                   <img src={text.images[0]} alt="" />
                   <p className="text-sm font-semibold">{text.productTitle}</p>
@@ -625,10 +659,30 @@ const Tabs = ({ filteredProducts, heading }) => {
                     Rs. <span className="text-3xl"> {text.totalPrice}</span>
                   </p>
                   <p className="text-sm flex flex-row gap-1 items-center text-black">
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
                     <Image
                       src="/svg/icon/half-star.svg"
                       alt="star"
@@ -649,6 +703,14 @@ const Tabs = ({ filteredProducts, heading }) => {
                   </div>
                 </div>
               ))}
+            </div>
+            <div>
+              <button
+                onClick={handleCompareClick}
+                className="bg-black text-white px-3 py-2 whitespace-nowrap rounded-full"
+              >
+                Compare Products
+              </button>
             </div>
           </div>
         </div>
