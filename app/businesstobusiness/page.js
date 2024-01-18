@@ -1,84 +1,6 @@
 "use client";
 import Image from "next/image";
-
-const expertDesigners = [
-  {
-    id: 1,
-    image: "/Businesstobusinessimg/designer1.jpg",
-    name: "Charity DeLeora Ray",
-    city: "Broadway, NY",
-  },
-  {
-    id: 2,
-    image: "/Businesstobusinessimg/designer2.jpg",
-    name: "Scott Charles",
-    city: "Chelsea, NY",
-  },
-  {
-    id: 3,
-    image: "/Businesstobusinessimg/designer3.avif",
-    name: "Sherry Carlson",
-    city: "Edina, MN",
-  },
-  {
-    id: 4,
-    image: "/Businesstobusinessimg/designer4.jpg",
-    name: "Angel Lim",
-    city: "Skokie, IL",
-  },
-  {
-    id: 5,
-    image: "/Businesstobusinessimg/designer5.jpg",
-    name: "Sarah Dover",
-    city: "Providence, RI",
-  },
-  {
-    id: 6,
-    image: "/Businesstobusinessimg/designer6.jpeg",
-    name: "Stephanie Fong",
-    city: "Son Ramon, CA",
-  },
-  {
-    id: 7,
-    image: "/Businesstobusinessimg/designer7.jpg",
-    name: "Silema Bogans",
-    city: "Emeryville, CA",
-  },
-  {
-    id: 8,
-    image: "/Businesstobusinessimg/designer8.jpg",
-    name: "Alison Metzger",
-    city: "Kansas City, M.O",
-  },
-];
-
-const ideasAndAdvice = [
-  {
-    id: 1,
-    image: "/Businesstobusinessimg/ideas1.jpeg",
-    text: "Pillows & throws inspiration",
-  },
-  {
-    id: 2,
-    image: "/Businesstobusinessimg/ideas2.jpeg",
-    text: "How to choose the right upholstery fabric",
-  },
-  {
-    id: 3,
-    image: "/Businesstobusinessimg/ideas3.jpeg",
-    text: "How to hang your gallery art",
-  },
-  {
-    id: 4,
-    image: "/Businesstobusinessimg/ideas4.jpeg",
-    text: "How to choose the right lighting",
-  },
-  {
-    id: 5,
-    image: "/Businesstobusinessimg/ideas5.jpeg",
-    text: "How to decorate with color",
-  },
-];
+import { expertDesigners, ideasAndAdvice } from "@/Model/BusinessToBusinessData/BusinessToBusinessData";
 
 const DesignServicePage = () => {
   return (
@@ -109,7 +31,6 @@ const DesignServicePage = () => {
               </div>
             </div>
           </section>
-          {/* Free one on one section ends */}
           {/* Our services section starts */}
           <section>
             <div className="flex flex-col w-full space-y-4">
@@ -176,7 +97,6 @@ const DesignServicePage = () => {
               </div>
             </div>
           </section>
-          {/* Our services section ends */}
           {/* 2 divs section starts */}
           <section>
             <div className="flex flex-col md:flex-row w-full">
@@ -209,9 +129,6 @@ const DesignServicePage = () => {
                       let us help refurnish your home
                     </h2>
                   </div>
-                  {/* <div className="w-1/3">
-                      <img className="items-end" src="https://design-crew.vercel.app/assets/zigzag-EtSpoOM4.png"/>
-                    </div> */}
                   <div>
                     <button className="py-2 bg-black px-3 rounded-sm text-white font-semibold">
                       request an appointment
@@ -221,7 +138,6 @@ const DesignServicePage = () => {
               </div>
             </div>
           </section>
-          {/* 2 divs section ends */}
           {/* meet our expert designer section starts */}
           <section>
             <div className="flex w-full flex-col gap-5 items-center">
@@ -234,7 +150,6 @@ const DesignServicePage = () => {
                 {expertDesigners.map((curElement) => {
                   return (
                     <div className="flex items-center justify-between h-[350px] flex-col space-y-3 border-none rounded-sm bg-slate-200 p-4 pt-5">
-                      {/* <div className="w-2/3"> */}
                       <Image
                         width={200}
                         height={200}
@@ -242,7 +157,6 @@ const DesignServicePage = () => {
                         className="h-[200px] w-[200px] object-cover rounded-full"
                         src={curElement.image}
                       />
-                      {/* </div> */}
                       <div className="items-center flex flex-col">
                         <div>
                           <p className="font-bold text-xl">{curElement.name}</p>
@@ -262,7 +176,6 @@ const DesignServicePage = () => {
               </div>
             </div>
           </section>
-          {/* meet our expert designer section ends */}
           {/* ideas and advice section starts */}
           <section>
             <div className="flex w-full flex-col space-y-6 items-center">
@@ -295,7 +208,6 @@ const DesignServicePage = () => {
               </button>
             </div>
           </section>
-          {/* ideas and advice section ends */}
         </div>
       </div>
     </>

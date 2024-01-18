@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
 import Link from "next/link";
@@ -22,8 +22,8 @@ const Aboutcollections = () => {
         <h4 className={`filter_heading text-black mb-[20px]`}>About Ayatrio</h4>
         <div className="filter_content">
           <ul className="filter_content_list ">
-            {aboutcollections.map((item) => (
-              <li>
+            {aboutcollections.map((item, index) => (
+              <li key={index}>
                 {item === "This is Ayatrio" ? (
                   <Link href={"/thisisayatrio"}>{item}</Link>
                 ) : item === "Sustainability" ? (
@@ -45,9 +45,21 @@ const Aboutcollections = () => {
         >
           About Ayatrio
           {isAccordionOpen ? (
-            <Image src='/svg/dropdown/leftvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
+            <Image
+              src="/svg/dropdown/leftvector.svg"
+              height={10}
+              width={10}
+              alt="up"
+              className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90"
+            />
           ) : (
-            <Image src='/svg/dropdown/rightvector.svg' height={10} width={10} alt="down" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
+            <Image
+              src="/svg/dropdown/rightvector.svg"
+              height={10}
+              width={10}
+              alt="down"
+              className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90"
+            />
           )}
         </h4>
         {isAccordionOpen && (

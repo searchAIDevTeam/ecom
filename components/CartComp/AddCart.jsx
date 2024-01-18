@@ -1,61 +1,28 @@
 "use client";
-// import { Delete, HeartBroken } from "@mui/icons-material";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRoomData } from "../Features/Slices/roomSlice";
-import { selectRoomStatus } from "../Features/Slices/roomSlice";
 import { selectQuantity } from "../Features/Slices/calculationSlice";
 import { setDbItems } from "../Features/Slices/cartSlice";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import axios from "axios";
-// import Footer from "../Footer/Footer";
 const AddCart = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/checkout`);
-  };
   const selectedItems = useSelector((state) => state.rooms.selectedActivity);
-  // console.log("Cart component re-rendered");
-  // const roomsData = useSelector((state) => state.roomdetails.roomData);
   const roomData = useSelector(selectRoomData);
-  // console.log("roomData in cart page", roomData);
-  const roomStatus = useSelector(selectRoomStatus);
-  // console.log("roomstatus", roomStatus);
-  // console.log("selecteditems", selectedItems);
   const quantity = useSelector(selectQuantity);
   const [cartdata, setcartdata] = useState("");
   const [cartStatus, setCartStaus] = useState("");
-  // if (typeof window !== "undefined") {
-  //   var id = localStorage.getItem("deviceId");
-  //   // console.log("deviceId : ", id);
-  // }
-
   const dbItems = useSelector((state) => state.cart.dbItems);
-
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    // console.log("deviceId : ", id);
   }
   useEffect(() => {
     const fetchData = async () => {
       try {
         setCartStaus("loading");
-
-        // const deviceId = localStorage.getItem("deviceId");
-
-        // if (!deviceId) {
-        //   console.error("Device ID not found");
-        //   setCartStaus("failed");
-        //   return;
-        // }
-
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`, {
-          // headers: {
-          //   "Content-Type": "application/json",
-          // },
           params: {
             deviceId: id,
           },
@@ -81,13 +48,10 @@ const AddCart = () => {
     };
     fetchData();
   }, [dispatch]);
-
   useEffect(() => {
-    // Do something with the updated state (cartdata and cartStatus)
     console.log("Updated cartdata", cartdata);
     console.log("Updated cartStatus", cartStatus);
   }, [cartdata, cartStatus]);
-
   let totalPrice = 0;
   if (cartStatus === "succeeded" && cartdata) {
     totalPrice = cartdata.items.reduce(
@@ -102,10 +66,6 @@ const AddCart = () => {
       0
     );
   }
-  // if (typeof window !== "undefined") {
-  //       var id = localStorage.getItem("deviceId");
-  //     }
-
   //delete items from DB
   const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
   const postData = {
@@ -113,7 +73,6 @@ const AddCart = () => {
     productId: roomData._id,
     quantity: quantity,
   };
-
   const handleDelete = async (itemid) => {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`, {
@@ -121,41 +80,31 @@ const AddCart = () => {
           deviceId: id,
         },
       });
-
       if (response.status !== 200) {
         throw new Error("HTTP status" + response.status);
       }
       const updatedItems = response.data.items.filter(
         (item) => item._id !== itemid
       );
-
       setcartdata((prevstate) => ({
         ...prevstate,
         items: updatedItems,
       }));
-
       //update data in DB
-
       const responsed = await axios.post(postUrl, {
         deviceId: id,
         items: updatedItems,
       });
-
       console.log("Server Response:", responsed);
-
       console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error deleting item: ", error);
     }
   };
-
   //delete handle function
   return (
     <div className="">
       <div className="main-cart flex justify-center sm:flex-row flex-col sm:gap-80 gap-10  sm:items-start items-center min-h-screen relative top-32 pb-20">
-        {/* <div className="cartContainer flex flex-col sm:flex-row w-4/5 h-4/5 bg-white sm:gap-0 gap-10 sm:my-0 my-20 "> */}
-        {/* getting data from redux store */}
-        {/* {roomStatus === "succeeded" && ( */}
         {cartStatus === "loading" && <p>Loading...</p>}
         {cartStatus === "failed" && <p>Error loading data from DB.</p>}
         {cartStatus === "succeeded" && cartdata && (
@@ -217,16 +166,6 @@ const AddCart = () => {
             ))}
           </div>
         )}
-
-        {/* 
-this is order summary */}
-        {/* {cartStatus === "loading" && <p>Loading...</p>}
-        {cartStatus === "failed" && <p>Error loading data from DB.</p>}
-        {cartStatus === "succeeded" && cartdata && (
-          let totalPrice = cartdata.items.reduce((total, item) => total + item.productId.totalPrice * item.quantity, 0);
-        )}
-         */}
-
         {cartStatus === "loading" && <p>Loading...</p>}
         {cartStatus === "failed" && <p>Error loading data from DB.</p>}
         {cartStatus === "succeeded" && cartdata && (
@@ -254,17 +193,6 @@ this is order summary */}
               </div>
             </div>
             <div>Quantity: {quantities}</div>
-
-            {/* <div
-              onClick={handleClick}
-              className="guestCheckout flex items-center justify-center my-4"
-            >
-              {" "}
-              <button className="bg-black text-white sm:w-full w-[40vw] sm:h-14 h-9 rounded-full	 hover:bg-gray-900 transition duration-300">
-                Guest Checkout
-              </button>
-            </div> */}
-
             <Link
               href={{
                 pathname: "/checkout",
@@ -278,15 +206,6 @@ this is order summary */}
                 Guest Checkout
               </button>
             </Link>
-
-            {/* <div
-              onClick={handleClick}
-              className="memberCheckout my-4 flex items-center justify-center"
-            >
-              <button className="bg-black text-white sm:w-full w-[40vw] sm:h-14 h-9 rounded-full	 hover:bg-gray-900 transition duration-300">
-                Member Checkout
-              </button>
-            </div> */}
             <Link
               href={{
                 pathname: "/checkout",
@@ -303,8 +222,6 @@ this is order summary */}
           </div>
         )}
       </div>
-
-      {/* <Footer /> */}
       <div className="middle-cart">
         {Object.values(selectedItems).map((item) => (
           <div key={item.id} className="cartitem flex mb-6 border-b pb-4">

@@ -27,7 +27,6 @@ const page = () => {
         })}
       </div>
       <hr />
-      {/* e-commerce section ends */}
       {/* family membership section starts */}
       <div className="space-y-3">
         <p className="font-semibold">AYATRIO Family membership</p>
@@ -36,7 +35,6 @@ const page = () => {
         })}
       </div>
       <hr />
-      {/* family membership section ends */}
       {/* family rewards section starts */}
       <div className="space-y-3">
         <p className="font-semibold">AYATRIO Family Rewards</p>
@@ -44,7 +42,6 @@ const page = () => {
           return <li>{curElement.text}</li>;
         })}
       </div>
-      {/* family rewards section ends */}
     </div>
   );
 };

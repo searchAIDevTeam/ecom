@@ -24,8 +24,8 @@ const Familycollections = () => {
         </h4>
         <div className="filter_content">
           <ul className="filter_content_list ">
-            {collections.map((item) => (
-              <li>
+            {collections.map((item, index) => (
+              <li key={index}>
                 <a href="#">{item}</a>
               </li>
             ))}

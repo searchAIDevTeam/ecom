@@ -76,7 +76,7 @@ export default function NewMainSlider() {
     {content.map((data) => (
   <SwiperSlide key={data} >
     <div className="relative group">
-      <Image src={data.img} width={500} height={500} alt="Swiper" className="swiper-slide"/>
+      <img src={data.img} width={500} height={500} loading="eager" alt="Swiper" className="swiper-slide"/>
       <div className="absolute bottom-4 left-4 flex text-lg text-white">Your text</div>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
        <div onMouseEnter={handleEnter}  className="cursor-pointer">        

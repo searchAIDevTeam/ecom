@@ -11,26 +11,26 @@ import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
 // import Imagechanger from "../Imagechanger/Imagechanger";
-const Imagechanger = dynamic(()=>import('../Imagechanger/Imagechanger'))
+const Imagechanger = dynamic(() => import("../Imagechanger/Imagechanger"));
 // import Multicard from "../Imagechanger/Multicard";
-const Multicard = dynamic(()=>import('../Imagechanger/Multicard'))
+const Multicard = dynamic(() => import("../Imagechanger/Multicard"));
 // import Footer from "../Footer";
 // import Tabs from "./Tabs";
-const Tabs = dynamic(()=>import('./Tabs'))
+const Tabs = dynamic(() => import("./Tabs"));
 // import Profile from "./Profile";
-const Profile = dynamic(()=>import('./Profile'))
+const Profile = dynamic(() => import("./Profile"));
 // import Image from "../Imagechanger/Image";
-const Image = dynamic(()=>import('../Imagechanger/Image'))
+const Image = dynamic(() => import("../Imagechanger/Image"));
 // import Phone from "./Phone";
-const Phone = dynamic(()=>import('./Phone'))
+const Phone = dynamic(() => import("./Phone"));
 // import DoubleComp from "./DoubleComp";
-const DoubleComp = dynamic(()=>import('./DoubleComp'))
+const DoubleComp = dynamic(() => import("./DoubleComp"));
 // import Trending from "./Trending";
-const Trending = dynamic(()=>import('./Trending'))
+const Trending = dynamic(() => import("./Trending"));
 // import Dataslider from "./Dataslider";
-const Dataslider = dynamic(()=>import('./Dataslider'))
+const Dataslider = dynamic(() => import("./Dataslider"));
 // import NewMainSlider from "../MainSlider/NewMainSlider";
-const NewMainSlider = dynamic(()=>import('../MainSlider/NewMainSlider'))
+const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
 
 function Cards() {
   // const [isPopupVisible, setPopupVisible] = useState(false);
@@ -47,9 +47,9 @@ function Cards() {
   // const [trendingData, setTrendingData] = useState([]);
   const [recommended, setRecommended] = useState([]);
   // const [deviceId, setDeviceId] = useState(null);
-if (typeof window !== "undefined") {
-  var id = localStorage.getItem("deviceId");
-}
+  if (typeof window !== "undefined") {
+    var id = localStorage.getItem("deviceId");
+  }
   useEffect(() => {
     // setDeviceId(id);
     const getRecommendedData = async () => {

@@ -1,6 +1,6 @@
-import Checkoutmain from "@/components/Checkoutcomp/Checkoutmain"
+import dynamic from "next/dynamic";
 import Script from 'next/script';
-
+const Checkoutmain = dynamic(()=>import('../../components/Checkoutcomp/Checkoutmain'))
 const CheckoutPage = () => {
   return (
     <>
@@ -9,5 +9,4 @@ const CheckoutPage = () => {
     </>
   )
 }
-
 export default CheckoutPage

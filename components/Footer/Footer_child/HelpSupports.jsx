@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import "../../Dropitems/Styles";
 import React, { useState } from "react";
@@ -23,8 +23,8 @@ const Helpcollections = () => {
         <h4 className={`filter_heading text-black mb-[20px] `}>Help</h4>
         <div className="filter_content">
           <ul className="filter_content_list ">
-            {helpcollections.map((item) => (
-              <li>
+            {helpcollections.map((item, index) => (
+              <li key={index}>
                 {item === "Return policy" ? (
                   <Link href="/customerservice/returnpolicy">{item}</Link>
                 ) : item === "Gift Cards" ? (
@@ -48,9 +48,21 @@ const Helpcollections = () => {
         >
           Help
           {isAccordionOpen ? (
-            <Image src='/svg/dropdown/leftvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
+            <Image
+              src="/svg/dropdown/leftvector.svg"
+              height={10}
+              width={10}
+              alt="up"
+              className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90"
+            />
           ) : (
-            <Image src='/svg/dropdown/rightvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
+            <Image
+              src="/svg/dropdown/rightvector.svg"
+              height={10}
+              width={10}
+              alt="up"
+              className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90"
+            />
           )}
         </h4>
         {isAccordionOpen && (

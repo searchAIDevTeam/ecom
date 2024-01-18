@@ -8,7 +8,7 @@ const JoinAyatrioFamily = () => {
         Join Ayatrio Family
       </h4>
       <div className="footer_tcon">
-        <img className="w-[40%]" src="/images/ayatriologo.webp" alt="" my-5 />
+        <img className="w-[40%]" src="/images/ayatriologo.webp" alt="" />
       </div>
       <div className="foter-info">
         <p>
