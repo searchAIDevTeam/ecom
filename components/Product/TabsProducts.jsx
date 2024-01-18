@@ -231,6 +231,8 @@ const Tabs = ({ filteredProducts, heading }) => {
       router.push(pathname + "/compare");
     } else if (selectedpdt.length === 2) {
       router.push(pathname + "/compare2");
+    } else {
+      alert("Please select minimum two items");
     }
   };
 
@@ -635,11 +637,19 @@ const Tabs = ({ filteredProducts, heading }) => {
 
           <hr />
           {/* iimages */}
-          <div className="image-product relative z-10 flex flex-row">
+          <div className="image-product relative z-10 flex flex-col text-right">
+            <div>
+              <button
+                onClick={handleCompareClick}
+                className="bg-black text-white px-3 py-2 whitespace-nowrap rounded-full"
+              >
+                Compare Products
+              </button>
+            </div>
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
               {filterData.map((text, idx) => (
                 <div
-                  className="flex p-3 flex-col gap-3 hover-divnine sm:border-none border-b border-r"
+                  className="flex  p-3 flex-col gap-3 hover-divnine sm:border-none border-b border-r"
                   key={idx}
                   onClick={() => handlenav(text._id)}
                 >
@@ -703,14 +713,6 @@ const Tabs = ({ filteredProducts, heading }) => {
                   </div>
                 </div>
               ))}
-            </div>
-            <div>
-              <button
-                onClick={handleCompareClick}
-                className="bg-black text-white px-3 py-2 whitespace-nowrap rounded-full"
-              >
-                Compare Products
-              </button>
             </div>
           </div>
         </div>
