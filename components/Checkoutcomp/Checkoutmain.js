@@ -1,23 +1,16 @@
 "use client";
 import React from "react";
-import Learn from "./Learn";
-import Form from "./Form";
+import dynamic from "next/dynamic";
+const Learn = dynamic(()=>import('./Learn'))
+const Form = dynamic(()=>import('./Form'))
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { selectRoomStatus } from "../Features/Slices/roomSlice";
 import { useSelector } from "react-redux";
-// import Header from "../Header";
-// import Footer from '../Footer/Footer'
 const Checkoutmain = () => {
   const roomStatus = useSelector(selectRoomStatus);
-  // useEffect(() => {
-  //   if (roomStatus === "succeeded") {
-  //     toast.success("Succesfully added");
-  //   }
-  // }, []);
   return (
     <div>
-      {/* <Header /> */}
       {roomStatus === "succeeded" &&
         toast.success("Succesfully added", {
           toastId: "success1",
@@ -33,9 +26,6 @@ const Checkoutmain = () => {
               Shipping
             </p>
             <hr className="w-1/2" />
-            {/* <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
-              Billing
-            </p> */}
             <hr className="w-1/2" />
             <p className="mt-4 mb-8 text-xl font-semibold text-gray-400">
               Payment

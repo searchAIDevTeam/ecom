@@ -1,97 +1,16 @@
 'use client'
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import FAQ from "../../components/FAQ/FAQ";
-import FAQSwiper from "../../components/FAQSwiper/FAQSwiper";
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
+const FAQ = dynamic(()=>import('../../components/FAQ/FAQ'))
+const FAQSwiper = dynamic(()=>import('../../components/FAQSwiper/FAQSwiper'))
+import { servicesData, gridDataRow1, gridDataRow2 } from "@/Model/CustomerServiceData/CustomerServiceData";
 
 import "../../components/styles/CustomerServicePage.css";
 import { useRouter } from "next/navigation";
-const servicesData = [
-  {
-    id: 1,
-    image:
-      "/customerservice/service1.avif",
-    text: "Home",
-  },
-  {
-    id: 2,
-    image:
-    "/customerservice/service2.avif",
-    text: "Services",
-  },
-  {
-    id: 3,
-    image:
-    "/customerservice/service3.avif",
-    text: "How to shop",
-  },
-  {
-    id: 4,
-    image:
-    "/customerservice/service4.avif",
-    text: "FAQs",
-  },
-  {
-    id: 5,
-    image:
-    "/customerservice/service5.avif",
-    text: "Return Policy",
-  },
-  {
-    id: 6,
-    image:
-    "/customerservice/service6.avif",
-    text: "Gift Cards",
-  },
-  {
-    id: 7,
-    image:
-    "/customerservice/service7.avif",
-    text: "Price Guarantee",
-  },
-  {
-    id: 8,
-    image:
-    "/customerservice/service8.avif",
-    text: "Contact us",
-  },
-];
-
-const gridDataRow1 = [
-  {
-    heading: "Return or exchange products",
-    text: "Find out all about how to exchange or return your products.",
-  },
-  {
-    heading: "Click & Collect",
-    text: "Order your favorite products online and collect it later",
-  },
-  {
-    heading: "Missing a part",
-    text: "Order fittings and spare parts",
-  },
-  {
-    heading: "Stock availability",
-    text: "Plan your shopping before buying",
-  },
-];
-
-const gridDataRow2 = [
-  {
-    heading: "Warranty",
-    text: "AYATRIO products comes with warranty",
-  },
-  {
-    heading: "Terms and conditions",
-    text: "Check all t&c's here",
-  },
-];
 
 //switch statements will be better
 const CustomerServicePage = () => {
   const router = useRouter();
-
   const handleOptionClick = (id) => {
     switch (id) {
       case 1:
@@ -122,7 +41,6 @@ const CustomerServicePage = () => {
         router.push("/");
     }
   };
-
 
   return (
     <div>
@@ -179,7 +97,6 @@ const CustomerServicePage = () => {
             </div>
           </div>
         </section>
-        {/* Section of grid ends */}
         {/* FAQs search bar section starts */}
         <section>
           <div className="space-y-8">
@@ -198,7 +115,6 @@ const CustomerServicePage = () => {
             </div>
           </div>
         </section>
-        {/* FAQs search bar section ends */}
         <FAQSwiper />
         <FAQ />
         {/* Plan and Shop from home starts */}
@@ -224,7 +140,6 @@ const CustomerServicePage = () => {
             </div>
           </div>
         </section>
-        {/* Plan and Shop from home starts */}
         {/* Three buttons section starts */}
         <section>
           <div className="three-buttons">
@@ -239,7 +154,6 @@ const CustomerServicePage = () => {
             </button>
           </div>
         </section>
-        {/* Three buttons section ends */}
         {/* Find an AYATRIO section starts */}
         <section>
           <div className="find-section">
@@ -272,7 +186,6 @@ const CustomerServicePage = () => {
             </div>
           </div>
         </section>
-        {/* Find an AYATRIO section ends */}
         {/* Still have questions section starts */}
         <section>
           <div className="flex space-y-9 flex-col">
@@ -293,7 +206,6 @@ const CustomerServicePage = () => {
             </div>
           </div>
         </section>
-        {/* Still have questions section ends */}
       </div>
     </div>
   );
