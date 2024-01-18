@@ -121,14 +121,14 @@ const Tabs = () => {
           <TabImage
             src={tabImages[activeTab][0]}
             alt="Room"
-            className="lazyloaded"
+           
             handleTab={handleTab}
             circled={circled}
           />
 
           <div className="overflow-hidden relative">
             <Image
-              className="h-full w-full object-cover lazyloaded"
+              className="h-full w-full object-cover "
               src={tabImages[activeTab][1]}
               alt="Room"
             />
@@ -142,7 +142,7 @@ const Tabs = () => {
           />
           <div className="overflow-hidden sm:hidden block">
             <Image
-              className="h-full w-full object-cover lazyloaded"
+              className="h-full w-full object-cover "
               src={work}
               alt="Room"
             />
@@ -157,16 +157,16 @@ const Tabs = () => {
             alt="Room"
             handleTab={handleTab}
             circled={circled}
-            className="lazyloaded"
+            
           />
           <div className="overflow-hidden">
             <Image
-              className="h-full w-full object-cover lazyloaded"
+              className="h-full w-full object-cover"
               src={tabImages[activeTab][0]}
               alt="Room"
             />
           </div>
-          <div className="bg-teal-100 overflow-hidden lazyloaded">
+          <div className="bg-teal-100 overflow-hidden ">
             <Image
               className="h-full w-full object-cover"
               src={tabImages[activeTab][0]}
