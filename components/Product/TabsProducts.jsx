@@ -222,14 +222,17 @@ const Tabs = ({ filteredProducts, heading }) => {
     }
   };
   const pathname = usePathname();
+  const [showCompare, setShowcompare] = useState(false);
 
   const handleCompareClick = () => {
     console.log("Selected Products:", selectedpdt);
     dispatch(setselectedproduct(selectedpdt));
     console.log("length of array", selectedpdt.length);
     if (selectedpdt.length === 3) {
+      setShowcompare(true);
       router.push(pathname + "/compare");
     } else if (selectedpdt.length === 2) {
+      setShowcompare(true);
       router.push(pathname + "/compare2");
     } else {
       alert("Please select minimum two items");

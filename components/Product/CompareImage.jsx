@@ -10,9 +10,6 @@ import "./styled.css";
 const CompareImage = () => {
   const datas = useSelector(selectproductdata);
   const statuses = useSelector(selectproductstatus);
-  // const beforeImage = datas[0].images[0];
-  // const afterImage = datas[1].images[0];
-  // const neoImage = datas[2].images[0];
 
   const [sliderValue, setSliderValue] = useState(33);
   const [sliderValue2, setSliderValue2] = useState(66);
