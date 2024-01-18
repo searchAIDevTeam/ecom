@@ -12,7 +12,7 @@ const LoginComponent = () => {
   const checkUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:8080/auth/user", {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ const LoginComponent = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      window.open("http://localhost:8080/auth/google/callback", "_self");
+      window.open(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google/callback`, "_self");
     } catch (error) {
       console.error("Error initiating Google OAuth:", error);
     }

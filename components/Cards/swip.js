@@ -34,6 +34,7 @@ function Carousel({ data }) {
             key={idx}
             height={300}
             width={300}
+            loading="lazy"
             className={slide === idx ? "slide" : "slide slide-hidden"}
           />
         );
