@@ -85,6 +85,7 @@ ${mainContent ? "block" : "hidden"}
                           textSize="text-lg"
                           textStyle="font-semibold"
                           textColor="text-gray-600"
+                          displayedOn="menu"
                         />
                       </div>
                     )
