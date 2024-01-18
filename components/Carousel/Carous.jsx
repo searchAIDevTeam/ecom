@@ -23,7 +23,7 @@ const Carous = ({ data }) => {
     const fetchData = async () => {
       try {
         let response = await axios.get(
-          `http://43.204.166.53:8080/api/relatedproducts?category=${data.category}`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/relatedproducts?category=${data.category}`
         );
         setrelatedData(response.data);
         setIsLoading(false);

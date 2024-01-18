@@ -65,7 +65,7 @@ const ProfileContent = () => {
                 <a href="#">
                   <Image
                     className="sm:h-10 h-10 sm:w-10 w-10 -mt-1"
-                    src="/linkedln.svg"
+                    src="/social-icon/linkedln.svg"
                     height={6}
                     width={6}
                     alt={`LinkedIn for ${person.name}`}
@@ -81,14 +81,14 @@ const ProfileContent = () => {
         ))}
         <div className="flex flex-row items-end justify-end gap-6">
           <Image
-            src="/leftvector.svg"
+            src="/svg/dropdown/leftvector.svg"
             width={20}
             height={20}
             alt="Arrow"
             className="vector-two bg-gray-300 rounded-full h-7 w-7"
           />
           <Image
-            src="/rightvector.svg"
+            src="/svg/dropdown/rightvector.svg"
             width={20}
             height={20}
             alt="Arrow"

@@ -22,7 +22,7 @@ useEffect(() => {
   const fetchFilteredProducts = async () => {
     try {
       // Constructing the URL dynamically based on params
-      const apiUrl = `http://3.224.109.20:8080/api/products?category=${encodeURIComponent(params.heading)}&${parentCategoryVar}=${encodeURIComponent(params.cat)}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products?category=${encodeURIComponent(params.heading)}&${parentCategoryVar}=${encodeURIComponent(params.cat)}`;
       
       // Fetch products using the dynamically constructed URL
       const response = await axios.get(apiUrl);

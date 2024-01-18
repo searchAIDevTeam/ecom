@@ -52,7 +52,7 @@ const AddCart = () => {
         //   return;
         // }
 
-        const response = await axios.get("http://3.224.109.20:8080/api/cart", {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`, {
           // headers: {
           //   "Content-Type": "application/json",
           // },
@@ -107,7 +107,7 @@ const AddCart = () => {
   //     }
 
   //delete items from DB
-  const postUrl = "http://3.224.109.20:8080/api/cart";
+  const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
   const postData = {
     deviceId: id,
     productId: roomData._id,
@@ -116,7 +116,7 @@ const AddCart = () => {
 
   const handleDelete = async (itemid) => {
     try {
-      const response = await axios.get("http://3.224.109.20:8080/api/cart", {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`, {
         params: {
           deviceId: id,
         },

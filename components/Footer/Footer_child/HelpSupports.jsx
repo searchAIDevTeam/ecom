@@ -48,9 +48,9 @@ const Helpcollections = () => {
         >
           Help
           {isAccordionOpen ? (
-            <Image src='/leftvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
+            <Image src='/svg/dropdown/leftvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
           ) : (
-            <Image src='/rightvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
+            <Image src='/svg/dropdown/rightvector.svg' height={10} width={10} alt="up" className="sm:font-bold font-medium sm:text-2xl text-xl text-gray-500 cursor-pointer rotate-90" />
           )}
         </h4>
         {isAccordionOpen && (

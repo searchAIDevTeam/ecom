@@ -21,7 +21,7 @@ function Carousel({ data }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered && slide !== 0 && (
-        <Image src='/leftvector.svg' height={20} width={20} alt="arrow"
+        <Image src='/svg/dropdown/leftvector.svg' height={20} width={20} alt="arrow"
           onClick={prevSlide}
           className="arrow arrow-left"
         />
@@ -39,7 +39,7 @@ function Carousel({ data }) {
         );
       })}
       {isHovered && (
-        <Image src='/rightvector.svg' height={20} width={20} alt="arrow"
+        <Image src='/svg/dropdown/rightvector.svg' height={20} width={20} alt="arrow"
               onClick={nextSlide}
           className="arrow arrow-right"
         />

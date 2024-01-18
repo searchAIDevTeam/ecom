@@ -35,7 +35,7 @@ const MobileSearch = ({ isOpen, onClose, onSearch }) => {
                 }}
               />
               <img
-                src="/search.svg"
+                src="/svg/icon/search.svg"
                 alt=""
                 className="w-5 mx-1 my-1.5 top-[10%] right-[1%]  absolute z-10"
               />

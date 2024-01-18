@@ -21,7 +21,7 @@ const Activities = () => {
   const [dataActivities, setDataActivities] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      const response = await axios.get("http://43.204.166.53:8080/api/getVE");
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getVE`);
       console.log(response);
       setDataActivities(response.data);
     };
@@ -77,7 +77,7 @@ console.log(dataActivities);
     <div className=" py-4 relative w-full h-full flex justify-center flex-col bg-[#f4e3dd]">
       <Sidebar selectedPage={selectedPage} onSelectPage={handleSelectPage} />
       <Image
-        src="/adtocart.svg"
+        src="/svg/icon/adtocart.svg"
         width={30}
         height={30}
         onClick={() => {
@@ -128,7 +128,7 @@ console.log(dataActivities);
                   
 
                   <Image
-                    src="/tick.svg"
+                    src="/svg/icon/tick.svg"
                     alt="tick"
                     width={30}
                     height={30}

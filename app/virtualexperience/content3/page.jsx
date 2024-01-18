@@ -18,7 +18,7 @@ const ActivityItem = ({ index, widthRange, selectedActivity, handleClick }) => (
     <div className={`w-${widthRange} h-20 bg-orange-400`}></div>
     <div className="flex items-center gap-2">
       <Image
-        src="/up-arrow-svgrepo-com.svg"
+        src="/svg/dropdown/up-arrow-svgrepo-com.svg"
         alt="arrow"
         width={10}
         height={10}
@@ -26,7 +26,7 @@ const ActivityItem = ({ index, widthRange, selectedActivity, handleClick }) => (
       />
       {widthRange} Widths{" "}
       <Image
-        src="/up-arrow-svgrepo-com.svg"
+        src="/svg/dropdown/up-arrow-svgrepo-com.svg"
         alt="arrow"
         width={10}
         height={10}
@@ -38,7 +38,7 @@ const ActivityItem = ({ index, widthRange, selectedActivity, handleClick }) => (
       <div className="room-item absolute bottom-4 z-10 flex items-center opacity-50 justify-center">
         <div className="circle-container relative flex justify-center items-center">
           <Image
-            src="/tick.svg"
+            src="/svg/icon/tick.svg"
             alt="tick"
             width={30}
             height={30}

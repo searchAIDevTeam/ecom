@@ -28,7 +28,7 @@ const meausrement = () => {
             <p>"When you design your house, you tend to do everything that is right for you. Ayatrio has actually turned our dream into reality"</p>
           </div>
           <div className="flex flex-row feedcon">
-            <Image src="/sunita chayan.JPG" width={45} height={45} alt="arrow" className="usercon rounded-full" />
+            <Image src="/product/sunita chayan.JPG" width={45} height={45} alt="arrow" className="usercon rounded-full" />
             <p>Sunitha Roy</p>
           </div>
         </div>

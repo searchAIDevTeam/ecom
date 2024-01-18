@@ -44,7 +44,7 @@ const MapPage = () => {
   useEffect(() => {
     const fetchMapData = async () => {
       const response = await axios.get(
-        "http://43.204.166.53:8080/api/mapPlaces"
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/mapPlaces`
       );
       setPlacesData(response.data);
     };

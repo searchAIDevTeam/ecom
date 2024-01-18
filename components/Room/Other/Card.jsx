@@ -58,7 +58,7 @@ const Card = ({ data }) => {
     var id = localStorage.getItem("deviceId");
     console.log("deviceId : ", id);
   }
-  const postUrl = "http://3.224.109.20:8080/api/cart";
+  const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
   const postRoomData = async () => {
     try {
       console.log("Posting room data:", {

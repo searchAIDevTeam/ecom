@@ -1,58 +1,57 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, EffectCoverflow } from "swiper/modules";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
+import "swiper/css";
 import Image from "next/image";
+import { musicSwiperData } from "@/Model/MusicSectionData/MusicSwiperData";
 
 const Double = () => {
   return (
-    <div className="flex">
-      {/* First Section */}
-      <div className="mr-2 mt-6 ">
-        <img
-          src="/images/cover.webp"
-          className="sm:h-52 h-44 sm:w-48 w-28 rounded-t-lg"
-          alt=""
-        />
-        <div className="bg-black sm:w-48 w-28 flex flex-col rounded-b-lg">
-          <div className="text-white text-sm pt-3  pl-4">Bossman Dlow</div>
-          <div className="text-xs pb-3 pl-4">Slippery</div>
-        </div>
-      </div>
-
-      {/* Second Section */}
-      <div className="pr-0 ">
-        <img
-          src="/images/cover.webp"
-          className="sm:h-60 h-48 sm:w-60 w-44 rounded-t-lg"
-          alt=""
-        />
-        <div className="bg-black sm:w-60 w-44 flex flex-col rounded-b-lg">
-          <div className="flex flex-row items-start">
-            <div className="text-white text-sm pt-3 pl-4">
-              Bossman Dlow
-              <br />
-              <div className="text-xs pb-6">Slippery</div>
-            </div>
-            <button className="bg-white w-16 text-black rounded-full ml-12 mt-4 pl-1 pr-1 pb-1">
-              Listen
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Third Section */}
-      <div className="ml-2 mt-[-12px]">
-        <div className="ml-28 mb-3">
-          <Image src="/music.svg" height={20} width={20} alt="music" />
-        </div>
-        <img
-          src="/images/cover.webp"
-          className="sm:h-52 h-44 sm:w-48 w-36 rounded-t-lg"
-          alt=""
-        />
-        <div className="bg-black sm:w-48 w-36 flex flex-col rounded-b-lg">
-          <div className="text-white text-sm pt-3 pl-4">Bossman Dlow</div>
-          <div className="text-xs pb-3 pl-4">Slippery</div>
-        </div>
-      </div>
+    <div>
+      <Swiper
+        effect="coverflow"
+        slidesPerView={3}
+        // centeredSlides={true}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        loop={true}
+        modules={[Navigation, Pagination, EffectCoverflow]}
+        pagination={{ clickable: true }}
+        coverflowEffect={{
+          rotate: 0,
+          depth: 150,
+          slideShadows: false,
+        }}
+      >
+        {musicSwiperData.map((curElement) => {
+          return (
+            <SwiperSlide>
+              <div className="mr-2 mt-6 ">
+                <Image
+                  width={208}
+                  height={350}
+                  src={curElement.imgSrc}
+                  className="rounded-t-lg"
+                  alt=""
+                />
+                <div className="bg-black sm:w-52 w-[134px] flex flex-col rounded-b-lg">
+                  <div className="text-white text-sm pt-3  pl-4">
+                    {curElement.title}
+                  </div>
+                  <div className="text-xs pb-3 pl-4">{curElement.subTitle}</div>
+                </div>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+        <Image src='/svg/dropdown/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-prev sm:-translate-y-[150px] rotate-180 sm:-translate-x-[585px] sm:block hidden"/>
+        <Image src='/svg/dropdown/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-next sm:-translate-y-[150px] sm:block hidden"/>
+      </Swiper>
     </div>
   );
 };

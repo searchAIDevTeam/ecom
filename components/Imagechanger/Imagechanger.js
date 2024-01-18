@@ -13,7 +13,7 @@ const Imagechanger = () => {
     const fetchApiData = async () => {
       try {
         const response = await axios.get(
-          "http://43.204.166.53:8080/api/getMidInfoSection"
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getMidInfoSection`
         );
         console.log(response.data);
         setApiData(response.data);
@@ -67,9 +67,9 @@ const Imagechanger = () => {
                     {value.heading}
                   </h1>
                   {index === idx ? (
-                    <Image src='/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
                   ) : (
-                    <Image src='/down.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
+                    <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="up" className="text-2xl p-1 sm:ml-3 my-4 text-gray-500 text-left cursor-pointer " />
                   )}
                 </div>
               </>
@@ -83,9 +83,9 @@ const Imagechanger = () => {
                   {value.heading}
                 </h1>
                 {openStates[idx] ? (
-                  <Image src='/up.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
                 ) : (
-                  <Image src='/down.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
+                  <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="up" className="sm:font-bold font-medium sm:text-2xl text-lg text-gray-500 cursor-pointer" />
                 )}
               </div>
             )}

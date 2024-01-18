@@ -31,7 +31,7 @@ function App() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        `http://3.224.109.20:8080/api/categories`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
       );
       setFetchedCategories(response.data[0].categories);
       setIsloading(false);
@@ -44,7 +44,7 @@ function App() {
   const fetchCitiesAndHobbies = async () => {
     try {
       const response = await axios.get(
-        `http://3.224.109.20:8080/api/citiesAndHobbies`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/citiesAndHobbies`
       );
       setFetchedCities(response.data[0].cities);
       setFetchedHobbies(response.data[0].hobbies);
@@ -201,7 +201,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        `http://3.224.109.20:8080/api/preferences`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/preferences`,
         {
           deviceId: localStorage.getItem("deviceid"),
           userPreferredCities: preferencesDataToSendToBackend.preferredCities,
@@ -307,7 +307,7 @@ function App() {
                                       }}
                                     >
                                       <Image
-                                        src="/circletick.svg"
+                                        src="/svg/icon/circletick.svg"
                                         height={20}
                                         width={20}
                                         alt="tick"
@@ -326,14 +326,14 @@ function App() {
                           )}
                           <div className="swiper-pagination"></div>
                           <Image
-                            src="/leftvector.svg"
+                            src="/svg/dropdown/leftvector.svg"
                             width={30}
                             height={30}
                             alt="arrow"
                             className="swiper-button-prev sm:-translate-y-[150px] sm:-translate-x-[460px]"
                           />
                           <Image
-                            src="/rightvector.svg"
+                            src="/svg/dropdown/rightvector.svg"
                             width={30}
                             height={30}
                             alt="arrow"
@@ -372,7 +372,7 @@ function App() {
                       }}
                     >
                       <Image
-                        src="/circletick.svg"
+                        src="/svg/icon/circletick.svg"
                         height={20}
                         width={20}
                         alt="close"
@@ -423,7 +423,7 @@ function App() {
                         key={index}
                       >
                         <Image
-                          src="/circletick.svg"
+                          src="/svg/icon/circletick.svg"
                           height={20}
                           width={20}
                           alt="close"

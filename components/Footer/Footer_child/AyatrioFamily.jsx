@@ -40,7 +40,7 @@ const Familycollections = () => {
           Ayatrio Family
           {isAccordionOpen ? (
             <Image
-              src="/leftvector.svg"
+              src="/svg/dropdown/leftvector.svg"
               height={10}
               width={10}
               alt="up"
@@ -48,7 +48,7 @@ const Familycollections = () => {
             />
           ) : (
             <Image
-              src="/rightvector.svg"
+              src="/svg/dropdown/rightvector.svg"
               height={10}
               width={10}
               alt="up"

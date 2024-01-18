@@ -6,7 +6,7 @@ const Splashscreen = () => {
     <div className="flex items-center justify-center h-screen bg-white  ">
       <div className="text-center">
         <Image
-          src="/ayatriologo.png"
+          src="/logo/ayatriologo.png"
           alt="logo"
           width={200}
           height={100}

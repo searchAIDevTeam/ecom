@@ -15,7 +15,7 @@ import axios from "axios";
 const RoomPage = ({ params }) => {
   const dispatch = useDispatch();
   const quantity = useSelector(selectQuantity);
-  let url = "http://3.224.109.20:8080/api/getSingleProduct?id=";
+  let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=`;
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -38,7 +38,7 @@ const RoomPage = ({ params }) => {
   //   var id = localStorage.getItem("deviceId");
   //   console.log("deviceId : ", id);
   // }
-  // const postUrl = "http://3.224.109.20:8080/api/cart";
+  // const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
   // const postRoomData = async () => {
   //   try {
   //     const postData = {

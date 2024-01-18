@@ -30,7 +30,7 @@ const Trending = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://43.204.166.53:8080/api/trending-products"
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/trending-products`
       );
       setTrendingData(response.data);
       setLoading(false);
@@ -71,14 +71,14 @@ const Trending = () => {
               onClick={() => swiper1Ref.current.swiper.slidePrev()}
               className="custom-prev-button bg-slate-500  rounded-full  hover:bg-400 hover:scale-110 hover:text-slate-100"
             >
-              <Image src="/leftvector.svg" height={10} width={10} alt="arrow" />
+              <Image src="/svg/dropdown/leftvector.svg" height={10} width={10} alt="arrow" />
             </div>
             <div
               onClick={() => swiper1Ref.current.swiper.slideNext()}
               className="custom-next-button bg-slate-500  rounded-full hover:bg-400 hover:scale-110 hover:text-slate-100"
             >
               <Image
-                src="/rightvector.svg"
+                src="/svg/dropdown/rightvector.svg"
                 height={10}
                 width={10}
                 alt="arrow"

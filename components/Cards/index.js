@@ -54,7 +54,7 @@ if (typeof window !== "undefined") {
     // setDeviceId(id);
     const getRecommendedData = async () => {
       const response = await axios.get(
-        `http://43.204.166.53:8080/api/getRecommendation?deviceId=${id}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getRecommendation?deviceId=${id}`
       );
       setRecommended(response.data);
     };

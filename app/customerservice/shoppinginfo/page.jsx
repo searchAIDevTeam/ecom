@@ -59,7 +59,7 @@ export default function ShoppingInfo() {
           </div>
           <div className="basis-2/4 flex grow">
             <div>
-              <Image src="/decor.avif" alt="decor" width={550} height={650} />
+              <Image src="/customerservice/shoppingInfo/decor.avif" alt="decor" width={550} height={650} />
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function ShoppingInfo() {
         </h2>
         <div className="flex flex-row pb-6">
           <div className="basis-2/4 flex-grow">
-            <Image src="/shop.avif" alt="decor" width={600} height={300} />
+            <Image src="/customerservice/shoppingInfo/shop.avif" alt="decor" width={600} height={300} />
           </div>
           <div className="basis-2/4 flex-grow">
             <div className="space-y-5 pl-2">
@@ -312,7 +312,7 @@ export default function ShoppingInfo() {
         <div className="flex flex-row gap-3 pb-8">
           <div className="basis-2/4 flex-grow">
             <div>
-              <Image src="/work.avif" width={600} height={300} alt="" />
+              <Image src="/customerservice/shoppingInfo/work.avif" width={600} height={300} alt="" />
             </div>
           </div>
           <div className="basis-2/4 flex-grow">

@@ -24,7 +24,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
         if (searchTexte !== cachedSearchText) {
           // Perform the search and update the cache
           const response = await axios.get(
-            `http://43.204.166.53:8080/api/products?search=${searchTexte}`
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products?search=${searchTexte}`
           );
           sessionStorage.setItem("cachedData", JSON.stringify(response.data));
           sessionStorage.setItem("cachedSearchText", searchTexte);
@@ -80,7 +80,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
                 onChange={(e) => setSearchText(e.target.value)}
               />
               <img
-                src="/search.svg"
+                src="/svg/icon/search.svg"
                 alt=""
                 className=" search_icon_mar w-5 mx-1 my-1.5 top-[18%] left-[1%]  absolute z-10"
               />

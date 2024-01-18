@@ -45,7 +45,7 @@ const LoginComponent = () => {
     <div className="flex items-center transform translate-y-14 justify-center sm:px-[50px] px-[20px]">
       <div className="bg-white">
         <div className="img__con111 sm:block flex items-center justify-center">
-          <Image src="/ayatriologo.png" width={60} height={30} alt="logo" className="w-48 m-2" />
+          <Image src="/logo/ayatriologo.png" width={60} height={30} alt="logo" className="w-48 m-2" />
         </div>
 
         <div className=" break-words mt-[30px] mb-[10px] w-full text-black sm:text-[30px] text-xl font-[600] -tracking-[1.2px] sm:block flex items-center justify-center  ">

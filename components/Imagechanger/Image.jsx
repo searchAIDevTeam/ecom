@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const Imagechanger = () => {
+ // const [index, setIndex] = useState(0);
   const [openStates, setOpenStates] = useState([false, false, false]); // State to track open/close state
 
   const text = [
@@ -14,6 +15,7 @@ const Imagechanger = () => {
     "https://images.unsplash.com/photo-1701295463149-e8ab9a5acc71?q=80&w=1530&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1701293773241-de1a7bff8e3d?q=80&w=1141&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1701293773299-423854fabb0a?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
   ];
   const img2 = [
     "https://images.unsplash.com/photo-1701293773241-de1a7bff8e3d?q=80&w=1141&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -101,45 +103,33 @@ const Imagechanger = () => {
           </div>
           {Heading.map((value, idx) => (
             <div key={idx} className="pb-5">
-              {idx === 1 && <div className="" />}
+              {idx === 1 && (
+                <div className="" />
+              )}
               <div
                 onClick={() => handleToggle(idx)}
+                
                 className="flex  items-center "
               >
                 <h1
-                  className={`sm:text-2xl text-[20px] font-medium  text-left cursor-pointer ${
-                    openStates[idx] && "open"
-                  }`}
+                  className={`sm:text-2xl text-[20px] font-medium  text-left cursor-pointer ${openStates[idx] && "open"
+                    }`}
                 >
                   {value}
                 </h1>
                 {openStates[idx] ? (
-                  <Image
-                    src="/up.svg"
-                    width={20}
-                    height={20}
-                    alt="up"
-                    className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer"
-                  />
+                  <Image src='/svg/dropdown/up.svg' width={20} height={20} alt="up" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
                 ) : (
-                  <Image
-                    src="/down.svg"
-                    width={20}
-                    height={20}
-                    alt="down"
-                    className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer"
-                  />
+                  <Image src='/svg/dropdown/down.svg' width={20} height={20} alt="down" className="text-2xl p-1 ml-3 my-4 text-gray-500 text-left cursor-pointer" />
                 )}
               </div>
-              <div
-                className={`sm:w-[23rem] w-[80vw] ${
-                  openStates[idx] ? "open" : ""
-                }`}
-              >
+              <div className={`sm:w-[23rem] w-[80vw] ${openStates[idx] ? "open" : ""}`}>
                 <p className={`${idx + 1}text`}>
                   {openStates[idx] ? text[idx] : ""}
                 </p>
-                {idx === 1 && <hr className="border-0" />}
+                {idx === 1 && (
+                  <hr className="border-0" />
+                )}
               </div>
             </div>
           ))}
@@ -169,11 +159,10 @@ const Imagechanger = () => {
             <img
               src={imageSrc[imgindex]}
               alt=""
-              className=" w-[100%] h-[36rem] "
+              className=" w-[100%] h-[36rem] lazyload"
+              
             />
-            <div className="absolute bottom-4 left-4 flex text-white text-lg">
-              Your text
-            </div>
+            <div className="absolute bottom-4 left-4 flex text-white text-lg">Your text</div>
           </div>
         </div>
       </div>

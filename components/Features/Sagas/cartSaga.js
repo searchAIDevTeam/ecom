@@ -29,7 +29,7 @@ import axios from 'axios';
 // Worker Saga: Fetch data from the server
 function* fetchDbItemsSaga(action) {
   try {
-    const response = yield call(axios.get, 'http://3.224.109.20:8080/api/cart', {
+    const response = yield call(axios.get, `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`, {
       params: {
         deviceId: action.payload,
       },
