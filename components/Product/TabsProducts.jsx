@@ -36,7 +36,7 @@ const Tabs = ({ filteredProducts, heading }) => {
     setFilterdata(filteredProducts);
   }, [filteredProducts]);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
   useEffect(() => {
     const handleResize = () => {

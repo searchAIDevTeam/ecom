@@ -23,7 +23,7 @@ const CategoryContent = (props) => {
   const heading = props.categoryHeading;
 
   const categoryData = props.categoryData;
-  console.log(categoryData);
+  // console.log(categoryData);
   const router = useRouter();
   let parentCategoryVar;
   const handleClick = (cat) => {
@@ -33,10 +33,16 @@ const CategoryContent = (props) => {
     // console.log(heading.split(" ")[2].toLowerCase())
     // console.log(cat)
     if (displayedOn === "menu") {
+      console.log("heading : ", heading)
+      console.log("cat : ", cat)
+      console.log("cat.text : ", cat.text)
       cat.text === "Virtual Experience"
         ? router.push("/virtualexperience/vrooms")
         : router.push("/magazine");
     } else {
+      console.log("heading : ", heading)
+      console.log("cat : ", cat)
+      console.log("cat.text : ", cat.text)
       if (heading.split(" ")[2].toLowerCase() === "collections") {
         parentCategoryVar = "collection";
       } else if (heading.split(" ")[2].toLowerCase() === "rooms") {
@@ -61,7 +67,7 @@ const CategoryContent = (props) => {
       <div className={`flex flex-col ${itemsGap}`}>
         {categoryData.map((dataItem) => {
           return (
-            <div className={`flex gap-1`} onClick={() => handleClick(dataItem)}>
+            <div key={dataItem.id} className={`flex gap-1`} onClick={() => handleClick(dataItem)}>
               {dataItem.image ? (
                 <Image
                   src={dataItem.image}
@@ -71,7 +77,7 @@ const CategoryContent = (props) => {
                   className="rounded-full"
                 />
               ) : (
-                <p>{""}</p>
+                null
               )}
               <p className={`${textStyle} ${textSize} ${textColor} cursor-pointer`}>
                 {dataItem.text}
