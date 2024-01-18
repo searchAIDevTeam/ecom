@@ -33,20 +33,9 @@ const Dataslider = dynamic(() => import("./Dataslider"));
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
 
 function Cards() {
-  // const [isPopupVisible, setPopupVisible] = useState(false);
 
-  // const closePopup = () => {
-  //   setPopupVisible(false);
-  // };
-  // const [isLoading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 2500);
-  // }, []);
-  // const [trendingData, setTrendingData] = useState([]);
   const [recommended, setRecommended] = useState([]);
-  // const [deviceId, setDeviceId] = useState(null);
+
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
   }
