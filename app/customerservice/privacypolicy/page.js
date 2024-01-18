@@ -6,7 +6,7 @@ const page = () => {
     <div className="flex flex-col mt-20 sm:px-[50px] px-[20px] space-y-20 sm:w-2/3">
       <div>
         <h1 className="text-4xl font-bold">
-          IKEA India Customer Privacy Policy
+          AYATRIO India Customer Privacy Policy
         </h1>
       </div>
       {privacyPolicy.map((curElement) => {

@@ -1,35 +1,9 @@
-'use client'
-
+"use client";
+import Link from "next/link";
 import React from "react";
-import { useRouter } from "next/navigation";
-const storesInformation = [
-  {
-    storeName: "AYATRIO Store - HITEC City",
-    address:
-      "Raidurg, Serilingampally, Mandal, Survey no. 83/1, Plot No.25, 26, Part 29 Panmaqtha, Rangareddy, Hyderabad, 500032, Telangana, India.",
-  },
-  {
-    storeName: "AYATRIO Store - Navi Mumbai",
-    address: "Turbhe MIDC, Turbhe, Navi Mumbai, 400705, Maharashtra, India.",
-  },
-  {
-    storeName: "AYATRIO Worli City Store",
-    address:
-      "Unit-1 Level 0, Unit -2 Level 1, Unit -3 Level 2, Bldg #18 & #10 Trade View, Utopia City, Pandurang Budhkar Marg, near Kamala Mills Compound, Worli, Mumbai, Maharastra, 400013",
-  },
-  {
-    storeName: "AYATRIO Store - Nagasandra",
-    address: "Manjunatha Nagar, Bagalakunte, Bengaluru, Karnataka 560073",
-  },
-  {
-    storeName: "AYATRIO Store - R CITY",
-    address:
-      "R CITY Mall,  3rd and 4th Floor, North Wing, T-28I and TF-1,146 CTS No. 166/1 to 23 off village Ghatkopar, LBS Marg, Mumbai, Maharashtra - 400086",
-  },
-];
+import { storesInformation } from "@/Model/ContactUsData/StoreInfoData";
 
 const ContactUsPage = () => {
-  const router = useRouter();
   return (
     <div>
       <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
@@ -51,13 +25,14 @@ const ContactUsPage = () => {
               <p>Take a look at our FAQs for answers to your questions.</p>
             </div>
             <div>
-              <button onClick={()=>router.push('/customerservice/faq')} className="bg-black text-white rounded-3xl p-3 px-4 text-sm font-semibold">
-                See all FAQs
-              </button>
+              <Link href={"/customerservice/faq"}>
+                <button className="bg-black text-white rounded-3xl p-3 px-4 text-sm font-semibold">
+                  See all FAQs
+                </button>
+              </Link>
             </div>
           </div>
         </section>
-        {/* Contact us section ends */}
         <hr />
         {/* our stores grid section starts */}
         <section>
@@ -82,7 +57,6 @@ const ContactUsPage = () => {
             </div>
           </div>
         </section>
-        {/* our stores grid section ends */}
         <hr />
         {/* Chat with us section starts */}
         <section>
