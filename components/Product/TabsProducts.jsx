@@ -36,7 +36,7 @@ const Tabs = ({ filteredProducts, heading }) => {
     setFilterdata(filteredProducts);
   }, [filteredProducts]);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
   useEffect(() => {
     const handleResize = () => {
@@ -212,32 +212,40 @@ const Tabs = ({ filteredProducts, heading }) => {
 
   const collectionArr =
     heading === "Wallpaper" ? wallpaperCollectionArr : flooringCollectionArr;
-
+  // const [anyCheckboxSelected, setAnyCheckboxSelected] = useState(false);
   const [selectedpdt, selectedsetpdt] = useState([]);
   const handleCheckbox = (item, isChecked) => {
     if (isChecked) {
       selectedsetpdt([...selectedpdt, item]);
     } else {
       selectedsetpdt(selectedpdt.filter((i) => i._id !== item._id));
+      if (selectedpdt.length === 1) {
+      }
     }
   };
   const pathname = usePathname();
-  const [showCompare, setShowcompare] = useState(false);
 
+  const [showCompare, setShowcompare] = useState(false);
+  const [activeCompare, setActiveCompare] = useState(true);
   const handleCompareClick = () => {
     console.log("Selected Products:", selectedpdt);
     dispatch(setselectedproduct(selectedpdt));
     console.log("length of array", selectedpdt.length);
     if (selectedpdt.length === 3) {
       setShowcompare(true);
+      setActiveCompare(false);
       router.push(pathname + "/compare");
     } else if (selectedpdt.length === 2) {
       setShowcompare(true);
+      setActiveCompare(false);
       router.push(pathname + "/compare2");
     } else {
       alert("Please select minimum two items");
     }
   };
+
+  const activebtn =
+    selectedpdt.length < 2 ? "bg-gray-300 text-white" : "bg-black text-white";
 
   return (
     <>
@@ -640,14 +648,17 @@ const Tabs = ({ filteredProducts, heading }) => {
 
           <hr />
           {/* iimages */}
-          <div className="image-product relative z-10 flex flex-col text-right">
-            <div>
-              <button
-                onClick={handleCompareClick}
-                className="bg-black text-white px-3 py-2 whitespace-nowrap rounded-full"
-              >
-                Compare Products
-              </button>
+          <div className="image-product relative z-10 flex flex-col ">
+            <div className="text-right">
+              {showCompare && (
+                <button
+                  onClick={handleCompareClick}
+                  disabled={selectedpdt.length < 2}
+                  className={`bg-black text-white px-3 py-2 whitespace-nowrap rounded-full ${activebtn} `}
+                >
+                  Compare Products
+                </button>
+              )}
             </div>
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
               {filterData.map((text, idx) => (
@@ -658,11 +669,14 @@ const Tabs = ({ filteredProducts, heading }) => {
                 >
                   <div
                     onClick={(event) => event.stopPropagation()}
-                    className="flex justify-between text-black checkbox-div"
+                    className={`flex justify-between text-black  checkbox-div`}
                   >
                     <input
                       type="checkbox"
-                      onChange={(e) => handleCheckbox(text, e.target.checked)}
+                      onChange={(e) => {
+                        handleCheckbox(text, e.target.checked);
+                        setShowcompare(true);
+                      }}
                     />
                   </div>
                   <img src={text.images[0]} alt="" />
