@@ -519,17 +519,19 @@ const Tabs = ({ filteredProducts, heading }) => {
                       <hr />
 
                       {/* 4th div */}
-                      {heading==="Wallpaper"?<><div className="flex flex-col gap-7">
-                        <div
-                          onClick={handleAllCategory}
-                          className="text-left flex justify-between"
-                        >
-                          Design style &nbsp;
-                          <Image
-                            src="/svg/dropdown/backarrow.svg"
-                            width={40}
-                            height={40}
-                            className={`w-6 h-6  mt-1
+                      {heading === "Wallpaper" ? (
+                        <>
+                          <div className="flex flex-col gap-7">
+                            <div
+                              onClick={handleAllCategory}
+                              className="text-left flex justify-between"
+                            >
+                              Design style &nbsp;
+                              <Image
+                                src="/svg/dropdown/backarrow.svg"
+                                width={40}
+                                height={40}
+                                className={`w-6 h-6  mt-1
                 ${openAllCategory ? " rotate-90" : "-rotate-90"}
                 
                 `}
@@ -657,10 +659,30 @@ const Tabs = ({ filteredProducts, heading }) => {
                     Rs. <span className="text-3xl"> {text.totalPrice}</span>
                   </p>
                   <p className="text-sm flex flex-row gap-1 items-center text-black">
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
-                    <Image src="/svg/icon/star.svg" alt="star" width={15} height={15} />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
+                    <Image
+                      src="/svg/icon/star.svg"
+                      alt="star"
+                      width={15}
+                      height={15}
+                    />
                     <Image
                       src="/svg/icon/half-star.svg"
                       alt="star"
