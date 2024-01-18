@@ -80,14 +80,13 @@ function Cards() {
       <Image />
       {uniqueCategories?.map((item, index) => {
         return (
-          // // <Dataslider
-          // //   key={`dataslider-${index}`}
-          // //   category={item}
-          // //   sliderIndex={index}
-          // //   data={Partdata(item)}
-          // //   ref={datasliderRefs.current[index]} // Pass the ref to Dataslider
-          // />
-          <p>hi</p>
+          <Dataslider
+            key={index}
+            category={item}
+            sliderIndex={index}
+            data={Partdata(item)}
+            ref={datasliderRefs.current[index]} // Pass the ref to Dataslider
+          />
         );
       })}
 

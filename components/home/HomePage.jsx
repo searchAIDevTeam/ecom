@@ -23,10 +23,10 @@ const Expandedbar = dynamic(() =>
 const HomePage = () => {
   const router = useRouter();
 
-  const handleProfileNav = () => {
-    console.log("Profile");
-    router.push("/profile");
-  };
+  // const handleProfileNav = () => {
+  //   console.log("Profile");
+  //   router.push("/profile");
+  // };
 
   const onClose = () => {
     setIsSearchBarVisible(!isSearchBarVisible);

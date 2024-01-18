@@ -75,15 +75,13 @@ input[type="radio"] {
   height: 20px;
 }
 
-/* .checkbox-div {
-
+.checkbox-div {
   visibility: hidden;
 }
 
 .hover-divnine:hover .checkbox-div {
- 
   visibility: visible;
-} */
+}
 
 @media screen and (max-width: 450px) {
   .product-image {
