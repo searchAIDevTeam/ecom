@@ -27,8 +27,8 @@ const AyatrioServices = () => {
         <h4 className={`filter_heading text-black mb-[20px]`}>Service</h4>
         <div className="filter_content">
           <ul className="filter_content_list ">
-            {ServicesCollections.map((item) => (
-              <li>
+            {ServicesCollections.map((item,index) => (
+              <li key={index}>
                 {item === "Customer Service" ? (
                   <Link href="/customerservice">{item}</Link>
                 ) : item === "Delivery Service" ? (
