@@ -252,7 +252,8 @@ function App() {
               <Loading />
             ) : (
               <>
-                <div className="flex-grow basis-4/5">
+               <div className="flex-grow basis-1/6 text-lg font-bold">Select according to your choice</div>
+                <div className="flex-grow basis-4/6 overflow-auto overflow-x-hidden overflow-y-scroll images">
                   {fetchedCategories &&
                     fetchedCategories.map((category, index) => (
                       <div key={index}>
@@ -343,21 +344,23 @@ function App() {
                       </div>
                     ))}
                 </div>
+                <div className="flex-grow basis-1/6">
+                <button className="next" onClick={handleNext}>
+              Next
+            </button>
+                </div>
               </>
             )}
           </div>
-          <div className="sm:w-[600px] [w-90vw] bg-white p-2 sm:pl-6 pl-0 fixed-button">
-            <button className="next" onClick={handleNext}>
-              Next
-            </button>
-          </div>
+          {/* <div className="sm:w-[600px] [w-90vw] p-2 sm:pl-6 pl-0 fixed-button"></div> */}
         </div>
       )}
       {openPopUp2 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
-            <p className="text mb-4">Cities</p>
-            <div className="grid grid-cols-3 gap-x-4  basis-4/5 flex-grow">
+          <div className="flex-grow basis-1/6 text-lg font-bold">Select according to your choice</div>
+            <p className="text mb-4 images2">Cities</p>
+            <div className="grid grid-cols-3 gap-x-4 basis-4/6 overflow-auto overflow-x-hidden flex-grow ">
               {fetchCities &&
                 fetchCities.map((city, index) => (
                   <React.Fragment key={index}>
@@ -385,18 +388,21 @@ function App() {
                   </React.Fragment>
                 ))}
             </div>
-          </div>
-          <div className="w-[600px] bg-white p-2 pl-6 fixed-button">
+            <div className="flex-grow basis-1/6">
             <button className="next" onClick={goTo}>
               Next
             </button>
+            </div>
+
           </div>
+          {/* <div className="w-[600px] p-2 pl-6 fixed-button"></div> */}
         </div>
       )}
       {openPopUp3 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
-            <div className="head">
+          <div className="flex-grow basis-1/6 text-lg font-bold">Select according to your choice</div>
+            <div className="head images3">
               <img
                 src="/images/back.webp"
                 className="back"
@@ -408,7 +414,7 @@ function App() {
             {openPopUp3 && (
               <>
                 <p className="text mb-4">Hobbies</p>
-                <div className="grid grid-cols-3 gap-x-4 basis-4/5 flex-grow">
+                <div className="grid grid-cols-3 gap-x-4 basis-4/6 overflow-auto overflow-x-hidden flex-grow">
                   {fetchHobbies &&
                     fetchHobbies.map((hobbie, index) => (
                       <div
@@ -437,8 +443,7 @@ function App() {
                 </div>
               </>
             )}
-          </div>
-          <div className="w-[600px] bg-white p-2 pl-6 fixed-button">
+            <div className="flex-grow basis-1/6">
             <button
               className={`next self-end mt-6 
                     ${isMinItemsSelected ? "bg-red-700" : "bg-red-200"}
@@ -448,7 +453,10 @@ function App() {
             >
               Done
             </button>
+            </div>
+
           </div>
+          {/* <div className="w-[600px] p-2 pl-6 fixed-button"></div> */}
         </div>
       )}
     </div>
