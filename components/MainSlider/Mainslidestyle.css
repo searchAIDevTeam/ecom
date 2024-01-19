@@ -16,13 +16,11 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  /* transition: all 5s ease; */
 }
 .sd {
   height: 67vh;
   width: 40rem;
   flex-shrink: 0;
-  /* transform: translateX(50%); */
   transition:2s ease;
 }
 
@@ -42,12 +40,10 @@
   position: absolute;
   top: 50%;
   right: 10px;
-  /* transform: translateY(-50%); */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-   /* transition:ease 2s; */
 }
 
 .arrow-nav {
@@ -71,10 +67,6 @@
 .slider-cont::-webkit-scrollbar {
   display: none;
 }
-/* .slider-cont {
-  transition: scrollLeft 1.2s ease-in-out;
-} */
-
 .circle {
   position: absolute;
 }
@@ -82,19 +74,15 @@
 .hover-box {
   position: absolute;
   top: 15px;
-  /* Adjust the position as needed */
   left: -5px;
-  /* transform: translateX(-50%); */
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
   display: none;
-  /* Initially hide the box */
 }
 
 .circle:hover .hover-box {
   display: block;
-  /* Show the box on hover */
   flex-direction: row;
   gap: 10px;
 }

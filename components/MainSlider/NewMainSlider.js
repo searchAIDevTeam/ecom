@@ -1,5 +1,4 @@
 import React from "react";
-import { content } from "./mainslide-list";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,6 +8,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import SwiperCore from "swiper/core";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { content } from "../../Model/MainSliderData/MainSliderData";
 SwiperCore.use([Autoplay, Navigation]);
 
 export default function NewMainSlider() {
@@ -116,8 +116,6 @@ export default function NewMainSlider() {
     </div>
   </SwiperSlide>
 ))}
-          <div className="swiper-pagination"></div>
-        {/* <div className="swiper-button-prev"></div> */}
         <Image src='/svg/dropdown/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-next sm:-translate-y-[150px]"/>
       </Swiper>
     </div>
