@@ -9,7 +9,7 @@ import AboutAyatrio from "./Footer_child/AboutAyatrio";
 const Footer = () => {
   return (
     <>
-      <div className="sm:px-[50px] px-[20px] mt-20 pt-10 footer-container aspect-auto w-full h-[500px] ">
+      <div className="sm:px-[50px] px-[20px] mt-20 pt-10 footer-container aspect-auto w-full h-[500px] sm:mb-0 mb-10 ">
         <div className="filter_container flex gap-32 w-full h-auto ">
           <div className="grid sm:grid-cols-6 grid-cols-1">
             <div className="sm:col-span-2 row-span-1 col-span-1 mr-12 mb-5">

@@ -14,7 +14,7 @@ import axios from "axios";
 const ProductPage = ({params}) => {
   const [isFilterVisible, setIsFilterVisible] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  console.log("URLparameters : ", params);
+  
   let parentCategoryVar = params.parentCategory;
   console.log("heading : ",params.heading);
 
@@ -28,7 +28,7 @@ useEffect(() => {
       const response = await axios.get(apiUrl);
 
       // Handle the fetched products as needed
-      console.log("Filtered products:", response.data);
+      // console.log("Filtered products:", response.data);
       setFilteredProducts(response.data); // Save the filtered products in state
     } catch (error) {
       console.error("Error fetching filtered products:", error);

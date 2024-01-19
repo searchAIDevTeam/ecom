@@ -25,7 +25,7 @@ import {
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
 const Tabs = ({ filteredProducts, heading }) => {
-  console.log("Filtered products:", filteredProducts);
+  // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
   const dispatch = useDispatch();
   const handlenav = (id) => {
@@ -40,7 +40,9 @@ const Tabs = ({ filteredProducts, heading }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 450);
+      setIsMobile(
+        () => typeof window !== "undefined" && window.innerWidth <= 450
+      );
     };
 
     window.addEventListener("resize", handleResize);
@@ -310,11 +312,10 @@ const Tabs = ({ filteredProducts, heading }) => {
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
                   }
-                  ${
-                    window.innerWidth <= 450
+                  ${() =>
+                    typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
-                      : " justify-between"
-                  }
+                      : " justify-between"}
                   `}
               >
                 Color &nbsp;
@@ -414,11 +415,10 @@ const Tabs = ({ filteredProducts, heading }) => {
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
                   }
-                  ${
-                    window.innerWidth <= 450
+                  ${() =>
+                    typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
-                      : " justify-between"
-                  }
+                      : " justify-between"}
                   `}
               >
                 All Filters &nbsp;
@@ -669,7 +669,9 @@ const Tabs = ({ filteredProducts, heading }) => {
                 >
                   <div
                     onClick={(event) => event.stopPropagation()}
-                    className={`flex justify-between text-black  checkbox-div`}
+                    className={`flex justify-between text-black  checkbox-div ${
+                      selectedpdt.includes(text) ? "visible" : ""
+                    }`}
                   >
                     <input
                       type="checkbox"
@@ -677,6 +679,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                         handleCheckbox(text, e.target.checked);
                         setShowcompare(true);
                       }}
+                      checked={selectedpdt.includes(text)}
                     />
                   </div>
                   <img src={text.images[0]} alt="" />

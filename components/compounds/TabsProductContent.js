@@ -25,7 +25,7 @@ const TabsProductContent = (props) => {
     <div>
       <button
         onClick={() => {
-          if (window.innerWidth <= 450) {
+          if (()=>typeof window !== "undefined" && window.innerWidth <= 450) {
             handleAll();
             handleTabClick();
             handleAllFilter();
@@ -41,7 +41,7 @@ const TabsProductContent = (props) => {
                       : `tabS  border border-white ${commonClasses}`
                   }
                   ${
-                    window.innerWidth <= 450
+                    ()=>typeof window !== "undefined" &&  window.innerWidth <= 450
                       ? " justify-center"
                       : " justify-between"
                   }
