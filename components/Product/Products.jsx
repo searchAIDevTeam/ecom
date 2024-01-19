@@ -1,7 +1,7 @@
 import React from "react";
 
 const Products = ({ filteredProducts }) => {
-  console.log("Filtered products:", filteredProducts);
+  // console.log("Filtered products:", filteredProducts);
 
   // Use the first product's category as the main heading
   const mainCategory = filteredProducts.length > 0 ? filteredProducts[0].category : "Products";

@@ -89,7 +89,7 @@ const Search = ({ places, onResultClick }) => {
   useEffect(() => {
     // Update isMobile state on window resize
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 450);
+      setIsMobile( ()=>typeof window !== "undefined" && window.innerWidth <= 450);
     };
 
     window.addEventListener("resize", handleResize);

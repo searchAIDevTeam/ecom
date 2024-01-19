@@ -28,7 +28,9 @@ const Tabs = () => {
   useEffect(() => {
     // Update isMobile state on window resize
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 450);
+      setIsMobile(
+        () => typeof window !== "undefined" && window.innerWidth <= 450
+      );
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -121,7 +123,6 @@ const Tabs = () => {
           <TabImage
             src={tabImages[activeTab][0]}
             alt="Room"
-           
             handleTab={handleTab}
             circled={circled}
           />
@@ -157,7 +158,6 @@ const Tabs = () => {
             alt="Room"
             handleTab={handleTab}
             circled={circled}
-            
           />
           <div className="overflow-hidden">
             <Image
