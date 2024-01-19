@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { content } from "./mainslide-list";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,9 +9,36 @@ import { Autoplay, Navigation } from "swiper/modules";
 import SwiperCore from "swiper/core";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
 SwiperCore.use([Autoplay, Navigation]);
+import { selectSliderData } from "../Features/Slices/sliderSlice";
 
 export default function NewMainSlider() {
+  const dispatch = useDispatch();
+  const SliderViewData = useSelector(selectSliderData);
+  const [page, setPage] = useState(1);
+  useEffect(() => {
+    if (!SliderViewData || SliderViewData.length === 0) {
+      fetchData();
+    }
+  }, [page]);
+  const fetchData = () => {
+    dispatch({
+      type: "FETCH_SLIDER_VIEW_REQUEST",
+      payload: {
+        page: page,
+        limit: 3,
+      },
+    });
+  };
+  const [sliderApiData, setSliderApiData] = useState([]);
+  useEffect(() => {
+    if (SliderViewData && SliderViewData.result) {
+      console.log("SliderViewData:", SliderViewData.result);
+      setSliderApiData(SliderViewData.result);
+    }
+  }, [SliderViewData]);
+  console.log(sliderApiData);
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");
@@ -73,10 +100,10 @@ export default function NewMainSlider() {
           },
         }}
       >
-    {content.map((data) => (
-  <SwiperSlide key={data} >
+    {sliderApiData?.map((data) => (
+  <SwiperSlide key={data._id} >
     <div className="relative group">
-      <img src={data.img} width={500} height={500} loading="eager" alt="Swiper" className="swiper-slide"/>
+      <img src={data.imgSrc} width={500} height={500} loading="eager" alt="Swiper" className="swiper-slide"/>
       <div className="absolute bottom-4 left-4 flex text-lg text-white">Your text</div>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
        <div onMouseEnter={handleEnter}  className="cursor-pointer">        
@@ -93,10 +120,10 @@ export default function NewMainSlider() {
               <div className="flex flex-row relative">        
                   <div
                     className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
-                    key={data.productId}
+                    key={data._id}
                   >
-                    <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2>
-                    <p className="font-normal pb-2">{data.productCategory}</p>
+                    {/* <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2> */}
+                    {/* <p className="font-normal pb-2">{data.productCategory}</p> */}
                     <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
                       ₹{data.price}
                     </p>
