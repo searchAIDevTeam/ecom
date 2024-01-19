@@ -16,71 +16,73 @@ const CompareDetails = ({ filteredProducts }) => {
   const handlenav = (id) => {
     router.push(`/room/${id}`);
   };
+  const stars = new Array(4)
+    .fill("/svg/icon/star.svg")
+    .concat("/svg/icon/half-star.svg");
   return (
     <div className="py-20">
-      <div className="flex items-center justify-center flex-wrap gap-5 overflow-x-auto">
+      <div className="flex items-center justify-center sm:flex-row flex-wrap sm:gap-28 gap-10 overflow-x-auto">
         {statuses === "succeeded" &&
           datas.map((item) => (
             <div
-              onClick={() => handlenav(item._id)}
-              className=" border flex flex-col gap-3"
+              className="  flex justify-center items-center flex-col gap-3"
               key={item._id}
             >
-              <Image
-                src={item.images[0]}
-                alt={item.productTitle}
-                width={350}
-                height={250}
-                className="sm:w-[350px] sm:h-[250px] w-[150px] h-[100px] "
-              />
-              <p>{item.productTitle}</p>
-              <p>{item.productDescription}</p>
+              <p className="text-2xl font-semibold">{item.productTitle}</p>
+
               <p>
                 {" "}
-                Rs. <span className="text-3xl"> {item.totalPrice}</span>
+                ₹<span className="text-3xl">{item.perUnitPrice}</span>
               </p>
-              <p className="text-sm flex flex-row gap-1 items-center text-black">
-                <Image
-                  src="/svg/icon/star.svg"
-                  alt="star"
-                  width={15}
-                  height={15}
-                />
-                <Image
-                  src="/svg/icon/star.svg"
-                  alt="star"
-                  width={15}
-                  height={15}
-                />
-                <Image
-                  src="/svg/icon/star.svg"
-                  alt="star"
-                  width={15}
-                  height={15}
-                />
-                <Image
-                  src="/svg/icon/star.svg"
-                  alt="star"
-                  width={15}
-                  height={15}
-                />
-                <Image
-                  src="/svg/icon/half-star.svg"
-                  alt="star"
-                  width={15}
-                  height={15}
-                />
-                {item.count}
-              </p>
-              <div className="flex gap-3 items-center">
-                <Image
-                  src="/svg/icon/adtocart.svg"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                  alt=""
-                />
+              <button
+                style={{ width: "fit-content" }}
+                className="bg-blue-500 rounded-full px-4 py-0 whitespace-nowrap"
+                onClick={() => handlenav(item._id)}
+              >
+                Buy
+              </button>
+              <hr className=" bg-slate-900 w-full" />
+              <div className="flex flex-col gap-5 items-center justify-center">
+                <div className="flex flex-col items-center justify-center">
+                  <p>Length</p>
+                  <p className="text-sm">{item.dimensions.length.value}</p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p>Width</p>
+                  <p className="text-sm">{item.dimensions.width.value}</p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p>Category</p>
+                  <p className="text-sm">{item.category} </p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p>Style</p>
+                  <p className="text-sm">{item.style} </p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p>Features</p>
+                  <p className="text-sm">{item.features}</p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p>Product description</p>
+                  <p className="text-sm">{item.productDescription} </p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p>Rating</p>
+                  <p className="text-sm flex flex-row gap-1 items-center text-black">
+                    {stars.map((star, index) => (
+                      <Image
+                        key={index}
+                        src={star}
+                        alt="star"
+                        width={15}
+                        height={15}
+                      />
+                    ))}
+                  </p>
+                </div>
               </div>
+              <hr className=" bg-slate-900 w-full" />
             </div>
           ))}
       </div>

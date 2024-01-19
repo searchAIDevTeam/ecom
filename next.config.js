@@ -38,7 +38,7 @@ const nextConfig = {
         hostname: "wellgroomedgentleman.com",
       },
     ],
-    domains: ["images.unsplash.com"],
+    // domains: ["images.unsplash.com"],
   },
   distDir: 'build',
 };

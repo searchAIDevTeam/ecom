@@ -1,59 +1,5 @@
+import { gridDataRow1, gridDataRow2, gridData2, gridData3, gridData4 } from "@/Model/ServicesData/ServicesData";
 export default function Services() {
-    const gridDataRow1 = [
-      {
-        heading: "Kitchen planning tool",
-        text: "Design your dream kitchen together with our specialists.",
-      },
-      {
-        heading: "Personal shopper",
-        text: "Your personal shopping assistance",
-      },
-      {
-        heading: "Measuring service",
-        text: "Measure your space before the planning",
-      },
-      {
-        heading: "Interior design service",
-        text: "Unleash the interior decorater in you with us",
-      },
-    ];
-    
-    const gridDataRow2 = [
-      {
-        heading: "Design your room",
-        text: "Expert advice and inspiration to help you plan your interior",
-      },
-    ];
-    
-    const gridData2 = [
-      {
-        heading: "Click & Collect",
-        text: "Order online and pick it up at a store of your choice",
-      },
-      {
-        heading: "Home delivery",
-        text: "We deliver your order to your home",
-      },
-    ];
-    
-    const gridData3 = [
-      {
-        heading: "Assembly service",
-        text: "Our co-workers assemble your furniture for you.",
-      },
-      {
-        heading: "Kitchen installation",
-        text: "Advice for your ideal storage furniture.",
-      },
-    ];
-    
-    const gridData4 = [
-      {
-        heading: "Returns",
-        text: "It’s ok to change your mind, we support you in the safest way.",
-      },
-    ];
-    
     return (
       <div>
       <div className="mt-20 sm:ml-[50px] ml-[20px] sm:mr-[50px] mr-[20px] p-10 space-y-10">
@@ -113,9 +59,7 @@ export default function Services() {
                 );
               })}
             </div>
-          
         </section>
-        {/* Section of grid 1 ends */}
         {/* Section of grid 2 starts */}
         <section>
           <div className="flex flex-col flex-wrap w-full space-y-5">
@@ -146,7 +90,6 @@ export default function Services() {
             </div>
           </div>
         </section>
-        {/* Section of grid 2 ends */}
         {/* Section of grid 3 starts */}
         <section>
           <div className="flex flex-col flex-wrap w-full space-y-5">
@@ -177,7 +120,6 @@ export default function Services() {
             </div>
           </div>
         </section>
-        {/* Section of grid 3 ends */}
         {/* Section of grid 4 starts */}
         <section>
           <div className="flex flex-col flex-wrap w-full space-y-5">

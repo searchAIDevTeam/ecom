@@ -87,16 +87,6 @@ img {
 .carcular-ui {
   margin: 7.5px;
 }
-
-
-/* .container {
-  position: relative;
-  max-width: 75rem;
-  height: auto;
-  margin-inline: auto;
-  padding-inline: 1.25rem;
-} */
-
 .swiper-button-next::after {
   display: flex;
   align-items: center;
@@ -111,19 +101,3 @@ img {
   color: var(--white-100);
   background: var(--black-300);
 }
-
-/* 
-.swiper-button-prev::after {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 1rem;
-  width: 2rem;
-  height: 2rem;
-  opacity: 0.75;
-  border-radius: 50%;
-  color: var(--white-100);
-  background: var(--black-300);
-} */

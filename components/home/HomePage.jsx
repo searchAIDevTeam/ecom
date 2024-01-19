@@ -4,21 +4,17 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const Cards = dynamic(
-  () => import("../Cards").catch((err) => console.error(err)),
-  { ssr: false }
+const Cards = dynamic(() =>
+  import("../Cards").catch((err) => console.error(err))
 );
-const MobileSearchBar = dynamic(
-  () => import("../MobileSearch").catch((err) => console.error(err)),
-  { ssr: false }
+const MobileSearchBar = dynamic(() =>
+  import("../MobileSearch").catch((err) => console.error(err))
 );
-const Filter = dynamic(
-  () => import("../Filter").catch((err) => console.error(err)),
-  { ssr: false }
+const Filter = dynamic(() =>
+  import("../Filter").catch((err) => console.error(err))
 );
-const PopUp = dynamic(
-  () => import("../PopUp/PopUp").catch((err) => console.error(err)),
-  { ssr: false }
+const PopUp = dynamic(() =>
+  import("../PopUp/PopUp").catch((err) => console.error(err))
 );
 const Expandedbar = dynamic(() =>
   import("../Header/Expandedbar").catch((err) => console.error(err))
@@ -26,12 +22,6 @@ const Expandedbar = dynamic(() =>
 
 const HomePage = () => {
   const router = useRouter();
-
-  const handleProfileNav = () => {
-    console.log("Profile");
-    router.push("/profile");
-  };
-
   const onClose = () => {
     setIsSearchBarVisible(!isSearchBarVisible);
   };

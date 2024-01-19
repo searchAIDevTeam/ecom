@@ -5,16 +5,12 @@ import AyatrioFamily from "./Footer_child/AyatrioFamily";
 import AyatrioServices from "./Footer_child/AyatrioServices";
 import HelpSupports from "./Footer_child/HelpSupports";
 import AboutAyatrio from "./Footer_child/AboutAyatrio";
-// import facebook from '../../assets/social-icon/facebook-icon.svg';
-// import instagram from "../../assets/social-icon/instagram-icon.svg";
-// import twitter from "../../assets/social-icon/twitter-icon.svg";
-// import youtube from "../../assets/social-icon/youtube-icon.svg";
 
 const Footer = () => {
   return (
-    <div>
-      <div className="sm:px-[50px] px-[20px] mt-20 pt-10 footer-container ">
-        <div className="filter_container flex gap-32">
+    <>
+      <div className="sm:px-[50px] px-[20px] mt-20 pt-10 footer-container aspect-auto w-full h-[500px] ">
+        <div className="filter_container flex gap-32 w-full h-auto ">
           <div className="grid sm:grid-cols-6 grid-cols-1">
             <div className="sm:col-span-2 row-span-1 col-span-1 mr-12 mb-5">
               <JoinAyatrioFamily />
@@ -107,7 +103,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

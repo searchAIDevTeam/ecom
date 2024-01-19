@@ -43,7 +43,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
   useEffect(() => {
     setProductData(data);
   }, [data]);
-
+  // console.log(data)
   return (
     <div>
       <div className="my-10 bg-white sm:px-[50px] px-[20px]">

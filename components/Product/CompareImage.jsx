@@ -25,7 +25,7 @@ const CompareImage = () => {
     <div className="App">
       {statuses === "succeeded" ? (
         <div>
-          <h1>Compare These Products</h1>
+          <h1 className="text-3xl">Compare These Products</h1>
 
           <div className="image-comparison">
             <div className="images-container">

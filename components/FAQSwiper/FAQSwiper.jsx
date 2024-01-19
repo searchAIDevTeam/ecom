@@ -1,7 +1,8 @@
 "use client";
 import React, { useRef } from "react";
+import { data } from "@/Model/FaqSwiperData/FAQSwiperData";
 import "./FAQSwiper.css";
-import { Swiper, SwiperSlide,navigation } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -47,37 +48,6 @@ const FAQSwiper = () => {
       prevEl: ".my-swiper-button-prev",
     },
   };
-
-  const data = [
-    {
-      heading: "Caution against fake IKEA Website and Channel",
-      text: "Update about fake IKEA website & social media channels",
-    },
-    {
-      heading: "All you want to know about product assembly!",
-      text: "Sometimes we all need that little help!",
-    },
-    {
-      heading: "Assembly Videos of your favorite product",
-      text: "Your search for the assembly videos of your favorite products ends here. Follow the video. VOILA!!! you have already assembled your...",
-    },
-    {
-      heading: "Change of Mind - Article Return & refund request.",
-      text: "Explore more about returns & under what guidelines do we accept returns. Together let's aim for a seamless process..",
-    },
-    {
-      heading: "Refund policy",
-      text: "Refund policy followed at IKEA India",
-    },
-    {
-      heading: "I have received damaged articles.",
-      text: "If you have received a damaged article(s), please check this reference for more help.",
-    },
-    {
-      heading: "Payment methods accepted",
-      text: "Payment methods applicable - Store",
-    },
-  ];
 
   return (
     <>
@@ -128,8 +98,6 @@ const FAQSwiper = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* <div className="my-swiper-button-prev hidden" onClick={goPrev}></div>
-        <div className="my-swiper-button-next hidden" onClick={goNext}></div> */}
       </div>
     </>
   );
