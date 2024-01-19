@@ -10,26 +10,15 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
-// import Imagechanger from "../Imagechanger/Imagechanger";
 const Imagechanger = dynamic(() => import("../Imagechanger/Imagechanger"));
-// import Multicard from "../Imagechanger/Multicard";
 const Multicard = dynamic(() => import("../Imagechanger/Multicard"));
-// import Footer from "../Footer";
-// import Tabs from "./Tabs";
 const Tabs = dynamic(() => import("./Tabs"));
-// import Profile from "./Profile";
 const Profile = dynamic(() => import("./Profile"));
-// import Image from "../Imagechanger/Image";
 const Image = dynamic(() => import("../Imagechanger/Image"));
-// import Phone from "./Phone";
 const Phone = dynamic(() => import("./Phone"));
-// import DoubleComp from "./DoubleComp";
 const DoubleComp = dynamic(() => import("./DoubleComp"));
-// import Trending from "./Trending";
 const Trending = dynamic(() => import("./Trending"));
-import Dataslider from "./Dataslider";
-// const Dataslider = dynamic(() => import("./Dataslider"));
-// import NewMainSlider from "../MainSlider/NewMainSlider";
+const Dataslider = dynamic(()=>import('./Dataslider'))
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
 
 function Cards() {
@@ -78,7 +67,7 @@ function Cards() {
   }
 
   return (
-    <div className="">
+    <div>
       {MemoizedMainSlider}
       {MemoizedTrendingProducts}
       <div className="h-40 my-10 sm:px-[50px] px-[50px]">

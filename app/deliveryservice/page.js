@@ -29,7 +29,6 @@ const DeliveryServicePage = () => {
             </div>
           </div>
         </section>
-        {/* Delivery Service section ends */}
         <hr />
         {/* Slabs for delivery section starts */}
         <section>
@@ -77,7 +76,6 @@ const DeliveryServicePage = () => {
             </div>
           </div>
         </section>
-        {/* Slabs for delivery section ends */}
       </div>
     </div>
   );
