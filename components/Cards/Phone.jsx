@@ -25,7 +25,7 @@ const Phone = () => {
             width={1350}
             height={500}
             style={{ width: "100vw", height: "auto" }}
-            className="h-100  sm:w-100vw  w-full"
+            className="h-auto  sm:w-100vw  w-full"
           />
         </div>
       </div>

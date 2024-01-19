@@ -1,11 +1,8 @@
 import React from "react";
 import Image from "next/image";
-// import right from '../../assets/right.png';
-// import game from "../../assets/game.jpg";
 import Double from "./Double";
 const DoubleComp = () => {
   return (
-    // sm:h-[35rem]
     <div className="py-20 grid sm:grid-cols-2 grid-cols-1 sm:w-auto w-[100%] gap-4 sm:px-[50px] px-[20px]">
       <div className="col-span-1 ml-0 bg-zinc-100 text-black overflow-hidden">
         <div className="pl-4 pt-4">
@@ -21,8 +18,6 @@ const DoubleComp = () => {
           <div className="flex">
             <a href="#" className="flex  pr-0 ">
               Try it free <sup className="mt-3 text-[0.6rem]">10</sup>
-              {/* <GoArrowUpRight className="mt-2 ml-1" /> */}
-              {/* <Image src='/diagonal.svg' height={5} width={5} alt="diagonal"/> */}
             </a>
             <a href="#" className="flex ">
               Learn more{" "}
@@ -45,7 +40,6 @@ const DoubleComp = () => {
           <div className="flex pl-0 text-sky-600">
             <a href="#" className="flex pr-4">
               Try it free <sup className="mt-3 text-[0.6rem]">11</sup>
-              {/* <GoArrowUpRight className="mt-2 ml-1" /> */}
             </a>
             <a href="#" className="flex">
               Learn more{" "}
@@ -54,9 +48,11 @@ const DoubleComp = () => {
           </div>
         </div>
         <div className="mt-20">
-          <img
+          <Image
+            width={1024}
+            height={512}
             src="/images/game.webp"
-            className="sm:w-[120%] w-[100%] h-[400px] object-cover"
+            className="object-cover"
             alt="Games"
           />
         </div>

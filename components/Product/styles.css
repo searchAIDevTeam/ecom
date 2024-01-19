@@ -78,6 +78,9 @@ input[type="radio"] {
 .checkbox-div {
   visibility: hidden;
 }
+.checkbox-div.visible {
+  visibility: visible;
+}
 
 .hover-divnine:hover .checkbox-div {
   visibility: visible;
