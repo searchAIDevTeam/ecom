@@ -8,7 +8,9 @@ const RoomInfo = ({ data }) => {
     <div className="flex sm:my-6 my-0 sm:ml-1 ml-0" style={{ width: "100%" }}>
       <div className="sm:mr-4 mr-0 sm:w-[100%] w-[100%] sm:mt-0 mt-[-20rem]">
         <div className="room-details pb-4">
-          <h2 className="sm:text-2xl text-lg sm:font-semibold font-medium mt-[24rem]">Room Details</h2>
+          <h2 className="sm:text-2xl text-lg sm:font-semibold font-medium mt-[24rem]">
+            Room Details
+          </h2>
           <div className=" text-base">
             16+ guests4 bedrooms5 beds3 bathrooms
           </div>
@@ -20,7 +22,10 @@ const RoomInfo = ({ data }) => {
           <div>
             {/* star */}
             <div className="border border-gray-300  sm:h-20 h-auto sm:gap-0 gap-3 sm:w-[100%] w-[100%] rounded-lg  flex flex-row justify-center items-center">
-              <div id="box1" className="flex flex-row border-r pr-4 sm:order-1 order-2">
+              <div
+                id="box1"
+                className="flex flex-row border-r pr-4 sm:order-1 order-2"
+              >
                 <svg
                   viewBox="0 0 20 32"
                   fill="none"
@@ -186,18 +191,30 @@ const RoomInfo = ({ data }) => {
                 Ayatrio, according to members
               </div>
               {/* 5star */}
-              <div id="box2" className="flex flex-col border-r pr-4 sm:order-3 order-1">
+              <div
+                id="box2"
+                className="flex flex-col border-r pr-4 sm:order-3 order-1"
+              >
                 <div className="text-lg font-bold text-center">5.0</div>
                 <div className="flex flex-row text-xs">
-                  {
-                    [1, 1, 1, 1, 1].map((item) => {
-                      return <Image src="/rooms/star-black-filled-icon.svg" width={20} height={20} alt="star" />
-                    })
-                  }
+                  {[1, 1, 1, 1, 1].map((item, idx) => {
+                    return (
+                      <Image
+                        key={idx}
+                        src="/rooms/star-black-filled-icon.svg"
+                        width={20}
+                        height={20}
+                        alt="star"
+                      />
+                    );
+                  })}
                 </div>
               </div>
               {/* review */}
-              <div id="box3" className="flex sm:pb-0 pb-4 flex-col pl-3 sm:order-4 order-3">
+              <div
+                id="box3"
+                className="flex sm:pb-0 pb-4 flex-col pl-3 sm:order-4 order-3"
+              >
                 <div className="text-center text-xl font-bold">43</div>
                 <div className="underline text-sm -mt-2">Reviews</div>
               </div>
