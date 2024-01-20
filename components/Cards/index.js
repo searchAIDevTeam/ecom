@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
+const Footer = dynamic(()=>import('../Footer/Footer'))
 const Imagechanger = dynamic(() => import("../Imagechanger/Imagechanger"));
 const Multicard = dynamic(() => import("../Imagechanger/Multicard"));
 const Tabs = dynamic(() => import("./Tabs"));
@@ -97,6 +98,7 @@ function Cards() {
       {MemoizedProfileContent}
       <Tabs />
       <Phone />
+      <Footer/>
     </div>
   );
 }

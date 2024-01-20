@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function PriceGuarantee() {
   return (
-    <div className="ml-20 mr-20">
+    <div className="sm:px-[50px] px-[20px]">
       <section className="mt-20 mb-6">
         <div className="flex flex-col space-y-5 w-full">
           <h4 className="md:w-2/3 font-bold text-4xl">Prices and price tags</h4>
