@@ -78,7 +78,6 @@ function Cards() {
           className="w-full h-full object-fit"
         />
       </div>
-      {/* 1st */}
       <Image />
       {uniqueCategories?.map((item, index) => (
         <Dataslider
