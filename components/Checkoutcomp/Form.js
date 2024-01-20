@@ -1,19 +1,22 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, selectFormData } from "../Features/Slices/formSlice";
 import ProfileContent from "../Cards/ProfileContent";
 import Link from "next/link";
+import { selecteddbItems } from "../Features/Slices/cartSlice";
 export default function Form() {
   const router = useRouter();
   const dispatch = useDispatch();
 
   const formData = useSelector(selectFormData);
-  const dbItemset = useSelector((state) => state.cart.dbItems);
-  console.log(dbItemset);
+  // const dbItemset = useSelector(selecteddbItems);
+  // console.log(dbItemset);
+  // console.log(dbItemset);
   // const deviceId = dbItemset.owner;
   // const cartId = dbItemset._id;
+  // something error in cartId
 
   const [form, setForm] = React.useState({
     first: "",
@@ -28,6 +31,7 @@ export default function Form() {
     email: "",
     number: "",
     pan: "",
+    datetime: "",
   });
   // console.log(form);
   // function handlefunc(event) {
@@ -134,6 +138,10 @@ export default function Form() {
   const buttonClass = incompleteForm
     ? "bg-gray-300 text-white"
     : "bg-black text-white";
+
+  const searchParams = useSearchParams();
+  console.log(searchParams.get("search")); // Logs "search"
+  const properties = searchParams.get("search");
 
   return (
     <>
@@ -329,6 +337,24 @@ export default function Form() {
           </h6>
         </div>
         <br />
+
+        {properties === "sample" && (
+          <div className="mb-4">
+            <h1 className="text-xl">Schedule your order here</h1>
+            <label htmlFor="datetime" className="form-label relative"></label>
+            <br />
+            <input
+              type="datetime-local"
+              placeholder="datetime"
+              onChange={handlefunc}
+              name="datetime"
+              value={form.datetime}
+              required
+              className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md "
+            />
+          </div>
+        )}
+
         <div className="mb-4 flex items-center">
           <input
             type="checkbox"
@@ -361,21 +387,18 @@ export default function Form() {
         </div>
         <br />
 
-        {/* <Link
+        <Link
           href={{
             pathname: "/shipping",
-            query: {
-              search: "cart",
-            },
           }}
-        > */}
-        <button
-          disabled={incompleteForm}
-          className={`mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ${buttonClass} `}
         >
-          Continue
-        </button>
-        {/* </Link> */}
+          <button
+            disabled={incompleteForm}
+            className={`mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ${buttonClass} `}
+          >
+            Continue
+          </button>
+        </Link>
       </form>
       <br />
       <br />

@@ -349,20 +349,21 @@ const Card = ({ data }) => {
                 Buy Now
               </button>
             </Link>
+            <Link
+              href={{
+                pathname: "/checkout",
+                query: {
+                  search: "sample",
+                },
+              }}
+              className="memberCheckout my-4 flex items-center justify-center"
+            >
+              <button className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              Buy online with in-store request
+              </button>
+            </Link>
 
-            {/* <div className="guestCheckout ">
-              <button
-                onClick={handleClicks}
-                className="bg-black mt-4 text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
-              >
-                Buy Now
-              </button>
-            </div> */}
-            <div className="memberCheckout mt-4">
-              <button className="border-2 border-neutral-300 text-black sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
-                Contact
-              </button>
-            </div>
+            
           </div>
         </div>
         <ToastContainer
