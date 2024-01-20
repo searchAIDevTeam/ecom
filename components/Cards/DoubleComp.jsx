@@ -50,10 +50,11 @@ const DoubleComp = () => {
         <div className="mt-20">
           <Image
             width={1024}
-            height={512}
+            height={550}
             src="/images/game.webp"
             className="object-cover"
             alt="Games"
+            loading="lazy"
           />
         </div>
       </div>

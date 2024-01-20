@@ -11,6 +11,8 @@ const Notfound = () => {
         height={300}
         className=" sm:w-[600px] sm:h-[300px] w-[80vw] h-[60vh] "
         alt="not-found"
+        loading="lazy"
+        ignore_imgix="true"
       />
       <p className="text-3xl">Looks like the page went on vacation</p>
       <p>
