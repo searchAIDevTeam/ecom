@@ -362,7 +362,7 @@ const Card = ({ data }) => {
               Buy online with in-store request
               </button>
             </Link>
-
+            
             
           </div>
         </div>

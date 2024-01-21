@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, selectFormData } from "../Features/Slices/formSlice";
@@ -9,7 +9,7 @@ import { selecteddbItems } from "../Features/Slices/cartSlice";
 export default function Form() {
   const router = useRouter();
   const dispatch = useDispatch();
-
+  const [selected, setSelected] = useState(null);
   const formData = useSelector(selectFormData);
   // const dbItemset = useSelector(selecteddbItems);
   // console.log(dbItemset);
@@ -107,7 +107,7 @@ export default function Form() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ form, deviceId, cartId }),
+          body: JSON.stringify({ form, deviceId }),
         }
       );
 
@@ -337,9 +337,49 @@ export default function Form() {
           </h6>
         </div>
         <br />
+        <p className="my-4 text-xl">Please select you purchase mode here(select only one)</p>
+        {properties === "freesample" || properties === "freedesign" ? (
+          <div className="flex flex-row gap-5">
+            <div
+              onClick={() => setSelected("virtual")}
+              className={`w-[250px] h-[250px] bg-gray-400 rounded-md text-center flex flex-col justify-around ${
+                selected === "virtual"
+                  ? " outline outline-offset-4 outline-black"
+                  : ""
+              }`}
+            >
+              <p className="text-2xl text-gray-500 font-semibold">
+                Virtual Receive
+              </p>
+              <p>
+                This service is <span className=" text-blue-500">free</span>
+              </p>
+              <p>
+                You will receive mail to join in google meet and see the product
+              </p>
+            </div>
+            <div
+              onClick={() => setSelected("homedelivery")}
+              className={`w-[250px] h-[250px] bg-gray-400 rounded-md text-center flex flex-col justify-around ${
+                selected === "homedelivery"
+                  ? "outline outline-offset-4 outline-black"
+                  : ""
+              }`}
+            >
+              <p className="text-2xl text-gray-500 font-semibold">
+                Home Delivery
+              </p>
+              <p>Free upto 5km from our shop center</p>
+              <p>You have to pay minimum ₹300 Rupees </p>
+              <p></p>
+            </div>
+          </div>
+        ) : null}
 
-        {properties === "sample" && (
-          <div className="mb-4">
+        {(properties === "sample" ||
+          properties === "freesample" ||
+          properties === "freedesign") && (
+          <div className="my-4">
             <h1 className="text-xl">Schedule your order here</h1>
             <label htmlFor="datetime" className="form-label relative"></label>
             <br />
