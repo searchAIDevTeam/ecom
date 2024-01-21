@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import { links } from "./images-links";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import CategoryContent from "../molecules/CategoryContent";
 import FeaturedContent from "../molecules/FeaturedContent";
@@ -85,7 +86,9 @@ function Filter({ isFilterHovered, onFilterHover }) {
     // Update isMobile state on window resize
     if (window) {
       const handleResize = () => {
-        setIsMobile( ()=>typeof window !== "undefined" && window.innerWidth <= 450);
+        setIsMobile(
+          () => typeof window !== "undefined" && window.innerWidth <= 450
+        );
       };
 
       window.addEventListener("resize", handleResize);
@@ -123,8 +126,6 @@ function Filter({ isFilterHovered, onFilterHover }) {
               }`}
               {...(!isMobile
                 ? {
-                    onClick: (event) => handleDropdownClick(event, idx),
-
                     onMouseEnter: () => {
                       setActiveDropdown(idx);
                       handleFilterHover(value.label);
@@ -133,13 +134,12 @@ function Filter({ isFilterHovered, onFilterHover }) {
                       setActiveDropdown(null);
                     },
                   }
-                : {
-                    onClick: (e) => {
-                      router.push(`/${value.label}`);
-                      e.preventDefault();
-                      e.stopPropagation();
-                    },
-                  })}
+                : {})}
+              //onClick: (e) => {
+              //router.push("/freesample");
+              // },
+              //onClick: () => router.push("/freesample"),
+              // handleDropdownClick(event, idx),
               // onMouseEnter={() => {
               //   setActiveDropdown(idx);
               //   console.log(idx);
@@ -149,17 +149,28 @@ function Filter({ isFilterHovered, onFilterHover }) {
               // }}
               // onMouseLeave={() => setActiveDropdown(null)}
             >
-              {value && (
-                <p
-                  className={` sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap ${
-                    value.label === "Find Floor" ? "sm:hidden hidden" : "block"
-                  }
+              <Link
+                href={{
+                  pathname: "/freesample",
+                  query: {
+                    search: `${value.label}`,
+                  },
+                }}
+              >
+                {value && (
+                  <p
+                    className={` sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap ${
+                      value.label === "Find Floor"
+                        ? "sm:hidden hidden"
+                        : "block"
+                    }
 
   `}
-                >
-                  {value.label}
-                </p>
-              )}
+                  >
+                    {value.label}
+                  </p>
+                )}
+              </Link>
               {/* {value && (
                 <p className="Filter-array-element-lebel">{value.label}</p>
               )} */}

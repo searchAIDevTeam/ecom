@@ -17,16 +17,20 @@ const AddCart = () => {
   const dbItems = useSelector((state) => state.cart.dbItems);
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
+    console.log(id);
   }
   useEffect(() => {
     const fetchData = async () => {
       try {
         setCartStaus("loading");
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`, {
-          params: {
-            deviceId: id,
-          },
-        });
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
+          {
+            params: {
+              deviceId: id,
+            },
+          }
+        );
         console.log(response);
         if (response.status !== 200) {
           throw new Error("HTTP status " + response.status);
@@ -75,11 +79,14 @@ const AddCart = () => {
   };
   const handleDelete = async (itemid) => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`, {
-        params: {
-          deviceId: id,
-        },
-      });
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
+        {
+          params: {
+            deviceId: id,
+          },
+        }
+      );
       if (response.status !== 200) {
         throw new Error("HTTP status" + response.status);
       }
