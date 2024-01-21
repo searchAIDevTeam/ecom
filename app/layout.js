@@ -13,10 +13,22 @@ const myFont = localFont({
 export const metadata = {
   title: {
     default: "Ayatrio",
-    template: "%s - Ayatrio",
+    template: "Ayatrio - %s ",
   },
   description:
     "Custom Wallpaper, Wooden Flooring, Laminate & Vinyl Floors in India India&#039;s first Virtual Reality based Interior Design Solution",
+  openGraph: {
+    title: "Ayatrio",
+    description:
+      "Custom Wallpaper, Wooden Flooring, Laminate & Vinyl Floors in India India&#039;s first Virtual Reality based Interior Design Solution",
+    images: [
+      {
+        url: "http://localhost:3000/api/og",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {

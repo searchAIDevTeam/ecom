@@ -359,11 +359,9 @@ const Card = ({ data }) => {
               className="memberCheckout my-4 flex items-center justify-center"
             >
               <button className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
-              Buy online with in-store request
+                Buy online with in-store request
               </button>
             </Link>
-
-            
           </div>
         </div>
         <ToastContainer
