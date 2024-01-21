@@ -26,7 +26,7 @@ export default function NewMainSlider() {
       type: "FETCH_SLIDER_VIEW_REQUEST",
       payload: {
         page: page,
-        limit: 3,
+        limit: 4,
       },
     });
   };
@@ -42,45 +42,36 @@ export default function NewMainSlider() {
   const handleTab = () => {
     router.push("/room");
   };
-  const[hov,setHov]=React.useState(false)
- const handleEnter=()=>{
-  setHov(true);
- };
- const handleLeave=()=>{
-  setHov(false);
-
- }
+  const [hov, setHov] = React.useState(false);
+  const handleEnter = () => {
+    setHov(true);
+  };
+  const handleLeave = () => {
+    setHov(false);
+  };
   return (
     <div>
       <Swiper
         className="swiper-slider"
         centeredSlides={true}
-        slidesPerView={1}
         grabCursor={true}
-        freeMode={false}
+        // freeMode={false}
         loop={true}
         mousewheel={false}
         keyboard={{
           enabled: true,
         }}
         style={{
-          marginLeft:-60,
+          marginLeft: -60,
         }}
         // Enabled autoplay mode
         autoplay={{
           delay: 10000,
           disableOnInteraction: false,
         }}
-        // If we need pagination
-        pagination={{
-          el: ".swiper-pagination",
-          dynamicBullets: false,
-          clickable: true,
-        }}
         // If we need navigation
         navigation={{
           nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
         }}
         // Responsive breakpoints
         breakpoints={{
@@ -99,52 +90,169 @@ export default function NewMainSlider() {
           },
         }}
       >
-    {sliderApiData?.map((data) => (
-  <SwiperSlide key={data._id} >
-    <div className="relative group">
-      <Image src={data.imgSrc} width={500} height={500} alt="Swiper" className="swiper-slide"/>
-      <div className="absolute bottom-4 left-4 flex text-lg text-white">Your text</div>
-      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-       <div onMouseEnter={handleEnter}  className="cursor-pointer">        
-          <div className="carcular-conui top-28 left-40  absolute rounded-full w-[30px] h-[30px]">
-          <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui">
-          </div>
-          </div>
-          </div>
-           {hov &&(
-             <div
-              className={` flex-row z-10 mt-12 mr-64 w-40 h-48 flex items-center pb-2 bg-white cursor-pointer`}
-              onClick={handleTab} onMouseLeave={handleLeave}
-            >
-              <div className="flex flex-row relative">        
-                  <div
-                    className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
-                    key={data._id}
-                  >
-                    {/* <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2> */}
-                    {/* <p className="font-normal pb-2">{data.productCategory}</p> */}
-                    <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                      ₹{data.price}
-                    </p>
-                  </div>
-                <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
-                  <Image
-                    className="flex ml-2"
-                    src="/svg/dropdown/backarrowRevarce.svg"
-                    height={20}
-                    width={20}
-                    alt="arrow"
-                  />
+        <SwiperSlide>
+          <div className="relative group sm:h-[500px] h-[200px]">
+            <Image
+              src="/images/room.webp"
+              width={500}
+              height={500}
+              alt="Swiper"
+              className="swiper-slide"
+            />
+            <div className="absolute bottom-4 left-4 flex text-lg text-white">
+              Your text
+            </div>
+            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div onMouseEnter={handleEnter} className="cursor-pointer">
+                <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
+                  <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
                 </div>
               </div>
-            </div>)}        
-      </div>
-    </div>
-  </SwiperSlide>
-))}
-          <div className="swiper-pagination"></div>
+              {hov && (
+                <div
+                  className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
+                  onClick={handleTab}
+                  onMouseLeave={handleLeave}
+                >
+                  <div className="flex flex-row relative">
+                    <div className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4">
+                      <h2 className="font-bold pt-1 pr-2">
+                        Plain white wallpaper
+                      </h2>
+                      <p className="font-normal pb-2">Wallpaper</p>
+                      <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                        ₹799
+                      </p>
+                    </div>
+                    <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                      <Image
+                        className="flex ml-2"
+                        src="/svg/dropdown/backarrowRevarce.svg"
+                        height={20}
+                        width={20}
+                        alt="arrow"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative group sm:h-[500px] h-[200px]">
+            <Image
+              src="/images/living.webp"
+              width={500}
+              height={500}
+              alt="Swiper"
+              className="swiper-slide"
+            />
+            <div className="absolute bottom-4 left-4 flex text-lg text-white">
+              Your text
+            </div>
+            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div onMouseEnter={handleEnter} className="cursor-pointer">
+                <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
+                  <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
+                </div>
+              </div>
+              {hov && (
+                <div
+                  className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
+                  onClick={handleTab}
+                  onMouseLeave={handleLeave}
+                >
+                  <div className="flex flex-row relative">
+                    <div className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4">
+                      <h2 className="font-bold pt-1 pr-2">
+                        Gloss wallpaper 
+                      </h2>
+                      <p className="font-normal pb-2">Wallpaper</p>
+                      <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                        ₹999
+                      </p>
+                    </div>
+                    <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                      <Image
+                        className="flex ml-2"
+                        src="/svg/dropdown/backarrowRevarce.svg"
+                        height={20}
+                        width={20}
+                        alt="arrow"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </SwiperSlide>
+        {sliderApiData?.map((data) => (
+          <SwiperSlide key={data._id}>
+            <div className="relative group sm:h-[500px] h-[200px]">
+              <Image
+                src={data.imgSrc}
+                width={500}
+                height={500}
+                alt="Swiper"
+                className="swiper-slide"
+              />
+              <div className="absolute bottom-4 left-4 flex text-lg text-white">
+                Your text
+              </div>
+              <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div onMouseEnter={handleEnter} className="cursor-pointer">
+                  <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
+                    <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
+                  </div>
+                </div>
+                {hov && (
+                  <div
+                    className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
+                    onClick={handleTab}
+                    onMouseLeave={handleLeave}
+                  >
+                    <div className="flex flex-row relative">
+                      <div
+                        className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
+                        key={data._id}
+                      >
+                        <h2 className="font-bold pt-1 pr-2">
+                          {data.circles[0].circles[0].productTitle}
+                        </h2>
+                        <p className="font-normal pb-2">
+                          {data.circles[0].circles[0].productCategory}
+                        </p>
+                        <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                          ₹{data.circles[0].circles[0].productPrice}
+                        </p>
+                      </div>
+                      <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                        <Image
+                          className="flex ml-2"
+                          src="/svg/dropdown/backarrowRevarce.svg"
+                          height={20}
+                          width={20}
+                          alt="arrow"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+        <div className="swiper-pagination"></div>
         {/* <div className="swiper-button-prev"></div> */}
-        <Image src='/svg/dropdown/rightvector.svg' width={30} height={30} alt="arrow" className="swiper-button-next sm:-translate-y-[150px]"/>
+        <Image
+          src="/svg/dropdown/rightvector.svg"
+          width={30}
+          height={30}
+          alt="arrow"
+          className="swiper-button-next sm:-translate-y-[150px]"
+        />
       </Swiper>
     </div>
   );
