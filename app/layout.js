@@ -11,6 +11,8 @@ const myFont = localFont({
 });
 
 export const metadata = {
+  metadataBase: new URL("http://localhost:3000/"),
+
   title: {
     default: "Ayatrio",
     template: "Ayatrio - %s ",
@@ -28,6 +30,15 @@ export const metadata = {
         height: 630,
       },
     ],
+  },
+  applicationName: "Ayatrio",
+  keywords: ["Ayatrio", "Flooring store"],
+  authors: [{ name: "Ayatrio" }],
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+    },
   },
 };
 
