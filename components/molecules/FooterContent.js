@@ -59,29 +59,28 @@ const FooterContent = (props) => {
     }
   };
   return (
-    <>
+    <div>
       {screenSize < 451 ? (
-        <>
-          <div>
-            <h3
-              className="py-2 px-1 font-semibold border-b-2 border-t-2"
-              onClick={() => setShow(!show)}
-            >
-              {categoryHeading}
-            </h3>
-              {show &&
-                categoryData.map((curElement) => {
-                  return (
-                    <p
-                      onClick={() => handleClick(headingId, curElement.id)}
-                      className="cursor-pointer px-1 py-1"
-                    >
-                      {curElement.text}
-                    </p>
-                  );
-                })}
-          </div>
-        </>
+        <div>
+          <h3
+            className="py-2 px-1 font-semibold border-b-2 border-t-2"
+            onClick={() => setShow(!show)}
+          >
+            {categoryHeading}
+          </h3>
+          {show &&
+            categoryData.map((curElement) => {
+              return (
+                <p
+                  key={curElement.id}
+                  onClick={() => handleClick(headingId, curElement.id)}
+                  className="cursor-pointer px-1 py-1"
+                >
+                  {curElement.text}
+                </p>
+              );
+            })}
+        </div>
       ) : (
         <div className="col-span-1 space-y-5">
           <h3 className="font-semibold">{categoryHeading}</h3>
@@ -99,7 +98,7 @@ const FooterContent = (props) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
