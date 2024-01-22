@@ -26,7 +26,7 @@ export default function NewMainSlider() {
       type: "FETCH_SLIDER_VIEW_REQUEST",
       payload: {
         page: page,
-        limit: 4,
+        limit: 6,
       },
     });
   };
@@ -117,7 +117,7 @@ export default function NewMainSlider() {
                   <div className="flex flex-row relative">
                     <div className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4">
                       <h2 className="font-bold pt-1 pr-2">
-                        Plain white wallpaper
+                        White floor
                       </h2>
                       <p className="font-normal pb-2">Wallpaper</p>
                       <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
@@ -166,7 +166,7 @@ export default function NewMainSlider() {
                   <div className="flex flex-row relative">
                     <div className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4">
                       <h2 className="font-bold pt-1 pr-2">
-                        Gloss wallpaper 
+                        Gloss floor 
                       </h2>
                       <p className="font-normal pb-2">Wallpaper</p>
                       <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
