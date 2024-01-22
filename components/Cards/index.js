@@ -51,7 +51,7 @@ function Cards() {
 
   const categories = recommended?.recommendations?.[0]?.recommendedProducts?.map((item) => item.category) || [];
   let uniqueCategories = [...new Set(categories)];
-  console.log(uniqueCategories)
+  // console.log(uniqueCategories)
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
   const MemoizedProfileContent = useMemo(() => <Profile />, []);
   const MemoizedTrendingProducts = useMemo(() => <Trending />, []);
@@ -63,13 +63,15 @@ function Cards() {
   }, [uniqueCategories]);
 
   if (loading) {
-    return <div>Loading...</div>; // or another loading indicator
+    return <div>Loading...</div>; 
   }
 
   return (
-    <div>
-      {MemoizedMainSlider}
-      {MemoizedTrendingProducts}
+    <div className="w-full h-auto">
+      {/* {MemoizedMainSlider} */}
+      <NewMainSlider />
+      {/* {MemoizedTrendingProducts} */}
+      <Trending />
       <div className="h-40 my-10 sm:px-[50px] px-[50px]">
         <img
           src="/images/salesoffer.webp"
