@@ -1,24 +1,20 @@
-import "../../Dropitems/Styles";
-// import Image from '../../../assets/ayatriologo.png';
-
+import Image from "next/image";
 const JoinAyatrioFamily = () => {
   return (
-    <div className="filter_item">
-      <h4 className="filter_heading sm:text-base text-xl">
-        Join Ayatrio Family
-      </h4>
-      <div className="footer_tcon">
-        <img className="w-[200px] h-[40px]" src="/images/ayatriologo.webp" alt="" />
+    <div className="space-y-4">
+      <h4 className="sm:text-base text-xl">Join Ayatrio Family</h4>
+      <div>
+        <Image width={200} height={40} src="/images/ayatriologo.webp" alt="" />
       </div>
-      <div className="foter-info">
-        <p>
+      <div>
+        <h4>
           Enjoy member-only discounts & offers, early access to Ayatrio sale,
-          delicious gift offers and much more. Join for free.​
-        </p>
+          delicious gift offers and much more. Join for free.
+        </h4>
       </div>
-      <p className="sm:w-[150px] sm:h-[50px] w-[150px] h-[50px] bg-black py-3 sm:px-4 px-1 rounded-full flex justify-center items-center text-white cursor-pointer">
+      <button className="bg-black py-3 sm:px-7 px-3 rounded-full text-white">
         Join the club
-      </p>
+      </button>
     </div>
   );
 };

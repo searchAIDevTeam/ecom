@@ -27,6 +27,8 @@ h1 {
   position: relative;
   display: flex;
   border: solid black 1px;
+  height: 600px;
+  width: 1100px;
 }
 
 .image-comparison .images-container .before-image {

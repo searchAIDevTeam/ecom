@@ -23,15 +23,9 @@ const CategoryContent = (props) => {
   const heading = props.categoryHeading;
 
   const categoryData = props.categoryData;
-  // console.log(categoryData);
   const router = useRouter();
   let parentCategoryVar;
   const handleClick = (cat) => {
-    // console.log(parentCategoryVar)
-    // console.log(props.parentCategory)
-    // console.log(cat.text)
-    // console.log(heading.split(" ")[2].toLowerCase())
-    // console.log(cat)
     if (displayedOn === "menu") {
       console.log("heading : ", heading)
       console.log("cat : ", cat)
