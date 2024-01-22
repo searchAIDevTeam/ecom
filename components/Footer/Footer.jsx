@@ -2,7 +2,10 @@ import React from "react";
 import "./styles.css";
 import JoinAyatrioFamily from "./Footer_child/JoinAyatrioFamily";
 import { footerData } from "../../Model/FooterColumnData/FooterColumnData";
-import FooterContent from "../molecules/FooterContent";
+import dynamic from "next/dynamic";
+const FooterContent = dynamic(()=>import('../molecules/FooterContent'), {
+  ssr: false
+})
 
 const Footer = () => {
   return (
@@ -15,6 +18,7 @@ const Footer = () => {
         {footerData.map((column) => {
           return (
             <FooterContent
+              key={column.id}
               headingId={column.id}
               categoryHeading={column.categoryHeading}
               categoryData={column.categoryData}
@@ -28,6 +32,8 @@ const Footer = () => {
             <li>
               <a href="#" className="me-4 hover:underline">
                 <img
+                  width={35}
+                  height={35}
                   className="list-socialicon"
                   src="/social-icon/facebook-icon.svg"
                   alt=""
