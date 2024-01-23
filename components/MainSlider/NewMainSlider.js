@@ -26,7 +26,7 @@ export default function NewMainSlider() {
       type: "FETCH_SLIDER_VIEW_REQUEST",
       payload: {
         page: page,
-        limit: 6,
+        limit: 4,
       },
     });
   };
@@ -35,9 +35,10 @@ export default function NewMainSlider() {
     if (SliderViewData && SliderViewData.result) {
       console.log("SliderViewData:", SliderViewData.result);
       setSliderApiData(SliderViewData.result);
+      // console.log("sliderViewData imgSrc : ",SliderViewData.imgSrc);
     }
   }, [SliderViewData]);
-  console.log(sliderApiData);
+  // console.log("sliderAPIData : ", sliderApiData[0]?.imgSrc);
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");
@@ -49,6 +50,7 @@ export default function NewMainSlider() {
   const handleLeave = () => {
     setHov(false);
   };
+  // console.log("sliderViewData imgSrc : ",SliderViewData[0]);
   return (
     <div>
       <Swiper
@@ -90,10 +92,10 @@ export default function NewMainSlider() {
           },
         }}
       >
-        <SwiperSlide>
+        <SwiperSlide key={sliderApiData[0]?._id}>
           <div className="relative group sm:h-[500px] h-[200px]">
             <Image
-              src="/images/room.webp"
+              src={sliderApiData[0]?.imgSrc}
               width={500}
               height={500}
               alt="Swiper"
@@ -115,13 +117,21 @@ export default function NewMainSlider() {
                   onMouseLeave={handleLeave}
                 >
                   <div className="flex flex-row relative">
-                    <div className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4">
+                    <div
+                      className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
+                      key={sliderApiData[0]?._id}
+                    >
                       <h2 className="font-bold pt-1 pr-2">
-                        White floor
+                        {sliderApiData[0]?.circles[0].circles[0].productTitle}
                       </h2>
-                      <p className="font-normal pb-2">Wallpaper</p>
+                      <p className="font-normal pb-2">
+                        {
+                          sliderApiData[0]?.circles[0].circles[0]
+                            .productCategory
+                        }
+                      </p>
                       <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                        ₹799
+                        ₹{sliderApiData[0]?.circles[0].circles[0].productPrice}
                       </p>
                     </div>
                     <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
@@ -139,10 +149,10 @@ export default function NewMainSlider() {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide key={sliderApiData[1]?._id}>
           <div className="relative group sm:h-[500px] h-[200px]">
             <Image
-              src="/images/living.webp"
+              src={sliderApiData[1]?.imgSrc}
               width={500}
               height={500}
               alt="Swiper"
@@ -164,13 +174,18 @@ export default function NewMainSlider() {
                   onMouseLeave={handleLeave}
                 >
                   <div className="flex flex-row relative">
-                    <div className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4">
+                    <div
+                      className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
+                      key={sliderApiData[1]?._id}
+                    >
                       <h2 className="font-bold pt-1 pr-2">
-                        Gloss floor 
+                        {sliderApiData[1]?.circles[0].circles[0].productTitle}
                       </h2>
-                      <p className="font-normal pb-2">Wallpaper</p>
+                      <p className="font-normal pb-2">
+                        {sliderApiData[1]?.circles[0].circles[0].productTitle}
+                      </p>
                       <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                        ₹999
+                        {sliderApiData[1]?.circles[0].circles[0].productTitle}
                       </p>
                     </div>
                     <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
@@ -188,7 +203,61 @@ export default function NewMainSlider() {
             </div>
           </div>
         </SwiperSlide>
-        {sliderApiData?.map((data) => (
+        <SwiperSlide key={sliderApiData[2]?._id}>
+          <div className="relative group sm:h-[500px] h-[200px]">
+            <Image
+              src={sliderApiData[2]?.imgSrc}
+              width={500}
+              height={500}
+              alt="Swiper"
+              className="swiper-slide"
+            />
+            <div className="absolute bottom-4 left-4 flex text-lg text-white">
+              Your text
+            </div>
+            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div onMouseEnter={handleEnter} className="cursor-pointer">
+                <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
+                  <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
+                </div>
+              </div>
+              {hov && (
+                <div
+                  className={`flex-row z-10 p-2 sm:-ml-[350px] sm:-mt-[100px] flex items-center pb-3 bg-white cursor-pointer`}
+                  onClick={handleTab}
+                  onMouseLeave={handleLeave}
+                >
+                  <div className="flex flex-row relative">
+                    <div
+                      className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
+                      key={sliderApiData[2]?._id}
+                    >
+                      <h2 className="font-bold pt-1 pr-2">
+                        {sliderApiData[2]?.circles[0].circles[0].productTitle}
+                      </h2>
+                      <p className="font-normal pb-2">
+                        {sliderApiData[2]?.circles[0].circles[0].productTitle}
+                      </p>
+                      <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                        {sliderApiData[2]?.circles[0].circles[0].productTitle}
+                      </p>
+                    </div>
+                    <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                      <Image
+                        className="flex ml-2"
+                        src="/svg/dropdown/backarrowRevarce.svg"
+                        height={20}
+                        width={20}
+                        alt="arrow"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </SwiperSlide>
+        {sliderApiData?.slice(3).map((data) => (
           <SwiperSlide key={data._id}>
             <div className="relative group sm:h-[500px] h-[200px]">
               <Image
@@ -244,8 +313,6 @@ export default function NewMainSlider() {
             </div>
           </SwiperSlide>
         ))}
-        <div className="swiper-pagination"></div>
-        {/* <div className="swiper-button-prev"></div> */}
         <Image
           src="/svg/dropdown/rightvector.svg"
           width={30}
