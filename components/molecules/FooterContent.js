@@ -47,6 +47,8 @@ const FooterContent = (props) => {
         ? router.push("/customerservice/faq")
         : elementId === 7
         ? router.push("/customerservice/termsandconditions")
+        : elementId === 8
+        ? router.push("/way-to-buy")
         : router.push("/home");
     } else {
       elementId === 1

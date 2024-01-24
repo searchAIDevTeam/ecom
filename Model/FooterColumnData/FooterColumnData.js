@@ -36,6 +36,7 @@ export const footerData = [
       { id: 5, text: "Contact us" },
       { id: 6, text: "FAQ" },
       { id: 7, text: "Terms and conditions" },
+      { id: 8, text: "Financial Support"},
     ],
   },
   {

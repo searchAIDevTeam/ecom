@@ -260,17 +260,7 @@ function WaytoBuy() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className=' text-left lg:pl-96 sm:pl-16 py-8 w-1/2'>
-                        <div className="text-orange-600 pb-1 text-xm font-normal tracking-wide font-sans">No Cost EMI</div>
-                        <div className="text-xl pb-1 font-semibold tracking-wide font-sans ">3 Installments</div>
-                        <div className="text-black-400 pb-1 text-base  font-normal tracking-wide font-sans">{`${inputValue}`} total cost includes 15.99% pa</div>
-                      </td>
-                      <td className=' text-right lg:pr-96 sm:pl-16 py-8 w-1/2'>
-                        <div className="text-black-400 pb-1 text-base  font-normal tracking-wide font-sans"> {`${(inputValue / 3).toFixed(2)}/mo`}</div>
-                        <div className="text-orange-600 pb-1 text-base  font-normal tracking-wide font-sans">Includes total savings of ₹229.00.</div>
-                      </td>
-                    </tr>
+                
                     <tr>
                       <td className=' text-left lg:pl-96 sm:pl-16 py-8 w-1/2'>
                         <div className="text-orange-600 pb-1 text-xm font-normal tracking-wide font-sans">No Cost EMI</div>
@@ -282,17 +272,7 @@ function WaytoBuy() {
                         <div className="text-orange-600 pb-1 text-base  font-normal tracking-wide font-sans">Includes total savings of ₹229.00.</div>
                       </td>
                     </tr>
-                    <tr>
-                      <td className=' text-left lg:pl-96 sm:pl-16 py-8 w-1/2'>
-
-                        <div className="text-xl pb-1 font-semibold tracking-wide font-sans ">9 Installments</div>
-                        <div className="text-black-400 pb-1 text-base  font-normal tracking-wide font-sans">{`${inputValue}`} total cost includes 15.99% pa</div>
-                      </td>
-                      <td className=' text-right lg:pr-96 sm:pl-16 py-8 w-1/2'>
-                        <div className="text-black-400 pb-1 text-base  font-normal tracking-wide font-sans">{`${(inputValue / 9).toFixed(2)}/mo`}</div>
-
-                      </td>
-                    </tr>
+                    
                     <tr>
                       <td className=' text-left lg:pl-96 sm:pl-16 py-8 w-1/2'>
 
@@ -315,16 +295,7 @@ function WaytoBuy() {
 
                       </td>
                     </tr>
-                    <tr>
-                      <td className=' text-left lg:pl-96 sm:pl-16 py-8 w-1/2'>
-                        <div className="text-xl pb-1 font-semibold tracking-wide font-sans ">24 Installments</div>
-                        <div className="text-black-400 pb-1 text-base  font-normal tracking-wide font-sans">{`${inputValue}`} total cost includes 15.99% pa</div>
-                      </td>
-                      <td className=' text-right lg:pr-96 sm:pl-16 py-8 w-1/2'>
-                        <div className="text-black-400 pb-1 text-base  font-normal tracking-wide font-sans">{`${(inputValue / 24).toFixed(2)}/mo`}</div>
-
-                      </td>
-                    </tr>
+                    
 
                   </tbody>
                 </table>
