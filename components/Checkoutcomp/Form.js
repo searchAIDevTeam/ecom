@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateFormData, selectFormData } from "../Features/Slices/formSlice";
 import ProfileContent from "../Cards/ProfileContent";
 import Link from "next/link";
+import Calender from "../Calenders/Calender";
 import { selecteddbItems } from "../Features/Slices/cartSlice";
 export default function Form() {
   const router = useRouter();
@@ -337,7 +338,9 @@ export default function Form() {
           </h6>
         </div>
         <br />
-        <p className="my-4 text-xl">Please select you purchase mode here(select only one)</p>
+        <p className="my-4 text-xl">
+          Please select you purchase mode here(select only one)
+        </p>
         {properties === "freesample" || properties === "freedesign" ? (
           <div className="flex flex-row gap-5">
             <div
@@ -380,8 +383,8 @@ export default function Form() {
           properties === "freesample" ||
           properties === "freedesign") && (
           <div className="my-4">
-            <h1 className="text-xl">Schedule your order here</h1>
-            <label htmlFor="datetime" className="form-label relative"></label>
+            <h1 className="text-xl mb-8">Schedule your order here</h1>
+            {/* <label htmlFor="datetime" className="form-label relative"></label>
             <br />
             <input
               type="datetime-local"
@@ -391,7 +394,8 @@ export default function Form() {
               value={form.datetime}
               required
               className="px-5 form-input border border-gray-600 h-10 sm:w-96 w-[70vw] rounded-md "
-            />
+            /> */}
+            <Calender />
           </div>
         )}
 

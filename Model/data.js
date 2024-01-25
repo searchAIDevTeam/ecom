@@ -1,6 +1,3 @@
-
-import Image from "next/image";
-
 export const dataRooms = [
   {
     title: "Kitchen",
@@ -180,5 +177,3 @@ export const colorTiles = [
   },
 ];
 
-
-// <Image src="/virtualexperience/diningroom.jpg" alt="BATHROOM" width={30} height={30} />,

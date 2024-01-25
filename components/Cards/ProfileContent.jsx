@@ -18,6 +18,7 @@ const ProfileContent = () => {
   useEffect(() => {
     dispatch({ type: "FETCH_PROFILE_REQUEST", payload: "Profile" });
   }, []);
+
   const peopleData = [
     { name: "Rajit1", image: linkdln },
     { name: "Rajit2", image: linkdln },
@@ -26,9 +27,12 @@ const ProfileContent = () => {
   ];
   const [peopleState, setPeopleState] = useState(peopleData);
   const profileData = useSelector(selectProfileData);
+
   useEffect(() => {
     if (profileData) {
       setPeopleState(profileData);
+      // console.log("hi")
+
     }
   }, []);
   return (

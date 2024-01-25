@@ -13,12 +13,36 @@ const FreeSample = () => {
   const [showCircle, setShowCircle] = useState(false);
   const [showbuttoncontent, setShowbuttoncontent] = useState(false);
   const [count, setCount] = useState(0);
+  const [roomstate, setRoomstate] = useState("");
+  const [colorstate, setColorstate] = useState("");
+  const rooms = [
+    { title: "All" },
+    { title: "Living Room" },
+    { title: "Kids Room" },
+    { title: "Dinning Room" },
+    { title: "Bedroom" },
+    { title: "Kitchen" },
+    { title: "Pooja Room" },
+    { title: "Guest Room" },
+    { title: "Office Room" },
+    { title: "Balcony" },
+    { title: "Bathroom" },
+  ];
+  const colors = [
+    { title: "All" },
+    { title: "Sky Blue" },
+    { title: "Forest Green" },
+    { title: "Sunset Orange" },
+    { title: "Rose Pink" },
+    { title: "Charcoal Gray" },
+  ];
+  const [style, setStyle] = useState("");
 
   const [selectedPage, setSelectedPage] = useState("vrooms");
 
   const searchparams = useSearchParams();
-  const searchtext = searchparams.get("search");
-  // console.log("searchtext", searchtext);
+  const searchtext = searchparams.get("search1");
+  console.log("searchtext", searchtext);
   const handleSelectPage = (page) => {
     setSelectedPage(page);
   };
@@ -95,29 +119,25 @@ const FreeSample = () => {
   };
   const [status, setStatus] = useState("");
 
-  let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`;
-  const [sdata, setsData] = useState([]);
+  let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`;
+  const [sdata, setsData] = useState("");
   useEffect(() => {
     const fetchedItems = async () => {
       try {
         setStatus("loading");
-        const response = await axios.get(url, {
-          params: {
-            limit: 100,
-          },
-        });
+        const response = await axios.get(url);
         if (response.status !== 200) {
           throw new Error("HTTP status" + response.status);
         }
         setsData((prevData) => {
-          const newData = response.data;
+          const newData = response.data[0].categories;
           if (JSON.stringify(newData) !== JSON.stringify(prevData)) {
             return newData;
           } else {
             return prevData;
           }
         });
-        setStatus("Succeded");
+        setStatus("succeeded");
       } catch (error) {
         console.error("Error ocurrs here", error);
         setStatus("failed");
@@ -125,10 +145,164 @@ const FreeSample = () => {
     };
     fetchedItems();
   }, []);
+  let url2 = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`;
+  const [data, setData] = useState("");
+  const [datastat, setDatastat] = useState("");
   useEffect(() => {
-    console.log("data of whole product", sdata);
-    console.log("status of whole product", status);
-  }, [sdata, status]);
+    const fetchedpdt = async () => {
+      try {
+        setDatastat("loading");
+        const response = await axios.get(url2, {
+          params: {
+            limit: 100,
+          },
+        });
+        if (response.status !== 200) {
+          throw new Error("HTTP status" + response.status);
+        }
+        setData((prevData) => {
+          const newData = response.data;
+          if (JSON.stringify(newData) !== JSON.stringify(prevData)) {
+            return newData;
+          } else {
+            return prevData;
+          }
+        });
+        setDatastat("succeeded");
+      } catch (error) {
+        console.error("Error ocurrs here", error);
+        setDatastat("failed");
+      }
+    };
+    fetchedpdt();
+  }, []);
+
+  useEffect(() => {
+    console.log("the data from products", data);
+  }, [data]);
+  // const filteredProducts = data.filter(
+  //   (product) =>
+  //     (!roomstate || product.roomCategory === roomstate) &&
+  //     (!colorstate || product.colors.includes(colorstate))
+  // );
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    // Check if data is an array before attempting to filter
+    if (!Array.isArray(data)) {
+      console.error("Data is not an array:", data);
+      return;
+    }
+
+    // Apply filtering based on roomstate and colorstate
+    const filteredResults = data.filter((item) => {
+      const isRoomMatch =
+        roomstate === "All" || item.roomCategory === roomstate;
+      const isColorMatch =
+        colorstate === "All" ||
+        item.colors.some(
+          (color) => color.toLowerCase() === colorstate.toLowerCase()
+        );
+
+      return isRoomMatch && isColorMatch;
+    });
+
+    // Update the filtered data state
+    setFilteredData(filteredResults);
+  }, [roomstate, colorstate, data]);
+
+  //posting to order api
+  if (typeof window !== "undefined") {
+    var id = localStorage.getItem("deviceId");
+    console.log("deviceId : ", id);
+  }
+  const posturl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`;
+  // const postproductdata = async () => {
+  //   try {
+  //     const selectedProduct = Object.values(selectedActivity)[0];
+
+  //     if (!selectedProduct || !selectedProduct.productId) {
+  //       console.error("Invalid product details");
+  //       return;
+  //     }
+
+  //     const postData = {
+  //       deviceId: id,
+  //       productId: selectedProduct.productId,
+  //     };
+  //     // const postData = {
+  //     //   deviceId: id,
+  //     //   productId: item.productId,
+  //     // };
+  //     const response = await axios.post(posturl, postData);
+  //     if (response.status !== 200) {
+  //       throw new Error("HTTP status" + response.status);
+  //     }
+  //     console.log("response", response);
+  //     console.log("Data posted successfully:", postData);
+  //   } catch (error) {
+  //     console.error("Error posting room data:", error);
+  //   }
+  // };
+
+  // const handleClickDB = async () => {
+  //   try {
+  //     if (!selectedActivity.productId) {
+  //       console.error("Invalid productId");
+  //       return;
+  //     }
+
+  //     if (!id) {
+  //       console.error("Invalid deviceId");
+  //       return;
+  //     }
+
+  //     // Post data to the database
+  //     await postproductdata();
+
+  //     // Redirect to the checkout page
+  //   } catch (error) {
+  //     console.error("Error handling click:", error);
+  //   }
+  // };
+
+  const postproductdata = async (postData) => {
+    try {
+      const response = await axios.post(posturl, postData);
+
+      if (response.status !== 200) {
+        throw new Error("HTTP status" + response.status);
+      }
+
+      console.log("Data posted successfully:", postData);
+    } catch (error) {
+      console.error("Error posting room data:", error);
+    }
+  };
+
+  const handleClickDB = async () => {
+    try {
+      const selectedProduct = Object.values(selectedActivity)[0];
+
+      if (!selectedProduct || !selectedProduct.id) {
+        console.error("Invalid product details");
+        return;
+      }
+
+      const postData = {
+        deviceId: id,
+        productId: selectedProduct.id,
+      };
+
+      // Post data to the database
+      await postproductdata(postData);
+
+      // Redirect to the checkout page
+    } catch (error) {
+      console.error("Error handling click:", error);
+    }
+  };
 
   return (
     <div className="m-[3rem]">
@@ -170,58 +344,54 @@ const FreeSample = () => {
               {status === "failed" && <p>Error loading data from DB.</p>}
               {status === "succeeded" && sdata && (
                 <>
-                  {sdata.styles.map((item) => (
-                    <div
-                      key={item._id}
-                      className="relative overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
-                    >
-                      {/* Your existing code for displaying room item images */}
-                      <img
-                        src={item.img}
-                        alt={item.title}
-                        onClick={() => {
-                          handleClick(
-                            item.id,
-                            item.img,
-                            item.price,
-                            item.title
-                          );
-                        }}
-                        className={`room-item rounded-2xl object-cover w-full opacity-100 h-full block p-1
-                  ${selectedActivity[item.id] ? " " : "overlay z-10 "}  ${
-                          selectedActivity[item.id]
-                            ? " border-2 border-black "
-                            : ""
-                        }`}
-                      />
+                  {sdata.map((cat) => (
+                    <>
+                      {cat.name === searchtext &&
+                        cat.subcategories.map((item) => (
+                          <div
+                            key={item._id}
+                            className="relative overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
+                          >
+                            {/* Your existing code for displaying room item images */}
+                            <img
+                              src={item.img}
+                              alt={item.name}
+                              onClick={() => {
+                                setStyle(item.name);
+                              }}
+                              className={`room-item rounded-2xl object-cover w-full opacity-100 h-full block p-1
+                    ${style === item.name ? " border-2 border-black " : ""}`}
+                            />
 
-                      {/* Your existing code for displaying room item title */}
-                      <h3
-                        className={`p-1 rounded-sm absolute right-0 bottom-0
+                            {/* Your existing code for displaying room item title */}
+                            <h3
+                              className={`p-1 rounded-sm absolute right-0 bottom-0
                   ${
-                    selectedActivity[item.id]
+                    style === item.name
                       ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                       : "bg-white"
                   }`}
-                      >
-                        {item.title}
-                      </h3>
+                            >
+                              {item.name}
+                            </h3>
 
-                      {/* Your existing code for displaying the tick icon */}
-                      {selectedActivity[item.id] && (
-                        <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                          <div className="circle-container relative flex justify-center items-center">
-                            <Image
-                              src="/svg/icon/tick.svg"
-                              alt="tick"
-                              width={30}
-                              height={30}
-                              className="opacity-100"
-                            />
+                            {/* Your existing code for displaying the tick icon */}
+                            {style === item.name && (
+                              <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                                <div className="circle-container relative flex justify-center items-center">
+                                  <Image
+                                    src="/svg/icon/tick.svg"
+                                    alt="tick"
+                                    width={30}
+                                    height={30}
+                                    className="opacity-100"
+                                  />
+                                </div>
+                              </div>
+                            )}
                           </div>
-                        </div>
-                      )}
-                    </div>
+                        ))}
+                    </>
                   ))}
                 </>
               )}
@@ -243,31 +413,26 @@ const FreeSample = () => {
           </div>
           <div className="py-4 relative w-full h-full flex flex-col justify-center">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {dataTiles.map((item) => (
+              {rooms.map((item, idx) => (
                 <div
-                  key={item.id}
-                  className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
+                  key={item._id}
+                  className=" relative  overflow-hidden m-1  group rounded-2xl"
                 >
-                  <img
-                    src={item.img}
-                    alt={item.title}
+                  <div
                     onClick={() => {
-                      handleClick(item.id, item.img, item.price, item.title);
-                      handleSelect();
+                      setRoomstate(item.title);
                     }}
-                    className={`room-item rounded-2xl object-cover w-full opactiy-100 h-full block p-1
-             
-            ${selectedActivity[item.id] ? " " : "overlay z-10 "}  ${
-                      selectedActivity[item.id] ? " border-2 border-black " : ""
-                    }
-
+                    style={{ width: "272px", height: "150px" }}
+                    className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
+             bg-gray-500
+             ${roomstate === item.title ? " border-2 border-black " : ""}
               `}
-                  />
+                  ></div>
 
                   <h3
                     className={` p-1 rounded-sm absolute right-0 bottom-0
               ${
-                selectedActivity[item.id]
+                roomstate === item.title
                   ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                   : "bg-white"
               }
@@ -276,15 +441,15 @@ const FreeSample = () => {
                     {item.title}
                   </h3>
 
-                  {selectedActivity[item.id] && (
+                  {roomstate === item.title && (
                     <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                      <div className="circle-container relative flex justify-center items-center">
+                      <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
                         <Image
                           src="/svg/icon/tick.svg"
                           alt="tick"
                           width={30}
                           height={30}
-                          className=" opacity-100"
+                          className=" opacity-100 rounded-full"
                         />
                       </div>
                     </div>
@@ -303,31 +468,26 @@ const FreeSample = () => {
           </div>
           <div className="py-4 relative w-full h-full flex flex-col justify-center">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {colorTiles.map((item) => (
+              {colors.map((item) => (
                 <div
-                  key={item.id}
-                  className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
+                  key={item._id}
+                  className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group w-[200px] h-[150px]"
                 >
-                  <img
-                    src={item.img}
-                    alt={item.title}
+                  <div
                     onClick={() => {
-                      handleClick(item.id, item.img, item.price, item.title);
-                      handleSelect();
+                      setColorstate(item.title);
                     }}
-                    className={`room-item rounded-2xl object-cover w-full opactiy-100 h-full block p-1
+                    className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
              
-            ${selectedActivity[item.id] ? " " : "overlay z-10 "}  ${
-                      selectedActivity[item.id] ? " border-2 border-black " : ""
-                    }
+ ${colorstate === item.title ? " border-2 border-black " : ""}
 
-              `}
-                  />
+              bg-gray-400`}
+                  ></div>
 
                   <h3
                     className={` p-1 rounded-sm absolute right-0 bottom-0
               ${
-                selectedActivity[item.id]
+                colorstate === item.title
                   ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                   : "bg-white"
               }
@@ -336,7 +496,7 @@ const FreeSample = () => {
                     {item.title}
                   </h3>
 
-                  {selectedActivity[item.id] && (
+                  {colorstate === item.title && (
                     <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
                       <div className="circle-container relative flex justify-center items-center">
                         <Image
@@ -371,9 +531,9 @@ const FreeSample = () => {
               disabled={count < 8}
               onClick={handleAddress}
             >
-              Address
+              Apply filter
             </button>
-            <Link
+            {/* <Link
               href={{
                 pathname: "/checkout",
                 query: {
@@ -385,8 +545,8 @@ const FreeSample = () => {
               <button className="bg-black text-white sm:w-40 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Free Sample
               </button>
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               href={{
                 pathname: "/checkout",
                 query: {
@@ -398,26 +558,28 @@ const FreeSample = () => {
               <button className="bg-black text-white sm:w-40 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Free Design
               </button>
-            </Link>
+            </Link> */}
           </div>
-          {selectedImage ? (
+          {/* {selectedImage ? (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
               {dataRooms.map((item) => (
                 <div
-                  key={item.id}
+                  key={item._id}
                   className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
                 >
                   <img
                     src={item.img}
                     alt={item.title}
                     onClick={() => {
-                      handleres(item.id, item.img, item.price, item.title);
+                      handleres(item._id, item.img, item.price, item.title);
                       handleSelect();
                     }}
                     className={`room-item rounded-2xl object-cover w-full opactiy-100 h-full block p-1
              
-            ${selectedActivity[item.id] ? " " : "overlay z-10 "}  ${
-                      selectedActivity[item.id] ? " border-2 border-black " : ""
+            ${selectedActivity[item._id] ? " " : "overlay z-10 "}  ${
+                      selectedActivity[item._id]
+                        ? " border-2 border-black "
+                        : ""
                     }
 
               `}
@@ -426,7 +588,7 @@ const FreeSample = () => {
                   <h3
                     className={` p-1 rounded-sm absolute right-0 bottom-0
               ${
-                selectedActivity[item.id]
+                selectedActivity[item._id]
                   ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                   : "bg-white"
               }
@@ -435,7 +597,7 @@ const FreeSample = () => {
                     {item.title}
                   </h3>
 
-                  {selectedActivity[item.id] && (
+                  {selectedActivity[item._id] && (
                     <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
                       <div className="circle-container relative flex justify-center items-center">
                         <Image
@@ -453,8 +615,92 @@ const FreeSample = () => {
             </div>
           ) : (
             <div></div>
+          )} */}
+        </div>
+
+        <div>
+          {/* ... (your existing JSX) */}
+          {filteredData.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
+              {filteredData.map((item) => (
+                <div
+                  key={item._id}
+                  className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
+                >
+                  {/* Your existing code for displaying product images */}
+                  <img
+                    src={item.images[0]} // Assuming the first image is used
+                    alt={item.productTitle}
+                    onClick={() => {
+                      handleres(
+                        item.productId,
+                        item.images[0],
+                        item.perUnitPrice,
+                        item.productTitle
+                      );
+                      handleSelect();
+                    }}
+                    className={`room-item rounded-2xl object-cover w-full opactiy-100 h-full block p-1
+                    ${
+                      selectedActivity[item.productId] ? " " : "overlay z-10 "
+                    }  ${
+                      selectedActivity[item.productId]
+                        ? " border-2 border-black "
+                        : ""
+                    }
+                  `}
+                  />
+
+                  {/* Your existing code for displaying product title */}
+                  <h3
+                    className={` p-1 rounded-sm absolute right-0 bottom-0
+                    ${
+                      selectedActivity[item.productId]
+                        ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
+                        : "bg-white"
+                    }
+                  `}
+                  >
+                    {item.productTitle}
+                  </h3>
+
+                  {/* Your existing code for displaying the tick icon */}
+                  {selectedActivity[item.productId] && (
+                    <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                      <div className="circle-container relative flex justify-center items-center">
+                        <Image
+                          src="/svg/icon/tick.svg"
+                          alt="tick"
+                          width={30}
+                          height={30}
+                          className=" opacity-100"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>No products found based on selected filters.</div>
           )}
         </div>
+        <Link
+          href={{
+            pathname: "/checkout",
+            query: {
+              search: "freesample",
+            },
+          }}
+          className="memberCheckout my-4 flex items-center justify-center"
+        >
+          <button
+            onClick={() => handleClickDB()}
+            className="bg-black text-white sm:w-40 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
+          >
+            Free Sample
+          </button>
+        </Link>
       </div>
     </div>
   );
