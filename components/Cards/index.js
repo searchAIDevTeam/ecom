@@ -10,7 +10,9 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
-const Footer = dynamic(()=>import('../Footer/Footer'))
+const Footer = dynamic(()=>import('../Footer/Footer'), {
+  ssr: false
+})
 const Imagechanger = dynamic(() => import("../Imagechanger/Imagechanger"));
 const Multicard = dynamic(() => import("../Imagechanger/Multicard"));
 const Tabs = dynamic(() => import("./Tabs"));
@@ -78,7 +80,6 @@ function Cards() {
           className="w-full h-full object-fit"
         />
       </div>
-      {/* 1st */}
       <Image />
       {uniqueCategories?.map((item, index) => (
         <Dataslider

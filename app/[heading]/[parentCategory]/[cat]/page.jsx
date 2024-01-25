@@ -9,8 +9,20 @@ export function generateMetadata({ params, searchParams }, parent) {
 }
 
 const page = ({ params }) => {
+  console.log(params.cat);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: decodeURIComponent(params.cat),
+  };
   return (
     <>
+      <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </section>
       <ProductPage params={params} />
     </>
   );

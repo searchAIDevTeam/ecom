@@ -44,7 +44,8 @@ const Map = ({ setBoundaries, coords, places, PlacesData }) => {
       </div>
     </OverlayView>
   );
-
+  console.log("hi")
+console.log(PlacesData)
   // const handleBoundsChanged = () => {
   //   if (map) {
   //     const bounds = map.getBounds();
