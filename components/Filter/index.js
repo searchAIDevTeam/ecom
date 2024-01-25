@@ -149,28 +149,18 @@ function Filter({ isFilterHovered, onFilterHover }) {
               // }}
               // onMouseLeave={() => setActiveDropdown(null)}
             >
-              <Link
-                href={{
-                  pathname: "/freesample",
-                  query: {
-                    search: `${value.label}`,
-                  },
-                }}
-              >
-                {value && (
-                  <p
-                    className={` sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap ${
-                      value.label === "Find Floor"
-                        ? "sm:hidden hidden"
-                        : "block"
-                    }
+              {value && (
+                <p
+                  className={` sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap ${
+                    value.label === "Find Floor" ? "sm:hidden hidden" : "block"
+                  }
 
   `}
-                  >
-                    {value.label}
-                  </p>
-                )}
-              </Link>
+                >
+                  {value.label}
+                </p>
+              )}
+
               {/* {value && (
                 <p className="Filter-array-element-lebel">{value.label}</p>
               )} */}
@@ -271,6 +261,30 @@ function Filter({ isFilterHovered, onFilterHover }) {
           >
             Magazine
           </div>
+          <Link
+            href={{
+              pathname: "/category",
+              query: {
+                search: "freesample",
+              },
+            }}
+          >
+            <div className=" cursor-pointer sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap">
+              Free Sample
+            </div>
+          </Link>
+          <Link
+            href={{
+              pathname: "/category",
+              query: {
+                search: "freedesign",
+              },
+            }}
+          >
+            <div className=" cursor-pointer sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap">
+              Free Design
+            </div>
+          </Link>
 
           {/* <div className="slider_lr_container arrow-right-filter">
              <img
