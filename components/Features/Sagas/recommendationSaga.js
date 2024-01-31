@@ -9,7 +9,7 @@ function* fetchRecommendedProductSaga() {
 
     yield put(recomendProduct(data));
 
-    localStorage.setItem('recommendedProducts', JSON.stringify(data));
+    // localStorage.setItem('recommendedProducts', JSON.stringify(data));
   } catch (error) {
     console.error('Error fetching recommended products:', error);
   } finally {

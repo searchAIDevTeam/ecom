@@ -13,6 +13,8 @@ import profileReducer from "./Slices/profileSlice";
 import selectedItemsReducer from './Slices/selectedItemsSlice'
 import cartReducer from './Slices/cartSlice'
 import selectedProductReducer from './Slices/compareSlice'
+import virtualReducer from "./Slices/virtualSlice";
+import virtualDataReducer from "./Slices/virtualDataSlice";
 const sagaMiddleware = createSagaMiddleware();
 
 const roomsReducer = (state = { selectedActivity: {} }, action) => {
@@ -35,6 +37,8 @@ export const setSelectedActivity = (payload) => ({
 export default roomsReducer;
 export const store = configureStore({
   reducer: {
+    virtualData: virtualDataReducer,
+    virtual: virtualReducer,
     recommendedProduct: recommendationReducer,
     slider: sliderReducer,
     FirstCard: FirstCardReducer,

@@ -1,16 +1,48 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { selectVirtualData } from "@/components/Features/Slices/virtualSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory } from "@/components/Features/Slices/virtualDataSlice";
 const page = () => {
   const searchparams = useSearchParams();
   const text = searchparams.get("search");
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Curtains");
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const dataSelector = useSelector(selectVirtualData);
+// console.log("dataSelector", dataSelector);
 
+  useEffect(() => {     
+    dispatch(
+      {
+        type:"VIRTUAL_REQUEST"
+      }
+    );
+
+  }
+  , []);
+  useEffect(() => {
+    if (dataSelector) {
+      setData(dataSelector);
+    }
+  }
+  , [dataSelector]);
+  console.log("data", data);
+
+  const handleClick = (category) => {
+    setSelected(category);
+    dispatch(setCategory({
+      category: category
+    }));
+    
+  } 
   return (
+
     <div className="py-20 text-center ">
       <h1>Choose Your Category</h1>
-      <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
+      {/* <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
         <div
           onClick={() => setSelected("Curtains")}
           className={`w-[250px] h-[200px] bg-gray-400 rounded-md flex items-center justify-center ${
@@ -51,20 +83,40 @@ const page = () => {
         >
           Flooring
         </div>
+      </div> */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
+      {
+        data?.map((item) => {
+          return (
+            
+              <div
+                onClick={() => handleClick(item.category)}
+                className={`w-[250px] h-[200px] bg-gray-400 rounded-md flex items-center justify-center ${
+                  selected === item.category
+                    ? "outline outline-offset-4 outline-black"
+                    : ""
+                }`}
+              >
+                {item.category}
+              </div>
+          );
+        })
+      }
       </div>
-      <Link
-        href={{
-          pathname: `/${text}`,
-          query: {
-            search: text,
-            search1: selected,
-          },
-        }}
+      {selected && (
+        <Link
+        href={
+          {
+            pathname: "/virtualexperience/vrooms",
+            query: {category: selected },
+          }
+        }
       >
         <div className="bg-gray-500 text-white whitespace-nowrap py-2 px-4 inline-flex rounded-md mt-10">
-          Go to {text}
+          Go to Rooms
         </div>
       </Link>
+      )}
     </div>
   );
 };

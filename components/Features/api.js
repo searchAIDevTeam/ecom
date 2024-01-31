@@ -3,10 +3,13 @@ import axios from "axios";
 // const BASE_URL = "http://52.66.30.159:8080/api";
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`
 const createApiEndpoint = (endpoint) => `${BASE_URL}/${endpoint}`;
-
+if (typeof window !== "undefined") {
+  var id = localStorage.getItem("deviceId");
+  console.log("id",id);
+}
 export const fetchRecommendedProduct = async () => {
   try {
-    const response = await axios.get(createApiEndpoint("getRecommendation"));
+    const response = await axios.get(createApiEndpoint(`getRecommendation?deviceId=${id}`));
     return response.data;
   } catch (err) {
     console.error(err);
@@ -63,6 +66,15 @@ export const fetchCartData=async()=>{
     return response.data;
   } catch (error) {
     console.error(`Error fetching cart content: ${error.message} `);
+    throw error;
+  }
+}
+export const virtualGet=async()=>{
+  try{
+    const response=await axios.get(createApiEndpoint("getVE"));
+    return response.data;
+  }catch(error){
+    console.error(`Error fetching virtual content: ${error.message} `);
     throw error;
   }
 }

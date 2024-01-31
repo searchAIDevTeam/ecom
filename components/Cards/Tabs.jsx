@@ -9,11 +9,12 @@ import "./tabs.css";
 import TabImage from "./TabImage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-const Tabs = () => {
+const Tabs = ({data}) => {
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");
   };
+  // console.log("data", data?.recommendations[0].map((item) => item));
 
   const circled = [
     {
@@ -37,6 +38,9 @@ const Tabs = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  // console.log(data?.recommendations[0]?.recommendedProducts.map((item) => item.roomCategory))
+  // console.log(data?.recommendations[0]?.recommendedProducts.map((item) => item.roomCategory).filter((item, i, ar) => ar.indexOf(item) === i))
   const [activeTab, setActiveTab] = useState("all");
   const [isSticky, setIsSticky] = useState(false);
   const tabImages = {

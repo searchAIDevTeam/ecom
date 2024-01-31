@@ -1,18 +1,36 @@
 'use client'
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { colorTiles } from "@/Model/data";
 import Sidebar from "@/components/sidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { selectVirtualData } from "@/components/Features/Slices/virtualSlice";
+import { allSelectedData, selectBudget, selectCategory, selectColor, selectData, selectSelectiveProduct, selectStyle, setSelectedColor } from "@/components/Features/Slices/virtualDataSlice";
 
 const Content2 = () => {
     const router = useRouter();
+    const search = useSearchParams();
+    const [data, setData] = useState([]);
+    const dataSelector = useSelector(selectVirtualData);
+    useEffect(() => {
+      if(dataSelector===null||dataSelector===undefined||dataSelector.length===0){
+        router.push("/virtualexperience/category");
+      }
+      else{
+        let tempData = dataSelector?.filter((item) => item.category===search.get("category")?.toLocaleLowerCase());
+        setData(tempData);
+      }
+
+    }, []);
   const prevHandler = () => {
     router.push("/virtualexperience/flooring");
   };
   const nextHandler = () => {
-    router.push("/virtualexperience/content3");
+    router.push("/prodcut/virtualexperience/test");
   };
+
+  
   const [selectedActivity, setSelectedActivity] = useState({});
   const [showCircle, setShowCircle] = useState(false);
   const [showbuttoncontent, setShowbuttoncontent] = useState(false);
@@ -20,12 +38,15 @@ const Content2 = () => {
   const handleSelect = () => {
     setShowCircle(!showCircle);
   };
-  const handleClick = (roomId) => {
+  const dispatch = useDispatch();
+  const handleClick = (roomId,roomTitle) => {
     setSelectedActivity((prevSelectedRooms) => {
       const updatedSelectedRooms = {
         ...prevSelectedRooms,
         [roomId]: !prevSelectedRooms[roomId],
+        [roomTitle]: !prevSelectedRooms[roomTitle],
       };
+      dispatch(setSelectedColor(updatedSelectedRooms));
       return updatedSelectedRooms;
     });
     setShowCircle(!showCircle);
@@ -45,7 +66,7 @@ const Content2 = () => {
       <Sidebar selectedPage={selectedPage} onSelectPage={handleSelectPage} />
 
       <div className="grid grid-cols-4 sm:grid-cols-6 sm:gap-x-20 gap-x-7 gap-y-10  m-4 items-center justify-center ">
-        {colorTiles.map((item) => (
+        {data?.[0]?.color.map((item) => (
           <div
             key={item.title}
             className="relative  overflow-hidden flex items-center justify-center flex-col"
@@ -57,7 +78,7 @@ const Content2 = () => {
               src={item.img}
               alt={item.title}
               onClick={() => {
-                handleClick(item.title);
+                handleClick(item.title, item._id);
                 handleSelect();
               }}
               className={`flex items-center justify-center rounded-full  relative p-1  w-12 h-12 

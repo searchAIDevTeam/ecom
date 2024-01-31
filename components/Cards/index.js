@@ -21,32 +21,38 @@ const Image = dynamic(() => import("../Imagechanger/Image"));
 const Phone = dynamic(() => import("./Phone"));
 const DoubleComp = dynamic(() => import("./DoubleComp"));
 const Trending = dynamic(() => import("./Trending"));
-const Dataslider = dynamic(()=>import('./Dataslider'))
+import Dataslider from "./Dataslider";
+import { useDispatch, useSelector } from "react-redux";
+import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
+
 
 function Cards() {
   const [recommended, setRecommended] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [dataFetched, setDataFetched] = useState(false); 
+  const dispatch = useDispatch();
+  const selectData = useSelector(selectRecommendedProduct);
+
   useEffect(() => {
-    const fetchRecommendedData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getRecommendation?deviceId=${id}`
-        );
-        setRecommended(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!dataFetched) {
+      dispatch({ type: "RECOMMENDATION_REQUEST" });
+      setDataFetched(true);
+    }
+
+    if (selectData) {
+      setRecommended(selectData);
+      console.log("selectData", selectData);
+    }
+
+    setLoading(false);
 
     if (typeof window !== "undefined") {
       var id = localStorage.getItem("deviceId");
     }
+  }, [dispatch, selectData, dataFetched]); // Include dataFetched in the dependency array
+    
 
-    fetchRecommendedData();
-  }, []);
 
   const Partdata = (cat) => {
     return  recommended?.recommendations?.[0]?.recommendedProducts?.filter((item) => item.category === `${cat}`) || [];
@@ -99,7 +105,7 @@ function Cards() {
       </div>
       <DoubleComp />
       {MemoizedProfileContent}
-      <Tabs />
+      <Tabs data={recommended} />
       <Phone />
       <Footer/>
     </div>

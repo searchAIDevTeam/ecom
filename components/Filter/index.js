@@ -101,7 +101,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
   }, []);
 
   const handletoVirtual = () => {
-    router.push("/virtualexperience/vrooms");
+    router.push("/virtualexperience/category");
   };
   const handletomagazine = () => {
     router.push("/magazine");
