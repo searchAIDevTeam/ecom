@@ -49,10 +49,9 @@ const Content1 = () => {
     setSelectedActivity((prevSelectedRooms) => {
     const updatedSelectedRooms = {
       ...prevSelectedRooms,
-      [roomId]: !prevSelectedRooms[roomId],
       [roomTitle]: !prevSelectedRooms[roomTitle],
     };
-
+    
       dispatch(setSelectedStyle(updatedSelectedRooms));
       
       return updatedSelectedRooms;
@@ -86,12 +85,12 @@ const Content1 = () => {
                     }}
                     className={`object-cover w-full h-full block p-1
                     ${
-                        selectedActivity[item?._id] ?? false
+                        selectedActivity[item.title] ?? false
                             ? " overlay z-10 black opacity-100"
                             : ""
                     }
                     ${
-                        selectedActivity[item?._id] ?? false
+                        selectedActivity[item.title] ?? false
                             ? " border-2 border-red-500 "
                             : ""
                     }
@@ -100,7 +99,7 @@ const Content1 = () => {
                 <h3
                     className={`p-1 rounded-sm
                     ${
-                        selectedActivity[item?._id] ?? false
+                        selectedActivity[item.title] ?? false
                             ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                             : "bg-white absolute right-1 bottom-1"
                     }
@@ -109,7 +108,7 @@ const Content1 = () => {
                     {item?.title}
                 </h3>
 
-                {selectedActivity[item?._id] && (
+                {selectedActivity[item.title] && (
                     <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
                         <div className="circle-container relative flex justify-center items-center">
                             <Image

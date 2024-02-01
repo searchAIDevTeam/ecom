@@ -9,7 +9,6 @@ export function generateMetadata({ params, searchParams }, parent) {
 }
 
 const page = ({ params }) => {
-  console.log(params.cat);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",

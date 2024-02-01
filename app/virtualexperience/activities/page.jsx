@@ -61,7 +61,6 @@ const dispatch = useDispatch();
 const handleClick = (roomId, roomTitle) => {
   setSelectedActivity({
     ...selectedActivity,
-    [roomId]: !selectedActivity[roomId],
     [roomTitle]: !selectedActivity[roomTitle],
   });
   
@@ -105,16 +104,16 @@ const handleClick = (roomId, roomTitle) => {
               }}
               className={`object-cover  w-full h-full block p-1
               ${
-                selectedActivity[item._id]
+                selectedActivity[item.title]
                   ? " overlay z-10 black opacity-100"
                   : ""
-              }  ${selectedActivity[item._id] ? "border-2 border-red-500" : ""}
+              }  ${selectedActivity[item.title] ? "border-2 border-red-500" : ""}
               `}
             />
             <h3
               className={` p-1 rounded-sm absolute right-0 bottom-0
               ${
-                selectedActivity[item._id]
+                selectedActivity[item.title]
                   ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                   : "bg-white"
               }
@@ -123,7 +122,7 @@ const handleClick = (roomId, roomTitle) => {
               {item.title}
             </h3>
 
-            {selectedActivity[item._id] && (
+            {selectedActivity[item.title] && (
               <div
                 className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center"
               >

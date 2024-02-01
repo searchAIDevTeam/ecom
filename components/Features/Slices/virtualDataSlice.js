@@ -20,7 +20,10 @@ const selectedDataSlice = createSlice({
       state.budget = action.payload;
     },
     setSelectedColor(state, action) {
+        console.log('action', action);
+
       state.color = action.payload;
+      console.log('color', state.color);
     },
     setSelectedSelectiveProduct(state, action) {
       state.selectiveproduct = action.payload;
@@ -43,13 +46,13 @@ export const {
   setCategory,
 } = selectedDataSlice.actions;
 
-export const selectRoom = (state) => state.selectedData?.room;
-export const selectBudget = (state) => state.selectedData?.budget;
-export const selectColor = (state) => state.selectedData?.color;
-export const selectSelectiveProduct = (state) => state.selectedData?.selectiveproduct;
-export const selectStyle = (state) => state.selectedData?.style;
-export const selectCategory = (state) => state.selectedData?.category;
-export const selectData = (state) => state.selectedData;
-export const allSelectedData = (state) => state.selectedData;
+export const selectRoom = (state) => state.virtualData.room;
+export const selectBudget = (state) => state.virtualData.budget;
+export const selectColor = (state) => state.virtualData.color;
+export const selectSelectiveProduct = (state) => state.virtualData?.selectiveproduct;
+export const selectStyle = (state) => state.virtualData.style;
+export const selectCategory = (state) => state.virtualData.category;
+export const selectData = (state) => state.virtualData;
+export const allSelectedData = (state) => state.virtualData;
 
 export default selectedDataSlice.reducer;

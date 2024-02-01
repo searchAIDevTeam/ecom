@@ -6,7 +6,7 @@ import { colorTiles } from "@/Model/data";
 import Sidebar from "@/components/sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { selectVirtualData } from "@/components/Features/Slices/virtualSlice";
-import { allSelectedData, selectBudget, selectCategory, selectColor, selectData, selectSelectiveProduct, selectStyle, setSelectedColor } from "@/components/Features/Slices/virtualDataSlice";
+import { allSelectedData, selectBudget, selectCategory, selectColor, selectData, selectRoom, selectSelectiveProduct, selectStyle, setSelectedColor } from "@/components/Features/Slices/virtualDataSlice";
 
 const Content2 = () => {
     const router = useRouter();
@@ -27,7 +27,7 @@ const Content2 = () => {
     router.push("/virtualexperience/flooring");
   };
   const nextHandler = () => {
-    router.push("/prodcut/virtualexperience/test");
+    router.push("/products/virtualexperience/ayatrio");
   };
 
   
@@ -39,11 +39,10 @@ const Content2 = () => {
     setShowCircle(!showCircle);
   };
   const dispatch = useDispatch();
-  const handleClick = (roomId,roomTitle) => {
+  const handleClick = (roomTitle) => {
     setSelectedActivity((prevSelectedRooms) => {
       const updatedSelectedRooms = {
         ...prevSelectedRooms,
-        [roomId]: !prevSelectedRooms[roomId],
         [roomTitle]: !prevSelectedRooms[roomTitle],
       };
       dispatch(setSelectedColor(updatedSelectedRooms));
@@ -58,6 +57,28 @@ const Content2 = () => {
   const handleSelectPage = (page) => {
     setSelectedPage(page);
   };
+  // const x = useSelector(allSelectedData);
+
+  // // Function to check if a string is a numeric string
+  // const isNumericString = (str) => /^\d+$/.test(str);
+  
+  // // Remove entries with titles that are numeric strings
+  // const filteredRooms = Object.entries(x.room).filter(([roomId, isSelected]) => isSelected && !isNumericString(roomId)).map(([roomId]) => ({ title: roomId }));
+  // const filteredStyle = Object.entries(x.style).filter(([styleId, isSelected]) => isSelected && !isNumericString(styleId)).map(([styleId]) => ({ title: styleId }));
+  // const filteredSelectiveProducts = Object.entries(x.selectiveproduct).filter(([productId, isSelected]) => isSelected && !isNumericString(productId)).map(([productId]) => ({ title: productId }));
+  // const filteredColors = Object.entries(x.color).filter(([color, isSelected]) => isSelected && !isNumericString(color)).map(([color]) => ({ title: color }));
+  
+  // // Create the transformed data object
+  // const transformedData = {
+  //   category: x.category,
+  //   rooms: filteredRooms,
+  //   style: filteredStyle,
+  //   selectiveproducts: filteredSelectiveProducts,
+  //   price: [{ Label: x.budget.toString() }],
+  //   colors: filteredColors
+  // };
+  
+  // console.log("transformedData", transformedData);
   
   
   return (
@@ -78,7 +99,7 @@ const Content2 = () => {
               src={item.img}
               alt={item.title}
               onClick={() => {
-                handleClick(item.title, item._id);
+                handleClick(item.title);
                 handleSelect();
               }}
               className={`flex items-center justify-center rounded-full  relative p-1  w-12 h-12 
