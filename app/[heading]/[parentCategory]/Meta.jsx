@@ -109,10 +109,12 @@
         return (
           <div>
             {/* {isFilterVisible && <Header />} */}
-            <Products filteredProducts={filteredProducts} />
+            <Products filteredProducts={filteredProducts}  heading={x?.category?.category} />
             <Tabproduct
               filteredProducts={filteredProducts}
-              heading={params.heading}
+              heading={x?.category?.category}
+              param={params.parentCategory}
+              
             />
             <Measure filteredProducts={filteredProducts} />
             {/* <Footer /> */}

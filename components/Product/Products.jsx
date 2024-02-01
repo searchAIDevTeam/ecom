@@ -1,6 +1,6 @@
 import React from "react";
 
-const Products = ({ filteredProducts }) => {
+const Products = ({ filteredProducts,heading }) => {
   // console.log("Filtered products:", filteredProducts);
 
   // Use the first product's category as the main heading
@@ -9,7 +9,7 @@ const Products = ({ filteredProducts }) => {
   return (
     <div className="relative top-20 sm:px-[50px] px-[20px] ">
       {/* main heading of pdt */}
-      <h1 className="text-3xl font-bold mb-10">{mainCategory}</h1>
+      <h1 className="text-3xl font-bold mb-10">{heading}</h1>
       {/* img of product using flex and a fix width */}
       <div className="flex flex-row gap-3 sm:w-[65vw] sm:overflow-x-hidden overflow-x-auto mb-16">
         {filteredProducts.map((product, idx) => (
