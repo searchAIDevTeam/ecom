@@ -93,7 +93,7 @@ export default function NewMainSlider() {
             <Image
               src={sliderApiData[0]?.imgSrc}
               width={500}
-              height={500}
+              height={330}
               alt="Swiper"
               className="swiper-slide"
             />
@@ -150,7 +150,7 @@ export default function NewMainSlider() {
             <Image
               src={sliderApiData[1]?.imgSrc}
               width={500}
-              height={500}
+              height={330}
               alt="Swiper"
               className="swiper-slide"
             />
@@ -204,7 +204,7 @@ export default function NewMainSlider() {
             <Image
               src={sliderApiData[2]?.imgSrc}
               width={500}
-              height={500}
+              height={330}
               alt="Swiper"
               className="swiper-slide"
             />
@@ -259,7 +259,7 @@ export default function NewMainSlider() {
               <Image
                 src={data.imgSrc}
                 width={500}
-                height={500}
+                height={330}
                 alt="Swiper"
                 className="swiper-slide"
               />

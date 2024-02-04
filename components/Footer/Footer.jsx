@@ -3,14 +3,14 @@ import "./styles.css";
 import JoinAyatrioFamily from "./Footer_child/JoinAyatrioFamily";
 import { footerData } from "../../Model/FooterColumnData/FooterColumnData";
 import dynamic from "next/dynamic";
-const FooterContent = dynamic(()=>import('../molecules/FooterContent'), {
+const FooterContent = dynamic(() => import('../molecules/FooterContent'), {
   ssr: false
 })
 
 const Footer = () => {
   return (
-    <div className="bg-gray-100 sm:px-[50px] px-[50px] mt-20 py-[70px]">
-      <div className="grid sm:grid-cols-6 grid-cols-1 pb-5">
+    <div className="bg-gray-100 sm:px-[50px] px-[50px] mt-20 pt-[70px]">
+      <div className="grid sm:grid-cols-6 grid-cols-1 pb-9">
         <div className="sm:col-span-2 row-span-1 col-span-1 mr-12 mb-5">
           <JoinAyatrioFamily />
         </div>
@@ -26,10 +26,10 @@ const Footer = () => {
           );
         })}
       </div>
-      <div className="flex sm:px-[50px] px-[20px] sm:border-t-2 sm:border-solid sm:border-gray-200 sm:flex-row flex-col justify-between p-4">
+      <div className="flex sm:px-[50px] px-[20px] sm:border-t sm:border-solid sm:border-gray-200 sm:flex-row flex-col justify-between p-4">
         <div className="flex  items-center space-x-4 text-lg font-semibold tracking-tight">
           <ul className="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
-            <li>
+            <li className="flex">
               <a href="#" className="me-4 hover:underline">
                 <img
                   width={35}
@@ -40,7 +40,7 @@ const Footer = () => {
                 />
               </a>
             </li>
-            <li>
+            <li className="flex">
               <a href="#" className="me-4 hover:underline">
                 <img
                   className="list-socialicon"
@@ -49,7 +49,7 @@ const Footer = () => {
                 />
               </a>
             </li>
-            <li>
+            <li className="flex">
               <a href="#" className="me-4 hover:underline">
                 <img
                   className="list-socialicon"
@@ -58,7 +58,7 @@ const Footer = () => {
                 />
               </a>
             </li>
-            <li>
+            <li className="flex">
               <a href="#" className="me-4 hover:underline">
                 <img
                   className="list-socialicon"
