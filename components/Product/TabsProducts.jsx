@@ -24,7 +24,7 @@ import {
   renderSortItem,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
-const Tabs = ({ filteredProducts, heading }) => {
+const Tabs = ({ filteredProducts, heading,param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -262,7 +262,7 @@ const Tabs = ({ filteredProducts, heading }) => {
       
        `}
         >
-          <div
+       {param==="virtualexperience"?"":   <div
             className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-20`}
           >
             <TabsProductContent
@@ -644,7 +644,7 @@ const Tabs = ({ filteredProducts, heading }) => {
                 </div>
               ) : null}
             </div>
-          </div>
+          </div>}
 
           <hr />
           {/* iimages */}
