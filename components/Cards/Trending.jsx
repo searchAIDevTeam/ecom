@@ -35,7 +35,13 @@ const Trending = () => {
       setTrendingData(response.data);
       setLoading(false);
     };
-    fetchData();
+    if(trendingData.length===0){
+      fetchData();
+      //Why is this function being called again
+      //when there is a condition that it should only fetch when array length is 0
+      //trending Data length is zero everytime
+      console.log("trending fetch function called")
+    }
   }, []);
   const swiperUseref = useRef(null);
   const swiperOptions2 = {

@@ -14,9 +14,13 @@ import {
 } from "../Features/Slices/profileSlice";
 
 const ProfileContent = () => {
+  const profileData = useSelector(selectProfileData);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: "FETCH_PROFILE_REQUEST", payload: "Profile" });
+    if(profileData.length===0){
+      dispatch({ type: "FETCH_PROFILE_REQUEST", payload: "Profile" });
+      console.log("profile data fetch funtion called");
+    }
   }, []);
 
   const peopleData = [
@@ -26,13 +30,10 @@ const ProfileContent = () => {
     { name: "Rajit4", image: linkdln },
   ];
   const [peopleState, setPeopleState] = useState(peopleData);
-  const profileData = useSelector(selectProfileData);
 
   useEffect(() => {
     if (profileData) {
       setPeopleState(profileData);
-      // console.log("hi")
-
     }
   }, []);
   return (

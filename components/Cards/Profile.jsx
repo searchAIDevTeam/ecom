@@ -38,7 +38,7 @@ const Profile = () => {
             </div>
           </div>
           <div className=" col-span-3 my-auto overflow-x-auto">
-            <ProfileContent className="" />
+            <ProfileContent/>
           </div>
         </div>
       </div>
