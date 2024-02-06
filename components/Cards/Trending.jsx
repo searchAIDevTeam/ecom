@@ -29,12 +29,9 @@ const Trending = () => {
   const handleImageClick = () => {
     setPopupVisible(true);
   };
-  // const [trendingData, setTrendingData] = useState([]);
-  // const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     if(trendingData.length===0){
       dispatch({type:"FETCH_TRENDING_DATA", payload: "trending"})
-      // fetchData();
       console.log("trending fetch function called")
     }
   }, []);
