@@ -32,7 +32,6 @@ const Trending = () => {
   useEffect(() => {
     if(trendingData.length===0){
       dispatch({type:"FETCH_TRENDING_DATA", payload: "trending"})
-      console.log("trending fetch function called")
     }
   }, []);
   const swiperUseref = useRef(null);
