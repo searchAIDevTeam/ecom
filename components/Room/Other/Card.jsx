@@ -2,13 +2,13 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
+import IncDecCounter from "@/components/Count/Count";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import Calculation from "./Calculation";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  updateQuantity,
   selectQuantity,
 } from "@/components/Features/Slices/calculationSlice";
 import {
@@ -18,12 +18,12 @@ import {
 import "../styles.css";
 import axios from "axios";
 import Image from "next/image";
-// import zIndex from "@mui/material/styles/zIndex";
+
 const Card = ({ data }) => {
-  const dispatch = useDispatch();
+
   const quantity = useSelector(selectQuantity);
+  console.log("Number of quantity", quantity);
   const router = useRouter();
-  const [imgColor, setImgColor] = useState("red");
   const [widthstate, setwidthstate] = useState(0);
   const [heightstate, setheightstate] = useState(0);
   const [pricestate, setpricestate] = useState(0);
@@ -75,9 +75,6 @@ const Card = ({ data }) => {
 
       const response = await axios.post(postUrl, postData);
 
-      // console.log("Server Response:", response);
-
-      // console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error posting room data:", error);
     }
@@ -116,43 +113,32 @@ const Card = ({ data }) => {
   };
   return (
     <>
-
-
       <div className="flex justify-start gap-4 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
         <div className=" mt-5  prefence-text">
-
-
-          <div className="textHolders flex flex-col pt-[30px] ">
+          <div className="textHolders flex flex-col gap-3 pt-[30px] ">
             <h1 className="text-2xl mt-5 font-bold mb-2">
               {data?.productTitle}
             </h1>
             <div className="font-bold flex mb-1">
-              <span>Collection: </span><h3>{data?.collectionName}</h3>
+              <span>Collection: </span>
+              <h3>{data?.collectionName}</h3>
             </div>
             <div className="font-bold flex mb-1">
-              <span>Pattern Number: </span><h3>{data?.patternNumber}</h3>
+              <span>Pattern Number: </span>
+              <h3>{data?.patternNumber}</h3>
             </div>
             <div className="price">
               <div className="font-bold flex mt-[15px]">
-                <span>Rs. &nbsp;</span><h2 className="text-3xl leading-[0.5] tracking-wide"> {data?.perUnitPrice}</h2> <span> &nbsp;/roll</span>
+                <span>Rs. &nbsp;</span>
+                <h2 className="text-3xl leading-[0.5] tracking-wide">
+                  {" "}
+                  {data?.perUnitPrice}
+                </h2>{" "}
+                <span> &nbsp;/roll</span>
               </div>
               <h5 className="">Price incl. of all taxes</h5>
 
-              {/* taking quantity as input */}
-              <div className="pt-[30px]">
-
-                <input
-                  type="number"
-                  name="quantity"
-                  value={quantity}
-                  onChange={(e) => {
-                    const newValue = parseInt(e.target.value, 10);
-                    dispatch(updateQuantity(isNaN(newValue) ? 0 : newValue));
-                  }}
-                  className=" outline"
-                />
-                <label htmlFor="Quantity">Quantity:</label>
-              </div>
+              <IncDecCounter />
             </div>
           </div>
 
@@ -293,7 +279,6 @@ const Card = ({ data }) => {
 
           {/* //buttons */}
           <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center">
-
             <Link
               href={{
                 pathname: "/checkout",
@@ -336,8 +321,6 @@ const Card = ({ data }) => {
                 Add To Bag
               </button>
             </div>
-
-
           </div>
         </div>
         <ToastContainer
