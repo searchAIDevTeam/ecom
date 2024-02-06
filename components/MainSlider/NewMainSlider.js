@@ -19,6 +19,7 @@ export default function NewMainSlider() {
   useEffect(() => {
     if (!SliderViewData || SliderViewData.length === 0) {
       fetchData();
+      console.log("mainslider data fetched")
     }
   }, [page]);
   const fetchData = () => {
@@ -98,7 +99,7 @@ export default function NewMainSlider() {
               className="swiper-slide"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
-              Your text
+              {sliderApiData[0]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
@@ -155,7 +156,7 @@ export default function NewMainSlider() {
               className="swiper-slide"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
-              Your text
+            {sliderApiData[1]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
@@ -209,7 +210,7 @@ export default function NewMainSlider() {
               className="swiper-slide"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
-              Your text
+            {sliderApiData[2]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
@@ -264,7 +265,7 @@ export default function NewMainSlider() {
                 className="swiper-slide"
               />
               <div className="absolute bottom-4 left-4 flex text-lg text-white">
-                Your text
+              {data?.imgTitle}
               </div>
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <div onMouseEnter={handleEnter} className="cursor-pointer">
