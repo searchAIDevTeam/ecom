@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./styles.css";
@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import linkdln from "@/public/images/linkdln.webp";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -23,19 +22,6 @@ const ProfileContent = () => {
     }
   }, []);
 
-  const peopleData = [
-    { name: "Rajit1", image: linkdln },
-    { name: "Rajit2", image: linkdln },
-    { name: "Rajit3", image: linkdln },
-    { name: "Rajit4", image: linkdln },
-  ];
-  const [peopleState, setPeopleState] = useState(peopleData);
-
-  useEffect(() => {
-    if (profileData) {
-      setPeopleState(profileData);
-    }
-  }, []);
   return (
     <div className="transparent rounded-lg h-100 pb-8">
       <Swiper
