@@ -17,15 +17,14 @@ const TabsProductContent = (props) => {
     openContent,
     handleContent,
     typeContent,
-    renderTypeContent
-    
+    renderTypeContent,
   } = props;
 
   return (
     <div>
       <button
         onClick={() => {
-          if (()=>typeof window !== "undefined" && window.innerWidth <= 450) {
+          if (typeof window !== "undefined" && window.innerWidth <= 450) {
             handleAll();
             handleTabClick();
             handleAllFilter();
@@ -40,11 +39,10 @@ const TabsProductContent = (props) => {
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
                   }
-                  ${
-                    ()=>typeof window !== "undefined" &&  window.innerWidth <= 450
+                  ${() =>
+                    typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
-                      : " justify-between"
-                  }
+                      : " justify-between"}
                   `}
       >
         {filterName} &nbsp;
