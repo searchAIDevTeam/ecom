@@ -22,7 +22,7 @@ const Imagechanger = () => {
     };
     if(apiData.length===0){
       //apiData length is zero everytime, I think that is why the data is being fetched
-      console.log("Imagechanger API fetched")
+      // console.log("Imagechanger API fetched")
       fetchApiData();
     }
   }, []);

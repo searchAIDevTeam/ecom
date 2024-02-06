@@ -209,7 +209,7 @@ const Tabs = ({ filteredProducts, heading,param }) => {
       setFilterdata(filteredProducts);
     }
 
-    console.log(filterer);
+    // console.log(filterer);
   };
 
   const collectionArr =
@@ -230,9 +230,9 @@ const Tabs = ({ filteredProducts, heading,param }) => {
   const [showCompare, setShowcompare] = useState(false);
   const [activeCompare, setActiveCompare] = useState(true);
   const handleCompareClick = () => {
-    console.log("Selected Products:", selectedpdt);
+    // console.log("Selected Products:", selectedpdt);
     dispatch(setselectedproduct(selectedpdt));
-    console.log("length of array", selectedpdt.length);
+    // console.log("length of array", selectedpdt.length);
     if (selectedpdt.length === 3) {
       setShowcompare(true);
       setActiveCompare(false);

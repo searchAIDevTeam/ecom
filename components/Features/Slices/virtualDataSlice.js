@@ -20,10 +20,10 @@ const selectedDataSlice = createSlice({
       state.budget = action.payload;
     },
     setSelectedColor(state, action) {
-        console.log('action', action);
+        // console.log('action', action);
 
       state.color = action.payload;
-      console.log('color', state.color);
+      // console.log('color', state.color);
     },
     setSelectedSelectiveProduct(state, action) {
       state.selectiveproduct = action.payload;

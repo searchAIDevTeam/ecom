@@ -56,7 +56,7 @@ const Card = ({ data }) => {
   //posting data to database
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    console.log("deviceId : ", id);
+    // console.log("deviceId : ", id);
   }
   const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
   const postRoomData = async () => {
@@ -75,9 +75,9 @@ const Card = ({ data }) => {
 
       const response = await axios.post(postUrl, postData);
 
-      console.log("Server Response:", response);
+      // console.log("Server Response:", response);
 
-      console.log("Data posted successfully:", postData);
+      // console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error posting room data:", error);
     }

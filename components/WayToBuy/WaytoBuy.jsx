@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
-import Image from 'next/Image'
+import Image from 'next/image'
 import './waytobuy.css';
 
 
@@ -18,7 +18,7 @@ function WaytoBuy() {
 
   const handleCalculateClick = () => {
     setInputValue(parseInt(tempInputValue) || 0);
-    console.log('Calculated value:', inputValue);
+    // console.log('Calculated value:', inputValue);
   };
 
   const handleButtonClick = (index) => {

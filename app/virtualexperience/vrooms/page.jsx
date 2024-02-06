@@ -22,11 +22,11 @@ useEffect(() => {
     if (dataSelector&&search.get("category")){
       let tempData = dataSelector?.filter((item) => item.category===search.get("category")?.toLocaleLowerCase());
       setData(tempData);
-      console.log("tempData", tempData);
+      // console.log("tempData", tempData);
     }
   }
   , [dataSelector]);
-  console.log("data", data[0]?.rooms);
+  // console.log("data", data[0]?.rooms);
   useEffect(() => {
     if(dataSelector===null||dataSelector===undefined||dataSelector.length===0){
       router.push("/virtualexperience/category");
@@ -69,7 +69,7 @@ useEffect(() => {
 
   const addToCart = () => {
     SetIsOPen(true);
-    console.log("selectedrooms", selectedActivity);
+    // console.log("selectedrooms", selectedActivity);
   };
   const prevHandler = () => { 
     router.push("/virtualexperience/category");

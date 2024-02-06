@@ -12,20 +12,20 @@ const Content1 = () => {
   const search = useSearchParams();
   const router = useRouter();
   const dataSelector = useSelector(selectVirtualData);
-  console.log("dataSelector", dataSelector);
+  // console.log("dataSelector", dataSelector);
   const [data, setData] = useState([]);
   useEffect(() => {
     if (dataSelector &&dataSelector.length>0 && search.get("category")){
       let tempData = dataSelector?.filter((item) => item?.category===search.get("category")?.toLocaleLowerCase());
       setData(tempData);
-      console.log("tempData", tempData);
+      // console.log("tempData", tempData);
     }
     else{
       router.push("/virtualexperience/category");
     }
   }
   , [dataSelector]);
-  console.log("data", data);
+  // console.log("data", data);
   const prevHandler = () => {
     router.push("/virtualexperience/budget");
   };

@@ -39,8 +39,8 @@ function App() {
       console.error("Error fetching categories:", error.message);
     }
   };
-  console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
-  console.log(fetchedCategories);
+  // console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
+  // console.log(fetchedCategories);
   const fetchCitiesAndHobbies = async () => {
     try {
       const response = await axios.get(
@@ -61,8 +61,8 @@ function App() {
   }, []);
 
   const t1 = performance.now();
-  console.log(`fetchCategories took ${t1 - t0} milliseconds.`);
-  console.log(fetchedCategories);
+  // console.log(`fetchCategories took ${t1 - t0} milliseconds.`);
+  // console.log(fetchedCategories);
   const [openPopUp1, setOpenPopUp1] = useState(true);
   const [openPopUp2, setOpenPopUp2] = useState(false);
   const [openPopUp3, setOpenPopUp3] = useState(false);
@@ -210,12 +210,12 @@ function App() {
             preferencesDataToSendToBackend.preferredCategories,
         }
       );
-      console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
+      // console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
 
       const data = response.data;
       setIsloading(false);
 
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.error(error);
 

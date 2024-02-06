@@ -128,10 +128,10 @@ const ProfileComponent = () => {
   if (!isAuthenticated) {
     return <h1>Nikal</h1>;
   }
-  console.log('Token:', token);
-  console.log('User:', user);
+  // console.log('Token:', token);
+  // console.log('User:', user);
   
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className="flex items-center justify-center bg-gray-100 h-screen">

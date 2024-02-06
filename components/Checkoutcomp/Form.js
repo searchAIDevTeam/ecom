@@ -98,7 +98,7 @@ export default function Form() {
     }
 
     dispatch(updateFormData(form));
-    console.log(form);
+    // console.log(form);
 
     try {
       const response = await fetch(
@@ -114,7 +114,7 @@ export default function Form() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Dataaaa", data);
+        // console.log("Dataaaa", data);
 
         // if the API response is 200
         router.push(`/shipping`);
@@ -141,7 +141,7 @@ export default function Form() {
     : "bg-black text-white";
 
   const searchParams = useSearchParams();
-  console.log(searchParams.get("search")); // Logs "search"
+  // console.log(searchParams.get("search")); // Logs "search"
   const properties = searchParams.get("search");
 
   return (

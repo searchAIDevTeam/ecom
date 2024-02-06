@@ -42,7 +42,7 @@ function Cards() {
 
     if (selectData) {
       setRecommended(selectData);
-      console.log("selectData", selectData);
+      // console.log("selectData", selectData);
     }
 
     setLoading(false);

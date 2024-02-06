@@ -30,13 +30,13 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
           sessionStorage.setItem("cachedSearchText", searchTexte);
 
           setData(response.data);
-          console.log("search api fetched");
-          console.log(response.data);
+          // console.log("search api fetched");
+          // console.log(response.data);
           onSearch(response.data);
         } else {
           setData(JSON.parse(cachedData));
           onSearch(JSON.parse(cachedData));
-          console.log(data);
+          // console.log(data);
         }
       } catch (error) {
         console.error("Error fetching data:", error);

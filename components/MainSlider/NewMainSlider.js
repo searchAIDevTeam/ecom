@@ -19,7 +19,7 @@ export default function NewMainSlider() {
   useEffect(() => {
     if (!SliderViewData || SliderViewData.length === 0) {
       fetchData();
-      console.log("mainslider data fetched")
+      // console.log("mainslider data fetched")
     }
   }, [page]);
   const fetchData = () => {

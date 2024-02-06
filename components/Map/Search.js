@@ -25,7 +25,7 @@ const Search = ({ places, onResultClick }) => {
     setSearchQuery(event.target.value);
   };
 
-  console.log(places);
+  // console.log(places);
 
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
@@ -81,7 +81,7 @@ const Search = ({ places, onResultClick }) => {
     } else {
       onResultClick({ lat: 20.593, lng: 78.96 });
     }
-    console.log(item);
+    // console.log(item);
   };
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);

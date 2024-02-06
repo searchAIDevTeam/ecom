@@ -6,7 +6,7 @@ import MapMarker from "./MapMarker";
 import { REACT_APP_GMAP_API_KEY } from "./config.js";
 import Search from "./Search";
 const Map = ({ setBoundaries, coords, places, PlacesData }) => {
-  console.log(PlacesData);
+  // console.log(PlacesData);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: REACT_APP_GMAP_API_KEY,
   });
@@ -20,7 +20,7 @@ const Map = ({ setBoundaries, coords, places, PlacesData }) => {
       const latitude = parseFloat(lat);
       const longitude = parseFloat(lng);
       setSelectedCoords({ lat: latitude, lng: longitude });
-      console.log(selectedCoords);
+      // console.log(selectedCoords);
       if (selectedCoords.lat === 20.593 && selectedCoords.lng === 78.96) {
         setZoom(india_zoom);
       } else {
@@ -28,7 +28,7 @@ const Map = ({ setBoundaries, coords, places, PlacesData }) => {
       }
     }
   };
-  console.log(selectedCoords);
+  // console.log(selectedCoords);
   const onLoad = (map) => {
     setMap(map);
   };
@@ -44,8 +44,8 @@ const Map = ({ setBoundaries, coords, places, PlacesData }) => {
       </div>
     </OverlayView>
   );
-  console.log("hi")
-console.log(PlacesData)
+  // console.log("hi")
+// console.log(PlacesData)
   // const handleBoundsChanged = () => {
   //   if (map) {
   //     const bounds = map.getBounds();

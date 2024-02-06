@@ -19,9 +19,9 @@ const Arrive = () => {
     router.push("/checkout");
   };
   const roomData = useSelector(selectRoomData);
-  console.log("roomData in cart page", roomData);
+  // console.log("roomData in cart page", roomData);
   const roomStatus = useSelector(selectRoomStatus);
-  console.log("roomstatus", roomStatus);
+  // console.log("roomstatus", roomStatus);
   const formadata = useSelector(selectFormData);
   return (
     <div>

@@ -25,7 +25,7 @@ const RoomPage = ({ params }) => {
         setData(response.data);
         dispatch(setRoomData({ roomData: response.data, status: "succeeded" }));
 
-        console.log("room response ", response.data);
+        // console.log("room response ", response.data);
       } catch (error) {
         console.error("Error fetching room data:", error);
         dispatch(setRoomData({ roomData: [], status: "failed" }));

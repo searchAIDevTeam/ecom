@@ -15,13 +15,13 @@ const Activities = () => {
   const search=useSearchParams();
 
   const dataSelector = useSelector(selectVirtualData);
-  console.log("dataSelector", dataSelector);
+  // console.log("dataSelector", dataSelector);
   const [data, setData] = useState([]);
   useEffect(() => {
     if (dataSelector &&dataSelector.length>0 && search.get("category")){
       let tempData = dataSelector?.filter((item) => item.category===search.get("category")?.toLocaleLowerCase());
       setData(tempData);
-      console.log("tempData", tempData);
+      // console.log("tempData", tempData);
     }
     else{
       router.push("/virtualexperience/category");
@@ -36,12 +36,12 @@ const Activities = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getVE`);
-      console.log(response);
+      // console.log(response);
       setDataActivities(response.data);
     };
     fetchActivities();
   },[]);
-console.log(dataActivities);
+// console.log(dataActivities);
   const [selectedPage, setSelectedPage] = useState("activities");
   const [selectedActivity, setSelectedActivity] = useState({});
   const handleSelectPage = (page) => {
@@ -71,7 +71,7 @@ const handleClick = (roomId, roomTitle) => {
 
   const addToCart = () => {
     SetIsOPen(true);
-    console.log("selectedrooms", selectedActivity);
+    // console.log("selectedrooms", selectedActivity);
   };
 
 
