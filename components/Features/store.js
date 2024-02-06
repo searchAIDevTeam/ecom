@@ -15,6 +15,8 @@ import cartReducer from './Slices/cartSlice'
 import selectedProductReducer from './Slices/compareSlice'
 import virtualReducer from "./Slices/virtualSlice";
 import virtualDataReducer from "./Slices/virtualDataSlice";
+import trendingReducer from './Slices/trendingSlice';
+
 const sagaMiddleware = createSagaMiddleware();
 
 const roomsReducer = (state = { selectedActivity: {} }, action) => {
@@ -51,7 +53,8 @@ export const store = configureStore({
     profile: profileReducer,
     selectedItems:selectedItemsReducer,
     cart:cartReducer,
-    selectedproduct:selectedProductReducer
+    selectedproduct:selectedProductReducer,
+    trending: trendingReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

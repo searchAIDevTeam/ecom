@@ -10,6 +10,7 @@ import { watchFetchRoomData } from "./roomSaga";
 import { cartSaga } from "./cartSaga";
 import { watchSelectedProductsSaga } from "./compareSaga";
 import { watchVirtualGet } from "./virtualSaga";
+import { watchFetchTrendingData } from "./trendingSaga"
 
 export default function* rootSaga() {
   yield all([
@@ -18,6 +19,7 @@ export default function* rootSaga() {
     watchSearchProducts(),
     watchFetchFirstCard(),
     watchFetchProfileData(),
+    watchFetchTrendingData(),
     watchFetchRoomData(),
     watchSelectedItemsSaga(),
     cartSaga(),

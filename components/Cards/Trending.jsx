@@ -17,29 +17,24 @@ import {
   Mousewheel,
   FreeMode,
 } from "swiper/modules";
-import axios from "axios";
+// import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { selectTrendingData } from "../Features/Slices/trendingSlice";
 
 const Trending = () => {
+  const trendingData = useSelector(selectTrendingData);
+  const dispatch = useDispatch();
   const [swiperRef, setSwiperRef] = useState(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const handleImageClick = () => {
     setPopupVisible(true);
   };
-  const [trendingData, setTrendingData] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  // const [trendingData, setTrendingData] = useState([]);
+  // const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/trending-products`
-      );
-      setTrendingData(response.data);
-      setLoading(false);
-    };
     if(trendingData.length===0){
-      fetchData();
-      //Why is this function being called again
-      //when there is a condition that it should only fetch when array length is 0
-      //trending Data length is zero everytime
+      dispatch({type:"FETCH_TRENDING_DATA", payload: "trending"})
+      // fetchData();
       console.log("trending fetch function called")
     }
   }, []);
@@ -137,7 +132,7 @@ const Trending = () => {
           ) : (
             trendingData.map((product, idx) => {
               return (
-                <SwiperSlide key={idx} className="">
+                <SwiperSlide key={idx}>
                   <div className="grid grid-cols-1 mt-2 w-full  h-full fade-in ">
                     <Card
                       title={product.productName}
