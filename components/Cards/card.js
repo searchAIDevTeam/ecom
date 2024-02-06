@@ -29,7 +29,7 @@ function Card(props) {
     <>
       <div
         key={props.cardkey}
-        className="card m-2"
+        className="card"
         style={{
           width: "100%",
           height: "100%",

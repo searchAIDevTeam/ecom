@@ -116,56 +116,31 @@ const Card = ({ data }) => {
   };
   return (
     <>
-      {/* texts */}
 
-      <div className="flex justify-start gap-4 sm:w-[28vw]  w-[80vw] sm:ml-10 ml-0">
+
+      <div className="flex justify-start gap-4 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
         <div className=" mt-5  prefence-text">
-          <div className="share-btn flex gap-x-4 text-sm justify-end">
-            <div className="share flex items-center">
-              <Image
-                src="/rooms/share-icon.svg"
-                width={20}
-                height={20}
-                alt="share"
-                className="text-xs"
-                style={{ fontSize: "18px" }}
-              />
-              <span className="ml-1 underline sm:text-sm text-sm   tracking-[.012rem]  sm:font-normal">
-                Share
-              </span>
-            </div>
-            <div className="save flex items-center">
-              <Image
-                src="/rooms/favourite-icon.svg"
-                width={20}
-                height={20}
-                alt="favourite"
-                className="text-xs"
-                style={{ fontSize: "18px" }}
-              />
-              <span className="ml-1 underline sm:text-sm text-sm   tracking-[.012rem]  sm:font-normal">
-                Save
-              </span>
-            </div>
-          </div>
 
-          <div className="textHolders flex flex-col ">
+
+          <div className="textHolders flex flex-col pt-[30px] ">
             <h1 className="text-2xl mt-5 font-bold mb-2">
               {data?.productTitle}
             </h1>
-            <h3 className="mb-2 font-semibold">
-              Collection:{data?.collectionName}
-            </h3>
-            <h3 className="mb-4 font-semibold">
-              Pattern Number: {data?.patternNumber}
-            </h3>
+            <div className="font-bold flex mb-1">
+              <span>Collection: </span><h3>{data?.collectionName}</h3>
+            </div>
+            <div className="font-bold flex mb-1">
+              <span>Pattern Number: </span><h3>{data?.patternNumber}</h3>
+            </div>
             <div className="price">
-              <h2 className="font-bold mb-1">
-                MRP: ₹{data?.perUnitPrice}/roll
-              </h2>
+              <div className="font-bold flex mt-[15px]">
+                <span>Rs. &nbsp;</span><h2 className="text-3xl leading-[0.5] tracking-wide"> {data?.perUnitPrice}</h2> <span> &nbsp;/roll</span>
+              </div>
+              <h5 className="">Price incl. of all taxes</h5>
+
               {/* taking quantity as input */}
-              <div>
-                <label htmlFor="Quantity">Quantity: &nbsp;</label>
+              <div className="pt-[30px]">
+
                 <input
                   type="number"
                   name="quantity"
@@ -176,23 +151,22 @@ const Card = ({ data }) => {
                   }}
                   className=" outline"
                 />
+                <label htmlFor="Quantity">Quantity:</label>
               </div>
-              <h5 className="">incl. Of taxes</h5>
-              <h4>Also Includes Taxes</h4>
             </div>
           </div>
 
           {/* color-container */}
           <div className="colorContainer flex flex-col mt-4 sm:w-auto w-[80vw]">
-            <h1 className="mb-2 font-bold">Other Colorways</h1>
+            <h1 className="mb-2 font-bold">Colours</h1>
             <div className="colors flex gap-3">
               {colorSep?.map((color, index) => (
                 <div
                   key={index}
                   className={`
-                    w-[50px]
-                    h-[50px]
-                    border-2
+                    w-[60px]
+                    h-[60px]
+                    border-b-2
                     border-black
                     text-gray-900
                     text-center 
@@ -212,7 +186,7 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
-          <div className="border border-gray-300 w-[100%] rounded-xl mt-2 pt-4 pb-4 sm:pl-3">
+          <div className="border border-gray-300 w-[100%] rounded-xl mt-[30px] pt-[30px] pb-4 sm:pl-3">
             <div className="flex items-center">
               <div className="pl-3">
                 <Calculation priceData={data} />
@@ -319,22 +293,6 @@ const Card = ({ data }) => {
 
           {/* //buttons */}
           <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center">
-            <div className="guestCheckout ">
-              <button
-                onClick={() => {
-                  handleClickDB();
-                  {
-                    roomStatus === "succeeded" &&
-                      toast.success("Succesfully added", {
-                        toastId: "success1",
-                      });
-                  }
-                }}
-                className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
-              >
-                Add To Bag
-              </button>
-            </div>
 
             <Link
               href={{
@@ -345,7 +303,7 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-4 flex items-center justify-center"
             >
-              <button className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button className="bg-black text-white sm:w-80 w-40 sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Buy Now
               </button>
             </Link>
@@ -358,12 +316,28 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-4 flex items-center justify-center"
             >
-              <button className="bg-black text-white sm:w-80 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
-                Buy online with in-store request
+              <button className="bg-black text-white  sm:w-80 w-40 sm:h-14 h-6 rounded-full  transition duration-300">
+                Buy Now with in-store request
               </button>
             </Link>
-            
-            
+            <div className="guestCheckout ">
+              <button
+                onClick={() => {
+                  handleClickDB();
+                  {
+                    roomStatus === "succeeded" &&
+                      toast.success("Succesfully added", {
+                        toastId: "success1",
+                      });
+                  }
+                }}
+                className="border-2 border-solid border-slate-300 text-black sm:w-80 w-40 sm:h-14 h-8 rounded-full transition duration-300"
+              >
+                Add To Bag
+              </button>
+            </div>
+
+
           </div>
         </div>
         <ToastContainer
