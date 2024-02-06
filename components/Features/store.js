@@ -15,6 +15,8 @@ import cartReducer from "./Slices/cartSlice";
 import selectedProductReducer from "./Slices/compareSlice";
 import virtualReducer from "./Slices/virtualSlice";
 import virtualDataReducer from "./Slices/virtualDataSlice";
+import trendingReducer from './Slices/trendingSlice';
+
 import multiCardReducer from "./Slices/multiCardSlice";
 import imageChangerReducer from "./Slices/ImagechangerSlice";
 const sagaMiddleware = createSagaMiddleware();
@@ -54,6 +56,7 @@ export const store = configureStore({
     selectedItems: selectedItemsReducer,
     cart: cartReducer,
     selectedproduct: selectedProductReducer,
+    trending: trendingReducer,
     multiCard: multiCardReducer,
     Imagechanger: imageChangerReducer,
   },

@@ -10,6 +10,7 @@ import { watchFetchRoomData } from "./roomSaga";
 import { cartSaga } from "./cartSaga";
 import { watchSelectedProductsSaga } from "./compareSaga";
 import { watchVirtualGet } from "./virtualSaga";
+import { watchFetchTrendingData } from "./trendingSaga"
 import { watchMultiCardData } from "./multiCardSaga";
 import { watchFetchImagechangerData } from "./ImageChangerSaga";
 export default function* rootSaga() {
@@ -19,6 +20,7 @@ export default function* rootSaga() {
     watchSearchProducts(),
     watchFetchFirstCard(),
     watchFetchProfileData(),
+    watchFetchTrendingData(),
     watchFetchRoomData(),
     watchSelectedItemsSaga(),
     cartSaga(),

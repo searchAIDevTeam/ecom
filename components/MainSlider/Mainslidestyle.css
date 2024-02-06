@@ -54,9 +54,9 @@
   cursor: pointer;
 }
 
-.arrow-left {
+/* .arrow-left {
   margin-left: 0.3rem;
-}
+} */
 
 .slider-container > div {
   display: flex;
