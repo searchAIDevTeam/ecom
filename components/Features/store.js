@@ -5,19 +5,20 @@ import rootSaga from "./Sagas/index";
 import sliderReducer from "./Slices/sliderSlice";
 import roomReducer from "./Slices/roomSlice";
 import searchReducer from "./search/searchSlice";
-import calculationReducer from './Slices/calculationSlice'
-import formReducer from './Slices/formSlice'
+import calculationReducer from "./Slices/calculationSlice";
+import formReducer from "./Slices/formSlice";
 import FirstCardReducer from "./Slices/FIrstCardSlice";
 import authReducer from "./auth/authSlice";
 import profileReducer from "./Slices/profileSlice";
-import selectedItemsReducer from './Slices/selectedItemsSlice'
-import cartReducer from './Slices/cartSlice'
-import selectedProductReducer from './Slices/compareSlice'
+import selectedItemsReducer from "./Slices/selectedItemsSlice";
+import cartReducer from "./Slices/cartSlice";
+import selectedProductReducer from "./Slices/compareSlice";
 import virtualReducer from "./Slices/virtualSlice";
 import virtualDataReducer from "./Slices/virtualDataSlice";
 import trendingReducer from './Slices/trendingSlice';
 
-import multiCardReducer from './Slices/multiCardSlice';
+import multiCardReducer from "./Slices/multiCardSlice";
+import imageChangerReducer from "./Slices/ImagechangerSlice";
 const sagaMiddleware = createSagaMiddleware();
 
 const roomsReducer = (state = { selectedActivity: {} }, action) => {
@@ -49,14 +50,15 @@ export const store = configureStore({
     auth: authReducer,
     rooms: roomsReducer,
     roomdetails: roomReducer,
-    calculation:calculationReducer,
-    form:formReducer,
+    calculation: calculationReducer,
+    form: formReducer,
     profile: profileReducer,
-    selectedItems:selectedItemsReducer,
-    cart:cartReducer,
-    selectedproduct:selectedProductReducer,
+    selectedItems: selectedItemsReducer,
+    cart: cartReducer,
+    selectedproduct: selectedProductReducer,
     trending: trendingReducer,
-    multiCard:multiCardReducer
+    multiCard: multiCardReducer,
+    Imagechanger: imageChangerReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

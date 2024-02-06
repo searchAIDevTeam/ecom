@@ -11,7 +11,8 @@ import { cartSaga } from "./cartSaga";
 import { watchSelectedProductsSaga } from "./compareSaga";
 import { watchVirtualGet } from "./virtualSaga";
 import { watchFetchTrendingData } from "./trendingSaga"
-import {watchMultiCardData} from './multiCardSaga';
+import { watchMultiCardData } from "./multiCardSaga";
+import { watchFetchImagechangerData } from "./ImageChangerSaga";
 export default function* rootSaga() {
   yield all([
     watchFetchRecommendedProduct(),
@@ -23,8 +24,9 @@ export default function* rootSaga() {
     watchFetchRoomData(),
     watchSelectedItemsSaga(),
     cartSaga(),
-    watchVirtualGet(), 
+    watchVirtualGet(),
     watchSelectedProductsSaga(),
-    watchMultiCardData()
+    watchMultiCardData(),
+    watchFetchImagechangerData(),
   ]);
 }
