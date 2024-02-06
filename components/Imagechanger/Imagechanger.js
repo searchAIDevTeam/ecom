@@ -2,28 +2,37 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import Image from "next/image";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { selectedImagechanger } from "../Features/Slices/ImagechangerSlice";
 
 const Imagechanger = () => {
+  const dispatch = useDispatch();
   const [index, setIndex] = useState(0);
   const [openStates, setOpenStates] = useState([false, false, false]);
   const [apiData, setApiData] = useState([]);
 
+  const ImagechangerData = useSelector(selectedImagechanger);
+  // useEffect(() => {
+  //   const fetchApiData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getMidInfoSection`
+  //       );
+  //       // console.log(response.data);
+  //       setApiData(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching API data:", error);
+  //     }
+  //   };
+  //   if (apiData.length === 0) {
+  //     //apiData length is zero everytime, I think that is why the data is being fetched
+  //     // console.log("Imagechanger API fetched")
+  //     fetchApiData();
+  //   }
+  // }, []);
   useEffect(() => {
-    const fetchApiData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getMidInfoSection`
-        );
-        // console.log(response.data);
-        setApiData(response.data);
-      } catch (error) {
-        console.error("Error fetching API data:", error);
-      }
-    };
-    if(apiData.length===0){
-      //apiData length is zero everytime, I think that is why the data is being fetched
-      // console.log("Imagechanger API fetched")
-      fetchApiData();
+    if (ImagechangerData.length === 0) {
+      dispatch({ type: "FETCH_IMAGECHANGER_DATA", payload: "Imagechanger" });
     }
   }, []);
 
@@ -53,7 +62,7 @@ const Imagechanger = () => {
             countries
           </h3>
         </div>
-        {apiData[0]?.sections?.map((value, idx) => (
+        {ImagechangerData[0]?.sections?.map((value, idx) => (
           <div key={idx} className="trending-choice ">
             {idx === 1 && (
               <>
@@ -125,7 +134,7 @@ const Imagechanger = () => {
       </div>
       <div className="right  flex w-1/2 h-full">
         <div className="flex w-full h-[36rem] items-center relative">
-          {apiData[0]?.sections?.map((image, i) => (
+          {ImagechangerData[0]?.sections?.map((image, i) => (
             <img
               key={i}
               src={image.imageUrl}

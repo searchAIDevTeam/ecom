@@ -8,9 +8,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Calculation from "./Calculation";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectQuantity,
-} from "@/components/Features/Slices/calculationSlice";
+import { selectQuantity } from "@/components/Features/Slices/calculationSlice";
 import {
   selectRoomData,
   selectRoomStatus,
@@ -20,9 +18,7 @@ import axios from "axios";
 import Image from "next/image";
 
 const Card = ({ data }) => {
-
   const quantity = useSelector(selectQuantity);
-  console.log("Number of quantity", quantity);
   const router = useRouter();
   const [widthstate, setwidthstate] = useState(0);
   const [heightstate, setheightstate] = useState(0);
@@ -74,7 +70,6 @@ const Card = ({ data }) => {
       };
 
       const response = await axios.post(postUrl, postData);
-
     } catch (error) {
       console.error("Error posting room data:", error);
     }
@@ -305,7 +300,7 @@ const Card = ({ data }) => {
                 Buy Now with in-store request
               </button>
             </Link>
-            <div className="guestCheckout ">
+            <div className="guestCheckout flex justify-center items-center ">
               <button
                 onClick={() => {
                   handleClickDB();
@@ -316,7 +311,7 @@ const Card = ({ data }) => {
                       });
                   }
                 }}
-                className="border-2 border-solid border-slate-300 text-black sm:w-80 w-40 sm:h-14 h-8 rounded-full transition duration-300"
+                className="bg-black text-white  sm:w-80 w-40 sm:h-14 h-8 rounded-full transition duration-300"
               >
                 Add To Bag
               </button>
