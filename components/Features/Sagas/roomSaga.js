@@ -11,7 +11,7 @@ function* fetchRoomData(action) {
             `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${action.payload}`
         );
         yield put(setRoomData({ roomData: response.data, status: "succeeded" }));
-        console.log("response from room", response.data);
+        // console.log("response from room", response.data);
     } catch (error) {
         console.error("Error fetching room data:", error);
         yield put(setRoomData({ roomData: [], status: "failed" }));

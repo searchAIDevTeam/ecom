@@ -11,7 +11,7 @@ export const selectedproductslice = createSlice({
   initialState,
   reducers: {
     setselectedproduct: (state, action) => {
-      console.log("Reducer: Setting selected product", action.payload);
+      // console.log("Reducer: Setting selected product", action.payload);
       state.pdtselected = action.payload;
       state.status = "succeeded";
     },

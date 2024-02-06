@@ -42,7 +42,7 @@ function Header({ howMuchScrolled }) {
     router.push("/login");
   };
   const handleProfileNav = () => {
-    console.log("Profile");
+    // console.log("Profile");
     handleLinkClick("/profile");
   };
   const onClose = () => {
@@ -54,9 +54,9 @@ function Header({ howMuchScrolled }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const handleLinkClick = (path) => {
-    console.log(isLoading);
+    // console.log(isLoading);
     setIsLoading(true);
-    console.log(isLoading);
+    // console.log(isLoading);
     setTimeout(() => {
       router.push(path);
       setIsLoading(false);

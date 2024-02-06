@@ -19,7 +19,7 @@ export default function NewMainSlider() {
   useEffect(() => {
     if (!SliderViewData || SliderViewData.length === 0) {
       fetchData();
-      console.log("mainslider data fetched")
+      // console.log("mainslider data fetched")
     }
   }, [page]);
   const fetchData = () => {
@@ -90,7 +90,7 @@ export default function NewMainSlider() {
         }}
       >
         <SwiperSlide key={sliderApiData[0]?._id}>
-          <div className="relative group sm:h-[500px] h-[200px]">
+          <div className="relative group sm:h-[425px] h-[200px]">
             <Image
               src={sliderApiData[0]?.imgSrc}
               width={500}
@@ -134,7 +134,7 @@ export default function NewMainSlider() {
                     <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
                       <Image
                         className="flex ml-2"
-                        src="/svg/dropdown/backarrowRevarce.svg"
+                        src="/icon/arrow_right.svg"
                         height={20}
                         width={20}
                         alt="arrow"
@@ -147,7 +147,7 @@ export default function NewMainSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide key={sliderApiData[1]?._id}>
-          <div className="relative group sm:h-[500px] h-[200px]">
+          <div className="relative group sm:h-[425px] h-[200px]">
             <Image
               src={sliderApiData[1]?.imgSrc}
               width={500}
@@ -188,7 +188,7 @@ export default function NewMainSlider() {
                     <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
                       <Image
                         className="flex ml-2"
-                        src="/svg/dropdown/backarrowRevarce.svg"
+                        src="/icon/arrow_right.svg"
                         height={20}
                         width={20}
                         alt="arrow"
@@ -201,7 +201,7 @@ export default function NewMainSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide key={sliderApiData[2]?._id}>
-          <div className="relative group sm:h-[500px] h-[200px]">
+          <div className="relative group sm:h-[425px] h-[200px]">
             <Image
               src={sliderApiData[2]?.imgSrc}
               width={500}
@@ -242,7 +242,7 @@ export default function NewMainSlider() {
                     <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
                       <Image
                         className="flex ml-2"
-                        src="/svg/dropdown/backarrowRevarce.svg"
+                        src="/icon/arrow_right.svg"
                         height={20}
                         width={20}
                         alt="arrow"
@@ -256,7 +256,7 @@ export default function NewMainSlider() {
         </SwiperSlide>
         {sliderApiData?.slice(3).map((data) => (
           <SwiperSlide key={data._id}>
-            <div className="relative group sm:h-[500px] h-[200px]">
+            <div className="relative group sm:h-[425px] h-[200px]">
               <Image
                 src={data.imgSrc}
                 width={500}
@@ -297,7 +297,7 @@ export default function NewMainSlider() {
                       <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
                         <Image
                           className="flex ml-2"
-                          src="/svg/dropdown/backarrowRevarce.svg"
+                          src="/icon/arrow_right.svg"
                           height={20}
                           width={20}
                           alt="arrow"
@@ -311,7 +311,7 @@ export default function NewMainSlider() {
           </SwiperSlide>
         ))}
         <Image
-          src="/svg/dropdown/rightvector.svg"
+           src="/icon/arrow_right.svg"
           width={30}
           height={30}
           alt="arrow"

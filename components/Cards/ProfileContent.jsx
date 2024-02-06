@@ -18,7 +18,7 @@ const ProfileContent = () => {
   useEffect(() => {
     if(profileData.length===0){
       dispatch({ type: "FETCH_PROFILE_REQUEST", payload: "Profile" });
-      console.log("profile data fetch funtion called");
+      // console.log("profile data fetch funtion called");
     }
   }, []);
 

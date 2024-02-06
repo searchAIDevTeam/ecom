@@ -15,10 +15,10 @@ const MapPage = () => {
   useEffect(() => {
     // pass boundaries.sw boundaries.ne to getPlaceData
     if (boundaries) {
-      console.log(boundaries);
+      // console.log(boundaries);
       getPlaceData(boundaries.sw, boundaries.ne).then((data) => {
         setPlaces(data);
-        console.log("data", data);
+        // console.log("data", data);
       });
     }
   }, [boundaries]);

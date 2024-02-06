@@ -42,7 +42,7 @@ const FreeSample = () => {
 
   const searchparams = useSearchParams();
   const searchtext = searchparams.get("search1");
-  console.log("searchtext", searchtext);
+  // console.log("searchtext", searchtext);
   const handleSelectPage = (page) => {
     setSelectedPage(page);
   };
@@ -178,7 +178,7 @@ const FreeSample = () => {
   }, []);
 
   useEffect(() => {
-    console.log("the data from products", data);
+    // console.log("the data from products", data);
   }, [data]);
   // const filteredProducts = data.filter(
   //   (product) =>
@@ -215,7 +215,7 @@ const FreeSample = () => {
   //posting to order api
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    console.log("deviceId : ", id);
+    // console.log("deviceId : ", id);
   }
   const posturl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`;
   // const postproductdata = async () => {
@@ -275,7 +275,7 @@ const FreeSample = () => {
         throw new Error("HTTP status" + response.status);
       }
 
-      console.log("Data posted successfully:", postData);
+      // console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error posting room data:", error);
     }

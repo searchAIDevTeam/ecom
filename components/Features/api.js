@@ -5,21 +5,21 @@ const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`
 const createApiEndpoint = (endpoint) => `${BASE_URL}/${endpoint}`;
 if (typeof window !== "undefined") {
   var id = localStorage.getItem("deviceId");
-  console.log("id",id);
+  // console.log("id",id);
 }
 export const fetchRecommendedProduct = async () => {
   try {
     const response = await axios.get(createApiEndpoint(`getRecommendation?deviceId=${id}`));
     return response.data;
   } catch (err) {
-    console.error(err);
+    // console.error(err);
   }
 };
 
 export const fetchSliderView = async (page,limit) => {
   try {
     const response = await axios.get(createApiEndpoint("getImgCircle?limit="+limit+"&page="+page));
-    console.log("response",response.data);
+    // console.log("response",response.data);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -75,6 +75,16 @@ export const virtualGet=async()=>{
     return response.data;
   }catch(error){
     console.error(`Error fetching virtual content: ${error.message} `);
+    throw error;
+  }
+}
+export const multiCardData=async()=>{
+  try{
+    const response=await axios.get(createApiEndpoint("getHeaderInfoSection"));
+    return response.data;
+  }
+  catch(error){
+    console.error(`Error fetching multicard content: ${error.message}`);
     throw error;
   }
 }

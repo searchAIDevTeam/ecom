@@ -129,7 +129,7 @@ const Trending = () => {
           ) : (
             trendingData.map((product, idx) => {
               return (
-                <SwiperSlide key={idx}>
+                <SwiperSlide key={idx} className="ml-0">
                   <div className="grid grid-cols-1 mt-2 w-full  h-full fade-in ">
                     <Card
                       title={product.productName}

@@ -29,7 +29,7 @@ const page = () => {
     }
   }
   , [dataSelector]);
-  console.log("data", data);
+  // console.log("data", data);
 
   const handleClick = (category) => {
     setSelected(category);

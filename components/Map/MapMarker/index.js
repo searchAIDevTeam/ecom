@@ -10,7 +10,7 @@ const MapMarker = ({ place }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   const handleMarkerClick = () => {
-    console.log("Marker clicked", place?.name);
+    // console.log("Marker clicked", place?.name);
     setPopupOpen(!isPopupOpen);
   };
 
@@ -18,7 +18,7 @@ const MapMarker = ({ place }) => {
     setPopupOpen(false);
   };
 
-  console.log("Rendering MapMarker for", place);
+  // console.log("Rendering MapMarker for", place);
 
   return (
     <div className="marker-container gmap-marker">

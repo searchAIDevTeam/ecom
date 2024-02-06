@@ -27,16 +27,16 @@ const CategoryContent = (props) => {
   let parentCategoryVar;
   const handleClick = (cat) => {
     if (displayedOn === "menu") {
-      console.log("heading : ", heading)
-      console.log("cat : ", cat)
-      console.log("cat.text : ", cat.text)
+      // console.log("heading : ", heading)
+      // console.log("cat : ", cat)
+      // console.log("cat.text : ", cat.text)
       cat.text === "Virtual Experience"
         ? router.push("/virtualexperience/vrooms")
         : router.push("/magazine");
     } else {
-      console.log("heading : ", heading)
-      console.log("cat : ", cat)
-      console.log("cat.text : ", cat.text)
+      // console.log("heading : ", heading)
+      // console.log("cat : ", cat)
+      // console.log("cat.text : ", cat.text)
       if (heading.split(" ")[2].toLowerCase() === "collections") {
         parentCategoryVar = "collection";
       } else if (heading.split(" ")[2].toLowerCase() === "rooms") {

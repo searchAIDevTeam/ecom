@@ -17,7 +17,7 @@ const AddCart = () => {
   const dbItems = useSelector((state) => state.cart.dbItems);
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    console.log(id);
+    // console.log(id);
   }
   useEffect(() => {
     const fetchData = async () => {
@@ -31,21 +31,21 @@ const AddCart = () => {
             },
           }
         );
-        console.log(response);
+        // console.log(response);
         if (response.status !== 200) {
           throw new Error("HTTP status " + response.status);
         }
         const data = response.data; // Extract JSON from the response
-        console.log("response from DB", data);
+        // console.log("response from DB", data);
 
         setcartdata(data);
-        console.log("response from DB", cartdata);
+        // console.log("response from DB", cartdata);
         setCartStaus("succeeded");
-        console.log("cartStatus", cartStatus);
+        // console.log("cartStatus", cartStatus);
         dispatch(setDbItems(data));
-        console.log("this is data from redux (db)", dbItems);
+        // console.log("this is data from redux (db)", dbItems);
       } catch (error) {
-        console.error("Error Fetching data from DB : ", error);
+        // console.error("Error Fetching data from DB : ", error);
 
         setCartStaus("failed");
       }
@@ -53,8 +53,8 @@ const AddCart = () => {
     fetchData();
   }, [dispatch]);
   useEffect(() => {
-    console.log("Updated cartdata", cartdata);
-    console.log("Updated cartStatus", cartStatus);
+    // console.log("Updated cartdata", cartdata);
+    // console.log("Updated cartStatus", cartStatus);
   }, [cartdata, cartStatus]);
   let totalPrice = 0;
   if (cartStatus === "succeeded" && cartdata) {
@@ -102,8 +102,8 @@ const AddCart = () => {
         deviceId: id,
         items: updatedItems,
       });
-      console.log("Server Response:", responsed);
-      console.log("Data posted successfully:", postData);
+      // console.log("Server Response:", responsed);
+      // console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error deleting item: ", error);
     }

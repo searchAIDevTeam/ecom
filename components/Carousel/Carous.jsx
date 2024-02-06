@@ -109,7 +109,7 @@ const Carous = ({ data }) => {
     };
   }, [prevScrollPos]); // Dependency on prevScrollPos to update the effect when it changes
   // const [showHeader, setShowHeader] = useState(true);
-console.log(relatedData)
+// console.log(relatedData)
   return (
     <>
       <div className="sm:w-full w-[80vw] sm:block hidden">

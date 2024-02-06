@@ -20,7 +20,7 @@ function Card(props) {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/increment-popularity?productId=${productId}`
       );
-      console.log("response is ", response);
+      // console.log("response is ", response);
     };
     postTrending();
     router.push("/room/" + id);
@@ -29,7 +29,7 @@ function Card(props) {
     <>
       <div
         key={props.cardkey}
-        className="card m-2"
+        className="card"
         style={{
           width: "100%",
           height: "100%",

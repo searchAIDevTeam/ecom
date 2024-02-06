@@ -110,7 +110,7 @@ const Promo = () => {
 
 
         } catch (error) {
-          console.log(error);
+          // console.log(error);
 
         }
       }, // handler function end
@@ -152,13 +152,13 @@ const Promo = () => {
       });
       const data = await response.json();
 
-      console.log("razorpay data: ", data.data);
+      // console.log("razorpay data: ", data.data);
 
       // call the razorpay payment initiater function & pass the orderDetails also
       initPayment(data.data);
 
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       throw error; // Rethrow the error to be caught by the thunk
     }
   };

@@ -9,18 +9,18 @@ import { useRouter, useSearchParams } from "next/navigation";
 const OrderSum = () => {
   const router = useRouter();
   const roomData = useSelector(selectRoomData);
-  console.log("roomData in cart page", roomData);
+  // console.log("roomData in cart page", roomData);
   const roomStatus = useSelector(selectRoomStatus);
-  console.log("roomstatus", roomStatus);
+  // console.log("roomstatus", roomStatus);
   const quantity = useSelector(selectQuantity);
   const dbItemset = useSelector((state) => state.cart.dbItems);
-  console.log("from redux and db", dbItemset);
+  // console.log("from redux and db", dbItemset);
   // const dataReceived = router.query.data;
   // console.log(dataReceived);
   // const isFromCart = router.asPath.includes("/cart");
 
   const searchParams = useSearchParams();
-  console.log(searchParams.get("search")); // Logs "search"
+  // console.log(searchParams.get("search")); // Logs "search"
   const properties = searchParams.get("search");
 
   let totalPrices = 0;

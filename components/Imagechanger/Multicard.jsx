@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef ,useEffect} from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
@@ -8,10 +8,18 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import MultiCardContent from "../compounds/MultiCardContent";
-import { multiCardData } from "@/Model/MultiCard/MultiCardData";
+import { useSelector ,useDispatch} from "react-redux";
+import { selectMultiCardData } from "../Features/Slices/multiCardSlice";
 
 const Multicard = () => {
   const swiper1Ref = useRef(null);
+  const multiCardData=useSelector(selectMultiCardData);
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    if(multiCardData.length===0){
+      dispatch({type:'FETCH_MULTICARD_REQUEST',payload:"multiCard"});
+    }
+  },[]);
 
   return (
     <div>

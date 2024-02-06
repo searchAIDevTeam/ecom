@@ -12,7 +12,7 @@ const Budget = () => {
     const router = useRouter();
   const search=useSearchParams();
   const dataSelector = useSelector(selectVirtualData);
-  console.log("dataSelector", dataSelector);
+  // console.log("dataSelector", dataSelector);
   const [data, setData] = useState([]);
   useEffect(() => {
     if(dataSelector===null||dataSelector===undefined||dataSelector.length===0){

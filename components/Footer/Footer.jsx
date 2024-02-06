@@ -26,7 +26,7 @@ const Footer = () => {
           );
         })}
       </div>
-      <div className="flex sm:px-[50px] px-[20px] sm:border-t sm:border-solid sm:border-gray-200 sm:flex-row flex-col justify-between p-4">
+      <div className="flex sm:border-t sm:border-solid sm:border-gray-200 sm:flex-row flex-col justify-between py-[20px]">
         <div className="flex  items-center space-x-4 text-lg font-semibold tracking-tight">
           <ul className="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
             <li className="flex">

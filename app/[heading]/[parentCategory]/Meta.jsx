@@ -54,7 +54,7 @@
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log("Filtered products:", response);
+                // console.log("Filtered products:", response);
                 setFilteredProducts(response.data); // Save the filtered products in state
             } 
                 catch (error) {
@@ -62,7 +62,7 @@
                 }
             }
             fetchVeProducts();
-            console.log("ve products");
+            // console.log("ve products");
           }else{
             const fetchFilteredProducts = async () => {
               try {
@@ -84,7 +84,7 @@
               }
             };
             fetchFilteredProducts();
-            console.log("ve products");
+            // console.log("ve products");
 
           }
         }, [params.parentCategory, params.cat,x]);
