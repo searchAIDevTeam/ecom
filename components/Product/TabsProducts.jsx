@@ -335,7 +335,7 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                 </button>
                 {opencolor ? (
                   <div
-                    className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border  gap-7 rounded-2xl w-72 h-80"
+                    className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80"
                     style={{ zIndex: "1000" }}
                   >
                     <div className="grid grid-cols-3 gap-6">
@@ -686,7 +686,15 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                       checked={selectedpdt.includes(text)}
                     />
                   </div>
-                  <img src={text.images[0]} alt="" />
+                  <div className=" relative w-[250px] h-[250px]">
+                    <Image
+                      src={text.images[0]}
+                      alt=""
+                      className="absolute "
+                      layout="fill"
+                    />
+                  </div>
+                  {console.log(text.images[0])}
                   <p className="text-sm font-semibold">{text.productTitle}</p>
                   <p className="text-sm">{text.productDescription}</p>
                   <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
