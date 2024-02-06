@@ -28,7 +28,7 @@ const CompareImage2 = () => {
     <div className="App">
       {status === "succeeded" ? (
         <div>
-          <h1 className="text-3xl">Compare These Products</h1>
+          <h1 className="text-3xl text-center">Compare These Products</h1>
 
           <div className="image-comparison">
             <div className="images-container">
@@ -56,11 +56,16 @@ const CompareImage2 = () => {
                 className="slider-line"
                 style={{
                   left: `${sliderValue}%`,
-                  
                 }}
               ></div>
-              <div className="slider-icon" style={{ left: `${sliderValue}%` ,width: "50px",
-                  height: "50px", }}>
+              <div
+                className="slider-icon"
+                style={{
+                  left: `${sliderValue}%`,
+                  width: "50px",
+                  height: "50px",
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
