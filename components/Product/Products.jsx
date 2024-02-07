@@ -1,10 +1,10 @@
 import React from "react";
 
-const Products = ({ filteredProducts,heading }) => {
+const Products = ({ filteredProductData,heading }) => {
   // console.log("Filtered products:", filteredProducts);
 
   // Use the first product's category as the main heading
-  const mainCategory = filteredProducts.length > 0 ? filteredProducts[0].category : "Products";
+  const mainCategory = filteredProductData.length > 0 ? filteredProductData[0].category : "Products";
 
   return (
     <div className="relative top-20 sm:px-[50px] px-[20px] ">
@@ -12,7 +12,7 @@ const Products = ({ filteredProducts,heading }) => {
       <h1 className="text-3xl font-bold mb-10">{heading}</h1>
       {/* img of product using flex and a fix width */}
       <div className="flex flex-row gap-3 sm:w-[65vw] sm:overflow-x-hidden overflow-x-auto mb-16">
-        {filteredProducts.map((product, idx) => (
+        {filteredProductData.map((product, idx) => (
           <div key={idx} className="flex flex-col gap-2">
             {/* Assuming the first image from the images array is used */}
             <img

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Label from "../Label/Label";
 
 
-const meausrement = () => {
+const meausrement = ({filteredProductData}) => {
   return (
     <div className="flex sm:flex-row w-full h-auto flex-col sm:px-[50px] px-[20px] relative overflow-hidden ">
       <div className="relative max-h-[500px] ">

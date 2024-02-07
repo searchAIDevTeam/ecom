@@ -15,10 +15,11 @@ import cartReducer from "./Slices/cartSlice";
 import selectedProductReducer from "./Slices/compareSlice";
 import virtualReducer from "./Slices/virtualSlice";
 import virtualDataReducer from "./Slices/virtualDataSlice";
-import trendingReducer from './Slices/trendingSlice';
+import trendingReducer from "./Slices/trendingSlice";
 
 import multiCardReducer from "./Slices/multiCardSlice";
 import imageChangerReducer from "./Slices/ImagechangerSlice";
+import filteredProductReducer from "./Slices/FilteredProduct";
 const sagaMiddleware = createSagaMiddleware();
 
 const roomsReducer = (state = { selectedActivity: {} }, action) => {
@@ -59,6 +60,7 @@ export const store = configureStore({
     trending: trendingReducer,
     multiCard: multiCardReducer,
     Imagechanger: imageChangerReducer,
+    filteredProduct: filteredProductReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

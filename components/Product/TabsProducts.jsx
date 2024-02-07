@@ -24,7 +24,7 @@ import {
   renderSortItem,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
-const Tabs = ({ filteredProducts, heading, param }) => {
+const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -33,8 +33,8 @@ const Tabs = ({ filteredProducts, heading, param }) => {
   };
   const [filterData, setFilterdata] = useState([]);
   useEffect(() => {
-    setFilterdata(filteredProducts);
-  }, [filteredProducts]);
+    setFilterdata(filteredProductData);
+  }, [filteredProductData]);
 
   // // const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
