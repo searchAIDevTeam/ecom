@@ -16,9 +16,11 @@ import selectedProductReducer from "./Slices/compareSlice";
 import virtualReducer from "./Slices/virtualSlice";
 import virtualDataReducer from "./Slices/virtualDataSlice";
 import trendingReducer from "./Slices/trendingSlice";
-
 import multiCardReducer from "./Slices/multiCardSlice";
 import imageChangerReducer from "./Slices/ImagechangerSlice";
+import musicReducer from "./Slices/musicSectionSlice";
+import firstImageChangerReducer from "./Slices/firstImageChangerSlice";
+
 import filteredProductReducer from "./Slices/FilteredProduct";
 const sagaMiddleware = createSagaMiddleware();
 
@@ -60,6 +62,8 @@ export const store = configureStore({
     trending: trendingReducer,
     multiCard: multiCardReducer,
     Imagechanger: imageChangerReducer,
+    music: musicReducer,
+    firstImageChanger: firstImageChangerReducer,
     filteredProduct: filteredProductReducer,
   },
   middleware: (getDefaultMiddleware) =>
