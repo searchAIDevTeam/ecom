@@ -113,18 +113,18 @@ const Card = ({ data }) => {
   // };
   return (
     <>
-      <div className="flex justify-start gap-4 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
-        <div className=" mt-5  prefence-text">
-          <div className="textHolders flex flex-col gap-3 pt-[30px] ">
+      <div className="flex justify-start gap-1 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
+        <div className="mt-5  prefence-text">
+          <div className="textHolders flex flex-col">
             <h1 className="text-2xl mt-5 font-bold mb-2">
               {data?.productTitle}
             </h1>
-            <div className="font-bold flex mb-1">
-              <span>Collection: </span>
+            <div className="font-medium flex  tracking-wider text-zinc-400 mb-1">
+              Collection:&nbsp;
               <h3>{data?.collectionName}</h3>
             </div>
-            <div className="font-bold flex mb-1">
-              <span>Pattern Number: </span>
+            <div className="font-medium tracking-wider text-zinc-400 flex mb-1">
+              Pattern Number:&nbsp;
               <h3>{data?.patternNumber}</h3>
             </div>
             <div className="price">
@@ -136,10 +136,11 @@ const Card = ({ data }) => {
                 </h2>{" "}
                 <span> &nbsp;/roll</span>
               </div>
-              <h5 className="">Price incl. of all taxes</h5>
+              <h5 className="text-zinc-400">Price incl. of all taxes</h5>
 
-              <IncDecCounter />
             </div>
+
+            <IncDecCounter />
           </div>
 
           {/* color-container */}
@@ -300,25 +301,13 @@ const Card = ({ data }) => {
                   search: "rooms",
                 },
               }}
-              className="memberCheckout my-4 flex items-center justify-center"
+              className="memberCheckout my-2 flex items-center justify-center"
             >
-              <button className="bg-black text-white sm:w-80 w-40 sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button className="bg-black text-white sm:w-80 w-40 sm:h-12 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Buy Now
               </button>
             </Link>
-            <Link
-              href={{
-                pathname: "/checkout",
-                query: {
-                  search: "sample",
-                },
-              }}
-              className="memberCheckout my-4 flex items-center justify-center"
-            >
-              <button className="bg-black text-white  sm:w-80 w-40 sm:h-14 h-6 rounded-full  transition duration-300">
-                Buy Now with in-store request
-              </button>
-            </Link>
+
             <div className="guestCheckout flex justify-center items-center ">
               <button
                 onClick={() => {
@@ -330,11 +319,24 @@ const Card = ({ data }) => {
                       });
                   }
                 }}
-                className="bg-black text-white  sm:w-80 w-40 sm:h-14 h-8 rounded-full transition duration-300"
+                className="bg-black text-white  sm:w-80 w-40 sm:h-12 h-8 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Add To Bag
               </button>
             </div>
+            <Link
+              href={{
+                pathname: "/checkout",
+                query: {
+                  search: "sample",
+                },
+              }}
+              className="memberCheckout my-2 flex items-center justify-center"
+            >
+              <button className="border-2 text-black border-solid  sm:w-80 w-40 sm:h-12 h-8 rounded-full  transition duration-300">
+                Buy Now with in-store request
+              </button>
+            </Link>
           </div>
         </div>
         <ToastContainer
