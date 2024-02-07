@@ -10,9 +10,9 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/mousewheel";
 import "swiper/css/scrollbar";
-const Footer = dynamic(()=>import('../Footer/Footer'), {
-  ssr: false
-})
+const Footer = dynamic(() => import("../Footer/Footer"), {
+  ssr: false,
+});
 const Imagechanger = dynamic(() => import("../Imagechanger/Imagechanger"));
 const Multicard = dynamic(() => import("../Imagechanger/Multicard"));
 const Tabs = dynamic(() => import("./Tabs"));
@@ -26,11 +26,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
 
-
 function Cards() {
   const [recommended, setRecommended] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [dataFetched, setDataFetched] = useState(false); 
+  const [dataFetched, setDataFetched] = useState(false);
   const dispatch = useDispatch();
   const selectData = useSelector(selectRecommendedProduct);
 
@@ -51,14 +50,19 @@ function Cards() {
       var id = localStorage.getItem("deviceId");
     }
   }, [dispatch, selectData, dataFetched]); // Include dataFetched in the dependency array
-    
-
 
   const Partdata = (cat) => {
-    return  recommended?.recommendations?.[0]?.recommendedProducts?.filter((item) => item.category === `${cat}`) || [];
+    return (
+      recommended?.recommendations?.[0]?.recommendedProducts?.filter(
+        (item) => item.category === `${cat}`
+      ) || []
+    );
   };
 
-  const categories = recommended?.recommendations?.[0]?.recommendedProducts?.map((item) => item.category) || [];
+  const categories =
+    recommended?.recommendations?.[0]?.recommendedProducts?.map(
+      (item) => item.category
+    ) || [];
   let uniqueCategories = [...new Set(categories)];
   // console.log(uniqueCategories)
   const MemoizedMainSlider = useMemo(() => <NewMainSlider />, []);
@@ -72,9 +76,13 @@ function Cards() {
   }, [uniqueCategories]);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
+  if (typeof window !== "undefined") {
+    var id = localStorage.getItem("deviceId");
+    console.log("deviceId : ", id);
+  }
   return (
     <div className="w-full h-auto">
       {/* {MemoizedMainSlider} */}
@@ -91,7 +99,7 @@ function Cards() {
       <Image />
       {uniqueCategories?.map((item, index) => (
         <Dataslider
-          key={item} 
+          key={item}
           category={item}
           sliderIndex={index}
           data={Partdata(item)}
@@ -107,7 +115,7 @@ function Cards() {
       {MemoizedProfileContent}
       <Tabs data={recommended} />
       <Phone />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

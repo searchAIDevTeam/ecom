@@ -18,10 +18,13 @@ import {
 
 const Dataslider = ({ category, data, sliderIndex }) => {
   const itm1 = useSelector(Items1selected);
+  console.log("from selecteditems1", itm1);
 
   const itm2 = useSelector(Items2selected);
+  console.log("from selecteditems2", itm2);
 
-  const itm3 = useSelector(Items2selected);
+  const itm3 = useSelector(Items3selected);
+  console.log("from selecteditems3", itm3);
 
   const swiperRef = useRef(null);
   const [isPopupVisible, setPopupVisible] = useState(false);

@@ -106,6 +106,11 @@ const Card = ({ data }) => {
   const handleClicks = () => {
     router.push("/checkout");
   };
+
+  const [Modal, setModal] = useState(false);
+  // const handleModal = () => {
+  //   setModal(!Modal);
+  // };
   return (
     <>
       <div className="flex justify-start gap-4 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
@@ -194,7 +199,9 @@ const Card = ({ data }) => {
                     width={25}
                     height={25}
                     alt="arrow right"
-                    onClick={handleClick}
+                    onClick={() => {
+                      handleClick();
+                    }}
                   />
                 </div>
               ) : (
@@ -268,6 +275,18 @@ const Card = ({ data }) => {
                   value=""
                   className="border border-black ml-8 mb-2"
                 />
+              </div>
+            )}
+            <button onClick={() => setModal(true)} className="bg-blue-400">
+              Button
+            </button>
+
+            {Modal && (
+              <div className=" bg-gray-900 bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
+                  THS IS SOME TEXT
+                  <button onClick={() => setModal(false)}>close</button>
+                </div>
               </div>
             )}
           </div>
