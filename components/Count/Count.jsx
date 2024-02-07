@@ -23,11 +23,11 @@ function IncDecCounter() {
 
   return (
     <>
-      <div className="flex gap-2 items-center">
-        <div className="input-group inline-flex rounded-full border  ">
+      <div className="flex items-center">
+        <div className="input-group p-[3px] inline-flex rounded-full border text-xl font-medium">
           <div class="input-group-prepend">
             <button
-              className=" hover:bg-slate-400  w-10 h-10 rounded-full"
+              className=" hover:bg-zinc-50  w-9 h-9 rounded-full"
               type="button"
               onClick={decNum}
             >
@@ -36,15 +36,15 @@ function IncDecCounter() {
           </div>
           <input
             type="text"
-            className="form-control text-center inline-flex"
+            className="form-control w-[30px] text-center inline-flex"
             value={num}
             onChange={handleChange}
 
-            
+
           />
           <div class="input-group-prepend">
             <button
-              className=" hover:bg-slate-400  w-10 h-10 rounded-full"
+              className=" hover:bg-zinc-50  w-9 h-9 rounded-full"
               type="button"
               onClick={incNum}
             >
@@ -54,7 +54,7 @@ function IncDecCounter() {
         </div>
         <div class="">
           <button
-            className=" bg-blue-800  text-white  rounded-full border  px-7 text-sm items-center justify-center"
+            className=" bg-black  h-9 w-auto text-white  rounded-full border  px-7 text-sm items-center justify-center"
             type="button"
             onClick={() => {
               dispatch(updateQuantity(num));
@@ -62,7 +62,7 @@ function IncDecCounter() {
           >
             <span>Add&nbsp;{num}</span>
             <span>&nbsp;items to </span>
-            <span>cart</span>
+            <span>buy</span>
           </button>
         </div>
       </div>
