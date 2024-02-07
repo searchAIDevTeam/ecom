@@ -25,7 +25,9 @@ const CompareImage = () => {
     <div className="App">
       {statuses === "succeeded" ? (
         <div>
-          <h1 className="text-3xl text-position">Compare These Products</h1>
+          <div className="text-center py-[20px] " >
+            <h1 className="text-5xl py-[15px] ">Compare Products</h1>
+            <p>Get help choosing. <span className="text-blue-600"> Chat with a Specialist</span></p></div>
 
           <div className="image-comparison">
             <div className="images-container">
@@ -40,7 +42,7 @@ const CompareImage = () => {
                 className="after-image" // Add a class for the "after.jpg" image
                 src={datas[1].images[0]}
                 alt=""
-                // style={{ width: `${sliderValue}%` }}
+              // style={{ width: `${sliderValue}%` }}
               />
               <img
                 className="neo-image"

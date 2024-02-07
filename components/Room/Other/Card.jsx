@@ -285,7 +285,7 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-2 flex items-center justify-center"
             >
-              <button className="bg-black text-white sm:w-80 w-40 sm:h-12 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button className="bg-black text-white w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Buy Now
               </button>
             </Link>
@@ -301,7 +301,7 @@ const Card = ({ data }) => {
                       });
                   }
                 }}
-                className="bg-black text-white  sm:w-80 w-40 sm:h-12 h-8 rounded-full hover:bg-gray-900 transition duration-300"
+                className="bg-black text-white   w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Add To Bag
               </button>
@@ -315,7 +315,7 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-2 flex items-center justify-center"
             >
-              <button className="border-2 text-black border-solid  sm:w-80 w-40 sm:h-12 h-8 rounded-full  transition duration-300">
+              <button className="border-2 text-black border-solid   w-[100%] sm:h-14 h-8 rounded-full  transition duration-300">
                 Buy Now with in-store request
               </button>
             </Link>
