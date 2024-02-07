@@ -181,8 +181,8 @@ const Card = ({ data }) => {
 
           {/* calculations */}
           <div className="border-black w-[100%] mt-[30px] bg-zinc-100">
-            <div className="flex flex-row p-4 gap-2">
-              <div className="flex flex-col col-span-1 w-1/2 cursor-pointer" onClick={() => handleOptionClick('zeroCostEMI')}>
+            <div className="flex flex-row pt-1">
+              <div className="flex flex-col col-span-1 w-1/2 cursor-pointer p-3 border-r" onClick={() => handleOptionClick('zeroCostEMI')}>
                 <div className="flex flex-row gap-2">
                 <Image src='/rooms/payment.svg' height={20} width={20} alt="icon"/>
                   <h1 className="font-bold">ZERO Cost EMI</h1>
@@ -190,7 +190,7 @@ const Card = ({ data }) => {
                 <p>Ayatrio payment option</p>
               </div>
 
-              <div className="flex flex-col col-span-2 w-1/2  cursor-pointer" onClick={() => handleOptionClick('inStoreRequest')}>
+              <div className="flex flex-col col-span-2 w-1/2  cursor-pointer p-2" onClick={() => handleOptionClick('inStoreRequest')}>
                 <div className="flex flex-row gap-2">
                 <Image src='/rooms/ayatrio_store_b.svg' height={20} width={20} alt="icon"/>
                   <h1 className="font-bold">In-Store Request</h1>
@@ -199,15 +199,15 @@ const Card = ({ data }) => {
               </div>
             </div>
             <hr />
-            <div className="flex flex-row p-4">
-              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer" onClick={() => handleOptionClick('deliveryOption')}>
+            <div className="flex flex-row">
+              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer p-3 border-r" onClick={() => handleOptionClick('deliveryOption')}>
                 <div className="flex flex-row gap-2">
                 <Image src='/rooms/delivary.svg' height={20} width={20} alt="icon"/>
                   <h1 className="font-bold">Delivery Option</h1>
                 </div>
                 <p>Check availability</p>
               </div>
-              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer" onClick={() => handleOptionClick('calculator')}>
+              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer p-3" onClick={() => handleOptionClick('calculator')}>
                 <div className="flex flex-row gap-2">
                 <Image src='/rooms/calculator.svg' height={20} width={20} alt="icon"/>
                   <h1 className="font-bold">Calculator</h1>
