@@ -6,14 +6,18 @@ import {
 import { useDispatch } from "react-redux";
 function IncDecCounter() {
   const dispatch = useDispatch();
-  let [num, setNum] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const handleClickVisible = () => {
+    setVisible(true);
+  };
+  let [num, setNum] = useState(1);
   let incNum = () => {
     if (num < 10) {
       setNum(Number(num) + 1);
     }
   };
   let decNum = () => {
-    if (num > 0) {
+    if (num > 1) {
       setNum(num - 1);
     }
   };
@@ -29,7 +33,10 @@ function IncDecCounter() {
             <button
               className=" hover:bg-zinc-50  w-9 h-9 rounded-full"
               type="button"
-              onClick={decNum}
+              onClick={() => {
+                decNum();
+                handleClickVisible();
+              }}
             >
               -
             </button>
@@ -39,14 +46,15 @@ function IncDecCounter() {
             className="form-control w-[30px] text-center inline-flex"
             value={num}
             onChange={handleChange}
-
-
           />
           <div class="input-group-prepend">
             <button
               className=" hover:bg-zinc-50  w-9 h-9 rounded-full"
               type="button"
-              onClick={incNum}
+              onClick={() => {
+                incNum();
+                handleClickVisible();
+              }}
             >
               +
             </button>
@@ -54,7 +62,9 @@ function IncDecCounter() {
         </div>
         <div class="">
           <button
-            className=" bg-black  h-9 w-auto text-white  rounded-full border  px-7 text-sm items-center justify-center"
+            className={` bg-black  h-9 w-auto text-white  rounded-full border  px-7 text-sm items-center justify-center
+            ${visible === true ? "block" : "hidden"}
+            `}
             type="button"
             onClick={() => {
               dispatch(updateQuantity(num));

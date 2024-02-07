@@ -36,22 +36,6 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     setFilterdata(filteredProductData);
   }, [filteredProductData]);
 
-  // // const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsMobile(
-  //       () => typeof window !== "undefined" && window.innerWidth <= 450
-  //     );
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
   const [activeTab, setActiveTab] = useState("all");
 
   const [openSort, setOpenSort] = React.useState(false);
@@ -63,7 +47,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   const handleAllsort = () => {
     setopenallsort(!openAllsort);
   };
-  // const [dropdownVisible, setDropdownVisible] = useState(false);
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -417,10 +401,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
                   }
-                  ${() =>
+                  ${
                     typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
-                      : " justify-between"}
+                      : " justify-between"
+                  }
                   `}
                 >
                   All Filters &nbsp;
