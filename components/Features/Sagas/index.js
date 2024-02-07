@@ -10,12 +10,13 @@ import { watchFetchRoomData } from "./roomSaga";
 import { cartSaga } from "./cartSaga";
 import { watchSelectedProductsSaga } from "./compareSaga";
 import { watchVirtualGet } from "./virtualSaga";
-import { watchFetchTrendingData } from "./trendingSaga"
+import { watchFetchTrendingData } from "./trendingSaga";
 import { watchMultiCardData } from "./multiCardSaga";
 import { watchFetchImagechangerData } from "./ImageChangerSaga";
 import { watchFetchMusicData } from "./musicSaga";
 import { watchFetchFirstImgChangerData } from "./firstImageChangerSaga"
 
+import { watchFilterProducts } from "./FilteredProductSaga";
 export default function* rootSaga() {
   yield all([
     watchFetchRecommendedProduct(),
@@ -33,5 +34,6 @@ export default function* rootSaga() {
     watchFetchImagechangerData(),
     watchFetchMusicData(),
     watchFetchFirstImgChangerData(),
+    watchFilterProducts(),
   ]);
 }

@@ -24,7 +24,7 @@ import {
   renderSortItem,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
-const Tabs = ({ filteredProducts, heading, param }) => {
+const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -33,24 +33,8 @@ const Tabs = ({ filteredProducts, heading, param }) => {
   };
   const [filterData, setFilterdata] = useState([]);
   useEffect(() => {
-    setFilterdata(filteredProducts);
-  }, [filteredProducts]);
-
-  // // const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsMobile(
-  //       () => typeof window !== "undefined" && window.innerWidth <= 450
-  //     );
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
+    setFilterdata(filteredProductData);
+  }, [filteredProductData]);
 
   const [activeTab, setActiveTab] = useState("all");
 
@@ -63,7 +47,7 @@ const Tabs = ({ filteredProducts, heading, param }) => {
   const handleAllsort = () => {
     setopenallsort(!openAllsort);
   };
-  // const [dropdownVisible, setDropdownVisible] = useState(false);
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -417,10 +401,11 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
                   }
-                  ${() =>
+                  ${
                     typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
-                      : " justify-between"}
+                      : " justify-between"
+                  }
                   `}
                 >
                   All Filters &nbsp;

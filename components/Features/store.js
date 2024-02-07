@@ -21,6 +21,7 @@ import imageChangerReducer from "./Slices/ImagechangerSlice";
 import musicReducer from "./Slices/musicSectionSlice";
 import firstImageChangerReducer from "./Slices/firstImageChangerSlice";
 
+import filteredProductReducer from "./Slices/FilteredProduct";
 const sagaMiddleware = createSagaMiddleware();
 
 const roomsReducer = (state = { selectedActivity: {} }, action) => {
@@ -62,7 +63,8 @@ export const store = configureStore({
     multiCard: multiCardReducer,
     Imagechanger: imageChangerReducer,
     music: musicReducer,
-    firstImageChanger: firstImageChangerReducer
+    firstImageChanger: firstImageChangerReducer,
+    filteredProduct: filteredProductReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
