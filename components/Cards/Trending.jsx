@@ -74,12 +74,12 @@ const Trending = () => {
               onClick={() => swiper1Ref.current.swiper.slideNext()}
               className="custom-next-button bg-slate-500  rounded-full hover:bg-400 hover:scale-110 hover:text-slate-100"
             >
-              <Image
+              {/* <Image
                 src="/svg/dropdown/rightvector.svg"
                 height={10}
                 width={10}
                 alt="arrow"
-              />
+              /> */}
             </div>
           </div>
         </div>
