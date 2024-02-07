@@ -81,7 +81,6 @@ function Cards() {
 
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    console.log("deviceId : ", id);
   }
   return (
     <div className="w-full h-auto">

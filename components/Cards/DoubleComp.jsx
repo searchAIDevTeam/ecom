@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Double from "./Double";
+import { useSelector, useDispatch } from "react-redux";
+import { selectMusicData } from "../Features/Slices/musicSectionSlice";
 const DoubleComp = () => {
+  const musicSwiperData = useSelector(selectMusicData);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    if(musicSwiperData.length===0){
+      dispatch({type: "FETCH_MUSIC_DATA", payload: "music"})
+    }
+  },[])
+  console.log(musicSwiperData)
+  const gameImage = musicSwiperData[1]?.img[0];
   return (
     <div className="py-20 grid sm:grid-cols-2 grid-cols-1 sm:w-auto w-[100%] gap-4 sm:px-[50px] px-[20px]">
       <div className="col-span-1 ml-0 bg-zinc-100 text-black overflow-hidden">
@@ -51,7 +62,7 @@ const DoubleComp = () => {
           <Image
             width={1024}
             height={550}
-            src="/images/game.webp"
+            src={gameImage}
             className="object-cover"
             alt="Games"
             loading="lazy"
