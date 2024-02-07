@@ -27,11 +27,11 @@ function IncDecCounter() {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex mt-[5px] items-center">
         <div className="input-group p-[3px] inline-flex rounded-full border text-xl font-medium">
           <div class="input-group-prepend">
             <button
-              className=" hover:bg-zinc-50  w-9 h-9 rounded-full"
+              className="hover:bg-zinc-200  w-9 h-9 rounded-full"
               type="button"
               onClick={() => {
                 decNum();
@@ -49,7 +49,7 @@ function IncDecCounter() {
           />
           <div class="input-group-prepend">
             <button
-              className=" hover:bg-zinc-50  w-9 h-9 rounded-full"
+              className="hover:bg-zinc-200  w-9 h-9 rounded-full"
               type="button"
               onClick={() => {
                 incNum();
