@@ -184,35 +184,35 @@ const Card = ({ data }) => {
             <div className="flex flex-row pt-1">
               <div className="flex flex-col col-span-1 w-1/2 cursor-pointer p-3 border-r" onClick={() => handleOptionClick('zeroCostEMI')}>
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/payment.svg' height={20} width={20} alt="icon"/>
+                  <Image src='/rooms/payment.svg' height={25} width={25} alt="icon" />
                   <h1 className="font-bold">ZERO Cost EMI</h1>
                 </div>
-                <p>Ayatrio payment option</p>
+                <p className="text-sm pt-[5px]">Ayatrio payment option</p>
               </div>
 
               <div className="flex flex-col col-span-2 w-1/2  cursor-pointer p-2" onClick={() => handleOptionClick('inStoreRequest')}>
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/ayatrio_store_b.svg' height={20} width={20} alt="icon"/>
+                  <Image src='/rooms/ayatrio_store_b.svg' height={25} width={25} alt="icon" />
                   <h1 className="font-bold">In-Store Request</h1>
                 </div>
-                <p>Check in-store stock</p>
+                <p className="text-sm pt-[5px]">Check in-store stock</p>
               </div>
             </div>
             <hr />
             <div className="flex flex-row">
               <div className="flex flex-col col-span-2 w-1/2 cursor-pointer p-3 border-r" onClick={() => handleOptionClick('deliveryOption')}>
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/delivary.svg' height={20} width={20} alt="icon"/>
+                  <Image src='/rooms/delivary.svg' height={25} width={25} alt="icon" />
                   <h1 className="font-bold">Delivery Option</h1>
                 </div>
-                <p>Check availability</p>
+                <p className="text-sm pt-[5px]">Check availability</p>
               </div>
               <div className="flex flex-col col-span-2 w-1/2 cursor-pointer p-3" onClick={() => handleOptionClick('calculator')}>
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/calculator.svg' height={20} width={20} alt="icon"/>
+                  <Image src='/rooms/calculator.svg' height={25} width={25} alt="icon" />
                   <h1 className="font-bold">Calculator</h1>
                 </div>
-                <p>As per your requirement</p>
+                <p className="text-sm pt-[5px]">As per your requirement</p>
               </div>
             </div>
 
