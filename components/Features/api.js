@@ -88,3 +88,14 @@ export const multiCardData=async()=>{
     throw error;
   }
 }
+
+export const fetchMusicData = async () => {
+  try {
+    const response = await axios.get(createApiEndpoint("getStaticSection"));
+    console.log("music data : ",response.data);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching music data : ${error.message}`);
+    throw error;
+  }
+}

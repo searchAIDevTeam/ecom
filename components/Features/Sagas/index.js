@@ -13,6 +13,8 @@ import { watchVirtualGet } from "./virtualSaga";
 import { watchFetchTrendingData } from "./trendingSaga"
 import { watchMultiCardData } from "./multiCardSaga";
 import { watchFetchImagechangerData } from "./ImageChangerSaga";
+import { watchFetchMusicData } from "./musicSaga"
+
 export default function* rootSaga() {
   yield all([
     watchFetchRecommendedProduct(),
@@ -28,5 +30,6 @@ export default function* rootSaga() {
     watchSelectedProductsSaga(),
     watchMultiCardData(),
     watchFetchImagechangerData(),
+    watchFetchMusicData(),
   ]);
 }

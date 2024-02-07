@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, EffectCoverflow } from "swiper/modules";
 import "swiper/css/navigation";
@@ -6,9 +6,20 @@ import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import "swiper/css";
 import Image from "next/image";
+// import { useSelector, useDispatch } from "react-redux";
+// import { selectMusicData } from "../Features/Slices/musicSectionSlice";
 import { musicSwiperData } from "@/Model/MusicSectionData/MusicSwiperData";
 
 const Double = () => {
+  // ****Do not delete below comments, this code is to be used****
+
+  // const musicData = useSelector(selectMusicData);
+  // const dispatch = useDispatch();
+  // useEffect(()=>{
+  //   if(musicData.length===0){
+  //     dispatch({type: "FETCH_MUSIC_DATA", payload: "music"})
+  //   }
+  // },[])
   return (
     <div>
       <Swiper
