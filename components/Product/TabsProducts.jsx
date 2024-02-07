@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
@@ -36,21 +36,21 @@ const Tabs = ({ filteredProducts, heading, param }) => {
     setFilterdata(filteredProducts);
   }, [filteredProducts]);
 
-  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+  // // const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(
-        () => typeof window !== "undefined" && window.innerWidth <= 450
-      );
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(
+  //       () => typeof window !== "undefined" && window.innerWidth <= 450
+  //     );
+  //   };
 
-    window.addEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   const [activeTab, setActiveTab] = useState("all");
 
@@ -297,7 +297,7 @@ const Tabs = ({ filteredProducts, heading, param }) => {
 
               {/* Color - dropdown3 */}
 
-              <div>
+              <div style={{ position: "relative" }}>
                 <button
                   onClick={() => {
                     if (window.innerWidth <= 450) {
@@ -309,16 +309,18 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                       handleTabClick();
                     }
                   }}
+                  // onClick={() => setOpenColor(!opencolor)}
                   className={`Tabbtn 
                   ${
                     opencolor
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
                   }
-                  ${() =>
+                  ${
                     typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
-                      : " justify-between"}
+                      : " justify-between"
+                  }
                   `}
                 >
                   Color &nbsp;
@@ -334,10 +336,7 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                   />
                 </button>
                 {opencolor ? (
-                  <div
-                    className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80"
-                    style={{ zIndex: "1000" }}
-                  >
+                  <div className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80">
                     <div className="grid grid-cols-3 gap-6">
                       {colorarr.map((text, idx) => (
                         <div
@@ -671,7 +670,7 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                   key={idx}
                   onClick={() => handlenav(text._id)}
                 >
-                  <div
+                  {/* <div
                     onClick={(event) => event.stopPropagation()}
                     className={`flex justify-between text-black  checkbox-div ${
                       selectedpdt.includes(text) ? "visible" : ""
@@ -685,8 +684,23 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                       }}
                       checked={selectedpdt.includes(text)}
                     />
-                  </div>
+                  </div> */}
                   <div className=" relative w-[250px] h-[250px]">
+                    <div
+                      onClick={(event) => event.stopPropagation()}
+                      className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${
+                        selectedpdt.includes(text) ? "visible" : ""
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        onChange={(e) => {
+                          handleCheckbox(text, e.target.checked);
+                          setShowcompare(true);
+                        }}
+                        checked={selectedpdt.includes(text)}
+                      />
+                    </div>
                     <Image
                       src={text.images[0]}
                       alt=""
@@ -731,7 +745,6 @@ const Tabs = ({ filteredProducts, heading, param }) => {
                       width={15}
                       height={15}
                     />
-                    ({text.count})
                   </p>
                   <div className="flex items-center gap-3">
                     <Image
