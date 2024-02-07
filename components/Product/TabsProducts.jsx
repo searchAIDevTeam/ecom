@@ -250,7 +250,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
             ""
           ) : (
             <div
-              className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-20`}
+              className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-[999999] overflow-hidden`}
             >
               <TabsProductContent
                 filterName={"Sort"}
@@ -320,7 +320,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   />
                 </button>
                 {opencolor ? (
-                  <div className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80">
+                  <div
+                    className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80
+                  
+                  "
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 10px)",
+                      zIndex: "1000",
+                    }}
+                  >
                     <div className="grid grid-cols-3 gap-6">
                       {colorarr.map((text, idx) => (
                         <div
@@ -636,7 +645,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
           <hr />
           {/* iimages */}
-          <div className="relative z-10 flex flex-col image-product ">
+          <div className="relative  flex flex-col image-product z[-99999] ">
             <div className="text-right">
               {showCompare && (
                 <button
@@ -655,22 +664,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   key={idx}
                   onClick={() => handlenav(text._id)}
                 >
-                  {/* <div
-                    onClick={(event) => event.stopPropagation()}
-                    className={`flex justify-between text-black  checkbox-div ${
-                      selectedpdt.includes(text) ? "visible" : ""
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      onChange={(e) => {
-                        handleCheckbox(text, e.target.checked);
-                        setShowcompare(true);
-                      }}
-                      checked={selectedpdt.includes(text)}
-                    />
-                  </div> */}
-                  <div className=" relative w-[250px] h-[250px]">
+                  <div className=" relative w-[250px] h-[250px] z[-999999]">
                     <div
                       onClick={(event) => event.stopPropagation()}
                       className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${
@@ -693,7 +687,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                       layout="fill"
                     />
                   </div>
-                  {console.log(text.images[0])}
+
                   <p className="text-sm font-semibold">{text.productTitle}</p>
                   <p className="text-sm">{text.productDescription}</p>
                   <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
@@ -731,16 +725,6 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                       height={15}
                     />
                   </p>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/svg/icon/adtocart.svg"
-                      width={40}
-                      height={40}
-                      className="w-10 h-10"
-                      alt=""
-                    />
-                    {/* <img src={liketocart} className="w-5 h-5" alt="" /> */}
-                  </div>
                 </div>
               ))}
             </div>
