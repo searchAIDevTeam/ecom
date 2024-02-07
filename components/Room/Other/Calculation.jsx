@@ -42,8 +42,7 @@ const Calculation = ({ priceData }) => {
   return (
     <div>
       <div className="calculation-container sm">
-        <div className="text-lg flex items-center justify-center">
-          <div>
+          {/* <div>
             <Image
               src="/rooms/calculator-icon.svg"
               width={20}
@@ -51,9 +50,9 @@ const Calculation = ({ priceData }) => {
               alt="calculate"
               className="flex-start -ml-3 mr-3 mb-3"
             />
-          </div>
-          <span className=" self-start">Calculate</span>
-          {!hidden ? (
+          </div> */}
+          {/* <span className=" self-start">Calculate</span> */}
+          {/* {!hidden ? (
             <Image
               src="/rooms/arrow-circle-right-icon.svg"
               width={23}
@@ -71,13 +70,11 @@ const Calculation = ({ priceData }) => {
               onClick={handleCal}
               className="cursor-pointer ml-32"
             />
-          )}
-        </div>
+          )} */}
 
-        <div className="pb-3 text-gray-600 sm:pl-5 -mt-4 pt-1">
+        {/* <div className="pb-3 text-gray-600 sm:pl-5 -mt-4 pt-1">
           As per your requirement
-        </div>
-        {hidden && (
+        </div> */}
           <div className="calc mr-4 mb-4 mt-4 flex-col">
             {/* Dimension Inputs */}
             <div className="dim flex flex-row">
@@ -129,7 +126,7 @@ const Calculation = ({ priceData }) => {
               </h2>
             </div>
           </div>
-        )}
+      
       </div>
     </div>
   );

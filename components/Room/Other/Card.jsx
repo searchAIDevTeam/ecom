@@ -108,9 +108,16 @@ const Card = ({ data }) => {
   };
 
   const [Modal, setModal] = useState(false);
+  const [delivery, setDelivery] = useState(false);
+  const [store, setStore] = useState(false);
   // const handleModal = () => {
   //   setModal(!Modal);
   // };
+  const [modalContent, setModalContent] = useState(null);
+
+  const handleOptionClick = (content) => {
+    setModalContent(content);
+  };
   return (
     <>
       <div className="flex justify-start gap-1 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
@@ -173,124 +180,99 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
-          <div className="border border-gray-300 w-[100%] rounded-xl mt-[30px] pt-[30px] pb-4 sm:pl-3">
-            <div className="flex items-center">
-              <div className="pl-3">
-                <Calculation priceData={data} />
+          <div className="border-black w-[100%] mt-[30px] bg-zinc-100">
+            <div className="flex flex-row p-4 gap-2">
+              <div className="flex flex-col col-span-1 w-1/2 cursor-pointer" onClick={() => handleOptionClick('zeroCostEMI')}>
+                <div className="flex flex-row gap-2">
+                <Image src='/rooms/payment.svg' height={20} width={20} alt="icon"/>
+                  <h1 className="font-bold">ZERO Cost EMI</h1>
+                </div>
+                <p>Ayatrio payment option</p>
+              </div>
+
+              <div className="flex flex-col col-span-2 w-1/2  cursor-pointer" onClick={() => handleOptionClick('inStoreRequest')}>
+                <div className="flex flex-row gap-2">
+                <Image src='/rooms/ayatrio_store_b.svg' height={20} width={20} alt="icon"/>
+                  <h1 className="font-bold">In-Store Request</h1>
+                </div>
+                <p>Check in-store stock</p>
+              </div>
+            </div>
+            <hr />
+            <div className="flex flex-row p-4">
+              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer" onClick={() => handleOptionClick('deliveryOption')}>
+                <div className="flex flex-row gap-2">
+                <Image src='/rooms/delivary.svg' height={20} width={20} alt="icon"/>
+                  <h1 className="font-bold">Delivery Option</h1>
+                </div>
+                <p>Check availability</p>
+              </div>
+              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer" onClick={() => handleOptionClick('calculator')}>
+                <div className="flex flex-row gap-2">
+                <Image src='/rooms/calculator.svg' height={20} width={20} alt="icon"/>
+                  <h1 className="font-bold">Calculator</h1>
+                </div>
+                <p>As per your requirement</p>
               </div>
             </div>
 
-            <hr />
-            <div className="flex items-center pt-3">
-              <div>
-                <Image
-                  src="/rooms/truck-delivery-icon.svg"
-                  width={25}
-                  height={25}
-                  alt="delivery"
-                />
-              </div>
-              <div className="pl-3">Delivery</div>
-            </div>
-            <div className="pl-60 -ml-3 -mt-1">
-              {!visible ? (
-                <div className="mt-1 sm:mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-right-icon.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow right"
-                    onClick={() => {
-                      handleClick();
-                    }}
-                  />
-                </div>
-              ) : (
-                <div className="mt-1 mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-down.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow down"
-                    onClick={handleClick}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="pb-3 text-gray-600 pl-8 -mt-4">
-              Check availability
-            </div>
-            {visible && (
-              <div>
-                <div className="pl-7">Enter pincode:</div>
-                <input
-                  type="number"
-                  name="pincode"
-                  value=""
-                  className="border border-black ml-8 mb-2"
-                />
-              </div>
-            )}
-            <hr />
-            <div className="flex pt-3">
-              <div className="sm:pr-3">
-                <Image
-                  src="/rooms/store-icon.svg"
-                  width={25}
-                  height={25}
-                  alt="store"
-                />
-              </div>
-              <div className="pl-3">In-store</div>
-            </div>
-            <div className="pl-60 -ml-3 -mt-1">
-              {!hidden ? (
-                <div className="mt-1 mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-right-icon.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow right"
-                    onClick={handlefunc}
-                  />
-                </div>
-              ) : (
-                <div className="mt-1 mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-down.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow down"
-                    onClick={handlefunc}
-                  />
-                </div>
-              )}{" "}
-            </div>
-            <div className="text-gray-600 pl-9 -mt-4">Check in-store stock</div>
-            {hidden && (
-              <div>
-                <div className="pl-7">Enter city:</div>
-                <input
-                  type="text"
-                  name="city"
-                  value=""
-                  className="border border-black ml-8 mb-2"
-                />
-              </div>
-            )}
-            <button onClick={() => setModal(true)} className="bg-blue-400">
-              Button
-            </button>
+            {/* Modal */}
+            {modalContent && (
+              <div className="bg-gray-900 bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
+                  {modalContent === 'zeroCostEMI' && (
+                    <>
+                      <h1>Content for ZERO Cost EMI</h1>
+                      <button onClick={() => setModalContent(null)}>Close</button>
+                    </>
+                  )}
+                  {modalContent === 'inStoreRequest' && (
+                    <div className="bg-gray-900 bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                      <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
+                        <div>
+                          <div className="pl-7">Enter city:</div>
+                          <input
+                            type="text"
+                            name="city"
+                            value=""
+                            className="border border-black ml-8 mb-2"
+                          />
+                        </div>
+                        <button onClick={() => setModalContent(null)}>Close</button>
+                      </div>
+                    </div>
+                  )}
 
-            {Modal && (
-              <div className=" bg-gray-900 bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-                <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
-                  THS IS SOME TEXT
-                  <button onClick={() => setModal(false)}>close</button>
+                  {modalContent === 'deliveryOption' && (
+                    <div className=" bg-gray-900 bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                      <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
+                        <div>
+                          <div className="pl-7">Enter pincode:</div>
+                          <input
+                            type="number"
+                            name="pincode"
+                            value=""
+                            className="border border-black ml-8 mb-2"
+                          />
+                        </div>
+                        <button onClick={() => setModalContent(null)}>Close</button>
+                      </div>
+                    </div>
+
+                  )}
+                  {modalContent === 'calculator' && (
+                    <div className=" bg-gray-900 bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                      <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
+                        <Calculation priceData={data} />
+                        <button onClick={() => setModalContent(null)}>Close</button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
           </div>
+
 
           {/* //buttons */}
           <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center">
