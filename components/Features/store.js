@@ -19,6 +19,7 @@ import trendingReducer from "./Slices/trendingSlice";
 import multiCardReducer from "./Slices/multiCardSlice";
 import imageChangerReducer from "./Slices/ImagechangerSlice";
 import musicReducer from "./Slices/musicSectionSlice";
+import firstImageChangerReducer from "./Slices/firstImageChangerSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -61,6 +62,7 @@ export const store = configureStore({
     multiCard: multiCardReducer,
     Imagechanger: imageChangerReducer,
     music: musicReducer,
+    firstImageChanger: firstImageChangerReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
