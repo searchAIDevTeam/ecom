@@ -198,7 +198,7 @@ const Card = ({ data }) => {
                   />
                   <h1 className="font-bold">ZERO Cost EMI</h1>
                 </div>
-                <p>Ayatrio payment option</p>
+                <p className="text-sm pt-[5px]">Ayatrio payment option</p>
               </div>
 
               <div
@@ -214,7 +214,7 @@ const Card = ({ data }) => {
                   />
                   <h1 className="font-bold">In-Store Request</h1>
                 </div>
-                <p>Check in-store stock</p>
+                <p className="text-sm pt-[5px]">Check in-store stock</p>
               </div>
             </div>
             <hr />
@@ -232,7 +232,7 @@ const Card = ({ data }) => {
                   />
                   <h1 className="font-bold">Delivery Option</h1>
                 </div>
-                <p>Check availability</p>
+                <p className="text-sm pt-[5px]">Check availability</p>
               </div>
               <div
                 className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300 cursor-pointer"
@@ -247,7 +247,7 @@ const Card = ({ data }) => {
                   />
                   <h1 className="font-bold">Calculator</h1>
                 </div>
-                <p>As per your requirement</p>
+                <p className="text-sm pt-[5px]">As per your requirement</p>
               </div>
             </div>
 
@@ -326,7 +326,7 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-2 flex items-center justify-center"
             >
-              <button className="bg-black text-white sm:w-80 w-40 sm:h-12 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button className="bg-black text-white w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Buy Now
               </button>
             </Link>
@@ -342,7 +342,7 @@ const Card = ({ data }) => {
                       });
                   }
                 }}
-                className="bg-black text-white  sm:w-80 w-40 sm:h-12 h-8 rounded-full hover:bg-gray-900 transition duration-300"
+                className="bg-black text-white   w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Add To Bag
               </button>
@@ -356,7 +356,7 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-2 flex items-center justify-center"
             >
-              <button className="border-2 text-black border-solid  sm:w-80 w-40 sm:h-12 h-8 rounded-full  transition duration-300">
+              <button className="border-2 text-black border-solid   w-[100%] sm:h-14 h-8 rounded-full  transition duration-300">
                 Buy Now with in-store request
               </button>
             </Link>
