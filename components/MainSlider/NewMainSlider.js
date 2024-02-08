@@ -95,7 +95,7 @@ export default function NewMainSlider() {
           width={30}
           height={30}
           alt="arrow"
-          className=" rotate-180  swiper-button-prev sm:-translate-y-[150px] sm:translate-x-[-1050px] absolute left-0"
+          className=" rotate-180  swiper-button-prev sm:-translate-y-[150px] sm:translate-x-[-80.8vw] absolute left-0"
         />
 
         <SwiperSlide key={sliderApiData[0]?._id}>

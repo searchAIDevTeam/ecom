@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useRouter, usePathname } from "next/navigation";
 import { setselectedproduct } from "../Features/Slices/compareSlice";
-import Image from "next/image";
 import {
   Popover,
   PopoverTrigger,
