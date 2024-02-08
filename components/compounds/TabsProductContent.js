@@ -26,6 +26,7 @@ const TabsProductContent = (props) => {
     handleContent,
     typeContent,
     renderTypeContent,
+    stickyDrop,
   } = props;
 
   return (
@@ -43,6 +44,7 @@ const TabsProductContent = (props) => {
             handleTabClick();
           }
         }}
+        className={`${stickyDrop}`}
       >
         <PopoverTrigger>
           <button

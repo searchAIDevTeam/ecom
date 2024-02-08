@@ -221,8 +221,10 @@ function App() {
           userPreferredHobbies: preferencesDataToSendToBackend.preferredHobbies,
           userPreferredCategories:
             preferencesDataToSendToBackend.preferredCategories,
-        }
+        },
+        { withCredentials: true }
       );
+
       // console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
 
       const data = response.data;
