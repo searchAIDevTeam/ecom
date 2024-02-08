@@ -42,6 +42,7 @@ export default function NewMainSlider() {
     router.push("/room");
   };
   const [hov, setHov] = React.useState(false);
+  const [navigationVisible, setNavigationVisible] = useState(false);
   const handleEnter = () => {
     setHov(true);
   };
@@ -49,7 +50,10 @@ export default function NewMainSlider() {
     setHov(false);
   };
   return (
-    <div>
+    <div
+      onMouseEnter={() => setNavigationVisible(true)}
+      onMouseLeave={() => setNavigationVisible(false)}
+    >
       <Swiper
         className="swiper-slider"
         centeredSlides={true}
@@ -90,13 +94,15 @@ export default function NewMainSlider() {
           },
         }}
       >
-        <Image
-          src="/icon/arrow_right.svg"
-          width={30}
-          height={30}
-          alt="arrow"
-          className=" rotate-180  swiper-button-prev sm:-translate-y-[150px] sm:translate-x-[-80.8vw] absolute left-0"
-        />
+        <div className={`${navigationVisible?'block':'hidden'}`}>
+          <Image
+            src="/icon/arrow_right.svg"
+            width={30}
+            height={30}
+            alt="arrow"
+            className=" rotate-180  swiper-button-prev sm:-translate-y-[150px] sm:translate-x-[-80.8vw] absolute left-0"
+          />
+        </div>
 
         <SwiperSlide key={sliderApiData[0]?._id}>
           <div className="relative group sm:h-[425px] h-[200px]">
@@ -319,14 +325,15 @@ export default function NewMainSlider() {
             </div>
           </SwiperSlide>
         ))}
-
-        <Image
-          src="/icon/arrow_right.svg"
-          width={30}
-          height={30}
-          alt="arrow"
-          className="swiper-button-next sm:-translate-y-[150px]"
-        />
+        <div className={`${navigationVisible?'block':'hidden'}`}>
+          <Image
+            src="/icon/arrow_right.svg"
+            width={30}
+            height={30}
+            alt="arrow"
+            className={`swiper-button-next sm:-translate-y-[150px]`}
+          />
+        </div>
       </Swiper>
     </div>
   );

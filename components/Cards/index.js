@@ -25,6 +25,7 @@ import Dataslider from "./Dataslider";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
+const Cookies = dynamic(() => import("./Cookies"));
 
 function Cards() {
   const [recommended, setRecommended] = useState([]);
@@ -81,12 +82,12 @@ function Cards() {
 
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    console.log("deviceId : ", id);
   }
   return (
     <div className="w-full h-auto">
       {/* {MemoizedMainSlider} */}
       <NewMainSlider />
+      <Cookies/>
       {/* {MemoizedTrendingProducts} */}
       <Trending />
       <div className="h-40 my-10 sm:px-[50px] px-[50px]">
