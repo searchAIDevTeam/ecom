@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectTrendingData } from "../Features/Slices/trendingSlice";
 
 const Trending = () => {
+  const [newTrendingData, setNewTrendingData] = useState([]);
   const trendingData = useSelector(selectTrendingData);
   const dispatch = useDispatch();
   const [swiperRef, setSwiperRef] = useState(null);
@@ -32,8 +33,12 @@ const Trending = () => {
   useEffect(() => {
     if(trendingData.length===0){
       dispatch({type:"FETCH_TRENDING_DATA", payload: "trending"})
+      console.log("trendingData fetched")
     }
-  }, []);
+    if(trendingData){
+      setNewTrendingData(trendingData)
+    }
+  }, [trendingData]);
   const swiperUseref = useRef(null);
   const swiperOptions2 = {
     slidesPerView: 4.08,
@@ -59,7 +64,7 @@ const Trending = () => {
       <div className="pt-12  mb-20  bg-white sm:px-[50px] px-[20px]">
         <div className="mb-2 w-full flex justify-between items-center">
           <h2 className="text-bold text-2xl">
-            {trendingData && trendingData.length === 0
+            {newTrendingData && newTrendingData.length === 0
               ? "Trending Products(Empty)"
               : "Trending Product"}
           </h2>
@@ -121,12 +126,12 @@ const Trending = () => {
           onSwiper={setSwiperRef}
           className="px-10"
         >
-          {!trendingData ? (
+          {!newTrendingData ? (
             <SwiperSlide>
               <div className="flex"></div>
             </SwiperSlide>
           ) : (
-            trendingData.map((product, idx) => {
+            newTrendingData.map((product, idx) => {
               return (
                 <SwiperSlide key={idx} className="ml-0">
                   <div className="grid grid-cols-1 mt-2 w-full  h-full fade-in ">
