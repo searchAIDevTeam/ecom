@@ -20,7 +20,6 @@ const Multicard = () => {
       dispatch({type:'FETCH_MULTICARD_REQUEST',payload:"multiCard"});
     }
   },[]);
-
   return (
     <div>
       <div className="bg-zinc-50 pt-[5rem] pb-[2rem] sm:pl-[50px] pl-[20px] overflow-x-auto">
@@ -55,10 +54,10 @@ const Multicard = () => {
             return (
               <SwiperSlide key={idx}>
                 <MultiCardContent
+                  title={curElement.headerTitle}
+                  text={curElement.sections.length>0? curElement.sections[0].sectionName:''}
                   iconPath={curElement.iconPath}
                   iconSize={curElement.iconSize}
-                  title={curElement.title}
-                  text={curElement.text}
                 />
               </SwiperSlide>
             );
