@@ -71,6 +71,7 @@ export default function NewMainSlider() {
         // If we need navigation
         navigation={{
           nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         }}
         // Responsive breakpoints
         breakpoints={{
@@ -89,6 +90,14 @@ export default function NewMainSlider() {
           },
         }}
       >
+        <Image
+          src="/icon/arrow_right.svg"
+          width={30}
+          height={30}
+          alt="arrow"
+          className=" rotate-180  swiper-button-prev sm:-translate-y-[150px] sm:translate-x-[-1050px] absolute left-0"
+        />
+
         <SwiperSlide key={sliderApiData[0]?._id}>
           <div className="relative group sm:h-[425px] h-[200px]">
             <Image
@@ -156,7 +165,7 @@ export default function NewMainSlider() {
               className="swiper-slide"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
-            {sliderApiData[1]?.imgTitle}
+              {sliderApiData[1]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
@@ -210,7 +219,7 @@ export default function NewMainSlider() {
               className="swiper-slide"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
-            {sliderApiData[2]?.imgTitle}
+              {sliderApiData[2]?.imgTitle}
             </div>
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
@@ -265,7 +274,7 @@ export default function NewMainSlider() {
                 className="swiper-slide"
               />
               <div className="absolute bottom-4 left-4 flex text-lg text-white">
-              {data?.imgTitle}
+                {data?.imgTitle}
               </div>
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <div onMouseEnter={handleEnter} className="cursor-pointer">
@@ -310,8 +319,9 @@ export default function NewMainSlider() {
             </div>
           </SwiperSlide>
         ))}
+
         <Image
-           src="/icon/arrow_right.svg"
+          src="/icon/arrow_right.svg"
           width={30}
           height={30}
           alt="arrow"

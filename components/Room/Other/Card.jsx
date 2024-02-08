@@ -144,7 +144,6 @@ const Card = ({ data }) => {
                 <span> &nbsp;/roll</span>
               </div>
               <h5 className="text-zinc-400">Price incl. of all taxes</h5>
-
             </div>
 
             <IncDecCounter />
@@ -180,36 +179,72 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
-          <div className="border-black w-[100%] mt-[30px] bg-zinc-100">
-            <div className="flex flex-row p-4 gap-2">
-              <div className="flex flex-col col-span-1 w-1/2 cursor-pointer" onClick={() => handleOptionClick('zeroCostEMI')}>
+          <div className="border-black w-[100%] mt-[30px] bg-zinc-100 relative">
+            <div className="flex flex-row  gap-2 ">
+              <div
+                className="w-[1px] h-full bg-[#e5e7eb] absolute"
+                style={{ left: "calc(50%)", top: "0" }}
+              ></div>
+              <div
+                className="flex flex-col col-span-1 w-1/2 p-4  hover:bg-zinc-300 cursor-pointer"
+                onClick={() => handleOptionClick("zeroCostEMI")}
+              >
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/payment.svg' height={20} width={20} alt="icon"/>
+                  <Image
+                    src="/rooms/payment.svg"
+                    height={20}
+                    width={20}
+                    alt="icon"
+                  />
                   <h1 className="font-bold">ZERO Cost EMI</h1>
                 </div>
                 <p>Ayatrio payment option</p>
               </div>
 
-              <div className="flex flex-col col-span-2 w-1/2  cursor-pointer" onClick={() => handleOptionClick('inStoreRequest')}>
+              <div
+                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300  cursor-pointer"
+                onClick={() => handleOptionClick("inStoreRequest")}
+              >
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/ayatrio_store_b.svg' height={20} width={20} alt="icon"/>
+                  <Image
+                    src="/rooms/ayatrio_store_b.svg"
+                    height={20}
+                    width={20}
+                    alt="icon"
+                  />
                   <h1 className="font-bold">In-Store Request</h1>
                 </div>
                 <p>Check in-store stock</p>
               </div>
             </div>
             <hr />
-            <div className="flex flex-row p-4">
-              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer" onClick={() => handleOptionClick('deliveryOption')}>
+            <div className="flex flex-row ">
+              <div
+                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300 cursor-pointer"
+                onClick={() => handleOptionClick("deliveryOption")}
+              >
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/delivary.svg' height={20} width={20} alt="icon"/>
+                  <Image
+                    src="/rooms/delivary.svg"
+                    height={20}
+                    width={20}
+                    alt="icon"
+                  />
                   <h1 className="font-bold">Delivery Option</h1>
                 </div>
                 <p>Check availability</p>
               </div>
-              <div className="flex flex-col col-span-2 w-1/2 cursor-pointer" onClick={() => handleOptionClick('calculator')}>
+              <div
+                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300 cursor-pointer"
+                onClick={() => handleOptionClick("calculator")}
+              >
                 <div className="flex flex-row gap-2">
-                <Image src='/rooms/calculator.svg' height={20} width={20} alt="icon"/>
+                  <Image
+                    src="/rooms/calculator.svg"
+                    height={20}
+                    width={20}
+                    alt="icon"
+                  />
                   <h1 className="font-bold">Calculator</h1>
                 </div>
                 <p>As per your requirement</p>
@@ -218,16 +253,18 @@ const Card = ({ data }) => {
 
             {/* Modal */}
             {modalContent && (
-              <div className="bg-gray-900 bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+              <div className="bg-gray-900 z-[999999] bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                 <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
-                  {modalContent === 'zeroCostEMI' && (
+                  {modalContent === "zeroCostEMI" && (
                     <>
                       <h1>Content for ZERO Cost EMI</h1>
-                      <button onClick={() => setModalContent(null)}>Close</button>
+                      <button onClick={() => setModalContent(null)}>
+                        Close
+                      </button>
                     </>
                   )}
-                  {modalContent === 'inStoreRequest' && (
-                    <div className="bg-gray-900 bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                  {modalContent === "inStoreRequest" && (
+                    <div className="bg-gray-900 z-[999999] bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                       <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
                         <div>
                           <div className="pl-7">Enter city:</div>
@@ -238,13 +275,15 @@ const Card = ({ data }) => {
                             className="border border-black ml-8 mb-2"
                           />
                         </div>
-                        <button onClick={() => setModalContent(null)}>Close</button>
+                        <button onClick={() => setModalContent(null)}>
+                          Close
+                        </button>
                       </div>
                     </div>
                   )}
 
-                  {modalContent === 'deliveryOption' && (
-                    <div className=" bg-gray-900 bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                  {modalContent === "deliveryOption" && (
+                    <div className=" bg-gray-900 z-[999999] bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                       <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
                         <div>
                           <div className="pl-7">Enter pincode:</div>
@@ -255,16 +294,19 @@ const Card = ({ data }) => {
                             className="border border-black ml-8 mb-2"
                           />
                         </div>
-                        <button onClick={() => setModalContent(null)}>Close</button>
+                        <button onClick={() => setModalContent(null)}>
+                          Close
+                        </button>
                       </div>
                     </div>
-
                   )}
-                  {modalContent === 'calculator' && (
-                    <div className=" bg-gray-900 bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+                  {modalContent === "calculator" && (
+                    <div className=" bg-gray-900 z-[999999] bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                       <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
                         <Calculation priceData={data} />
-                        <button onClick={() => setModalContent(null)}>Close</button>
+                        <button onClick={() => setModalContent(null)}>
+                          Close
+                        </button>
                       </div>
                     </div>
                   )}
@@ -272,7 +314,6 @@ const Card = ({ data }) => {
               </div>
             )}
           </div>
-
 
           {/* //buttons */}
           <div className="buttons mt-4 sm:w-auto w-[100%] sm:block flex flex-col items-center justify-center">
