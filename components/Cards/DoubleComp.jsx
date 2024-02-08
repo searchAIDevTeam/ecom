@@ -12,7 +12,7 @@ const DoubleComp = () => {
     }
   },[])
   console.log(musicSwiperData)
-  const gameImage = musicSwiperData[1]?.img[0];
+  const gameImage = musicSwiperData[1]?.img[0]?.url;
   return (
     <div className="py-20 grid sm:grid-cols-2 grid-cols-1 sm:w-auto w-[100%] gap-4 sm:px-[50px] px-[20px]">
       <div className="col-span-1 ml-0 bg-zinc-100 text-black overflow-hidden">

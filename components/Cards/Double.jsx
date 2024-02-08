@@ -11,6 +11,7 @@ import { selectMusicData } from "../Features/Slices/musicSectionSlice";
 
 const Double = () => {
   const musicSwiperData = useSelector(selectMusicData);
+  console.log('musicSwiperData : ',musicSwiperData);
   const dispatch = useDispatch();
   useEffect(() => {
     if (musicSwiperData.length === 0) {
@@ -42,12 +43,12 @@ const Double = () => {
             <Image
               width={208}
               height={350}
-              src={musicSwiperData[0]?.img[0]}
+              src={musicSwiperData[0]?.img[0]?.url}
               className="rounded-t-lg"
               alt=""
             />
             <div className="bg-black sm:w-52 w-[134px] flex flex-col rounded-b-lg">
-              <div className="text-white text-sm pt-3  pl-4">{musicTitle}</div>
+              <div className="text-white text-sm pt-3  pl-4">{musicSwiperData[0]?.img[0]?.title}</div>
               {/* There is no subtitle in this data so no need of below div */}
               {/* <div className="text-xs pb-3 pl-4">{curElement.subTitle}</div> */}
             </div>
@@ -58,12 +59,12 @@ const Double = () => {
             <Image
               width={208}
               height={350}
-              src={musicSwiperData[0]?.img[1]}
+              src={musicSwiperData[0]?.img[1]?.url}
               className="rounded-t-lg"
               alt=""
             />
             <div className="bg-black sm:w-52 w-[134px] flex flex-col rounded-b-lg">
-              <div className="text-white text-sm pt-3  pl-4">{musicTitle}</div>
+              <div className="text-white text-sm pt-3  pl-4">{musicSwiperData[0]?.img[1]?.title}</div>
             </div>
           </div>
         </SwiperSlide>
@@ -72,29 +73,29 @@ const Double = () => {
             <Image
               width={208}
               height={350}
-              src={musicSwiperData[0]?.img[2]}
+              src={musicSwiperData[0]?.img[3]?.url}
               className="rounded-t-lg"
               alt=""
             />
             <div className="bg-black sm:w-52 w-[134px] flex flex-col rounded-b-lg">
-              <div className="text-white text-sm pt-3  pl-4">{musicTitle}</div>
+              <div className="text-white text-sm pt-3  pl-4">{musicSwiperData[0]?.img[3]?.title}</div>
             </div>
           </div>
         </SwiperSlide>
-        {musicSwiperData[0]?.img.slice(3).map((data) => {
+        {musicSwiperData[0]?.img?.slice(3).map((data) => {
           return (
             <SwiperSlide>
               <div className="mr-2 mt-6 ">
                 <Image
                   width={208}
                   height={350}
-                  src={data}
+                  src={data.url}
                   className="rounded-t-lg"
                   alt=""
                 />
                 <div className="bg-black sm:w-52 w-[134px] flex flex-col rounded-b-lg">
                   <div className="text-white text-sm pt-3  pl-4">
-                    {musicTitle}
+                    {data.title}
                   </div>
                 </div>
               </div>
