@@ -6,7 +6,6 @@ import Carousel from "./swip";
 import PopUp from "../Reviews/PopUp";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Image from "next/image";
 
 function Card(props) {
   const router = useRouter();
@@ -20,7 +19,6 @@ function Card(props) {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/increment-popularity?productId=${productId}`
       );
-      // console.log("response is ", response);
     };
     postTrending();
     router.push("/room/" + id);
