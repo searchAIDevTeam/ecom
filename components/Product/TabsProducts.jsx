@@ -11,6 +11,7 @@ import {
   PopoverContent,
   Button,
 } from "@nextui-org/react";
+import Measure from "./meausrement";
 import {
   srtarr,
   typeContent,
@@ -772,6 +773,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               ))}
             </div>
           </div>
+          <Measure filteredProductData={filteredProductData} />
         </div>
       </div>
     </>

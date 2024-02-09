@@ -221,10 +221,9 @@ function App() {
           userPreferredHobbies: preferencesDataToSendToBackend.preferredHobbies,
           userPreferredCategories:
             preferencesDataToSendToBackend.preferredCategories,
-        },
-        { withCredentials: true }
+        }
       );
-
+        
       // console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
 
       const data = response.data;
@@ -312,7 +311,7 @@ function App() {
                                               category.name
                                         )
                                           ? "selected"
-                                          : ""
+                                          : " "
                                       }`}
                                       onClick={() =>
                                         toggleItemSelection1(
@@ -325,7 +324,7 @@ function App() {
                                       }}
                                     >
                                       <Image
-                                        src="/svg/icon/circletick.svg"
+                                        src="/svg/icon/tick.svg"
                                         height={20}
                                         width={20}
                                         alt="tick"
@@ -394,7 +393,7 @@ function App() {
                       }}
                     >
                       <Image
-                        src="/svg/icon/circletick.svg"
+                        src="/svg/icon/tick.svg"
                         height={20}
                         width={20}
                         alt="close"
@@ -449,7 +448,7 @@ function App() {
                         key={index}
                       >
                         <Image
-                          src="/svg/icon/circletick.svg"
+                          src="/svg/icon/tick.svg"
                           height={20}
                           width={20}
                           alt="close"
