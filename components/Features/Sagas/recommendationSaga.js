@@ -6,7 +6,7 @@ function* fetchRecommendedProductSaga() {
     yield put(recomendationLoader(true));
 
     const data = yield call(fetchRecommendedProduct);
-
+    console.log(data);
     yield put(recomendProduct(data));
 
     // localStorage.setItem('recommendedProducts', JSON.stringify(data));

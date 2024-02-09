@@ -38,7 +38,7 @@ const Tabs = ({data}) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+// console.log(data)
   // console.log(data?.recommendations[0]?.recommendedProducts.map((item) => item.roomCategory))
   // console.log(data?.recommendations[0]?.recommendedProducts.map((item) => item.roomCategory).filter((item, i, ar) => ar.indexOf(item) === i))
   const [activeTab, setActiveTab] = useState("all");

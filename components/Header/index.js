@@ -103,7 +103,7 @@ function Header({ howMuchScrolled }) {
       ${isFilterVisible ? "block" : "hidden"}
       `}
     >
-      {isLoading && <TopLoader />}
+      {/* {isLoading && <TopLoader />} */}
       {!searchQuery ? (
         <div
           className={`${
@@ -131,7 +131,7 @@ function Header({ howMuchScrolled }) {
           </div>
           <div className="flex items-center justify-center w-1/3">
             <div className="mainlogo">
-              <Link href="/">
+              <Link href="/home">
                 <Image
                   onClick={() => handleLinkClick("/home")}
                   src="/images/ayatriologo.webp"

@@ -10,53 +10,26 @@ import {
   selectQuantity,
   updateQuantity,
 } from "@/components/Features/Slices/calculationSlice";
-import { setRoomData } from "@/components/Features/Slices/roomSlice";
+import { selectRoomData, setRoomData } from "@/components/Features/Slices/roomSlice";
 import axios from "axios";
-const RoomPage = ({ params }) => {
+const RoomPage = () => {
   const dispatch = useDispatch();
   const quantity = useSelector(selectQuantity);
   let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=`;
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);
   const [data, setData] = useState([]);
+  const selectedData = useSelector(selectRoomData);
+  console.log("selectedData", selectedData);
   useEffect(() => {
-    const getRoomData = async () => {
-      try {
-        const response = await axios.get(`${url}${params.id}`);
-        setData(response.data);
-        dispatch(setRoomData({ roomData: response.data, status: "succeeded" }));
-
-        // console.log("room response ", response.data);
-      } catch (error) {
-        console.error("Error fetching room data:", error);
-        dispatch(setRoomData({ roomData: [], status: "failed" }));
-      }
-    };
-    getRoomData();
-  }, []);
-
-
-  //posting data to database
-  // if (typeof window !== "undefined") {
-  //   var id = localStorage.getItem("deviceId");
-  //   console.log("deviceId : ", id);
-  // }
-  // const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
-  // const postRoomData = async () => {
-  //   try {
-  //     const postData = {
-  //       deviceId: id,
-  //       productId: data.productId,
-  //       quantity: quantity,
-  //     };
-
-  //     const response = await axios.post(postUrl, postData);
-  //     console.log("Data posted successfully:", response.data);
-  //   } catch (error) {
-  //     console.error("Error posting room data:", error);
-  //   }
-  // };
-
-  //posting data to database
+    if (selectedData && Object.keys(selectedData).length !== 0) {
+      sessionStorage?.setItem("roomData", JSON.stringify(selectedData));
+    }
+    if (sessionStorage?.getItem("roomData")) {
+      let cachedData = JSON.parse(sessionStorage?.getItem("roomData"));
+      setData(cachedData);
+    }
+  }, [selectedData]);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,12 +70,6 @@ const RoomPage = ({ params }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  //sending data into slice
-  useEffect(() => {
-    dispatch({ type: "FETCH_ROOM_REQUEST", payload: params.id });
-  }, [dispatch, params.id]);
-
   return (
     <>
       <div className="container-rooms flex sm:block items-center ">
@@ -110,8 +77,8 @@ const RoomPage = ({ params }) => {
         <div className="sm:px-[50px] px-[20px] mt-[65px]">
           <div className="flex sm:flex-row flex-col">
             <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
-              <RoomImageList images={data.images} />
-              <ImageCaresoul images={data.images} />
+              <RoomImageList images={data?.images} />
+              <ImageCaresoul images={data?.images} />
               {/* <div className="sm:hidden flex">
                 <Card/>
               </div> */}

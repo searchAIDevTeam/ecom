@@ -1,10 +1,10 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/provider";
-// import Header from "@/components/Header";
-// import Footer from "@/components/Footer/Footer";
+
 import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
 import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
+import NextTopLoader from "nextjs-toploader";
 
 const myFont = localFont({
   src: "../public/Font/Jost-Regular.ttf",
@@ -47,6 +47,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body style={myFont.style}>
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
+          <NextTopLoader/>
 
         <Providers>
           <HeaderWrapper />

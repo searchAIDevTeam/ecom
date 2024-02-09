@@ -139,10 +139,11 @@ const Trending = () => {
                       rating={product.ratings}
                       key={idx}
                       id={product._id}
+                      category={product.category}
                       productId={product.productId}
                       setPopupVisible={setPopupVisible}
                       cssClass={"card1flex"}
-                    />
+                  />
                   </div>
                 </SwiperSlide>
               );
