@@ -296,16 +296,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   }}
                   // onClick={() => setOpenColor(!opencolor)}
                   className={`Tabbtn 
-                  ${
-                    opencolor
+                  ${opencolor
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    typeof window !== "undefined" && window.innerWidth <= 450
+                    }
+                  ${typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
                       : " justify-between"
-                  }
+                    }
                   `}
                 >
                   Color &nbsp;
@@ -325,11 +323,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80
                   
                   "
-                    // style={{
-                    //   position: "absolute",
-                    //   top: "calc(100% + 10px)",
-                    //   zIndex: "100000",
-                    // }}
+                  // style={{
+                  //   position: "absolute",
+                  //   top: "calc(100% + 10px)",
+                  //   zIndex: "100000",
+                  // }}
                   >
                     <div className="grid grid-cols-3 gap-6">
                       {colorarr.map((text, idx) => (
@@ -339,11 +337,10 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                         >
                           <div
                             onClick={() => handleClick(idx)}
-                            className={`${text.class}  ${
-                              selectedCircle.includes(idx)
-                                ? "outline outline-2"
-                                : ""
-                            } `}
+                            className={`${text.class}  ${selectedCircle.includes(idx)
+                              ? "outline outline-2"
+                              : ""
+                              } `}
                           ></div>
                           <p>{text.name}</p>
                         </div>
@@ -406,16 +403,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     handleTabClick();
                   }}
                   className={`Tabbtn z-0 
-                  ${
-                    openAll
+                  ${openAll
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    typeof window !== "undefined" && window.innerWidth <= 450
+                    }
+                  ${typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
                       : " justify-between"
-                  }
+                    }
                   `}
                 >
                   All Filters &nbsp;
@@ -618,9 +613,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
                               <button
                                 onClick={handleContent}
-                                className={`text-left underline ${
-                                  openContent ? "block" : "hidden"
-                                }`}
+                                className={`text-left underline ${openContent ? "block" : "hidden"
+                                  }`}
                               >
                                 Less
                               </button>
@@ -643,95 +637,94 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               </div>
             </div>
           )}
-          </div>
-          <hr />
-          {/* iimages */}
-          <div className=" mt-20
+        </div>
+        <hr />
+        {/* iimages */}
+        <div className=" mt-20
           flex flex-col image-product ">
-            <div className="text-right">
-              {showCompare && (
-                <button
-                  onClick={handleCompareClick}
-                  disabled={selectedpdt.length < 2}
-                  className={`bg-black text-white px-3 py-2 whitespace-nowrap rounded-full ${activebtn} `}
-                >
-                  Compare Products
-                </button>
-              )}
-            </div>
-            <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
-              {filterData.map((text, idx) => (
-                <div
-                  className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
-                  key={idx}
-                  onClick={() => handlenav(text._id)}
-                >
-                  <div className=" relative w-[250px] h-[250px] z[-999999]">
-                    <div
-                      onClick={(event) => event.stopPropagation()}
-                      className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${
-                        selectedpdt.includes(text) ? "visible" : ""
+          <div className="text-right">
+            {showCompare && (
+              <button
+                onClick={handleCompareClick}
+                disabled={selectedpdt.length < 2}
+                className={`bg-black text-white px-3 py-2 whitespace-nowrap rounded-full ${activebtn} `}
+              >
+                Compare Products
+              </button>
+            )}
+          </div>
+          <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
+            {filterData.map((text, idx) => (
+              <div
+                className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
+                key={idx}
+                onClick={() => handlenav(text._id)}
+              >
+                <div className=" relative w-[250px] h-[250px] z[-999999]">
+                  <div
+                    onClick={(event) => event.stopPropagation()}
+                    className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${selectedpdt.includes(text) ? "visible" : ""
                       }`}
-                    >
-                      <input
-                        type="checkbox"
-                        onChange={(e) => {
-                          handleCheckbox(text, e.target.checked);
-                          setShowcompare(true);
-                        }}
-                        checked={selectedpdt.includes(text)}
-                      />
-                    </div>
-                    <Image
-                      src={text.images[0]}
-                      alt=""
-                      className="absolute "
-                      layout="fill"
+                  >
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        handleCheckbox(text, e.target.checked);
+                        setShowcompare(true);
+                      }}
+                      checked={selectedpdt.includes(text)}
                     />
                   </div>
-
-                  <p className="text-sm font-semibold">{text.productTitle}</p>
-                  <p className="text-sm">{text.productDescription}</p>
-                  <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
-                    Rs. <span className="text-3xl"> {text.totalPrice}</span>
-                  </p>
-                  <p className="flex flex-row items-center gap-1 text-sm text-black">
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/half-star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                  </p>
+                  <Image
+                    src={text.images[0]}
+                    alt=""
+                    className="absolute "
+                    layout="fill"
+                  />
                 </div>
-              ))}
-            </div>
+
+                <p className="text-sm font-semibold">{text.productTitle}</p>
+                <p className="text-sm">{text.productDescription}</p>
+                <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
+                  Rs. <span className="text-3xl"> {text.totalPrice}</span>
+                </p>
+                <p className="flex flex-row items-center gap-1 text-sm text-black">
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/half-star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                </p>
+              </div>
+            ))}
           </div>
-          <Measure filteredProductData={filteredProductData} />
+        </div>
+        <Measure filteredProductData={filteredProductData} />
       </div>
     </>
   );
