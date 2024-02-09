@@ -47,6 +47,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body style={myFont.style}>
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
+
         <Providers>
           <HeaderWrapper />
           {children}

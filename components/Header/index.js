@@ -100,9 +100,11 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div>
-      {homeRoute===pathname?<TopHeader/>:null}
+      {homeRoute === pathname ? <TopHeader /> : null}
       <div
-        className={`fixed w-full sm:bg-none ${homeRoute===pathname?'top-[30px]':'top-0'} z-[99999]
+        className={`fixed w-screen sm:bg-none ${
+          homeRoute === pathname ? "top-[30px]" : "top-0"
+        } z-[99999]
        ${isScrolled ? "bg-white" : "bg-white"} 
       
       

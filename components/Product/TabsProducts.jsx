@@ -6,12 +6,6 @@ import { useDispatch } from "react-redux";
 import { useRouter, usePathname } from "next/navigation";
 import { setselectedproduct } from "../Features/Slices/compareSlice";
 import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-} from "@nextui-org/react";
-import {
   srtarr,
   typeContent,
   typearr,
@@ -287,15 +281,10 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
               {/* Color - dropdown3 */}
 
-              <div>
-                <Popover
-                  placement="bottom-start"
-                  isOpen={opencolor}
-                  onOpenChange={() => {
-                    if (
-                      typeof window !== "undefined" &&
-                      window.innerWidth <= 450
-                    ) {
+              <div style={{ position: "relative" }}>
+                <button
+                  onClick={() => {
+                    if (window.innerWidth <= 450) {
                       handleAll();
                       handleTabClick();
                       handleAllcolor();
@@ -304,62 +293,61 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                       handleTabClick();
                     }
                   }}
+                  // onClick={() => setOpenColor(!opencolor)}
+                  className={`Tabbtn 
+                  ${
+                    opencolor
+                      ? `active-tabs  border border-black ${commonClasses}`
+                      : `tabS  border border-white ${commonClasses}`
+                  }
+                  ${
+                    typeof window !== "undefined" && window.innerWidth <= 450
+                      ? " justify-center"
+                      : " justify-between"
+                  }
+                  `}
                 >
-                  <PopoverTrigger>
-                    <button
-                      className={`Tabbtn 
-                      ${
-                        opencolor
-                          ? `active-tabs  border border-black ${commonClasses}`
-                          : `tabS  border border-white ${commonClasses}`
-                      }
-                      ${
-                        typeof window !== "undefined" &&
-                        window.innerWidth <= 450
-                          ? " justify-center"
-                          : " justify-between"
-                      }
-                      `}
-                    >
-                      Color &nbsp;
-                      <Image
-                        src="/svg/dropdown/backarrow.svg"
-                        width={40}
-                        height={40}
-                        className={`w-6 h-6  mt-1 sm:block hidden
-                    ${opencolor ? " rotate-90" : "-rotate-90"}
-                    
-                    `}
-                        alt=""
-                      />
-                    </button>
-                  </PopoverTrigger>
-
-                  <PopoverContent>
-                    {opencolor ? (
-                      <div className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80 ">
-                        <div className="grid grid-cols-3 gap-6">
-                          {colorarr.map((text, idx) => (
-                            <div
-                              className="flex flex-col items-center justify-center"
-                              key={idx}
-                            >
-                              <div
-                                onClick={() => handleClick(idx)}
-                                className={`${text.class}  ${
-                                  selectedCircle.includes(idx)
-                                    ? "outline outline-2"
-                                    : ""
-                                } `}
-                              ></div>
-                              <p>{text.name}</p>
-                            </div>
-                          ))}
+                  Color &nbsp;
+                  <Image
+                    src="/svg/dropdown/backarrow.svg"
+                    width={40}
+                    height={40}
+                    className={`w-6 h-6  mt-1 sm:block hidden
+                ${opencolor ? " rotate-90" : "-rotate-90"}
+                
+                `}
+                    alt=""
+                  />
+                </button>
+                {opencolor ? (
+                  <div
+                    className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80 "
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 10px)",
+                      zIndex: "1000",
+                    }}
+                  >
+                    <div className="grid grid-cols-3 gap-6">
+                      {colorarr.map((text, idx) => (
+                        <div
+                          className="flex flex-col items-center justify-center"
+                          key={idx}
+                        >
+                          <div
+                            onClick={() => handleClick(idx)}
+                            className={`${text.class}  ${
+                              selectedCircle.includes(idx)
+                                ? "outline outline-2"
+                                : ""
+                            } `}
+                          ></div>
+                          <p>{text.name}</p>
                         </div>
-                      </div>
-                    ) : null}
-                  </PopoverContent>
-                </Popover>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
 
               {/* Design style - dropdown4 */}
@@ -674,7 +662,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   key={idx}
                   onClick={() => handlenav(text._id)}
                 >
-                  <div className=" relative w-[360px] h-[360px] z[-999999]">
+                  <div className=" relative w-[250px] h-[250px] z[-999999]">
                     <div
                       onClick={(event) => event.stopPropagation()}
                       className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${

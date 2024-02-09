@@ -5,10 +5,14 @@ import { usePathname } from "next/navigation";
 
 const TopHeader = () => {
   const pathname = usePathname();
-  const homeRoute = '/home';
+  const homeRoute = "/home";
   return (
     <div>
-      <div className={`bg-zinc-200 ${homeRoute===pathname?'fixed':''} z-[99999] w-full flex flex-row justify-between`}>
+      <div
+        className={`bg-zinc-200 ${
+          homeRoute === pathname ? "fixed" : ""
+        } z-[99999] w-screen flex flex-row justify-between`}
+      >
         <div className="pl-8 pt-2 pb-2">
           <Image
             src="/logo/favicon-32x32.png"
@@ -18,19 +22,11 @@ const TopHeader = () => {
           />
         </div>
         <div>
-          <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-4">
-            <Link href="/">
-              Virtual Experience |
-            </Link>
-            <Link href="/" >
-              Free Design |
-            </Link>
-            <Link href="/" >
-              Free Sample |
-            </Link>
-            <Link href="/" >
-              Join Ayatrio Family
-            </Link>
+          <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5">
+            <Link href="/">Virtual Experience |</Link>
+            <Link href="/">Free Design |</Link>
+            <Link href="/">Free Sample |</Link>
+            <Link href="/">Join Ayatrio Family</Link>
           </div>
         </div>
       </div>
