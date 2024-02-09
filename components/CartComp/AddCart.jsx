@@ -77,12 +77,45 @@ const AddCart = () => {
     productId: roomData._id,
     quantity: quantity,
   };
+  // const handleDelete = async (itemid) => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
+  //       {
+  //         params: {
+  //           deviceId: id,
+  //         },
+  //       }
+  //     );
+  //     if (response.status !== 200) {
+  //       throw new Error("HTTP status" + response.status);
+  //     }
+  //     const updatedItems = response.data.items.filter(
+  //       (item) => item._id !== itemid
+  //     );
+  //     setcartdata((prevstate) => ({
+  //       ...prevstate,
+  //       items: updatedItems,
+  //     }));
+  //     //update data in DB
+  //     const responsed = await axios.post(postUrl, {
+  //       deviceId: id,
+  //       items: updatedItems,
+  //     });
+  //     // console.log("Server Response:", responsed);
+  //     // console.log("Data posted successfully:", postData);
+  //   } catch (error) {
+  //     console.error("Error deleting item: ", error);
+  //   }
+  // };
+
   const handleDelete = async (itemid) => {
     try {
-      const response = await axios.get(
+      const response = await axios.delete(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
         {
           params: {
+            itemId: itemid,
             deviceId: id,
           },
         }
@@ -90,24 +123,17 @@ const AddCart = () => {
       if (response.status !== 200) {
         throw new Error("HTTP status" + response.status);
       }
-      const updatedItems = response.data.items.filter(
-        (item) => item._id !== itemid
-      );
+      // After successful deletion, update the local state
+      const updatedItems = cartdata.items.filter((item) => item._id !== itemid);
       setcartdata((prevstate) => ({
         ...prevstate,
         items: updatedItems,
       }));
-      //update data in DB
-      const responsed = await axios.post(postUrl, {
-        deviceId: id,
-        items: updatedItems,
-      });
-      // console.log("Server Response:", responsed);
-      // console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error deleting item: ", error);
     }
   };
+
   //delete handle function
   return (
     <div className="">

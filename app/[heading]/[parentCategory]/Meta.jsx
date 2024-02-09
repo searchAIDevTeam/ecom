@@ -133,7 +133,7 @@ const ProductPage = ({ params }) => {
         heading={x?.category?.category}
         param={params.parentCategory}
       />
-      <Measure filteredProductData={filteredProductData} />
+      {/* <Measure filteredProductData={filteredProductData} /> */}
       {/* <Footer /> */}
     </div>
   );

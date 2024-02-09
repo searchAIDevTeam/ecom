@@ -94,7 +94,7 @@ export default function NewMainSlider() {
           },
         }}
       >
-        <div className={`${navigationVisible?'block':'hidden'}`}>
+        <div className={`${navigationVisible ? "block" : "hidden"}`}>
           <Image
             src="/icon/arrow_right.svg"
             width={30}
@@ -105,13 +105,13 @@ export default function NewMainSlider() {
         </div>
 
         <SwiperSlide key={sliderApiData[0]?._id}>
-          <div className="relative group sm:h-[425px] h-[200px]">
+          <div className="relative group h-[70vh] bg-gray-300">
             <Image
               src={sliderApiData[0]?.imgSrc}
               width={500}
               height={330}
               alt="Swiper"
-              className="swiper-slide"
+              className="swiper-slide object-cover"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
               {sliderApiData[0]?.imgTitle}
@@ -162,13 +162,13 @@ export default function NewMainSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide key={sliderApiData[1]?._id}>
-          <div className="relative group sm:h-[425px] h-[200px]">
+          <div className="relative group h-[70vh] bg-gray-500">
             <Image
               src={sliderApiData[1]?.imgSrc}
               width={500}
               height={330}
               alt="Swiper"
-              className="swiper-slide"
+              className="swiper-slide object-cover"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
               {sliderApiData[1]?.imgTitle}
@@ -216,13 +216,13 @@ export default function NewMainSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide key={sliderApiData[2]?._id}>
-          <div className="relative group sm:h-[425px] h-[200px]">
+          <div className="relative group h-[70vh] bg-gray-300">
             <Image
               src={sliderApiData[2]?.imgSrc}
               width={500}
               height={330}
               alt="Swiper"
-              className="swiper-slide"
+              className="swiper-slide object-cover"
             />
             <div className="absolute bottom-4 left-4 flex text-lg text-white">
               {sliderApiData[2]?.imgTitle}
@@ -271,13 +271,13 @@ export default function NewMainSlider() {
         </SwiperSlide>
         {sliderApiData?.slice(3).map((data) => (
           <SwiperSlide key={data._id}>
-            <div className="relative group sm:h-[425px] h-[200px]">
+            <div className="relative group h-[70vh] bg-gray-400">
               <Image
                 src={data.imgSrc}
                 width={500}
                 height={330}
                 alt="Swiper"
-                className="swiper-slide"
+                className="swiper-slide object-cover"
               />
               <div className="absolute bottom-4 left-4 flex text-lg text-white">
                 {data?.imgTitle}
@@ -325,7 +325,7 @@ export default function NewMainSlider() {
             </div>
           </SwiperSlide>
         ))}
-        <div className={`${navigationVisible?'block':'hidden'}`}>
+        <div className={`${navigationVisible ? "block" : "hidden"}`}>
           <Image
             src="/icon/arrow_right.svg"
             width={30}

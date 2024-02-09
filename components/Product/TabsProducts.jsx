@@ -233,6 +233,32 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   const activebtn =
     selectedpdt.length < 2 ? "bg-gray-300 text-white" : "bg-black text-white";
 
+  const [stickyDropdown, setStickyDropdown] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const mainImagePdt = document.querySelector(".stickyDrop");
+      const dropdown = document.querySelector(".main-image-pdt"); // Assuming this is the class of the dropdown button
+
+      if (mainImagePdt && dropdown) {
+        const mainImage = mainImagePdt.offsetHeight;
+        const dropdownBottom =
+          dropdown.getBoundingClientRect().bottom + window.scrollY;
+        const windowBottom = window.scrollY;
+
+        if (dropdownBottom <= windowBottom + mainImage) {
+          mainImagePdt.style.position = "relative"; // Stop being sticky
+        } else {
+          mainImagePdt.style.position = "sticky"; // Be sticky
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Run this effect only once on component mount
+
   return (
     <>
       <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
@@ -264,6 +290,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 renderFilter={(text, idx) =>
                   renderSortItem(text, idx, handleSorting)
                 }
+                stickyDrop={"stickyDrop"}
               />
 
               {/* Size - dropdown2 */}
@@ -667,7 +694,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   <div className=" relative w-[250px] h-[250px] z[-999999]">
                     <div
                       onClick={(event) => event.stopPropagation()}
-                      className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${
+                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
                         selectedpdt.includes(text) ? "visible" : ""
                       }`}
                     >
@@ -680,12 +707,18 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                         checked={selectedpdt.includes(text)}
                       />
                     </div>
+                    {/* <div className=" w-[260px] h-[150px]"> */}
                     <Image
                       src={text.images[0]}
                       alt=""
-                      className="absolute "
-                      layout="fill"
+                      width={260}
+                      height={150}
+                      className="object-cover object-center w-[260px] h-[150px]"
+                      // className="absolute "
+                      // layout="fill"
+                      // objectFit="contain"
                     />
+                    {/* </div> */}
                   </div>
 
                   <p className="text-sm font-semibold">{text.productTitle}</p>
@@ -729,6 +762,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               ))}
             </div>
           </div>
+          <Measure filteredProductData={filteredProductData} />
         </div>
       </div>
     </>
