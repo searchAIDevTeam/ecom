@@ -24,6 +24,7 @@ import {
   renderSortItem,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
+import Measure from './meausrement'
 const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
@@ -261,14 +262,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   return (
     <>
-      <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
+      <div className="wrapper sm:px-[50px] px-[20px] mt-20 relative ">
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
         <div
           className={`
-          sidebarforstickey
-           cursor-pointer sm:mb-0 
+          sidebarforstickey absolute
+           cursor-pointer sm:mb-0 z-[99999]
       
        `}
         >
@@ -276,7 +277,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
             ""
           ) : (
             <div
-              className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-[999999] overflow-hidden`}
+              className={`py-5 bloc-tabs2 flex flex-row overflow-hidden`}
             >
               <TabsProductContent
                 filterName={"Sort"}
@@ -351,11 +352,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80
                   
                   "
-                    style={{
-                      position: "absolute",
-                      top: "calc(100% + 10px)",
-                      zIndex: "1000",
-                    }}
+                    // style={{
+                    //   position: "absolute",
+                    //   top: "calc(100% + 10px)",
+                    //   zIndex: "100000",
+                    // }}
                   >
                     <div className="grid grid-cols-3 gap-6">
                       {colorarr.map((text, idx) => (
@@ -380,7 +381,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               </div>
 
               {/* Design style - dropdown4 */}
-              {heading === "Wallpaper" ? (
+              {/* {heading === "Wallpaper" ? (
                 <TabsProductContent
                   filterName={"Design style"}
                   commonClasses={commonClasses}
@@ -392,7 +393,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   filterArr={categoryarr}
                   renderFilter={rendercategory}
                 />
-              ) : null}
+              ) : null} */}
 
               {/* Collections - filter */}
               <TabsProductContent
@@ -669,10 +670,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               </div>
             </div>
           )}
-
+          </div>
           <hr />
           {/* iimages */}
-          <div className="relative  flex flex-col image-product z[-99999] ">
+          <div className=" mt-20
+          flex flex-col image-product ">
             <div className="text-right">
               {showCompare && (
                 <button
@@ -763,7 +765,6 @@ const Tabs = ({ filteredProductData, heading, param }) => {
             </div>
           </div>
           <Measure filteredProductData={filteredProductData} />
-        </div>
       </div>
     </>
   );
