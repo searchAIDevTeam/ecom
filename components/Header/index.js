@@ -100,21 +100,22 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div>
-      {homeRoute===pathname?<TopHeader/>:null}
+      
       <div
-        className={`fixed w-full sm:bg-none ${homeRoute===pathname?'top-[30px]':'top-0'} z-[99999]
+        className={`fixed w-full sm:bg-none ${homeRoute===pathname?'top-[0px]':'top-0'} z-[99999]
        ${isScrolled ? "bg-white" : "bg-white"} 
       
       
       ${isFilterVisible ? "block" : "hidden"}
       `}
       >
+        {homeRoute===pathname?<TopHeader/>:null}
         {isLoading && <TopLoader />}
         {!searchQuery ? (
           <div
             className={`${
               isScrolled ? "border-b-[0.5px] border-slate-200" : ""
-            }  flex flex-row justify-between items-center sm:px-[30px] px-[10px] py-0`}
+            }  flex flex-row justify-between items-center sm:px-[30px] mt-[30px] px-[10px] py-0`}
           >
             <div className="sm:gap-5 gap-1 flex flex-row items-center justify-start w-1/3">
               <div className="profile-menu font-bold p-[7px] hover:bg-zinc-100 hover:rounded-full">
@@ -144,7 +145,7 @@ function Header({ howMuchScrolled }) {
                     alt="logo"
                     width={300}
                     height={40}
-                    className="sm:w-44 w-44 m-2"
+                    className="sm:w-40 w-40 m-2"
                   />
                 </Link>
               </div>

@@ -38,16 +38,16 @@ const TopHeader = () => {
         <div className="pl-8 pt-2 pb-2">
           <Image
             src="/logo/favicon-32x32.png"
-            height={20}
-            width={20}
+            height={22}
+            width={22}
             alt="logo"
           />
         </div>
         <div>
           <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-4">
             <Link href="/virtualexperience/category">Virtual Experience |</Link>
-            <Link href="/designservice">Free Design |</Link>
-            <Link href="/freesample">Free Sample |</Link>
+            <Link href="/designservice">Free Design Request &nbsp; &nbsp;|</Link>
+            <Link href="/freesample">Free Sample Request &nbsp; &nbsp;|</Link>
             <Link href="/login">Join Ayatrio Family</Link>
           </div>
         </div>
