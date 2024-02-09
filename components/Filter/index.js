@@ -109,7 +109,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
 
   return (
     <header
-      className={`absolute pt-7 pb-2 mt-[4.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
+      className={`absolute pt-7 pb-2 mt-[3.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
     >
       <div className="filter sm:mr-0 media" style={{ marginLeft: "0px" }}>
         <div className="Filter-array" ref={scrl}>

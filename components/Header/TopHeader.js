@@ -8,22 +8,25 @@ const TopHeader = () => {
   const homeRoute = '/home';
   return (
     <div>
-      <div className={`bg-zinc-100 ${homeRoute===pathname?'fixed':''} z-[99999] w-full flex flex-row justify-between`}>
-        <div className="pl-10  py-[4px]">
+      <div className={`bg-zinc-200 ${homeRoute===pathname?'fixed':''} z-[99999] w-full flex flex-row justify-between`}>
+        <div className="pl-8 pt-2 pb-2">
           <Image
             src="/logo/favicon-32x32.png"
-            height={22}
-            width={22}
+            height={20}
+            width={20}
             alt="logo"
           />
         </div>
         <div>
-          <div className="flex flex-row gap-3 items-center text-black text-sm  px-[30px] py-[4px]">
-            <Link href="/" >
-            Free Design Request &nbsp; &nbsp;|
+          <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-4">
+            <Link href="/">
+              Virtual Experience |
             </Link>
             <Link href="/" >
-            Free Sample Request &nbsp; &nbsp;| 
+              Free Design |
+            </Link>
+            <Link href="/" >
+              Free Sample |
             </Link>
             <Link href="/" >
               Join Ayatrio Family
