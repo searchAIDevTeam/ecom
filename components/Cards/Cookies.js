@@ -19,7 +19,7 @@ const Cookies = () => {
   }
   return (
     <div
-      className={`sm:h-[50vh] px-10 py-5 sm:w-[35vw] w-[90vw] bg-white space-y-5 rounded-md fixed sm:left-3 bottom-3 left-6 z-[1000] ${
+      className={`sm:h-[350px] px-10 py-5 sm:w-[450px] bg-white space-y-5 rounded-md fixed sm:left-3 bottom-3 z-[1000] ${
         modal ? "block" : "hidden"
       }`}
     >
