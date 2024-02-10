@@ -28,10 +28,10 @@ const CompareDetails = ({ filteredProducts }) => {
               className="  flex justify-center items-center flex-col gap-3"
               key={item._id}
             >
+              
               <p className="text-2xl font-semibold">{item.productTitle}</p>
 
               <p>
-                {" "}
                 ₹<span className="text-3xl">{item.perUnitPrice}</span>
               </p>
               <button
@@ -44,28 +44,27 @@ const CompareDetails = ({ filteredProducts }) => {
               <hr className=" bg-slate-900 w-full" />
               <div className="flex flex-col gap-5 items-center justify-center">
                 <div className="flex flex-col items-center justify-center">
-                  <p>Length</p>
-                  <p className="text-sm">{item.dimensions.length.value}</p>
+                  <p className="text-sm">Length: {item.dimensions.length.value}</p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <p>Width</p>
-                  <p className="text-sm">{item.dimensions.width.value}</p>
+                  {/* <p>Width</p> */}
+                  <p className="text-sm">Width: {item.dimensions.width.value}</p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <p>Category</p>
-                  <p className="text-sm">{item.category} </p>
+                  {/* <p>Category</p> */}
+                  <p className="text-sm">Category: {item.category} </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <p>Style</p>
-                  <p className="text-sm">{item.style} </p>
+                  {/* <p>Style</p> */}
+                  <p className="text-sm">Style: {item.style} </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <p>Features</p>
-                  <p className="text-sm">{item.features}</p>
+                  {/* <p>Features</p> */}
+                  <p className="text-sm">Features: {item.features}</p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <p>Product description</p>
-                  <p className="text-sm">{item.productDescription} </p>
+                  {/* <p>Product description</p> */}
+                  <p className="text-sm">Product description: {item.productDescription} </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
                   <p>Rating</p>
@@ -81,7 +80,7 @@ const CompareDetails = ({ filteredProducts }) => {
                     ))}
                   </p>
                 </div>
-              </div>
+              </div> 
               <hr className=" bg-slate-900 w-full" />
             </div>
           ))}
