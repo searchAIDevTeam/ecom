@@ -33,7 +33,7 @@ const Trending = () => {
   useEffect(() => {
     if(trendingData.length===0){
       dispatch({type:"FETCH_TRENDING_DATA", payload: "trending"})
-      console.log("trendingData fetched")
+      //console.log("trendingData fetched")
     }
     if(trendingData){
       setNewTrendingData(trendingData)

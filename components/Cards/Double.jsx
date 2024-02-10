@@ -11,7 +11,7 @@ import { selectMusicData } from "../Features/Slices/musicSectionSlice";
 
 const Double = () => {
   const musicSwiperData = useSelector(selectMusicData);
-  console.log('musicSwiperData : ',musicSwiperData);
+ // console.log('musicSwiperData : ',musicSwiperData);
   const dispatch = useDispatch();
   useEffect(() => {
     if (musicSwiperData.length === 0) {

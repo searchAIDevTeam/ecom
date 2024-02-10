@@ -11,7 +11,7 @@ const DoubleComp = () => {
       dispatch({type: "FETCH_MUSIC_DATA", payload: "music"})
     }
   },[])
-  console.log(musicSwiperData)
+  //console.log(musicSwiperData)
   const gameImage = musicSwiperData[1]?.img[0]?.url;
   return (
     <div className="py-20 grid sm:grid-cols-2 grid-cols-1 sm:w-auto w-[100%] gap-4 sm:px-[50px] px-[20px]">

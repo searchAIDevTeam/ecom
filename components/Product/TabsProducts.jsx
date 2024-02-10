@@ -42,7 +42,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   const [openSort, setOpenSort] = React.useState(false);
 
   const handleOpen = () => {
-    setOpenSort(!openSort);
+    if (openSize===false && opencolor===false && openCollection===false && openType===false && openAll===false) {
+      setOpenSort(!openSort);
+    }
   };
   const [openAllsort, setopenallsort] = useState(false);
   const handleAllsort = () => {
@@ -54,10 +56,12 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   };
 
   const [openSize, setOpenSize] = useState(false);
-
   const handleSize = () => {
-    setOpenSize(!openSize);
+    if (openSort===false && opencolor===false && openCollection===false && openType===false  && openAll===false) {
+      setOpenSize(!openSize);
+    }
   };
+  
   const [openAllSize, setOpenAllSIze] = useState(false);
   const handleAllSize = () => {
     setOpenAllSIze(!openAllSize);
@@ -66,7 +70,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   // collection
   const [openCollection, setOpenCollection] = useState(false);
   const handleCollection = () => {
-    setOpenCollection(!openCollection);
+    if (openSize===false && openSort===false && opencolor===false && openType===false  && openAll===false) {
+      setOpenCollection(!openCollection);
+    }
   };
 
   const [openAllCollection, setOpenAllCollection] = useState(false);
@@ -88,7 +94,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [opencolor, setOpenColor] = useState(false);
   const handlecolor = () => {
-    setOpenColor(!opencolor);
+    if (openSize===false && openSort===false && openCollection===false && openType===false  && openAll===false) {
+      setOpenColor(!opencolor);
+    }
   };
 
   const [openAllcolor, setOpenAllcolor] = useState(false);
@@ -119,7 +127,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [openType, setOpenType] = useState(false);
   const handleType = () => {
-    setOpenType(!openType);
+    if (openSize===false && openSort===false && opencolor===false && openCollection===false  && openAll===false) {
+      setOpenType(!openType);
+    }
   };
   const [openContent, setOpenCOntent] = useState(false);
   const handleContent = () => {
@@ -128,7 +138,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [openAll, setOpenAll] = useState(false);
   const handleAll = () => {
-    setOpenAll(true);
+    if (openSize===false && openSort===false && opencolor===false && openCollection===false && openType===false) {
+      setOpenAll(true);
+    }
   };
   const closeAll = () => {
     setOpenAll(false);
@@ -256,6 +268,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               <TabsProductContent
                 filterName={"Sort"}
                 commonClasses={commonClasses}
+                //isFilterOpen is to open the dropdown
                 isFilterOpen={openSort}
                 handleAll={handleAll}
                 handleTabClick={handleTabClick}
