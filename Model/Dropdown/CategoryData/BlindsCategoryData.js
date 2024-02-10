@@ -1,7 +1,7 @@
 export const blindsCategoryData = [
     {
       categoryId: 1,
-      categoryHeading: "SHOP BY COLLECTIONS",
+      categoryHeading: "Shop by Collections",
       categoryData: [
         {id: 1, text: "House Beautiful Pleated Blinds"},
         {id: 2, text: "House Beautiful Blinds"},
@@ -10,7 +10,7 @@ export const blindsCategoryData = [
     },
     {
       categoryId: 2,
-      categoryHeading: "SHOP BY STYLES",
+      categoryHeading: "Shop by Styles",
       categoryData: [
         {id: 1, text: "Plains And Textures"},
         {id: 2, text: "Stripes And Checks"},
@@ -21,7 +21,7 @@ export const blindsCategoryData = [
     },
     {
       categoryId: 3,
-      categoryHeading: "SHOP BY COLOUR",
+      categoryHeading: "Shop by Colours",
       categoryData: [
         { id: 1, text: "Light Brown", image: "/Dropitemsimg/lightbrown.png" },
         { id: 2, text: "Beige", image: "/Dropitemsimg/beige.png"  },
@@ -34,7 +34,7 @@ export const blindsCategoryData = [
     },
     {
       categoryId: 4,
-      categoryHeading: "SHOP BY ROOMS",
+      categoryHeading: "Shop by Rooms",
       categoryData: [
         { id: 1, text: "Bathroom" },
         { id: 2, text: "Bedroom" },
@@ -48,7 +48,7 @@ export const blindsCategoryData = [
     },
     {
       categoryId: 5,
-      categoryHeading: "SHOP BY TYPE",
+      categoryHeading: "Shop by Type",
       categoryData: [
         {id: 1, text: "Roller blinds"},
         {id: 2, text: "Wooden blinds"},

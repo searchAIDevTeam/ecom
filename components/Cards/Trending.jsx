@@ -31,9 +31,9 @@ const Trending = () => {
     setPopupVisible(true);
   };
   useEffect(() => {
-    if (trendingData.length === 0) {
-      dispatch({ type: "FETCH_TRENDING_DATA", payload: "trending" });
-      console.log("trendingData fetched");
+    if(trendingData.length===0){
+      dispatch({type:"FETCH_TRENDING_DATA", payload: "trending"})
+      //console.log("trendingData fetched")
     }
     if (trendingData) {
       setNewTrendingData(trendingData);
