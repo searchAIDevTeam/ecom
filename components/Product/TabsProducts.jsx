@@ -31,6 +31,7 @@ import {
   renderSortItem,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
+import { px } from "framer-motion";
 const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
@@ -266,6 +267,21 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     };
   }, []); // Run this effect only once on component mount
 
+  const stars = new Array(4)
+    .fill("/svg/icon/star.svg")
+    .concat("/svg/icon/half-star.svg");
+
+  console.log("this is filtterdata", filterData);
+  const firstPart = filterData.slice(0, 8);
+  const secondPart = filterData.slice(8);
+
+  const screenwidth = typeof window !== "undefined" && window.innerWidth;
+  console.log("screenwidth", screenwidth);
+
+  const divwidthlg = (screenwidth - 100 - 10 * 3) / 4;
+  const divthwidthmobile = (screenwidth - 40 - 10) / 2;
+  console.log("divthwidthmobile", divthwidthmobile, "px");
+  console.log("divwidth", divwidthlg, "px");
   return (
     <>
       <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
@@ -695,8 +711,65 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 </button>
               )}
             </div>
+            <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 gap-3 ">
+              {firstPart.map((text, idx) => (
+                <div
+                  className="flex flex-col gap-3 border-b border-r hover-divnine sm:border-none"
+                  key={idx}
+                  onClick={() => handlenav(text._id)}
+                >
+                  <div className="relative  z[-999999]">
+                    <div
+                      onClick={(event) => event.stopPropagation()}
+                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
+                        selectedpdt.includes(text) ? "visible" : ""
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        onChange={(e) => {
+                          handleCheckbox(text, e.target.checked);
+                          setShowcompare(true);
+                        }}
+                        checked={selectedpdt.includes(text)}
+                      />
+                    </div>
+                    {/* <div className=" w-[260px] h-[150px]"> */}
+                    <Image
+                      src={text.images[0]}
+                      alt=""
+                      width={260}
+                      height={150}
+                      className="object-cover object-center sm:w-[290px] w-[200px] sm:h-[300px] h-[200px]"
+                      // className="absolute "
+                      // layout="fill"
+                      // objectFit="contain"
+                    />
+                    {/* </div> */}
+                  </div>
+
+                  <p className="text-sm font-semibold">{text.productTitle}</p>
+                  <p className="text-sm">{text.productDescription}</p>
+                  <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
+                    Rs. <span className="text-3xl"> {text.totalPrice}</span>
+                  </p>
+                  <p className="flex flex-row items-center gap-1 text-sm text-black">
+                    {stars.map((star, index) => (
+                      <Image
+                        key={index}
+                        src={star}
+                        alt="star"
+                        width={15}
+                        height={15}
+                      />
+                    ))}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <Measure filteredProductData={filteredProductData} />
             <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
-              {filterData.map((text, idx) => (
+              {secondPart.map((text, idx) => (
                 <div
                   className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
                   key={idx}
@@ -738,42 +811,20 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     Rs. <span className="text-3xl"> {text.totalPrice}</span>
                   </p>
                   <p className="flex flex-row items-center gap-1 text-sm text-black">
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/half-star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
+                    {stars.map((star, index) => (
+                      <Image
+                        key={index}
+                        src={star}
+                        alt="star"
+                        width={15}
+                        height={15}
+                      />
+                    ))}
                   </p>
                 </div>
               ))}
             </div>
           </div>
-          <Measure filteredProductData={filteredProductData} />
         </div>
       </div>
     </>

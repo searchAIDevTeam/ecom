@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Expandbar.css";
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 // import search from "../../assets/icon/search.svg";
 // import mainlogo from "../../assets/ayatriologo.png";
 
@@ -62,9 +62,16 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
   const handleRoute = (item) => {
     router.push("/room/" + item.id);
   };
+
+  const path = usePathname();
+
   return (
     <>
-      <div className="expanded-search-box block pt-2 bg-white sm:h-310px h-full z-30 sm:w-full w-[100vw]  absolute right-0 sm:shadow-[0_350px_60px_500px_rgba(0,0,0,0.5)]">
+      <div
+        className={`expanded-search-box block pt-2 bg-white sm:h-310px h-full  sm:w-full w-[100vw]  absolute right-0 top-0 sm:shadow-[0_350px_60px_500px_rgba(0,0,0,0.5)] z-[9999999] ${
+          path == "/home" ? "sm:mt-[-36px]" : ""
+        } `}
+      >
         <div className="flex flex-row gapofsearchclose  justify-between bg-white rounded-lg w-full absolute left-0">
           <div className="logo hidden sm:block pl-2">
             <img src="/images/ayatriologo.webp" className="w-44 z-30" alt="" />

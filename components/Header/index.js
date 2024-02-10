@@ -96,6 +96,9 @@ function Header({ howMuchScrolled }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  if(typeof window !== "undefined" && window.location.pathname === "/home"){}
+
   const homeRoute = "/home";
 
   return (
@@ -103,7 +106,7 @@ function Header({ howMuchScrolled }) {
       {homeRoute === pathname ? <TopHeader /> : null}
       <div
         className={`fixed w-screen sm:bg-none ${
-          homeRoute === pathname ? "top-[30px]" : "top-0"
+          homeRoute === pathname ? "sm:top-[35px] top-[48px]" : "top-0"
         } z-[99999]
        ${isScrolled ? "bg-white" : "bg-white"} 
       

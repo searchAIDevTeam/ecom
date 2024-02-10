@@ -100,16 +100,9 @@ function Filter({ isFilterHovered, onFilterHover }) {
     }
   }, []);
 
-  const handletoVirtual = () => {
-    router.push("/virtualexperience/category");
-  };
-  const handletomagazine = () => {
-    router.push("/magazine");
-  };
-
   return (
     <header
-      className={`absolute pt-7 pb-2 mt-[4.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
+      className={`absolute pt-7 pb-2 sm:mt-[4.3rem] mt-[5.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
     >
       <div className="filter sm:mr-0 media" style={{ marginLeft: "0px" }}>
         <div className="Filter-array" ref={scrl}>
@@ -249,7 +242,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
               )}
             </div>
           ))}
-          <div
+          {/* <div
             onClick={handletoVirtual}
             className=" cursor-pointer sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap"
           >
@@ -284,7 +277,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
             <div className=" cursor-pointer sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap">
               Free Design
             </div>
-          </Link>
+          </Link> */}
 
           {/* <div className="slider_lr_container arrow-right-filter">
              <img

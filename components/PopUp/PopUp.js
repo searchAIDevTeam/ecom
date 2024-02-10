@@ -223,7 +223,7 @@ function App() {
             preferencesDataToSendToBackend.preferredCategories,
         }
       );
-        
+
       // console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
 
       const data = response.data;
@@ -256,6 +256,22 @@ function App() {
   // console.log("from selecteditems1", Items1selected);
   // console.log("from selecteditems2", Items2selected);
   // console.log("from selecteditems3", Items3selected);
+
+  useEffect(() => {
+    const value =
+      JSON.stringify(preferencesDataToSendToBackend.preferredCities) +
+      "," +
+      JSON.stringify(preferencesDataToSendToBackend.preferredHobbies) +
+      "," +
+      JSON.stringify(preferencesDataToSendToBackend.preferredCategories) +
+      ",";
+
+    const date = new Date();
+    date.setTime(date.getTime() + 12 * 30 * 24 * 60 * 60 * 1000); // Cookie will expire after 1 year
+    const expires = "; expires=" + date.toUTCString();
+
+    document.cookie = "preference=" + value + expires + "; path=/";
+  }, [preferencesDataToSendToBackend]);
 
   return (
     <div className="App ">

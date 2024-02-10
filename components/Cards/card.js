@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 import Carousel from "./swip";
@@ -23,6 +23,7 @@ function Card(props) {
     postTrending();
     router.push("/room/" + id);
   };
+
   return (
     <>
       <div
