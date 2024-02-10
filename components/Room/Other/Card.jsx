@@ -192,8 +192,8 @@ const Card = ({ data }) => {
                 <div className="flex flex-row gap-2">
                   <Image
                     src="/rooms/payment.svg"
-                    height={20}
-                    width={20}
+                    height={25}
+                    width={25}
                     alt="icon"
                   />
                   <h1 className="font-bold">ZERO Cost EMI</h1>
@@ -208,8 +208,8 @@ const Card = ({ data }) => {
                 <div className="flex flex-row gap-2">
                   <Image
                     src="/rooms/ayatrio_store_b.svg"
-                    height={20}
-                    width={20}
+                    height={25}
+                    width={25}
                     alt="icon"
                   />
                   <h1 className="font-bold">In-Store Request</h1>
@@ -226,8 +226,8 @@ const Card = ({ data }) => {
                 <div className="flex flex-row gap-2">
                   <Image
                     src="/rooms/delivary.svg"
-                    height={20}
-                    width={20}
+                    height={25}
+                    width={25}
                     alt="icon"
                   />
                   <h1 className="font-bold">Delivery Option</h1>
@@ -241,8 +241,8 @@ const Card = ({ data }) => {
                 <div className="flex flex-row gap-2">
                   <Image
                     src="/rooms/calculator.svg"
-                    height={20}
-                    width={20}
+                    height={25}
+                    width={25}
                     alt="icon"
                   />
                   <h1 className="font-bold">Calculator</h1>
@@ -301,7 +301,7 @@ const Card = ({ data }) => {
                     </div>
                   )}
                   {modalContent === "calculator" && (
-                    <div className=" bg-gray-900 z-[999999] bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+                    <div className="   fixed top-0 left-0 w-full h-full flex items-center justify-center ">
                       <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
                         <Calculation priceData={data} />
                         <button onClick={() => setModalContent(null)}>

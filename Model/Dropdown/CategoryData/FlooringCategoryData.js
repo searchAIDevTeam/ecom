@@ -1,7 +1,7 @@
 export const flooringCategoryData = [
   {
     categoryId: 1,
-    categoryHeading: "SHOP BY COLLECTIONS",
+    categoryHeading: "Shop by Collections",
     categoryData: [
       { id: 1, text: "Chevron" },
       { id: 2, text: "Exelam Hdf Laminates" },
@@ -13,7 +13,7 @@ export const flooringCategoryData = [
   },
   {
     categoryId: 2,
-    categoryHeading: "SHOP BY STYLES",
+    categoryHeading: "Shop by Styles",
     categoryData: [
       { id: 1, text: "3 D Geometric" },
       { id: 2, text: "Abstract" },
@@ -29,7 +29,7 @@ export const flooringCategoryData = [
   },
   {
     categoryId: 3,
-    categoryHeading: "SHOP BY COLOUR",
+    categoryHeading: "Shop by Colours",
     categoryData: [
       { id: 1, text: "Light Brown", image: "/Dropitemsimg/lightbrown.png" },
       { id: 2, text: "Beige", image: "/Dropitemsimg/beige.png"  },
@@ -42,7 +42,7 @@ export const flooringCategoryData = [
   },
   {
     categoryId: 4,
-    categoryHeading: "SHOP BY ROOMS",
+    categoryHeading: "Shop by Rooms",
     categoryData: [
       { id: 1, text: "Bathroom" },
       { id: 2, text: "Bedroom" },

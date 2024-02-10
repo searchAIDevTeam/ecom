@@ -6,12 +6,6 @@ import { useDispatch } from "react-redux";
 import { useRouter, usePathname } from "next/navigation";
 import { setselectedproduct } from "../Features/Slices/compareSlice";
 import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-} from "@nextui-org/react";
-import {
   srtarr,
   typeContent,
   typearr,
@@ -30,6 +24,7 @@ import {
   renderSortItem,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
+import Measure from './meausrement'
 const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
@@ -241,14 +236,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   return (
     <>
-      <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
+      <div className="wrapper sm:px-[50px] px-[20px] mt-20 relative ">
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
         <div
           className={`
-          sidebarforstickey
-           cursor-pointer sm:mb-0 
+          sidebarforstickey absolute
+           cursor-pointer sm:mb-0 z-[99999]
       
        `}
         >
@@ -256,7 +251,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
             ""
           ) : (
             <div
-              className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-[999999] overflow-hidden`}
+              className={`py-5 bloc-tabs2 flex flex-row overflow-hidden`}
             >
               <TabsProductContent
                 filterName={"Sort"}
@@ -287,15 +282,10 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
               {/* Color - dropdown3 */}
 
-              <div>
-                <Popover
-                  placement="bottom-start"
-                  isOpen={opencolor}
-                  onOpenChange={() => {
-                    if (
-                      typeof window !== "undefined" &&
-                      window.innerWidth <= 450
-                    ) {
+              <div style={{ position: "relative" }}>
+                <button
+                  onClick={() => {
+                    if (window.innerWidth <= 450) {
                       handleAll();
                       handleTabClick();
                       handleAllcolor();
@@ -304,66 +294,64 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                       handleTabClick();
                     }
                   }}
+                  // onClick={() => setOpenColor(!opencolor)}
+                  className={`Tabbtn 
+                  ${opencolor
+                      ? `active-tabs  border border-black ${commonClasses}`
+                      : `tabS  border border-white ${commonClasses}`
+                    }
+                  ${typeof window !== "undefined" && window.innerWidth <= 450
+                      ? " justify-center"
+                      : " justify-between"
+                    }
+                  `}
                 >
-                  <PopoverTrigger>
-                    <button
-                      className={`Tabbtn 
-                      ${
-                        opencolor
-                          ? `active-tabs  border border-black ${commonClasses}`
-                          : `tabS  border border-white ${commonClasses}`
-                      }
-                      ${
-                        typeof window !== "undefined" &&
-                        window.innerWidth <= 450
-                          ? " justify-center"
-                          : " justify-between"
-                      }
-                      `}
-                    >
-                      Color &nbsp;
-                      <Image
-                        src="/svg/dropdown/backarrow.svg"
-                        width={40}
-                        height={40}
-                        className={`w-6 h-6  mt-1 sm:block hidden
-                    ${opencolor ? " rotate-90" : "-rotate-90"}
-                    
-                    `}
-                        alt=""
-                      />
-                    </button>
-                  </PopoverTrigger>
-
-                  <PopoverContent>
-                    {opencolor ? (
-                      <div className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80 ">
-                        <div className="grid grid-cols-3 gap-6">
-                          {colorarr.map((text, idx) => (
-                            <div
-                              className="flex flex-col items-center justify-center"
-                              key={idx}
-                            >
-                              <div
-                                onClick={() => handleClick(idx)}
-                                className={`${text.class}  ${
-                                  selectedCircle.includes(idx)
-                                    ? "outline outline-2"
-                                    : ""
-                                } `}
-                              ></div>
-                              <p>{text.name}</p>
-                            </div>
-                          ))}
+                  Color &nbsp;
+                  <Image
+                    src="/svg/dropdown/backarrow.svg"
+                    width={40}
+                    height={40}
+                    className={`w-6 h-6  mt-1 sm:block hidden
+                ${opencolor ? " rotate-90" : "-rotate-90"}
+                
+                `}
+                    alt=""
+                  />
+                </button>
+                {opencolor ? (
+                  <div
+                    className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80
+                  
+                  "
+                  // style={{
+                  //   position: "absolute",
+                  //   top: "calc(100% + 10px)",
+                  //   zIndex: "100000",
+                  // }}
+                  >
+                    <div className="grid grid-cols-3 gap-6">
+                      {colorarr.map((text, idx) => (
+                        <div
+                          className="flex flex-col items-center justify-center"
+                          key={idx}
+                        >
+                          <div
+                            onClick={() => handleClick(idx)}
+                            className={`${text.class}  ${selectedCircle.includes(idx)
+                              ? "outline outline-2"
+                              : ""
+                              } `}
+                          ></div>
+                          <p>{text.name}</p>
                         </div>
-                      </div>
-                    ) : null}
-                  </PopoverContent>
-                </Popover>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
 
               {/* Design style - dropdown4 */}
-              {heading === "Wallpaper" ? (
+              {/* {heading === "Wallpaper" ? (
                 <TabsProductContent
                   filterName={"Design style"}
                   commonClasses={commonClasses}
@@ -375,7 +363,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   filterArr={categoryarr}
                   renderFilter={rendercategory}
                 />
-              ) : null}
+              ) : null} */}
 
               {/* Collections - filter */}
               <TabsProductContent
@@ -415,16 +403,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     handleTabClick();
                   }}
                   className={`Tabbtn z-0 
-                  ${
-                    openAll
+                  ${openAll
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    typeof window !== "undefined" && window.innerWidth <= 450
+                    }
+                  ${typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
                       : " justify-between"
-                  }
+                    }
                   `}
                 >
                   All Filters &nbsp;
@@ -627,9 +613,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
                               <button
                                 onClick={handleContent}
-                                className={`text-left underline ${
-                                  openContent ? "block" : "hidden"
-                                }`}
+                                className={`text-left underline ${openContent ? "block" : "hidden"
+                                  }`}
                               >
                                 Less
                               </button>
@@ -652,94 +637,94 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               </div>
             </div>
           )}
-
-          <hr />
-          {/* iimages */}
-          <div className="relative  flex flex-col image-product z[-99999] ">
-            <div className="text-right">
-              {showCompare && (
-                <button
-                  onClick={handleCompareClick}
-                  disabled={selectedpdt.length < 2}
-                  className={`bg-black text-white px-3 py-2 whitespace-nowrap rounded-full ${activebtn} `}
-                >
-                  Compare Products
-                </button>
-              )}
-            </div>
-            <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
-              {filterData.map((text, idx) => (
-                <div
-                  className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
-                  key={idx}
-                  onClick={() => handlenav(text._id)}
-                >
-                  <div className=" relative w-[360px] h-[360px] z[-999999]">
-                    <div
-                      onClick={(event) => event.stopPropagation()}
-                      className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${
-                        selectedpdt.includes(text) ? "visible" : ""
+        </div>
+        <hr />
+        {/* iimages */}
+        <div className=" mt-20
+          flex flex-col image-product ">
+          <div className="text-right">
+            {showCompare && (
+              <button
+                onClick={handleCompareClick}
+                disabled={selectedpdt.length < 2}
+                className={`bg-black text-white px-3 py-2 whitespace-nowrap rounded-full ${activebtn} `}
+              >
+                Compare Products
+              </button>
+            )}
+          </div>
+          <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
+            {filterData.map((text, idx) => (
+              <div
+                className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
+                key={idx}
+                onClick={() => handlenav(text._id)}
+              >
+                <div className=" relative w-[250px] h-[250px] z[-999999]">
+                  <div
+                    onClick={(event) => event.stopPropagation()}
+                    className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${selectedpdt.includes(text) ? "visible" : ""
                       }`}
-                    >
-                      <input
-                        type="checkbox"
-                        onChange={(e) => {
-                          handleCheckbox(text, e.target.checked);
-                          setShowcompare(true);
-                        }}
-                        checked={selectedpdt.includes(text)}
-                      />
-                    </div>
-                    <Image
-                      src={text.images[0]}
-                      alt=""
-                      className="absolute "
-                      layout="fill"
+                  >
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        handleCheckbox(text, e.target.checked);
+                        setShowcompare(true);
+                      }}
+                      checked={selectedpdt.includes(text)}
                     />
                   </div>
-
-                  <p className="text-sm font-semibold">{text.productTitle}</p>
-                  <p className="text-sm">{text.productDescription}</p>
-                  <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
-                    Rs. <span className="text-3xl"> {text.totalPrice}</span>
-                  </p>
-                  <p className="flex flex-row items-center gap-1 text-sm text-black">
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/half-star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                  </p>
+                  <Image
+                    src={text.images[0]}
+                    alt=""
+                    className="absolute "
+                    layout="fill"
+                  />
                 </div>
-              ))}
-            </div>
+
+                <p className="text-sm font-semibold">{text.productTitle}</p>
+                <p className="text-sm">{text.productDescription}</p>
+                <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
+                  Rs. <span className="text-3xl"> {text.totalPrice}</span>
+                </p>
+                <p className="flex flex-row items-center gap-1 text-sm text-black">
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/half-star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                </p>
+              </div>
+            ))}
           </div>
         </div>
+        <Measure filteredProductData={filteredProductData} />
       </div>
     </>
   );

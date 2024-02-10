@@ -109,7 +109,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
 
   return (
     <header
-      className={`absolute pt-7 pb-2 mt-[3.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
+      className={`absolute pt-7 pb-2 mt-[4.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
     >
       <div className="filter sm:mr-0 media" style={{ marginLeft: "0px" }}>
         <div className="Filter-array" ref={scrl}>
@@ -170,21 +170,21 @@ function Filter({ isFilterHovered, onFilterHover }) {
                   className={`absolute left-0 mt-[1.6rem] w-full bg-white transition-all ease-linear duration-2000 shadow-[0_350px_60px_100px_rgba(0,0,0,0.5)]`}
                   onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
                 >
-                  <div className="px-[50px] my-5">
+                  <div className="px-[50px] my-10">
                     <div className="filter_container flex">
                       <div
                         className={`flex ${
                           idx === 0
-                            ? `gap-32`
+                            ? `gap-20`
                             : idx === 1
-                            ? `gap-32`
+                            ? `gap-20`
                             : idx === 2
-                            ? `gap-20`
+                            ? `gap-10`
                             : idx === 3
-                            ? `gap-20`
+                            ? `gap-10`
                             : idx === 4
-                            ? `gap-32`
-                            : `gap-24`
+                            ? `gap-20`
+                            : `gap-14`
                         }`}
                       >
                         <div>
@@ -208,7 +208,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
                             verticalSpacingBetween="space-y-8"
                             imageWidth={200}
                             imageHeight={200}
-                            textSize="text-xl"
+                            textSize="text-md"
                             textStyle="font-semibold"
                             parentCategory={value.label}
                           />
@@ -232,8 +232,8 @@ function Filter({ isFilterHovered, onFilterHover }) {
                                 categoryData={category.categoryData}
                                 parentCategory={value.label}
                                 categoryGap=""
-                                headingColor="text-gray-500"
-                                headingStyle="font-bold"
+                                headingColor="text-black"
+                                headingStyle="font-semibold"
                                 headingSize="text-md"
                                 gapHeadingItems="space-y-8"
                                 itemsGap="space-y-6"

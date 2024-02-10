@@ -1,7 +1,7 @@
 export const wallpaperCategoryData = [
     {
       categoryId: 1,
-      categoryHeading: "SHOP BY COLLECTIONS",
+      categoryHeading: "Shop by Collections",
       categoryData: [
         { id: 1, text: "Allure" },
         { id: 2, text: "Altis" },
@@ -17,7 +17,7 @@ export const wallpaperCategoryData = [
     },
     {
       categoryId: 2,
-      categoryHeading: "SHOP BY STYLES",
+      categoryHeading: "Shop by Styles",
       categoryData: [
         { id: 1, text: "3 D Geometric" },
         { id: 2, text: "Abstract" },
@@ -33,7 +33,7 @@ export const wallpaperCategoryData = [
     },
     {
       categoryId: 3,
-      categoryHeading: "SHOP BY COLOUR",
+      categoryHeading: "Shop by Colours",
       categoryData: [
         { id: 1, text: "Beige", image: "/Dropitemsimg/beige.png" },
         { id: 2, text: "Black", image: "/Dropitemsimg/black.avif" },
@@ -49,7 +49,7 @@ export const wallpaperCategoryData = [
     },
     {
       categoryId: 4,
-      categoryHeading: "SHOP BY ROOMS",
+      categoryHeading: "Shop by Rooms",
       categoryData: [
         { id: 1, text: "Bathroom" },
         { id: 2, text: "Bedroom" },

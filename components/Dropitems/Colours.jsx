@@ -31,15 +31,15 @@ const colours = [
   },
 ];
 
-const Colours = ({props}) => {
+const Colours = ({ props }) => {
   // let heading=props.heading..;
-  const router=useRouter();
-// const handleClick=(color)=>{
-//     router.push("/products/"+color+"/"+heading+"/"+props.parentCategory)
-//   }
+  const router = useRouter();
+  // const handleClick=(color)=>{
+  //     router.push("/products/"+color+"/"+heading+"/"+props.parentCategory)
+  //   }
   return (
     <div className="filter_item space-y-10">
-      <h4 className="filter_heading gray-text">SHOP BY COLOUR</h4>
+      <h4 className="filter_heading gray-text">Shop by Colour</h4>
       <div className="filter_content">
         <ul className="filter_content_list">
           {colours.map((color) => (

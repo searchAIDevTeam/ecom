@@ -79,8 +79,6 @@ const CategoryContent = (props) => {
             </div>
           );
         })}
-
-        <p className="gray-text cursor-pointer">8 More</p>
       </div>
     </div>
   );

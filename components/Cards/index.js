@@ -24,7 +24,6 @@ const Trending = dynamic(() => import("./Trending"));
 import Dataslider from "./Dataslider";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
-import TopHeader from "../Header/TopHeader";
 const NewMainSlider = dynamic(() => import("../MainSlider/NewMainSlider"));
 const Cookies = dynamic(() => import("./Cookies"));
 
@@ -88,7 +87,6 @@ function Cards() {
     <div className="w-full h-auto">
       {/* {MemoizedMainSlider} */}
       <NewMainSlider />
-      <TopHeader/>
       <Cookies/>
       {/* {MemoizedTrendingProducts} */}
       <Trending />
