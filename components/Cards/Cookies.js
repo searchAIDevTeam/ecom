@@ -11,8 +11,12 @@ const Cookies = () => {
 
   const closeModal = () => {
     setModal(false);
-    localStorage.setItem("modalClosed", true);
+    localStorage.setItem("modalClosed", "true");
   };
+
+  const setCookie = () => {
+    document.cookie = "accepted=yes; expires="+new Date(2024, 2, 10).toUTCString();
+  }
   return (
     <div
       className={`sm:h-[50vh] px-10 py-5 sm:w-[35vw] w-[90vw] bg-white space-y-5 rounded-md fixed sm:left-3 bottom-3 left-6 z-[1000] ${
@@ -38,7 +42,8 @@ const Cookies = () => {
         <button className="bg-black px-5 py-2 text-white rounded-full hover:bg-gray-700" onClick={closeModal}>
           Ok
         </button>
-        <button className="px-5 py-2 border-2 border-solid hover:border-black border-gray-500 rounded-full">
+        {/* no cookie settings page so i am just going to save cookie using below button */}
+        <button className="px-5 py-2 border-2 border-solid hover:border-black border-gray-500 rounded-full" onClick={setCookie}>
           Cookie Settings
         </button>
       </div>
