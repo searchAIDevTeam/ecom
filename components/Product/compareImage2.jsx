@@ -1,8 +1,5 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useSelector } from "react-redux";
 import {
   selectproductdata,
@@ -42,15 +39,6 @@ const CompareImage2 = () => {
           </div>
           <div className="image-comparison relative w-[90vw]">
             <div className="images-container relative w-[100%] h-[100%]">
-              {/* <img
-                className="before-image absolute w-[10vw]"
-                src={data[0].images[0]}
-                alt=""
-                style={{
-                  width: "100%",
-                  clipPath: `polygon(0% 0%, ${sliderValue}% 0%, ${sliderValue}% 100%, 0% 100%)`,
-                }}
-              /> */}
               <div
                 className="before-image absolute  h-[100%]"
                 style={{
@@ -59,15 +47,6 @@ const CompareImage2 = () => {
                 }}
               >
                 <div className="relative w-[100%] h-[100%] overflow-hidden">
-                  {/* <Image
-                    src="/room/tex_room.png"
-                    width={800}
-                    height={120}
-                    style={{width:"100"}}
-                    className="z-10"
-                    alt="not-found"
-                    // loading="lazy"
-                  /> */}
                   <img
                     style={{
                       width: "100%",
@@ -103,16 +82,7 @@ const CompareImage2 = () => {
                 }}
               >
                 <div className="relative w-[100%] h-[100%] overflow-hidden">
-                  {/* <Image
-                    src="/room/tex_room.png"
-                    width={800}
-                    height={120}
-                    // style={{width:"1000px"}}
-                    className="z-10"
-                    alt="not-found"
-                    // loading="lazy"
-                  /> */}
-
+                 
                   <img
                     style={{
                       width: "100%",
@@ -139,12 +109,7 @@ const CompareImage2 = () => {
                   />
                 </div>
               </div>
-              {/* <img
-            className="neo-image"
-            src={ datas[2].images[0]}
-            alt=""
-            style={{ width: `${sliderValue2}%` }}
-          /> */}
+
 
               <div
                 className="slider-line"
