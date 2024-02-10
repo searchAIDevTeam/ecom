@@ -97,16 +97,25 @@ function Header({ howMuchScrolled }) {
     };
   }, []);
 
-  if(typeof window !== "undefined" && window.location.pathname === "/home"){}
+  if (typeof window !== "undefined" && window.scrollY > 20) {
+  }
 
   const homeRoute = "/home";
 
   return (
     <div>
-      {homeRoute === pathname ? <TopHeader /> : null}
+      {homeRoute === pathname ? (
+        window.scrollY < 20 ? (
+          <TopHeader />
+        ) : null
+      ) : null}
       <div
         className={`fixed w-screen sm:bg-none ${
-          homeRoute === pathname ? "sm:top-[35px] top-[48px]" : "top-0"
+          homeRoute === pathname
+            ? window.scrollY < 20
+              ? "sm:top-[35px] top-[48px]"
+              : "top-0"
+            : "top-0"
         } z-[99999]
        ${isScrolled ? "bg-white" : "bg-white"} 
       
