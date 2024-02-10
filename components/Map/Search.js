@@ -89,7 +89,9 @@ const Search = ({ places, onResultClick }) => {
   useEffect(() => {
     // Update isMobile state on window resize
     const handleResize = () => {
-      setIsMobile( ()=>typeof window !== "undefined" && window.innerWidth <= 450);
+      setIsMobile(
+        () => typeof window !== "undefined" && window.innerWidth <= 450
+      );
     };
 
     window.addEventListener("resize", handleResize);
@@ -103,7 +105,7 @@ const Search = ({ places, onResultClick }) => {
   return (
     <>
       {isMobile ? (
-        <div className="map-bg flex flex-row items-center justify-between w-full h-16">
+        <div className="flex flex-row items-center justify-between w-full h-16 map-bg">
           <div
             className=" font-bold p-[7px] hover:bg-slate-200 hover:rounded-full bg-opacity-5 bg-transparent"
             style={{
@@ -114,14 +116,14 @@ const Search = ({ places, onResultClick }) => {
             <Menu />
           </div>
           <div
-            className="main-search absolute shadow-lg z-20 top-[14%] right-3"
+            className="main-search absolute shadow-lg z-20 top-[14%] right-3 ml-[20px]"
             style={{
               backgroundColor: "transparent",
               background: "transparent",
             }}
           >
             <div
-              className="search flex items-center border-none bg-white"
+              className="flex items-center bg-white border-none search"
               style={{
                 borderRadius: "20px 20px 20px 20px",
               }}
@@ -135,7 +137,13 @@ const Search = ({ places, onResultClick }) => {
                 }}
               />
               <div className="searchIcon absolute right-1 bg-white flex justify-center items-center w-[2rem]">
-                <Image src='/svg/icon/searchicon.svg' width={20} height={20} alt="search" className="text-gray-400 text-xl" />
+                <Image
+                  src="/svg/icon/search.svg"
+                  width={20}
+                  height={20}
+                  alt="search"
+                  className="text-xl text-gray-400"
+                />
               </div>
             </div>
 
@@ -155,15 +163,31 @@ const Search = ({ places, onResultClick }) => {
                   onMouseEnter={() => handleItemHover(item)}
                   onMouseLeave={() => handleItemHover(null)}
                 >
-                  {index === 0 ? (
-                    <Image src='/svg/icon/homeicon.svg' height={20} width={20} alt="home" className="text-gray-700 text-xl" />
-                  ) : (
-                    <Image src='/svg/icon/time.svg' height={20} width={20} alt="time" className="text-gray-700 text-xl" />
-                  )}
-                  <div className="py-2 px-4 text-gray-700 cursor-pointer">
+                  {/* {index === 0 ? (
+                    <Image
+                      src="/svg/icon/homeicon.svg"
+                      height={20}
+                      width={20}
+                      alt="home"
+                      className="text-xl text-gray-700"
+                    />
+                  ) : ( */}
+                  <Image
+                    src="/svg/icon/homeicon.svg"
+                    height={20}
+                    width={20}
+                    alt="time"
+                    className="text-xl text-gray-700"
+                  />
+                  {/* )} */}
+                  <div className="px-4 py-2 text-gray-700 cursor-pointer">
                     {index === 0 ? "India" : `${item.name}`}
                   </div>
-                  <Image src='/svg/dropdown/closeicon.svg' height={20} width={20} alt='close'
+                  <Image
+                    src="/svg/dropdown/closeicon.svg"
+                    height={20}
+                    width={20}
+                    alt="close"
                     className={`text-gray-800 text-xl 
       ${hoveredItem === item ? "opacity-100" : "opacity-0"}
       `}
@@ -176,7 +200,7 @@ const Search = ({ places, onResultClick }) => {
       ) : (
         <div className="main-search absolute shadow-lg z-20 top-[14%] left-3">
           <div
-            className="search flex items-center border-none bg-white "
+            className="flex items-center bg-white border-none search "
             // style={{
             //   borderRadius: "300px 300px  300px 300px",
             // }}
@@ -194,8 +218,13 @@ const Search = ({ places, onResultClick }) => {
               }}
             />
             <div className="searchIcon bg-white flex justify-center items-center w-[1rem] mr-3">
-            <Image src='/svg/icon/searchicon.svg' height={20} width={20} alt='close'
-               className="text-gray-400 text-xl" />
+              <Image
+                src="/svg/icon/search.svg"
+                height={20}
+                width={20}
+                alt="close"
+                className="text-xl text-gray-400"
+              />
             </div>
           </div>
 
@@ -208,7 +237,7 @@ const Search = ({ places, onResultClick }) => {
             >
               {places.map((item, index) => (
                 <div
-                  className={`flex justify-evenly items-center hover:bg-gray-100`}
+                  className={`flex justify-around items-center hover:bg-gray-100 pl-4`}
                   key={item.location_id}
                   onClick={() =>
                     index === 0 ? handleResultClick() : handleResultClick(item)
@@ -216,19 +245,30 @@ const Search = ({ places, onResultClick }) => {
                   onMouseEnter={() => handleItemHover(item)}
                   onMouseLeave={() => handleItemHover(null)}
                 >
-                  {index === 0 ? (
-                    <Image src='/svg/icon/homeicon.svg' height={20} width={20} alt='close'
-                    className="text-gray-700 text-xl" />
-                  ) : (
-                    <Image src='/svg/icon/time.svg' height={20} width={20} alt='close'
-                    className="text-gray-700 text-xl" />
-                  )}
-                  <div className="py-2 px-4 text-gray-700 cursor-pointer">
-                    {index === 0
-                      ? "India"
-                      : `${item.name} ${item.address.slice(0, 20)}`}
+                  <Image
+                    src="/svg/icon/homeicon.svg"
+                    height={20}
+                    width={20}
+                    alt="close"
+                    className="text-xl text-gray-700"
+                  />
+                  {/* ) : (
+                    <Image
+                      src="/svg/icon/time.svg"
+                      height={20}
+                      width={20}
+                      alt="close"
+                      className="text-xl text-gray-700"
+                    />
+                  )} */}
+                  <div className="px-4 py-2 text-gray-700 cursor-pointer">
+                    {`${item.name} ${item.address.slice(0, 20)}`}
                   </div>
-                  <Image src='/svg/dropdown/closeicon.svg' height={20} width={20} alt='close'
+                  <Image
+                    src="/svg/dropdown/closeicon.svg"
+                    height={20}
+                    width={20}
+                    alt="close"
                     className={`text-gray-800 text-xl 
       ${hoveredItem === item ? "opacity-100" : "opacity-0"}
       `}
