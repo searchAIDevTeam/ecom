@@ -48,7 +48,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
       opencolor === false &&
       openCollection === false &&
       openType === false &&
-      openAll === false && 
+      openAll === false &&
       openCaategory === false
     ) {
       setOpenSort(!openSort);
@@ -70,7 +70,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
       opencolor === false &&
       openCollection === false &&
       openType === false &&
-      openAll === false && 
+      openAll === false &&
       openCaategory === false
     ) {
       setOpenSize(!openSize);
@@ -90,7 +90,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
       openSort === false &&
       opencolor === false &&
       openType === false &&
-      openAll === false && 
+      openAll === false &&
       openCaategory === false
     ) {
       setOpenCollection(!openCollection);
@@ -170,7 +170,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
       openSort === false &&
       opencolor === false &&
       openCollection === false &&
-      openAll === false && 
+      openAll === false &&
       openCaategory === false
     ) {
       setOpenType(!openType);
@@ -188,7 +188,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
       openSort === false &&
       opencolor === false &&
       openCollection === false &&
-      openType === false && 
+      openType === false &&
       openCaategory === false
     ) {
       setOpenAll(true);
@@ -412,16 +412,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     handleTabClick();
                   }}
                   className={`Tabbtn z-0 bg-gray-100
-                  ${
-                    openAll
+                  ${openAll
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    typeof window !== "undefined" && window.innerWidth <= 450
+                    }
+                  ${typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
                       : " justify-between"
-                  }
+                    }
                   `}
                 >
                   All Filters &nbsp;
@@ -657,9 +655,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
                               <button
                                 onClick={handleContent}
-                                className={`text-left underline ${
-                                  openContent ? "block" : "hidden"
-                                }`}
+                                className={`text-left underline ${openContent ? "block" : "hidden"
+                                  }`}
                               >
                                 Less
                               </button>
@@ -686,7 +683,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
         <hr />
         {/* iimages */}
         <div
-          className=" mt-20
+          className="
           flex flex-col image-product "
         >
           <div className="text-right">
@@ -710,9 +707,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 <div className=" relative w-[250px] h-[250px] z[-999999]">
                   <div
                     onClick={(event) => event.stopPropagation()}
-                    className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${
-                      selectedpdt.includes(text) ? "visible" : ""
-                    }`}
+                    className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${selectedpdt.includes(text) ? "visible" : ""
+                      }`}
                   >
                     <input
                       type="checkbox"
