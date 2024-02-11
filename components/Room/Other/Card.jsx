@@ -106,20 +106,32 @@ const Card = ({ data }) => {
   const handleClicks = () => {
     router.push("/checkout");
   };
+
+  const [Modal, setModal] = useState(false);
+  const [delivery, setDelivery] = useState(false);
+  const [store, setStore] = useState(false);
+  // const handleModal = () => {
+  //   setModal(!Modal);
+  // };
+  const [modalContent, setModalContent] = useState(null);
+
+  const handleOptionClick = (content) => {
+    setModalContent(content);
+  };
   return (
     <>
-      <div className="flex justify-start gap-4 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
-        <div className=" mt-5  prefence-text">
-          <div className="textHolders flex flex-col gap-3 pt-[30px] ">
+      <div className="flex justify-start gap-1 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
+        <div className="mt-5  prefence-text">
+          <div className="textHolders flex flex-col">
             <h1 className="text-2xl mt-5 font-bold mb-2">
               {data?.productTitle}
             </h1>
-            <div className="font-bold flex mb-1">
-              <span>Collection: </span>
+            <div className="font-medium flex  tracking-wider text-zinc-400 mb-1">
+              Collection:&nbsp;
               <h3>{data?.collectionName}</h3>
             </div>
-            <div className="font-bold flex mb-1">
-              <span>Pattern Number: </span>
+            <div className="font-medium tracking-wider text-zinc-400 flex mb-1">
+              Pattern Number:&nbsp;
               <h3>{data?.patternNumber}</h3>
             </div>
             <div className="price">
@@ -131,10 +143,10 @@ const Card = ({ data }) => {
                 </h2>{" "}
                 <span> &nbsp;/roll</span>
               </div>
-              <h5 className="">Price incl. of all taxes</h5>
-
-              <IncDecCounter />
+              <h5 className="text-zinc-400">Price incl. of all taxes</h5>
             </div>
+
+            <IncDecCounter />
           </div>
 
           {/* color-container */}
@@ -167,107 +179,138 @@ const Card = ({ data }) => {
           </div>
 
           {/* calculations */}
-          <div className="border border-gray-300 w-[100%] rounded-xl mt-[30px] pt-[30px] pb-4 sm:pl-3">
-            <div className="flex items-center">
-              <div className="pl-3">
-                <Calculation priceData={data} />
+          <div className="border-black w-[100%] mt-[30px] bg-zinc-100 relative">
+            <div className="flex flex-row  gap-2 ">
+              <div
+                className="w-[1px] h-full bg-[#e5e7eb] absolute"
+                style={{ left: "calc(50%)", top: "0" }}
+              ></div>
+              <div
+                className="flex flex-col col-span-1 w-1/2 p-4  hover:bg-zinc-300 cursor-pointer"
+                onClick={() => handleOptionClick("zeroCostEMI")}
+              >
+                <div className="flex flex-row gap-2">
+                  <Image
+                    src="/rooms/payment.svg"
+                    height={25}
+                    width={25}
+                    alt="icon"
+                  />
+                  <h1 className="font-bold">ZERO Cost EMI</h1>
+                </div>
+                <p className="text-sm pt-[5px]">Ayatrio payment option</p>
+              </div>
+
+              <div
+                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300  cursor-pointer"
+                onClick={() => handleOptionClick("inStoreRequest")}
+              >
+                <div className="flex flex-row gap-2">
+                  <Image
+                    src="/rooms/ayatrio_store_b.svg"
+                    height={25}
+                    width={25}
+                    alt="icon"
+                  />
+                  <h1 className="font-bold">In-Store Request</h1>
+                </div>
+                <p className="text-sm pt-[5px]">Check in-store stock</p>
+              </div>
+            </div>
+            <hr />
+            <div className="flex flex-row ">
+              <div
+                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300 cursor-pointer"
+                onClick={() => handleOptionClick("deliveryOption")}
+              >
+                <div className="flex flex-row gap-2">
+                  <Image
+                    src="/rooms/delivary.svg"
+                    height={25}
+                    width={25}
+                    alt="icon"
+                  />
+                  <h1 className="font-bold">Delivery Option</h1>
+                </div>
+                <p className="text-sm pt-[5px]">Check availability</p>
+              </div>
+              <div
+                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300 cursor-pointer"
+                onClick={() => handleOptionClick("calculator")}
+              >
+                <div className="flex flex-row gap-2">
+                  <Image
+                    src="/rooms/calculator.svg"
+                    height={25}
+                    width={25}
+                    alt="icon"
+                  />
+                  <h1 className="font-bold">Calculator</h1>
+                </div>
+                <p className="text-sm pt-[5px]">As per your requirement</p>
               </div>
             </div>
 
-            <hr />
-            <div className="flex items-center pt-3">
-              <div>
-                <Image
-                  src="/rooms/truck-delivery-icon.svg"
-                  width={25}
-                  height={25}
-                  alt="delivery"
-                />
-              </div>
-              <div className="pl-3">Delivery</div>
-            </div>
-            <div className="pl-60 -ml-3 -mt-1">
-              {!visible ? (
-                <div className="mt-1 sm:mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-right-icon.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow right"
-                    onClick={handleClick}
-                  />
+            {/* Modal */}
+            {modalContent && (
+              <div className="bg-gray-900 z-[999999] bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+                <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
+                  {modalContent === "zeroCostEMI" && (
+                    <>
+                      <h1>Content for ZERO Cost EMI</h1>
+                      <button onClick={() => setModalContent(null)}>
+                        Close
+                      </button>
+                    </>
+                  )}
+                  {modalContent === "inStoreRequest" && (
+                    <div className="bg-gray-900 z-[999999] bg-opacity-30 fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+                      <div className="w-1/2 h-5/6 flex flex-col justify-between gap-4 bg-white rounded-3xl p-7 z-50">
+                        <div>
+                          <div className="pl-7">Enter city:</div>
+                          <input
+                            type="text"
+                            name="city"
+                            value=""
+                            className="border border-black ml-8 mb-2"
+                          />
+                        </div>
+                        <button onClick={() => setModalContent(null)}>
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {modalContent === "deliveryOption" && (
+                    <div className=" bg-gray-900 z-[999999] bg-opacity-30  fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+                      <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
+                        <div>
+                          <div className="pl-7">Enter pincode:</div>
+                          <input
+                            type="number"
+                            name="pincode"
+                            value=""
+                            className="border border-black ml-8 mb-2"
+                          />
+                        </div>
+                        <button onClick={() => setModalContent(null)}>
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {modalContent === "calculator" && (
+                    <div className="   fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+                      <div className="  w-1/2 h-5/6  flex flex-col justify-between  gap-4 bg-white rounded-3xl p-7 z-50">
+                        <Calculation priceData={data} />
+                        <button onClick={() => setModalContent(null)}>
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <div className="mt-1 mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-down.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow down"
-                    onClick={handleClick}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="pb-3 text-gray-600 pl-8 -mt-4">
-              Check availability
-            </div>
-            {visible && (
-              <div>
-                <div className="pl-7">Enter pincode:</div>
-                <input
-                  type="number"
-                  name="pincode"
-                  value=""
-                  className="border border-black ml-8 mb-2"
-                />
-              </div>
-            )}
-            <hr />
-            <div className="flex pt-3">
-              <div className="sm:pr-3">
-                <Image
-                  src="/rooms/store-icon.svg"
-                  width={25}
-                  height={25}
-                  alt="store"
-                />
-              </div>
-              <div className="pl-3">In-store</div>
-            </div>
-            <div className="pl-60 -ml-3 -mt-1">
-              {!hidden ? (
-                <div className="mt-1 mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-right-icon.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow right"
-                    onClick={handlefunc}
-                  />
-                </div>
-              ) : (
-                <div className="mt-1 mr-6 cursor-pointer">
-                  <Image
-                    src="/rooms/arrow-circle-down.svg"
-                    width={25}
-                    height={25}
-                    alt="arrow down"
-                    onClick={handlefunc}
-                  />
-                </div>
-              )}{" "}
-            </div>
-            <div className="text-gray-600 pl-9 -mt-4">Check in-store stock</div>
-            {hidden && (
-              <div>
-                <div className="pl-7">Enter city:</div>
-                <input
-                  type="text"
-                  name="city"
-                  value=""
-                  className="border border-black ml-8 mb-2"
-                />
               </div>
             )}
           </div>
@@ -281,25 +324,13 @@ const Card = ({ data }) => {
                   search: "rooms",
                 },
               }}
-              className="memberCheckout my-4 flex items-center justify-center"
+              className="memberCheckout my-2 flex items-center justify-center"
             >
-              <button className="bg-black text-white sm:w-80 w-40 sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button className="bg-black text-white w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300">
                 Buy Now
               </button>
             </Link>
-            <Link
-              href={{
-                pathname: "/checkout",
-                query: {
-                  search: "sample",
-                },
-              }}
-              className="memberCheckout my-4 flex items-center justify-center"
-            >
-              <button className="bg-black text-white  sm:w-80 w-40 sm:h-14 h-6 rounded-full  transition duration-300">
-                Buy Now with in-store request
-              </button>
-            </Link>
+
             <div className="guestCheckout flex justify-center items-center ">
               <button
                 onClick={() => {
@@ -311,11 +342,24 @@ const Card = ({ data }) => {
                       });
                   }
                 }}
-                className="bg-black text-white  sm:w-80 w-40 sm:h-14 h-8 rounded-full transition duration-300"
+                className="bg-black text-white   w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300"
               >
                 Add To Bag
               </button>
             </div>
+            <Link
+              href={{
+                pathname: "/checkout",
+                query: {
+                  search: "sample",
+                },
+              }}
+              className="memberCheckout my-2 flex items-center justify-center"
+            >
+              <button className="border-2 text-black border-solid   w-[100%] sm:h-14 h-8 rounded-full  transition duration-300">
+                Buy Now with in-store request
+              </button>
+            </Link>
           </div>
         </div>
         <ToastContainer

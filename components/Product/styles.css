@@ -44,6 +44,11 @@
   background-color: white;
   overflow-x: auto;
 }
+.stickyDrop {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 
 .price-box {
   /* box-shadow: 0.08em 0.08em 0 rgb(red, 204, 0, 8); */

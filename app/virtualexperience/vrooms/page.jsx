@@ -9,30 +9,39 @@ import { dataRooms } from "@/Model/data";
 import { selectVirtualData } from "@/components/Features/Slices/virtualSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { selectRoom, setSelectedRoom } from "@/components/Features/Slices/virtualDataSlice";
+import {
+  selectRoom,
+  setSelectedRoom,
+} from "@/components/Features/Slices/virtualDataSlice";
 
 const Rooms = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
   const dataSelector = useSelector(selectVirtualData);
   const search = useSearchParams();
-let filteredData = dataSelector.filter((item) => item.category===search.get("category").toLocaleLowerCase());
- 
-useEffect(() => {
-    if (dataSelector&&search.get("category")){
-      let tempData = dataSelector?.filter((item) => item.category===search.get("category")?.toLocaleLowerCase());
+  let filteredData = dataSelector.filter(
+    (item) => item.category === search.get("category").toLocaleLowerCase()
+  );
+
+  useEffect(() => {
+    if (dataSelector && search.get("category")) {
+      let tempData = dataSelector?.filter(
+        (item) => item.category === search.get("category")?.toLocaleLowerCase()
+      );
       setData(tempData);
       // console.log("tempData", tempData);
     }
-  }
-  , [dataSelector]);
+  }, [dataSelector]);
   // console.log("data", data[0]?.rooms);
   useEffect(() => {
-    if(dataSelector===null||dataSelector===undefined||dataSelector.length===0){
+    if (
+      dataSelector === null ||
+      dataSelector === undefined ||
+      dataSelector.length === 0
+    ) {
       router.push("/virtualexperience/category");
     }
-  }
-  , [dataSelector]);
+  }, [dataSelector]);
   const nextHandler = () => {
     if (selectedPage === "vrooms") {
       router.push("/virtualexperience/activities");
@@ -55,23 +64,22 @@ useEffect(() => {
   const dispatch = useDispatch();
   const handleClick = (roomId, roomTitle) => {
     setSelectedActivity((prevSelectedRooms) => {
-    const updatedSelectedRooms = {
-      ...prevSelectedRooms,
-      [roomTitle]: !prevSelectedRooms[roomTitle],
-    };
+      const updatedSelectedRooms = {
+        ...prevSelectedRooms,
+        [roomTitle]: !prevSelectedRooms[roomTitle],
+      };
 
       dispatch(setSelectedRoom(updatedSelectedRooms));
-      
+
       return updatedSelectedRooms;
     });
   };
-  
 
   const addToCart = () => {
     SetIsOPen(true);
     // console.log("selectedrooms", selectedActivity);
   };
-  const prevHandler = () => { 
+  const prevHandler = () => {
     router.push("/virtualexperience/category");
   };
   return (
@@ -79,15 +87,6 @@ useEffect(() => {
       {/* <Header /> */}
 
       <Sidebar selectedPage={selectedPage} onSelectPage={handleSelectPage} />
-      <Image
-        src="/svg/icon/adtocart.svg"
-        width={30}
-        height={30}
-        onClick={() => {
-          addToCart();
-          setShowbuttoncontent(false);
-        }}
-      />
 
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
         {data[0]?.rooms?.map((item) => (
@@ -145,9 +144,7 @@ useEffect(() => {
             pathname: "/virtualexperience/category",
           }}
         >
-          <button
-            className="rounded-2xl px-3 py-1 text-center text-white font-normal bg-[#2F4F4F] "
-          >
+          <button className="rounded-2xl px-3 py-1 text-center text-white font-normal bg-[#2F4F4F] ">
             Previous Question
           </button>
         </Link>
@@ -167,11 +164,9 @@ useEffect(() => {
               query: { category: search.get("category") },
             }}
           >
-          <button
-            className="rounded-2xl px-3 py-1 text-center text-white font-normal bg-[#2F4F4F] "
-          >
-            Next Question
-          </button>
+            <button className="rounded-2xl px-3 py-1 text-center text-white font-normal bg-[#2F4F4F] ">
+              Next Question
+            </button>
           </Link>
         </div>
       </div>

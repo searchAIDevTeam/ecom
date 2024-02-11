@@ -42,7 +42,7 @@ function Card(props) {
           onClick={() => handleclick(props.id, props.category)}
         >
           <Carousel data={props.imgSrc} className="card-img" />
-          <div className="review-icon-container   ">
+          {/* <div className="review-icon-container   ">
             <Image
               src="/images/rev.webp"
               className="h-8 rounded-md cursor-pointer"
@@ -51,12 +51,12 @@ function Card(props) {
               height={40}
               alt="Review Icon"
             />
-          </div>
+          </div> */}
         </div>
         <div className="card-title">
           <div className="card-title-desc">{props.title}</div>
           <div className="card-rating">
-            <img src="/svg/star-full-icon.svg" className="w-6 h-6" alt="" />
+            {/* <img src="/svg/star-full-icon.svg" className="w-6 h-6" alt="" /> */}
 
             {props.rating}
           </div>

@@ -4,11 +4,11 @@ import Image from "next/image";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import Loading from "./Loading";
-// import {
-//   setSelectedcomItems1,
-//   setSelectedcomItems2,
-//   setSelectedcomItems3,
-// } from "../Features/Slices/selectedItemsSlice";
+import {
+  setSelectedcomItems1,
+  setSelectedcomItems2,
+  setSelectedcomItems3,
+} from "../Features/Slices/selectedItemsSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -26,7 +26,6 @@ function App() {
   const [fetchCities, setFetchedCities] = useState(null);
   const [fetchHobbies, setFetchedHobbies] = useState(null);
   const [isLoading, setIsloading] = useState(true);
-  // const dispatch = useDispatch();
   const dispatch = useDispatch();
   const fetchCategories = async () => {
     try {
@@ -54,13 +53,13 @@ function App() {
     }
   };
 
-  const t0 = performance.now();
+  // const t0 = performance.now();
 
   useEffect(() => {
     fetchCategories();
   }, []);
 
-  const t1 = performance.now();
+  // const t1 = performance.now();
   // console.log(`fetchCategories took ${t1 - t0} milliseconds.`);
   // console.log(fetchedCategories);
   const [openPopUp1, setOpenPopUp1] = useState(true);
@@ -99,16 +98,24 @@ function App() {
       (item) => item.label === label && item.parentCategory === parentCategory
     );
 
-    setSelectedItems1((prevSelectedItems) =>
-      isSelected
-        ? prevSelectedItems.filter(
-            (item) =>
-              !(item.label === label && item.parentCategory === parentCategory)
-          )
-        : [...prevSelectedItems, { label, parentCategory }]
-    );
+    const newSelectedItems1 = isSelected
+      ? selectedItems1.filter(
+          (item) =>
+            !(item.label === label && item.parentCategory === parentCategory)
+        )
+      : [...selectedItems1, { label, parentCategory }];
 
-    // dispatch(setSelectedcomItems1({ items1: selectedItems1 }));
+    setSelectedItems1(newSelectedItems1);
+    // setSelectedItems1((prevSelectedItems) =>
+    //   isSelected
+    //     ? prevSelectedItems.filter(
+    //         (item) =>
+    //           !(item.label === label && item.parentCategory === parentCategory)
+    //       )
+    //     : [...prevSelectedItems, { label, parentCategory }]
+    // );
+
+    dispatch(setSelectedcomItems1({ items1: selectedItems1 }));
   };
 
   const toggleItemSelection2 = (label) => {
@@ -119,7 +126,7 @@ function App() {
         : [...prevSelectedItems, label]
     );
 
-    // dispatch(setSelectedcomItems2({ items2: selectedItems2 }));
+    dispatch(setSelectedcomItems2({ items2: selectedItems2 }));
   };
 
   const toggleItemSelection3 = (label) => {
@@ -129,7 +136,7 @@ function App() {
         ? prevSelectedItems.filter((item) => item !== label)
         : [...prevSelectedItems, label]
     );
-    // dispatch(setSelectedcomItems3({ items3: selectedItems3 }));
+    dispatch(setSelectedcomItems3({ items3: selectedItems3 }));
   };
 
   useEffect(() => {
@@ -193,6 +200,12 @@ function App() {
     selectedItems3
   );
 
+  let id;
+
+  if (typeof window !== "undefined") {
+    id = localStorage.getItem("deviceId");
+  }
+
   const done = async () => {
     setOpenPopUp3(false);
     setOpenPopUp2(false);
@@ -203,13 +216,15 @@ function App() {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/preferences`,
         {
-          deviceId: localStorage.getItem("deviceid"),
+          deviceId: id,
           userPreferredCities: preferencesDataToSendToBackend.preferredCities,
           userPreferredHobbies: preferencesDataToSendToBackend.preferredHobbies,
           userPreferredCategories:
             preferencesDataToSendToBackend.preferredCategories,
-        }
+        },
+        { withCredentials: true }
       );
+
       // console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
 
       const data = response.data;
@@ -252,7 +267,9 @@ function App() {
               <Loading />
             ) : (
               <>
-               <div className="flex-grow basis-1/6 text-lg font-bold">Select according to your choice</div>
+                <div className="flex-grow basis-1/6 text-lg font-bold">
+                  Select according to your choice
+                </div>
                 <div className="flex-grow basis-4/6 overflow-auto overflow-x-hidden overflow-y-scroll images">
                   {fetchedCategories &&
                     fetchedCategories.map((category, index) => (
@@ -345,9 +362,9 @@ function App() {
                     ))}
                 </div>
                 <div className="flex-grow basis-1/6">
-                <button className="next" onClick={handleNext}>
-              Next
-            </button>
+                  <button className="next" onClick={handleNext}>
+                    Next
+                  </button>
                 </div>
               </>
             )}
@@ -358,7 +375,9 @@ function App() {
       {openPopUp2 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
-          <div className="flex-grow basis-1/6 text-lg font-bold">Select according to your choice</div>
+            <div className="flex-grow basis-1/6 text-lg font-bold">
+              Select according to your choice
+            </div>
             <p className="text mb-4 images2">Cities</p>
             <div className="grid grid-cols-3 gap-x-4 basis-4/6 overflow-auto overflow-x-hidden flex-grow ">
               {fetchCities &&
@@ -389,11 +408,10 @@ function App() {
                 ))}
             </div>
             <div className="flex-grow basis-1/6">
-            <button className="next" onClick={goTo}>
-              Next
-            </button>
+              <button className="next" onClick={goTo}>
+                Next
+              </button>
             </div>
-
           </div>
           {/* <div className="w-[600px] p-2 pl-6 fixed-button"></div> */}
         </div>
@@ -401,7 +419,9 @@ function App() {
       {openPopUp3 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
-          <div className="flex-grow basis-1/6 text-lg font-bold">Select according to your choice</div>
+            <div className="flex-grow basis-1/6 text-lg font-bold">
+              Select according to your choice
+            </div>
             <div className="head images3">
               <img
                 src="/images/back.webp"
@@ -444,17 +464,16 @@ function App() {
               </>
             )}
             <div className="flex-grow basis-1/6">
-            <button
-              className={`next self-end mt-6 
+              <button
+                className={`next self-end mt-6 
                     ${isMinItemsSelected ? "bg-red-700" : "bg-red-200"}
                     `}
-              onClick={done}
-              // disabled={!isMinItemsSelected}
-            >
-              Done
-            </button>
+                onClick={done}
+                // disabled={!isMinItemsSelected}
+              >
+                Done
+              </button>
             </div>
-
           </div>
           {/* <div className="w-[600px] p-2 pl-6 fixed-button"></div> */}
         </div>

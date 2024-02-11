@@ -12,10 +12,10 @@
 .text-position {
   text-align: center;
 }
+
 .image-comparison {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 20px auto;
-  border-radius: 20px;
   overflow: hidden;
 }
 
@@ -29,9 +29,9 @@
 .image-comparison .images-container {
   position: relative;
   display: flex;
-  border: solid black 1px;
-  height: 600px;
-  width: 1100px;
+  border: none;
+  height: 350px;
+  width: 1000px;
 }
 
 .image-comparison .images-container .before-image {
@@ -59,8 +59,8 @@
 .image-comparison .slider-line {
   position: absolute;
   height: 100%;
-  width: 4px;
-  background: #c52a2a;
+  width: 5px;
+  background: #fff;
   left: 30%;
   transform: translateX(-50%);
   z-index: 2;
@@ -69,9 +69,10 @@
 .image-comparison .slider-icon {
   position: absolute;
   left: 30%;
-  top: 20%;
+  top: 50%;
   width: 60px;
   height: 60px;
+  background-color: #fff;
   /* transform: translate(-50%, -50%) rotateZ(90deg); */
   transform: translate(-50%, -50%) rotateZ(90deg);
   z-index: 2;
@@ -91,8 +92,8 @@
 .image-comparison .slider-line-2 {
   position: absolute;
   height: 100%;
-  width: 4px;
-  background: #0fbb2b;
+  width: 5px;
+  background: #fff;
   left: 70%;
   transform: translateX(-50%);
 }
@@ -100,9 +101,9 @@
 .image-comparison .slider-icon-2 {
   position: absolute;
   left: 70%;
-  top: 80%;
+  top: 50%;
   width: 60px;
   height: 60px;
-  color: #10bd27;
+  background: #fff;
   transform: translate(-50%, -50%) rotateZ(90deg);
 }

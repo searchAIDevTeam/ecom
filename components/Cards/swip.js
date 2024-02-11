@@ -37,7 +37,7 @@ function Carousel({ data }) {
             height={300}
             width={300}
          
-            className={slide === idx ? "slide" : "slide slide-hidden"}
+            className={slide === idx ? "h-full w-full" : "slide-hidden"}
           />
         );
       })}

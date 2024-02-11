@@ -85,7 +85,7 @@ const RoomPage = () => {
               <RoomInfo data={data} />
             </div>
             <div className="sm:basis-1/3 flex flex-col  ">
-              <div className="sm:sticky flex top-12 mb-16 ml-0">
+              <div className="sm:sticky flex top-9 mb-16 ml-0">
                 <Card data={data} />
               </div>
             </div>

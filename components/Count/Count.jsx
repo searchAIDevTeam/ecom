@@ -6,14 +6,18 @@ import {
 import { useDispatch } from "react-redux";
 function IncDecCounter() {
   const dispatch = useDispatch();
-  let [num, setNum] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const handleClickVisible = () => {
+    setVisible(true);
+  };
+  let [num, setNum] = useState(1);
   let incNum = () => {
     if (num < 10) {
       setNum(Number(num) + 1);
     }
   };
   let decNum = () => {
-    if (num > 0) {
+    if (num > 1) {
       setNum(num - 1);
     }
   };
@@ -23,30 +27,34 @@ function IncDecCounter() {
 
   return (
     <>
-      <div className="flex gap-2 items-center">
-        <div className="input-group inline-flex rounded-full border  ">
+      <div className="flex mt-[5px] items-center">
+        <div className="input-group p-[3px] inline-flex rounded-full border text-xl font-medium">
           <div class="input-group-prepend">
             <button
-              className=" hover:bg-slate-400  w-10 h-10 rounded-full"
+              className="hover:bg-zinc-200  w-9 h-9 rounded-full"
               type="button"
-              onClick={decNum}
+              onClick={() => {
+                decNum();
+                handleClickVisible();
+              }}
             >
               -
             </button>
           </div>
           <input
             type="text"
-            className="form-control text-center inline-flex"
+            className="form-control w-[30px] text-center inline-flex"
             value={num}
             onChange={handleChange}
-
-            
           />
           <div class="input-group-prepend">
             <button
-              className=" hover:bg-slate-400  w-10 h-10 rounded-full"
+              className="hover:bg-zinc-200  w-9 h-9 rounded-full"
               type="button"
-              onClick={incNum}
+              onClick={() => {
+                incNum();
+                handleClickVisible();
+              }}
             >
               +
             </button>
@@ -54,7 +62,9 @@ function IncDecCounter() {
         </div>
         <div class="">
           <button
-            className=" bg-blue-800  text-white  rounded-full border  px-7 text-sm items-center justify-center"
+            className={` bg-black  h-9 w-auto text-white  rounded-full border  px-7 text-sm items-center justify-center
+            ${visible === true ? "block" : "hidden"}
+            `}
             type="button"
             onClick={() => {
               dispatch(updateQuantity(num));
@@ -62,7 +72,7 @@ function IncDecCounter() {
           >
             <span>Add&nbsp;{num}</span>
             <span>&nbsp;items to </span>
-            <span>cart</span>
+            <span>buy</span>
           </button>
         </div>
       </div>
