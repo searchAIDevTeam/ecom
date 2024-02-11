@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import * as THREE from "three";
+// import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useSelector } from "react-redux";
 import {
   selectproductdata,
