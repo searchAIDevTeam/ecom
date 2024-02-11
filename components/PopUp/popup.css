@@ -57,7 +57,7 @@ body {
   box-shadow: 0px 0px 0px 500px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
-  padding: 25px; 
+  padding: 25px;
   z-index: 9999;
   position: fixed;
   top: 12vh;
@@ -87,19 +87,19 @@ body {
     color: white;
   } */
 }
-.images{
+.images {
   margin-top: -3rem;
 }
-.images::-webkit-scrollbar { /* WebKit */
+.images::-webkit-scrollbar {
+  /* WebKit */
   width: 0;
   height: 0;
 }
-.images2{
+.images2 {
   margin-top: -1.5rem;
 }
 
-
-.images3{
+.images3 {
   margin-top: -1.5rem;
 }
 .below {
@@ -184,7 +184,7 @@ body {
 
 @media screen and (max-width: 450px) {
   .cont1 {
-    width: 80vh;
+    width: 90vw;
     height: 60vh;
     border-radius: 2px;
     background-color: white;
@@ -200,7 +200,7 @@ body {
   }
   .next {
     padding: 8px;
-    width: 90vw;
+    width: 100%;
     margin-top: 0.5rem;
     color: white;
     background-color: black;
@@ -219,7 +219,7 @@ body {
   }
   .popup1 {
     top: 10%;
-    left: 3%;
+    left: 5%;
     width: 90vw;
     height: 80vh;
     max-height: 80vh;

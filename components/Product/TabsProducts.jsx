@@ -6,12 +6,6 @@ import { useDispatch } from "react-redux";
 import { useRouter, usePathname } from "next/navigation";
 import { setselectedproduct } from "../Features/Slices/compareSlice";
 import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-} from "@nextui-org/react";
-import {
   srtarr,
   typeContent,
   typearr,
@@ -28,8 +22,10 @@ import {
   renderCollection,
   rendersizewidth,
   renderSortItem,
+  renderColor,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
+import Measure from "./meausrement";
 const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
@@ -47,7 +43,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   const [openSort, setOpenSort] = React.useState(false);
 
   const handleOpen = () => {
-    setOpenSort(!openSort);
+    if (
+      openSize === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false &&
+      openCaategory === false
+    ) {
+      setOpenSort(!openSort);
+    }
   };
   const [openAllsort, setopenallsort] = useState(false);
   const handleAllsort = () => {
@@ -59,10 +64,19 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   };
 
   const [openSize, setOpenSize] = useState(false);
-
   const handleSize = () => {
-    setOpenSize(!openSize);
+    if (
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false &&
+      openCaategory === false
+    ) {
+      setOpenSize(!openSize);
+    }
   };
+
   const [openAllSize, setOpenAllSIze] = useState(false);
   const handleAllSize = () => {
     setOpenAllSIze(!openAllSize);
@@ -71,7 +85,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   // collection
   const [openCollection, setOpenCollection] = useState(false);
   const handleCollection = () => {
-    setOpenCollection(!openCollection);
+    if (
+      openSize === false &&
+      openSort === false &&
+      opencolor === false &&
+      openType === false &&
+      openAll === false &&
+      openCaategory === false
+    ) {
+      setOpenCollection(!openCollection);
+    }
   };
 
   const [openAllCollection, setOpenAllCollection] = useState(false);
@@ -93,7 +116,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [opencolor, setOpenColor] = useState(false);
   const handlecolor = () => {
-    setOpenColor(!opencolor);
+    if (
+      openSize === false &&
+      openSort === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false &&
+      openCaategory === false
+    ) {
+      setOpenColor(!opencolor);
+    }
   };
 
   const [openAllcolor, setOpenAllcolor] = useState(false);
@@ -102,7 +134,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   };
   const [openCaategory, setOpenCategory] = useState(false);
   const handleCategory = () => {
-    setOpenCategory(!openCaategory);
+    if (
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false &&
+      openSize === false
+    ) {
+      setOpenCategory(!openCaategory);
+    }
   };
   const [openAllCategory, setOpenAllCategory] = useState(false);
   const handleAllCategory = () => {
@@ -124,7 +165,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [openType, setOpenType] = useState(false);
   const handleType = () => {
-    setOpenType(!openType);
+    if (
+      openSize === false &&
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openAll === false &&
+      openCaategory === false
+    ) {
+      setOpenType(!openType);
+    }
   };
   const [openContent, setOpenCOntent] = useState(false);
   const handleContent = () => {
@@ -133,7 +183,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [openAll, setOpenAll] = useState(false);
   const handleAll = () => {
-    setOpenAll(true);
+    if (
+      openSize === false &&
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false &&
+      openCaategory === false
+    ) {
+      setOpenAll(true);
+    }
   };
   const closeAll = () => {
     setOpenAll(false);
@@ -144,8 +203,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     setopenallsort(false);
   };
 
-  const commonClasses =
-    "px-3 py-2 mr-2.5 rounded-full flex items-center  bg-gray-100 whitespace-nowrap";
+  const commonClasses = "px-3 py-2 mr-2.5 rounded-full flex  whitespace-nowrap";
 
   // logic for stikey
   useEffect(() => {
@@ -239,42 +297,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   const activebtn =
     selectedpdt.length < 2 ? "bg-gray-300 text-white" : "bg-black text-white";
 
-  const [stickyDropdown, setStickyDropdown] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      const mainImagePdt = document.querySelector(".stickyDrop");
-      const dropdown = document.querySelector(".main-image-pdt"); // Assuming this is the class of the dropdown button
-
-      if (mainImagePdt && dropdown) {
-        const mainImage = mainImagePdt.offsetHeight;
-        const dropdownBottom =
-          dropdown.getBoundingClientRect().bottom + window.scrollY;
-        const windowBottom = window.scrollY;
-
-        if (dropdownBottom <= windowBottom + mainImage) {
-          mainImagePdt.style.position = "relative"; // Stop being sticky
-        } else {
-          mainImagePdt.style.position = "sticky"; // Be sticky
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []); // Run this effect only once on component mount
-
   return (
     <>
-      <div className="wrapper  sm:px-[50px] px-[20px] mt-20 w-full h-full">
+      <div className="wrapper sm:px-[50px] px-[20px] mt-20 relative ">
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
         <div
           className={`
-          sidebarforstickey
-           cursor-pointer sm:mb-0 
+          sidebarforstickey sticky bg-white top-0 h-20
+           cursor-pointer sm:mb-0 z-[99999]
       
        `}
         >
@@ -282,11 +314,12 @@ const Tabs = ({ filteredProductData, heading, param }) => {
             ""
           ) : (
             <div
-              className={`bg-white py-5 bloc-tabs2 flex flex-row relative z-[999999] overflow-hidden`}
+              className={`py-5 bloc-tabs2 flex flex-row overflow-hidden h-[36rem]`}
             >
               <TabsProductContent
                 filterName={"Sort"}
                 commonClasses={commonClasses}
+                //isFilterOpen is to open the dropdown
                 isFilterOpen={openSort}
                 handleAll={handleAll}
                 handleTabClick={handleTabClick}
@@ -296,101 +329,25 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 renderFilter={(text, idx) =>
                   renderSortItem(text, idx, handleSorting)
                 }
-                stickyDrop={"stickyDrop"}
               />
 
               {/* Size - dropdown2 */}
-              <TabsProductContent
-                filterName={"Size"}
-                commonClasses={commonClasses}
-                isFilterOpen={openSize}
-                handleAll={handleAll}
-                handleTabClick={handleTabClick}
-                handleFilter={handleSize}
-                handleAllFilter={handleAllSize}
-                filterArr={Size}
-                renderFilter={rendersizewidth}
-              />
-
-              {/* Color - dropdown3 */}
-
-              <div>
-                <Popover
-                  placement="bottom-start"
-                  isOpen={opencolor}
-                  onOpenChange={() => {
-                    if (
-                      typeof window !== "undefined" &&
-                      window.innerWidth <= 450
-                    ) {
-                      handleAll();
-                      handleTabClick();
-                      handleAllcolor();
-                    } else {
-                      handlecolor();
-                      handleTabClick();
-                    }
-                  }}
-                >
-                  <PopoverTrigger>
-                    <button
-                      className={`Tabbtn 
-                      ${
-                        opencolor
-                          ? `active-tabs  border border-black ${commonClasses}`
-                          : `tabS  border border-white ${commonClasses}`
-                      }
-                      ${
-                        typeof window !== "undefined" &&
-                        window.innerWidth <= 450
-                          ? " justify-center"
-                          : " justify-between"
-                      }
-                      `}
-                    >
-                      Color &nbsp;
-                      <Image
-                        src="/svg/dropdown/backarrow.svg"
-                        width={40}
-                        height={40}
-                        className={`w-6 h-6  mt-1 sm:block hidden
-                    ${opencolor ? " rotate-90" : "-rotate-90"}
-                    
-                    `}
-                        alt=""
-                      />
-                    </button>
-                  </PopoverTrigger>
-
-                  <PopoverContent>
-                    {opencolor ? (
-                      <div className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80 ">
-                        <div className="grid grid-cols-3 gap-6">
-                          {colorarr.map((text, idx) => (
-                            <div
-                              className="flex flex-col items-center justify-center"
-                              key={idx}
-                            >
-                              <div
-                                onClick={() => handleClick(idx)}
-                                className={`${text.class}  ${
-                                  selectedCircle.includes(idx)
-                                    ? "outline outline-2"
-                                    : ""
-                                } `}
-                              ></div>
-                              <p>{text.name}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ) : null}
-                  </PopoverContent>
-                </Popover>
+              <div className="">
+                <TabsProductContent
+                  filterName={"Size"}
+                  commonClasses={commonClasses}
+                  isFilterOpen={openSize}
+                  handleAll={handleAll}
+                  handleTabClick={handleTabClick}
+                  handleFilter={handleSize}
+                  handleAllFilter={handleAllSize}
+                  filterArr={Size}
+                  renderFilter={rendersizewidth}
+                />
               </div>
 
               {/* Design style - dropdown4 */}
-              {heading === "Wallpaper" ? (
+              {pathname.includes("Wallpaper") ? (
                 <TabsProductContent
                   filterName={"Design style"}
                   commonClasses={commonClasses}
@@ -403,6 +360,19 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   renderFilter={rendercategory}
                 />
               ) : null}
+
+              {/* Color dropdown */}
+              <TabsProductContent
+                filterName={"Colors"}
+                commonClasses={commonClasses}
+                isFilterOpen={opencolor}
+                handleAll={handleAll}
+                handleTabClick={handleTabClick}
+                handleFilter={handlecolor}
+                handleAllFilter={handleAllcolor}
+                filterArr={colorarr}
+                renderFilter={renderColor}
+              />
 
               {/* Collections - filter */}
               <TabsProductContent
@@ -441,17 +411,15 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     handleAll();
                     handleTabClick();
                   }}
-                  className={`Tabbtn z-0 
-                  ${
-                    openAll
+                  className={`Tabbtn z-0 bg-gray-100
+                  ${openAll
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    typeof window !== "undefined" && window.innerWidth <= 450
+                    }
+                  ${typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
                       : " justify-between"
-                  }
+                    }
                   `}
                 >
                   All Filters &nbsp;
@@ -537,6 +505,39 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                           ) : null}
                         </div>
                         <hr />
+                        {/* design style for wallpaper */}
+                        {pathname.includes("Wallpaper") ? (
+                          <>
+                            <div className="flex flex-col gap-7">
+                              <div
+                                onClick={handleAllCategory}
+                                className="flex justify-between text-left"
+                              >
+                                Design style &nbsp;
+                                <Image
+                                  src="/svg/dropdown/backarrow.svg"
+                                  width={40}
+                                  height={40}
+                                  className={`w-6 h-6  mt-1
+                ${openAllCategory ? " rotate-90" : "-rotate-90"}
+                
+                `}
+                                  alt=""
+                                />
+                              </div>
+                              {openAllCategory ? (
+                                <div className="flex flex-col gap-7">
+                                  {/* <p className="font-semibold text-left">Width</p> */}
+                                  {categoryarr.map(rendercategory)}
+                                  {/* 
+                            <p className="font-semibold text-left">Height</p>
+                            {htarr.map(rendersizewidth)} */}
+                                </div>
+                              ) : null}
+                            </div>
+                            <hr />
+                          </>
+                        ) : null}
                         {/* ****************************** */}
                         {/* 3rd div */}
                         <div className="flex flex-col gap-7">
@@ -558,7 +559,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                           </div>
                           {openAllcolor ? (
                             <div className="flex flex-col gap-7">
-                              {colorarr.map(renderSortItem)}
+                              {colorarr.map(renderColor)}
                             </div>
                           ) : null}
                         </div>
@@ -654,9 +655,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
                               <button
                                 onClick={handleContent}
-                                className={`text-left underline ${
-                                  openContent ? "block" : "hidden"
-                                }`}
+                                className={`text-left underline ${openContent ? "block" : "hidden"
+                                  }`}
                               >
                                 Less
                               </button>
@@ -679,100 +679,96 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               </div>
             </div>
           )}
-
-          <hr />
-          {/* iimages */}
-          <div className="relative  flex flex-col image-product z[-99999] ">
-            <div className="text-right">
-              {showCompare && (
-                <button
-                  onClick={handleCompareClick}
-                  disabled={selectedpdt.length < 2}
-                  className={`bg-black text-white px-3 py-2 whitespace-nowrap rounded-full ${activebtn} `}
-                >
-                  Compare Products
-                </button>
-              )}
-            </div>
-            <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
-              {filterData.map((text, idx) => (
-                <div
-                  className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
-                  key={idx}
-                  onClick={() => handlenav(text._id)}
-                >
-                  <div className="relative  z[-999999]">
-                    <div
-                      onClick={(event) => event.stopPropagation()}
-                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
-                        selectedpdt.includes(text) ? "visible" : ""
+        </div>
+        <hr />
+        {/* iimages */}
+        <div
+          className="
+          flex flex-col image-product "
+        >
+          <div className="text-right">
+            {showCompare && (
+              <button
+                onClick={handleCompareClick}
+                disabled={selectedpdt.length < 2}
+                className={`bg-black text-white px-3 py-2 whitespace-nowrap rounded-full ${activebtn} `}
+              >
+                Compare Products
+              </button>
+            )}
+          </div>
+          <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
+            {filterData.map((text, idx) => (
+              <div
+                className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
+                key={idx}
+                onClick={() => handlenav(text._id)}
+              >
+                <div className=" relative w-[250px] h-[250px] z[-999999]">
+                  <div
+                    onClick={(event) => event.stopPropagation()}
+                    className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${selectedpdt.includes(text) ? "visible" : ""
                       }`}
-                    >
-                      <input
-                        type="checkbox"
-                        onChange={(e) => {
-                          handleCheckbox(text, e.target.checked);
-                          setShowcompare(true);
-                        }}
-                        checked={selectedpdt.includes(text)}
-                      />
-                    </div>
-                    {/* <div className=" w-[260px] h-[150px]"> */}
-                    <Image
-                      src={text.images[0]}
-                      alt=""
-                      width={260}
-                      height={150}
-                      className="object-cover object-center w-[260px] h-[150px]"
-                      // className="absolute "
-                      // layout="fill"
-                      // objectFit="contain"
+                  >
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        handleCheckbox(text, e.target.checked);
+                        setShowcompare(true);
+                      }}
+                      checked={selectedpdt.includes(text)}
                     />
-                    {/* </div> */}
                   </div>
-
-                  <p className="text-sm font-semibold">{text.productTitle}</p>
-                  <p className="text-sm">{text.productDescription}</p>
-                  <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
-                    Rs. <span className="text-3xl"> {text.totalPrice}</span>
-                  </p>
-                  <p className="flex flex-row items-center gap-1 text-sm text-black">
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                    <Image
-                      src="/svg/icon/half-star.svg"
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                  </p>
+                  <Image
+                    src={text.images[0]}
+                    alt=""
+                    className="absolute "
+                    layout="fill"
+                  />
                 </div>
-              ))}
-            </div>
+
+                <p className="text-sm font-semibold">{text.productTitle}</p>
+                <p className="text-sm">{text.productDescription}</p>
+                <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
+                  Rs. <span className="text-3xl"> {text.totalPrice}</span>
+                </p>
+                <p className="flex flex-row items-center gap-1 text-sm text-black">
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                  <Image
+                    src="/svg/icon/half-star.svg"
+                    alt="star"
+                    width={15}
+                    height={15}
+                  />
+                </p>
+              </div>
+            ))}
           </div>
         </div>
+        <Measure filteredProductData={filteredProductData} />
       </div>
     </>
   );

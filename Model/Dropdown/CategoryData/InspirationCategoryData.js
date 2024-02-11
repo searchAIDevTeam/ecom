@@ -1,7 +1,7 @@
 export const inspirationCategoryData = [
     {
       categoryId: 1,
-      categoryHeading: "SHOP ROOMS",
+      categoryHeading: "Rooms",
       categoryData: [
         { id: 1, text: "Living room" },
         { id: 2, text: "Dining room" },
@@ -12,7 +12,7 @@ export const inspirationCategoryData = [
     },
     {
       categoryId: 2,
-      categoryHeading: "DESIGN RESOURCES",
+      categoryHeading: "Design Resources",
       categoryData: [
         { id: 1, text: "Room planner - Design Online" },
         { id: 2, text: "Free Design services" },
@@ -20,7 +20,7 @@ export const inspirationCategoryData = [
     },
     {
       categoryId: 3,
-      categoryHeading: "FEATURED",
+      categoryHeading: "Featured",
       categoryData: [
         { id: 1, text: "Request for catalog" },
         { id: 2, text: "Near Ayatrio tour" },

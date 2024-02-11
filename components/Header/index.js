@@ -96,13 +96,27 @@ function Header({ howMuchScrolled }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  if (typeof window !== "undefined" && window.scrollY > 20) {
+  }
+
   const homeRoute = "/home";
 
   return (
     <div>
-      
+      {homeRoute === pathname && typeof window !== "undefined" ? (
+        window.scrollY < 20 ? (
+          <TopHeader />
+        ) : null
+      ) : null}
       <div
-        className={`fixed w-full sm:bg-none ${homeRoute===pathname?'top-[0px]':'top-0'} z-[99999]
+        className={`fixed w-screen sm:bg-none ${
+          homeRoute === pathname
+            ? window.scrollY < 20
+              ? "sm:top-[35px] top-[48px]"
+              : "top-0"
+            : "top-0"
+        } z-[99999]
        ${isScrolled ? "bg-white" : "bg-white"} 
       
       
@@ -115,9 +129,9 @@ function Header({ howMuchScrolled }) {
           <div
             className={`${
               isScrolled ? "border-b-[0.5px] border-slate-200" : ""
-            }  flex flex-row justify-between items-center sm:px-[30px] mt-[30px] px-[10px] py-0`}
+            }  flex flex-row justify-between items-center sm:px-[30px] px-[10px] py-0`}
           >
-            <div className="sm:gap-5 gap-1 flex flex-row items-center justify-start w-1/3">
+            <div className="flex flex-row items-center justify-start w-1/3 gap-1 sm:gap-5 ">
               <div className="profile-menu font-bold p-[7px] hover:bg-zinc-100 hover:rounded-full">
                 <Menu />
               </div>
@@ -145,12 +159,13 @@ function Header({ howMuchScrolled }) {
                     alt="logo"
                     width={300}
                     height={40}
-                    className="sm:w-40 w-40 m-2"
+                    priority
+                    className="p-2 sm:w-44"
                   />
                 </Link>
               </div>
             </div>
-            <div className="flex flex-row gap-2 items-center justify-end w-1/3">
+            <div className="flex flex-row items-center justify-end w-1/3 gap-2">
               <div
                 onClick={handleModalOpen}
                 className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer sm:block hidden"
@@ -158,7 +173,7 @@ function Header({ howMuchScrolled }) {
                 <Image
                   src="/svg/icon/search.svg"
                   alt=""
-                  className="seachbar-div2-icon absolute z-10"
+                  className="absolute z-10 seachbar-div2-icon"
                   width={30}
                   height={30}
                 />

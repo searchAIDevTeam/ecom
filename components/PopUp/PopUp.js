@@ -221,8 +221,7 @@ function App() {
           userPreferredHobbies: preferencesDataToSendToBackend.preferredHobbies,
           userPreferredCategories:
             preferencesDataToSendToBackend.preferredCategories,
-        },
-        { withCredentials: true }
+        }
       );
 
       // console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
@@ -257,6 +256,22 @@ function App() {
   // console.log("from selecteditems1", Items1selected);
   // console.log("from selecteditems2", Items2selected);
   // console.log("from selecteditems3", Items3selected);
+
+  useEffect(() => {
+    const value =
+      JSON.stringify(preferencesDataToSendToBackend.preferredCities) +
+      "," +
+      JSON.stringify(preferencesDataToSendToBackend.preferredHobbies) +
+      "," +
+      JSON.stringify(preferencesDataToSendToBackend.preferredCategories) +
+      ",";
+
+    const date = new Date();
+    date.setTime(date.getTime() + 12 * 30 * 24 * 60 * 60 * 1000); // Cookie will expire after 1 year
+    const expires = "; expires=" + date.toUTCString();
+
+    document.cookie = "preference=" + value + expires + "; path=/";
+  }, [preferencesDataToSendToBackend]);
 
   return (
     <div className="App ">
@@ -312,7 +327,7 @@ function App() {
                                               category.name
                                         )
                                           ? "selected"
-                                          : ""
+                                          : " "
                                       }`}
                                       onClick={() =>
                                         toggleItemSelection1(
@@ -325,7 +340,7 @@ function App() {
                                       }}
                                     >
                                       <Image
-                                        src="/svg/icon/circletick.svg"
+                                        src="/svg/icon/tick.svg"
                                         height={20}
                                         width={20}
                                         alt="tick"
@@ -394,7 +409,7 @@ function App() {
                       }}
                     >
                       <Image
-                        src="/svg/icon/circletick.svg"
+                        src="/svg/icon/tick.svg"
                         height={20}
                         width={20}
                         alt="close"
@@ -449,7 +464,7 @@ function App() {
                         key={index}
                       >
                         <Image
-                          src="/svg/icon/circletick.svg"
+                          src="/svg/icon/tick.svg"
                           height={20}
                           width={20}
                           alt="close"

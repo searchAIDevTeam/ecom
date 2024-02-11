@@ -2,10 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Label from "../Label/Label";
 
-
-const meausrement = ({filteredProductData}) => {
+const meausrement = ({ filteredProductData }) => {
   return (
-    <div className="flex sm:flex-row w-full h-auto flex-col sm:px-[50px] px-[20px] relative overflow-hidden ">
+    <div className="flex sm:flex-row w-full h-auto flex-col relative overflow-hidden ">
       <div className="relative max-h-[500px] ">
         <Image
           src="/product/curtain.avif"
@@ -14,8 +13,8 @@ const meausrement = ({filteredProductData}) => {
           height={300}
           style={{ objectFit: "cover" }}
         />
-      <div className="carcular-conui top-16 left-48  absolute rounded-full w-[30px] h-[30px]">
-        <Label/>
+        <div className="carcular-conui top-16 left-48  absolute rounded-full w-[30px] h-[30px]">
+          <Label />
         </div>
         <div className="carcular-conui absolute top-8 left-[26rem] rounded-full w-[30px] h-[30px]">
           <Label />
@@ -25,10 +24,19 @@ const meausrement = ({filteredProductData}) => {
         <div className="flex flex-col ">
           <div>Where we found happiness</div>
           <div>
-            <p>"When you design your house, you tend to do everything that is right for you. Ayatrio has actually turned our dream into reality"</p>
+            <p>
+              "When you design your house, you tend to do everything that is
+              right for you. Ayatrio has actually turned our dream into reality"
+            </p>
           </div>
           <div className="flex flex-row feedcon">
-            <Image src="/product/sunita chayan.JPG" width={45} height={45} alt="arrow" className="usercon rounded-full" />
+            <Image
+              src="/product/sunita chayan.JPG"
+              width={45}
+              height={45}
+              alt="arrow"
+              className="usercon rounded-full"
+            />
             <p>Sunitha Roy</p>
           </div>
         </div>

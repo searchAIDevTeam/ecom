@@ -62,14 +62,14 @@ export default function BasicMenu() {
       {anchorEl ? (
         <>
           <div
-            className={`absolute dropdown-content z-50 h-[100vh] overflow-auto top-16 left-0 w-full bg-white shadow-md flex flex-col
+            className={`absolute dropdown-content z-50 h-auto pb-[30px] overflow-auto top-16 left-0 w-full bg-white shadow-md flex flex-col
 transition-all ease-linear duration-2000 
 ${mainContent ? "block" : "hidden"}
 `}
             onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
           >
             {/* for desktop */}
-            <div className="px-[60px] mt-20 sm:flex sm:gap-16 hidden">
+            <div className="px-[60px] mt-[50px] sm:flex sm:gap-16 hidden">
                 {
                   menutext.map((category)=>{
                     return (
@@ -77,13 +77,13 @@ ${mainContent ? "block" : "hidden"}
                         <CategoryContent 
                           categoryHeading={category.lebel} 
                           categoryData={category.text}
-                          headingSize="text-2xl"
-                          headingStyle="font-bold"
-                          headingColor="text-gray-700"
+                          headingSize="text-md"
+                          headingStyle="font-semibold"
+                          headingColor="text-black"
                           gapHeadingItems="gap-8"
                           itemsGap="gap-5"
-                          textSize="text-lg"
-                          textStyle="font-semibold"
+                          textSize="text-sm"
+                          textStyle="font-medium"
                           textColor="text-gray-600"
                           displayedOn="menu"
                         />
