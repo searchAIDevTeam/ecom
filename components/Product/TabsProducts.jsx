@@ -423,7 +423,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     handleAll();
                     handleTabClick();
                   }}
-                  className={`Tabbtn z-0 bg-gray-100
+                  className={`Tabbtn z-0 bg-gray-200
                   ${openAll
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`

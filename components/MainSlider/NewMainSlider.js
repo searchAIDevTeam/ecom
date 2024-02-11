@@ -66,6 +66,7 @@ export default function NewMainSlider() {
         }}
         style={{
           marginLeft: -60,
+          minHeight: "40rem",
         }}
         // Enabled autoplay mode
         autoplay={{
@@ -108,18 +109,18 @@ export default function NewMainSlider() {
           <div className="relative group h-[70vh] bg-gray-300">
             <Image
               src={sliderApiData[0]?.imgSrc}
-              width={500}
-              height={330}
+              fill
               alt="Swiper"
-              className="swiper-slide object-cover"
+              priority
+              className=" swiper-slide"
             />
-            <div className="absolute bottom-4 left-4 flex text-lg text-white">
+            <div className="absolute flex text-lg text-white bottom-4 left-4">
               {sliderApiData[0]?.imgTitle}
             </div>
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
                 <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                  <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
+                  <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
                 </div>
               </div>
               {hov && (
@@ -128,25 +129,25 @@ export default function NewMainSlider() {
                   onClick={handleTab}
                   onMouseLeave={handleLeave}
                 >
-                  <div className="flex flex-row relative">
+                  <div className="relative flex flex-row">
                     <div
                       className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
                       key={sliderApiData[0]?._id}
                     >
-                      <h2 className="font-bold pt-1 pr-2">
+                      <h2 className="pt-1 pr-2 font-bold">
                         {sliderApiData[0]?.circles[0].circles[0].productTitle}
                       </h2>
-                      <p className="font-normal pb-2">
+                      <p className="pb-2 font-normal">
                         {
                           sliderApiData[0]?.circles[0].circles[0]
                             .productCategory
                         }
                       </p>
-                      <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                      <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
                         ₹{sliderApiData[0]?.circles[0].circles[0].productPrice}
                       </p>
                     </div>
-                    <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                    <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
                       <Image
                         className="flex ml-2"
                         src="/icon/arrow_right.svg"
@@ -168,15 +169,15 @@ export default function NewMainSlider() {
               width={500}
               height={330}
               alt="Swiper"
-              className="swiper-slide object-cover"
+              className="object-cover swiper-slide"
             />
-            <div className="absolute bottom-4 left-4 flex text-lg text-white">
+            <div className="absolute flex text-lg text-white bottom-4 left-4">
               {sliderApiData[1]?.imgTitle}
             </div>
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
                 <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                  <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
+                  <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
                 </div>
               </div>
               {hov && (
@@ -185,22 +186,22 @@ export default function NewMainSlider() {
                   onClick={handleTab}
                   onMouseLeave={handleLeave}
                 >
-                  <div className="flex flex-row relative">
+                  <div className="relative flex flex-row">
                     <div
                       className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
                       key={sliderApiData[1]?._id}
                     >
-                      <h2 className="font-bold pt-1 pr-2">
+                      <h2 className="pt-1 pr-2 font-bold">
                         {sliderApiData[1]?.circles[0].circles[0].productTitle}
                       </h2>
-                      <p className="font-normal pb-2">
+                      <p className="pb-2 font-normal">
                         {sliderApiData[1]?.circles[0].circles[0].productTitle}
                       </p>
-                      <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                      <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
                         {sliderApiData[1]?.circles[0].circles[0].productTitle}
                       </p>
                     </div>
-                    <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                    <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
                       <Image
                         className="flex ml-2"
                         src="/icon/arrow_right.svg"
@@ -222,15 +223,15 @@ export default function NewMainSlider() {
               width={500}
               height={330}
               alt="Swiper"
-              className="swiper-slide object-cover"
+              className="object-cover swiper-slide"
             />
-            <div className="absolute bottom-4 left-4 flex text-lg text-white">
+            <div className="absolute flex text-lg text-white bottom-4 left-4">
               {sliderApiData[2]?.imgTitle}
             </div>
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
               <div onMouseEnter={handleEnter} className="cursor-pointer">
                 <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                  <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
+                  <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
                 </div>
               </div>
               {hov && (
@@ -239,22 +240,22 @@ export default function NewMainSlider() {
                   onClick={handleTab}
                   onMouseLeave={handleLeave}
                 >
-                  <div className="flex flex-row relative">
+                  <div className="relative flex flex-row">
                     <div
                       className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
                       key={sliderApiData[2]?._id}
                     >
-                      <h2 className="font-bold pt-1 pr-2">
+                      <h2 className="pt-1 pr-2 font-bold">
                         {sliderApiData[2]?.circles[0].circles[0].productTitle}
                       </h2>
-                      <p className="font-normal pb-2">
+                      <p className="pb-2 font-normal">
                         {sliderApiData[2]?.circles[0].circles[0].productTitle}
                       </p>
-                      <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                      <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
                         {sliderApiData[2]?.circles[0].circles[0].productTitle}
                       </p>
                     </div>
-                    <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                    <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
                       <Image
                         className="flex ml-2"
                         src="/icon/arrow_right.svg"
@@ -277,15 +278,15 @@ export default function NewMainSlider() {
                 width={500}
                 height={330}
                 alt="Swiper"
-                className="swiper-slide object-cover"
+                className="object-cover swiper-slide"
               />
-              <div className="absolute bottom-4 left-4 flex text-lg text-white">
+              <div className="absolute flex text-lg text-white bottom-4 left-4">
                 {data?.imgTitle}
               </div>
-              <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity opacity-0 group-hover:opacity-100">
                 <div onMouseEnter={handleEnter} className="cursor-pointer">
                   <div className="carcular-conui top-28 left-40 absolute rounded-full w-[30px] h-[30px]">
-                    <div className=" bg-white h-3 w-3 absolute rounded-full carcular-ui"></div>
+                    <div className="absolute w-3 h-3 bg-white rounded-full carcular-ui"></div>
                   </div>
                 </div>
                 {hov && (
@@ -294,22 +295,22 @@ export default function NewMainSlider() {
                     onClick={handleTab}
                     onMouseLeave={handleLeave}
                   >
-                    <div className="flex flex-row relative">
+                    <div className="relative flex flex-row">
                       <div
                         className="flex flex-col basis-3/4 w-36 flex-grow relative ml-1 mr-2.5 pr-4"
                         key={data._id}
                       >
-                        <h2 className="font-bold pt-1 pr-2">
+                        <h2 className="pt-1 pr-2 font-bold">
                           {data.circles[0].circles[0].productTitle}
                         </h2>
-                        <p className="font-normal pb-2">
+                        <p className="pb-2 font-normal">
                           {data.circles[0].circles[0].productCategory}
                         </p>
-                        <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
+                        <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
                           ₹{data.circles[0].circles[0].productPrice}
                         </p>
                       </div>
-                      <div className="absolute right-0 top-0 border-l border-gray-200 flex justify-end items-center h-full pr-1">
+                      <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
                         <Image
                           className="flex ml-2"
                           src="/icon/arrow_right.svg"
