@@ -74,113 +74,20 @@ const Size = [
     name: "90*90*90",
   },
 ];
-// const htarr = [
-//   {
-//     id: 1,
-//     name: "100 cm",
-//     value: "1",
-//   },
-//   {
-//     id: 2,
-//     name: "150 cm",
-//     value: "17",
-//   },
-//   {
-//     id: 3,
-//     name: "250 cm",
-//     value: "76",
-//   },
-//   {
-//     id: 4,
-//     name: "310 cm",
-//     value: "1",
-//   },
-//   {
-//     id: 5,
-//     name: "1000 cm",
-//     value: "1",
-//   },
-// ];
+
 const colorarr = [
-  {
-    id: 1,
-    class:
-      "rounded-full bg-white border border-slate-400 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "White",
-  },
-  {
-    id: 2,
-    class:
-      "rounded-full bg-gray-300 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Grey",
-  },
-  {
-    id: 3,
-    class:
-      "rounded-full bg-yellow-100 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Beige",
-  },
-  {
-    id: 4,
-    class:
-      "rounded-full bg-blue-800 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Blue",
-  },
-  {
-    id: 5,
-    class:
-      "rounded-full bg-green-800 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Green",
-  },
-  {
-    id: 6,
-    class:
-      "rounded-full bg-red-600 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Red",
-  },
-  {
-    id: 7,
-    class:
-      "rounded-full bg-white hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 border border-slate-300 w-14 h-14",
-    name: "Multicolor",
-  },
-  {
-    id: 8,
-    class:
-      "rounded-full bg-yellow-900 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Brown",
-  },
-  {
-    id: 9,
-    class:
-      "rounded-full bg-black hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Black",
-  },
-  {
-    id: 10,
-    class:
-      "rounded-full bg-yellow-300 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Yellow",
-  },
-  {
-    id: 11,
-    class:
-      "rounded-full bg-emerald-300 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2 w-14 h-14",
-    name: "Turquiose",
-  },
-  {
-    id: 12,
-    class:
-      "rounded-full bg-orange-400 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2  w-14 h-14",
-    name: "Orange",
-  },
-  {
-    id: 13,
-    class:
-      "rounded-full bg-red-200 hover:outline hover:outline-1 hover:outline-slate-300 hover:outline-offset-2  w-14 h-14",
-    name: "Pink",
-  },
+  { id: 1, name: "Beige", image: "/Dropitemsimg/beige.png" },
+  { id: 2, name: "Black", image: "/Dropitemsimg/black.avif" },
+  { id: 3, name: "Blue", image: "/Dropitemsimg/blue.png" },
+  { id: 4, name: "Brown", image: "/Dropitemsimg/brown.png" },
+  { id: 5, name: "Cream", image: "/Dropitemsimg/cream.jpeg" },
+  { id: 6, name: "Golden", image: "/Dropitemsimg/golden.avif" },
+  { id: 7, name: "Green", image: "/Dropitemsimg/green.png" },
+  { id: 8, name: "Grey", image: "/Dropitemsimg/gray.png" },
+  { id: 9, name: "Multicoloured", image: "/Dropitemsimg/bnw.png" },
+  { id: 10, name: "Orange", image: "/Dropitemsimg/orange.avif" },
 ];
+
 const categoryarr = [
   { id: 1, name: "3 D Geometric" },
   { id: 2, name: "Abstract" },

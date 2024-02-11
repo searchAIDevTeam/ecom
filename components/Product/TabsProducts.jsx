@@ -22,9 +22,10 @@ import {
   renderCollection,
   rendersizewidth,
   renderSortItem,
+  renderColor,
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
-import Measure from './meausrement'
+import Measure from "./meausrement";
 const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
@@ -42,7 +43,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   const [openSort, setOpenSort] = React.useState(false);
 
   const handleOpen = () => {
-    if (openSize===false && opencolor===false && openCollection===false && openType===false && openAll===false) {
+    if (
+      openSize === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false && 
+      openCaategory === false
+    ) {
       setOpenSort(!openSort);
     }
   };
@@ -57,11 +65,18 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [openSize, setOpenSize] = useState(false);
   const handleSize = () => {
-    if (openSort===false && opencolor===false && openCollection===false && openType===false  && openAll===false) {
+    if (
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false && 
+      openCaategory === false
+    ) {
       setOpenSize(!openSize);
     }
   };
-  
+
   const [openAllSize, setOpenAllSIze] = useState(false);
   const handleAllSize = () => {
     setOpenAllSIze(!openAllSize);
@@ -70,7 +85,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   // collection
   const [openCollection, setOpenCollection] = useState(false);
   const handleCollection = () => {
-    if (openSize===false && openSort===false && opencolor===false && openType===false  && openAll===false) {
+    if (
+      openSize === false &&
+      openSort === false &&
+      opencolor === false &&
+      openType === false &&
+      openAll === false && 
+      openCaategory === false
+    ) {
       setOpenCollection(!openCollection);
     }
   };
@@ -94,7 +116,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [opencolor, setOpenColor] = useState(false);
   const handlecolor = () => {
-    if (openSize===false && openSort===false && openCollection===false && openType===false  && openAll===false) {
+    if (
+      openSize === false &&
+      openSort === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false &&
+      openCaategory === false
+    ) {
       setOpenColor(!opencolor);
     }
   };
@@ -105,7 +134,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   };
   const [openCaategory, setOpenCategory] = useState(false);
   const handleCategory = () => {
-    setOpenCategory(!openCaategory);
+    if (
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false &&
+      openAll === false &&
+      openSize === false
+    ) {
+      setOpenCategory(!openCaategory);
+    }
   };
   const [openAllCategory, setOpenAllCategory] = useState(false);
   const handleAllCategory = () => {
@@ -127,7 +165,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [openType, setOpenType] = useState(false);
   const handleType = () => {
-    if (openSize===false && openSort===false && opencolor===false && openCollection===false  && openAll===false) {
+    if (
+      openSize === false &&
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openAll === false && 
+      openCaategory === false
+    ) {
       setOpenType(!openType);
     }
   };
@@ -138,7 +183,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
   const [openAll, setOpenAll] = useState(false);
   const handleAll = () => {
-    if (openSize===false && openSort===false && opencolor===false && openCollection===false && openType===false) {
+    if (
+      openSize === false &&
+      openSort === false &&
+      opencolor === false &&
+      openCollection === false &&
+      openType === false && 
+      openCaategory === false
+    ) {
       setOpenAll(true);
     }
   };
@@ -151,8 +203,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     setopenallsort(false);
   };
 
-  const commonClasses =
-    "px-3 py-2 mr-2.5 rounded-full flex  whitespace-nowrap";
+  const commonClasses = "px-3 py-2 mr-2.5 rounded-full flex  whitespace-nowrap";
 
   // logic for stikey
   useEffect(() => {
@@ -265,7 +316,6 @@ const Tabs = ({ filteredProductData, heading, param }) => {
             <div
               className={`py-5 bloc-tabs2 flex flex-row overflow-hidden h-[36rem]`}
             >
-
               <TabsProductContent
                 filterName={"Sort"}
                 commonClasses={commonClasses}
@@ -283,23 +333,21 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
               {/* Size - dropdown2 */}
               <div className="">
-              <TabsProductContent
-                filterName={"Size"}
-                commonClasses={commonClasses}
-                isFilterOpen={openSize}
-                handleAll={handleAll}
-                handleTabClick={handleTabClick}
-                handleFilter={handleSize}
-                handleAllFilter={handleAllSize}
-                filterArr={Size}
-                renderFilter={rendersizewidth}
-              />
+                <TabsProductContent
+                  filterName={"Size"}
+                  commonClasses={commonClasses}
+                  isFilterOpen={openSize}
+                  handleAll={handleAll}
+                  handleTabClick={handleTabClick}
+                  handleFilter={handleSize}
+                  handleAllFilter={handleAllSize}
+                  filterArr={Size}
+                  renderFilter={rendersizewidth}
+                />
               </div>
 
-              
-
               {/* Design style - dropdown4 */}
-              {heading === "Wallpaper" ? (
+              {pathname.includes("Wallpaper") ? (
                 <TabsProductContent
                   filterName={"Design style"}
                   commonClasses={commonClasses}
@@ -312,6 +360,19 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   renderFilter={rendercategory}
                 />
               ) : null}
+
+              {/* Color dropdown */}
+              <TabsProductContent
+                filterName={"Colors"}
+                commonClasses={commonClasses}
+                isFilterOpen={opencolor}
+                handleAll={handleAll}
+                handleTabClick={handleTabClick}
+                handleFilter={handlecolor}
+                handleAllFilter={handleAllcolor}
+                filterArr={colorarr}
+                renderFilter={renderColor}
+              />
 
               {/* Collections - filter */}
               <TabsProductContent
@@ -343,79 +404,6 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 renderTypeContent={renderTypeContent}
               />
 
-              {/* Color - dropdown last */}
-              {/* <div style={{ position: "relative" ,zIndex:"999"}}>
-      <div className="flex flex-col w-fit">
-                <button
-                  onClick={() => {
-                    if (window.innerWidth <= 450) {
-                      handleAll();
-                      handleTabClick();
-                      handleAllcolor();
-                    } else {
-                      handlecolor();
-                      handleTabClick();
-                    }
-                  }}
-                  // onClick={() => setOpenColor(!opencolor)}
-                  className={`Tabbtn bg-gray-400
-                  ${opencolor
-                      ? `active-tabs  border border-black ${commonClasses}`
-                      : `tabS  border border-white ${commonClasses}`
-                    }
-                  ${typeof window !== "undefined" && window.innerWidth <= 450
-                      ? " justify-center"
-                      : " justify-between"
-                    }
-                  `}
-                >
-                  Color &nbsp;
-                  <Image
-                    src="/svg/dropdown/backarrow.svg"
-                    width={40}
-                    height={40}
-                    className={`w-6 h-6  mt-1 sm:block hidden
-                ${opencolor ? " rotate-90" : "-rotate-90"}
-                
-                `}
-                    alt=""
-                  />
-                </button>
-                </div>
-                <div className="w-fit">
-                {opencolor ? (
-                  <div
-                    className="flex flex-col items-center px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80
-                  
-                  "
-                  // style={{
-                  //   position: "absolute",
-                  //   top: "calc(100% + 10px)",
-                  //   zIndex: "100000",
-                  // }}
-                  >
-                    <div className="grid grid-cols-3 gap-6">
-                      {colorarr.map((text, idx) => (
-                        <div
-                          className="flex flex-col items-center justify-center"
-                          key={idx}
-                        >
-                          <div
-                            onClick={() => handleClick(idx)}
-                            className={`${text.class}  ${selectedCircle.includes(idx)
-                              ? "outline outline-2"
-                              : ""
-                              } `}
-                          ></div>
-                          <p>{text.name}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-                </div>
-              </div> */}
-
               {/* ddropdown6 */}
               <div>
                 <button
@@ -423,15 +411,17 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                     handleAll();
                     handleTabClick();
                   }}
-                  className={`Tabbtn z-0 bg-gray-200
-                  ${openAll
+                  className={`Tabbtn z-0 bg-gray-100
+                  ${
+                    openAll
                       ? `active-tabs  border border-black ${commonClasses}`
                       : `tabS  border border-white ${commonClasses}`
-                    }
-                  ${typeof window !== "undefined" && window.innerWidth <= 450
+                  }
+                  ${
+                    typeof window !== "undefined" && window.innerWidth <= 450
                       ? " justify-center"
                       : " justify-between"
-                    }
+                  }
                   `}
                 >
                   All Filters &nbsp;
@@ -517,6 +507,39 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                           ) : null}
                         </div>
                         <hr />
+                        {/* design style for wallpaper */}
+                        {pathname.includes("Wallpaper") ? (
+                          <>
+                            <div className="flex flex-col gap-7">
+                              <div
+                                onClick={handleAllCategory}
+                                className="flex justify-between text-left"
+                              >
+                                Design style &nbsp;
+                                <Image
+                                  src="/svg/dropdown/backarrow.svg"
+                                  width={40}
+                                  height={40}
+                                  className={`w-6 h-6  mt-1
+                ${openAllCategory ? " rotate-90" : "-rotate-90"}
+                
+                `}
+                                  alt=""
+                                />
+                              </div>
+                              {openAllCategory ? (
+                                <div className="flex flex-col gap-7">
+                                  {/* <p className="font-semibold text-left">Width</p> */}
+                                  {categoryarr.map(rendercategory)}
+                                  {/* 
+                            <p className="font-semibold text-left">Height</p>
+                            {htarr.map(rendersizewidth)} */}
+                                </div>
+                              ) : null}
+                            </div>
+                            <hr />
+                          </>
+                        ) : null}
                         {/* ****************************** */}
                         {/* 3rd div */}
                         <div className="flex flex-col gap-7">
@@ -538,7 +561,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                           </div>
                           {openAllcolor ? (
                             <div className="flex flex-col gap-7">
-                              {colorarr.map(renderSortItem)}
+                              {colorarr.map(renderColor)}
                             </div>
                           ) : null}
                         </div>
@@ -634,8 +657,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
                               <button
                                 onClick={handleContent}
-                                className={`text-left underline ${openContent ? "block" : "hidden"
-                                  }`}
+                                className={`text-left underline ${
+                                  openContent ? "block" : "hidden"
+                                }`}
                               >
                                 Less
                               </button>
@@ -661,8 +685,10 @@ const Tabs = ({ filteredProductData, heading, param }) => {
         </div>
         <hr />
         {/* iimages */}
-        <div className=" mt-20
-          flex flex-col image-product ">
+        <div
+          className=" mt-20
+          flex flex-col image-product "
+        >
           <div className="text-right">
             {showCompare && (
               <button
@@ -684,8 +710,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 <div className=" relative w-[250px] h-[250px] z[-999999]">
                   <div
                     onClick={(event) => event.stopPropagation()}
-                    className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${selectedpdt.includes(text) ? "visible" : ""
-                      }`}
+                    className={`flex justify-between text-black  checkbox-div absolute top-0 left-0 z-10 ${
+                      selectedpdt.includes(text) ? "visible" : ""
+                    }`}
                   >
                     <input
                       type="checkbox"
