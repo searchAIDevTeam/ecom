@@ -97,22 +97,19 @@ function Header({ howMuchScrolled }) {
     };
   }, []);
 
-  if (typeof window !== "undefined" && window.scrollY > 20) {
-  }
-
   const homeRoute = "/home";
 
   return (
     <div>
       {homeRoute === pathname && typeof window !== "undefined" ? (
-        window.scrollY < 20 ? (
+        typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
         ) : null
       ) : null}
       <div
         className={`fixed w-screen sm:bg-none ${
           homeRoute === pathname
-            ? window.scrollY < 20
+            ? typeof window !== "undefined" && window.scrollY < 20
               ? "sm:top-[35px] top-[48px]"
               : "top-0"
             : "top-0"

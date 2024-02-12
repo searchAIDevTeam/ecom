@@ -179,6 +179,7 @@ const AddCart = () => {
         {cartStatus === "succeeded" && cartdata && (
           <div>
             <h1 className="sm:text-4xl text-2xl mb-6 font-semibold">Bag</h1>
+
             {cartdata.items.map((item) => (
               <div key={item._id}>
                 <div className="left-cart flex-col flex sm:w-2/3 w-[90vw] pr-8">
