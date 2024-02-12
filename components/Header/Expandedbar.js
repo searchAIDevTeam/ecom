@@ -4,6 +4,8 @@ import "./Expandbar.css";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { Router } from "next/dist/client/router";
 // import search from "../../assets/icon/search.svg";
 // import mainlogo from "../../assets/ayatriologo.png";
 
@@ -58,13 +60,30 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+  const dispatch = useDispatch()
   const router = useRouter();
-  const handleRoute = (item) => {
-    router.push("/room/" + item.id);
+  const handleRoute =async(item) => {
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${item._id}`;
+    const response = await axios.get(url);
+    const data = response.data;
+    dispatch({ type: "FETCH_ROOM_REQUEST", payload: item._id });
+    router.push(`/product`);
+    // router.push("/room/" + item.id);
   };
-
+  const handleclick = async (id, category) => {
+  }
   const path = usePathname();
-
+  // useEffect(() => {
+  //   console.log("mounts")
+  //   const handleRouteChange = (url) => {
+  //     console.log("router changing", url);
+  //   };
+  
+  //   Router.events.on("routeChangeStart", handleRouteChange);
+  //   Router.events.on("routeChangeComplete",()=>{
+  //     console.log("route changes")
+  //   })
+  // }, [Router,router]);
   return (
     <>
       <div
