@@ -13,7 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import TopHeader from "./TopHeader";
-import NextTopLoader from "nextjs-toploader";
+// import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
   const pathname = usePathname();
@@ -102,13 +102,14 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div>
+      {/* <NextTopLoader zIndex={999999}  /> */}
       {homeRoute === pathname && typeof window !== "undefined" ? (
-        window.scrollY < 20 ? (
+        typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
         ) : null
       ) : null}
       <div
-        className={`fixed w-full sm:bg-none ${
+        className={`fixed w-screen sm:bg-none ${
           homeRoute === pathname
             ? typeof window !== "undefined" && window.scrollY < 20
               ? "sm:top-[35px] top-[48px]"
@@ -122,8 +123,6 @@ function Header({ howMuchScrolled }) {
       `}
       >
         {/* {isLoading && <TopLoader />} */}
-        <NextTopLoader color="#2299DD" height={5} crawlSpeed={500} />
-
         {!searchQuery ? (
           <div
             className={`${

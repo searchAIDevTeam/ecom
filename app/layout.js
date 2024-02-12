@@ -6,8 +6,6 @@ import { Providers } from "@/provider";
 import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
 import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
 import NextTopLoader from "nextjs-toploader";
-import RouteLoader from '@/components/AddOn/RouteLoader'
-import { Router } from "next/dist/client/router";
 // const myFont = localFont({
 //   src: "../public/Font/Jost-Regular.ttf",
 // });
@@ -54,9 +52,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className={poppins.className}>
       <body>
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
-    <RouteLoader/>
+
         <Providers>
           <HeaderWrapper />
+        <NextTopLoader zIndex={999999} height={4} showSpinner={false}  />
           {children}
           <FooterWrapper />
         </Providers>

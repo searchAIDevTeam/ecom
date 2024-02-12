@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Router } from "next/dist/client/router";
+import Link from "next/link";
 // import search from "../../assets/icon/search.svg";
 // import mainlogo from "../../assets/ayatriologo.png";
 
@@ -67,7 +68,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
     const response = await axios.get(url);
     const data = response.data;
     dispatch({ type: "FETCH_ROOM_REQUEST", payload: item._id });
-    router.push(`/product`);
+    // router.push(`/product`);
     // router.push("/room/" + item.id);
   };
   const handleclick = async (id, category) => {
@@ -160,7 +161,8 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
                 ? cacheddata
                 : []
               ).map((item) => (
-                <div
+             <Link href={`/product/${item.productTitle}`}>
+                 <div
                   key={item.id}
                   className="col-span-1"
                   onClick={() => handleRoute(item)}
@@ -175,8 +177,9 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
                   </div>
                   <div>{item.category}</div>
                   <div>{item.collectionName}</div>
-                  <div>{item.totalPrice}</div>
+                  <div>{item.totalPrice}₹</div>
                 </div>
+              </Link>
               ))
             )}
           </div>
