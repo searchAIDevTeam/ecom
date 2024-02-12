@@ -93,8 +93,8 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
         } `}
       >
         <div className="flex flex-row gapofsearchclose  justify-between bg-white rounded-lg w-full absolute left-0">
-          <div className="logo hidden sm:block pl-2">
-            <img src="/images/ayatriologo.webp" className="w-44 z-30" alt="" />
+          <div className="logo hidden sm:block pl-[50px]">
+            <img src="/images/ayatriologo.webp" className="w-40 z-30" alt="" />
           </div>
           <div className="searchDiv  flex flex-col">
             <div className="searchCon relative sm:w-[600px] w-[60vw] bg-zinc-100 p-2 rounded-none">
@@ -114,37 +114,37 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
             </div>
           </div>
           <div
-            className="close text-base font-medium mr-4 pt-2.5 cursor-pointer"
+            className="close text-base font-medium mr-4 pt-2.5 mr-[80px] cursor-pointer"
             onClick={onClose}
           >
             Close
           </div>
         </div>
         <div
-          className={`dropdown   sm:pt-20 pt-0 sm:pb-6 pb-0 flex sm:flex-row flex-col justify-center gap-4 max-w-full bg-white ${
+          className={`dropdown   sm:pt-20 pt-0 sm:pb-[50px] pb-0 flex sm:flex-row flex-col justify-center gap-4 max-w-full bg-white ${
             searchTexte
-              ? "sm:pl-20 pl-0 "
-              : "items-center sm:pr-[12rem] pr-0 sm:pl-32 pl-0 "
+              ? "sm:pl-[50px] pl-0 "
+              : "items-center sm:pr-[50px] pr-0 sm:pl-[50px] pl-0 "
           }`}
         >
           <div
-            className={`items flex cursor-pointer sm:w-70 w-90vw  flex-col 
+            className={`items flex cursor-pointer sm:w-70 w-[200px]  flex-col 
            
           `}
           >
-            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-2xl text-lg  text-slate-400">
+            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-xl text-lg  text-black">
               Popular Searches
             </div>
-            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-xl  text-lg whitespace-nowrap">
-              Engineering Flooring
+            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-lg  text-lg text-[#707072]">
+              Engineering flooring
             </div>
-            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-xl  text-lg whitespace-nowrap">
-              Grass Flooring
+            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-lg  text-lg text-[#707072]">
+            Luxurious curtains
             </div>
-            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-xl  text-lg whitespace-nowrap">
-              Wallpaper for Home
+            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-lg  text-lg text-[#707072]">
+              Wallpaper for home
             </div>
-            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-xl  text-lg whitespace-nowrap">
+            <div className="dropdown-item sm:font-medium font-base py-2 sm:text-lg  text-lg text-[#707072]">
               Vinyl
             </div>
           </div>
@@ -167,17 +167,18 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
                   className="col-span-1"
                   onClick={() => handleRoute(item)}
                 >
-                  <div className="">
+                  <div className="w-[170px] h-[170px]">
                     <Image
                       src={item.images[0]}
-                      width={200}
-                      height={200}
+                      width={170}
+                      height={170}
                       alt="Product"
+                      className="w-[100%] h-[100%] object-fill"
                     />
                   </div>
-                  <div>{item.category}</div>
-                  <div>{item.collectionName}</div>
-                  <div>{item.totalPrice}₹</div>
+                  <div className="text-sm leading-6 text-black pt-[20px] text-[#000000]">{item.category}</div>
+                  <div className="text-sm leading-6 text-black  text-[#707072]">{item.collectionName}</div>
+                  <div className="text-sm leading-6 pt-[7px] font-medium text-black">{item.totalPrice}₹</div>
                 </div>
               </Link>
               ))
