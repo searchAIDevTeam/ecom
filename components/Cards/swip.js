@@ -12,7 +12,8 @@ function Carousel({ data }) {
 
   const prevSlide = () => {
     setSlide(slide === 0 ? data.length - 1 : slide - 1);
-  };
+  };  
+  console
 
   return (
     <div
@@ -26,7 +27,8 @@ function Carousel({ data }) {
           className="arrow arrow-left"
         />
       )}
-      {data.map((item, idx) => {
+      {data?.map((item, idx) => {
+   
         return (
           <Image
             src={item}
@@ -34,7 +36,7 @@ function Carousel({ data }) {
             key={idx}
             height={300}
             width={300}
-            loading="lazy"
+         
             className={slide === idx ? "h-full w-full" : "slide-hidden"}
           />
         );

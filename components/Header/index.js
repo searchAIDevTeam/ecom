@@ -148,7 +148,7 @@ function Header({ howMuchScrolled }) {
             </div>
             <div className="flex items-center justify-center w-1/3">
               <div className="mainlogo">
-                <Link href="/">
+                <Link href="/home">
                   <Image
                     onClick={() => handleLinkClick("/home")}
                     src="/images/ayatriologo.webp"
@@ -215,7 +215,7 @@ function Header({ howMuchScrolled }) {
               ) : (
                 <div
                   className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
-                  onClick={handleLoginNav}
+                  onClick={handleProfileNav}
                 >
                   <Image
                     src="/svg/icon/profile.svg"

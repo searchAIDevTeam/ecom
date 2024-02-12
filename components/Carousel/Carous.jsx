@@ -11,6 +11,7 @@ import "swiper/swiper-bundle.css";
 // import Cards from '../components/Cards';
 import ItemCard from "../Item/ItemCard";
 import axios from "axios";
+import Card from "../Cards/card";
 // import imageurl1.jpg from '..
 // import image from "../assets/roomswiper.jpg";
 
@@ -125,19 +126,19 @@ const Carous = ({ data }) => {
               </SwiperSlide>
             ) : (
               relatedData.map((product, idx) => (
-                <SwiperSlide key={idx}>
+                <SwiperSlide key={idx}>s
                   <div className="grid grid-cols-1 mt-2 h-full fade-in">
-                    <ItemCard
-                      title={product.productTitle}
+                    <Card
+                      title={product.productName}
+                      // date={product.date}
                       price={product.perUnitPrice}
-                      desc={product.subcategory}
-                      imgSrc={product.images[0]}
-                      imagesArr={product.images}
-                      id={product._id}
-                      rating={
-                        product.ratings.length > 0 ? product.ratings[0] : 0
-                      }
+                      desc={product.productTitle}
+                      imgSrc={product.images}
+                      rating={product.ratings}
                       key={idx}
+                      id={product._id}
+                      category={product.category}
+                      productId={product.productId}
                       setPopupVisible={setPopupVisible}
                       cssClass={"card1flex"}
                     />

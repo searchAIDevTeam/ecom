@@ -10,6 +10,7 @@ if (typeof window !== "undefined") {
 export const fetchRecommendedProduct = async () => {
   try {
     const response = await axios.get(createApiEndpoint(`getRecommendation?deviceId=${id}`));
+    console.log(response.dat)
     return response.data;
   } catch (err) {
     // console.error(err);

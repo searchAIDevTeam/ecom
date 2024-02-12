@@ -56,7 +56,8 @@ const HomePage = () => {
   };
 
   return (
-    <div className="overflow-x-hidden fade-in">
+   <>
+       <div className="overflow-x-hidden fade-in">
       {popUp ? null : <PopUp />}
       {isFilterVisible && (
         <>
@@ -102,6 +103,7 @@ const HomePage = () => {
         </div>
       )}
     </div>
+   </>
   );
 };
 

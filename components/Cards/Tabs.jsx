@@ -9,73 +9,12 @@ import "./tabs.css";
 import TabImage from "./TabImage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-const Tabs = ({data}) => {
+
+const Tabs = ({ data }) => {
   const router = useRouter();
-  const handleTab = () => {
-    router.push("/room");
-  };
-  // console.log("data", data?.recommendations[0].map((item) => item));
 
-  const circled = [
-    {
-      top: 50,
-      left: 68,
-      productTitle: "Bedroom Room",
-      productCategory: "Mountain view",
-      price: 1900,
-    },
-  ];
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    // Update isMobile state on window resize
-    const handleResize = () => {
-      setIsMobile(
-        () => typeof window !== "undefined" && window.innerWidth <= 450
-      );
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  // console.log(data?.recommendations[0]?.recommendedProducts.map((item) => item.roomCategory))
-  // console.log(data?.recommendations[0]?.recommendedProducts.map((item) => item.roomCategory).filter((item, i, ar) => ar.indexOf(item) === i))
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState(data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory.toLowerCase());
   const [isSticky, setIsSticky] = useState(false);
-  const tabImages = {
-    all: [room, work, living, kitchen],
-    bedroom: [room, room, room],
-    livingroom: [living, living, living],
-    kitchen: [kitchen, kitchen, kitchen],
-    workspace: [work, work, work],
-    outdoor: [room, living, kitchen],
-    bathroom: [room, room, room],
-    dining: [living, kitchen, room],
-    hallway: [room, room, room],
-    laundry: [work, work, work],
-    accessories: [room, living, kitchen],
-  };
-
-  const tabsData = [
-    { key: "all", label: "All", img: tabImages.all },
-    { key: "bedroom", label: "Bedroom", img: tabImages.bedroom },
-    { key: "livingroom", label: "Living Room", img: tabImages.livingroom },
-    { key: "kitchen", label: "Kitchen", img: tabImages.kitchen },
-    { key: "workspace", label: "Workspace", img: tabImages.workspace },
-    { key: "outdoor", label: "Outdoor", img: tabImages.outdoor },
-    { key: "bathroom", label: "Bathroom", img: tabImages.bathroom },
-    // { key: "babychildren", label: "Baby & children room" },
-    { key: "dining", label: "Dining", img: tabImages.dining },
-    { key: "hallway", label: "Hallway", img: tabImages.hallway },
-    { key: "laundry", label: "Laundry", img: tabImages.laundry },
-    { key: "accessories", label: "Accessories", img: tabImages.accessories },
-  ];
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
-  // logic for sticky
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,6 +34,37 @@ const Tabs = ({data}) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const uniqueRoomCategories = data?.recommendations?.[0]?.recommendedProducts
+    .map((item) => item.roomCategory)
+    .filter((item, i, ar) => ar.indexOf(item) === i);
+
+  const tabsData = [];
+
+  uniqueRoomCategories.forEach((category) => {
+    tabsData.push({
+      key: category.toLowerCase(),
+      label: category,
+      img: data?.recommendations?.[0]?.recommendedProducts
+        .find((item) => item.roomCategory === category)?.images[1],
+    });
+  });
+
+  const tabImages = {};
+
+  uniqueRoomCategories.forEach((category) => {
+    tabImages[category.toLowerCase()] = data?.recommendations?.[0]?.recommendedProducts
+      .find((item) => item.roomCategory === category)?.images[1];
+  });
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
+
+  const handleTab = () => {
+    router.push("/room");
+  };
+
   return (
     <>
       <div className="mb-20 sm:px-[50px] px-[20px] py-20 h-full">
@@ -125,25 +95,29 @@ const Tabs = ({data}) => {
 
         <div className="classic-tabs text-green-800 grid sm:grid-cols-3 grid-cols-2 gap-3 grid-rows-3">
           <TabImage
-            src={tabImages[activeTab][0]}
+            width={450}
+            height={700}
+            src={tabImages[activeTab]}
             alt="Room"
             handleTab={handleTab}
-            circled={circled}
           />
 
           <div className="overflow-hidden relative">
             <Image
               className="h-full w-full object-cover "
-              src={tabImages[activeTab][1]}
+              src={tabImages[activeTab]}
               alt="Room"
+              width={450}
+              height={350}
             />
           </div>
 
           <TabImage
-            src={tabImages[activeTab][2]}
+            src={tabImages[activeTab]}
             alt="Room"
+            width={450}
+            height={700}
             handleTab={handleTab}
-            circled={circled}
           />
           <div className="overflow-hidden sm:hidden block">
             <Image
@@ -154,33 +128,34 @@ const Tabs = ({data}) => {
           </div>
 
           <TabImage
-            src={
-              activeTab === "all"
-                ? tabImages[activeTab][3]
-                : tabImages[activeTab][0]
-            }
+            src={tabImages[activeTab]}
             alt="Room"
             handleTab={handleTab}
-            circled={circled}
+            width={450}
+            height={700}
           />
           <div className="overflow-hidden">
             <Image
               className="h-full w-full object-cover"
-              src={tabImages[activeTab][0]}
+              src={tabImages[activeTab]}
               alt="Room"
+              width={450}
+              height={350}
             />
           </div>
           <div className="bg-teal-100 overflow-hidden ">
             <Image
               className="h-full w-full object-cover"
-              src={tabImages[activeTab][0]}
+              src={tabImages[activeTab]}
               alt="Room"
+              width={450}
+              height={350}
             />
           </div>
         </div>
-        {/* </div> */}
       </div>
     </>
   );
 };
+
 export default Tabs;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
 
 import Carousel from "./swip";
@@ -6,24 +6,27 @@ import Carousel from "./swip";
 import PopUp from "../Reviews/PopUp";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Image from "next/image";
+import { useDispatch } from "react-redux";
 
 function Card(props) {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleImageClick = () => {
     props.setPopupVisible(true);
   };
-
-  const handleclick = (id, productId) => {
-    const postTrending = async () => {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/increment-popularity?productId=${productId}`
-      );
-    };
-    postTrending();
-    router.push("/room/" + id);
-  };
-
+  const handleclick = async (id, category) => {
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`;
+    const response = await axios.get(url);
+    const data = response.data;
+    dispatch({ type: "FETCH_ROOM_REQUEST", payload: id });
+    router.push(`/product`);
+  }
+// useEffect(() => {
+   
+  
+// }, [dispatch]);
   return (
     <>
       <div
@@ -36,7 +39,7 @@ function Card(props) {
       >
         <div
           className={`card-flex ${props.cssClass}  `}
-          onClick={() => handleclick(props.id, props.productId)}
+          onClick={() => handleclick(props.id, props.category)}
         >
           <Carousel data={props.imgSrc} className="card-img" />
           {/* <div className="review-icon-container   ">
