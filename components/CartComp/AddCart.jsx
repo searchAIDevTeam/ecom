@@ -53,7 +53,7 @@ const AddCart = () => {
     fetchData();
   }, [dispatch]);
   useEffect(() => {
-    // console.log("Updated cartdata", cartdata);
+    console.log("Updated cartdata", cartdata);
     // console.log("Updated cartStatus", cartStatus);
   }, [cartdata, cartStatus]);
   let totalPrice = 0;
@@ -115,8 +115,8 @@ const AddCart = () => {
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
         {
           params: {
-            itemId: itemid,
-            deviceId: id,
+            productId: itemid,
+            owner: id,
           },
         }
       );
