@@ -123,19 +123,19 @@ const Card = ({ data }) => {
       <div className="flex justify-start gap-1 sm:w-[25vw]  w-[70vw] sm:ml-[45px] ml-0">
         <div className="mt-5  prefence-text">
           <div className="textHolders flex flex-col">
-            <h1 className="text-2xl mt-5 font-bold mb-2">
+            <h1 className="text-2xl mt-5 font-bold mb-3">
               {data?.productTitle}
             </h1>
-            <div className="font-medium flex  tracking-wider text-zinc-400 mb-1">
+            <div className="font-medium flex tracking-wider text-[#757575] mb-1">
               Collection:&nbsp;
               <h3>{data?.collectionName}</h3>
             </div>
-            <div className="font-medium tracking-wider text-zinc-400 flex mb-1">
+            <div className="font-medium tracking-wider text-[#757575] flex mb-1">
               Pattern Number:&nbsp;
               <h3>{data?.patternNumber}</h3>
             </div>
             <div className="price">
-              <div className="font-bold flex mt-[15px]">
+              <div className="font-bold flex mt-[25px]">
                 <span>Rs. &nbsp;</span>
                 <h2 className="text-3xl leading-[0.5] tracking-wide">
                   {" "}
@@ -143,14 +143,14 @@ const Card = ({ data }) => {
                 </h2>{" "}
                 <span> &nbsp;/roll</span>
               </div>
-              <h5 className="text-zinc-400">Price incl. of all taxes</h5>
+              <h5 className="text-[#757575] pb-[5px]">Price incl. of all taxes</h5>
             </div>
 
             <IncDecCounter />
           </div>
 
           {/* color-container */}
-          <div className="colorContainer flex flex-col mt-4 sm:w-auto w-[80vw]">
+          <div className="colorContainer flex flex-col mt-[30px] sm:w-auto w-[80vw]">
             <h1 className="mb-2 font-bold">Colours</h1>
             <div className="colors flex gap-3">
               {colorSep?.map((color, index) => (
@@ -180,47 +180,49 @@ const Card = ({ data }) => {
 
           {/* calculations */}
           <div className="border-black w-[100%] mt-[30px] bg-zinc-100 relative">
-            <div className="flex flex-row  gap-2 ">
+            <div className="flex flex-row">
               <div
                 className="w-[1px] h-full bg-[#e5e7eb] absolute"
                 style={{ left: "calc(50%)", top: "0" }}
               ></div>
               <div
-                className="flex flex-col col-span-1 w-1/2 p-4  hover:bg-zinc-300 cursor-pointer"
+                className="flex flex-col col-span-1 w-1/2 p-[14px]  hover:bg-zinc-200 cursor-pointer"
                 onClick={() => handleOptionClick("zeroCostEMI")}
               >
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-1">
                   <Image
                     src="/rooms/payment.svg"
                     height={25}
                     width={25}
                     alt="icon"
+                    className=" w-[23px] h-[23px]"
                   />
-                  <h1 className="font-bold">ZERO Cost EMI</h1>
+                  <h1 className="font-medium text-sm">ZERO Cost EMI</h1>
                 </div>
-                <p className="text-sm pt-[5px]">Ayatrio payment option</p>
+                <p className="text-[11px] pt-[5px]">Ayatrio payment option</p>
               </div>
 
               <div
-                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300  cursor-pointer"
+                className="flex flex-col col-span-2 w-1/2 p-[14px] hover:bg-zinc-200  cursor-pointer"
                 onClick={() => handleOptionClick("inStoreRequest")}
               >
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-1">
                   <Image
                     src="/rooms/ayatrio_store_b.svg"
                     height={25}
                     width={25}
                     alt="icon"
+                    className=" w-[23px] h-[23px]"
                   />
-                  <h1 className="font-bold">In-Store Request</h1>
+                  <h1 className="font-medium text-sm">In-Store Request</h1>
                 </div>
-                <p className="text-sm pt-[5px]">Check in-store stock</p>
+                <p className="text-[11px] pt-[5px]">Check in-store stock</p>
               </div>
             </div>
             <hr />
             <div className="flex flex-row ">
               <div
-                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300 cursor-pointer"
+                className="flex flex-col col-span-2 w-1/2 p-[14px] hover:bg-zinc-200 cursor-pointer"
                 onClick={() => handleOptionClick("deliveryOption")}
               >
                 <div className="flex flex-row gap-2">
@@ -229,13 +231,14 @@ const Card = ({ data }) => {
                     height={25}
                     width={25}
                     alt="icon"
+                    className=" w-[25px] h-[25px]"
                   />
-                  <h1 className="font-bold">Delivery Option</h1>
+                  <h1 className="font-medium text-sm">Delivery Option</h1>
                 </div>
-                <p className="text-sm pt-[5px]">Check availability</p>
+                <p className="text-[11px] pt-[5px]">Check availability</p>
               </div>
               <div
-                className="flex flex-col col-span-2 w-1/2 p-4 hover:bg-zinc-300 cursor-pointer"
+                className="flex flex-col col-span-2 w-1/2 p-[14px] hover:bg-zinc-200 cursor-pointer"
                 onClick={() => handleOptionClick("calculator")}
               >
                 <div className="flex flex-row gap-2">
@@ -244,10 +247,11 @@ const Card = ({ data }) => {
                     height={25}
                     width={25}
                     alt="icon"
+                    className=" w-[25px] h-[25px]"
                   />
-                  <h1 className="font-bold">Calculator</h1>
+                  <h1 className="font-medium text-sm">Calculator</h1>
                 </div>
-                <p className="text-sm pt-[5px]">As per your requirement</p>
+                <p className="text-[11px] pt-[5px]">As per your requirement</p>
               </div>
             </div>
 
