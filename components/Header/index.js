@@ -123,7 +123,7 @@ function Header({ howMuchScrolled }) {
       ${isFilterVisible ? "block" : "hidden"}
       `}
       >
-        {/* {isLoading && <TopLoader />} */}
+        {isLoading && <TopLoader />}
         {!searchQuery ? (
           <div
             className={`${
@@ -218,7 +218,7 @@ function Header({ howMuchScrolled }) {
               ) : (
                 <div
                   className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
-                  onClick={handleLoginNav}
+                  onClick={handleProfileNav}
                 >
                   <Image
                     src="/svg/icon/profile.svg"
