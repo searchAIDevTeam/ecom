@@ -27,10 +27,10 @@ const TopHeader = () => {
               <Link href="/virtualexperience/category">Virtual Experience</Link>
             </div>
             <div className="pr-3 border-r border-gray-400 tracki">
-              <Link href="/designservice">Free Design</Link>
+              <Link href="/designservice">Design Request</Link>
             </div>
             <div className="pr-3 border-r border-gray-400">
-              <Link href="/freesample">Free Sample</Link>
+              <Link href="/freesample">Sample Request</Link>
             </div>
             <div>
               <Link href="/login">Join Ayatrio Family</Link>
