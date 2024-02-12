@@ -22,33 +22,8 @@ const TopHeader = () => {
           />
         </div>
         <div>
-          <div className="flex flex-row gap-2 pt-2 pr-5 text-sm text-gray-500 ">
-            {/* <Link href="/virtualexperience/category"  style={{ borderRight: "1px solid #000",paddingRight:"10px" }}>Virtual Experience </Link>
-            <Link
-              href={{
-                pathname: "/designservice",
-                query: {
-                  search: "freedesign",
-                },
-              }}
-              style={{ borderRight: "1px solid #000" }}
-      
-            >
-              Free Design
-            </Link>
-            <Link
-              href={{
-                pathname: "/freesample",
-                query: {
-                  search: "freesample",
-                },
-              }}
-              style={{ borderRight: "1px solid #000" }}
-            >
-              Free Sample
-            </Link>
-            <Link href="/login" >Join Ayatrio Family</Link> */}
-            <div className="pr-3 border-r border-gray-400">
+          <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5 ">
+            <div className="border-r border-gray-400 pr-3">
               Virtual Experience
             </div>
             <div className="pr-3 border-r border-gray-400 tracki">Free Design</div>
