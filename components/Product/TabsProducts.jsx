@@ -319,19 +319,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
-        <div
-          className={`
-          sidebarforstickey sticky bg-white top-0 h-20
-           cursor-pointer sm:mb-0 z-[99999]
-      
-       `}
-        >
-          {param === "virtualexperience" ? (
-            ""
-          ) : (
-            <div
-              className={`py-5 bloc-tabs2 flex flex-row overflow-hidden h-[36rem]`}
-            >
+            <div className="flex sticky top-0 z-20 bg-white py-5">
               <TabsProductContent
                 filterName={"Sort"}
                 commonClasses={commonClasses}
@@ -697,8 +685,6 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 ) : null}
               </div>
             </div>
-          )}
-        </div>
         <hr />
         {/* iimages */}
         <div
@@ -778,7 +764,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 key={idx}
                 onClick={() => handlenav(text._id)}
               >
-                <div className="relative  z[-999999]">
+                <div className=" relative w-[250px] h-[250px]">
                   <div
                     onClick={(event) => event.stopPropagation()}
                     className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
