@@ -126,7 +126,6 @@ input[type="radio"] {
 
   .active-tabs.Tabbtn {
     width: 100px;
-    /* Add styles for the active state (when the dropdown is open) */
   }
 
   .tabS.Tabbtn {

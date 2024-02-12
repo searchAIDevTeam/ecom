@@ -23,8 +23,9 @@ const TabsProductContent = (props) => {
 
   return (
     <>
-    <div className="">
-      <button
+    <div>
+      <div className="flex flex-col w-fit">
+            <button
         onClick={() => {
           if (typeof window !== "undefined" && window.innerWidth <= 450) {
             handleAll();
@@ -35,11 +36,11 @@ const TabsProductContent = (props) => {
             handleTabClick();
           }
         }}
-        className={`
+        className={`bg-gray-100
                   ${
                     isFilterOpen
-                      ? ` active-tabs border border-black ${commonClasses}`
-                      : `tabS  border border-white ${commonClasses}`
+                      ? `relative active-tabs border border-black ${commonClasses}`
+                      : `relative tabS  border border-white ${commonClasses}`
                   }
                   ${() =>
                     typeof window !== "undefined" && window.innerWidth <= 450
@@ -59,9 +60,10 @@ const TabsProductContent = (props) => {
           alt=""
         />
       </button>
-
+      </div>
+      <div className=" w-fit">
       {isFilterOpen ? (
-        <div className="flex flex-col px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80">
+        <div className="flex flex-col px-5 py-5 overflow-y-auto bg-white border gap-7 rounded-2xl w-72 h-80 absolute">
           {filterArr.map(renderFilter)}
           {filterName === "Type" ? (
             <button
@@ -88,6 +90,8 @@ const TabsProductContent = (props) => {
         </div>
       ) : null}
       </div>
+      </div>
+      
     </>
   );
 };

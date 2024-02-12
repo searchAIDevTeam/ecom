@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+// import HomePage from "@/components/home/HomePage";
 
 const HomePage = dynamic(() => import("@/components/home/HomePage"), {
   ssr: false,

@@ -55,38 +55,32 @@ const LoginComponent = () => {
       <div className="flex flex-wrap justify-around w-full">
         <div className="flex p-8 w-[430px]">
           <div className="w-full">
-            {/* <div className="imgBox">
-          <img className="boxImg" src="https://in.accounts.ikea.com/resources/static/logo.png" alt="" />
-          <img className="boxImg" src="/logo/ayatriologo.png" alt="" />
-        </div> */}
             <div className="img__con111 sm:block flex items-center justify-center">
               <Image
                 src="/logo/ayatriologo.png"
                 width={200}
                 height={100}
-                alt="logo"
+                alt="Ayatrio"
                 className="w-48 m-2"
               />
             </div>
 
-            <div className="mt-4 w-full">
-              <h1 className="text-lg font-bold text-gray-800">
-                Become a member of Ayatrio Family today. It's free to join? Get
+            <div className="mt-[50px] w-full">
+              <h1 className="text-lg font-semibold text-black">
+                Be Part a Ayatrio membership today. It's free to join? Get
                 the details.
               </h1>
-              <div className="w-full h-8"></div>
+
               <ul className="list-disc p-5 ">
                 <li className="py-1 text-base">
-                  Online access to your invoices and purchase history
+                  Follow your online orders, in-store buys, and access your purchase history and e-receipts
                 </li>
-                <li className="py-1 text-base">Access to IKEA Family offers</li>
-                <li className="py-1 text-base">Interior design advice</li>
-                <li className="py-1 text-base">
-                  Perks for you and your colleagues
-                </li>
-                <li className="py-1 text-base">Free online training</li>
+                <li className="py-1 text-base">Join community for
+                  live, Member-only Interior design events </li>
+                <li className="py-1 text-base">Access to Ayatrio Family offers</li>
+                <li className="py-1 text-base">Create your personal wishlist</li>
               </ul>
-              <p className="text-base pt-4 mb-7">... and a whole lot more!</p>
+              <p className="text-base pt-1 mb-[15px]">... and a whole lot more!</p>
               <div className="flex flex-row gap-4">
                 <div className="  flex flex-col gap-4 w-6/12">
                   <Image
@@ -101,9 +95,6 @@ const LoginComponent = () => {
                     height={256}
                     src="/login/login3.jpg"
                   />
-
-                  {/* <img src="https://in.accounts.ikea.com/resources/static/BUSINESS_SIGNUP_IMAGE_1.jpg" alt="" />
-              <img src="https://in.accounts.ikea.com/resources/static/BUSINESS_SIGNUP_IMAGE_3.jpg" alt="" /> */}
                 </div>
                 <div className="  flex flex-col gap-4 w-6/12">
                   <Image
@@ -118,39 +109,27 @@ const LoginComponent = () => {
                     height={240}
                     src="/login/login4.jpg"
                   />
-                  {/* <img src="https://in.accounts.ikea.com/resources/static/BUSINESS_SIGNUP_IMAGE_2.jpg" alt="" />
-              <img src="https://in.accounts.ikea.com/resources/static/BUSINESS_SIGNUP_IMAGE_4.jpg" alt="" /> */}
+
                 </div>
               </div>
             </div>
+            <div className="text-[10px] mt-[50px]"> <p >Ayatrio.com - Cookie Policy and Privacy Policy</p>
+              <p> © Inter Ayatrio Systems B.V. 1999-2024</p></div>
           </div>
+
         </div>
 
         <div className="flex justify-center w-[430px]">
-          <div className="flex items-center justify-center sm:px-[50px] px-[20px]">
-            {/*item-center removed*/}
+          <div className="flex pt-[150px] sm:px-[50px] px-[20px]">
             <div className="bg-white">
-              {/* <div className="img__con111 sm:block flex items-center justify-center">
-                <Image
-                  src="/logo/ayatriologo.png"
-                  width={200}
-                  height={100}
-                  alt="logo"
-                  className="w-48 m-2"
-                />
-              </div> */}
+              <div className="mt-[30px] mb-[10px] w-full">
+                <h3 className="text-black text-3xl font-semibold" >Wellcome to ayatrio family profile</h3>
+              </div>
 
-              {/* <div className=" break-words mt-[30px] mb-[10px] w-full text-black sm:text-[30px] text-xl font-[600] -tracking-[1.2px] sm:block flex items-center justify-center  ">
-          <h3>Wellcome to ayatrio family profile</h3>
-        </div> */}
-              {/* <div className="Modal_subtitle mb-[38px] sm:w-[60%] sm:text-left text-center flex items-center justify-center">
-                Become a member of Ayatrio Family today. It's free to join? Get
-                the details.
-              </div> */}
-              <div className="sm:block flex justify-center items-center">
+              <div className="sm:block flex pt-[30px]">
                 <button
                   onClick={handleGoogleLogin}
-                  className="text-white bg-black text-lg rounded-full font-semibold py-3 px-10 flex items-center justify-center mb-7"
+                  className="border-2 text-black border-solid  w-[100%] sm:h-14 h-8 rounded-full  transition duration-300 font-semibold flex items-center justify-center mb-[15px]"
                 >
                   {/* <Google className="mr-2" /> */}
                   Login with Google
@@ -160,9 +139,9 @@ const LoginComponent = () => {
                 <div className="BzWZlf sm:block flex items-center justify-center">
                   <button
                     onClick={toggleFormVisibility}
-                    className="text-white bg-black text-lg rounded-full font-semibold py-3 px-10 flex items-center justify-center "
+                    className="border-2 text-black border-solid  w-[100%] sm:h-14 h-8 rounded-full font-semibold transition duration-300 flex items-center justify-center "
                   >
-                    Login With Business
+                    Login with Business
                   </button>
                 </div>
               </div>
@@ -248,7 +227,9 @@ const LoginComponent = () => {
                   .{" "}
                 </span>
               </div>
+
             </div>
+
           </div>
         </div>
       </div>

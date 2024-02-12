@@ -13,7 +13,7 @@ const TopHeader = () => {
           homeRoute === pathname ? "fixed" : ""
         } z-[99999] w-screen flex justify-between`}
       >
-        <div className="pl-8 pt-2 pb-2">
+        <div className="pt-2 pb-2 pl-8">
           <Image
             src="/logo/favicon-32x32.png"
             height={20}
@@ -23,36 +23,11 @@ const TopHeader = () => {
         </div>
         <div>
           <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5 ">
-            {/* <Link href="/virtualexperience/category"  style={{ borderRight: "1px solid #000",paddingRight:"10px" }}>Virtual Experience </Link>
-            <Link
-              href={{
-                pathname: "/designservice",
-                query: {
-                  search: "freedesign",
-                },
-              }}
-              style={{ borderRight: "1px solid #000" }}
-      
-            >
-              Free Design
-            </Link>
-            <Link
-              href={{
-                pathname: "/freesample",
-                query: {
-                  search: "freesample",
-                },
-              }}
-              style={{ borderRight: "1px solid #000" }}
-            >
-              Free Sample
-            </Link>
-            <Link href="/login" >Join Ayatrio Family</Link> */}
             <div className="border-r border-gray-400 pr-3">
               Virtual Experience
             </div>
-            <div className="border-r border-gray-400 pr-3">Free Design</div>
-            <div className="border-r border-gray-400 pr-3">Free Sample</div>
+            <div className="pr-3 border-r border-gray-400 tracki">Free Design</div>
+            <div className="pr-3 border-r border-gray-400">Free Sample</div>
             <div>Join Ayatrio Family</div>
           </div>
         </div>
