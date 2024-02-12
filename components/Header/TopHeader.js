@@ -13,7 +13,7 @@ const TopHeader = () => {
           homeRoute === pathname ? "fixed" : ""
         } z-[99999] w-full flex justify-between`}
       >
-        <div className="pt-1 pb-1 pl-8">
+        <div className="pt-1 pb-1 pl-[37.5px]">
           <Image
             src="/logo/favicon-32x32.png"
             height={20}
@@ -23,10 +23,9 @@ const TopHeader = () => {
         </div>
         <div>
           <div
-            className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5 "
-            style={{ fontSize: "12px" }}
+            className="flex flex-row gap-2 p-[5px] text-black  text-[12px] pr-5 "
           >
-            <div className="pr-3 border-r border-gray-400 tracki">
+            <div className="pr-3 border-r  border-gray-400 tracki">
               <Link href="/designservice">Free Design Request</Link>
             </div>
             <div className="pr-3 border-r border-gray-400">
