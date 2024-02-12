@@ -22,15 +22,15 @@ const TopHeader = () => {
           />
         </div>
         <div>
-          <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5 ">
-            <div className="border-r border-gray-400 pr-3">
-              <Link href="/virtualexperience/category">Virtual Experience</Link>
-            </div>
+          <div
+            className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5 "
+            style={{ fontSize: "12px" }}
+          >
             <div className="pr-3 border-r border-gray-400 tracki">
-              <Link href="/designservice">Free Design</Link>
+              <Link href="/category/designservice">Free Design</Link>
             </div>
             <div className="pr-3 border-r border-gray-400">
-              <Link href="/freesample">Free Sample</Link>
+              <Link href="/category/freesample">Free Sample</Link>
             </div>
             <div>
               <Link href="/login">Join Ayatrio Family</Link>
