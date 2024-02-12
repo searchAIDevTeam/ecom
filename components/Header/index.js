@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import TopHeader from "./TopHeader";
+// import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
   const pathname = usePathname();
@@ -46,7 +47,7 @@ function Header({ howMuchScrolled }) {
   };
   const handleProfileNav = () => {
     // console.log("Profile");
-    handleLinkClick("/profile");
+    handleLinkClick("/login");
   };
   const onClose = () => {
     setSearchQuery("");
@@ -101,8 +102,9 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div>
+      {/* <NextTopLoader zIndex={999999}  /> */}
       {homeRoute === pathname && typeof window !== "undefined" ? (
-        window.scrollY < 20 ? (
+        typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
         ) : null
       ) : null}
@@ -148,9 +150,8 @@ function Header({ howMuchScrolled }) {
             </div>
             <div className="flex items-center justify-center w-1/3">
               <div className="mainlogo">
-                <Link href="/home">
+                <Link href="/">
                   <Image
-                    onClick={() => handleLinkClick("/home")}
                     src="/images/ayatriologo.webp"
                     alt="logo"
                     width={300}
@@ -174,29 +175,27 @@ function Header({ howMuchScrolled }) {
                   height={30}
                 />
               </div>
-              <div
-                onClick={handleLoginNav}
-                className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
-              >
-                <Image
-                  src="/svg/icon/like.svg"
-                  alt=""
-                  className="header-div-icon"
-                  width={25}
-                  height={25}
-                />
+              <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+                <Link href={"/login"}>
+                  <Image
+                    src="/svg/icon/like.svg"
+                    alt=""
+                    className="header-div-icon"
+                    width={25}
+                    height={25}
+                  />
+                </Link>
               </div>
-              <div
-                className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
-                onClick={() => handleLinkClick("/cart")}
-              >
-                <Image
-                  src="/svg/icon/adtocart.svg"
-                  alt=""
-                  className="header-div-icon"
-                  width={25}
-                  height={25}
-                />
+              <div className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+                <Link href={"/cart"}>
+                  <Image
+                    src="/svg/icon/adtocart.svg"
+                    alt=""
+                    className="header-div-icon"
+                    width={25}
+                    height={25}
+                  />
+                </Link>
                 <div className="cart-notification">3</div>
               </div>
               {loginStatus === "true" ? (

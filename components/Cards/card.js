@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 function Card(props) {
   const router = useRouter();
@@ -22,7 +23,7 @@ function Card(props) {
     const data = response.data;
     dispatch({ type: "FETCH_ROOM_REQUEST", payload: id });
 
-    router.push(`/product`);
+    // router.push(`/product`);
     
   };
   const [slide, setSlide] = useState(0);
@@ -66,7 +67,10 @@ function Card(props) {
       {props.imgSrc?.map((item, idx) => {
    
         return (
-          <Image
+         <Link
+         href={`/product/${props.title}`}
+         >
+         <Image
             src={item}
             alt="NA"
             key={idx}
@@ -75,6 +79,7 @@ function Card(props) {
             onClick={() => handleclick(props.id, props.category)}
             className={slide === idx ? "h-full w-full" : "slide-hidden"}
           />
+         </Link>
         );
       })}
 

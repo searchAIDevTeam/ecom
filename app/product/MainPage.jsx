@@ -22,7 +22,7 @@ const RoomPage = () => {
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);
   const [data, setData] = useState([]);
   const selectedData = useSelector(selectRoomData);
-  console.log("selectedData", selectedData);
+  // console.log("selectedData", selectedData);
   useEffect(() => {
     if (selectedData && Object.keys(selectedData).length !== 0) {
       sessionStorage?.setItem("roomData", JSON.stringify(selectedData));
@@ -32,7 +32,7 @@ const RoomPage = () => {
       setData(cachedData);
     }
   }, [selectedData]);
-
+  // console.log(data)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
