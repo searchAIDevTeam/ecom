@@ -6,7 +6,7 @@ import Header from "../Header";
 const HeaderWrapper = () => {
   const pathname = usePathname();
 
-  const routes = ["/", "/login", "/sucess"];
+  const routes = ["/", "/login", "/success"];
   if (routes.includes(pathname)) {
     return null;
   } else {

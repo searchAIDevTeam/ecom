@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect } from "react";
-=======
-import React, { useEffect, useState } from "react";
->>>>>>> b099e1950f3ef00f6aea39624457b936133e5c1b
 import "./styles.css";
 
 import Carousel from "./swip";
@@ -20,7 +16,6 @@ function Card(props) {
   const handleImageClick = () => {
     props.setPopupVisible(true);
   };
-<<<<<<< HEAD
   const handleclick = async (id, category) => {
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`;
     const response = await axios.get(url);
@@ -32,19 +27,6 @@ function Card(props) {
    
   
 // }, [dispatch]);
-=======
-
-  const handleclick = (id, productId) => {
-    const postTrending = async () => {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/increment-popularity?productId=${productId}`
-      );
-    };
-    postTrending();
-    router.push("/room/" + id);
-  };
-
->>>>>>> b099e1950f3ef00f6aea39624457b936133e5c1b
   return (
     <>
       <div
