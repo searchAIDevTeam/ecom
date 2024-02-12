@@ -10,7 +10,10 @@ import {
   selectQuantity,
   updateQuantity,
 } from "@/components/Features/Slices/calculationSlice";
-import { selectRoomData, setRoomData } from "@/components/Features/Slices/roomSlice";
+import {
+  selectRoomData,
+  setRoomData,
+} from "@/components/Features/Slices/roomSlice";
 import axios from "axios";
 const RoomPage = () => {
   const dispatch = useDispatch();
@@ -29,7 +32,6 @@ const RoomPage = () => {
       setData(cachedData);
     }
   }, [selectedData]);
-  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,15 +75,12 @@ const RoomPage = () => {
   return (
     <>
       <div className="container-rooms flex sm:block items-center ">
-        {/* {isFilterVisible && <Header />} */}
-        <div className="sm:pl-[50px] px-[20px] mt-[65px]">
+     
+        <div className="sm:pl-[50px] sm:pr-0 px-[20px] mt-[65px]">
           <div className="flex sm:flex-row flex-col">
             <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
               <RoomImageList images={data?.images} />
               <ImageCaresoul images={data?.images} />
-              {/* <div className="sm:hidden flex">
-                <Card/>
-              </div> */}
               <RoomInfo data={data} />
             </div>
             <div className="sm:basis-1/3 flex flex-col  ">
@@ -92,10 +91,7 @@ const RoomPage = () => {
           </div>
 
           <Reviews data={data} />
-          {/*           
-            <Mobileswiper/> */}
-
-          {/* <Footer /> */}
+          
         </div>
       </div>
     </>

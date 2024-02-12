@@ -18,20 +18,20 @@ import {
 
 const Dataslider = ({ category, data, sliderIndex }) => {
   const itm1 = useSelector(Items1selected);
- // console.log("from selecteditems1", itm1);
+  // console.log("from selecteditems1", itm1);
 
   const itm2 = useSelector(Items2selected);
- // console.log("from selecteditems2", itm2);
+  // console.log("from selecteditems2", itm2);
 
   const itm3 = useSelector(Items3selected);
- // console.log("from selecteditems3", itm3);
+  // console.log("from selecteditems3", itm3);
 
   const swiperRef = useRef(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
   const swiperOptions = {
-    slidesPerView: 4,
+    slidesPerView: 3,
     centeredSlides: false,
-    spaceBetween: 1,
+    spaceBetween: 10,
     modules: [Pagination, Scrollbar, Mousewheel, FreeMode],
     navigation: {
       nextEl: `.custom-next-button-${sliderIndex}`,
@@ -48,7 +48,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
   }, [data]);
 
   useEffect(() => {
-   // console.log(productData);
+    // console.log(productData);
   }, []);
   return (
     <div>
@@ -70,7 +70,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
             </div>
             <div
               onClick={() => swiperRef.current.swiper.slideNext()}
-              className={`custom-next-button-${sliderIndex} hover:bg-400 hover:scale-110 hover:text-slate-100`}
+              className={`custom-next-button-${sliderIndex} hover:bg-400 sm:translate-y-0 translate-y-10 hover:scale-110 hover:text-slate-100`}
             >
               <Image
                 src="/svg/dropdown/rightvector.svg"
@@ -100,7 +100,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
 
             1024: {
               slidesPerView: 4,
-              spaceBetween: 1,
+              spaceBetween: 10,
             },
           }}
           allowSlidePrev={true}
