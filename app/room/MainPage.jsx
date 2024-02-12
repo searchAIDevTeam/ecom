@@ -34,7 +34,6 @@ const RoomPage = ({ params }) => {
     getRoomData();
   }, []);
 
-
   //posting data to database
   // if (typeof window !== "undefined") {
   //   var id = localStorage.getItem("deviceId");
@@ -107,7 +106,7 @@ const RoomPage = ({ params }) => {
     <>
       <div className="container-rooms flex sm:block items-center ">
         {/* {isFilterVisible && <Header />} */}
-        <div className="sm:px-[50px] px-[20px] mt-[65px]">
+        <div className="sm:pl-[50px] px-[20px] mt-[65px]">
           <div className="flex sm:flex-row flex-col">
             <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
               <RoomImageList images={data.images} />
