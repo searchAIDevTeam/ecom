@@ -73,18 +73,11 @@ const Trending = () => {
               onClick={() => swiper1Ref.current.swiper.slidePrev()}
               className="custom-prev-button bg-slate-500  rounded-full  hover:bg-400 hover:scale-110 hover:text-slate-100"
             >
-              {/* <Image src="/svg/dropdown/leftvector.svg" height={10} width={10} alt="arrow" /> */}
             </div>
             <div
               onClick={() => swiper1Ref.current.swiper.slideNext()}
               className="custom-next-button bg-slate-500  rounded-full hover:bg-400 hover:scale-110 hover:text-slate-100"
             >
-              {/* <Image
-                src="/svg/dropdown/rightvector.svg"
-                height={10}
-                width={10}
-                alt="arrow"
-              /> */}
             </div>
           </div>
         </div>
@@ -144,10 +137,11 @@ const Trending = () => {
                       rating={product.ratings}
                       key={idx}
                       id={product._id}
+                      category={product.category}
                       productId={product.productId}
                       setPopupVisible={setPopupVisible}
                       cssClass={"card1flex"}
-                    />
+                  />
                   </div>
                 </SwiperSlide>
               );

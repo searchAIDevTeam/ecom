@@ -97,9 +97,6 @@ function Header({ howMuchScrolled }) {
     };
   }, []);
 
-  if (typeof window !== "undefined" && window.scrollY > 20) {
-  }
-
   const homeRoute = "/home";
 
   return (
@@ -112,7 +109,7 @@ function Header({ howMuchScrolled }) {
       <div
         className={`fixed w-screen sm:bg-none ${
           homeRoute === pathname
-            ? window.scrollY < 20
+            ? typeof window !== "undefined" && window.scrollY < 20
               ? "sm:top-[35px] top-[48px]"
               : "top-0"
             : "top-0"
@@ -123,7 +120,7 @@ function Header({ howMuchScrolled }) {
       ${isFilterVisible ? "block" : "hidden"}
       `}
       >
-        {isLoading && <TopLoader />}
+        {/* {isLoading && <TopLoader />} */}
         {!searchQuery ? (
           <div
             className={`${
@@ -151,7 +148,7 @@ function Header({ howMuchScrolled }) {
             </div>
             <div className="flex items-center justify-center w-1/3">
               <div className="mainlogo">
-                <Link href="/">
+                <Link href="/home">
                   <Image
                     onClick={() => handleLinkClick("/home")}
                     src="/images/ayatriologo.webp"

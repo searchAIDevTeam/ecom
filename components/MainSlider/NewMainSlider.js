@@ -66,7 +66,6 @@ export default function NewMainSlider() {
         }}
         style={{
           marginLeft: -60,
-          minHeight: "40rem",
         }}
         // Enabled autoplay mode
         autoplay={{
