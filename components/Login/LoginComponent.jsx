@@ -73,8 +73,8 @@ const LoginComponent = () => {
 
               <ul className="list-disc p-5 ">
                 <li className="py-1 text-base">
-                  Follow your online orders, in-store buys, and access your purchase history and e-receipts
-                </li>
+                  Follow your online orders, in-store buys, and access your purchase history
+                  and e-receipts </li>
                 <li className="py-1 text-base">Join community for
                   live, Member-only Interior design events </li>
                 <li className="py-1 text-base">Access to Ayatrio Family offers</li>
@@ -123,14 +123,15 @@ const LoginComponent = () => {
           <div className="flex pt-[150px] sm:px-[50px] px-[20px]">
             <div className="bg-white">
               <div className="mt-[30px] mb-[10px] w-full">
-                <h3 className="text-black text-3xl font-semibold" >Wellcome to ayatrio family profile</h3>
+                <h3 className="text-black text-3xl leading-10 font-semibold" >Wellcome to ayatrio family profile</h3>
               </div>
 
               <div className="sm:block flex pt-[30px]">
                 <button
                   onClick={handleGoogleLogin}
-                  className="border-2 text-black border-solid  w-[100%] sm:h-14 h-8 rounded-full  transition duration-300 font-semibold flex items-center justify-center mb-[15px]"
+                  className="border-2 text-black border-solid  w-[100%] sm:h-14 h-8 gap-[5px] rounded-full  transition duration-300 font-semibold flex items-center justify-center mb-[15px]"
                 >
+                  <Image src='/icon/googlelogin.svg' width={20} height={20} alt="up" />
                   {/* <Google className="mr-2" /> */}
                   Login with Google
                 </button>
@@ -195,7 +196,7 @@ const LoginComponent = () => {
               )}
 
               <div className="terms flex flex-row gap-3 mt-4 mb-10">
-                <input type="checkbox" />
+                <input type="checkbox" className=" w-[30px] h-[30px] " />
                 <span className="mtp text-xs">
                   By continuing, you agree to Ayatrio's{" "}
                   <a
