@@ -13,7 +13,7 @@ import Image from "next/image";
 const Tabs = ({ data }) => {
   const router = useRouter();
 
-  const [activeTab, setActiveTab] = useState(data?.recommendations[0]?.recommendedProducts[0]?.roomCategory.toLowerCase());
+  const [activeTab, setActiveTab] = useState(data?.recommendations?.[0]?.recommendedProducts[0]?.roomCategory.toLowerCase());
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Tabs = ({ data }) => {
     };
   }, []);
 
-  const uniqueRoomCategories = data?.recommendations[0]?.recommendedProducts
+  const uniqueRoomCategories = data?.recommendations?.[0]?.recommendedProducts
     .map((item) => item.roomCategory)
     .filter((item, i, ar) => ar.indexOf(item) === i);
 
@@ -45,7 +45,7 @@ const Tabs = ({ data }) => {
     tabsData.push({
       key: category.toLowerCase(),
       label: category,
-      img: data?.recommendations[0]?.recommendedProducts
+      img: data?.recommendations?.[0]?.recommendedProducts
         .find((item) => item.roomCategory === category)?.images[1],
     });
   });
@@ -53,7 +53,7 @@ const Tabs = ({ data }) => {
   const tabImages = {};
 
   uniqueRoomCategories.forEach((category) => {
-    tabImages[category.toLowerCase()] = data?.recommendations[0]?.recommendedProducts
+    tabImages[category.toLowerCase()] = data?.recommendations?.[0]?.recommendedProducts
       .find((item) => item.roomCategory === category)?.images[1];
   });
 
