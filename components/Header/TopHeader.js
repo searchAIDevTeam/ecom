@@ -22,10 +22,10 @@ const TopHeader = () => {
           />
         </div>
         <div>
-          <div className="flex flex-row gap-2 pt-2 pr-5 text-xs tracking-wide text-black">
-            <div className="pr-3 border-r border-gray-400">
-              <Link href="/virtualexperience/category">Virtual Experience</Link>
-            </div>
+          <div
+            className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5 "
+            style={{ fontSize: "12px" }}
+          >
             <div className="pr-3 border-r border-gray-400 tracki">
               <Link href="/designservice">Free Design Request</Link>
             </div>
