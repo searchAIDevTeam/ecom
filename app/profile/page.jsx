@@ -126,7 +126,7 @@ const ProfileComponent = () => {
 
   // Redirect if not authenticated
   if (!isAuthenticated) {
-    return <h1>Nikal</h1>;
+    return <h1>UnAutherized</h1>;
   }
   // console.log('Token:', token);
   // console.log('User:', user);

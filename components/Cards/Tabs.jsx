@@ -41,7 +41,7 @@ const Tabs = ({ data }) => {
 
   const tabsData = [];
 
-  uniqueRoomCategories.forEach((category) => {
+  uniqueRoomCategories?.forEach((category) => {
     tabsData.push({
       key: category.toLowerCase(),
       label: category,

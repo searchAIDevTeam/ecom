@@ -123,7 +123,7 @@ function Header({ howMuchScrolled }) {
       ${isFilterVisible ? "block" : "hidden"}
       `}
       >
-        {isLoading && <TopLoader />}
+        {/* {isLoading && <TopLoader />} */}
         {!searchQuery ? (
           <div
             className={`${
