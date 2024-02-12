@@ -176,10 +176,9 @@ const AddCart = () => {
       <div className="main-cart flex justify-center sm:flex-row flex-col sm:gap-80 gap-10  sm:items-start items-center min-h-screen relative top-32 pb-20">
         {cartStatus === "loading" && <p>Loading...</p>}
         {cartStatus === "failed" && <p>Error loading data from DB.</p>}
-        {cartStatus === "succeeded" && cartdata && (
+        {cartStatus === "succeeded" && cartdata ? (
           <div>
             <h1 className="sm:text-4xl text-2xl mb-6 font-semibold">Bag</h1>
-
             {cartdata.items.map((item) => (
               <div key={item._id}>
                 <div className="left-cart flex-col flex sm:w-2/3 w-[90vw] pr-8">
@@ -236,6 +235,8 @@ const AddCart = () => {
               </div>
             ))}
           </div>
+        ) : (
+          <p>No data is available here.Please add some item in cart page</p>
         )}
         {cartStatus === "loading" && <p>Loading...</p>}
         {cartStatus === "failed" && <p>Error loading data from DB.</p>}

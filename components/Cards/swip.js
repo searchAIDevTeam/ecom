@@ -13,11 +13,11 @@ function Carousel({ data }) {
   const prevSlide = () => {
     setSlide(slide === 0 ? data.length - 1 : slide - 1);
   };  
-  console
+  
 
   return (
     <div
-      className="carousel"
+      className="carousel cursor-pointer bg-blue-500"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -41,13 +41,16 @@ function Carousel({ data }) {
           />
         );
       })}
+
       {isHovered && (
+        <div>
         <Image src='/svg/dropdown/rightvector.svg' height={20} width={20} alt="arrow"
               onClick={nextSlide}
           className="arrow arrow-right"
         />
+        </div>
       )}
-      <span className="indicators">
+      <span className="flex absolute bottom-[16px]">
         {data.map((_, idx) => {
           return (
             <button
