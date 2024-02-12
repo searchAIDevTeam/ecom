@@ -17,7 +17,7 @@ const AddCart = () => {
   const dbItems = useSelector((state) => state.cart.dbItems);
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    // console.log(id);
+    console.log(id);
   }
   useEffect(() => {
     const fetchData = async () => {
@@ -109,30 +109,66 @@ const AddCart = () => {
   //   }
   // };
 
+  // const handleDelete = async (itemid) => {
+  //   try {
+  //     const response = await axios.delete(
+  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
+  //       {
+  //         params: {
+  //           productId: itemid,
+  //           owner: id,
+  //         },
+  //       }
+  //     );
+  //     if (response.status !== 200) {
+  //       throw new Error("HTTP status" + response.status);
+  //     }
+  //     // After successful deletion, update the local state
+  //     const updatedItems = cartdata.items.filter(
+  //       (item) => item.productId._id !== itemid
+  //     );
+  //     setcartdata((prevstate) => ({
+  //       ...prevstate,
+  //       items: updatedItems,
+  //     }));
+  //   } catch (error) {
+  //     console.error("Error deleting item: ", error);
+  //   }
+  // };
+
   const handleDelete = async (itemid) => {
     try {
-      const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
-        {
-          params: {
-            productId: itemid,
-            owner: id,
-          },
-        }
-      );
-      if (response.status !== 200) {
-        throw new Error("HTTP status" + response.status);
+      const response = await axios.delete(postUrl, {
+        params: {
+          deviceId: id,
+          productId: itemid,
+        },
+      });
+      if (response.statusCode !== 200) {
+        console.error("HTTP status", response.status);
       }
-      // After successful deletion, update the local state
-      const updatedItems = cartdata.items.filter((item) => item._id !== itemid);
+      const updatedItems = cartdata.items.filter(
+        (item) => item.productId._id !== itemid,
+        console.log("productId", item.productId._id)
+      );
       setcartdata((prevstate) => ({
         ...prevstate,
         items: updatedItems,
       }));
     } catch (error) {
-      console.error("Error deleting item: ", error);
+      console.error("Error indeleting item", error);
     }
   };
+
+  // const s1 = id;
+  // const s2 =
+  //   "TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzEyMS4wLjAuMCBTYWZhcmkvNTM3LjM2ZW4tVVNXaW4zMg==";
+
+  // if (s1 === s2) {
+  //   console.log("Strings Are Equal");
+  // } else {
+  //   console.log("Strings Are Not Equal");
+  // }
 
   //delete handle function
   return (
@@ -180,8 +216,9 @@ const AddCart = () => {
                               height={25}
                               alt="delete"
                               className="hover:text-slate-500 cursor-pointer"
-                              onClick={() => handleDelete(item._id)}
+                              onClick={() => handleDelete(item.productId._id)}
                             />
+
                             <Image
                               src="/CartIcons/broken-heart-icon.svg"
                               width={25}

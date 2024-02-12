@@ -218,7 +218,7 @@ function Header({ howMuchScrolled }) {
               ) : (
                 <div
                   className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
-                  onClick={handleProfileNav}
+                  onClick={handleLoginNav}
                 >
                   <Image
                     src="/svg/icon/profile.svg"
