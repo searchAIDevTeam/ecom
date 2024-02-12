@@ -6,7 +6,6 @@ import { Providers } from "@/provider";
 import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
 import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
 import NextTopLoader from "nextjs-toploader";
-
 // const myFont = localFont({
 //   src: "../public/Font/Jost-Regular.ttf",
 // });
@@ -48,13 +47,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en" className={poppins.className}>
       <body>
         {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
-        <NextTopLoader color="#2299DD" height={5} crawlSpeed={500} />
+
         <Providers>
           <HeaderWrapper />
+        <NextTopLoader zIndex={999999} height={4} showSpinner={false}  />
           {children}
           <FooterWrapper />
         </Providers>

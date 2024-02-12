@@ -26,12 +26,22 @@ import {
 } from "./tabsRender";
 import TabsProductContent from "../compounds/TabsProductContent";
 import Measure from "./meausrement";
+import Link from "next/link";
+import axios from "axios";
 const Tabs = ({ filteredProductData, heading, param }) => {
   // console.log("Filtered products:", filteredProducts);
   const router = useRouter();
   const dispatch = useDispatch();
-  const handlenav = (id) => {
-    router.push(`/room/${id}`);
+  // const handlenav = (id) => {
+  //   router.push(`/room/${id}`);
+  // };
+  const handlenav = async (id) => {
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`;
+    const response = await axios.get(url);
+    const data = response.data;
+    dispatch({ type: "FETCH_ROOM_REQUEST", payload: id });
+
+    // router.push(`/product`);
   };
   const [filterData, setFilterdata] = useState([]);
   useEffect(() => {
@@ -319,115 +329,103 @@ const Tabs = ({ filteredProductData, heading, param }) => {
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
-        <div
-          className={`
-          sidebarforstickey sticky bg-white top-0 h-20
-           cursor-pointer sm:mb-0 z-[99999]
-      
-       `}
-        >
-          {param === "virtualexperience" ? (
-            ""
-          ) : (
-            <div
-              className={`py-5 bloc-tabs2 flex flex-row overflow-hidden h-[36rem]`}
-            >
-              <TabsProductContent
-                filterName={"Sort"}
-                commonClasses={commonClasses}
-                //isFilterOpen is to open the dropdown
-                isFilterOpen={openSort}
-                handleAll={handleAll}
-                handleTabClick={handleTabClick}
-                handleFilter={handleOpen}
-                handleAllFilter={handleAllsort}
-                filterArr={srtarr}
-                renderFilter={(text, idx) =>
-                  renderSortItem(text, idx, handleSorting)
-                }
-              />
+        <div className="flex sticky top-0 z-20 bg-white py-5">
+          <TabsProductContent
+            filterName={"Sort"}
+            commonClasses={commonClasses}
+            //isFilterOpen is to open the dropdown
+            isFilterOpen={openSort}
+            handleAll={handleAll}
+            handleTabClick={handleTabClick}
+            handleFilter={handleOpen}
+            handleAllFilter={handleAllsort}
+            filterArr={srtarr}
+            renderFilter={(text, idx) =>
+              renderSortItem(text, idx, handleSorting)
+            }
+          />
 
-              {/* Size - dropdown2 */}
-              <div className="">
-                <TabsProductContent
-                  filterName={"Size"}
-                  commonClasses={commonClasses}
-                  isFilterOpen={openSize}
-                  handleAll={handleAll}
-                  handleTabClick={handleTabClick}
-                  handleFilter={handleSize}
-                  handleAllFilter={handleAllSize}
-                  filterArr={Size}
-                  renderFilter={rendersizewidth}
-                />
-              </div>
+          {/* Size - dropdown2 */}
+          <div className="">
+            <TabsProductContent
+              filterName={"Size"}
+              commonClasses={commonClasses}
+              isFilterOpen={openSize}
+              handleAll={handleAll}
+              handleTabClick={handleTabClick}
+              handleFilter={handleSize}
+              handleAllFilter={handleAllSize}
+              filterArr={Size}
+              renderFilter={rendersizewidth}
+            />
+          </div>
 
-              {/* Design style - dropdown4 */}
-              {pathname.includes("Wallpaper") ? (
-                <TabsProductContent
-                  filterName={"Design style"}
-                  commonClasses={commonClasses}
-                  isFilterOpen={openCaategory}
-                  handleAll={handleAll}
-                  handleTabClick={handleTabClick}
-                  handleFilter={handleCategory}
-                  handleAllFilter={handleAllCategory}
-                  filterArr={categoryarr}
-                  renderFilter={rendercategory}
-                />
-              ) : null}
+          {/* Design style - dropdown4 */}
+          {pathname.includes("Wallpaper") ? (
+            <TabsProductContent
+              filterName={"Design style"}
+              commonClasses={commonClasses}
+              isFilterOpen={openCaategory}
+              handleAll={handleAll}
+              handleTabClick={handleTabClick}
+              handleFilter={handleCategory}
+              handleAllFilter={handleAllCategory}
+              filterArr={categoryarr}
+              renderFilter={rendercategory}
+            />
+          ) : null}
 
-              {/* Color dropdown */}
-              <TabsProductContent
-                filterName={"Colors"}
-                commonClasses={commonClasses}
-                isFilterOpen={opencolor}
-                handleAll={handleAll}
-                handleTabClick={handleTabClick}
-                handleFilter={handlecolor}
-                handleAllFilter={handleAllcolor}
-                filterArr={colorarr}
-                renderFilter={renderColor}
-              />
+          {/* Color dropdown */}
+          <TabsProductContent
+            filterName={"Colors"}
+            commonClasses={commonClasses}
+            isFilterOpen={opencolor}
+            handleAll={handleAll}
+            handleTabClick={handleTabClick}
+            handleFilter={handlecolor}
+            handleAllFilter={handleAllcolor}
+            filterArr={colorarr}
+            renderFilter={renderColor}
+          />
 
-              {/* Collections - filter */}
-              <TabsProductContent
-                filterName={"Collections"}
-                commonClasses={commonClasses}
-                isFilterOpen={openCollection}
-                handleAll={handleAll}
-                handleTabClick={handleTabClick}
-                handleFilter={handleCollection}
-                handleAllFilter={handleAllCollection}
-                filterArr={collectionArr}
-                renderFilter={renderCollection}
-              />
+          {/* Collections - filter */}
+          <TabsProductContent
+            filterName={"Collections"}
+            commonClasses={commonClasses}
+            isFilterOpen={openCollection}
+            handleAll={handleAll}
+            handleTabClick={handleTabClick}
+            handleFilter={handleCollection}
+            handleAllFilter={handleAllCollection}
+            filterArr={collectionArr}
+            renderFilter={renderCollection}
+          />
 
-              {/* Type - dropdown5 */}
-              <TabsProductContent
-                filterName={"Type"}
-                commonClasses={commonClasses}
-                isFilterOpen={openType}
-                handleAll={handleAll}
-                handleTabClick={handleTabClick}
-                handleFilter={handleType}
-                handleAllFilter={handleAllType}
-                filterArr={typearr}
-                renderFilter={renderType}
-                openContent={openContent}
-                handleContent={handleContent}
-                typeContent={typeContent}
-                renderTypeContent={renderTypeContent}
-              />
+          {/* Type - dropdown5 */}
+          <TabsProductContent
+            filterName={"Type"}
+            commonClasses={commonClasses}
+            isFilterOpen={openType}
+            handleAll={handleAll}
+            handleTabClick={handleTabClick}
+            handleFilter={handleType}
+            handleAllFilter={handleAllType}
+            filterArr={typearr}
+            renderFilter={renderType}
+            openContent={openContent}
+            handleContent={handleContent}
+            typeContent={typeContent}
+            renderTypeContent={renderTypeContent}
+          />
 
-              {/* ddropdown6 */}
-              <div>
-                <button
-                  onClick={() => {
-                    handleAll();
-                    handleTabClick();
-                  }}
-                  className={`Tabbtn z-0 bg-gray-100
+          {/* ddropdown6 */}
+          <div>
+            <button
+              onClick={() => {
+                handleAll();
+                handleTabClick();
+              }}
+              className={`Tabbtn z-0 bg-gray-100
                   ${
                     openAll
                       ? `active-tabs  border border-black ${commonClasses}`
@@ -439,83 +437,114 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                       : " justify-between"
                   }
                   `}
-                >
-                  All Filters &nbsp;
-                  <Image
-                    src="/svg/icon/choserightfloor.svg"
-                    width={40}
-                    height={40}
-                    className={`w-6 h-6  sm:block hidden
+            >
+              All Filters &nbsp;
+              <Image
+                src="/svg/icon/choserightfloor.svg"
+                width={40}
+                height={40}
+                className={`w-6 h-6  sm:block hidden
                 
                 
                 `}
-                    alt=""
-                  />
-                </button>
-                {openAll ? (
-                  <div className="menu-overlay overflow-y-auto bg-white  border-2 fixed  sm:w-[30vw] w-[100vw] sm:h-auto h-[80vh]  right-0 sm:top-16 bottom-0 z-[5000] rounded-2xl">
-                    <div className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600 z-10">
-                      <div className="flex flex-col gap-6 px-4">
-                        <div className="flex justify-between gap-32">
-                          <p>Filter and sort</p>
+                alt=""
+              />
+            </button>
+            {openAll ? (
+              <div className="menu-overlay overflow-y-auto bg-white  border-2 fixed  sm:w-[30vw] w-[100vw] sm:h-auto h-[80vh]  right-0 sm:top-16 bottom-0 z-[5000] rounded-2xl">
+                <div className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600 z-10">
+                  <div className="flex flex-col gap-6 px-4">
+                    <div className="flex justify-between gap-32">
+                      <p>Filter and sort</p>
 
-                          <Image
-                            src="/svg/dropdown/close.svg"
-                            width={24}
-                            height={24}
-                            onClick={closeAll}
-                            color="black"
-                          />
-                        </div>
-                        <hr />
-                        {/* 1stt div */}
-                        <div className="flex flex-col gap-7">
-                          <div
-                            onClick={handleAllsort}
-                            className="flex justify-between text-left"
-                          >
-                            Sort &nbsp;
-                            <Image
-                              src="/svg/dropdown/backarrow.svg"
-                              width={40}
-                              height={40}
-                              className={`w-6 h-6  mt-1
+                      <Image
+                        src="/svg/dropdown/close.svg"
+                        width={24}
+                        height={24}
+                        onClick={closeAll}
+                        color="black"
+                      />
+                    </div>
+                    <hr />
+                    {/* 1stt div */}
+                    <div className="flex flex-col gap-7">
+                      <div
+                        onClick={handleAllsort}
+                        className="flex justify-between text-left"
+                      >
+                        Sort &nbsp;
+                        <Image
+                          src="/svg/dropdown/backarrow.svg"
+                          width={40}
+                          height={40}
+                          className={`w-6 h-6  mt-1
                 ${openAllsort ? " rotate-90" : "-rotate-90"}
                 
                 `}
-                              alt=""
-                            />
-                          </div>
-                          {openAllsort ? (
-                            <div className="flex flex-col gap-7">
-                              {srtarr.map(renderSortItem)}
-                            </div>
-                          ) : null}
+                          alt=""
+                        />
+                      </div>
+                      {openAllsort ? (
+                        <div className="flex flex-col gap-7">
+                          {srtarr.map(renderSortItem)}
                         </div>
-                        <hr />
-                        {/* 2nd div */}
+                      ) : null}
+                    </div>
+                    <hr />
+                    {/* 2nd div */}
 
+                    <div className="flex flex-col gap-7">
+                      <div
+                        onClick={handleAllSize}
+                        className="flex justify-between text-left"
+                      >
+                        Size &nbsp;
+                        <Image
+                          src="/svg/dropdown/backarrow.svg"
+                          width={40}
+                          height={40}
+                          className={`w-6 h-6  mt-1
+                ${openAllSize ? " rotate-90" : "-rotate-90"}
+                
+                `}
+                          alt=""
+                        />
+                      </div>
+                      {openAllSize ? (
+                        <div className="flex flex-col gap-7">
+                          {/* <p className="font-semibold text-left">Width</p> */}
+                          {Size.map(rendersizewidth)}
+                          {/* 
+                            <p className="font-semibold text-left">Height</p>
+                            {htarr.map(rendersizewidth)} */}
+                        </div>
+                      ) : null}
+                    </div>
+                    <hr />
+                    {/* design style for wallpaper */}
+                    {pathname.includes("Wallpaper") ? (
+                      <>
                         <div className="flex flex-col gap-7">
                           <div
-                            onClick={handleAllSize}
+                            onClick={handleAllCategory}
                             className="flex justify-between text-left"
                           >
-                            Size &nbsp;
+                            Design style &nbsp;
                             <Image
                               src="/svg/dropdown/backarrow.svg"
                               width={40}
                               height={40}
                               className={`w-6 h-6  mt-1
-                ${openAllSize ? " rotate-90" : "-rotate-90"}
+                ${openAllCategory ? " rotate-90" : "-rotate-90"}
                 
                 `}
                               alt=""
                             />
                           </div>
-                          {openAllSize ? (
+                          {openAllCategory ? (
                             <div className="flex flex-col gap-7">
                               {/* <p className="font-semibold text-left">Width</p> */}
-                              {Size.map(rendersizewidth)}
+                              {categoryarr.map(rendercategory)}
                               {/* 
                             <p className="font-semibold text-left">Height</p>
                             {htarr.map(rendersizewidth)} */}
@@ -523,181 +552,148 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                           ) : null}
                         </div>
                         <hr />
-                        {/* design style for wallpaper */}
-                        {pathname.includes("Wallpaper") ? (
-                          <>
-                            <div className="flex flex-col gap-7">
-                              <div
-                                onClick={handleAllCategory}
-                                className="flex justify-between text-left"
-                              >
-                                Design style &nbsp;
-                                <Image
-                                  src="/svg/dropdown/backarrow.svg"
-                                  width={40}
-                                  height={40}
-                                  className={`w-6 h-6  mt-1
-                ${openAllCategory ? " rotate-90" : "-rotate-90"}
-                
-                `}
-                                  alt=""
-                                />
-                              </div>
-                              {openAllCategory ? (
-                                <div className="flex flex-col gap-7">
-                                  {/* <p className="font-semibold text-left">Width</p> */}
-                                  {categoryarr.map(rendercategory)}
-                                  {/* 
-                            <p className="font-semibold text-left">Height</p>
-                            {htarr.map(rendersizewidth)} */}
-                                </div>
-                              ) : null}
-                            </div>
-                            <hr />
-                          </>
-                        ) : null}
-                        {/* ****************************** */}
-                        {/* 3rd div */}
-                        <div className="flex flex-col gap-7">
-                          <div
-                            onClick={handleAllcolor}
-                            className="flex justify-between text-left"
-                          >
-                            Color &nbsp;
-                            <Image
-                              src="/svg/dropdown/backarrow.svg"
-                              width={40}
-                              height={40}
-                              className={`w-6 h-6  mt-1
+                      </>
+                    ) : null}
+                    {/* ****************************** */}
+                    {/* 3rd div */}
+                    <div className="flex flex-col gap-7">
+                      <div
+                        onClick={handleAllcolor}
+                        className="flex justify-between text-left"
+                      >
+                        Color &nbsp;
+                        <Image
+                          src="/svg/dropdown/backarrow.svg"
+                          width={40}
+                          height={40}
+                          className={`w-6 h-6  mt-1
                 ${openAllcolor ? " rotate-90" : "-rotate-90"}
                 
                 `}
-                              alt=""
-                            />
-                          </div>
-                          {openAllcolor ? (
-                            <div className="flex flex-col gap-7">
-                              {colorarr.map(renderColor)}
-                            </div>
-                          ) : null}
+                          alt=""
+                        />
+                      </div>
+                      {openAllcolor ? (
+                        <div className="flex flex-col gap-7">
+                          {colorarr.map(renderColor)}
                         </div>
-                        <hr />
+                      ) : null}
+                    </div>
+                    <hr />
 
-                        {/* 4th div */}
-                        {heading === "Wallpaper" ? (
-                          <>
-                            <div className="flex flex-col gap-7">
-                              <div
-                                onClick={handleAllCategory}
-                                className="flex justify-between text-left"
-                              >
-                                Design style &nbsp;
-                                <Image
-                                  src="/svg/dropdown/backarrow.svg"
-                                  width={40}
-                                  height={40}
-                                  className={`w-6 h-6  mt-1
+                    {/* 4th div */}
+                    {heading === "Wallpaper" ? (
+                      <>
+                        <div className="flex flex-col gap-7">
+                          <div
+                            onClick={handleAllCategory}
+                            className="flex justify-between text-left"
+                          >
+                            Design style &nbsp;
+                            <Image
+                              src="/svg/dropdown/backarrow.svg"
+                              width={40}
+                              height={40}
+                              className={`w-6 h-6  mt-1
                 ${openAllCategory ? " rotate-90" : "-rotate-90"}
                 
                 `}
-                                  alt=""
-                                />
-                              </div>
-                              {openAllCategory ? (
-                                <div className="flex flex-col gap-7">
-                                  {categoryarr.map(rendercategory)}
-                                </div>
-                              ) : null}
+                              alt=""
+                            />
+                          </div>
+                          {openAllCategory ? (
+                            <div className="flex flex-col gap-7">
+                              {categoryarr.map(rendercategory)}
                             </div>
-                            <hr />
-                          </>
-                        ) : null}
-                        {/* Collections div */}
-                        <div className="flex flex-col gap-7">
-                          <div
-                            onClick={handleAllCollection}
-                            className="flex justify-between text-left"
-                          >
-                            Collections &nbsp;
-                            <Image
-                              src="/svg/dropdown/backarrow.svg"
-                              width={40}
-                              height={40}
-                              className={`w-6 h-6  mt-1
+                          ) : null}
+                        </div>
+                        <hr />
+                      </>
+                    ) : null}
+                    {/* Collections div */}
+                    <div className="flex flex-col gap-7">
+                      <div
+                        onClick={handleAllCollection}
+                        className="flex justify-between text-left"
+                      >
+                        Collections &nbsp;
+                        <Image
+                          src="/svg/dropdown/backarrow.svg"
+                          width={40}
+                          height={40}
+                          className={`w-6 h-6  mt-1
                 ${openAllCollection ? " rotate-90" : "-rotate-90"}
                 
                 `}
-                              alt=""
-                            />
-                          </div>
-                          {openAllCollection ? (
-                            <div className="flex flex-col gap-7">
-                              {collectionArr.map(rendercategory)}
-                            </div>
-                          ) : null}
-                        </div>
-                        <hr />
-                        {/* 5th div */}
+                          alt=""
+                        />
+                      </div>
+                      {openAllCollection ? (
                         <div className="flex flex-col gap-7">
-                          <div
-                            onClick={handleAllType}
-                            className="flex justify-between text-left"
-                          >
-                            Type &nbsp;
-                            <Image
-                              src="/svg/dropdown/backarrow.svg"
-                              width={40}
-                              height={40}
-                              className={`w-6 h-6  mt-1
+                          {collectionArr.map(rendercategory)}
+                        </div>
+                      ) : null}
+                    </div>
+                    <hr />
+                    {/* 5th div */}
+                    <div className="flex flex-col gap-7">
+                      <div
+                        onClick={handleAllType}
+                        className="flex justify-between text-left"
+                      >
+                        Type &nbsp;
+                        <Image
+                          src="/svg/dropdown/backarrow.svg"
+                          width={40}
+                          height={40}
+                          className={`w-6 h-6  mt-1
                 ${openAllType ? " rotate-90" : "-rotate-90"}
                 
                 `}
-                              alt=""
-                            />
-                          </div>
-                          {openAllType ? (
-                            <div className="flex flex-col gap-7">
-                              {typearr.map(renderType)}
+                          alt=""
+                        />
+                      </div>
+                      {openAllType ? (
+                        <div className="flex flex-col gap-7">
+                          {typearr.map(renderType)}
 
-                              <button
-                                className={`text-left underline
+                          <button
+                            className={`text-left underline
                   ${openContent ? "hidden" : "block"}
                   `}
-                                onClick={handleContent}
-                              >
-                                +7 more
-                              </button>
-                              {openContent
-                                ? typeContent.map(renderTypeContent)
-                                : null}
+                            onClick={handleContent}
+                          >
+                            +7 more
+                          </button>
+                          {openContent
+                            ? typeContent.map(renderTypeContent)
+                            : null}
 
-                              <button
-                                onClick={handleContent}
-                                className={`text-left underline ${
-                                  openContent ? "block" : "hidden"
-                                }`}
-                              >
-                                Less
-                              </button>
-                            </div>
-                          ) : null}
+                          <button
+                            onClick={handleContent}
+                            className={`text-left underline ${
+                              openContent ? "block" : "hidden"
+                            }`}
+                          >
+                            Less
+                          </button>
                         </div>
-                        <hr />
-                      </div>
-                      <div className="flex flex-row items-center justify-center gap-3 pt-10">
-                        <button className="text-white bg-blue-900 rounded-full w-36 h-14">
-                          View 96
-                        </button>
-                        <button className="text-white bg-blue-900 rounded-full w-36 h-14">
-                          Clear all
-                        </button>
-                      </div>
+                      ) : null}
                     </div>
+                    <hr />
                   </div>
-                ) : null}
+                  <div className="flex flex-row items-center justify-center gap-3 pt-10">
+                    <button className="text-white bg-blue-900 rounded-full w-36 h-14">
+                      View 96
+                    </button>
+                    <button className="text-white bg-blue-900 rounded-full w-36 h-14">
+                      Clear all
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            ) : null}
+          </div>
         </div>
         <hr />
         {/* iimages */}
@@ -718,56 +714,60 @@ const Tabs = ({ filteredProductData, heading, param }) => {
           </div>
           <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 gap-3 ">
             {firstPart.map((text, idx) => (
-              <div
-                className="flex flex-col gap-3 border-b border-r hover-divnine sm:border-none"
-                key={idx}
-                onClick={() => handlenav(text._id)}
+              <Link
+              href={`/product/${text.productTitle}`}
               >
-                <div className="relative  z[-999999]">
-                  <div
-                    onClick={(event) => event.stopPropagation()}
-                    className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
-                      selectedpdt.includes(text) ? "visible" : ""
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      onChange={(e) => {
-                        handleCheckbox(text, e.target.checked);
-                        setShowcompare(true);
-                      }}
-                      checked={selectedpdt.includes(text)}
+                <div
+                  className="flex flex-col gap-3 border-b border-r hover-divnine sm:border-none"
+                  key={idx}
+                  onClick={() => handlenav(text._id)}
+                >
+                  <div className="relative  z[-999999]">
+                    <div
+                      onClick={(event) => event.stopPropagation()}
+                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
+                        selectedpdt.includes(text) ? "visible" : ""
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        onChange={(e) => {
+                          handleCheckbox(text, e.target.checked);
+                          setShowcompare(true);
+                        }}
+                        checked={selectedpdt.includes(text)}
+                      />
+                    </div>
+
+                    <Image
+                      src={text.images[0]}
+                      alt=""
+                      width={260}
+                      height={150}
+                      className="object-cover object-center sm:w-[290px] w-[200px] sm:h-[300px] h-[200px]"
+                      // className="absolute "
+                      // layout="fill"
+                      // objectFit="contain"
                     />
                   </div>
-
-                  <Image
-                    src={text.images[0]}
-                    alt=""
-                    width={260}
-                    height={150}
-                    className="object-cover object-center sm:w-[290px] w-[200px] sm:h-[300px] h-[200px]"
-                    // className="absolute "
-                    // layout="fill"
-                    // objectFit="contain"
-                  />
+                  <p className="text-sm font-semibold">{text.productTitle}</p>
+                  <p className="text-sm">{text.productDescription}</p>
+                  <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
+                    Rs. <span className="text-3xl"> {text.totalPrice}</span>
+                  </p>
+                  <p className="flex flex-row items-center gap-1 text-sm text-black">
+                    {stars.map((star, index) => (
+                      <Image
+                        key={index}
+                        src={star}
+                        alt="star"
+                        width={15}
+                        height={15}
+                      />
+                    ))}
+                  </p>
                 </div>
-                <p className="text-sm font-semibold">{text.productTitle}</p>
-                <p className="text-sm">{text.productDescription}</p>
-                <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
-                  Rs. <span className="text-3xl"> {text.totalPrice}</span>
-                </p>
-                <p className="flex flex-row items-center gap-1 text-sm text-black">
-                  {stars.map((star, index) => (
-                    <Image
-                      key={index}
-                      src={star}
-                      alt="star"
-                      width={15}
-                      height={15}
-                    />
-                  ))}
-                </p>
-              </div>
+              </Link>
             ))}
           </div>
           <Measure filteredProductData={filteredProductData} />
@@ -778,7 +778,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 key={idx}
                 onClick={() => handlenav(text._id)}
               >
-                <div className="relative  z[-999999]">
+                <div className=" relative w-[250px] h-[250px]">
                   <div
                     onClick={(event) => event.stopPropagation()}
                     className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${

@@ -9,11 +9,11 @@ const TopHeader = () => {
   return (
     <div>
       <div
-        className={`bg-zinc-200 ${
+        className={`bg-zinc-100 h-[30px] ${
           homeRoute === pathname ? "fixed" : ""
-        } z-[99999] w-screen flex justify-between`}
+        } z-[99999] w-full flex justify-between`}
       >
-        <div className="pt-2 pb-2 pl-8">
+        <div className="pt-1 pb-1 pl-8">
           <Image
             src="/logo/favicon-32x32.png"
             height={20}
@@ -27,13 +27,13 @@ const TopHeader = () => {
             style={{ fontSize: "12px" }}
           >
             <div className="pr-3 border-r border-gray-400 tracki">
-              <Link href="/category/designservice">Free Design</Link>
+              <Link href="/designservice">Free Design Request</Link>
             </div>
             <div className="pr-3 border-r border-gray-400">
-              <Link href="/category/freesample">Free Sample</Link>
+              <Link href="/freesample">Free Sample Request</Link>
             </div>
             <div>
-              <Link href="/login">Join Ayatrio Family</Link>
+              <Link href="/login">Join Us</Link>
             </div>
           </div>
         </div>
