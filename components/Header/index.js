@@ -107,7 +107,7 @@ function Header({ howMuchScrolled }) {
         ) : null
       ) : null}
       <div
-        className={`fixed w-screen sm:bg-none ${
+        className={`fixed w-full sm:bg-none ${
           homeRoute === pathname
             ? typeof window !== "undefined" && window.scrollY < 20
               ? "sm:top-[35px] top-[48px]"

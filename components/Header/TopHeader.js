@@ -11,7 +11,7 @@ const TopHeader = () => {
       <div
         className={`bg-zinc-200 ${
           homeRoute === pathname ? "fixed" : ""
-        } z-[99999] w-screen flex justify-between`}
+        } z-[99999] w-full flex justify-between`}
       >
         <div className="pt-2 pb-2 pl-8">
           <Image
@@ -22,8 +22,8 @@ const TopHeader = () => {
           />
         </div>
         <div>
-          <div className="flex flex-row gap-2 text-gray-500 text-sm pt-2 pr-5 ">
-            <div className="border-r border-gray-400 pr-3">
+          <div className="flex flex-row gap-2 pt-2 pr-5 text-sm text-gray-500 ">
+            <div className="pr-3 border-r border-gray-400">
               <Link href="/virtualexperience/category">Virtual Experience</Link>
             </div>
             <div className="pr-3 border-r border-gray-400 tracki">
