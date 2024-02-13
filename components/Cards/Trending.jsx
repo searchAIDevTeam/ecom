@@ -63,10 +63,10 @@ const Trending = () => {
     <div>
       <div className="pt-12  mb-20  bg-white sm:px-[50px] px-[20px]">
         <div className="mb-2 w-full flex justify-between items-center">
-          <h2 className="text-bold text-2xl">
+          <h2 className="font-semibold text-2xl py-[15px]">
             {newTrendingData && newTrendingData.length === 0
-              ? "Trending Products(Empty)"
-              : "Trending Product"}
+              ? "Most Family Choice(Empty)"
+              : "Most Family Choice"}
           </h2>
           <div className="Slidenav flex  bg-white text-2xl cursor-pointer  text-white rounded-full gap-2">
             <div
