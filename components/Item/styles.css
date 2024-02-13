@@ -1,5 +1,3 @@
-
-
 .card-flex .review-icon-container {
   margin-top: 220px;
   margin-right: 220px;
@@ -171,14 +169,14 @@
 .swiper-button-prev {
   margin-left: 82%;
   margin-top: 132px;
-font-weight: bolder;
-background-color: #a6a6a6;
-border-radius: 50%;
-width: 32px;
-height: 32px;
-display: flex;
-align-items: center;
-justify-content: center;
+  font-weight: bolder;
+  background-color: #a6a6a6;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .swiper-button-next {
@@ -213,11 +211,14 @@ justify-content: center;
 
 .swiper-scrollbar-drag {
   width: 30% !important;
+  background-color: #000;
 }
-.swiper-slide{
+
+.swiper-slide {
   width: 400px;
   height: 500px;
 }
+
 .card-flex {
   height: 380px;
   display: flex;
@@ -226,7 +227,8 @@ justify-content: center;
   /* gap: 10px; */
   width: 100%;
 }
-.card1flex{
+
+.card1flex {
   height: 300px;
   display: flex;
   justify-content: center;
@@ -235,7 +237,7 @@ justify-content: center;
   width: 100%;
 }
 
-.swiper-wrapper{
+.swiper-wrapper {
   gap: 5px;
-  margin-left:15px;
+  margin-left: 15px;
 }

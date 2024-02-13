@@ -133,7 +133,7 @@ const Imagechanger = () => {
         ))}
       </div>
       <div className="right  flex w-1/2 h-full">
-        <div className="flex w-full h-[36rem] items-center relative">
+        <div className="flex w-full h-[34rem] items-center relative">
           {ImagechangerData[0]?.sections?.map((image, i) => (
             <img
               key={i}
