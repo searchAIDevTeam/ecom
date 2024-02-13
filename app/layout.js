@@ -2,11 +2,10 @@ import { Poppins } from "next/font/google";
 // import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/provider";
-// import Header from "@/components/Header";
-// import Footer from "@/components/Footer/Footer";
+
 import HeaderWrapper from "@/components/HeaderWrapper/HeaderWrapper";
 import FooterWrapper from "@/components/FooterWrapper/FooterWrapper";
-
+import NextTopLoader from "nextjs-toploader";
 // const myFont = localFont({
 //   src: "../public/Font/Jost-Regular.ttf",
 // });
@@ -48,6 +47,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en" className={poppins.className}>
       <body>
@@ -55,6 +55,7 @@ export default function RootLayout({ children }) {
 
         <Providers>
           <HeaderWrapper />
+        <NextTopLoader zIndex={999999} height={4} showSpinner={false}  />
           {children}
           <FooterWrapper />
         </Providers>

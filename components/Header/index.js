@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import TopHeader from "./TopHeader";
+// import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
   const pathname = usePathname();
@@ -46,7 +47,7 @@ function Header({ howMuchScrolled }) {
   };
   const handleProfileNav = () => {
     // console.log("Profile");
-    handleLinkClick("/profile");
+    handleLinkClick("/login");
   };
   const onClose = () => {
     setSearchQuery("");
@@ -97,25 +98,26 @@ function Header({ howMuchScrolled }) {
     };
   }, []);
 
-  if (typeof window !== "undefined" && window.scrollY > 20) {
-  }
-
   const homeRoute = "/home";
 
   return (
     <div>
+<<<<<<< HEAD
       
+=======
+      {/* <NextTopLoader zIndex={999999}  /> */}
+>>>>>>> 539515fa82fa2cb5930bc5a39539022ad43d60eb
       {homeRoute === pathname && typeof window !== "undefined" ? (
-        window.scrollY < 20 ? (
+        typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
           
         ) : null
       ) : null}
       <div
-        className={`fixed w-screen sm:bg-none ${
+        className={`fixed w-full sm:bg-none ${
           homeRoute === pathname
-            ? window.scrollY < 20
-              ? "sm:top-[35px] top-[48px]"
+            ? typeof window !== "undefined" && window.scrollY < 20
+              ? "sm:top-[30px] top-[35px]"
               : "top-0"
             : "top-0"
         } z-[99999]
@@ -125,12 +127,12 @@ function Header({ howMuchScrolled }) {
       ${isFilterVisible ? "block" : "hidden"}
       `}
       >
-        {isLoading && <TopLoader />}
+        {/* {isLoading && <TopLoader />} */}
         {!searchQuery ? (
           <div
             className={`${
               isScrolled ? "border-b-[0.5px] border-slate-200" : ""
-            }  flex flex-row justify-between items-center sm:px-[30px] px-[10px] py-0`}
+            }  flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px] py-0`}
           >
             <div className="flex flex-row items-center justify-start w-1/3 gap-1 sm:gap-5 ">
               <div className="profile-menu font-bold p-[7px] hover:bg-zinc-100 hover:rounded-full">
@@ -155,7 +157,6 @@ function Header({ howMuchScrolled }) {
               <div className="mainlogo">
                 <Link href="/">
                   <Image
-                    onClick={() => handleLinkClick("/home")}
                     src="/images/ayatriologo.webp"
                     alt="logo"
                     width={300}
@@ -179,29 +180,27 @@ function Header({ howMuchScrolled }) {
                   height={30}
                 />
               </div>
-              <div
-                onClick={handleLoginNav}
-                className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
-              >
-                <Image
-                  src="/svg/icon/like.svg"
-                  alt=""
-                  className="header-div-icon"
-                  width={25}
-                  height={25}
-                />
+              <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+                <Link href={"/login"}>
+                  <Image
+                    src="/svg/icon/like.svg"
+                    alt=""
+                    className="header-div-icon"
+                    width={25}
+                    height={25}
+                  />
+                </Link>
               </div>
-              <div
-                className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer"
-                onClick={() => handleLinkClick("/cart")}
-              >
-                <Image
-                  src="/svg/icon/adtocart.svg"
-                  alt=""
-                  className="header-div-icon"
-                  width={25}
-                  height={25}
-                />
+              <div className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+                <Link href={"/cart"}>
+                  <Image
+                    src="/svg/icon/adtocart.svg"
+                    alt=""
+                    className="header-div-icon"
+                    width={25}
+                    height={25}
+                  />
+                </Link>
                 <div className="cart-notification">3</div>
               </div>
               {loginStatus === "true" ? (

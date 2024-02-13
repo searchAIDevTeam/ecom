@@ -19,9 +19,9 @@ const Rooms = () => {
   const [data, setData] = useState([]);
   const dataSelector = useSelector(selectVirtualData);
   const search = useSearchParams();
-  let filteredData = dataSelector.filter(
-    (item) => item.category === search.get("category").toLocaleLowerCase()
-  );
+  // let filteredData = dataSelector.filter(
+  //   (item) => item.category === search.get("category").toLocaleLowerCase()
+  // );
 
   useEffect(() => {
     if (dataSelector && search.get("category")) {

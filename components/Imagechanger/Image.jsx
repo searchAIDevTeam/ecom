@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const Imagechanger = () => {
- // const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
   const [openStates, setOpenStates] = useState([false, false, false]); // State to track open/close state
 
   const text = [
@@ -90,7 +90,7 @@ const Imagechanger = () => {
   //
   return (
     <>
-      <div className="main w-full h-full py-20 flex sm:flex-row flex-col sm:px-[50px] px-[20px]">
+      <div className="w-full h-full py-20 flex sm:flex-row flex-col sm:px-[50px] px-[20px]">
         <div className="left text-container flex flex-col sm:w-1/2 w-[80vw] h-full">
           <div className="text-container  py-8">
             <h1 className="font-bold sm:text-3xl  text-xl">
@@ -108,7 +108,7 @@ const Imagechanger = () => {
               )}
               <div
                 onClick={() => handleToggle(idx)}
-                
+
                 className="flex  items-center "
               >
                 <h1
@@ -160,7 +160,7 @@ const Imagechanger = () => {
               src={imageSrc[imgindex]}
               alt=""
               className=" w-[100%] h-[36rem] lazyload"
-              
+
             />
             <div className="absolute bottom-4 left-4 flex text-white text-lg">Your text</div>
           </div>

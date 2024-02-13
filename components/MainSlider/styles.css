@@ -87,6 +87,7 @@ img {
 .carcular-ui {
   margin: 7.5px;
 }
+
 .swiper-button-next::after {
   display: flex;
   align-items: center;

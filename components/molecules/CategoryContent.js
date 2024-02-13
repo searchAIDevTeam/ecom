@@ -31,7 +31,7 @@ const CategoryContent = (props) => {
       // console.log("cat : ", cat)
       // console.log("cat.text : ", cat.text)
       cat.text === "Virtual Experience"
-        ? router.push("/virtualexperience/vrooms")
+        ? router.push("/category/virtualexperience")
         : router.push("/magazine");
     } else {
       // console.log("heading : ", heading)
@@ -61,7 +61,11 @@ const CategoryContent = (props) => {
       <div className={`flex flex-col ${itemsGap}`}>
         {categoryData.map((dataItem) => {
           return (
-            <div key={dataItem.id} className={`flex gap-1`} onClick={() => handleClick(dataItem)}>
+            <div
+              key={dataItem.id}
+              className={`flex gap-1`}
+              onClick={() => handleClick(dataItem)}
+            >
               {dataItem.image ? (
                 <Image
                   src={dataItem.image}
@@ -70,10 +74,10 @@ const CategoryContent = (props) => {
                   alt="image"
                   className="rounded-full"
                 />
-              ) : (
-                null
-              )}
-              <p className={`${textStyle} ${textSize} ${textColor} cursor-pointer`}>
+              ) : null}
+              <p
+                className={`${textStyle} ${textSize} ${textColor} cursor-pointer`}
+              >
                 {dataItem.text}
               </p>
             </div>

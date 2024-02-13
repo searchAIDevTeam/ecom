@@ -1,24 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 const Notfound = () => {
   return (
-    <main className="flex items-center text-blue-900 gap-5 justify-center flex-col relative top-16  pb-20">
-      <h2 className="text-[47px]">OOPS ! </h2>
-      <p className="text-xl">404 Page Not found</p>
-      <Image
-        src="/404.webp"
-        width={600}
-        height={300}
-        className=" sm:w-[600px] sm:h-[300px] w-[80vw] h-[60vh] "
-        alt="not-found"
-        loading="lazy"
-        ignore_imgix="true"
-      />
-      <p className="text-3xl">Looks like the page went on vacation</p>
+    <main className="flex items-center text-black gap-5 justify-center flex-col relative top-16  py-[150px]">
+      <h2 className="text-[47px] font-semibold">Oops! Something went wrong:(  </h2>
+      <p className="text-2xl">The page you are looking for can't be found.</p>
+     
+      <p className="text-2xl">Maybe the links below can be helpful.</p>
       <p>
-        Go to &nbsp;
         <Link href="/" className=" underline">
-          Homepage
+        Go back to the Ayatrio homepage
         </Link>
       </p>
     </main>

@@ -12,11 +12,12 @@ function Carousel({ data }) {
 
   const prevSlide = () => {
     setSlide(slide === 0 ? data.length - 1 : slide - 1);
-  };
+  };  
+  
 
   return (
     <div
-      className="carousel"
+      className="carousel cursor-pointer bg-blue-500"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -26,7 +27,8 @@ function Carousel({ data }) {
           className="arrow arrow-left"
         />
       )}
-      {data.map((item, idx) => {
+      {data?.map((item, idx) => {
+   
         return (
           <Image
             src={item}
@@ -34,18 +36,21 @@ function Carousel({ data }) {
             key={idx}
             height={300}
             width={300}
-            loading="lazy"
+         
             className={slide === idx ? "h-full w-full" : "slide-hidden"}
           />
         );
       })}
+
       {isHovered && (
+        <div>
         <Image src='/svg/dropdown/rightvector.svg' height={20} width={20} alt="arrow"
               onClick={nextSlide}
           className="arrow arrow-right"
         />
+        </div>
       )}
-      <span className="indicators">
+      <span className="flex absolute bottom-[16px]">
         {data.map((_, idx) => {
           return (
             <button
