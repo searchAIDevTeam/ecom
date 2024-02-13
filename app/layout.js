@@ -29,7 +29,7 @@ export const metadata = {
       "Custom Wallpaper, Wooden Flooring, Laminate & Vinyl Floors in India India&#039;s first Virtual Reality based Interior Design Solution",
     images: [
       {
-        url: "http://localhost:3000/api/og",
+        url: "https://ayatrio.com/api/og",
         width: 1200,
         height: 630,
       },
