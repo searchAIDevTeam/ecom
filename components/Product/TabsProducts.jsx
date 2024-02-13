@@ -320,7 +320,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
-        <div className="flex sticky top-0 z-20 bg-white py-5 scrollbar overflow-x-auto">
+        <div className="flex sticky top-0 z-20 bg-white py-5 scrollbar">
           <TabsProductContent
             filterName={"Sort"}
             commonClasses={commonClasses}
@@ -705,9 +705,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
           </div>
           <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 gap-3 ">
             {firstPart.map((text, idx) => (
-              <Link
-              href={`/product/${text.productTitle}`}
-              >
+              <Link href={`/product/${text.productTitle}`}>
                 <div
                   className="flex flex-col gap-3 border-b border-r hover-divnine sm:border-none"
                   key={idx}

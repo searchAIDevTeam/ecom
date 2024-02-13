@@ -52,7 +52,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
   }, []);
   return (
     <div>
-      <div className="my-10 bg-white sm:px-[50px] px-[20px]">
+      <div className=" bg-white sm:px-[50px] px-[20px] my-10">
         <div className="w-full flex justify-between items-center">
           <h2 className="font-semibold text-2xl py-[15px]">{category}</h2>
           <div className="Slidenav flex text-2xl cursor-pointer text-white rounded-full gap-2">
@@ -81,8 +81,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
               />
             </div>
           </div>
-        </div>
-
+        </div>{" "}
         <Swiper
           scrollbar={{
             hide: false,
@@ -136,7 +135,6 @@ const Dataslider = ({ category, data, sliderIndex }) => {
             ))
           )}
         </Swiper>
-
         {/* <div className="">
           {itm1.map((item) => (
             <div key="item.label._id" className="flex flex-row gap-5">
