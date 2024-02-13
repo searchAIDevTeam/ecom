@@ -22,12 +22,14 @@ const TopHeader = () => {
           />
         </div>
         <div>
-          <div className="flex flex-row gap-2 p-[5px] text-black  text-[12px] pr-5 ">
-            <div className="pr-3 border-r  border-gray-400 tracki">
-              <Link href="category/designservice">Free Design Request</Link>
+          <div
+            className="flex flex-row gap-2 p-[5px] text-black  text-[12px] pr-5 "
+          >
+            <div className="pr-3 border-r border-black underline-offset-1   tracki">
+              <Link href="/designservice">Free Design Request</Link>
             </div>
-            <div className="pr-3 border-r border-gray-400">
-              <Link href="category/freesample">Free Sample Request</Link>
+            <div className="pr-3 border-r border-black underline-offset-1">
+              <Link href="/freesample">Free Sample Request</Link>
             </div>
             <div>
               <Link href="/login">Join Us</Link>

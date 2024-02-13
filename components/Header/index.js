@@ -127,7 +127,7 @@ function Header({ howMuchScrolled }) {
           <div
             className={`${
               isScrolled ? "border-b-[0.5px] border-slate-200" : ""
-            }  flex flex-row justify-between items-center py-[5px] sm:px-[30px] px-[10px] py-0`}
+            }  flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px] py-0`}
           >
             <div className="flex flex-row items-center justify-start w-1/3 gap-1 sm:gap-5 ">
               <div className="profile-menu font-bold p-[7px] hover:bg-zinc-100 hover:rounded-full">
