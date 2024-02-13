@@ -31,7 +31,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
   const swiperOptions = {
     slidesPerView: 3,
     centeredSlides: false,
-    spaceBetween: 10,
+    spaceBetween: 5,
     modules: [Pagination, Scrollbar, Mousewheel, FreeMode],
     navigation: {
       nextEl: `.custom-next-button-${sliderIndex}`,
@@ -100,7 +100,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
 
             1024: {
               slidesPerView: 4,
-              spaceBetween: 10,
+              spaceBetween: 5,
             },
           }}
           allowSlidePrev={true}
