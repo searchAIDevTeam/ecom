@@ -97,7 +97,7 @@ ${mainContent ? "block" : "hidden"}
 
             <div className="sm:hidden flex">
               {isMenuOpen && (
-                <div className="menu-overlay overflow-y-auto  border-2 fixed  w-[85vw] top-0 right-0 h-full">
+                <div className="menu-overlay overflow-y-auto  border-2 fixed  w-[85vw] top-0 right-0 h-full bg-white">
                   <div
                     className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600"
                     onClick={handleMenuClick}
@@ -156,7 +156,7 @@ ${mainContent ? "block" : "hidden"}
                       <button className="border w-44 h-auto border-green-600 text-green-600 px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-green-600 hover:text-white">
                         Airbnb your home
                       </button>{" "}
-                      <button className="border w-32 border-yellow-600 text-yellow-600 px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-yellow-600 hover:text-white">
+                      <button className="border w-32 bg-yellow-300 px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-yellow-600 hover:text-white">
                         Help Centre
                       </button>
                     </div>
