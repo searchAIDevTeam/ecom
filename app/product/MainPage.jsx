@@ -22,7 +22,7 @@ const RoomPage = () => {
   const [howMuchScrolled, setHowMuchScrolled] = useState(0);
   const [data, setData] = useState([]);
   const selectedData = useSelector(selectRoomData);
-  console.log("selectedData", selectedData);
+  // console.log("selectedData", selectedData);
   useEffect(() => {
     if (selectedData && Object.keys(selectedData).length !== 0) {
       sessionStorage?.setItem("roomData", JSON.stringify(selectedData));
@@ -32,7 +32,7 @@ const RoomPage = () => {
       setData(cachedData);
     }
   }, [selectedData]);
-
+  // console.log(data)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -75,7 +75,7 @@ const RoomPage = () => {
   return (
     <>
       <div className="container-rooms flex sm:block items-center ">
-     
+
         <div className="sm:pl-[50px] sm:pr-0 px-[20px] mt-[65px]">
           <div className="flex sm:flex-row flex-col">
             <div className="sm:basis-2/3 flex flex-col  sm:flex-grow">
@@ -83,7 +83,7 @@ const RoomPage = () => {
               <ImageCaresoul images={data?.images} />
               <RoomInfo data={data} />
             </div>
-            <div className="sm:basis-1/3 flex flex-col  ">
+            <div className="sm:basis-2/3 flex flex-col  ">
               <div className="sm:sticky flex top-9 mb-16 ml-0">
                 <Card data={data} />
               </div>
@@ -91,7 +91,7 @@ const RoomPage = () => {
           </div>
 
           <Reviews data={data} />
-          
+
         </div>
       </div>
     </>

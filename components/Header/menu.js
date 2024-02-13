@@ -50,7 +50,11 @@ export default function BasicMenu() {
 
   return (
     <div>
-      <Image src='/svg/icon/menu.svg' height={20} width={20} alt="menu"
+      <Image
+        src="/svg/icon/menu.svg"
+        height={20}
+        width={20}
+        alt="menu"
         className="font-bold text-2xl"
         onClick={(event) => {
           setAnchorEl(!anchorEl);
@@ -70,36 +74,34 @@ ${mainContent ? "block" : "hidden"}
           >
             {/* for desktop */}
             <div className="px-[60px] mt-[50px] sm:flex sm:gap-16 hidden">
-                {
-                  menutext.map((category)=>{
-                    return (
-                      <div>
-                        <CategoryContent 
-                          categoryHeading={category.lebel} 
-                          categoryData={category.text}
-                          headingSize="text-md"
-                          headingStyle="font-semibold"
-                          headingColor="text-black"
-                          gapHeadingItems="gap-8"
-                          itemsGap="gap-5"
-                          textSize="text-sm"
-                          textStyle="font-medium"
-                          textColor="text-gray-600"
-                          displayedOn="menu"
-                        />
-                      </div>
-                    )
-                  })
-                }
+              {menutext.map((category) => {
+                return (
+                  <div>
+                    <CategoryContent
+                      categoryHeading={category.lebel}
+                      categoryData={category.text}
+                      headingSize="text-md"
+                      headingStyle="font-semibold"
+                      headingColor="text-black"
+                      gapHeadingItems="gap-8"
+                      itemsGap="gap-5"
+                      textSize="text-sm"
+                      textStyle="font-medium"
+                      textColor="text-gray-600"
+                      displayedOn="menu"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             {/* for mobile only */}
 
             <div className="sm:hidden flex">
               {isMenuOpen && (
-                <div className="menu-overlay overflow-y-auto  border-2 fixed  w-[85vw] top-0 right-0 h-full">
+                <div className="menu-overlay overflow-y-auto bg-white  border-2 fixed  w-[85vw] top-0 right-0 h-full">
                   <div
-                    className="menu-option bg-white  pt-5  w-[100%] h-[100vh] border-slate-600"
+                    className="menu-option pt-5  w-[100%] h-[100vh] border-slate-600"
                     onClick={handleMenuClick}
                   >
                     <div className="flex flex-col px-4 gap-6 justify-evenly">
@@ -156,7 +158,7 @@ ${mainContent ? "block" : "hidden"}
                       <button className="border w-44 h-auto border-green-600 text-green-600 px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-green-600 hover:text-white">
                         Airbnb your home
                       </button>{" "}
-                      <button className="border w-32 border-yellow-600 text-yellow-600 px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-yellow-600 hover:text-white">
+                      <button className="border w-32 bg-yellow-600 text-white px-4 py-2 rounded-md transition duration-300 cursor-pointer hover:bg-yellow-600 hover:text-white">
                         Help Centre
                       </button>
                     </div>

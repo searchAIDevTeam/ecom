@@ -105,7 +105,7 @@ export default function NewMainSlider() {
         </div>
 
         <SwiperSlide key={sliderApiData[0]?._id}>
-          <div className="relative group h-[70vh] bg-gray-300">
+          <div className="relative group h-[70vh] bg-gray-100">
             <Image
               src={sliderApiData[0]?.imgSrc}
               fill
@@ -216,7 +216,7 @@ export default function NewMainSlider() {
           </div>
         </SwiperSlide>
         <SwiperSlide key={sliderApiData[2]?._id}>
-          <div className="relative group h-[70vh] bg-gray-300">
+          <div className="relative group h-[70vh] bg-gray-100">
             <Image
               src={sliderApiData[2]?.imgSrc}
               width={500}
@@ -271,7 +271,7 @@ export default function NewMainSlider() {
         </SwiperSlide>
         {sliderApiData?.slice(3).map((data) => (
           <SwiperSlide key={data._id}>
-            <div className="relative group h-[70vh] bg-gray-400">
+            <div className="relative group h-[70vh] bg-gray-100">
               <Image
                 src={data.imgSrc}
                 width={500}
