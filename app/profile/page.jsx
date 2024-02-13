@@ -77,7 +77,7 @@ const ProfileComponent = () => {
     setNewEmail(user.email);
   };
 
-  const token = localStorage?.getItem('token');
+  // const token = localStorage?.getItem('token');
   const handleUserUpdate = async () => {
 
     setEditProfile(false);

@@ -132,7 +132,7 @@ const LoginComponent = () => {
                   className="border-2 text-black border-solid  w-[100%] sm:h-14 h-8 rounded-full  transition duration-300 font-semibold flex items-center justify-center mb-[15px]"
                 >
                   {/* <Google className="mr-2" /> */}
-                  Login with Google
+                  Login with Google 
                 </button>
               </div>
               <div className="gflbutton">
