@@ -113,17 +113,22 @@ function Card(props) {
           {/* <Carousel data={props.imgSrc} className="card-img" /> */}
         </div>
         <div className="card-title">
-          <div className="card-title-desc">{props.title}</div>
-          <div className="card-rating">
+          
+          <div className="pt-[15px]">{props.title}</div>
+          
+        </div>
+        <div className="card-date">{props.desc}</div>
+        <div className="card-price">
+        <span className="font-medium pr-[3px] pt-[3px]">Rs.</span>
+        <h2 className="text-xl font-medium tracking-wide">
+         {props.price}
+                </h2>
+        </div>
+        <div className="card-rating">
             {/* <img src="/svg/star-full-icon.svg" className="w-6 h-6" alt="" /> */}
 
             {props.rating}
           </div>
-        </div>
-        <div className="card-date">{props.desc}</div>
-        <div className="card-price">
-          <strong>₹{props.price}</strong>
-        </div>
       </div>
       {props.isPopupVisible && (
         <PopUp

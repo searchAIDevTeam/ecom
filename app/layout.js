@@ -51,11 +51,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.className}>
       <body>
-        {/* <Link rel="icon" href="/favicon-32x32.png" sizes="any" ></Link> */}
-
         <Providers>
           <HeaderWrapper />
-        <NextTopLoader zIndex={999999} height={4} showSpinner={false}  />
+          <NextTopLoader zIndex={999999} height={2} color="#000000"  showSpinner={false}  />
           {children}
           <FooterWrapper />
         </Providers>
