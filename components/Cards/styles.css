@@ -170,6 +170,10 @@
   left: 63% !important;
 }
 
+.swiper-scrollbar-horizontal {
+  margin-bottom: -6px !important;
+}
+
 .fade-in {
   animation: fadeIn ease 1.5s;
   -webkit-animation: fadeIn ease 1.5s;

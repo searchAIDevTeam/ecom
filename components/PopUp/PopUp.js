@@ -282,7 +282,7 @@ function App() {
               <Loading />
             ) : (
               <>
-                <div className="flex-grow basis-1/6 text-lg font-bold">
+                <div className="flex-grow basis-1/6 sm:text-lg text-base sm:font-bold font-medium">
                   Select according to your choice
                 </div>
                 <div className="flex-grow basis-4/6 overflow-auto overflow-x-hidden overflow-y-scroll images">
@@ -390,7 +390,7 @@ function App() {
       {openPopUp2 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
-            <div className="flex-grow basis-1/6 text-lg font-bold">
+            <div className="flex-grow basis-1/6 sm:text-lg text-base sm:font-bold font-medium">
               Select according to your choice
             </div>
             <p className="text mb-4 images2">Cities</p>
@@ -434,7 +434,7 @@ function App() {
       {openPopUp3 && (
         <div className="popup1 flex flex-col">
           <div className="cont1">
-            <div className="flex-grow basis-1/6 text-lg font-bold">
+            <div className="flex-grow basis-1/6 sm:text-lg text-base sm:font-bold font-medium">
               Select according to your choice
             </div>
             <div className="head images3">
