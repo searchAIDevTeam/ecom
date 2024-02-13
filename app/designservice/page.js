@@ -1,10 +1,16 @@
+"use client";
 import {
   expertDesigners,
   ideasAndAdvice,
 } from "@/Model/BusinessToBusinessData/BusinessToBusinessData";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const DesignServicePage = () => {
+  const route = useRouter();
+  const handleCheckout = () => {
+    route.push("/checkout");
+  };
   return (
     <>
       <div>
@@ -196,6 +202,12 @@ const DesignServicePage = () => {
               </div>
               <button className="border-2 px-20 py-2 bg-transparent border-black text-black">
                 read more
+              </button>
+              <button
+                onClick={handleCheckout}
+                className="bg-gray-400 px-5 py-2 rounded-md"
+              >
+                Go to checkout
               </button>
             </div>
           </section>

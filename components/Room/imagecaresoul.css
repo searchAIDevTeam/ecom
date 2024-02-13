@@ -93,7 +93,7 @@ body {
 .indicators {
   display: flex;
   position: relative;
-  top: 2rem;
+  /* top: 2rem; */
   align-items: center;
   justify-content: center;
   /* top: 30px; */
@@ -101,7 +101,7 @@ body {
 }
 
 .indicator {
-  background-color: red;
+  background-color: gray;
   height: 0.15rem;
   width: 4.2rem;
   border: none;

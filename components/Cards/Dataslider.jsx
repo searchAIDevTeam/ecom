@@ -65,7 +65,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
                 width={20}
                 height={20}
                 alt="Arrow"
-                className="bg-gray-300 rounded-full h-7 w-7"
+                className="bg-gray-300 rounded-full h-7 w-7 sm:block hidden"
               />
             </div>
             <div
@@ -77,7 +77,7 @@ const Dataslider = ({ category, data, sliderIndex }) => {
                 width={20}
                 height={20}
                 alt="Arrow"
-                className="bg-gray-300 rounded-full h-7 w-7"
+                className="bg-gray-300 rounded-full h-7 w-7 sm:block hidden"
               />
             </div>
           </div>

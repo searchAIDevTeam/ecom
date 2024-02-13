@@ -311,25 +311,16 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     .fill("/svg/icon/star.svg")
     .concat("/svg/icon/half-star.svg");
 
-  console.log("this is filtterdata", filterData);
   const firstPart = filterData.slice(0, 8);
   const secondPart = filterData.slice(8);
 
-  const screenwidth = typeof window !== "undefined" && window.innerWidth;
-  console.log("screenwidth", screenwidth);
-
-  const divwidthlg = (screenwidth - 100 - 10 * 3) / 4;
-  const divthwidthmobile = (screenwidth - 40 - 10) / 2;
-  console.log("divthwidthmobile", divthwidthmobile, "px");
-  console.log("divwidth", divwidthlg, "px");
-
   return (
     <>
-      <div className="wrapper sm:px-[50px] px-[20px] mt-20 relative ">
+      <div className="wrapper sm:px-[50px] px-[20px] mt-20 relative  ">
         <div>
           <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
         </div>
-        <div className="flex sticky top-0 z-20 bg-white py-5">
+        <div className="flex sticky top-0 z-20 bg-white py-5 scrollbar overflow-x-auto">
           <TabsProductContent
             filterName={"Sort"}
             commonClasses={commonClasses}

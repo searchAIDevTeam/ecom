@@ -149,7 +149,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-5 gap-6 sm:ml-32 ml-5 mt-3">
+          <div className="grid sm:grid-cols-5 grid-cols-2 gap-6 sm:ml-32 ml-5 mt-3">
             {(!cacheddata && !data) || isLoading ? (
               <p className="flex flex-row justify-center items-center">
                 No results found
