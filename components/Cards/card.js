@@ -113,11 +113,9 @@ function Card(props) {
           {/* <Carousel data={props.imgSrc} className="card-img" /> */}
         </div>
         <div className="card-title">
-          
-          <div className="pt-[15px]">{props.title}</div>
-          
-        </div>
-        <div className="card-date">{props.desc}</div>
+        <div className="pt-[15px]">{props.title}</div>
+         </div>
+        <div className="card-date text-sm text-[#757575]">{props.desc}</div>
         <div className="card-price">
         <span className="font-medium pr-[3px] pt-[3px]">Rs.</span>
         <h2 className="text-xl font-medium tracking-wide">

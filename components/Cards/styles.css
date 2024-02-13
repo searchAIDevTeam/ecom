@@ -20,14 +20,7 @@
 .card-title {
   display: flex;
   justify-content: space-between;
-  margin: 0 5px 0 5px;
   font-weight: 700;
-}
-
-
-.card-date {
-  margin-left: 7px;
-  opacity: 50%;
 }
 
 .card-rating {
@@ -39,7 +32,7 @@
   font-size: medium;
   font-weight: 300;
   display: flex;
-  margin-left: 7px;
+
 }
 
 .carousel {
