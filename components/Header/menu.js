@@ -1,12 +1,17 @@
 // import * as React from "react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { menutext } from "@/Model/Menu/MenuCategoryData/MenuCategoryData";
 import Link from "next/link";
 import CategoryContent from "../molecules/CategoryContent";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 // import arrow from "../../assets/icon/backarrow.svg";
 export default function BasicMenu() {
+  const param = useParams()
+  useEffect(()=>{
+    setAnchorEl(false);
+  },[param])
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectectedMenu, setSelectedmenu] = useState(null);
   // const open = Boolean(anchorEl);
