@@ -34,16 +34,16 @@ const CategoryContent = (props) => {
         ? router.push("/category/virtualexperience")
         : router.push("/magazine");
     } else {
-      // console.log("heading : ", heading)
-      // console.log("cat : ", cat)
-      // console.log("cat.text : ", cat.text)
+      // console.log("heading : ", heading);
+      // console.log("cat : ", cat);
+      // console.log("cat.text : ", cat.text);
       if (heading.split(" ")[2].toLowerCase() === "collections") {
         parentCategoryVar = "collection";
       } else if (heading.split(" ")[2].toLowerCase() === "rooms") {
         parentCategoryVar = "roomCategory";
       } else if (heading.split(" ")[2].toLowerCase() === "styles") {
         parentCategoryVar = "style";
-      } else if (heading.split(" ")[2].toLowerCase() === "colour") {
+      } else if (heading.split(" ")[2].toLowerCase() === "colours") {
         parentCategoryVar = "colors";
       }
       router.push(
@@ -51,6 +51,9 @@ const CategoryContent = (props) => {
       );
     }
   };
+
+
+
   return (
     <div
       className={`flex flex-col ${categoryGap} ${containerPadding} ${gapHeadingItems} ${containerBgColor}`}
