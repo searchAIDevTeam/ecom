@@ -32,7 +32,6 @@
   font-size: medium;
   font-weight: 300;
   display: flex;
-
 }
 
 .carousel {
@@ -153,16 +152,17 @@
   margin-right: 0%;
 }
 
-.swiper-horizontal>.swiper-scrollbar,
+.swiper-horizontal > .swiper-scrollbar,
 .swiper-scrollbar.swiper-scrollbar-horizontal {
   transition-duration: 2s !important;
   width: 35% !important;
   left: 63% !important;
+  top: 99% !important;
 }
 
-.swiper-scrollbar-horizontal {
+/* .swiper-scrollbar-horizontal {
   margin-bottom: -6px !important;
-}
+} */
 
 .fade-in {
   animation: fadeIn ease 1.5s;
