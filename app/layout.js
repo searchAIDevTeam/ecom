@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           <HeaderWrapper />
-          <NextTopLoader zIndex={999999} height={2} color="#000000"  showSpinner={false}  />
+          <NextTopLoader color="#024ef3"  showSpinner={false}  />
           {children}
           <FooterWrapper />
         </Providers>
