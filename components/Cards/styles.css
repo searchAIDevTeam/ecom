@@ -203,4 +203,5 @@
 .swiper-wrapper {
   gap: 5px;
   margin-left: 0px;
+  height: 450px !important;
 }
