@@ -159,7 +159,7 @@ const Imagechanger = () => {
             <img
               src={imageSrc[imgindex]}
               alt=""
-              className=" w-[100%] h-[36rem] lazyload"
+              className=" w-[100%] h-[34rem] lazyload"
 
             />
             <div className="absolute bottom-4 left-4 flex text-white text-lg">Your text</div>

@@ -45,6 +45,9 @@ const nextConfig = {
     // domains: ["images.unsplash.com"],
   },
   distDir: "build",
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

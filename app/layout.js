@@ -29,7 +29,7 @@ export const metadata = {
       "Custom Wallpaper, Wooden Flooring, Laminate & Vinyl Floors in India India&#039;s first Virtual Reality based Interior Design Solution",
     images: [
       {
-        url: "http://localhost:3000/api/og",
+        url: "https://ayatrio.com/api/og",
         width: 1200,
         height: 630,
       },
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           <HeaderWrapper />
-          <NextTopLoader zIndex={999999} height={2} color="#000000"  showSpinner={false}  />
+          <NextTopLoader color="#024ef3"  showSpinner={false}  />
           {children}
           <FooterWrapper />
         </Providers>

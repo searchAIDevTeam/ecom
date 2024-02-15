@@ -220,22 +220,29 @@ const FreeSample = () => {
       const isRoomMatch =
         roomstate === "All" ||
         (item.rooms &&
-          item.rooms.some(
-            (room) => room.title.toLowerCase() === roomstate.toLowerCase()
-          ));
+          item.rooms.some((room) => {
+            const roomTitle = room.title.toLowerCase().trim(); // Normalize title for comparison
+            const selectedRoom = roomstate.toLowerCase().trim(); // Normalize selected room
+            console.log("Room Comparison:", roomTitle, selectedRoom);
+            return roomTitle === selectedRoom;
+          }));
       const isColorMatch =
         colorstate === "All" ||
         (item.color &&
-          item.color.some(
-            (color) => color.title.toLowerCase() === colorstate.toLowerCase()
-          ));
+          item.color.some((color) => {
+            const colorTitle = color.title.toLowerCase().trim(); // Normalize title for comparison
+            const selectedColor = colorstate.toLowerCase().trim(); // Normalize selected color
+            console.log("Color Comparison:", colorTitle, selectedColor);
+            return colorTitle === selectedColor;
+          }));
 
       return isRoomMatch && isColorMatch;
     });
 
+    console.log("Filtered Results:", filteredResults);
     // Update the filtered data state
     setFilteredData(filteredResults);
-  }, [roomstate, colorstate, data]);
+  }, [roomstate, colorstate, catdatas]);
 
   //posting to order api
   if (typeof window !== "undefined") {
@@ -258,7 +265,9 @@ const FreeSample = () => {
     }
   };
 
-  console.log("filteredData",filteredData);
+  useEffect(() => {
+    console.log("filteredData", filteredData);
+  }, [catdatas]);
   const handleClickDB = async () => {
     try {
       const selectedProduct = Object.values(selectedActivity)[0];
@@ -290,10 +299,10 @@ const FreeSample = () => {
           height={500}
           width={1200}
           alt="sample"
-          className="h-[34rem] relative flex"
+          className="h-[34rem] relative flex object-cover"
         />
         <div className="absolute top-0 left-0 flex flex-col sm:w-1/4 w-1/2 bg-zinc-100 h-max m-8 sm:p-12 p-2 sm:pt-12 pt-3">
-          <div className="sm:text-4xl text-2xl font-bold mb-4">
+          <div className="sm:text-4xl text-2xl font-bold sm:mb-4 mb-0 sm:mt-0 mt-10">
             Free
             <br />
             Samples
@@ -313,15 +322,13 @@ const FreeSample = () => {
       </div>
       <div className="mt-12">
         {/* shop by room */}
-        <div>
+        <div className="">
           <div className="text-3xl font-bold flex justify-center items-center mt-12">
             Shop Flooring by Room
           </div>
-          <div className="py-4 relative w-full h-full flex flex-col justify-center">
+          <div className="py-4 relative w-full h-full flex flex-col  justify-center">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {catdatas &&
-                catdatas[0] &&
-                catdatas[0].rooms &&
+              {catdatas && catdatas[0] && catdatas[0].rooms ? (
                 catdatas[0].rooms.map((item, idx) => (
                   <div
                     key={item._id}
@@ -371,7 +378,13 @@ const FreeSample = () => {
                       </div>
                     )}
                   </div>
-                ))}
+                ))
+              ) : (
+                <p className="">
+                  No data is available here.Please select go back and select
+                  catogory
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -384,9 +397,7 @@ const FreeSample = () => {
           </div>
           <div className="py-4 relative w-full h-full flex flex-col justify-center">
             <div className="grid  sm:grid-cols-4 grid-cols-2 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {catdatas &&
-                catdatas[0] &&
-                catdatas[0].color &&
+              {catdatas && catdatas[0] && catdatas[0].color ? (
                 catdatas[0].color.map((item) => (
                   <div
                     key={item._id}
@@ -436,7 +447,12 @@ const FreeSample = () => {
                       </div>
                     )}
                   </div>
-                ))}
+                ))
+              ) : (
+                <p>
+                  Either there are no color in this category or select category
+                </p>
+              )}
             </div>
           </div>
         </div>

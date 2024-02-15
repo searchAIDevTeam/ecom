@@ -1,6 +1,7 @@
 import React from "react";
 import CompareDetails from "../../../../../components/Product/CompareDetails";
-import CompareImage from "../../../../../components/Product/compareImage";
+// import CompareImage from "../../../../../components/Product/compareImage";
+import CompareImage from "@/components/Product/CompareImage";
 
 const page = () => {
   return (
