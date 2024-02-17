@@ -7,21 +7,11 @@ import {
 } from "../Features/Slices/compareSlice";
 import "./styled.css";
 import Image from "next/image";
-import Scene1 from "../Scene1/page";
-import Scene2 from "../Scene2/page";
 
 const CompareImage2 = () => {
   const data = useSelector(selectproductdata);
   const status = useSelector(selectproductstatus);
-<<<<<<< HEAD
-  console.log(data[0].images[0])
-=======
-  // console.log(data[0].images[0])
-  // const [tex1,setTex1]=useState("")
-  // const [tex2,setTex2]=useState("")
-  
-
->>>>>>> d52e7f2c2891684ec02a39352f6bfe1529f123a9
+   
   // const beforeImage = datas[0].images[0];
   // const afterImage = datas[1].images[0];
   // const neoImage = datas[2].images[0];
@@ -47,31 +37,9 @@ const CompareImage2 = () => {
               <span className="text-blue-600"> Chat with a Specialist</span>
             </p>
           </div>
-          
-
           <div className="image-comparison relative w-[90vw]">
             <div className="images-container relative w-[100%] h-[100%]">
               <div
-                className="before-image absolute  h-[100%]"
-                style={{
-                  width: "100%",
-                  clipPath: `polygon(0% 0%, ${sliderValue}% 0%, ${sliderValue}% 100%, 0% 100%)`,
-                }}
-              >
-                <Scene1 texture={data[0].images[0]} />
-              </div>
-
-              <div
-                className="after-image absolute  h-[100%]"
-                style={{
-                  width: "100%",
-                  clipPath: `polygon(${sliderValue}% 0, 100% 0, 100% 100%, ${sliderValue}% 100%)`,
-                }}
-              >
-                <Scene2 texture={data[1].images[0]} />
-              </div>
-
-              {/* <div
                 className="before-image absolute  h-[100%]"
                 style={{
                   width: "100%",
@@ -142,7 +110,8 @@ const CompareImage2 = () => {
                     alt=""
                   />
                 </div>
-              </div> */}
+              </div>
+
 
               <div
                 className="slider-line"
@@ -189,15 +158,8 @@ const CompareImage2 = () => {
       ) : (
         " Please go back and select product"
       )}
-
-{/* {
-                setTimeout(()=>{
-                  
-                  <Scene1 texture={data[0].images[0]} />
-                },5000)
-              } */}
     </div>
   );
 };
 
-export default React.memo(CompareImage2);
+export default CompareImage2;
