@@ -6,6 +6,9 @@ import {
   selectproductstatus,
 } from "../Features/Slices/compareSlice";
 import "./styled.css";
+import Scene1 from "../Scene1/page";
+import Scene2 from "../Scene2/page";
+import Scene3 from "../Scene3/page";
 
 const CompareImage = () => {
   const datas = useSelector(selectproductdata);
@@ -38,7 +41,38 @@ const CompareImage = () => {
           <div className="image-comparison">
             <div className="images-container relative">
 
+            <div
+                className="before-image absolute  h-[100%]"
+                style={{
+                  width: "100%",
+                  clipPath: `polygon(0% 0%, ${sliderValue}% 0%, ${sliderValue}% 100%, 0% 100%)`,
+                }}
+              >
+                <Scene1 texture={datas[0].images[0]} />
+              </div>
+
               <div
+                className="after-image absolute  h-[100%]"
+                style={{
+                  width: "100%",
+                  clipPath: `polygon(${sliderValue}% 0%, ${sliderValue2}% 0%, ${sliderValue2}% 100%, ${sliderValue}% 100%)`,
+                }}
+              >
+                <Scene2 texture={datas[1].images[0]} />
+              </div>
+
+              <div
+                className="after-image absolute  h-[100%]"
+                style={{
+                  width: "100%",
+                  clipPath: `polygon(${sliderValue2}% 0, 100% 0, 100% 100%, ${sliderValue2}% 100%)`,
+                }}
+              >
+                <Scene3 texture={datas[2].images[0]} />
+              </div>
+
+
+              {/* <div
                 className="before-image absolute  h-[100%]"
                 style={{
                   width: "100%",
@@ -143,25 +177,8 @@ const CompareImage = () => {
                     alt=""
                   />
                 </div>
-              </div>
+              </div> */}
 
-              {/* <img
-                className="before-image"
-                src={datas[0].images[0]}
-                alt=""
-                style={{ width: `${sliderValue}%` }}
-              />
-              <img
-                className="after-image" // Add a class for the "after.jpg" image
-                src={datas[1].images[0]}
-                alt=""
-              />
-              <img
-                className="neo-image"
-                src={datas[2].images[0]}
-                alt=""
-                style={{ width: `${sliderValue2}%` }}
-              /> */}
 
               <div
                 className="slider-line"

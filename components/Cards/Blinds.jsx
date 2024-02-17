@@ -46,8 +46,8 @@ const Blinds = () => {
       {blindsProducts && (
         <div className="my-10  bg-white sm:px-[50px] px-[20px]">
           <div className="w-full flex justify-between items-center">
-            <h2 className="text-bold text-2xl">
-              {blindsProducts ? "Blinds" : "Beach and Resort"}
+            <h2 className="font-semibold text-2xl py-[5px]">
+              {blindsProducts ? "Blinds" : ""}
             </h2>
             <div className="Slidenav flex bg-white text-2xl cursor-pointer  text-white rounded-full gap-2">
               <div

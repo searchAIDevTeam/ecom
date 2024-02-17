@@ -10,8 +10,9 @@ import { selectVirtualData } from "@/components/Features/Slices/virtualSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 const FreeSample = () => {
-  const [datas, setDatas] = useState([]);
+  const [catdatas, setcatDatas] = useState([]);
   const dataSelector = useSelector(selectVirtualData);
+  console.log("dataSelector", dataSelector);
   const [selectedActivity, setSelectedActivity] = useState({});
   const [selectedImage, setSelectedImage] = useState(null);
   const [showCircle, setShowCircle] = useState(false);
@@ -118,15 +119,20 @@ const FreeSample = () => {
     // Toggle showButtonContent state
     setShowbuttoncontent((prevShowButtonContent) => !prevShowButtonContent);
   };
+  console.log(search.get("category"));
   useEffect(() => {
     if (dataSelector && search.get("category")) {
       let tempData = dataSelector?.filter(
-        (item) => item.category === search.get("category")?.toLocaleLowerCase()
+        (item) => item.category === search.get("category")
       );
-      setDatas(tempData);
+      setcatDatas(tempData);
       // console.log("tempData", tempData);
     }
   }, [dataSelector]);
+  useEffect(() => {
+    let dataArray = Array.isArray(catdatas) ? catdatas : [catdatas];
+    console.log("dataArray", dataArray);
+  }, [catdatas]);
 
   const router = useRouter();
   const handleAddress = () => {
@@ -205,28 +211,38 @@ const FreeSample = () => {
 
   useEffect(() => {
     // Check if data is an array before attempting to filter
-    if (!Array.isArray(data)) {
-      console.error("Data is not an array:", data);
+    if (!Array.isArray(catdatas)) {
+      console.error("Data is not an array:", catdatas);
       return;
     }
-
     // Apply filtering based on roomstate and colorstate
-    const filteredResults = data.filter((item) => {
+    const filteredResults = catdatas.filter((item) => {
       const isRoomMatch =
-        roomstate === "All" || item.roomCategory === roomstate;
+        roomstate === "All" ||
+        (item.rooms &&
+          item.rooms.some((room) => {
+            const roomTitle = room.title.toLowerCase().trim(); // Normalize title for comparison
+            const selectedRoom = roomstate.toLowerCase().trim(); // Normalize selected room
+            console.log("Room Comparison:", roomTitle, selectedRoom);
+            return roomTitle === selectedRoom;
+          }));
       const isColorMatch =
         colorstate === "All" ||
-        (item.colors &&
-          item.colors.some(
-            (color) => color.toLowerCase() === colorstate.toLowerCase()
-          ));
+        (item.color &&
+          item.color.some((color) => {
+            const colorTitle = color.title.toLowerCase().trim(); // Normalize title for comparison
+            const selectedColor = colorstate.toLowerCase().trim(); // Normalize selected color
+            console.log("Color Comparison:", colorTitle, selectedColor);
+            return colorTitle === selectedColor;
+          }));
 
       return isRoomMatch && isColorMatch;
     });
 
+    console.log("Filtered Results:", filteredResults);
     // Update the filtered data state
     setFilteredData(filteredResults);
-  }, [roomstate, colorstate, data]);
+  }, [roomstate, colorstate, catdatas]);
 
   //posting to order api
   if (typeof window !== "undefined") {
@@ -234,54 +250,6 @@ const FreeSample = () => {
     // console.log("deviceId : ", id);
   }
   const posturl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`;
-  // const postproductdata = async () => {
-  //   try {
-  //     const selectedProduct = Object.values(selectedActivity)[0];
-
-  //     if (!selectedProduct || !selectedProduct.productId) {
-  //       console.error("Invalid product details");
-  //       return;
-  //     }
-
-  //     const postData = {
-  //       deviceId: id,
-  //       productId: selectedProduct.productId,
-  //     };
-  //     // const postData = {
-  //     //   deviceId: id,
-  //     //   productId: item.productId,
-  //     // };
-  //     const response = await axios.post(posturl, postData);
-  //     if (response.status !== 200) {
-  //       throw new Error("HTTP status" + response.status);
-  //     }
-  //     console.log("response", response);
-  //     console.log("Data posted successfully:", postData);
-  //   } catch (error) {
-  //     console.error("Error posting room data:", error);
-  //   }
-  // };
-
-  // const handleClickDB = async () => {
-  //   try {
-  //     if (!selectedActivity.productId) {
-  //       console.error("Invalid productId");
-  //       return;
-  //     }
-
-  //     if (!id) {
-  //       console.error("Invalid deviceId");
-  //       return;
-  //     }
-
-  //     // Post data to the database
-  //     await postproductdata();
-
-  //     // Redirect to the checkout page
-  //   } catch (error) {
-  //     console.error("Error handling click:", error);
-  //   }
-  // };
 
   const postproductdata = async (postData) => {
     try {
@@ -297,6 +265,9 @@ const FreeSample = () => {
     }
   };
 
+  useEffect(() => {
+    console.log("filteredData", filteredData);
+  }, [catdatas]);
   const handleClickDB = async () => {
     try {
       const selectedProduct = Object.values(selectedActivity)[0];
@@ -328,10 +299,10 @@ const FreeSample = () => {
           height={500}
           width={1200}
           alt="sample"
-          className="h-[34rem] relative flex"
+          className="h-[34rem] relative flex object-cover"
         />
-        <div className="absolute top-0 left-0 flex flex-col sm:w-1/4 w-1/2 bg-zinc-100 h-max m-8 sm:p-12 p-2 sm:pt-0 pt-3">
-          <div className="sm:text-4xl text-2xl font-bold mb-4">
+        <div className="absolute top-0 left-0 flex flex-col sm:w-1/4 w-1/2 bg-zinc-100 h-max m-8 sm:p-12 p-2 sm:pt-12 pt-3">
+          <div className="sm:text-4xl text-2xl font-bold sm:mb-4 mb-0 sm:mt-0 mt-10">
             Free
             <br />
             Samples
@@ -351,55 +322,69 @@ const FreeSample = () => {
       </div>
       <div className="mt-12">
         {/* shop by room */}
-        <div>
+        <div className="">
           <div className="text-3xl font-bold flex justify-center items-center mt-12">
             Shop Flooring by Room
           </div>
-          <div className="py-4 relative w-full h-full flex flex-col justify-center">
+          <div className="py-4 relative w-full h-full flex flex-col  justify-center">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {rooms.map((item, idx) => (
-                <div
-                  key={item._id}
-                  className=" relative  overflow-hidden m-1  group rounded-2xl"
-                >
+              {catdatas && catdatas[0] && catdatas[0].rooms ? (
+                catdatas[0].rooms.map((item, idx) => (
                   <div
-                    onClick={() => {
-                      setRoomstate(item.title);
-                    }}
-                    style={{ width: "272px", height: "150px" }}
-                    className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
+                    key={item._id}
+                    className=" relative  overflow-hidden m-1  group rounded-2xl"
+                  >
+                    <div
+                      onClick={() => {
+                        setRoomstate(item.title);
+                      }}
+                      style={{ width: "272px", height: "150px" }}
+                      className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
              bg-gray-500
              ${roomstate === item.title ? " border-2 border-black " : ""}
               `}
-                  ></div>
+                    >
+                      <Image
+                        src={item.img}
+                        alt="image1"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
 
-                  <h3
-                    className={` p-1 rounded-sm absolute right-0 bottom-0
+                    <h3
+                      className={` p-1 rounded-sm absolute right-0 bottom-0
               ${
                 roomstate === item.title
                   ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                   : "bg-white"
               }
               `}
-                  >
-                    {item.title}
-                  </h3>
+                    >
+                      {item.title}
+                    </h3>
 
-                  {roomstate === item.title && (
-                    <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                      <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
-                        <Image
-                          src="/svg/icon/tick.svg"
-                          alt="tick"
-                          width={30}
-                          height={30}
-                          className=" opacity-100 rounded-full"
-                        />
+                    {roomstate === item.title && (
+                      <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                        <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
+                          <Image
+                            src="/svg/icon/tick.svg"
+                            alt="tick"
+                            width={30}
+                            height={30}
+                            className=" opacity-100 rounded-full"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p className="">
+                  No data is available here.Please select go back and select
+                  catogory
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -412,49 +397,62 @@ const FreeSample = () => {
           </div>
           <div className="py-4 relative w-full h-full flex flex-col justify-center">
             <div className="grid  sm:grid-cols-4 grid-cols-2 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {colors.map((item) => (
-                <div
-                  key={item._id}
-                  className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group sm:w-[200px] w-[170px] h-[150px]"
-                >
+              {catdatas && catdatas[0] && catdatas[0].color ? (
+                catdatas[0].color.map((item) => (
                   <div
-                    onClick={() => {
-                      setColorstate(item.title);
-                    }}
-                    className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
+                    key={item._id}
+                    className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group sm:w-[200px] w-[170px] h-[150px]"
+                  >
+                    <div
+                      onClick={() => {
+                        setColorstate(item.title);
+                      }}
+                      className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
              
  ${colorstate === item.title ? " border-2 border-black " : ""}
 
               bg-gray-400`}
-                  ></div>
+                    >
+                      <Image
+                        src={item.img}
+                        alt="image2"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
 
-                  <h3
-                    className={` p-1 rounded-sm absolute right-0 bottom-0
+                    <h3
+                      className={` p-1 rounded-sm absolute right-0 bottom-0
               ${
                 colorstate === item.title
                   ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
                   : "bg-white"
               }
               `}
-                  >
-                    {item.title}
-                  </h3>
+                    >
+                      {item.title}
+                    </h3>
 
-                  {colorstate === item.title && (
-                    <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                      <div className="circle-container relative flex justify-center items-center">
-                        <Image
-                          src="/svg/icon/tick.svg"
-                          alt="tick"
-                          width={30}
-                          height={30}
-                          className=" opacity-100"
-                        />
+                    {colorstate === item.title && (
+                      <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                        <div className="circle-container relative flex justify-center items-center">
+                          <Image
+                            src="/svg/icon/tick.svg"
+                            alt="tick"
+                            width={30}
+                            height={30}
+                            className=" opacity-100"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>
+                  Either there are no color in this category or select category
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -573,7 +571,7 @@ const FreeSample = () => {
                 >
                   {/* Your existing code for displaying product images */}
                   <img
-                    src={item.images[0]} // Assuming the first image is used
+                    src={item.images} // Assuming the first image is used
                     alt={item.productTitle}
                     onClick={() => {
                       handleres(

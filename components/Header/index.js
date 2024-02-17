@@ -131,7 +131,7 @@ function Header({ howMuchScrolled }) {
             }  flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px] py-0`}
           >
             <div className="flex flex-row items-center justify-start w-1/3 gap-1 sm:gap-5 ">
-              <div className="profile-menu font-bold p-[7px] hover:bg-zinc-100 hover:rounded-full">
+              <div className="profile-menu font-bold p-[9px] hover:bg-zinc-100 hover:rounded-full">
                 <Menu />
               </div>
               {/* for only mobile search */}
@@ -166,63 +166,63 @@ function Header({ howMuchScrolled }) {
             <div className="flex flex-row items-center justify-end w-1/3 gap-2">
               <div
                 onClick={handleModalOpen}
-                className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer sm:block hidden"
+                className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer sm:block hidden"
               >
                 <Image
                   src="/svg/icon/search.svg"
                   alt=""
                   className="absolute z-10 seachbar-div2-icon"
-                  width={30}
-                  height={30}
+                  width={27}
+                  height={27}
                 />
               </div>
-              <div className="sm:block hidden w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+              <div className="sm:block hidden w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
                 <Link href={"/login"}>
                   <Image
                     src="/svg/icon/like.svg"
                     alt=""
                     className="header-div-icon"
-                    width={25}
-                    height={25}
+                    width={22}
+                    height={22}
                   />
                 </Link>
               </div>
-              <div className="w-10 h-10 p-[7px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+              <div className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
                 <Link href={"/cart"}>
                   <Image
                     src="/svg/icon/adtocart.svg"
                     alt=""
                     className="header-div-icon"
-                    width={25}
-                    height={25}
+                    width={22}
+                    height={22}
                   />
                 </Link>
                 <div className="cart-notification">3</div>
               </div>
               {loginStatus === "true" ? (
                 <div
-                  className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap "
+                  className="pro flex p-[9px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap "
                   onClick={handleProfileNav}
                 >
                   <Image
                     src="/svg/icon/profile.svg"
                     alt=""
                     className="header-div-icon"
-                    width={25}
-                    height={25}
+                    width={22}
+                    height={22}
                   />
                 </div>
               ) : (
                 <div
-                  className="pro flex p-[7px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
+                  className="pro flex p-[9px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
                   onClick={handleProfileNav}
                 >
                   <Image
                     src="/svg/icon/profile.svg"
                     onClick={handleLoginNav}
                     alt=""
-                    width={25}
-                    height={25}
+                    width={20}
+                    height={20}
                     className="header-div-icon"
                   />
                 </div>

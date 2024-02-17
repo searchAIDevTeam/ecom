@@ -31,8 +31,8 @@ const Trending = () => {
     setPopupVisible(true);
   };
   useEffect(() => {
-    if(trendingData.length===0){
-      dispatch({type:"FETCH_TRENDING_DATA", payload: "trending"})
+    if (trendingData.length === 0) {
+      dispatch({ type: "FETCH_TRENDING_DATA", payload: "trending" });
       //console.log("trendingData fetched")
     }
     if (trendingData) {
@@ -63,22 +63,20 @@ const Trending = () => {
     <div>
       <div className="pt-12  mb-20  bg-white sm:px-[50px] px-[20px]">
         <div className="mb-2 w-full flex justify-between items-center">
-          <h2 className="text-bold text-2xl">
+          <h2 className="font-semibold text-2xl py-[15px]">
             {newTrendingData && newTrendingData.length === 0
-              ? "Trending Products(Empty)"
-              : "Trending Product"}
+              ? "Most Family Choice(Empty)"
+              : "Most Family Choice"}
           </h2>
           <div className="Slidenav flex  bg-white text-2xl cursor-pointer  text-white rounded-full gap-2">
             <div
               onClick={() => swiper1Ref.current.swiper.slidePrev()}
               className="custom-prev-button bg-slate-500  rounded-full  hover:bg-400 hover:scale-110 hover:text-slate-100"
-            >
-            </div>
+            ></div>
             <div
               onClick={() => swiper1Ref.current.swiper.slideNext()}
               className="custom-next-button bg-slate-500  rounded-full hover:bg-400 hover:scale-110 hover:text-slate-100"
-            >
-            </div>
+            ></div>
           </div>
         </div>
         <PopUp isPopupVisible={isPopupVisible} closePopup={closePopup} />
@@ -109,7 +107,7 @@ const Trending = () => {
             // },
             1024: {
               slidesPerView: 4.07,
-              spaceBetween: 10,
+              spaceBetween: 5,
             },
           }}
           allowSlideNext={true}
@@ -141,7 +139,7 @@ const Trending = () => {
                       productId={product.productId}
                       setPopupVisible={setPopupVisible}
                       cssClass={"card1flex"}
-                  />
+                    />
                   </div>
                 </SwiperSlide>
               );

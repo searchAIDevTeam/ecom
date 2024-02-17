@@ -88,7 +88,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
   return (
     <>
       <div
-        className={`expanded-search-box block pt-2 bg-white sm:h-310px h-full  sm:w-full w-[100vw]  absolute right-0 top-0 sm:shadow-[0_350px_60px_500px_rgba(0,0,0,0.5)] z-[9999999] ${
+        className={`expanded-search-box block pt-[10px] bg-white sm:h-310px h-full  sm:w-full w-[100vw]  absolute right-0 top-0 sm:shadow-[0_350px_60px_500px_rgba(0,0,0,0.5)] z-[9999999] ${
           path == "/home" ? "sm:mt-[-36px]" : ""
         } `}
       >
@@ -149,7 +149,7 @@ const Expandedbar = ({ searchText, onClose, onSearch }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-5 gap-6 sm:ml-32 ml-5 mt-3">
+          <div className="grid sm:grid-cols-5 grid-cols-2 gap-6 sm:ml-32 ml-5 mt-3">
             {(!cacheddata && !data) || isLoading ? (
               <p className="flex flex-row justify-center items-center">
                 No results found

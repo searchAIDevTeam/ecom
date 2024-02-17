@@ -83,7 +83,7 @@ const Carousel = ({ images }) => {
           ))}
         </ul>
       </div>
-      <div className="indicators flex items-center mt-20">
+      <div className="indicators flex items-center mt-[10rem]">
         {images?.map((_, index) => (
           <div
             key={index}

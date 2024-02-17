@@ -1,55 +1,56 @@
-<<<<<<< HEAD
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import ReviewForm from './ReviewForm'
-const ProfileComponent = () => {
 
+const ProfileComponent = () => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [editProfile, setEditProfile] = useState(false);
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  console.log(user)
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window?.location?.search);
-    const token = urlParams.get('token');
+    const token = urlParams.get("token");
 
     if (token) {
-     
-      localStorage.setItem("token", token)
+      localStorage.setItem("token", token);
     }
   }, []);
 
   let router = useRouter();
 
-  const handleHomeClick = () => {
-  };
+  const handleHomeClick = () => {};
 
   const handleLogout = () => {
     localStorage?.removeItem("token");
-    window?.open(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/logout", "_self"`);
+    window?.open(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/logout", "_self"`
+    );
   };
 
   const handleUpdateProfile = () => {
     setEditProfile(true);
   };
 
-
   const checkUser = async () => {
     try {
-      const token = localStorage?.getItem('token');
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+      const token = localStorage?.getItem("token");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
       const data = response.data;
       // console.log("user data", response.data);
+
       if (data.isAuthenticated) {
         setIsAuthenticated(true);
         setUser(data.user);
@@ -76,12 +77,10 @@ const ProfileComponent = () => {
     setEditProfile(false);
     setNewName(user.displayName);
     setNewEmail(user.email);
-  }
+  };
 
-  // const token = localStorage?.getItem('token');
-  // console.log("")
+  const token = localStorage?.getItem("token");
   const handleUserUpdate = async () => {
-
     setEditProfile(false);
 
     const updatedProfile = {
@@ -91,35 +90,42 @@ const ProfileComponent = () => {
     };
 
     try {
-      const response = await axios.put(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/update-profile`, updatedProfile, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+      const response = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/update-profile`,
+        updatedProfile,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
       // const data = response.data;
       // console.log(data);
     } catch (error) {
-      console.error('Error updating user profile:', error);
+      console.error("Error updating user profile:", error);
     }
-  }
+  };
 
-  const handleAccountDelete = async ()=>{
+  const handleAccountDelete = async () => {
     try {
-      const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/delete-profile`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/delete-profile`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
       // console.log(response);
       const data = response.data;
     } catch (error) {
-      console.error('Error deleting user profile:', error);
+      console.error("Error deleting user profile:", error);
     }
-  }
+  };
 
   // loader
   if (isLoading) {
@@ -128,25 +134,19 @@ const ProfileComponent = () => {
 
   // Redirect if not authenticated
   if (!isAuthenticated) {
-    return <h1>Nikal</h1>;
+    return <h1>UnAutherized</h1>;
   }
   // console.log('Token:', token);
   // console.log('User:', user);
-  
-  // console.log(user);
-=======
-import React from "react";
-import dynamic from "next/dynamic";
-const ProfileComponent = dynamic(() => import("./main"), { ssr: false });
->>>>>>> d52e7f2c2891684ec02a39352f6bfe1529f123a9
 
-const page = () => {
+  // console.log(user);
+
   return (
-<<<<<<< HEAD
-    <div className="flex items-center justify-center bg-gray-100 h-screen">
+    <div className="flex items-center justify-center h-screen bg-gray-100">
       <div
         className="nav absolute z-10 left-[1%] top-[0.1%] text-[2.5rem]"
-        onClick={handleHomeClick}>
+        onClick={handleHomeClick}
+      >
         <div className="back">
           {/* <Home /> */}
           {/* <img src={""} className="w-6 h-6" alt="" /> */}
@@ -155,38 +155,49 @@ const page = () => {
       </div>
       <div
         className="nav absolute z-10 right-[2.5%] top-[1%] "
-        onClick={handleLogout}>
+        onClick={handleLogout}
+      >
         <div className="back">
-          <div className="bg-red-600 w-14 h-7 shadow-xl text-white text-center font-semibold cursor-pointer rounded-lg ">
+          <div className="font-semibold text-center text-white bg-red-600 rounded-lg shadow-xl cursor-pointer w-14 h-7 ">
             LogOut
           </div>
         </div>
       </div>
-      <div className="w-1/2 bg-white shadow-2xl justify-center flex flex-col items-center rounded-lg overflow-hidden py-4">
-        <div className="flex justify-around	items-right my-4 w-full ">
+      <div className="flex flex-col items-center justify-center w-1/2 py-4 overflow-hidden bg-white rounded-lg shadow-2xl">
+        <div className="flex justify-around w-full my-4 items-right ">
           <div className="flex">
             {editProfile ? (
               <div className="text-right">
-                <button className="text-red-500" onClick={handleCancelUpdate}>Cancel</button>
+                <button className="text-red-500" onClick={handleCancelUpdate}>
+                  Cancel
+                </button>
               </div>
             ) : (
               <div className="text-right align-right">
-                <button className="text-green text-sm" onClick={handleUpdateProfile}> Edit Profile</button>
+                <button
+                  className="text-sm text-green"
+                  onClick={handleUpdateProfile}
+                >
+                  {" "}
+                  Edit Profile
+                </button>
               </div>
             )}
           </div>
           <div className="flex justify-between hover:cursor-pointer">
-              <div className="w-6 h-3 bg-red-500 p-2 rounded-lg">Delete Button</div>
+            <div className="w-6 h-3 p-2 bg-red-500 rounded-lg">
+              Delete Button
+            </div>
           </div>
         </div>
         <img
-          className="s h-48 w-48 rounded-full  object-cover"
+          className="object-cover w-48 h-48 rounded-full s"
           src={user.image}
           alt="Profile"
         />
-        <div className="p-6 flex flex-col">
+        <div className="flex flex-col p-6">
           <input
-            className="text-xl font-semibold mb-4 text-center"
+            className="mb-4 text-xl font-semibold text-center"
             type="text"
             value={newName}
             readOnly={!editProfile}
@@ -194,25 +205,23 @@ const page = () => {
           />
           <input
             type="email"
-            className="text-gray-600 text-center"
+            className="text-center text-gray-600"
             value={newEmail}
             readOnly={!editProfile}
             onChange={(e) => setNewEmail(e.target.value)}
           />
         </div>
-        {
-          editProfile &&
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleUserUpdate}>Update Profile</button>
-        }
-        <ReviewForm user={user}/>
+        {editProfile && (
+          <button
+            className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+            onClick={handleUserUpdate}
+          >
+            Update Profile
+          </button>
+        )}
       </div>
     </div>
-=======
-    <>
-      <ProfileComponent />
-    </>
->>>>>>> d52e7f2c2891684ec02a39352f6bfe1529f123a9
   );
 };
 
-export default page;
+export default ProfileComponent;
