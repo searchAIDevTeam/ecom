@@ -40,6 +40,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`;
     const response = await axios.get(url);
     const data = response.data;
+    // console.log(data)
     dispatch({ type: "FETCH_ROOM_REQUEST", payload: id });
 
     // router.push(`/product`);
