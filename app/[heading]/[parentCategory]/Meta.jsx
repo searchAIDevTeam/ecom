@@ -100,7 +100,6 @@ const ProductPage = ({ params }) => {
           },
         });
       }
-     
     }
   }, [params.parentCategory, params.cat, x, filteredProductData, dispatch]);
   useEffect(() => {
@@ -121,12 +120,14 @@ const ProductPage = ({ params }) => {
     };
   }, []);
 
+  
+
   return (
     <div>
       {/* {isFilterVisible && <Header />} */}
       <Products
         filteredProductData={filteredProductData}
-        heading={x?.category?.category}
+        heading={params.heading}
       />
       <Tabproduct
         filteredProductData={filteredProductData}
