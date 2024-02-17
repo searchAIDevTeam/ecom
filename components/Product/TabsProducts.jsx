@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import Image from "next/image";
+import data from "./CategoryText.json";
 import { useDispatch } from "react-redux";
 import { useRouter, usePathname } from "next/navigation";
 import { setselectedproduct } from "../Features/Slices/compareSlice";
@@ -318,7 +319,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     <>
       <div className="wrapper sm:px-[50px] px-[20px] mt-20 relative  ">
         <div>
-          <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
+          <h2 className="mb-5 text-xl font-bold">
+            {data
+              .filter((item) => item.category === heading)
+              .map((item) => item.heading)}
+          </h2>
         </div>
         <div className="flex sticky top-0 z-20 bg-white py-5 scrollbar">
           <TabsProductContent

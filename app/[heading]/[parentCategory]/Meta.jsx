@@ -131,7 +131,7 @@ const ProductPage = ({ params }) => {
       />
       <Tabproduct
         filteredProductData={filteredProductData}
-        heading={x?.category?.category}
+        heading={params.heading}
         param={params.parentCategory}
       />
       {/* <Measure filteredProductData={filteredProductData} /> */}
