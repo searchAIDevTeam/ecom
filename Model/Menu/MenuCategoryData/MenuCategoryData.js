@@ -30,6 +30,7 @@ export const menutext = [
         { id: 3, text: "Order a sample request" },
         { id: 4, text: "Customer Service" },
         { id: 5, text: "Installation Guideline" },
+        { id: 6, text: "Warranty" },
       ]
       
   },
@@ -54,6 +55,7 @@ export const menutext = [
         { id: 5, text: "Matrix Core Technology" },
         { id: 6, text: "SOUNDPROTEC" },
         { id: 7, text: "Premium Edge & Grout" },
+        { id: 8, text: "Technology"},
       ]
       ,
   },
