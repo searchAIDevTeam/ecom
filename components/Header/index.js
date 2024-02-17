@@ -102,11 +102,7 @@ function Header({ howMuchScrolled }) {
 
   return (
     <div>
-<<<<<<< HEAD
-      
-=======
       {/* <NextTopLoader zIndex={999999}  /> */}
->>>>>>> 539515fa82fa2cb5930bc5a39539022ad43d60eb
       {homeRoute === pathname && typeof window !== "undefined" ? (
         typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />

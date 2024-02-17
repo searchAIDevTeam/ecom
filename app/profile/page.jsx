@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
+import ReviewForm from './ReviewForm'
 const ProfileComponent = () => {
 
   const [user, setUser] = useState(null);
@@ -11,12 +11,13 @@ const ProfileComponent = () => {
   const [editProfile, setEditProfile] = useState(false);
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-
+  console.log(user)
   useEffect(() => {
     const urlParams = new URLSearchParams(window?.location?.search);
     const token = urlParams.get('token');
-    
+
     if (token) {
+     
       localStorage.setItem("token", token)
     }
   }, []);
@@ -48,7 +49,6 @@ const ProfileComponent = () => {
 
       const data = response.data;
       // console.log("user data", response.data);
-
       if (data.isAuthenticated) {
         setIsAuthenticated(true);
         setUser(data.user);
@@ -75,9 +75,10 @@ const ProfileComponent = () => {
     setEditProfile(false);
     setNewName(user.displayName);
     setNewEmail(user.email);
-  };
+  }
 
   // const token = localStorage?.getItem('token');
+  // console.log("")
   const handleUserUpdate = async () => {
 
     setEditProfile(false);
@@ -126,7 +127,7 @@ const ProfileComponent = () => {
 
   // Redirect if not authenticated
   if (!isAuthenticated) {
-    return <h1>UnAutherized</h1>;
+    return <h1>Nikal</h1>;
   }
   // console.log('Token:', token);
   // console.log('User:', user);
@@ -195,7 +196,7 @@ const ProfileComponent = () => {
           editProfile &&
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleUserUpdate}>Update Profile</button>
         }
-
+        <ReviewForm user={user}/>
       </div>
     </div>
   );

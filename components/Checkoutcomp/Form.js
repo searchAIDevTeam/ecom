@@ -6,7 +6,7 @@ import { updateFormData, selectFormData } from "../Features/Slices/formSlice";
 import ProfileContent from "../Cards/ProfileContent";
 import Link from "next/link";
 import Calender from "../Calenders/Calender";
-import { selecteddbItems } from "../Features/Slices/cartSlice";
+// import { selecteddbItems } from "../Features/Slices/cartSlice";
 export default function Form() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -108,7 +108,7 @@ export default function Form() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ form, deviceId }),
+          body: JSON.stringify({ form }),
         }
       );
 
@@ -146,7 +146,7 @@ export default function Form() {
 
   return (
     <>
-      <form onSubmit={handleData} className="w-1/2">
+      <form  className="w-1/2">
         <h3 className="mt-12">Enter your name and address:</h3>
         <div className="mb-4">
           <label htmlFor="first" className="form-label relative"></label>
@@ -437,6 +437,7 @@ export default function Form() {
           }}
         >
           <button
+            onClick={handleData}
             disabled={incompleteForm}
             className={`mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ${buttonClass} `}
           >

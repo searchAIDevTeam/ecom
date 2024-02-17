@@ -11,7 +11,7 @@ import Image from "next/image";
 const CompareImage2 = () => {
   const data = useSelector(selectproductdata);
   const status = useSelector(selectproductstatus);
-
+  console.log(data[0].images[0])
   // const beforeImage = datas[0].images[0];
   // const afterImage = datas[1].images[0];
   // const neoImage = datas[2].images[0];
@@ -57,20 +57,22 @@ const CompareImage2 = () => {
                     alt=""
                   />
 
-                  <img
-                    style={{
-                      width: "60vw",
-                      height: "70vh",
-                      zIndex: "-1",
-                      transformStyle: "preserve-3d",
-                      perspective: "1000",
-                      transform:
-                        "scale(2.2) perspective(1200px) rotateX(75deg) rotateZ(-48deg) rotateY(0deg)",
-                    }}
-                    className="absolute left-0 top-[40px]"
-                    src={data[0].images[0]}
-                    alt=""
-                  />
+          <a href={data[0].images[0]} target="_blank" rel="noopener noreferrer">
+                    <img
+                      style={{
+                        width: "60vw",
+                        height: "70vh",
+                        zIndex: "-1",
+                        transformStyle: "preserve-3d",
+                        perspective: "1000",
+                        transform:
+                          "scale(2.2) perspective(1200px) rotateX(75deg) rotateZ(-48deg) rotateY(0deg)",
+                      }}
+                      className="absolute left-0 top-[40px]"
+                      src={data[0].images[0]}
+                      alt=""
+                    />
+                  </a>
                 </div>
               </div>
 
