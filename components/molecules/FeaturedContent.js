@@ -13,6 +13,8 @@ const FeaturedContent = (props) => {
   } = props;
 
   const featured = props.featuredData;
+  localStorage.setItem("texture_type", featured.text);
+
   return (
     <div className={`flex flex-col ${verticalSpacingBetween}`}>
       <h2 className='text-black font-bold text-2xl'>Featured</h2>

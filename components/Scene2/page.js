@@ -4,8 +4,9 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { TextureLoader } from "three";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
-function Scene2({ texture }) {
+function Scene2({ texture, texture_type }) {
   const canvasRef = useRef();
 
   let setup;
@@ -55,17 +56,48 @@ function Scene2({ texture }) {
   //     canvasRef.current.appendChild(renderer.domElement);
   //   }
   //   }, []);
-
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath(
+    "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
+  );
+  dracoLoader.setDecoderConfig({ type: "js" });
   const loader = new GLTFLoader();
+  loader.setDRACOLoader(dracoLoader);
 
-  loader.load("/final_room.glb", (gltf) => {
+  loader.load("/final_room7.glb", (gltf) => {
     const model = gltf.scene;
     setup = model;
     // console.log("pp",setup)
     scene.add(setup);
     setup.position.set(0, 1, 0);
     // setup.scale.set(0.1, 0.1, 0.1);
-    setup.children[9].material.map = textureLoader.load(texture);
+    if (texture_type == "Flooring") {
+      setup.children[9].material.map = textureLoader.load(texture);
+      setup.children[16].material.map = textureLoader.load(
+        "/textures/tex_curtain.jpg"
+      );
+    } else if (texture_type == "Wallpaper") {
+      setup.children[8].material.map = textureLoader.load(texture);
+      setup.children[9].material.map = textureLoader.load(
+        "/textures/tex_floor.jpg"
+      );
+      setup.children[16].material.map = textureLoader.load(
+        "/textures/tex_curtain.jpg"
+      );
+    } else if (texture_type == "Curtains") {
+      setup.children[16].material.map = textureLoader.load(texture);
+      setup.children[9].material.map = textureLoader.load(
+        "/textures/tex_floor.jpg"
+      );
+    } else if (texture_type == "Blinds") {
+      setup.children[15].material.map = textureLoader.load(texture);
+      setup.children[9].material.map = textureLoader.load(
+        "/textures/tex_floor.jpg"
+      );
+      setup.children[16].material.map = textureLoader.load(
+        "/textures/tex_curtain.jpg"
+      );
+    }
     //     setup.children[10].children[0].children[0].children[0].material.map =
     //       textureLoader.load(texture);
   });
@@ -79,29 +111,42 @@ function Scene2({ texture }) {
   }
   animate();
 
-  camera.position.set(9, 5, 5);
-  camera.lookAt(0, 0, 0); // Look at the center of the scene
+  if (texture_type == "Flooring") {
+    camera.position.set(9, 5, 5);
+    camera.lookAt(0, 0, 0);
+  } else if (texture_type == "Wallpaper") {
+    camera.position.set(5, 4, 0);
+    camera.lookAt(0, 4, 0);
+  } else if (texture_type == "Curtains") {
+    camera.position.set(0, 4, 2);
+    camera.lookAt(0, 4, 0);
+  } else if (texture_type == "Blinds") {
+    camera.position.set(3, 5.5, -7);
+    camera.lookAt(3, 5.5, -8);
+  }
+  // const [count, setCount] = useState(0);
+  // const handleClick = () => {
+  //   setCount(1); // Update the state to trigger re-render
+  // };
+  // setTimeout(() => {
+  //   // console.log("pop")
+  //   handleClick();
+  // }, 2000);
+  // const [src, setSrc] = useState("");
 
-  const [count, setCount] = useState(0);
-  const handleClick = () => {
-    setCount(1); // Update the state to trigger re-render
-  };
-  setTimeout(() => {
-    // console.log("pop")
-    handleClick();
-  }, 2000);
-  const [src, setSrc] = useState("");
   setTimeout(() => {
     const imgData = renderer.domElement.toDataURL("image/png", 1);
-    if (count == 1) {
-      // console.log("hbhf",imgData)
-      setSrc(imgData);
-    }
-  }, 2000);
+    // if (count == 1) {
+    // console.log("hbhf",imgData)
+    // setSrc(imgData);
+    localStorage.setItem("scene2img", imgData);
+
+    // }
+  }, 3000);
 
   return (
     <div>
-      <img id="" src={src} alt="ffff" />
+      {/* <img id="" src={src} alt="ffff" /> */}
       {/* <div ref={canvasRef}></div> */}
     </div>
   );
