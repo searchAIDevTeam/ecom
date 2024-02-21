@@ -23,7 +23,7 @@ const Promo = () => {
   const orderValue = dbItemset?.bill;
 
   const handlefunc = (event) => {
-    if (event) {
+    if (event && event.preventDefault) {
       event.preventDefault();
       setForm((prev) => {
         return {
@@ -172,7 +172,7 @@ const Promo = () => {
             <input
               type="text"
               placeholder="Promo"
-              // onChange={handlefunc}
+              onChange={handlefunc}
               name="promo"
               value={form.promo}
               required

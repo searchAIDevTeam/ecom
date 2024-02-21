@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../styles.css";
 import Carous from "@/components/Carousel/Carous";
 import Image from "next/image";
-import axios from "axios";
-
+// const CustomStar = ({ color, ...props }) => (
+//   <StarIcon style={{ color, fontSize: "16px" }} {...props} />
+// );
 const ratingsData = [
   {
     label: "Overall rating",
@@ -55,22 +56,6 @@ const ratingsData = [
 ];
 
 const Reviews = ({ data }) => {
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getReview`);
-        console.log(response.data)
-        setReviews(response.data);
-      } catch (error) {
-        console.error("Error fetching reviews:", error);
-      }
-    };
-
-    fetchReviews();
-  }, []);
-
   return (
     <>
       <div className="py-12 border-t sm:w-auto w-[90vw] border-b overflow-x-hidden">
@@ -120,7 +105,7 @@ const Reviews = ({ data }) => {
         </div>
         <br />
         <hr />
-        <h3 className="mb-1 text-xl font-semibold pt-4">{reviews.length}</h3>
+        <h3 className="mb-1 text-xl font-semibold pt-4">2 reviews</h3>
         <span className="font-normal text-sm text-gray-500">
           Average rating will appear after 3 reviews
         </span>
@@ -128,48 +113,161 @@ const Reviews = ({ data }) => {
           className="reviews-container mt-6 grid sm:grid-cols-2 grids-col-1 grid-rows-2 gap-4 mx-auto "
           style={{ overflowX: "hidden" }}
         >
-          {reviews.map((review, index) => (
-            <div key={index} className="sm:mr-12 m-0 sm:block ">
-              <div className="review-header flex">
-                <div className="w-[48px] h-[48px] mr-4">
-                  <img
-                    className="w-full h-full"
-                    src={review.image}
-                    alt="User Avatar"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-semibold text-[16px]">{review.name}</span>
-                  <span className="font-normal text-[14px] text-gray-500">
-                    {review.location}
-                  </span>
-                </div>
+          <div className="sm:mr-12 m-0 sm:block ">
+            <div className="review-header flex">
+              <div className="w-[48px] h-[48px] mr-4">
+                <img
+                  className="w-full h-full"
+                  src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=M&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
+                  alt=""
+                />
               </div>
-              <div className="ratings flex mt-3">
-                {[...Array(review.rating)].map((_, i) => (
+              <div className="flex flex-col">
+                <span className="font-semibold text-[16px]">Manas</span>
+                <span className="font-normal text-[14px] text-gray-500">
+                  India
+                </span>
+              </div>
+            </div>
+            <div className="ratings flex mt-3">
+              {[1, 1, 1, 1, 1].map((item) => {
+                return (
                   <Image
-                    key={i}
                     src="/rooms/star-black-filled-icon.svg"
                     width={15}
                     height={15}
                     alt="star"
                   />
-                ))}
-                <span className="text-sm font-semibold ml-2">
-                  {review.date}
+                );
+              })}
+              <span className="text-sm font-semibold ml-2">October 2023</span>
+            </div>
+            <div className="review mt-2">
+              <p className="text-gray-600 font-[16px] leading-6	mb-6 sm:w-auto text-left w-full">
+                We really had an amazing experience. Totally worth the money
+                paid. Amazing food and service. The care takers were very very
+                helpful and didn't say no to anything. Must visit.
+              </p>
+            </div>
+          </div>
+
+          <div className="sm:mr-12 mr-0">
+            <div className="review-header flex">
+              <div className="w-[48px] h-[48px] mr-4">
+                <img
+                  className="w-full h-full"
+                  src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=N&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-semibold text-[16px]">Nikhil</span>
+                <span className="font-normal text-[14px] text-gray-500">
+                  India
                 </span>
               </div>
-              <div className="review mt-2">
-                <p className="text-gray-600 font-[16px] leading-6	mb-6 sm:w-auto text-left w-[100%]">
-                  {review.comment}
-                </p>
+            </div>
+            <div className="ratings flex mt-3">
+              {[1, 1, 1, 1, 1].map((item) => {
+                return (
+                  <Image
+                    src="/rooms/star-black-filled-icon.svg"
+                    width={15}
+                    height={15}
+                    alt="star"
+                  />
+                );
+              })}
+              <span className="text-sm font-semibold ml-2">April 2023</span>
+            </div>
+            <div className="review mt-2">
+              <p className="text-gray-600 font-[16px] leading-6	mb-6 text-left sm:w-auto w-[100%]">
+                We really had an amazing experience. Totally worth the money
+                paid. Amazing food and service. The care takers were very very
+                helpful and didn't say no to anything. Must visit.
+              </p>
+            </div>
+          </div>
+          <div className="sm:mr-12 m-0 sm:block ">
+            <div className="review-header flex">
+              <div className="w-[48px] h-[48px] mr-4">
+                <img
+                  className="w-full h-full"
+                  src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=M&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-semibold text-[16px]">Manas</span>
+                <span className="font-normal text-[14px] text-gray-500">
+                  India
+                </span>
               </div>
             </div>
-          ))}
+            <div className="ratings flex mt-3">
+              {[1, 1, 1, 1, 1].map((item) => {
+                return (
+                  <Image
+                    src="/rooms/star-black-filled-icon.svg"
+                    width={15}
+                    height={15}
+                    alt="star"
+                  />
+                );
+              })}
+              <span className="text-sm font-semibold ml-2">October 2023</span>
+            </div>
+            <div className="review mt-2">
+              <p className="text-gray-600 font-[16px] leading-6	mb-6 sm:w-auto text-left w-[100%]">
+                We really had an amazing experience. Totally worth the money
+                paid. Amazing food and service. The care takers were very very
+                helpful and didn't say no to anything. Must visit.
+              </p>
+            </div>
+          </div>
+
+          <div className="sm:mr-12 m-0 sm:block ">
+            <div className="review-header flex">
+              <div className="w-[48px] h-[48px] mr-4">
+                <img
+                  className="w-full h-full"
+                  src="https://a0.muscache.com/im/Portrait/Avatars/messaging/b3e03835-ade9-4eb7-a0bb-2466ab9a534d.jpg?im_policy=medq_w_text&im_t=M&im_w=240&im_f=airbnb-cereal-medium.ttf&im_c=ffffff"
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-semibold text-[16px]">Manas</span>
+                <span className="font-normal text-[14px] text-gray-500">
+                  India
+                </span>
+              </div>
+            </div>
+            <div className="ratings flex mt-3">
+              {[1, 1, 1, 1, 1].map((item) => {
+                return (
+                  <Image
+                    src="/rooms/star-black-filled-icon.svg"
+                    width={15}
+                    height={15}
+                    alt="star"
+                  />
+                );
+              })}
+              <span className="text-sm font-semibold ml-2">October 2023</span>
+            </div>
+            <div className=" mt-2">
+              <p className="text-gray-600 font-[16px] leading-6	mb-6 sm:w-auto text-left w-[100%]">
+                We really had an amazing experience. Totally worth the money
+                paid. Amazing food and service. The care takers were very very
+                helpful and didn't say no to anything. Must visit.
+              </p>
+            </div>
+          </div>
         </div>
         <Carous data={data} />
       </div>
     </>
   );
- }
+};
+
 export default Reviews;

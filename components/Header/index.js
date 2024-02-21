@@ -106,7 +106,6 @@ function Header({ howMuchScrolled }) {
       {homeRoute === pathname && typeof window !== "undefined" ? (
         typeof window !== "undefined" && window.scrollY < 20 ? (
           <TopHeader />
-          
         ) : null
       ) : null}
       <div

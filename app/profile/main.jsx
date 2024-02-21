@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import ReviewForm from "./ReviewForm";
+
 const ProfileComponent = () => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -219,8 +219,6 @@ const ProfileComponent = () => {
             Update Profile
           </button>
         )}
-
-<ReviewForm user={user} />
       </div>
     </div>
   );
