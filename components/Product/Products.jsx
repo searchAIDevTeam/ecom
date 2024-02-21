@@ -1,10 +1,18 @@
 import React from "react";
-
-const Products = ({ filteredProductData,heading }) => {
-  // console.log("Filtered products:", filteredProducts);
+import data from "./CategoryText.json";
+const Products = ({ filteredProductData, heading }) => {
+  // console.log("Filtered products:", filteredProductData);
+  console.log(
+    "this is from product.jsx filterdata",
+    filteredProductData.length > 0 && filteredProductData[0].category
+  );
+  // console.log("data from categorydata.json", data);
 
   // Use the first product's category as the main heading
-  const mainCategory = filteredProductData.length > 0 ? filteredProductData[0].category : "Products";
+  const mainCategory =
+    filteredProductData.length > 0
+      ? filteredProductData[0].category
+      : "Products";
 
   return (
     <div className="relative top-20 sm:px-[50px] px-[20px] ">
@@ -27,14 +35,9 @@ const Products = ({ filteredProductData,heading }) => {
 
       {/* relevant text */}
       <p className="sm:w-[50vw] w-[100%] text-base text-justify">
-        Waking up to harsh sunlight can put your mornings to an unpleasant
-        start. And more than that, uncovered windows also take away your privacy.
-        Curtains and blinds keep your home secured, and at the same time,
-        regulate the amount of light inside it. From IKEA’s wide range of
-        curtains, there's a design for every individual taste. Smooth fabrics,
-        unconventional patterns, and diverse colours make this collection truly
-        unique. Apart from being stylish, these curtains also have excellent
-        light blocking features that keep your interiors cool and safe.
+        {data
+          .filter((item) => item.category === heading)
+          .map((item) => item.text)}
       </p>
     </div>
   );

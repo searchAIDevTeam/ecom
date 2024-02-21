@@ -133,7 +133,7 @@ const LoginComponent = () => {
                 >
                   <Image src='/icon/googlelogin.svg' width={20} height={20} alt="up" />
                   {/* <Google className="mr-2" /> */}
-                  Login with Google
+                  Login with Google 
                 </button>
               </div>
               <div className="gflbutton">

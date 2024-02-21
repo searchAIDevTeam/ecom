@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import Image from "next/image";
+import data from "./CategoryText.json";
 import { useDispatch } from "react-redux";
 import { useRouter, usePathname } from "next/navigation";
 import { setselectedproduct } from "../Features/Slices/compareSlice";
@@ -39,6 +40,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`;
     const response = await axios.get(url);
     const data = response.data;
+    // console.log(data)
     dispatch({ type: "FETCH_ROOM_REQUEST", payload: id });
 
     // router.push(`/product`);
@@ -318,7 +320,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     <>
       <div className="wrapper sm:px-[50px] px-[20px] mt-20 relative  ">
         <div>
-          <h2 className="mb-5 text-xl font-bold">More ideas and inspiration</h2>
+          <h2 className="mb-5 font-medium text-base text-[#757575]">
+            {data
+              .filter((item) => item.category === heading)
+              .map((item) => item.heading)}
+          </h2>
         </div>
         <div className="flex sticky top-0 z-20 bg-white py-5 scrollbar">
           <TabsProductContent
@@ -417,16 +423,14 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 handleTabClick();
               }}
               className={`Tabbtn z-0 bg-gray-100
-                  ${
-                    openAll
-                      ? `active-tabs  border border-black ${commonClasses}`
-                      : `tabS  border border-white ${commonClasses}`
-                  }
-                  ${
-                    typeof window !== "undefined" && window.innerWidth <= 450
-                      ? " justify-center"
-                      : " justify-between"
-                  }
+                  ${openAll
+                  ? `active-tabs  border border-black ${commonClasses}`
+                  : `tabS  border border-white ${commonClasses}`
+                }
+                  ${typeof window !== "undefined" && window.innerWidth <= 450
+                  ? " justify-center"
+                  : " justify-between"
+                }
                   `}
             >
               All Filters &nbsp;
@@ -662,9 +666,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
 
                           <button
                             onClick={handleContent}
-                            className={`text-left underline ${
-                              openContent ? "block" : "hidden"
-                            }`}
+                            className={`text-left underline ${openContent ? "block" : "hidden"
+                              }`}
                           >
                             Less
                           </button>
@@ -714,9 +717,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   <div className="relative  z[-999999]">
                     <div
                       onClick={(event) => event.stopPropagation()}
-                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
-                        selectedpdt.includes(text) ? "visible" : ""
-                      }`}
+                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${selectedpdt.includes(text) ? "visible" : ""
+                        }`}
                     >
                       <input
                         type="checkbox"
@@ -734,9 +736,9 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                       width={260}
                       height={150}
                       className="object-cover object-center sm:w-[290px] w-[200px] sm:h-[300px] h-[200px]"
-                      // className="absolute "
-                      // layout="fill"
-                      // objectFit="contain"
+                    // className="absolute "
+                    // layout="fill"
+                    // objectFit="contain"
                     />
                   </div>
                   <p className="text-sm font-semibold">{text.productTitle}</p>
@@ -770,9 +772,8 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 <div className=" relative w-[250px] h-[250px]">
                   <div
                     onClick={(event) => event.stopPropagation()}
-                    className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
-                      selectedpdt.includes(text) ? "visible" : ""
-                    }`}
+                    className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${selectedpdt.includes(text) ? "visible" : ""
+                      }`}
                   >
                     <input
                       type="checkbox"

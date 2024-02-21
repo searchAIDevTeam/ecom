@@ -30,9 +30,21 @@ const CategoryContent = (props) => {
       // console.log("heading : ", heading)
       // console.log("cat : ", cat)
       // console.log("cat.text : ", cat.text)
-      cat.text === "Virtual Experience"
-        ? router.push("/category/virtualexperience")
-        : router.push("/magazine");
+      if(cat.text === "Virtual Experience"){
+        router.push("/category/virtualexperience")
+      }else if(cat.text === "Technology"){
+        router.push("/technology")
+      }else if(cat.text === "Warranty") {
+        router.push("/warranty")
+      }else{
+        router.push("/magazine");
+
+      }
+
+      // cat.text === "Virtual Experience"
+      //   ? router.push("/category/virtualexperience")
+      
+      //   : router.push("/magazine");
     } else {
       // console.log("heading : ", heading);
       // console.log("cat : ", cat);
