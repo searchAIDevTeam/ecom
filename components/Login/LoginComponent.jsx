@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import axios from 'axios'
 const LoginComponent = () => {
   const router = useRouter();
 
