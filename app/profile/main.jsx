@@ -128,6 +128,7 @@ const ProfileComponent = () => {
   };
 
   // loader
+  //loader
   if (isLoading) {
     return <div>Loading...</div>;
   }
