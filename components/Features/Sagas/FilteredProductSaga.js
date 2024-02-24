@@ -9,9 +9,13 @@ function* fetchFilteredProduct(action) {
       action.payload.parentCategoryVar
     }=${encodeURIComponent(action.payload.cat)}`;
 
+    // const apiUrl="http://localhost:4000/api/Products"
+
     const response = yield call(axios.get, apiUrl);
     // const data = yield response.json();
+    // console.log("res is ",(response.data))
     yield put(setFilteredProduct(response.data));
+    // yield put(setFilteredProduct((response.data).slice(-8)));
   } catch (error) {
     console.error("Error fetching filtered product:", error);
   }

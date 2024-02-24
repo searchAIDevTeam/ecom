@@ -311,8 +311,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
     .fill("/svg/icon/star.svg")
     .concat("/svg/icon/half-star.svg");
 
+  // const firstPart = filterData;
   const firstPart = filterData.slice(0, 8);
+  // console.log("firtst is ", firstPart);
   const secondPart = filterData.slice(8);
+  // console.log("gere")
 
   return (
     <>
@@ -711,10 +714,10 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   key={idx}
                   onClick={() => handlenav(text._id)}
                 >
-                  <div className="relative  z[-999999]">
+                  <div className="relative z[-999999] w-fit">
                     <div
                       onClick={(event) => event.stopPropagation()}
-                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 left-0 z-10 ${
+                      className={`flex justify-between text-black gap-4  checkbox-div absolute top-0 right-0 z-10 ${
                         selectedpdt.includes(text) ? "visible" : ""
                       }`}
                     >
@@ -724,9 +727,22 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                           handleCheckbox(text, e.target.checked);
                           setShowcompare(true);
                         }}
+                        style={{
+                          border: "2px solid red",
+                        }}
+                        // className="ml-auto border-2 border-red-400 w-[500px] h-[500px]"
                         checked={selectedpdt.includes(text)}
                       />
                     </div>
+                   
+                   {text.demandtype?(
+                     <div
+                     // onClick={(event) => event.stopPropagation()}
+                     className={"flex justify-between text-white bg-red-500 p-1 absolute top-0 left-0 z-10"}
+                   >
+                     {text.demandtype}
+                   </div>
+                   ):""}
 
                     <Image
                       src={text.images[0]}
@@ -741,9 +757,33 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   </div>
                   <p className="text-sm font-semibold">{text.productTitle}</p>
                   <p className="text-sm">{text.productDescription}</p>
-                  <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
-                    Rs. <span className="text-3xl"> {text.totalPrice}</span>
-                  </p>
+                  {text.discountedprice ? (
+                    <p className="">
+                      Rs.{" "}
+                      <span className="text-3xl"> {text.discountedprice}</span>
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  {text.totalPrice ? (
+                    <p className="">Regular Price: Rs. {text.totalPrice}</p>
+                  ) : (
+                    ""
+                  )}
+                  {text.specialprice ? (
+                    <p className="flex items-center justify-center h-10 text-sm font-semibold bg-yellow-400 price-box w-28">
+                      Rs.<span className="text-3xl"> {text.specialprice}</span>
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  {text.specialprice ? (
+                    <p>
+                      Price valid till 15 Feb 2025
+                    </p>
+                  ) : (
+                    ""
+                  )}
                   <p className="flex flex-row items-center gap-1 text-sm text-black">
                     {stars.map((star, index) => (
                       <Image
@@ -760,7 +800,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
             ))}
           </div>
           <Measure filteredProductData={filteredProductData} />
-          <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
+          {/* <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 sm:gap-6 gap-0">
             {secondPart.map((text, idx) => (
               <div
                 className="flex flex-col gap-3 p-3 border-b border-r hover-divnine sm:border-none"
@@ -813,7 +853,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </>
