@@ -27,6 +27,7 @@ const HomePage = () => {
   };
 
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
+
   const [isFilterVisible, setIsFilterVisible] = useState(true);
   const [isFilterHovered, setFilteredContent] = useState(null);
 
@@ -65,10 +66,10 @@ const HomePage = () => {
             <MobileSearchBar />
           </>
         )}
-        <Filter
+        {/* <Filter
           isFilterHovered={isFilterHovered}
           onFilterHover={handleFilterHover}
-        />
+        /> */}
         <Cards />
         {isFilterVisible && (
           <div className="fixed-ayatrio-map">

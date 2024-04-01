@@ -23,12 +23,13 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
+
   const dataSelector = useSelector(selectSliderData);
   useEffect(() => {
     if (dataSelector.length > 0) {
       setLoading(false);
     }
-    if(loading===false){
+    if (loading === false) {
       router.push("/home");
     }
   }, [dataSelector]);

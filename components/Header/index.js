@@ -4,7 +4,7 @@ import "./styles.css";
 import SearchModal from "./MobileSearch";
 import Menu from "./menu";
 import { useEffect, useState } from "react";
-
+import Asidebox from "./AsideSection/Asidebox";
 import Expandedbar from "./Expandedbar";
 
 import TopLoader from "../AddOn/TopLoader";
@@ -13,14 +13,37 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import TopHeader from "./TopHeader";
+import dynamic from "next/dynamic";
+
+import { headerLinks } from "@/Model/Dropdown/AsideData/AsideData";
 // import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Filter
+  const [isFilterVisible, setIsFilterVisible] = useState(true);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [searchEngine, SetSeacrhEngine] = useState("");
+
+  // aside section toggle
+  const [isOpen, setIsOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+    setIsOpen(true);
+  };
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+    setIsOpen(false);
+  };
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -78,7 +101,7 @@ function Header({ howMuchScrolled }) {
     onClose();
   };
 
-  const [isFilterVisible, setIsFilterVisible] = useState(true);
+  // const [isFilterVisible, setIsFilterVisible] = useState(true);
 
   useEffect(() => {
     let prevScrollPos = window.scrollY;
@@ -124,58 +147,98 @@ function Header({ howMuchScrolled }) {
       >
         {/* {isLoading && <TopLoader />} */}
         {!searchQuery ? (
-          <div
-            className={`${
-              isScrolled ? "border-b-[0.5px] border-slate-200" : ""
-            }  flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px] py-0`}
-          >
-            <div className="flex flex-row items-center justify-start w-1/3 gap-1 sm:gap-5 ">
-              <div className="profile-menu font-bold p-[9px] hover:bg-zinc-100 hover:rounded-full">
+          <>
+            <div
+              className={`${
+                isScrolled ? " border-b-[0.5px] border-slate-200" : ""
+              } flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px] py-0`}
+            >
+              {/* main-logo */}
+              <div className=" flex items-center justify-start w-1/6">
+                <div className="mainlogo">
+                  <Link href="/">
+                    <Image
+                      src="/images/ayatriologo.webp"
+                      alt="logo"
+                      width={300}
+                      height={40}
+                      priority
+                      className="p-2 sm:w-44"
+                    />
+                  </Link>
+                </div>
+              </div>
+              {/* center-list */}
+              <div className=" flex justify-center items-center w-2/3 gap-1 sm:gap-5 ">
+                {/* <div className=" profile-menu font-bold p-[9px] hover:bg-zinc-100 hover:rounded-full">
                 <Menu />
-              </div>
-              {/* for only mobile search */}
+              </div> */}
+                {/* for only mobile search */}
 
-              <div
-                className="sm:hidden block  w-10 h-10 p-[7px]"
-                onClick={handleModalOpen}
-              >
-                <Image
-                  src="/svg/icon/search.svg"
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="header-div-icon"
-                />
-              </div>
-            </div>
-            <div className="flex items-center justify-center w-1/3">
-              <div className="mainlogo">
-                <Link href="/">
+                <div
+                  className="sm:hidden block  w-10 h-10 p-[7px]"
+                  onClick={handleModalOpen}
+                >
                   <Image
-                    src="/images/ayatriologo.webp"
-                    alt="logo"
-                    width={300}
-                    height={40}
-                    priority
-                    className="p-2 sm:w-44"
+                    src="/svg/icon/search.svg"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="header-div-icon"
                   />
-                </Link>
+                </div>
+                <div className="">
+                  <nav className="hidden sm:flex space-x-6 ">
+                    {headerLinks.map((value, idx) => (
+                      <div
+                        onMouseEnter={() => handleMouseEnter(idx)}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        <Link
+                          key={idx}
+                          className={`text-lg font-medium  ${
+                            isOpen ? "border-b-2 border-black" : ""
+                          }`}
+                          href="#"
+                          onClick={toggleDropdown}
+                        >
+                          <p
+                            className={`block p-2 text-lg font-medium ${
+                              hoveredIndex === idx
+                                ? "border-b-2 border-black"
+                                : ""
+                            }`}
+                          >
+                            {value.label}
+                          </p>
+                        </Link>
+                        {isOpen && hoveredIndex === idx && (
+                          <Asidebox hoveredIndex={hoveredIndex} />
+                        )}
+                      </div>
+                    ))}
+                  </nav>
+                </div>
               </div>
-            </div>
-            <div className="flex flex-row items-center justify-end w-1/3 gap-2">
-              <div
-                onClick={handleModalOpen}
-                className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer sm:block hidden"
-              >
-                <Image
-                  src="/svg/icon/search.svg"
-                  alt=""
-                  className="absolute z-10 seachbar-div2-icon"
-                  width={27}
-                  height={27}
-                />
-              </div>
-              <div className="sm:block hidden w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+              {/* search-bar */}
+
+              <div className=" flex flex-row items-center justify-end w-1/3 gap-2">
+                <div
+                  onClick={handleModalOpen}
+                  className="bg-zinc-100  justify-end rounded-full w-3/5 h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
+                >
+                  <span>
+                    <Image
+                      src="/svg/icon/search.svg"
+                      alt=""
+                      className="absolute z-10 seachbar-div2-icon"
+                      width={27}
+                      height={27}
+                    />
+                  </span>
+                  <p className="ml-6  text-gray-400">Search</p>
+                </div>
+                {/* <div className="sm:block hidden w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
                 <Link href={"/login"}>
                   <Image
                     src="/svg/icon/like.svg"
@@ -185,64 +248,65 @@ function Header({ howMuchScrolled }) {
                     height={22}
                   />
                 </Link>
-              </div>
-              <div className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
-                <Link href={"/cart"}>
-                  <Image
-                    src="/svg/icon/adtocart.svg"
-                    alt=""
-                    className="header-div-icon"
-                    width={22}
-                    height={22}
-                  />
-                </Link>
-                <div className="cart-notification">3</div>
-              </div>
-              {loginStatus === "true" ? (
-                <div
-                  className="pro flex p-[9px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap "
-                  onClick={handleProfileNav}
-                >
-                  <Image
-                    src="/svg/icon/profile.svg"
-                    alt=""
-                    className="header-div-icon"
-                    width={22}
-                    height={22}
-                  />
+              </div> */}
+                <div className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+                  <Link href={"/cart"}>
+                    <Image
+                      src="/svg/icon/adtocart.svg"
+                      alt=""
+                      className="header-div-icon"
+                      width={22}
+                      height={22}
+                    />
+                  </Link>
+                  <div className="cart-notification">3</div>
                 </div>
-              ) : (
-                <div
-                  className="pro flex p-[9px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
-                  onClick={handleProfileNav}
-                >
-                  <Image
-                    src="/svg/icon/profile.svg"
-                    onClick={handleLoginNav}
-                    alt=""
-                    width={20}
-                    height={20}
-                    className="header-div-icon"
-                  />
-                </div>
-              )}
-              {/* for only mobole search */}
-              {isModalOPen && (
-                /* <SearchModal
+                {loginStatus === "true" ? (
+                  <div
+                    className="pro flex p-[9px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap "
+                    onClick={handleProfileNav}
+                  >
+                    <Image
+                      src="/svg/icon/profile.svg"
+                      alt=""
+                      className="header-div-icon"
+                      width={22}
+                      height={22}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="pro flex p-[9px] hover:bg-zinc-100 hover:rounded-full whitespace-nowrap cursor-pointer "
+                    onClick={handleProfileNav}
+                  >
+                    <Image
+                      src="/svg/icon/profile.svg"
+                      onClick={handleLoginNav}
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="header-div-icon"
+                    />
+                  </div>
+                )}
+                {/* for only mobole search */}
+                {isModalOPen && (
+                  /* <SearchModal
                 isOpen={isModalOPen}
                 onClose={handleModalClose}
                 onSearch={(e) =>
                   dispatch(searchProductsRequest(e.target.value))
                 }
               /> */
-                <Expandedbar
-                  searchQuery={searchQuery}
-                  onClose={handleModalClose}
-                  onSearch={handleSearchChange}
-                />
-              )}
+                  <Expandedbar
+                    searchQuery={searchQuery}
+                    onClose={handleModalClose}
+                    onSearch={handleSearchChange}
+                  />
+                )}
+              </div>
             </div>
-          </div>
+          </>
         ) : (
           <Expandedbar
             searchQuery={searchQuery}

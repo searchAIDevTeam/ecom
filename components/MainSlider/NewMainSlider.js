@@ -31,6 +31,7 @@ export default function NewMainSlider() {
       },
     });
   };
+
   const [sliderApiData, setSliderApiData] = useState([]);
   useEffect(() => {
     if (SliderViewData && SliderViewData.result) {

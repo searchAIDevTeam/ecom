@@ -102,7 +102,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
 
   return (
     <header
-      className={`absolute pt-7 pb-[0.3rem] sm:mt-[4.3rem] mt-[5.3rem] w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
+      className={` pb-[0.3rem]    w-full  filter-array transition-all ease-in-out duration-300  z-[20] bg-white`}
     >
       <div className="filter sm:mr-0 media" style={{ marginLeft: "0px" }}>
         <div className="Filter-array" ref={scrl}>
@@ -114,7 +114,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
           {links.map((value, idx) => (
             <div
               key={idx}
-              className={`Filter-array-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ent ${
+              className={`Filter-array-element                                                                                                         ent ${
                 idx === selectedFilter ? "selected-array-element" : ""
               }`}
               {...(!isMobile
@@ -144,7 +144,7 @@ function Filter({ isFilterHovered, onFilterHover }) {
             >
               {value && (
                 <p
-                  className={` sm:text-base text-sm Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap ${
+                  className={`sm:text-base Filter-array-element-lebel sm:block rounded-full flex items-center justify-center mx-2 sm:bg-white bg-gray-100 whitespace-nowrap ${
                     value.label === "Find Floor" ? "sm:hidden hidden" : "block"
                   }
 
@@ -158,88 +158,88 @@ function Filter({ isFilterHovered, onFilterHover }) {
                 <p className="Filter-array-element-lebel">{value.label}</p>
               )} */}
 
-              {activeDropdown === idx && (
-                <div
-                  className={`absolute left-0 mt-[1.6rem] w-full bg-white transition-all ease-linear duration-2000 shadow-[0_350px_60px_100px_rgba(0,0,0,0.5)]`}
-                  onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
-                >
-                  <div className="px-[50px] my-10">
-                    <div className="filter_container flex">
-                      <div
-                        className={`flex ${
-                          idx === 0
-                            ? `gap-20`
-                            : idx === 1
-                            ? `gap-20`
-                            : idx === 2
-                            ? `gap-10`
-                            : idx === 3
-                            ? `gap-10`
-                            : idx === 4
-                            ? `gap-20`
-                            : `gap-14`
-                        }`}
-                      >
-                        <div>
-                          <FeaturedContent
-                            featuredData={(() => {
-                              switch (idx) {
-                                case 0:
-                                  return wallpaperFeaturedData;
-                                case 1:
-                                  return flooringFeaturedData;
-                                case 2:
-                                  return curtainsFeaturedData;
-                                case 3:
-                                  return blindsFeaturedData;
-                                case 4:
-                                  return inspirationFeaturedData;
-                                default:
-                                  return wallpaperFeaturedData;
-                              }
-                            })()}
-                            verticalSpacingBetween="space-y-8"
-                            imageWidth={200}
-                            imageHeight={200}
-                            textSize="text-md"
-                            textStyle="font-semibold"
-                            parentCategory={value.label}
-                          />
-                        </div>
-                        {(idx === 0
-                          ? wallpaperCategoryData
+              {/* {activeDropdown === idx && ( */}
+              <div
+                className={`bg-yellow-300 absolute top-10 left-2 mt-[1.6rem] w-full bg-white transition-all ease-linear duration-2000 shadow-[0_350px_60px_100px_rgba(0,0,0,0.5)]`}
+                onClick={(event) => event.stopPropagation()} // Prevent clicks inside the dropdown from closing it
+              >
+                <div className="px-[50px] my-10">
+                  <div className="filter_container flex">
+                    <div
+                      className={`flex ${
+                        idx === 0
+                          ? `gap-20`
                           : idx === 1
-                          ? flooringCategoryData
+                          ? `gap-20`
                           : idx === 2
-                          ? curtainsCategoryData
+                          ? `gap-10`
                           : idx === 3
-                          ? blindsCategoryData
+                          ? `gap-10`
                           : idx === 4
-                          ? inspirationCategoryData
-                          : wallpaperCategoryData
-                        ).map((category, idx) => {
-                          return (
-                            <div key={idx}>
-                              <CategoryContent
-                                categoryHeading={category.categoryHeading}
-                                categoryData={category.categoryData}
-                                parentCategory={value.label}
-                                categoryGap=""
-                                headingColor="text-black"
-                                headingStyle="font-semibold"
-                                headingSize="text-md"
-                                gapHeadingItems="space-y-8"
-                                itemsGap="space-y-6"
-                                textColor="text-black"
-                              />
-                            </div>
-                          );
-                        })}
+                          ? `gap-20`
+                          : `gap-14`
+                      }`}
+                    >
+                      <div>
+                        <FeaturedContent
+                          featuredData={(() => {
+                            switch (idx) {
+                              case 0:
+                                return wallpaperFeaturedData;
+                              case 1:
+                                return flooringFeaturedData;
+                              case 2:
+                                return curtainsFeaturedData;
+                              case 3:
+                                return blindsFeaturedData;
+                              case 4:
+                                return inspirationFeaturedData;
+                              default:
+                                return wallpaperFeaturedData;
+                            }
+                          })()}
+                          verticalSpacingBetween="space-y-8"
+                          imageWidth={200}
+                          imageHeight={200}
+                          textSize="text-md"
+                          textStyle="font-semibold"
+                          parentCategory={value.label}
+                        />
                       </div>
+                      {(idx === 0
+                        ? wallpaperCategoryData
+                        : idx === 1
+                        ? flooringCategoryData
+                        : idx === 2
+                        ? curtainsCategoryData
+                        : idx === 3
+                        ? blindsCategoryData
+                        : idx === 4
+                        ? inspirationCategoryData
+                        : wallpaperCategoryData
+                      ).map((category, idx) => {
+                        return (
+                          <div key={idx}>
+                            <CategoryContent
+                              categoryHeading={category.categoryHeading}
+                              categoryData={category.categoryData}
+                              parentCategory={value.label}
+                              categoryGap=""
+                              headingColor="text-black"
+                              headingStyle="font-semibold"
+                              headingSize="text-md"
+                              gapHeadingItems="space-y-8"
+                              itemsGap="space-y-6"
+                              textColor="text-black"
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
+              {/* )} */}
             </div>
           ))}
           {/* <div
