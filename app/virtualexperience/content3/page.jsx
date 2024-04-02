@@ -33,7 +33,7 @@ const ActivityItem = ({ index, widthRange, selectedActivity, handleClick }) => (
         className=" rotate-90"
       />
     </div>
-    <p className="absolute -bottom-5 left-0">{widthRange} Widths</p>
+    <p className=" -bottom-5 left-0">{widthRange} Widths</p>
     {selectedActivity[index] && (
       <div className="room-item absolute bottom-4 z-10 flex items-center opacity-50 justify-center">
         <div className="circle-container relative flex justify-center items-center">

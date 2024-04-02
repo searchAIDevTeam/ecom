@@ -25,7 +25,7 @@ function App() {
   const [fetchedCategories, setFetchedCategories] = useState(null);
   const [fetchCities, setFetchedCities] = useState(null);
   const [fetchHobbies, setFetchedHobbies] = useState(null);
-  const [isLoading, setIsloading] = useState(true);
+  const [isLoading, setIsloading] = useState(false);
   const dispatch = useDispatch();
   const fetchCategories = async () => {
     try {

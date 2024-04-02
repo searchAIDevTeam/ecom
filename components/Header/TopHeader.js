@@ -24,13 +24,16 @@ const TopHeader = () => {
         <div>
           <div className="flex flex-row gap-2 p-[5px] text-black  text-[12px] pr-5 ">
             <div className="pr-3 border-r border-black underline-offset-1   tracki">
-              <Link href="category/designservice">Free Design Request</Link>
+              <Link href="category/designservice">virtual Experience</Link>
             </div>
             <div className="pr-3 border-r border-black underline-offset-1">
-              <Link href="category/freesample">Free Sample Request</Link>
+              <Link href="category/freesample">Free Design</Link>
+            </div>
+            <div className="pr-3 border-r border-black underline-offset-1">
+              <Link href="category/freesample">Free Sample</Link>
             </div>
             <div>
-              <Link href="/login">Join Us</Link>
+              <Link href="/login">Join Ayatrio Family</Link>
             </div>
           </div>
         </div>

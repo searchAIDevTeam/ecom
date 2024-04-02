@@ -49,8 +49,6 @@
   font-size: 14px;
 }
 
-
-
 .arrow-nav {
   width: 1.6rem;
   height: 2rem;
@@ -89,11 +87,11 @@
   font-weight: 600;
   padding: 0rem 1rem;
   text-transform: uppercase;
-  -webkit-letter-spacing: .08em;
-  -moz-letter-spacing: .08em;
-  -ms-letter-spacing: .08em;
-  letter-spacing: .08em;
-  font-size: 13px;
+  -webkit-letter-spacing: 0.08em;
+  -moz-letter-spacing: 0.08em;
+  -ms-letter-spacing: 0.08em;
+  letter-spacing: 0.08em;
+  font-size: 16px;
 }
 
 .Filter-array-element:hover {
