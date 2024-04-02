@@ -3,16 +3,19 @@ import "./styles.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const Label = () => {
+const Label = ({labelData}) => {
   const circled = [
     {
       top: 50,
       left: 68,
       productTitle: "Bedroom...",
       productCategory: "Mountain view",
-      price: 1900,
+      productPrice: 1900,
     },
   ];
+
+  const circledData = labelData || circled;
+
   const router = useRouter();
   const handleTab = () => {
     router.push("/room");
@@ -25,7 +28,7 @@ const Label = () => {
           onClick={handleTab}
         >
           <div className="flex flex-row relative">
-            {circled.map((data, idx) => (
+            {circledData.map((data, idx) => (
               <div
                 className="flex flex-col basis-3/4 w-24 flex-grow relative p-2.5 mr-1"
                 key={idx}
@@ -33,7 +36,7 @@ const Label = () => {
                 <h2 className="font-bold pt-1 pr-2">{data.productTitle}</h2>
                 <p className="font-normal pb-2">{data.productCategory}</p>
                 <p className="font-bold bg-yellow-400 h-8 w-16 pl-2 main">
-                  ₹{data.price}
+                  ₹{data.productPrice}
                 </p>
               </div>
             ))}

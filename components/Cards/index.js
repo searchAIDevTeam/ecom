@@ -25,6 +25,7 @@ import Dataslider from "./Dataslider";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
 import NewMainSlider from "../MainSlider/NewMainSlider";
+import RoomTypes from "../Rooms/RoomTypes";
 const Cookies = dynamic(() => import("./Cookies"));
 
 function Cards() {
@@ -87,7 +88,8 @@ function Cards() {
     <div className="w-full h-auto">
       {/* {MemoizedMainSlider} */}
       <NewMainSlider />
-      <Cookies/>
+      <RoomTypes />
+      <Cookies />
       {/* {MemoizedTrendingProducts} */}
       <Trending />
       <div className="h-40 my-10 sm:px-[50px] px-[50px]">
