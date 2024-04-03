@@ -36,7 +36,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   //   router.push(`/room/${id}`);
   // };
   const handlenav = async (id) => {
-    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`;
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`; 
     const response = await axios.get(url);
     const data = response.data;
     dispatch({ type: "FETCH_ROOM_REQUEST", payload: id });

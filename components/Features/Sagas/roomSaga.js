@@ -10,6 +10,7 @@ function* fetchRoomData(action) {
             axios.get,
             `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${action.payload}`
         );
+        yield call(axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/increment-popularity?id=${action.payload}`));
         yield put(setRoomData({ roomData: response.data, status: "succeeded" }));
         // console.log("response from room", response.data);
     } catch (error) {

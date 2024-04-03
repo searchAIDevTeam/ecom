@@ -32,7 +32,7 @@ function App() {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
       );
-      setFetchedCategories(response.data[0].categories);
+      setFetchedCategories(response.data);
       setIsloading(false);
     } catch (error) {
       console.error("Error fetching categories:", error.message);
@@ -100,9 +100,9 @@ function App() {
 
     const newSelectedItems1 = isSelected
       ? selectedItems1.filter(
-          (item) =>
-            !(item.label === label && item.parentCategory === parentCategory)
-        )
+        (item) =>
+          !(item.label === label && item.parentCategory === parentCategory)
+      )
       : [...selectedItems1, { label, parentCategory }];
 
     setSelectedItems1(newSelectedItems1);
@@ -226,6 +226,7 @@ function App() {
 
       // console.log("tahir", preferencesDataToSendToBackend.preferredCategories);
 
+
       const data = response.data;
       setIsloading(false);
 
@@ -319,16 +320,15 @@ function App() {
                                 (subcategory, subIndex) => (
                                   <SwiperSlide key={subIndex}>
                                     <div
-                                      className={`box firstbox ${
-                                        selectedItems1.some(
-                                          (item) =>
-                                            item.label === subcategory &&
-                                            item.parentCategory ===
-                                              category.name
-                                        )
+                                      className={`box firstbox ${selectedItems1.some(
+                                        (item) =>
+                                          item.label === subcategory &&
+                                          item.parentCategory ===
+                                          category.name
+                                      )
                                           ? "selected"
                                           : " "
-                                      }`}
+                                        }`}
                                       onClick={() =>
                                         toggleItemSelection1(
                                           subcategory,
@@ -344,11 +344,10 @@ function App() {
                                         height={20}
                                         width={20}
                                         alt="tick"
-                                        className={`absolute tickicon ${
-                                          selectedItems1.includes(subcategory)
+                                        className={`absolute tickicon ${selectedItems1.includes(subcategory)
                                             ? "block"
                                             : "hidden"
-                                        }`}
+                                          }`}
                                       />
                                       <b className="bel">{subcategory.name}</b>
                                     </div>
@@ -399,9 +398,8 @@ function App() {
                 fetchCities.map((city, index) => (
                   <React.Fragment key={index}>
                     <div
-                      className={`box firstbox ${
-                        selectedItems2.includes(city) ? "selected" : ""
-                      }`}
+                      className={`box firstbox ${selectedItems2.includes(city) ? "selected" : ""
+                        }`}
                       onClick={() => toggleItemSelection2(city)}
                       style={{
                         background: `url('${city.img}')`,
@@ -413,9 +411,8 @@ function App() {
                         height={20}
                         width={20}
                         alt="close"
-                        className={`absolute tickicon ${
-                          selectedItems2.includes(city) ? "block" : "hidden"
-                        }`}
+                        className={`absolute tickicon ${selectedItems2.includes(city) ? "block" : "hidden"
+                          }`}
                       />
                       <b className="bel">{city.name}</b>
                     </div>
@@ -453,9 +450,8 @@ function App() {
                   {fetchHobbies &&
                     fetchHobbies.map((hobbie, index) => (
                       <div
-                        className={`box firstbox ${
-                          selectedItems3.includes(hobbie) ? "selected" : ""
-                        }`}
+                        className={`box firstbox ${selectedItems3.includes(hobbie) ? "selected" : ""
+                          }`}
                         onClick={() => toggleItemSelection3(hobbie)}
                         style={{
                           background: `url('${hobbie.img}')`,
@@ -468,9 +464,8 @@ function App() {
                           height={20}
                           width={20}
                           alt="close"
-                          className={`absolute tickicon ${
-                            selectedItems3.includes(hobbie) ? "block" : "hidden"
-                          }`}
+                          className={`absolute tickicon ${selectedItems3.includes(hobbie) ? "block" : "hidden"
+                            }`}
                         />
                         <b className="bel">{hobbie.name}</b>
                       </div>
@@ -484,7 +479,7 @@ function App() {
                     ${isMinItemsSelected ? "bg-red-700" : "bg-red-200"}
                     `}
                 onClick={done}
-                // disabled={!isMinItemsSelected}
+              // disabled={!isMinItemsSelected}
               >
                 Done
               </button>
