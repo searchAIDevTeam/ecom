@@ -9,22 +9,28 @@ import { inspirationCategoryData } from "@/Model/Dropdown/CategoryData/Inspirati
 
 const Displaybox = ({ defaultLinkIndex }) => {
   let asideCategory;
+  let parentCategory;
 
   switch (defaultLinkIndex) {
     case 0:
       asideCategory = flooringCategoryData;
+      parentCategory = "flooring";
       break;
     case 1:
       asideCategory = wallpaperCategoryData;
+      parentCategory = "wallpaper";
       break;
     case 2:
       asideCategory = inspirationCategoryData;
+      parentCategory = "inspiration";
       break;
     case 3:
       asideCategory = curtainsCategoryData;
+      parentCategory = "curtains";
       break;
     case 4:
       asideCategory = blindsCategoryData;
+      parentCategory = "blinds";
       break;
     default:
       asideCategory = wallpaperCategoryData;
@@ -38,7 +44,8 @@ const Displaybox = ({ defaultLinkIndex }) => {
             <h2 className="text-gray-400 text-xl font-semibold mb-2">
               {item.categoryHeading}
             </h2>
-            {<ListContent items={item.categoryData} />}
+            {/* {<ListContent items={item.categoryData} />} */}
+            <ListContent parentCategory={parentCategory} items={item} />
           </div>
         ))}
       </div>

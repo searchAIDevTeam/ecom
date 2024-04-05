@@ -90,7 +90,7 @@ const ProductPage = ({ params }) => {
       //   }
       // };
       // fetchFilteredProducts();
-      if (filteredProductData.length === 0) {
+      // if (filteredProductData.length === 0) {
         dispatch({
           type: "FETCH_FILTER_PRODUCTS",
           payload: {
@@ -99,7 +99,7 @@ const ProductPage = ({ params }) => {
             cat: params.cat,
           },
         });
-      }
+      // }
      
     }
   }, [params.parentCategory, params.cat, x, filteredProductData, dispatch]);

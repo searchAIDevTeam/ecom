@@ -1,12 +1,32 @@
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-const ListContent = ({ items }) => {
+const ListContent = ({ parentCategory, items }) => {
+  const router = useRouter();
+  const [currentCategory, setCurrentCategory] = useState('');
+
+  const handleClick = (value) => {
+    const newPath = `/${parentCategory}/${currentCategory}/${value.text}`;
+    router.push(newPath);
+  };
+
+  useEffect(() => {
+    if (items.categoryHeading) {
+      const category = items.categoryHeading.split(' ')[2]?.toLowerCase();
+      if (category === 'collections' || category === 'rooms' || category === 'styles' || category === 'colours') {
+        setCurrentCategory(category || '');
+      } else {
+        setCurrentCategory('');
+      }
+    }
+  }, [items.categoryHeading]);
+
   return (
     <>
       <ul className="space-y-1">
-        {items.map((value) => (
-          <li key={value.id} className="text-md font-bold p-2">
+        {items.categoryData.map((value) => (
+          <li key={value.id} className="text-md font-bold p-2" onClick={() => handleClick(value)}>
             {value.image === undefined ? (
               <>{value.text}</>
             ) : (
