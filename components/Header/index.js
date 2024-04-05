@@ -16,6 +16,7 @@ import TopHeader from "./TopHeader";
 import dynamic from "next/dynamic";
 
 import { headerLinks } from "@/Model/Dropdown/AsideData/AsideData";
+import Midsection from "./Midsection/Midsection";
 // import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
@@ -43,6 +44,10 @@ function Header({ howMuchScrolled }) {
   const handleMouseLeave = () => {
     setHoveredIndex(null);
     setIsOpen(false);
+  };
+
+  const handleClick = (idx) => {
+    if (idx === 3) router.push("/customerservice");
   };
 
   const handleSearchChange = (event) => {
@@ -154,7 +159,7 @@ function Header({ howMuchScrolled }) {
               } flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px] py-0`}
             >
               {/* main-logo */}
-              <div className=" flex items-center justify-start w-1/6">
+              <div className=" flex items-center justify-start ">
                 <div className="mainlogo">
                   <Link href="/">
                     <Image
@@ -169,7 +174,7 @@ function Header({ howMuchScrolled }) {
                 </div>
               </div>
               {/* center-list */}
-              <div className=" flex justify-center items-center w-2/3 gap-1 sm:gap-5 ">
+              <div className=" flex justify-center items-center  gap-1 sm:gap-5 ">
                 {/* <div className=" profile-menu font-bold p-[9px] hover:bg-zinc-100 hover:rounded-full">
                 <Menu />
               </div> */}
@@ -191,12 +196,13 @@ function Header({ howMuchScrolled }) {
                   <nav className="hidden sm:flex space-x-6 ">
                     {headerLinks.map((value, idx) => (
                       <div
+                        key={idx}
                         onMouseEnter={() => handleMouseEnter(idx)}
                         onMouseLeave={handleMouseLeave}
+                        onClick={() => handleClick(idx)}
                       >
                         <Link
-                          key={idx}
-                          className={`text-lg font-medium  ${
+                          className={`text-md font-medium  ${
                             isOpen ? "border-b-2 border-black" : ""
                           }`}
                           href="#"
@@ -212,9 +218,10 @@ function Header({ howMuchScrolled }) {
                             {value.label}
                           </p>
                         </Link>
-                        {isOpen && hoveredIndex === idx && (
+                        {idx < 2 && hoveredIndex === idx && (
                           <Asidebox hoveredIndex={hoveredIndex} />
                         )}
+                        {idx === 2 && hoveredIndex === idx && <Midsection />}
                       </div>
                     ))}
                   </nav>
@@ -222,10 +229,10 @@ function Header({ howMuchScrolled }) {
               </div>
               {/* search-bar */}
 
-              <div className=" flex flex-row items-center justify-end w-1/3 gap-2">
+              <div className=" flex flex-row items-center justify-end  gap-2">
                 <div
                   onClick={handleModalOpen}
-                  className="bg-zinc-100  justify-end rounded-full w-3/5 h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
+                  className="bg-zinc-100  justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
                 >
                   <span>
                     <Image

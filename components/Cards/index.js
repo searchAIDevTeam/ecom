@@ -26,6 +26,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectRecommendedProduct } from "../Features/Slices/recommendationSlice";
 import NewMainSlider from "../MainSlider/NewMainSlider";
 import RoomTypes from "../Rooms/RoomTypes";
+import Display from "./Display";
+import RoomCard from "./RoomCard";
 const Cookies = dynamic(() => import("./Cookies"));
 
 function Cards() {
@@ -88,18 +90,17 @@ function Cards() {
     <div className="w-full h-auto">
       {/* {MemoizedMainSlider} */}
       <NewMainSlider />
-      <RoomTypes />
+
       <Cookies />
       {/* {MemoizedTrendingProducts} */}
       <Trending />
-      <div className="h-40 my-10 sm:px-[50px] px-[50px]">
-        <img
-          src="/images/salesoffer.webp"
-          alt=""
-          className="w-full h-full object-fit"
-        />
-      </div>
+
+      <RoomCard />
+      <Trending />
+      <Display />
+      <Multicard />
       <Image />
+
       {uniqueCategories?.map((item, index) => (
         <Dataslider
           key={item}
@@ -110,11 +111,11 @@ function Cards() {
         />
       ))}
 
-      <Multicard />
+      <Trending />
       <div className="w-full sm:px-[50px] px-[20px] py-20  h-auto">
         <Imagechanger />
       </div>
-      <DoubleComp />
+
       {MemoizedProfileContent}
       <Tabs data={recommended} />
       <Phone />

@@ -13,8 +13,9 @@ import { watchVirtualGet } from "./virtualSaga";
 import { watchFetchTrendingData } from "./trendingSaga";
 import { watchMultiCardData } from "./multiCardSaga";
 import { watchFetchImagechangerData } from "./ImageChangerSaga";
+import { watchFetchDisplayData } from "./displaySaga";
 import { watchFetchMusicData } from "./musicSaga";
-import { watchFetchFirstImgChangerData } from "./firstImageChangerSaga"
+import { watchFetchFirstImgChangerData } from "./firstImageChangerSaga";
 
 import { watchFilterProducts } from "./FilteredProductSaga";
 export default function* rootSaga() {
@@ -32,6 +33,7 @@ export default function* rootSaga() {
     watchSelectedProductsSaga(),
     watchMultiCardData(),
     watchFetchImagechangerData(),
+    watchFetchDisplayData(),
     watchFetchMusicData(),
     watchFetchFirstImgChangerData(),
     watchFilterProducts(),

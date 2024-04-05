@@ -11,6 +11,22 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "static.thenounproject.com",
+      },
+      {
+        protocol: "https",
+        hostname: "t4.ftcdn.net",
+      },
+      {
+        protocol: "https",
+        hostname: "www.google.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ecom-data3.s3.ap-south-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
         hostname: "i0.wp.com",
       },
       {
@@ -23,11 +39,35 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "i.pinimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn1.vectorstock.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.iconpacks.net",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
+      },
+      {
+        protocol: "https",
+        hostname: "in.pinterest.com",
+      },
+      {
+        protocol: "https",
         hostname: "ayatrio-images.s3.ap-south-1.amazonaws.com",
       },
       {
         protocol: "https",
         hostname: "localhost:5173",
+      },
+      {
+        protocol: "https",
+        hostname: "www.ikea.com",
       },
       {
         protocol: "http",

@@ -3,7 +3,7 @@ import "./styles.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const Label = ({labelData}) => {
+const Label = ({ labelData }) => {
   const circled = [
     {
       top: 50,
@@ -47,7 +47,6 @@ const Label = ({labelData}) => {
                 height={20}
                 width={20}
                 alt="arrow"
-                
               />
             </div>
           </div>

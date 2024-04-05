@@ -8,9 +8,9 @@ import "swiper/css/scrollbar";
 import "./../Imagechanger/styles.css";
 
 const MultiCardContent = (props) => {
-  const { key, iconPath, iconSize, title, text, addIconSize } = props;
+  const { key, iconPath, iconSize, title, text } = props;
   return (
-    <div className=" relative  h-[300px] sm:w-[300px] w-[90%] p-2 sm:mb-24 mb-10">
+    <div className=" relative bg-white  h-[300px] sm:w-[300px] w-[90%] p-2 sm:mb-24 mb-10">
       <div className="mt-8 ml-6">
         <Image src={iconPath} width={iconSize} height={iconSize} alt="image" />
       </div>
@@ -19,9 +19,10 @@ const MultiCardContent = (props) => {
 
       <div className="absolute bottom-1 right-4 mb-8">
         <Image
+          className="w-10 h-10"
           src="/MultiCardIcons/add-circle.svg"
-          width={addIconSize}
-          height={addIconSize}
+          width={0}
+          height={0}
           alt="add"
         />
       </div>

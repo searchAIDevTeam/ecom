@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const ListContent = ({ parentCategory, items }) => {
   const router = useRouter();
-  const [currentCategory, setCurrentCategory] = useState('');
+  const [currentCategory, setCurrentCategory] = useState("");
 
   const handleClick = (value) => {
     const newPath = `/${parentCategory}/${currentCategory}/${value.text}`;
@@ -13,11 +13,16 @@ const ListContent = ({ parentCategory, items }) => {
 
   useEffect(() => {
     if (items.categoryHeading) {
-      const category = items.categoryHeading.split(' ')[2]?.toLowerCase();
-      if (category === 'collections' || category === 'rooms' || category === 'styles' || category === 'colours') {
-        setCurrentCategory(category || '');
+      const category = items.categoryHeading.split(" ")[2]?.toLowerCase();
+      if (
+        category === "collections" ||
+        category === "rooms" ||
+        category === "styles" ||
+        category === "colours"
+      ) {
+        setCurrentCategory(category || "");
       } else {
-        setCurrentCategory('');
+        setCurrentCategory("");
       }
     }
   }, [items.categoryHeading]);
@@ -26,7 +31,11 @@ const ListContent = ({ parentCategory, items }) => {
     <>
       <ul className="space-y-1">
         {items.categoryData.map((value) => (
-          <li key={value.id} className="text-md font-bold p-2" onClick={() => handleClick(value)}>
+          <li
+            key={value.id}
+            className="text-md font-bold p-2 cursor-pointer"
+            onClick={() => handleClick(value)}
+          >
             {value.image === undefined ? (
               <>{value.text}</>
             ) : (

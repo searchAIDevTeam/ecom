@@ -18,6 +18,7 @@ import virtualDataReducer from "./Slices/virtualDataSlice";
 import trendingReducer from "./Slices/trendingSlice";
 import multiCardReducer from "./Slices/multiCardSlice";
 import imageChangerReducer from "./Slices/ImagechangerSlice";
+import displayReducer from "./Slices/displaySlice";
 import musicReducer from "./Slices/musicSectionSlice";
 import firstImageChangerReducer from "./Slices/firstImageChangerSlice";
 
@@ -62,6 +63,7 @@ export const store = configureStore({
     trending: trendingReducer,
     multiCard: multiCardReducer,
     Imagechanger: imageChangerReducer,
+    Display: displayReducer,
     music: musicReducer,
     firstImageChanger: firstImageChangerReducer,
     filteredProduct: filteredProductReducer,
