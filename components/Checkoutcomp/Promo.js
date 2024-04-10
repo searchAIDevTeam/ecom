@@ -32,8 +32,6 @@ const Promo = () => {
         };
       });
     }
-
-    handlePayment(orderValue);
   };
 
   const quantity = useSelector(selectQuantity);
@@ -61,6 +59,7 @@ const Promo = () => {
 
   // initiate razorpay payment 
   const initPayment = (data) => {
+    console.log("init Pymentdata: ", data);
     const options = {
       key: process.env.NEXT_PUBLIC_RAZOR_PAY_KEY_ID,
       amount: data.amount,
@@ -82,6 +81,7 @@ const Promo = () => {
           });
 
           const verifyData = await verifyResponse.json();
+          console.log("verifyData: ", verifyData);
 
           // if payment verification is successfull
           if (verifyData.paymentSuccess) {
@@ -93,16 +93,16 @@ const Promo = () => {
 
             // create the order (PUT /api/order) 🧧🧧
 
-            // fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/orders`, {
-            //   method: 'PUT',
-            //   headers: {
-            //     'Content-Type': 'application/json',
-            //   },
-            //   body: JSON.stringify({ payment: verifyData.paymentSuccess }),
-            // })
-            //   .then(response => response.json())
-            //   .then(data => console.log(data))
-            //   .catch(error => console.error('Error:', error));
+            fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ deviceId:dbItemset.owner ,payment: verifyData.paymentSuccess }),
+            })
+              .then(response => response.json())
+              .then(data => console.log(data))
+              .catch(error => console.error('Error:', error));
 
             // when payment is successfull navigate to order-success page
             router.push(`/success`)
@@ -264,7 +264,7 @@ const Promo = () => {
           </h6>
           <button
             onClick={() => {
-              handlefunc();
+              handlePayment(orderValue);
             }}
             disabled={isComplete}
             className={`mt-4  text-white py-2 px-4 rounded-full w-80 ${buttonsClass}`}

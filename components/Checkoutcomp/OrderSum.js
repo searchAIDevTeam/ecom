@@ -24,12 +24,12 @@ const OrderSum = () => {
   const properties = searchParams.get("search");
 
   let totalPrices = 0;
-  // if (properties === "cart") {
-  //   totalPrices = dbItemset.items.reduce(
-  //     (total, item) => total + item.price * item.quantity,
-  //     0
-  //   );
-  // }
+  if (properties === "cart") {
+    totalPrices = dbItemset.items.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  }
 
   return (
     <div className="sm:w-auto w-[80vw]">

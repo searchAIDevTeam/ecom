@@ -12,11 +12,11 @@ export default function Form() {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState(null);
   const formData = useSelector(selectFormData);
-  // const dbItemset = useSelector(selecteddbItems);
+  const dbItemset = useSelector(selecteddbItems);
   // console.log(dbItemset);
   // console.log(dbItemset);
-  // const deviceId = dbItemset.owner;
-  // const cartId = dbItemset._id;
+  const deviceId = dbItemset.owner;
+  const cartId = dbItemset._id;
   // something error in cartId
 
   const [form, setForm] = React.useState({
@@ -108,7 +108,7 @@ export default function Form() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ form, deviceId }),
+          body: JSON.stringify({ form, deviceId, cartId }),
         }
       );
 
@@ -431,18 +431,18 @@ export default function Form() {
         </div>
         <br />
 
-        <Link
+        {/* <Link
           href={{
             pathname: "/shipping",
           }}
-        >
+        > */}
           <button
             disabled={incompleteForm}
             className={`mt-4 bg-black text-white py-2 px-4 rounded-full sm:w-96 w-[70vw] ${buttonClass} `}
           >
             Continue
           </button>
-        </Link>
+        {/* </Link> */}
       </form>
       <br />
       <br />
