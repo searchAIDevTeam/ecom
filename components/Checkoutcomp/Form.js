@@ -15,8 +15,8 @@ export default function Form() {
   const dbItemset = useSelector(selecteddbItems);
   // console.log(dbItemset);
   // console.log(dbItemset);
-  const deviceId = dbItemset.owner;
-  const cartId = dbItemset._id;
+  const deviceId = dbItemset?.owner;
+  const cartId = dbItemset?._id;
   // something error in cartId
 
   const [form, setForm] = React.useState({
