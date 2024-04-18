@@ -47,13 +47,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en" className={poppins.className}>
       <body>
         <Providers>
           <HeaderWrapper />
-          <NextTopLoader color="#024ef3"  showSpinner={false}  />
+          <NextTopLoader color="#000" showSpinner={false} />
           {children}
           <FooterWrapper />
         </Providers>

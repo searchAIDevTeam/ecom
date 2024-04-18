@@ -12,8 +12,9 @@ const ratingsData = [
         {[5, 4, 3, 2, 1].map((number, index) => (
           <div
             key={index}
-            className={`border mb-2 ${index === 0 ? "border-black bg-black" : "bg-gray-300"
-              } rounded-full w-32 h-1.5 flex flex-row items-center ml-4 justify-start`}
+            className={`border mb-2 ${
+              index === 0 ? "border-black bg-black" : "bg-gray-300"
+            } rounded-full w-32 h-1.5 flex flex-row items-center ml-4 justify-start`}
           >
             <span className="-ml-3">{number}</span>
           </div>
@@ -23,34 +24,56 @@ const ratingsData = [
     icon: null,
   },
   {
-    label: "Cleanliness",
-    value: "4.9",
-    icon: <Image src="/rooms/cleanliness-icon.svg" width={36} height={36} alt="cleanliness" className="mt-5" />,
-  },
-  {
     label: "Accuracy",
     value: "5.0",
-    icon: <Image src="/rooms/checkmark-icon.svg" width={36} height={36} alt="accuracy" className="mt-5" />,
-  },
-  {
-    label: "Check-in",
-    value: "4.9",
-    icon: <Image src="/rooms/keys-icon.svg" width={36} height={36} alt="check in" className="mt-5" />,
+    icon: (
+      <Image
+        src="/rooms/checkmark-icon.svg"
+        width={36}
+        height={36}
+        alt="accuracy"
+        className="mt-5"
+      />
+    ),
   },
   {
     label: "Communication",
     value: "4.9",
-    icon: <Image src="/rooms/message-icon.svg" width={36} height={36} alt="communication" className="mt-5" />,
+    icon: (
+      <Image
+        src="/rooms/message-icon.svg"
+        width={36}
+        height={36}
+        alt="communication"
+        className="mt-5"
+      />
+    ),
   },
   {
     label: "Location",
     value: "4.0",
-    icon: <Image src="/rooms/map-location-icon.svg" width={36} height={36} alt="map" className="mt-5" />,
+    icon: (
+      <Image
+        src="/rooms/map-location-icon.svg"
+        width={36}
+        height={36}
+        alt="map"
+        className="mt-5"
+      />
+    ),
   },
   {
     label: "Value",
     value: "5.0",
-    icon: <Image src="/rooms/price-tag-icon.svg" width={36} height={36} alt="value" className="mt-5" />,
+    icon: (
+      <Image
+        src="/rooms/price-tag-icon.svg"
+        width={36}
+        height={36}
+        alt="value"
+        className="mt-5"
+      />
+    ),
   },
 ];
 
@@ -60,8 +83,10 @@ const Reviews = ({ data }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getReview`);
-        console.log(response.data)
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getReview`
+        );
+        console.log(response.data);
         setReviews(response.data);
       } catch (error) {
         console.error("Error fetching reviews:", error);
@@ -73,7 +98,7 @@ const Reviews = ({ data }) => {
 
   return (
     <>
-      <div className="py-12 border-t sm:w-auto w-[90vw] border-b overflow-x-hidden">
+      <div className="py-12 sm:w-auto w-[90vw] border-b overflow-x-hidden">
         <div>
           <div className="flex flex-col justify-center mx-auto">
             <div className="flex items-center justify-center overflow-hidden flex-row ">
@@ -106,10 +131,11 @@ const Reviews = ({ data }) => {
             {ratingsData.map((item, index) => (
               <div
                 key={index}
-                className={` basis-1/7 flex pr-6 ${index < ratingsData.length - 1
-                  ? "border-r border-gray-400 h-32 "
-                  : ""
-                  }flex-col pl-6`}
+                className={` basis-1/7 flex pr-6 ${
+                  index < ratingsData.length - 1
+                    ? "border-r border-gray-400 h-32 "
+                    : ""
+                }flex-col pl-6`}
               >
                 {item.label}
                 <div>{item.value}</div>
@@ -139,7 +165,9 @@ const Reviews = ({ data }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-semibold text-[16px]">{review.name}</span>
+                  <span className="font-semibold text-[16px]">
+                    {review.name}
+                  </span>
                   <span className="font-normal text-[14px] text-gray-500">
                     {review.location}
                   </span>
@@ -171,5 +199,5 @@ const Reviews = ({ data }) => {
       </div>
     </>
   );
- }
+};
 export default Reviews;

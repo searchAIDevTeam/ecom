@@ -48,11 +48,12 @@ const Card = ({ data }) => {
   const colorSep = data?.colors?.[0]?.split(",");
 
   const roomData = useSelector(selectRoomData);
+  console.log(roomData);
   const roomStatus = useSelector(selectRoomStatus);
   //posting data to database
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
-    // console.log("deviceId : ", id);
+    console.log("deviceId : ", id);
   }
   const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
   const postRoomData = async () => {
@@ -70,6 +71,8 @@ const Card = ({ data }) => {
       };
 
       const response = await axios.post(postUrl, postData);
+      if (response.status === 200) alert("Product added");
+      console.log(response);
     } catch (error) {
       console.error("Error posting room data:", error);
     }
@@ -143,7 +146,9 @@ const Card = ({ data }) => {
                 </h2>{" "}
                 <span> &nbsp;/roll</span>
               </div>
-              <h5 className="text-[#757575] pb-[5px]">Price incl. of all taxes</h5>
+              <h5 className="text-[#757575] pb-[5px]">
+                Price incl. of all taxes
+              </h5>
             </div>
 
             <IncDecCounter />
@@ -330,7 +335,10 @@ const Card = ({ data }) => {
               }}
               className="memberCheckout my-2 flex items-center justify-center"
             >
-              <button className="bg-black text-white w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300 px-4">
+              <button
+                onClick={() => handleClickDB()}
+                className="bg-black text-white w-[100%] sm:h-14 h-8 rounded-full hover:bg-gray-900 transition duration-300 px-4"
+              >
                 Buy Now
               </button>
             </Link>

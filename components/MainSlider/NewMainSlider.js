@@ -135,16 +135,13 @@ export default function NewMainSlider() {
                       key={sliderApiData[0]?._id}
                     >
                       <h2 className="pt-1 pr-2 font-bold">
-                        {sliderApiData[0]?.circles[0].circles[0].productTitle}
+                        {sliderApiData[0]?.circles[0].productTitle}
                       </h2>
                       <p className="pb-2 font-normal">
-                        {
-                          sliderApiData[0]?.circles[0].circles[0]
-                            .productCategory
-                        }
+                        {sliderApiData[0]?.circles[0].productCategory}
                       </p>
                       <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                        ₹{sliderApiData[0]?.circles[0].circles[0].productPrice}
+                        ₹{sliderApiData[0]?.circles[0].productPrice}
                       </p>
                     </div>
                     <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
@@ -192,13 +189,13 @@ export default function NewMainSlider() {
                       key={sliderApiData[1]?._id}
                     >
                       <h2 className="pt-1 pr-2 font-bold">
-                        {sliderApiData[1]?.circles[0].circles[0].productTitle}
+                        {sliderApiData[1]?.circles[0].productTitle}
                       </h2>
                       <p className="pb-2 font-normal">
-                        {sliderApiData[1]?.circles[0].circles[0].productTitle}
+                        {sliderApiData[1]?.circles[0].productTitle}
                       </p>
                       <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                        {sliderApiData[1]?.circles[0].circles[0].productTitle}
+                        {sliderApiData[1]?.circles[0].productTitle}
                       </p>
                     </div>
                     <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
@@ -246,13 +243,13 @@ export default function NewMainSlider() {
                       key={sliderApiData[2]?._id}
                     >
                       <h2 className="pt-1 pr-2 font-bold">
-                        {sliderApiData[2]?.circles[0].circles[0].productTitle}
+                        {sliderApiData[2]?.circles[0].productTitle}
                       </h2>
                       <p className="pb-2 font-normal">
-                        {sliderApiData[2]?.circles[0].circles[0].productTitle}
+                        {sliderApiData[2]?.circles[0].productTitle}
                       </p>
                       <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                        {sliderApiData[2]?.circles[0].circles[0].productTitle}
+                        {sliderApiData[2]?.circles[0].productTitle}
                       </p>
                     </div>
                     <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">
@@ -301,13 +298,13 @@ export default function NewMainSlider() {
                         key={data._id}
                       >
                         <h2 className="pt-1 pr-2 font-bold">
-                          {data.circles[0].circles[0].productTitle}
+                          {data.circles[0].productTitle}
                         </h2>
                         <p className="pb-2 font-normal">
-                          {data.circles[0].circles[0].productCategory}
+                          {data.circles[0].productCategory}
                         </p>
                         <p className="w-16 h-8 pl-2 font-bold bg-yellow-400 main">
-                          ₹{data.circles[0].circles[0].productPrice}
+                          ₹{data.circles[0].productPrice}
                         </p>
                       </div>
                       <div className="absolute top-0 right-0 flex items-center justify-end h-full pr-1 border-l border-gray-200">

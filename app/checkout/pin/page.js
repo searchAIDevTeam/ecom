@@ -1,14 +1,14 @@
 import dynamic from "next/dynamic";
 import Script from "next/script";
-const CartMain = dynamic(() =>
-  import("../../components/CartComp/Main/CartMain")
+const UserPin = dynamic(() =>
+  import("../../../components/Checkoutcomp/Userpin")
 );
-const CheckoutPage = () => {
+const CheckoutPin = () => {
   return (
     <>
       <Script defer src="https://checkout.razorpay.com/v1/checkout.js" />
-      <CartMain />
+      <UserPin />
     </>
   );
 };
-export default CheckoutPage;
+export default CheckoutPin;

@@ -16,6 +16,8 @@ const initialState = {
     email: "",
     number: "",
     pan: "",
+    selectedDate: "",
+    selectedTime: "",
   },
 };
 
@@ -29,7 +31,7 @@ const formSlice = createSlice({
   },
 });
 
-export const { updateFormData } = formSlice.actions;
+export const { updateFormData, updateSelectedDateTime } = formSlice.actions;
 export const selectFormData = (state) => state.form.formData;
 
 export default formSlice.reducer;

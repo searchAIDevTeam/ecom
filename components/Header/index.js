@@ -14,14 +14,16 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import TopHeader from "./TopHeader";
 import dynamic from "next/dynamic";
-
+import { selectQuantity } from "../Features/Slices/calculationSlice";
 import { headerLinks } from "@/Model/Dropdown/AsideData/AsideData";
 import Midsection from "./Midsection/Midsection";
+import { useSelector } from "react-redux";
 // import NextTopLoader from "nextjs-toploader";
 
 function Header({ howMuchScrolled }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const quantity = useSelector(selectQuantity);
 
   // Filter
   const [isFilterVisible, setIsFilterVisible] = useState(true);
@@ -245,17 +247,17 @@ function Header({ howMuchScrolled }) {
                   </span>
                   <p className="ml-6  text-gray-400">Search</p>
                 </div>
-                {/* <div className="sm:block hidden w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
-                <Link href={"/login"}>
-                  <Image
-                    src="/svg/icon/like.svg"
-                    alt=""
-                    className="header-div-icon"
-                    width={22}
-                    height={22}
-                  />
-                </Link>
-              </div> */}
+                <div className="sm:block hidden w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
+                  <Link href={"/login"}>
+                    <Image
+                      src="/svg/icon/like.svg"
+                      alt=""
+                      className="header-div-icon"
+                      width={22}
+                      height={22}
+                    />
+                  </Link>
+                </div>
                 <div className="w-10 h-10 p-[9px] hover:bg-zinc-100 hover:rounded-full cursor-pointer">
                   <Link href={"/cart"}>
                     <Image
@@ -266,7 +268,7 @@ function Header({ howMuchScrolled }) {
                       height={22}
                     />
                   </Link>
-                  <div className="cart-notification">3</div>
+                  <div className="cart-notification">{quantity}</div>
                 </div>
                 {loginStatus === "true" ? (
                   <div

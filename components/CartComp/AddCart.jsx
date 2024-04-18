@@ -11,6 +11,7 @@ const AddCart = () => {
   const dispatch = useDispatch();
   const selectedItems = useSelector((state) => state.rooms.selectedActivity);
   const roomData = useSelector(selectRoomData);
+  console.log(roomData);
   const quantity = useSelector(selectQuantity);
   const [cartdata, setcartdata] = useState("");
   const [cartStatus, setCartStaus] = useState("");
@@ -54,7 +55,7 @@ const AddCart = () => {
   }, [dispatch]);
   useEffect(() => {
     console.log("Updated cartdata", cartdata);
-    // console.log("Updated cartStatus", cartStatus);
+    console.log("Updated cartStatus", cartStatus);
   }, [cartdata, cartStatus]);
   let totalPrice = 0;
   if (cartStatus === "succeeded" && cartdata) {

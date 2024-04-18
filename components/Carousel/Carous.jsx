@@ -110,7 +110,7 @@ const Carous = ({ data }) => {
     };
   }, [prevScrollPos]); // Dependency on prevScrollPos to update the effect when it changes
   // const [showHeader, setShowHeader] = useState(true);
-// console.log(relatedData)
+  // console.log(relatedData)
   return (
     <>
       <div className="sm:w-full w-[80vw] sm:block hidden">
@@ -126,7 +126,7 @@ const Carous = ({ data }) => {
               </SwiperSlide>
             ) : (
               relatedData.map((product, idx) => (
-                <SwiperSlide key={idx}>s
+                <SwiperSlide key={idx}>
                   <div className="grid grid-cols-1 mt-2 h-full fade-in">
                     <Card
                       title={product.productName}

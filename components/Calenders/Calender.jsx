@@ -2,11 +2,14 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-
+import { useDispatch, useSelector } from "react-redux";
+import { updateFormData } from "../Features/Slices/formSlice";
 const Datetime = () => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedTime, setSelectedTime] = useState("");
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -23,23 +26,19 @@ const Datetime = () => {
     return `${hours}:${minutes}`;
   }
 
-  // Function to handle date change
   const handleDateChange = (date) => {
     setSelectedDay(date);
   };
 
-  // Function to disable dates before today
   const tileDisabled = ({ date, view }) => {
     const today = new Date();
     return date < today;
   };
 
-  // Function to handle cancel button click
   const cancelSelection = () => {
     alert("Selection canceled");
   };
 
-  // Function to handle submit button click
   const submitSelection = () => {
     if (selectedDay) {
       const selectedDate = selectedDay.toLocaleDateString("en-US", {
@@ -47,6 +46,10 @@ const Datetime = () => {
         month: "long",
         year: "numeric",
       });
+      const selectedSchedule = selectedTime || currentTime;
+      dispatch(
+        updateFormData({ selectedDate, selectedTime: selectedSchedule })
+      );
       alert(`Date: ${selectedDate}\nTime: ${selectedTime || currentTime}`);
     } else {
       alert("Please select a day.");
@@ -56,7 +59,7 @@ const Datetime = () => {
   return (
     <div
       className="flex flex-row w-160 justify-center"
-      style={{ display: "flex",  }}
+      style={{ display: "flex" }}
     >
       <div className="flex flex-col w-80 border border-gray-300 rounded overflow-hidden">
         <Calendar
@@ -72,14 +75,14 @@ const Datetime = () => {
           display: "flex",
           flexDirection: "column",
           width: "320px",
-          justifyContent:"center",
-          alignItems:"center",
-          gap:"30px"
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "30px",
         }}
       >
         <div
           className="flex flex-col items-center mt-auto mb-8"
-          style={{ display: "flex", flexDirection: "column",gap:"30px" }}
+          style={{ display: "flex", flexDirection: "column", gap: "30px" }}
         >
           <label htmlFor="time" className="mb-2">
             Select a time:

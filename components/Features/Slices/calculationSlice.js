@@ -25,14 +25,15 @@
 
 // export default calculationSlice.reducer;
 
-
 // calculationSlice.js
 
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   quantity: 1, // Set your initial quantity value
-  
+  pickup: "",
+  schedular: false,
+  deliveryPrice: null,
 };
 
 export const calculationSlice = createSlice({
@@ -42,11 +43,23 @@ export const calculationSlice = createSlice({
     updateQuantity: (state, action) => {
       state.quantity = action.payload;
     },
-   
+    pickupType: (state, action) => {
+      state.pickup = action.payload;
+    },
+    schedularToogle: (state, action) => {
+      state.schedular = action.payload;
+    },
+    deliveryPrice: (state, action) => {
+      state.deliveryPrice = action.payload;
+    },
   },
 });
 
-export const { updateQuantity } = calculationSlice.actions;
+export const { updateQuantity, pickupType, schedularToogle, deliveryPrice } =
+  calculationSlice.actions;
 export const selectQuantity = (state) => state.calculation.quantity;
+export const selectPickupOption = (state) => state.calculation.pickUpOption;
+export const selectSchedular = (state) => state.calculation.schedular;
+export const selectDeliveryPrice = (state) => state.calculation.deliveryPrice;
 
 export default calculationSlice.reducer;

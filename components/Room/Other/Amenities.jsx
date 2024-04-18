@@ -3,7 +3,7 @@ import React from "react";
 
 const Amenities = ({ data }) => {
   const amenities = data.features || []; // Assuming data.features is an array
-  // console.log(amenities);
+  console.log(amenities);
   return (
     <div className="place-offerings mt-14 py-12 border-t">
       <h3 className="mb-6 text-xl font-semibold ml-1">
@@ -35,16 +35,6 @@ const Amenities = ({ data }) => {
 };
 
 export default Amenities;
-
-
-
-
-
-
-
-
-
-
 
 // import Image from "next/image";
 // import React from "react";
