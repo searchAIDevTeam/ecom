@@ -26,13 +26,13 @@ export default function Home() {
 
   const dataSelector = useSelector(selectSliderData);
   useEffect(() => {
-    if (dataSelector.length > 0) {
+    if (dataSelector.length > 0 && loading) {
       setLoading(false);
     }
     if (loading === false) {
       router.push("/home");
     }
-  }, [dataSelector]);
+  }, [dataSelector, loading]);
   return (
     <>
       <SaveDeviceIdLocalstorage />
