@@ -17,7 +17,7 @@ import CartProduct from "./CartProduct";
 import { ArrowRight } from "lucide-react";
 const CartMain = () => {
   const dispatch = useDispatch();
-  // const selectedItems = useSelector(selecteddbItems);
+  const selectedItems = useSelector(selecteddbItems);
   const roomData = useSelector(selectRoomData);
   const quantity = useSelector(selectQuantity);
   const [cartdata, setcartdata] = useState("");
@@ -43,59 +43,45 @@ const CartMain = () => {
     dispatch(schedularToogle(value));
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setCartStaus("loading");
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
-          {
-            params: {
-              deviceId: id,
-            },
-          }
-        );
-        // console.log(response);
-        if (response.status !== 200) {
-          throw new Error("HTTP status " + response.status);
+  let totalPrice = 0;
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
+        {
+          params: {
+            deviceId: id,
+          },
         }
-        const data = response.data; // Extract JSON from the response
-        console.log("response from DB", data);
-
-        setcartdata(data);
-        // console.log("response from DB", cartdata);
-        setCartStaus("succeeded");
-        // console.log("cartStatus", cartStatus);
-        dispatch(setDbItems(data));
-        // console.log("this is data from redux (db)", dbItems);
-      } catch (error) {
-        // console.error("Error Fetching data from DB : ", error);
-
-        setCartStaus("failed");
+      );
+      // console.log(response);
+      if (response.status !== 200) {
+        throw new Error("HTTP status " + response.status);
       }
-    };
+      const data = response.data;
+      setcartdata(data);
+      console.log(cartdata);
+      setCartStaus("succeeded");
+      console.log(data.bill);
+      dispatch(setDbItems(data));
+    } catch (error) {
+      // console.error("Error Fetching data from DB : ", error);
+      setCartStaus("failed");
+    }
+  };
+
+  useEffect(() => {
+    setCartStaus("loading");
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log("Updated cartdata", cartdata);
-    console.log("Updated cartStatus", cartStatus);
-  }, [cartdata, cartStatus]);
-  let totalPrice = 0;
   if (cartStatus === "succeeded" && cartdata) {
     totalPrice = cartdata.items.reduce(
       (total, item) => total + item.productId.totalPrice * item.quantity,
       0
     );
   }
-
-  // let quantities = 0;
-  // if (cartStatus === "succeeded" && cartdata) {
-  //   quantities = cartdata.items.reduce(
-  //     (total, item) => total + item.quantity,
-  //     0
-  //   );
-  // }
 
   //delete items from DB
   const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
@@ -104,100 +90,64 @@ const CartMain = () => {
     productId: roomData._id,
     quantity: quantity,
   };
-  // const handleDelete = async (itemid) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
-  //       {
-  //         params: {
-  //           deviceId: id,
-  //         },
-  //       }
-  //     );
-  //     if (response.status !== 200) {
-  //       throw new Error("HTTP status" + response.status);
-  //     }
-  //     const updatedItems = response.data.items.filter(
-  //       (item) => item._id !== itemid
-  //     );
-  //     setcartdata((prevstate) => ({
-  //       ...prevstate,
-  //       items: updatedItems,
-  //     }));
-  //     //update data in DB
-  //     const responsed = await axios.post(postUrl, {
-  //       deviceId: id,
-  //       items: updatedItems,
-  //     });
-  //     // console.log("Server Response:", responsed);
-  //     // console.log("Data posted successfully:", postData);
-  //   } catch (error) {
-  //     console.error("Error deleting item: ", error);
-  //   }
-  // };
 
-  // const handleDelete = async (itemid) => {
-  //   try {
-  //     const response = await axios.delete(
-  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
-  //       {
-  //         params: {
-  //           productId: itemid,
-  //           owner: id,
-  //         },
-  //       }
-  //     );
-  //     if (response.status !== 200) {
-  //       throw new Error("HTTP status" + response.status);
-  //     }
-  //     // After successful deletion, update the local state
-  //     const updatedItems = cartdata.items.filter(
-  //       (item) => item.productId._id !== itemid
-  //     );
-  //     setcartdata((prevstate) => ({
-  //       ...prevstate,
-  //       items: updatedItems,
-  //     }));
-  //   } catch (error) {
-  //     console.error("Error deleting item: ", error);
-  //   }
-  // };
-
-  const handleDelete = async (itemid) => {
+  //delete handle function
+  const handleItemDelete = async (productId) => {
     try {
-      const response = await axios.delete(postUrl, {
-        params: {
-          deviceId: id,
-          productId: itemid,
-        },
-      });
-      if (response.statusCode !== 200) {
-        console.error("HTTP status", response.status);
-      }
-      const updatedItems = cartdata.items.filter(
-        (item) => item.productId._id !== itemid,
-        console.log("productId", item.productId._id)
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`,
+        {
+          data: {
+            owner: id,
+            productId: productId,
+          },
+        }
       );
-      setcartdata((prevstate) => ({
-        ...prevstate,
-        items: updatedItems,
-      }));
+      if (response.status === 200) {
+        setCartStaus("succeeded");
+        fetchData();
+        // dispatch(setDbItems(response.data));
+      }
     } catch (error) {
-      console.error("Error indeleting item", error);
+      setCartStaus("failed");
+      console.error("Error while deleting product:", error);
     }
   };
 
-  // const s1 = id;
-  // const s2 =
-  //   "TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzEyMS4wLjAuMCBTYWZhcmkvNTM3LjM2ZW4tVVNXaW4zMg==";
+  async function updateQuantityInDatabase(productId, quantity) {
+    const postUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/cart`;
+    const postData = {
+      deviceId: id,
+      productId: productId,
+      quantity: quantity,
+    };
+    try {
+      const response = await axios.put(postUrl, postData);
+      if (response.status === 200) {
+        fetchData();
+        setCartStaus("succeeded");
+      }
 
-  // if (s1 === s2) {
-  //   console.log("Strings Are Equal");
-  // } else {
-  //   console.log("Strings Are Not Equal");
-  // }
+      // Reload cart data after updating quantity in the database
+    } catch (error) {
+      // setloading("failed");
+      setCartStaus("failed");
+      console.error("Error updating quantity in database:", error);
+    }
+  }
 
-  //delete handle function
+  function handleItemIncr(productId, quantity) {
+    let quant = quantity + 1;
+    updateQuantityInDatabase(productId, quant);
+  }
+
+  function handleItemDecr(productId, quantity) {
+    let quant = quantity - 1;
+    if (quant < 1) {
+      handleItemDelete(productId);
+    }
+    updateQuantityInDatabase(productId, quant);
+  }
 
   return (
     <>
@@ -339,6 +289,9 @@ const CartMain = () => {
                       cartStatus={cartStatus}
                       id={id}
                       setCartStaus={setCartStaus}
+                      handleItemDecr={handleItemDecr}
+                      handleItemIncr={handleItemIncr}
+                      handleItemDelete={handleItemDelete}
                     />
                   );
                 })
