@@ -797,7 +797,7 @@ const FreeSample = () => {
                     >
                       <div
                         onClick={() => {
-                          handleSelectValue("price", item);
+                          handleSelectValue("price", item.price);
                           setPriceState(item.price);
                         }}
                         style={{ width: "272px", height: "150px" }}
