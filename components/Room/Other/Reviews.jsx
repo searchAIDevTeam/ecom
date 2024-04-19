@@ -98,7 +98,7 @@ const Reviews = ({ data }) => {
 
   return (
     <>
-      <div className="py-12 sm:w-auto w-[90vw] border-b overflow-x-hidden">
+      <div className="py-12 border-t sm:w-auto w-[90vw] border-b overflow-x-hidden">
         <div>
           <div className="flex flex-col justify-center mx-auto">
             <div className="flex items-center justify-center overflow-hidden flex-row ">

@@ -24,10 +24,10 @@ const TopHeader = () => {
         <div>
           <div className="flex flex-row gap-2 p-[5px] text-black  text-[12px] pr-5 ">
             <div className="pr-3 border-r border-black underline-offset-1   tracki">
-              <Link href="category/designservice">virtual Experience</Link>
+              <Link href="category/virtualexperience">virtual Experience</Link>
             </div>
             <div className="pr-3 border-r border-black underline-offset-1">
-              <Link href="category/freesample">Free Design</Link>
+              <Link href="category/freedesign">Free Design</Link>
             </div>
             <div className="pr-3 border-r border-black underline-offset-1">
               <Link href="category/freesample">Free Sample</Link>

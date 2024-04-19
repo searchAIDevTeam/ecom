@@ -3,34 +3,46 @@ import React from "react";
 
 const Amenities = ({ data }) => {
   const amenities = data.features || []; // Assuming data.features is an array
-  console.log(amenities);
+  console.log({ amenities });
   return (
-    <div className="place-offerings mt-14 py-12 border-t">
-      <h3 className="mb-6 text-xl font-semibold ml-1">
-        What this place offers
-      </h3>
-      <div className="amenties grid grid-cols-2 grid-rows-5 sm:w-auto w-[80vw] ">
-        {amenities.map((amenty, index) => (
-          <div className="flex my-2" key={index}>
-            {/* Assuming amenty.icon is a valid React element */}
-            {amenty.icon}
-            <span
-              className={`font-normal text-lg ${
-                amenty.available !== true ? "line-through" : ""
-              }`}
-            >
-              {amenty}
-            </span>
+    <>
+      {amenities.length > 0 && (
+        <div className="place-offerings mt-14 py-12 border-t">
+          <h3 className="mb-6 text-xl font-semibold ml-1">
+            What this place offers
+          </h3>
+          <div className="amenities grid grid-cols-2  sm:w-auto w-[80vw] ">
+            {amenities.map((amenity) => (
+              <div className="flex my-2 gap-x-2" key={amenity._id}>
+                <div className="parent relative w-8 h-8">
+                  <Image
+                    className="child absolute w-full h-full object-cover"
+                    width={0}
+                    height={0}
+                    layout="fill"
+                    objectFit="cover"
+                    src={amenity.image}
+                    alt={amenity.name}
+                  />
+                </div>
+                <span
+                  className={`font-normal text-lg`}
+                  // ${amenity.available !== true ? "line-through" : ""}
+                >
+                  {amenity.text}
+                </span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <button
-        type="button"
-        className="amenities-button mt-8 bg-white border-black inline-flex items-center gap-x-4 font-normal rounded-lg border"
-      >
-        Show All amenities
-      </button>
-    </div>
+          <button
+            type="button"
+            className="amenities-button mt-8 bg-white border-black inline-flex items-center gap-x-4 font-normal rounded-lg border"
+          >
+            Show All amenities
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

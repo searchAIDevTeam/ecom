@@ -15,9 +15,10 @@ const ProductPage = ({ params }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const dispatch = useDispatch();
   const filteredProductData = useSelector(selectedFilteredProduct);
+  console.log(filteredProducts);
   let parentCategoryVar = params.parentCategory;
   const x = useSelector(allSelectedData);
-
+  console.log(x);
   // Function to check if a string is a numeric string
   const isNumericString = (str) => /^\d+$/.test(str);
 
@@ -28,7 +29,7 @@ const ProductPage = ({ params }) => {
   const filteredStyle = Object.entries(x.style)
     .filter(([styleId, isSelected]) => isSelected && !isNumericString(styleId))
     .map(([styleId]) => ({ title: styleId }));
-  const filteredSelectiveProducts = Object.entries(x.selectiveproduct)
+  const filteredSubcategory = Object.entries(x.subcategory)
     .filter(
       ([productId, isSelected]) => isSelected && !isNumericString(productId)
     )
@@ -42,12 +43,13 @@ const ProductPage = ({ params }) => {
     category: x.category.category,
     rooms: filteredRooms,
     style: filteredStyle,
-    selectiveproducts: filteredSelectiveProducts,
+    subcategory: filteredSubcategory,
     price: [{ Label: x.budget.toString() }],
     colors: filteredColors,
   };
   const router = useRouter();
   const requestData = JSON.stringify({ transformedData });
+  console.log(transformedData);
   useEffect(() => {
     if (params.parentCategory === "virtualexperience") {
       if (x.length > 0) {
@@ -56,12 +58,12 @@ const ProductPage = ({ params }) => {
       const fetchVeProducts = async () => {
         try {
           const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getVEFilter`;
-          const response = await axios.post(apiUrl, transformedData, {
+          const response = await axios.post(apiUrl, x, {
             headers: {
               "Content-Type": "application/json",
             },
           });
-          // console.log("Filtered products:", response);
+          console.log("Filtered products:", response);
           setFilteredProducts(response.data); // Save the filtered products in state
         } catch (error) {
           console.error("Error fetching filtered products:", error);
@@ -91,16 +93,15 @@ const ProductPage = ({ params }) => {
       // };
       // fetchFilteredProducts();
       // if (filteredProductData.length === 0) {
-        dispatch({
-          type: "FETCH_FILTER_PRODUCTS",
-          payload: {
-            heading: params.heading,
-            parentCategoryVar: params.parentCategory,
-            cat: params.cat,
-          },
-        });
+      dispatch({
+        type: "FETCH_FILTER_PRODUCTS",
+        payload: {
+          heading: params.heading,
+          parentCategoryVar: params.parentCategory,
+          cat: params.cat,
+        },
+      });
       // }
-     
     }
   }, [params.parentCategory, params.cat, x, filteredProductData, dispatch]);
   useEffect(() => {
@@ -124,12 +125,12 @@ const ProductPage = ({ params }) => {
   return (
     <div>
       {/* {isFilterVisible && <Header />} */}
-      <Products
+      {/* <Products
         filteredProductData={filteredProductData}
         heading={x?.category?.category}
-      />
+      /> */}
       <Tabproduct
-        filteredProductData={filteredProductData}
+        filteredProductData={filteredProducts}
         heading={x?.category?.category}
         param={params.parentCategory}
       />

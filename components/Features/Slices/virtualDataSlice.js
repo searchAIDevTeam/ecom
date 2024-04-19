@@ -1,16 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    category:{},
+  category: {},
   room: {},
   budget: {},
   color: {},
-    selectiveproduct: {},
-    style: {},
+  subcategory: {},
+  style: {},
 };
 
 const selectedDataSlice = createSlice({
-  name: 'selectedData',
+  name: "selectedData",
   initialState,
   reducers: {
     setSelectedRoom(state, action) {
@@ -20,13 +20,13 @@ const selectedDataSlice = createSlice({
       state.budget = action.payload;
     },
     setSelectedColor(state, action) {
-        // console.log('action', action);
+      // console.log('action', action);
 
       state.color = action.payload;
       // console.log('color', state.color);
     },
-    setSelectedSelectiveProduct(state, action) {
-      state.selectiveproduct = action.payload;
+    setSelectedSubcategory(state, action) {
+      state.subcategory = action.payload;
     },
     setSelectedStyle(state, action) {
       state.style = action.payload;
@@ -41,7 +41,7 @@ export const {
   setSelectedRoom,
   setSelectedBudget,
   setSelectedColor,
-  setSelectedSelectiveProduct,
+  setSelectedSubcategory,
   setSelectedStyle,
   setCategory,
 } = selectedDataSlice.actions;
@@ -49,7 +49,7 @@ export const {
 export const selectRoom = (state) => state.virtualData.room;
 export const selectBudget = (state) => state.virtualData.budget;
 export const selectColor = (state) => state.virtualData.color;
-export const selectSelectiveProduct = (state) => state.virtualData?.selectiveproduct;
+export const selectSubcategory = (state) => state.virtualData?.subcategory;
 export const selectStyle = (state) => state.virtualData.style;
 export const selectCategory = (state) => state.virtualData.category;
 export const selectData = (state) => state.virtualData;

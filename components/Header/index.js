@@ -195,7 +195,7 @@ function Header({ howMuchScrolled }) {
                   />
                 </div>
                 <div className="">
-                  <nav className="hidden sm:flex space-x-6 ">
+                  <nav className="hidden sm:flex space-x-1 ">
                     {headerLinks.map((value, idx) => (
                       <div
                         key={idx}
@@ -204,7 +204,7 @@ function Header({ howMuchScrolled }) {
                         onClick={() => handleClick(idx)}
                       >
                         <Link
-                          className={`text-md font-medium  ${
+                          className={`text-md text-sm font-semibold  ${
                             isOpen ? "border-b-2 border-black" : ""
                           }`}
                           href="#"

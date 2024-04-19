@@ -9,84 +9,124 @@ import { datarooms, dataTiles, colorTiles } from "@/Model/sampledata";
 import { selectVirtualData } from "@/components/Features/Slices/virtualSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { setselectedproduct } from "../Features/Slices/compareSlice";
+import {
+  allSelectedData,
+  setSelectedBudget,
+  setSelectedColor,
+  setSelectedRoom,
+  setSelectedStyle,
+  setSelectedSubcategory,
+} from "../Features/Slices/virtualDataSlice";
+
 const FreeSample = () => {
-  const [catdatas, setcatDatas] = useState([]);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [catDatas, setcatDatas] = useState([]);
   const dataSelector = useSelector(selectVirtualData);
-  console.log("dataSelector", dataSelector);
+  console.log({ dataSelector });
   const [selectedActivity, setSelectedActivity] = useState({});
-  const [selectedImage, setSelectedImage] = useState(null);
+
+  const [status, setStatus] = useState("");
   const [showCircle, setShowCircle] = useState(false);
-  const [showbuttoncontent, setShowbuttoncontent] = useState(false);
-  const [count, setCount] = useState(0);
+  const [subCategoryState, setSubCategoryState] = useState("");
   const [roomstate, setRoomstate] = useState("");
   const [colorstate, setColorstate] = useState("");
-  const search = useSearchParams();
-  const rooms = [
-    { title: "All" },
-    { title: "Living Room" },
-    { title: "Kids Room" },
-    { title: "Dinning Room" },
-    { title: "Bedroom" },
-    { title: "Kitchen" },
-    { title: "Pooja Room" },
-    { title: "Guest Room" },
-    { title: "Office Room" },
-    { title: "Balcony" },
-    { title: "Bathroom" },
-  ];
-  const colors = [
-    { title: "All" },
-    { title: "Sky Blue" },
-    { title: "Forest Green" },
-    { title: "Sunset Orange" },
-    { title: "Rose Pink" },
-    { title: "Charcoal Gray" },
-  ];
-  const [style, setStyle] = useState("");
+  const [stylestate, setStylestate] = useState("");
+  const [priceState, setPriceState] = useState("");
+  const [filters, setFilters] = useState([]);
 
-  const [selectedPage, setSelectedPage] = useState("vrooms");
+  const search = useSearchParams();
 
   const searchparams = useSearchParams();
-  const searchtext = searchparams.get("search1");
-  // console.log("searchtext", searchtext);
-  const handleSelectPage = (page) => {
-    setSelectedPage(page);
+  const category = searchparams.get("category");
+
+  useEffect(() => {
+    if (dataSelector && search.get("category")) {
+      let tempData = dataSelector?.filter(
+        (item) => item.category === search.get("category")
+      );
+      setcatDatas(tempData);
+    }
+  }, [dataSelector]);
+
+  const handleAddress = () => {
+    router.push("/cart");
   };
 
   const handleSelect = () => {
     setShowCircle(!showCircle);
   };
 
-  const handleClick = (roomId, roomPrice, roomTitle, roomImage) => {
-    setSelectedActivity((prevSelectedRooms) => {
-      if (prevSelectedRooms[roomId]) {
-        const updatedSelectedRooms = { ...prevSelectedRooms };
-        delete updatedSelectedRooms[roomId];
-        return updatedSelectedRooms;
-      } else {
-        return {
-          ...prevSelectedRooms,
-          [roomId]: {
-            id: roomId,
-            price: roomPrice,
-            title: roomTitle,
-            image: roomImage,
-          },
+  // const handleClick = (roomId, roomPrice, roomTitle, roomImage) => {
+  //   setSelectedActivity((prevSelectedRooms) => {
+  //     if (prevSelectedRooms[roomId]) {
+  //       const updatedSelectedRooms = { ...prevSelectedRooms };
+  //       delete updatedSelectedRooms[roomId];
+  //       return updatedSelectedRooms;
+  //     } else {
+  //       return {
+  //         ...prevSelectedRooms,
+  //         [roomId]: {
+  //           id: roomId,
+  //           price: roomPrice,
+  //           title: roomTitle,
+  //           image: roomImage,
+  //         },
+  //       };
+  //     }
+  //   });
+
+  // Toggle showCircle state
+  //   setShowCircle((prevShowCircle) => !prevShowCircle);
+  //   // Toggle showButtonContent state
+  //   setShowbuttoncontent((prevShowButtonContent) => !prevShowButtonContent);
+
+  //   // Update selectedImage state
+  //   setSelectedImage((prevSelectedImage) =>
+  //     prevSelectedImage === roomImage ? null : roomImage
+  //   );
+  // };
+
+  const handleSelectValue = (section, value) => {
+    switch (section) {
+      case "room": {
+        const data = {
+          [value]: true,
         };
+        dispatch(setSelectedRoom(data));
+        break;
       }
-    });
-
-    // Toggle showCircle state
-    setShowCircle((prevShowCircle) => !prevShowCircle);
-    // Toggle showButtonContent state
-    setShowbuttoncontent((prevShowButtonContent) => !prevShowButtonContent);
-
-    // Update selectedImage state
-    setSelectedImage((prevSelectedImage) =>
-      prevSelectedImage === roomImage ? null : roomImage
-    );
+      case "price":
+        dispatch(setSelectedBudget(value));
+        break;
+      case "color": {
+        const data = {
+          [value]: true,
+        };
+        dispatch(setSelectedColor(data));
+        break;
+      }
+      case "subcategory": {
+        const data = {
+          [value]: true,
+        };
+        dispatch(setSelectedSubcategory(data));
+        break;
+      }
+      case "style": {
+        const data = {
+          [value]: true,
+        };
+        dispatch(setSelectedStyle(data));
+        break;
+      }
+      default:
+        break;
+    }
   };
 
+  const [count, setCount] = useState(0);
   const handleres = (roomId, roomPrice, roomTitle, roomImage) => {
     setSelectedActivity((prevSelectedRooms) => {
       if (prevSelectedRooms[roomId]) {
@@ -112,139 +152,269 @@ const FreeSample = () => {
         };
       }
     });
+    console.log({ selectedActivity });
 
     // Toggle showCircle state
     setShowCircle((prevShowCircle) => !prevShowCircle);
 
     // Toggle showButtonContent state
-    setShowbuttoncontent((prevShowButtonContent) => !prevShowButtonContent);
   };
-  console.log(search.get("category"));
-  useEffect(() => {
-    if (dataSelector && search.get("category")) {
-      let tempData = dataSelector?.filter(
-        (item) => item.category === search.get("category")
-      );
-      setcatDatas(tempData);
-      // console.log("tempData", tempData);
-    }
-  }, [dataSelector]);
-  useEffect(() => {
-    let dataArray = Array.isArray(catdatas) ? catdatas : [catdatas];
-    console.log("dataArray", dataArray);
-  }, [catdatas]);
 
-  const router = useRouter();
-  const handleAddress = () => {
-    router.push("/cart");
-  };
-  const [status, setStatus] = useState("");
+  //posting to order api
+
+  const [variant, setVariant] = useState("subcategory");
 
   let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`;
-  const [sdata, setsData] = useState("");
-  useEffect(() => {
-    const fetchedItems = async () => {
-      try {
-        setStatus("loading");
-        const response = await axios.get(url);
-        if (response.status !== 200) {
-          throw new Error("HTTP status" + response.status);
-        }
-        setsData((prevData) => {
-          const newData = response.data[0].categories;
-          if (JSON.stringify(newData) !== JSON.stringify(prevData)) {
-            return newData;
-          } else {
-            return prevData;
-          }
-        });
-        setStatus("succeeded");
-      } catch (error) {
-        console.error("Error ocurrs here", error);
-        setStatus("failed");
-      }
-    };
-    fetchedItems();
-  }, []);
-  let url2 = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`;
-  const [data, setData] = useState("");
+  const [subCategory, setSubCategory] = useState([]);
+  // useEffect(() => {
+  //   const fetchSubCategory = async () => {
+  //     try {
+  //       setStatus("loading");
+
+  //       const response = await axios.get(url);
+
+  //       if (response.status !== 200) {
+  //         throw new Error("HTTP status " + response.status);
+  //       }
+
+  //       const responseData = response.data;
+
+  //       const filteredData = responseData.filter(
+  //         (item) => item.name.toLowerCase() === searchparams.get("category")
+  //       );
+
+  //       if (filteredData.length > 0) {
+  //         const newSubCategories = filteredData[0].subcategories;
+  //         setSubCategory(newSubCategories); // Update subCategory state with new data
+  //         setVariant("subcategory");
+  //         setStatus("succeeded");
+  //       } else {
+  //         setVariant("rooms");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error occurred:", error);
+  //       setStatus("failed");
+  //     }
+  //   };
+
+  //   fetchSubCategory(); // Call fetchSubCategory when component mounts
+  // }, []); // Empty dependency array ensures this effect runs only once on mount
+
+  let url2 = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/relatedProducts`;
+  // let url2 = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`;
   const [datastat, setDatastat] = useState("");
+
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    const fetchedpdt = async () => {
+    const fetchProducts = async () => {
       try {
         setDatastat("loading");
         const response = await axios.get(url2, {
           params: {
-            limit: 100,
+            category: searchparams.get("category"),
           },
         });
+        // const response = await axios.get(url2);
         if (response.status !== 200) {
           throw new Error("HTTP status" + response.status);
         }
-        setData((prevData) => {
-          const newData = response.data;
+        console.log("products", response.data);
+        const responseData = response.data;
+
+        const filteredData = responseData.filter(
+          (item) => item.category === searchparams.get("category")
+        );
+        console.log("filteredData", filteredData);
+
+        // pick all subcategory from filtered data
+        const subcategory = filteredData.map((item) => item.subcategory);
+        const uniqueSubcategory = [...new Set(subcategory)];
+        setSubCategory(uniqueSubcategory);
+        console.log({ uniqueSubcategory });
+        console.log("subcategory", subcategory);
+
+        setProducts((prevData) => {
+          const newData = filteredData;
           if (JSON.stringify(newData) !== JSON.stringify(prevData)) {
             return newData;
           } else {
             return prevData;
           }
         });
+
         setDatastat("succeeded");
       } catch (error) {
         console.error("Error ocurrs here", error);
         setDatastat("failed");
       }
     };
-    fetchedpdt();
+    fetchProducts();
   }, []);
 
-  useEffect(() => {
-    // console.log("the data from products", data);
-  }, [data]);
-  // const filteredProducts = data.filter(
-  //   (product) =>
-  //     (!roomstate || product.roomCategory === roomstate) &&
-  //     (!colorstate || product.colors.includes(colorstate))
-  // );
-
-  const [filteredData, setFilteredData] = useState([]);
+  const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    // Check if data is an array before attempting to filter
-    if (!Array.isArray(catdatas)) {
-      console.error("Data is not an array:", catdatas);
+    console.log({ products });
+    const fetchAllRooms = products.map((item) => item.roomCategory);
+    console.log({ fetchAllRooms });
+    const allRooms = fetchAllRooms.flat();
+    const uniqueRooms = [...new Set(allRooms)];
+    setRooms(uniqueRooms);
+    console.log(uniqueRooms);
+  }, [subCategory]);
+
+  const [colors, setColors] = useState([]);
+  useEffect(() => {
+    const fetchColors = products.map((item) => item.colors);
+    // console.log(fetchColors);
+    const allColors = fetchColors
+      .flat()
+      .flatMap((colorsString) => colorsString.split(","));
+    console.log(allColors);
+    const uniqueColors = [...new Set(allColors)];
+    console.log(uniqueColors);
+    setColors(uniqueColors);
+  }, [rooms]);
+
+  const [styles, setStyles] = useState([]);
+  useEffect(() => {
+    const fetchStyles = products.map((item) => item.style);
+    console.log(fetchStyles);
+    const allStyles = fetchStyles.flat();
+    console.log(allStyles);
+    const uniqueStyles = [...new Set(allStyles)];
+    console.log(uniqueStyles);
+    setStyles(uniqueStyles);
+  }, [colors]);
+
+  // const [price, setPrice] = useState([]);
+  // useEffect(() => {
+  //   // Filter and categorize prices based on the number of digits
+  //   const categorizedPrices = products.map((item) => {
+  //     const price = item.perUnitPrice;
+  //     if (price >= 0 && price <= 999) {
+  //       return { price: price, category: "0-999" };
+  //     } else if (price >= 1000 && price <= 9999) {
+  //       return { price: price, category: "1000-9999" };
+  //     } else if (price >= 10000 && price <= 99999) {
+  //       return { price: price, category: "10000-99999" };
+  //     } else if (price >= 100000 && price <= 999999) {
+  //       return { price: price, category: "100000-999999" };
+  //     } else {
+  //       return { price: price, category: "unknown" };
+  //     }
+  //   });
+
+  //   // Extract unique prices from categorized array
+  //   const uniquePrices = [...new Set(categorizedPrices)];
+  //   console.log(uniquePrices);
+  //   setPrice(uniquePrices);
+  // }, [products]);
+
+  const price = [
+    {
+      price: 500,
+    },
+    {
+      price: 1000,
+    },
+    {
+      price: 10000,
+    },
+    {
+      price: 50000,
+    },
+    {
+      price: 100000,
+    },
+  ];
+
+  const [filteredProducts, setFilteredProducts] = useState(products | []);
+  useEffect(() => {
+    const applyFilters = () => {
+      console.log(filters);
+      const filtered = products.filter((product) => {
+        for (let filter of filters) {
+          let { title, value } = filter;
+
+          switch (title) {
+            // case "subcategory":
+            //   if (product.subcategory !== value) {
+            //     return false;
+            //   }
+            //   break;
+            // case "color":
+            //   if (!product.colors.includes(value)) {
+            //     return false;
+            //   }
+            //   break;
+            // case "style":
+            //   if (!product.colors.includes(value)) {
+            //     return false;
+            //   }
+            //   break;
+            // case "room":
+            //   if (!product.roomCategory.some((room) => value.includes(room))) {
+            //     return false;
+            //   }
+            //   break;
+
+            case "subcategory": {
+              return product.subcategory === value;
+            }
+            case "room":
+              return product.roomCategory.includes(value);
+            case "color":
+              const colors = value.split(",").map((color) => color.trim());
+              return colors.every((color) => product.colors.includes(color));
+            case "style":
+              return product.style === value;
+            case "price":
+              return product.perUnitPrice === parseInt(value); // Assuming value is a string representation of price
+            default:
+              true;
+          }
+        }
+        return true;
+      });
+
+      setFilteredProducts(filtered);
+    };
+
+    applyFilters();
+  }, [products, filters]);
+
+  const previousVariant = (prevVariant, title) => {
+    setVariant(prevVariant);
+    setFilters(filters.filter((item) => item.title !== title));
+  };
+
+  const nextVariant = (nextVariant, title, value) => {
+    setVariant(nextVariant);
+    // check if the value is '' and remove the title from the filter
+    if (value === "") {
+      setFilters(filters.filter((item) => item.title !== title));
       return;
     }
-    // Apply filtering based on roomstate and colorstate
-    const filteredResults = catdatas.filter((item) => {
-      const isRoomMatch =
-        roomstate === "All" ||
-        (item.rooms &&
-          item.rooms.some((room) => {
-            const roomTitle = room.title.toLowerCase().trim(); // Normalize title for comparison
-            const selectedRoom = roomstate.toLowerCase().trim(); // Normalize selected room
-            console.log("Room Comparison:", roomTitle, selectedRoom);
-            return roomTitle === selectedRoom;
-          }));
-      const isColorMatch =
-        colorstate === "All" ||
-        (item.color &&
-          item.color.some((color) => {
-            const colorTitle = color.title.toLowerCase().trim(); // Normalize title for comparison
-            const selectedColor = colorstate.toLowerCase().trim(); // Normalize selected color
-            console.log("Color Comparison:", colorTitle, selectedColor);
-            return colorTitle === selectedColor;
-          }));
 
-      return isRoomMatch && isColorMatch;
-    });
+    // check if the filter already exists and update the value
+    const isFilterExist = filters.find((item) => item.title === title);
+    if (isFilterExist) {
+      setFilters(
+        filters.map((item) => (item.title === title ? { title, value } : item))
+      );
+    }
+    // if the filter doesn't exist, add the filter
+    else {
+      setFilters([...filters, { title, value }]);
+    }
+  };
 
-    console.log("Filtered Results:", filteredResults);
-    // Update the filtered data state
-    setFilteredData(filteredResults);
-  }, [roomstate, colorstate, catdatas]);
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const handleSelectProduct = (productId) => {
+    setSelectedProduct({ productId: productId });
+  };
 
-  //posting to order api
   if (typeof window !== "undefined") {
     var id = localStorage.getItem("deviceId");
     // console.log("deviceId : ", id);
@@ -259,223 +429,539 @@ const FreeSample = () => {
         throw new Error("HTTP status" + response.status);
       }
 
-      // console.log("Data posted successfully:", postData);
+      console.log("Data posted successfully:", postData);
     } catch (error) {
       console.error("Error posting room data:", error);
     }
   };
 
-  useEffect(() => {
-    console.log("filteredData", filteredData);
-  }, [catdatas]);
   const handleClickDB = async () => {
     try {
-      const selectedProduct = Object.values(selectedActivity)[0];
+      // const selectedProduct = Object.values(selectedActivity)[0];
+      // console.log("Selected Product:", selectedProduct);
+      console.log("Selected Product:", selectedProduct);
 
-      if (!selectedProduct || !selectedProduct.id) {
+      if (!selectedProduct || !selectedProduct.productId) {
         console.error("Invalid product details");
         return;
       }
 
       const postData = {
         deviceId: id,
-        productId: selectedProduct.id,
+        productId: selectedProduct.productId,
       };
-
-      // Post data to the database
+      console.log("postData:", postData);
       await postproductdata(postData);
-
-      // Redirect to the checkout page
     } catch (error) {
       console.error("Error handling click:", error);
     }
   };
 
+  const handleNext = () => {
+    router.push("/products/virtualexperience/ayatrio");
+  };
+  const usersfilters = useSelector(allSelectedData);
+  console.log(usersfilters);
+
+  useEffect(() => {
+    console.log("Selected Product:", selectedProduct);
+  }, [selectedProduct]);
+
   return (
-    <div className="sm:m-[3rem] m-0 px-[20px]">
-      <div className="relative">
-        <Image
-          src="/customerservice/shoppingInfo/shop.avif"
-          height={500}
-          width={1200}
-          alt="sample"
-          className="h-[34rem] relative flex object-cover"
-        />
-        <div className="absolute top-0 left-0 flex flex-col sm:w-1/4 w-1/2 bg-zinc-100 h-max m-8 sm:p-12 p-2 sm:pt-12 pt-3">
-          <div className="sm:text-4xl text-2xl font-bold sm:mb-4 mb-0 sm:mt-0 mt-10">
-            Free
-            <br />
-            Samples
-          </div>
-          <div className="mb-8">
-            There is a floor for every style and budget and finding the right
-            one has never been easier with our free flooring samples. We offer
-            hundreds of samples to choose from, making it easy to find the right
-            floor.
-          </div>
-          <div>
-            <button className="bg-stone-700 rounded-md text-white pl-5 pr-5 pt-3 pb-3 text-sm">
-              SHOP FREE SAMPLES
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="mt-12">
-        {/* shop by room */}
-        <div className="">
-          <div className="text-3xl font-bold flex justify-center items-center mt-12">
-            Shop Flooring by Room
-          </div>
-          <div className="py-4 relative w-full h-full flex flex-col  justify-center">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {catdatas && catdatas[0] && catdatas[0].rooms ? (
-                catdatas[0].rooms.map((item, idx) => (
-                  <div
-                    key={item._id}
-                    className=" relative  overflow-hidden m-1  group rounded-2xl"
-                  >
+    <div className="sm:m-[4rem] m-0 px-[20px]">
+      <div>
+        {variant === "subcategory" &&
+          (catDatas && catDatas[0] ? (
+            <>
+              <div className="text-3xl font-bold flex justify-center items-center mt-12">
+                Choose a Subcategory
+              </div>
+              <div className="py-4 relative w-full h-full flex flex-col  justify-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
+                  {subCategory.map((item) => (
                     <div
-                      onClick={() => {
-                        setRoomstate(item.title);
-                      }}
-                      style={{ width: "272px", height: "150px" }}
-                      className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
-             bg-gray-500
-             ${roomstate === item.title ? " border-2 border-black " : ""}
-              `}
+                      key={item}
+                      className=" relative  overflow-hidden m-1  group rounded-2xl"
                     >
-                      <Image
-                        src={item.img}
-                        alt="image1"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
+                      <div
+                        onClick={() => {
+                          handleSelectValue("subcategory", item);
+                          setSubCategoryState(item);
+                        }}
+                        style={{ width: "272px", height: "150px" }}
+                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1 bg-gray-500 
+                        ${
+                          subCategoryState === item
+                            ? " border-2 border-black"
+                            : ""
+                        }`}
+                      ></div>
+                      <h3
+                        className={` p-1 rounded-sm absolute right-0 bottom-0 ${
+                          subCategoryState === item
+                            ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
+                            : "bg-white"
+                        }`}
+                      >
+                        {item}
+                      </h3>
 
-                    <h3
-                      className={` p-1 rounded-sm absolute right-0 bottom-0
-              ${
-                roomstate === item.title
-                  ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
-                  : "bg-white"
-              }
-              `}
-                    >
-                      {item.title}
-                    </h3>
-
-                    {roomstate === item.title && (
-                      <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                        <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
-                          <Image
-                            src="/svg/icon/tick.svg"
-                            alt="tick"
-                            width={30}
-                            height={30}
-                            className=" opacity-100 rounded-full"
-                          />
+                      {subCategoryState === item && (
+                        <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                          <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
+                            <Image
+                              src="/svg/icon/tick.svg"
+                              alt="tick"
+                              width={30}
+                              height={30}
+                              className=" opacity-100 rounded-full"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                ))
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => {
+                      setSubCategoryState("");
+                    }}
+                  >
+                    Remove category Filter
+                  </button>
+                </div>
+                <div className="flex justify-end gap-4">
+                  <button
+                    className="bg-green-500 text-white px-4 py-2 rounded"
+                    onClick={() => router.push("/category/freesample")}
+                  >
+                    Back
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                    onClick={() =>
+                      nextVariant("rooms", "subcategory", subCategoryState)
+                    }
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+              {console.log(subCategoryState)}
+            </>
+          ) : (
+            <p>No data found</p>
+          ))}
+
+        {variant === "rooms" &&
+          (rooms ? (
+            <>
+              <div className="text-3xl font-bold flex justify-center items-center mt-12">
+                Shop by Room
+              </div>
+              <div className="py-4 relative w-full h-full flex flex-col  justify-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
+                  {rooms.map((room) => (
+                    <div
+                      key={room}
+                      className=" relative  overflow-hidden m-1  group rounded-2xl"
+                    >
+                      <div
+                        onClick={() => {
+                          handleSelectValue("room", room);
+                          setRoomstate(room);
+                        }}
+                        style={{ width: "272px", height: "150px" }}
+                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1 bg-gray-500 
+                        ${roomstate === room ? " border-2 border-black" : ""}`}
+                      ></div>
+                      <h3
+                        className={` p-1 rounded-sm absolute right-0 bottom-0 ${
+                          roomstate === room
+                            ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
+                            : "bg-white"
+                        }`}
+                      >
+                        {room}
+                      </h3>
+
+                      {roomstate === room && (
+                        <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                          <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
+                            <Image
+                              src="/svg/icon/tick.svg"
+                              alt="tick"
+                              width={30}
+                              height={30}
+                              className=" opacity-100 rounded-full"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => {
+                      setRoomstate("");
+                    }}
+                  >
+                    Remove Room Filter
+                  </button>
+                </div>
+                <div className="flex justify-end gap-4">
+                  <button
+                    className="bg-green-500 text-white px-4 py-2 rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
+                    onClick={() => previousVariant("subcategory", "room")}
+                    disabled={variant === "subcategory"}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                    onClick={() => nextVariant("color", "room", roomstate)}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p>No data found</p>
+          ))}
+
+        {variant === "color" &&
+          (colors ? (
+            <>
+              <div className="text-3xl font-bold flex justify-center items-center mt-12">
+                Shop by Color
+              </div>
+              <div className="py-4 relative w-full h-full flex flex-col  justify-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
+                  {colors.map((color) => (
+                    <div
+                      key={color}
+                      className=" relative  overflow-hidden m-1  group rounded-2xl"
+                    >
+                      <div
+                        onClick={() => {
+                          handleSelectValue("color", color);
+                          setColorstate(color);
+                        }}
+                        style={{ width: "272px", height: "150px" }}
+                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1 bg-gray-500 
+                        ${
+                          colorstate === color ? " border-2 border-black" : ""
+                        }`}
+                      ></div>
+                      <h3
+                        className={` p-1 rounded-sm absolute right-0 bottom-0 ${
+                          colorstate === color
+                            ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
+                            : "bg-white"
+                        }`}
+                      >
+                        {color}
+                      </h3>
+
+                      {colorstate === color && (
+                        <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                          <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
+                            <Image
+                              src="/svg/icon/tick.svg"
+                              alt="tick"
+                              width={30}
+                              height={30}
+                              className=" opacity-100 rounded-full"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => {
+                      setColorstate("");
+                    }}
+                  >
+                    Remove Room Filter
+                  </button>
+                </div>
+                <div className="flex justify-end gap-4">
+                  <button
+                    className="bg-green-500 text-white px-4 py-2 rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
+                    onClick={() => previousVariant("rooms", "color")}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                    onClick={() => nextVariant("style", "color", colorstate)}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p>No data found</p>
+          ))}
+
+        {variant === "style" &&
+          (styles ? (
+            <>
+              <div className="text-3xl font-bold flex justify-center items-center mt-12">
+                Shop by style
+              </div>
+              <div className="py-4 relative w-full h-full flex flex-col  justify-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
+                  {styles.map((style) => (
+                    <div
+                      key={style}
+                      className=" relative  overflow-hidden m-1  group rounded-2xl"
+                    >
+                      <div
+                        onClick={() => {
+                          handleSelectValue("style", style);
+                          setStylestate(style);
+                        }}
+                        style={{ width: "272px", height: "150px" }}
+                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1 bg-gray-500 
+                        ${
+                          stylestate === style ? " border-2 border-black" : ""
+                        }`}
+                      ></div>
+                      <h3
+                        className={` p-1 rounded-sm absolute right-0 bottom-0 ${
+                          stylestate === style
+                            ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
+                            : "bg-white"
+                        }`}
+                      >
+                        {style}
+                      </h3>
+
+                      {stylestate === style && (
+                        <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                          <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
+                            <Image
+                              src="/svg/icon/tick.svg"
+                              alt="tick"
+                              width={30}
+                              height={30}
+                              className=" opacity-100 rounded-full"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => {
+                      setStylestate("");
+                    }}
+                  >
+                    Remove color Filter
+                  </button>
+                </div>
+                <div className="flex justify-end gap-4">
+                  <button
+                    className="bg-green-500 text-white px-4 py-2 rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
+                    onClick={() => previousVariant("color", "style")}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                    onClick={() => nextVariant("price", "style", stylestate)}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p>No data found</p>
+          ))}
+
+        {variant === "price" &&
+          (price ? (
+            <>
+              <div className="text-3xl font-bold flex justify-center items-center mt-12">
+                Shop by price
+              </div>
+              <div className="py-4 relative w-full h-full flex flex-col  justify-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
+                  {price.map((item, index) => (
+                    <div
+                      key={index}
+                      className=" relative  overflow-hidden m-1  group rounded-2xl"
+                    >
+                      <div
+                        onClick={() => {
+                          handleSelectValue("price", item);
+                          setPriceState(item.price);
+                        }}
+                        style={{ width: "272px", height: "150px" }}
+                        className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1 bg-gray-500 
+                        ${
+                          priceState === item.price
+                            ? " border-2 border-black"
+                            : ""
+                        }`}
+                      ></div>
+                      <h3
+                        className={` p-1 rounded-sm absolute right-0 bottom-0 ${
+                          priceState === item.price
+                            ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
+                            : "bg-white"
+                        }`}
+                      >
+                        {item.price}
+                      </h3>
+
+                      {priceState === item.price && (
+                        <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                          <div className="circle-container relative flex justify-center items-center rounded-full bg-none">
+                            <Image
+                              src="/svg/icon/tick.svg"
+                              alt="tick"
+                              width={30}
+                              height={30}
+                              className=" opacity-100 rounded-full"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => {
+                      setPriceState("");
+                    }}
+                  >
+                    Remove color Filter
+                  </button>
+                </div>
+                <div className="flex justify-end gap-4">
+                  <button
+                    className="bg-green-500 text-white px-4 py-2 rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
+                    onClick={() => previousVariant("style", "price")}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                    // onClick={() => nextVariant("products", "price", priceState)}
+                    onClick={() => handleNext()}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p>No data found</p>
+          ))}
+
+        {variant === "products" && (
+          <>
+            <div>
+              {filters.length > 0 && (
+                <div>
+                  <h1>Your Filters</h1>
+                  {filters.map((item) => (
+                    <div key={item.title} className="bg-yellow-200">
+                      <span>{item.title} : </span>
+                      <span>{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
+                onClick={() => previousVariant("color", "color")}
+              >
+                Previous
+              </button>
+              <button
+                className="bg-blue-500 text-white ml-4 px-4 py-2 rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
+                onClick={() => handleNext()}
+              >
+                Next
+              </button>
+              <h1 className="mt-20">Choose a Product</h1>
+              {filteredProducts?.length > 0 ? (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
+                  {filteredProducts?.map((item) => (
+                    <div
+                      key={item._id}
+                      className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
+                    >
+                      <img
+                        src={item.images}
+                        alt={item.productTitle}
+                        onClick={() => {
+                          console.log({ item });
+                          // handleres(
+                          //   item.productId,
+                          //   item.images[0],
+                          //   item.perUnitPrice,
+                          //   item.productTitle
+                          // );
+                          handleSelectProduct(item.productId);
+                          handleSelect();
+
+                          console.log(
+                            selectedProduct.productId === item.productId
+                          );
+                        }}
+                        className={`room-item rounded-2xl object-cover w-full opactiy-100 h-full block p-1
+                    ${
+                      selectedProduct.productId === item.productId
+                        ? " "
+                        : "overlay z-10 "
+                    }  ${
+                          selectedProduct.productId === item.productId
+                            ? " border-2 border-black "
+                            : ""
+                        }
+                  `}
+                      />
+
+                      {/* Your existing code for displaying product title */}
+                      <h3
+                        className={` p-1 rounded-sm absolute right-0 bottom-0
+                    ${
+                      selectedProduct.productId === item.productId
+                        ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
+                        : "bg-white"
+                    }
+                  `}
+                      >
+                        {item.productTitle}
+                      </h3>
+
+                      {/* Your existing code for displaying the tick icon */}
+                      {selectedProduct.productId === item.productId && (
+                        <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
+                          <div className="circle-container relative flex justify-center items-center">
+                            <Image
+                              src="/svg/icon/tick.svg"
+                              alt="tick"
+                              width={30}
+                              height={30}
+                              className=" opacity-100"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               ) : (
-                <p className="">
-                  No data is available here.Please select go back and select
-                  catogory
-                </p>
+                <div>No products found based on selected filters.</div>
               )}
             </div>
-          </div>
-        </div>
-
-        {/* shop by color */}
-
-        <div>
-          <div className="text-3xl font-bold flex justify-center items-center mt-12">
-            Shop Flooring by Color
-          </div>
-          <div className="py-4 relative w-full h-full flex flex-col justify-center">
-            <div className="grid  sm:grid-cols-4 grid-cols-2 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {catdatas && catdatas[0] && catdatas[0].color ? (
-                catdatas[0].color.map((item) => (
-                  <div
-                    key={item._id}
-                    className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group sm:w-[200px] w-[170px] h-[150px]"
-                  >
-                    <div
-                      onClick={() => {
-                        setColorstate(item.title);
-                      }}
-                      className={` rounded-2xl object-cover w-full opactiy-100 h-full block p-1
-             
- ${colorstate === item.title ? " border-2 border-black " : ""}
-
-              bg-gray-400`}
-                    >
-                      <Image
-                        src={item.img}
-                        alt="image2"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-
-                    <h3
-                      className={` p-1 rounded-sm absolute right-0 bottom-0
-              ${
-                colorstate === item.title
-                  ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
-                  : "bg-white"
-              }
-              `}
-                    >
-                      {item.title}
-                    </h3>
-
-                    {colorstate === item.title && (
-                      <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                        <div className="circle-container relative flex justify-center items-center">
-                          <Image
-                            src="/svg/icon/tick.svg"
-                            alt="tick"
-                            width={30}
-                            height={30}
-                            className=" opacity-100"
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))
-              ) : (
-                <p>
-                  Either there are no color in this category or select category
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* selected data */}
-        <div>
-          <div className="text-xl font-bold flex justify-center items-center mt-12">
-            Styles we think you'll love
-          </div>
-          <div className="flex flex-row sticky top-0 pt-3 pb-2 bg-white z-10">
-            <div className="text-red-400">
-              *Select at least 4 images to proceed
-            </div>
-            <button
-              className={`ml-auto text-white rounded-full pt-2 pb-2 pl-4 pr-4 ${
-                count < 8 ? "bg-gray-200" : "bg-black"
-              }`}
-              disabled={count < 8}
-              onClick={handleAddress}
-            >
-              Apply filter
-            </button>
-            {/* <Link
+            <Link
               href={{
                 pathname: "/checkout",
                 query: {
@@ -484,165 +970,15 @@ const FreeSample = () => {
               }}
               className="memberCheckout my-4 flex items-center justify-center"
             >
-              <button className="bg-black text-white sm:w-40 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
+              <button
+                onClick={() => handleClickDB()}
+                className="bg-black text-white sm:w-40 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
+              >
                 Free Sample
               </button>
-            </Link> */}
-            {/* <Link
-              href={{
-                pathname: "/checkout",
-                query: {
-                  search: "freedesign",
-                },
-              }}
-              className="memberCheckout my-4 flex items-center justify-center"
-            >
-              <button className="bg-black text-white sm:w-40 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300">
-                Free Design
-              </button>
-            </Link> */}
-          </div>
-          {/* {selectedImage ? (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {dataRooms.map((item) => (
-                <div
-                  key={item._id}
-                  className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
-                >
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    onClick={() => {
-                      handleres(item._id, item.img, item.price, item.title);
-                      handleSelect();
-                    }}
-                    className={`room-item rounded-2xl object-cover w-full opactiy-100 h-full block p-1
-             
-            ${selectedActivity[item._id] ? " " : "overlay z-10 "}  ${
-                      selectedActivity[item._id]
-                        ? " border-2 border-black "
-                        : ""
-                    }
-
-              `}
-                  />
-
-                  <h3
-                    className={` p-1 rounded-sm absolute right-0 bottom-0
-              ${
-                selectedActivity[item._id]
-                  ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
-                  : "bg-white"
-              }
-              `}
-                  >
-                    {item.title}
-                  </h3>
-
-                  {selectedActivity[item._id] && (
-                    <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                      <div className="circle-container relative flex justify-center items-center">
-                        <Image
-                          src="/svg/icon/tick.svg"
-                          alt="tick"
-                          width={30}
-                          height={30}
-                          className=" opacity-100"
-                        />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div></div>
-          )} */}
-        </div>
-
-        <div>
-          {/* ... (your existing JSX) */}
-          {filteredData.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 mb-4 my-0 mx-2">
-              {filteredData.map((item) => (
-                <div
-                  key={item._id}
-                  className=" relative  overflow-hidden m-1 aspect-w-16 aspect-h-9 group"
-                >
-                  {/* Your existing code for displaying product images */}
-                  <img
-                    src={item.images} // Assuming the first image is used
-                    alt={item.productTitle}
-                    onClick={() => {
-                      handleres(
-                        item.productId,
-                        item.images[0],
-                        item.perUnitPrice,
-                        item.productTitle
-                      );
-                      handleSelect();
-                    }}
-                    className={`room-item rounded-2xl object-cover w-full opactiy-100 h-full block p-1
-                    ${
-                      selectedActivity[item.productId] ? " " : "overlay z-10 "
-                    }  ${
-                      selectedActivity[item.productId]
-                        ? " border-2 border-black "
-                        : ""
-                    }
-                  `}
-                  />
-
-                  {/* Your existing code for displaying product title */}
-                  <h3
-                    className={` p-1 rounded-sm absolute right-0 bottom-0
-                    ${
-                      selectedActivity[item.productId]
-                        ? "font-semibold text-white absolute left-2 bottom-2 bg-transparent"
-                        : "bg-white"
-                    }
-                  `}
-                  >
-                    {item.productTitle}
-                  </h3>
-
-                  {/* Your existing code for displaying the tick icon */}
-                  {selectedActivity[item.productId] && (
-                    <div className="room-item absolute top-2 right-2 z-10  flex items-center opacity-50 justify-center">
-                      <div className="circle-container relative flex justify-center items-center">
-                        <Image
-                          src="/svg/icon/tick.svg"
-                          alt="tick"
-                          width={30}
-                          height={30}
-                          className=" opacity-100"
-                        />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div>No products found based on selected filters.</div>
-          )}
-        </div>
-        <Link
-          href={{
-            pathname: "/checkout",
-            query: {
-              search: "freesample",
-            },
-          }}
-          className="memberCheckout my-4 flex items-center justify-center"
-        >
-          <button
-            onClick={() => handleClickDB()}
-            className="bg-black text-white sm:w-40 w-40 sm:h-16 h-8 rounded-full hover:bg-gray-900 transition duration-300"
-          >
-            Free Sample
-          </button>
-        </Link>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

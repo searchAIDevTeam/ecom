@@ -227,7 +227,7 @@ const RoomInfo = ({ data }) => {
         {/* ----------------- bedding cards ------------ */}
 
         {/* ----------------- what this place offers ------------ */}
-        {/* <Amenities data={data} /> */}
+        <Amenities data={data} />
       </div>
     </div>
   );

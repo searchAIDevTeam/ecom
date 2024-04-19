@@ -36,7 +36,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
   //   router.push(`/room/${id}`);
   // };
   const handlenav = async (id) => {
-    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`; 
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getSingleProduct?id=${id}`;
     const response = await axios.get(url);
     const data = response.data;
     dispatch({ type: "FETCH_ROOM_REQUEST", payload: id });
@@ -706,11 +706,11 @@ const Tabs = ({ filteredProductData, heading, param }) => {
               </button>
             )}
           </div>
-          <div className="main-image-pdt pt-[32px] grid sm:grid-cols-4 grid-cols-2 gap-3 ">
+          <div className="main-image-pdt grid sm:grid-cols-4 grid-cols-2 gap-3 ">
             {firstPart.map((text, idx) => (
               <Link href={`/product/${text.productTitle}`}>
                 <div
-                  className="flex flex-col gap-3 border-b border-r hover-divnine sm:border-none"
+                  className="flex flex-col gap-3 border-b border-r p-4 hover-divnine sm:border-none"
                   key={idx}
                   onClick={() => handlenav(text._id)}
                 >
@@ -734,15 +734,19 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                         checked={selectedpdt.includes(text)}
                       />
                     </div>
-                   
-                   {text.demandtype?(
-                     <div
-                     // onClick={(event) => event.stopPropagation()}
-                     className={"flex justify-between text-white bg-red-500 p-1 absolute top-0 left-0 z-10"}
-                   >
-                     {text.demandtype}
-                   </div>
-                   ):""}
+
+                    {text.demandtype ? (
+                      <div
+                        // onClick={(event) => event.stopPropagation()}
+                        className={
+                          "flex justify-between text-white bg-red-500 p-1 absolute top-0 left-0 z-10"
+                        }
+                      >
+                        {text.demandtype}
+                      </div>
+                    ) : (
+                      ""
+                    )}
 
                     <Image
                       src={text.images[0]}
@@ -777,13 +781,7 @@ const Tabs = ({ filteredProductData, heading, param }) => {
                   ) : (
                     ""
                   )}
-                  {text.specialprice ? (
-                    <p>
-                      Price valid till 15 Feb 2025
-                    </p>
-                  ) : (
-                    ""
-                  )}
+                  {text.specialprice ? <p>Price valid till 15 Feb 2025</p> : ""}
                   <p className="flex flex-row items-center gap-1 text-sm text-black">
                     {stars.map((star, index) => (
                       <Image

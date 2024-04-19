@@ -14,7 +14,7 @@ function* fetchRoomData(action) {
     yield put(setRoomData({ roomData: response.data, status: "succeeded" }));
 
     // Extract product ID and update popularity
-    const productId = response.data.id;
+    const productId = action.payload;
     yield call(updateProductPopularity, productId);
   } catch (error) {
     console.error("Error fetching room data:", error);
@@ -27,8 +27,7 @@ function* updateProductPopularity(productId) {
     // Make POST request to update product popularity
     yield call(
       axios.post,
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/updateProductPopularity`,
-      { id: productId }
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/increment-popularity?id=${productId}`
     );
     console.log("Product popularity updated successfully.");
   } catch (error) {

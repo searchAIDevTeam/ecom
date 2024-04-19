@@ -8,11 +8,11 @@ import { setCategory } from "@/components/Features/Slices/virtualDataSlice";
 const page = ({ params }) => {
   const searchparams = useSearchParams();
   const text = searchparams.get("search");
-  const [selected, setSelected] = useState("Curtains");
+  const [selected, setSelected] = useState("");
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
   const dataSelector = useSelector(selectVirtualData);
-  // console.log("dataSelector", dataSelector);
+  console.log("dataSelector", dataSelector);
 
   useEffect(() => {
     dispatch({
@@ -21,18 +21,19 @@ const page = ({ params }) => {
   }, []);
   useEffect(() => {
     if (dataSelector) {
-      setData(dataSelector);
+      const uniqueCategoriesArray = [
+        ...new Set(dataSelector.map((product) => product.category)),
+      ].map((category) => ({ category }));
+      // console.log(uniqueCategoriesArray);
+
+      setData(uniqueCategoriesArray);
     }
   }, [dataSelector]);
-  // console.log("data", data);
+  console.log("data", data);
 
   const handleClick = (category) => {
     setSelected(category);
-    dispatch(
-      setCategory({
-        category: category,
-      })
-    );
+    dispatch(setCategory(category));
   };
   return (
     <div className="py-20 text-center ">
@@ -101,9 +102,9 @@ const page = ({ params }) => {
             pathname:
               params.choosecategory === "freesample"
                 ? "/freesample"
-                : params.choosecategory === "designservice"
-                ? "/designservice"
-                : "/virtualexperience/vrooms",
+                : params.choosecategory === "freedesign"
+                ? "/freedesign"
+                : "/virtualexperience",
             query: { category: selected },
           }}
         >

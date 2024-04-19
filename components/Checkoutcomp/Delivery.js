@@ -215,14 +215,14 @@ const Delivery = () => {
                   </h3>
                 </div>
 
-                <div className="flex flex-col">
-                  <div
-                    className={`flex items-center space-x-2 p-4 cursor-pointer border-solid border-black border-l
-                 ${
-                   selectedOption === "option1"
-                     ? "border-2 border-solid border-blue-800"
-                     : "border-none"
-                 }`}
+                <div className=" flex flex-col">
+                  <label
+                    className={` flex items-center space-x-2 p-4 cursor-pointer border-solid border-black border-l
+               ${
+                 selectedOption === "option1"
+                   ? "border-2 border-solid border-blue-800"
+                   : "border-none"
+               }`}
                   >
                     <input
                       type="radio"
@@ -241,7 +241,7 @@ const Delivery = () => {
                         {selectedOption !== "option1" ? (
                           <>
                             <p className="text-md text-gray-500 py-2">
-                              Earlist collection tommorrow 11:00 AM - 5:00 PM
+                              Earliest collection tomorrow 11:00 AM - 5:00 PM
                             </p>
                           </>
                         ) : (
@@ -268,9 +268,9 @@ const Delivery = () => {
                         <p className="text-md font-bold">Rs. 59</p>
                       </div>
                     </div>
-                  </div>
+                  </label>
 
-                  <div
+                  <label
                     className={`flex items-center space-x-2 p-4 cursor-pointer ${
                       selectedOption === "option2"
                         ? "border-2 border-solid border-blue-800"
@@ -294,7 +294,7 @@ const Delivery = () => {
                         {selectedOption !== "option2" ? (
                           <>
                             <p className="text-md text-gray-500 py-2">
-                              Earlist collection tommorrow 11:00 AM - 5:00 PM
+                              Earliest collection tomorrow 11:00 AM - 5:00 PM
                             </p>
                           </>
                         ) : (
@@ -324,7 +324,7 @@ const Delivery = () => {
                         <p className="text-md font-bold">Rs. 79</p>
                       </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
 
                 {/* ---------------------- */}
@@ -347,13 +347,13 @@ const Delivery = () => {
                     </h3>
                   </div>
                   <div className=" flex flex-col">
-                    <div
+                    <label
                       className={`flex items-center space-x-2 p-4 cursor-pointer border-solid border-black border-l
-                 ${
-                   selectedOption === "option3"
-                     ? "border-2 border-solid border-blue-800"
-                     : "border-none"
-                 }`}
+       ${
+         selectedOption === "option3"
+           ? "border-2 border-solid border-blue-800"
+           : "border-none"
+       }`}
                     >
                       <input
                         type="radio"
@@ -393,7 +393,7 @@ const Delivery = () => {
                           <p className="text-md font-bold">Rs.99</p>
                         </div>
                       </div>
-                    </div>
+                    </label>
                   </div>
                   <div className="mt-4">{isSchedular ? <Calender /> : ""}</div>
                   <Link href={"/checkout/details"}>

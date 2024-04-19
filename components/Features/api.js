@@ -76,7 +76,7 @@ export const fetchCartData = async () => {
 };
 export const virtualGet = async () => {
   try {
-    const response = await axios.get(createApiEndpoint("getVE"));
+    const response = await axios.get(createApiEndpoint("products"));
     return response.data;
   } catch (error) {
     console.error(`Error fetching virtual content: ${error.message} `);

@@ -113,6 +113,7 @@ export default function NewMainSlider() {
               alt="Swiper"
               priority
               className=" swiper-slide"
+              objectFit="cover"
             />
             <div className="absolute flex text-lg text-white bottom-4 left-4">
               {sliderApiData[0]?.imgTitle}
@@ -166,6 +167,7 @@ export default function NewMainSlider() {
               width={500}
               height={330}
               alt="Swiper"
+              objectFit="cover"
               className="object-cover swiper-slide"
             />
             <div className="absolute flex text-lg text-white bottom-4 left-4">
@@ -220,6 +222,7 @@ export default function NewMainSlider() {
               width={500}
               height={330}
               alt="Swiper"
+              objectFit="cover"
               className="object-cover swiper-slide"
             />
             <div className="absolute flex text-lg text-white bottom-4 left-4">
@@ -275,6 +278,7 @@ export default function NewMainSlider() {
                 width={500}
                 height={330}
                 alt="Swiper"
+                objectFit="cover"
                 className="object-cover swiper-slide"
               />
               <div className="absolute flex text-lg text-white bottom-4 left-4">
