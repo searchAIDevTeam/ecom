@@ -9,7 +9,7 @@ const TopHeader = () => {
   return (
     <div>
       <div
-        className={`bg-zinc-100 h-[30px] ${
+        className={`bg-[#f5f5f5] h-[30px] ${
           homeRoute === pathname ? "fixed" : ""
         } z-[99999] w-full flex justify-between`}
       >

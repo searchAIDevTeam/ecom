@@ -234,7 +234,7 @@ function Header({ howMuchScrolled }) {
               <div className=" flex flex-row items-center justify-end  gap-2">
                 <div
                   onClick={handleModalOpen}
-                  className="bg-zinc-100  justify-end rounded-full w-[170px] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
+                  className="bg-[#f5f5f5]  justify-end rounded-full w-[170px] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
                 >
                   <span>
                     <Image
