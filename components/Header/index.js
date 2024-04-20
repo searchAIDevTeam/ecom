@@ -158,11 +158,11 @@ function Header({ howMuchScrolled }) {
             <div
               className={`${
                 isScrolled ? " border-b-[0.5px] border-slate-200" : ""
-              } flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px]`}
+              } flex flex-row justify-between items-center py-[5px] sm:px-[30px] px-[10px]`}
             >
               {/* main-logo */}
               <div className=" flex items-center justify-start ">
-                <div className="mainlogo">
+                <div className="pr-[100px] mainlogo">
                   <Link href="/">
                     <Image
                       src="/images/ayatriologo.webp"
@@ -204,14 +204,14 @@ function Header({ howMuchScrolled }) {
                         onClick={() => handleClick(idx)}
                       >
                         <Link
-                          className={`text-md text-sm font-semibold  ${
-                            isOpen ? "border-b-2 border-black" : ""
+                          className={`text-md   ${
+                            isOpen ? "" : ""
                           }`}
                           href="#"
                           onClick={toggleDropdown}
                         >
                           <p
-                            className={`block p-2 text-lg font-medium border-b-2 ${
+                            className={`block px-2 py-3 text-base font-medium border-b-2 ${
                               hoveredIndex === idx
                                 ? "border-black"
                                 : "border-transparent"
@@ -234,7 +234,7 @@ function Header({ howMuchScrolled }) {
               <div className=" flex flex-row items-center justify-end  gap-2">
                 <div
                   onClick={handleModalOpen}
-                  className="bg-zinc-100  justify-end rounded-full w-[9rem] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
+                  className="bg-zinc-100  justify-end rounded-full w-[170px] h-10 p-[9px] hover:bg-zinc-400 hover:rounded-full cursor-pointer sm:block hidden"
                 >
                   <span>
                     <Image
