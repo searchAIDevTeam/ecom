@@ -162,19 +162,19 @@ const CartMain = () => {
           </div> */}
 
             {/* <!-- parent div --> */}
-            <div class=" py-2 ml-12 mr-14">
+            <div className=" py-2 ml-12 mr-14">
               {/* <!-- header section --> */}
-              <div class="flex justify-between items-center mb-10">
-                <h1 class=" text-4xl leading-[1.33] font-[700] tracking-tight">
+              <div className="flex justify-between items-center mb-10">
+                <h1 className=" text-4xl leading-[1.33] font-[700] tracking-tight">
                   Shopping Details
                 </h1>
-                <div class="cursor-pointer hover:bg-gray-400 box-border rounded-xl">
+                <div className="cursor-pointer hover:bg-gray-400 box-border rounded-xl">
                   <svg
                     focusable="false"
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class=""
+                    className=""
                     aria-hidden="true"
                   >
                     <path
@@ -186,13 +186,13 @@ const CartMain = () => {
                 </div>
               </div>
               {/* <!-- Address pin  --> */}
-              <div class="flex h-11 w-48">
+              <div className="flex h-11 w-48">
                 <svg
                   focusable="false"
                   viewBox="0 0 24 24"
                   width="24"
                   height="24"
-                  class="cart-ingka-svg-icon"
+                  className="cart-ingka-svg-icon"
                   aria-hidden="true"
                 >
                   <path d="M12.0001 11.2157c1.1046 0 2-.8954 2-2s-.8954-2-2-2c-1.1045 0-2 .8954-2 2s.8955 2 2 2z"></path>
@@ -203,17 +203,17 @@ const CartMain = () => {
                   ></path>
                   <path d="M14.0001 9.2157c0 1.1046-.8954 2-2 2-1.1045 0-2-.8954-2-2s.8955-2 2-2c1.1046 0 2 .8954 2 2z"></path>
                 </svg>
-                <p class=" ml-3 w-full font-[300] text-[15.5px]">
-                  Your pincode <span class="underline">843146</span>
+                <p className=" ml-3 w-full font-[300] text-[15.5px]">
+                  Your pincode <span className="underline">843146</span>
                 </p>
               </div>
 
               {/* <!-- order text --> */}
-              <div class="tracking-wide font-[700] text-[1.09rem] leading-6 mb-4">
+              <div className="tracking-wide font-[700] text-[1.09rem] leading-6 mb-4">
                 How would you like to receive your order?
               </div>
               {/* <!-- Take option  --> */}
-              <div class="flex flex-row gap-5">
+              <div className="flex flex-row gap-5">
                 {/* <!-- delivery  --> */}
                 <div
                   onClick={() => {
@@ -223,14 +223,14 @@ const CartMain = () => {
                     pickup === "delivery" ? "border-black" : "border-gray-400"
                   } h-24 w-[50%]`}
                 >
-                  <div class="flex px-6 py-5 h-24 items-center">
-                    <div class="pr-5">
+                  <div className="flex px-6 py-5 h-24 items-center">
+                    <div className="pr-5">
                       <svg
                         focusable="false"
                         viewBox="0 0 24 24"
                         width="24"
                         height="24"
-                        class="cart-ingka-svg-icon"
+                        className="cart-ingka-svg-icon"
                         aria-hidden="true"
                       >
                         <path
@@ -240,7 +240,7 @@ const CartMain = () => {
                         ></path>
                       </svg>
                     </div>
-                    <div class="font-[700] text-[1rem] leading-[1.571rem]">
+                    <div className="font-[700] text-[1rem] leading-[1.571rem]">
                       Delivery
                     </div>
                   </div>
@@ -254,14 +254,14 @@ const CartMain = () => {
                     pickup === "collect" ? "border-black" : "border-gray-400"
                   } h-24 w-[50%]`}
                 >
-                  <div class="flex px-6 py-5 h-24 items-center">
-                    <div class="pr-5">
+                  <div className="flex px-6 py-5 h-24 items-center">
+                    <div className="pr-5">
                       <svg
                         focusable="false"
                         viewBox="0 0 24 24"
                         width="24"
                         height="24"
-                        class="cart-ingka-svg-icon"
+                        className="cart-ingka-svg-icon"
                         aria-hidden="true"
                       >
                         <path
@@ -271,7 +271,7 @@ const CartMain = () => {
                         ></path>
                       </svg>
                     </div>
-                    <div class="font-[700] text-[1rem] leading-[1.571rem]">
+                    <div className="font-[700] text-[1rem] leading-[1.571rem]">
                       Collect
                     </div>
                   </div>
@@ -380,7 +380,7 @@ const CartMain = () => {
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="cart-ingka-svg-icon"
+                    className="cart-ingka-svg-icon"
                     aria-hidden="true"
                   >
                     <path d="M19.205 5.599c.9541.954 1.4145 2.2788 1.4191 3.6137 0 3.0657-2.2028 5.7259-4.1367 7.5015-1.2156 1.1161-2.5544 2.1393-3.9813 2.9729L12 20.001v-2.3516c.6699-.4304 1.9095-1.2834 3.1347-2.4084 1.8786-1.7247 3.4884-3.8702 3.4894-6.0264-.0037-.849-.2644-1.6326-.8333-2.2015-1.1036-1.1035-2.9413-1.0999-4.0445.0014l-1.7517 1.7448-1.7461-1.7462c-1.1165-1.1164-2.9267-1.1164-4.0431 0-1.6837 1.6837-.5313 4.4136.6406 6.0155.3487.4768.7386.9326 1.1472 1.3617L8 11.9982l2 .0057-.017 6-6-.0171.0056-2 2.7743.0079c-.5387-.5472-1.0629-1.1451-1.5311-1.7852-1.0375-1.4183-1.8594-3.1249-1.8597-4.9957-.0025-1.2512.3936-2.5894 1.419-3.6149 1.8976-1.8975 4.974-1.8975 6.8716 0l.3347.3347.336-.3347c1.8728-1.8722 4.9989-1.8727 6.8716 0z"></path>
@@ -398,7 +398,7 @@ const CartMain = () => {
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="cart-ingka-svg-icon"
+                    className="cart-ingka-svg-icon"
                     aria-hidden="true"
                   >
                     <path

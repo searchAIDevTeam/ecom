@@ -86,7 +86,7 @@ const Reviews = ({ data }) => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getReview`
         );
-        console.log(response.data);
+        console.log("reviews", response.data);
         setReviews(response.data);
       } catch (error) {
         console.error("Error fetching reviews:", error);
@@ -95,6 +95,13 @@ const Reviews = ({ data }) => {
 
     fetchReviews();
   }, []);
+
+  const toggleShowMore = (index) => {
+    const updatedReviews = [...reviews];
+    updatedReviews[index].showFullComment =
+      !updatedReviews[index].showFullComment;
+    setReviews(updatedReviews);
+  };
 
   return (
     <>
@@ -160,7 +167,7 @@ const Reviews = ({ data }) => {
                 <div className="w-[48px] h-[48px] mr-4">
                   <img
                     className="w-full h-full"
-                    src={review.avatarUrl}
+                    src={review.image}
                     alt="User Avatar"
                   />
                 </div>
@@ -187,9 +194,20 @@ const Reviews = ({ data }) => {
                   {review.date}
                 </span>
               </div>
+
               <div className="review mt-2">
-                <p className="text-gray-600 font-[16px] leading-6	mb-6 sm:w-auto text-left w-[100%]">
-                  {review.comment}
+                <p className="text-gray-600 font-[16px] leading-6 mb-6 sm:w-auto text-left w-[100%]">
+                  {review.showFullComment
+                    ? review.comment
+                    : `${review.comment.slice(0, 60)}...`}
+                  {review.comment.length > 60 && (
+                    <button
+                      className="text-blue-500 hover:text-blue-700 cursor-pointer ml-1"
+                      onClick={() => toggleShowMore(index)}
+                    >
+                      {review.showFullComment ? "Show Less" : "Show More"}
+                    </button>
+                  )}
                 </p>
               </div>
             </div>

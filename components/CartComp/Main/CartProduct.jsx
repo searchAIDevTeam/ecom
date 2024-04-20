@@ -20,9 +20,9 @@ const CartProduct = ({
   return (
     <>
       <div className="">
-        <div class=" py-8 flex gap-4 border-b border-slate-400  mb-3 mt-3">
+        <div className=" py-8 flex gap-4 border-b border-slate-400  mb-3 mt-3">
           {/* <!-- image of product --> */}
-          <div class="">
+          <div className="">
             <Image
               src={cartItem.productId.images[0]}
               width={249}
@@ -34,7 +34,7 @@ const CartProduct = ({
                   505.390.75
                 </div> */}
           </div>
-          <div class=" h-52 w-[76%] ">
+          <div className=" h-52 w-[76%] ">
             <ul className=" list-none">
               <li className=" text-xl text-gray-600 font-[700] flex justify-between ">
                 {" "}

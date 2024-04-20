@@ -158,7 +158,7 @@ function Header({ howMuchScrolled }) {
             <div
               className={`${
                 isScrolled ? " border-b-[0.5px] border-slate-200" : ""
-              } flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px] py-0`}
+              } flex flex-row justify-between items-center py-[3px] sm:px-[30px] px-[10px]`}
             >
               {/* main-logo */}
               <div className=" flex items-center justify-start ">
@@ -211,10 +211,10 @@ function Header({ howMuchScrolled }) {
                           onClick={toggleDropdown}
                         >
                           <p
-                            className={`block p-2 text-lg font-medium ${
+                            className={`block p-2 text-lg font-medium border-b-2 ${
                               hoveredIndex === idx
-                                ? "border-b-2 border-black"
-                                : ""
+                                ? "border-black"
+                                : "border-transparent"
                             }`}
                           >
                             {value.label}
